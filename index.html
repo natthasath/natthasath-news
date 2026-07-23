@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>natthasath-news — ศูนย์รวมสรุปข่าวประจำวัน/สัปดาห์/เดือน</title>
+<meta name="description" content="ศูนย์รวมสรุปข่าวจาก Claude Code Routine แยกตามหมวด AI, เศรษฐกิจ, ฟุตบอล, ซอฟต์แวร์, ราชกิจจานุเบกษา, การขาย, งานราชการ, งานเอกชน, F1 และโครงการภาครัฐ">
+<style>
+/* =========================================================
+   natthasath-news — shared editorial "intelligence briefing" theme
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC;
+  --surface:#F6F7F5;
+  --surface-2:#E4E7E3;
+  --ink:#1B2027;
+  --ink-soft:#565D63;
+  --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14);
+  --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73;
+  --accent-ink:#ffffff;
+  --accent-wash:rgba(15,122,115,0.10);
+  --flag:#A8752A;
+  --flag-wash:rgba(168,117,42,0.12);
+  --rumor:#AD4A40;
+  --rumor-wash:rgba(173,74,64,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-ink:#07201D; --accent-wash:rgba(63,189,175,0.14);
+    --flag:#D9A24B; --flag-wash:rgba(217,162,75,0.14);
+    --rumor:#E0847A; --rumor-wash:rgba(224,132,122,0.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-ink:#07201D; --accent-wash:rgba(63,189,175,0.14);
+  --flag:#D9A24B; --flag-wash:rgba(217,162,75,0.14);
+  --rumor:#E0847A; --rumor-wash:rgba(224,132,122,0.14);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-ink:#ffffff; --accent-wash:rgba(15,122,115,0.10);
+  --flag:#A8752A; --flag-wash:rgba(168,117,42,0.12);
+  --rumor:#AD4A40; --rumor-wash:rgba(173,74,64,0.12);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"IBM Plex Sans Thai","Noto Sans Thai","Leelawadee UI","Segoe UI",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.mono{ font-family:"JetBrains Mono","SFMono-Regular",Consolas,Menlo,monospace; font-variant-numeric:tabular-nums; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+a:hover{ text-decoration-thickness:2px; }
+a:focus-visible, button:focus-visible, summary:focus-visible{
+  outline:2px solid var(--accent); outline-offset:2px; border-radius:2px;
+}
+
+.page{ max-width:900px; margin:0 auto; padding:0 20px 96px; }
+
+/* ---------- top strip ---------- */
+.topstrip{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 0; border-bottom:1px solid var(--line);
+  font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.06em;
+  color:var(--ink-faint); text-transform:uppercase;
+}
+.topstrip span.dot{ color:var(--accent); }
+.topstrip a{ color:var(--ink-faint); }
+.topstrip a:hover{ color:var(--accent); }
+
+/* ---------- masthead ---------- */
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{
+  font-family:"Fraunces",serif; font-style:italic; font-weight:500;
+  font-size:15px; color:var(--accent); letter-spacing:.02em; margin:0 0 14px;
+}
+.kicker::before{ content:"◆ "; font-style:normal; font-size:11px; }
+h1.title{
+  font-size:clamp(30px,6vw,42px); line-height:1.18; font-weight:800; margin:0 0 16px;
+  letter-spacing:-0.01em; text-wrap:balance;
+}
+.meta-row{
+  display:flex; flex-wrap:wrap; gap:10px 22px; align-items:baseline;
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft);
+}
+.meta-row b{ color:var(--ink); font-weight:600; }
+.stamp{
+  display:inline-flex; align-items:center; gap:7px; margin-top:22px;
+  font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-soft);
+  border:1px solid var(--line-strong); padding:7px 12px; border-radius:3px;
+}
+.stamp .ring{
+  width:15px; height:15px; border-radius:50%; border:1.6px solid var(--accent);
+  position:relative; flex:none;
+}
+.stamp .ring::after{
+  content:""; position:absolute; left:3.5px; top:2px; width:4px; height:7px;
+  border-right:1.6px solid var(--accent); border-bottom:1.6px solid var(--accent);
+  transform:rotate(40deg);
+}
+
+/* ---------- nav ---------- */
+nav.toc{
+  display:flex; gap:4px; overflow-x:auto; padding:12px 0; margin-bottom:8px;
+  border-bottom:1px solid var(--line); scrollbar-width:none;
+}
+nav.toc::-webkit-scrollbar{ display:none; }
+nav.toc a{
+  flex:none; font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.02em;
+  color:var(--ink-soft); text-decoration:none; padding:6px 11px; border-radius:3px;
+  border:1px solid transparent; white-space:nowrap;
+}
+nav.toc a:hover, nav.toc a.active{ color:var(--ink); border-color:var(--line-strong); background:var(--surface); }
+
+/* ---------- category grid (landing page) ---------- */
+.cat-grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1px; background:var(--line); border:1px solid var(--line); margin:28px 0; border-radius:4px; overflow:hidden;
+}
+.cat-card{
+  background:var(--surface); padding:22px 20px; text-decoration:none; color:var(--ink);
+  display:flex; flex-direction:column; gap:8px; transition:background .15s ease;
+}
+.cat-card:hover{ background:var(--surface-2); }
+.cat-card .freq{
+  font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--accent); font-weight:600;
+}
+.cat-card h3{ margin:0; font-size:18px; font-weight:700; }
+.cat-card p{ margin:0; font-size:13.5px; color:var(--ink-soft); line-height:1.55; }
+.cat-card .go{ margin-top:auto; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.cat-card:hover .go{ color:var(--accent); }
+
+/* ---------- quick stats ---------- */
+.stats{
+  display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); margin:28px 0 8px; border-radius:4px; overflow:hidden;
+}
+.stat{ background:var(--surface); padding:16px 10px; text-align:center; }
+.stat .n{ font-family:"JetBrains Mono",monospace; font-size:24px; font-weight:700; color:var(--accent); }
+.stat .l{ font-size:11.5px; color:var(--ink-soft); margin-top:4px; line-height:1.3; }
+@media (max-width:640px){ .stats{ grid-template-columns:repeat(3,1fr);} }
+
+/* ---------- sections ---------- */
+section{ padding:42px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+.sec-kicker{
+  font-family:"Fraunces",serif; font-style:italic; font-weight:500;
+  font-size:14px; color:var(--accent); margin:0 0 6px; letter-spacing:.02em;
+}
+h2{ font-size:26px; font-weight:800; margin:0 0 16px; letter-spacing:-0.01em; text-wrap:balance; }
+h3{ font-size:16px; font-weight:700; margin:26px 0 10px; color:var(--ink); }
+p{ margin:0 0 14px; max-width:70ch; color:var(--ink); }
+p.lede{ color:var(--ink-soft); }
+ul.plain{ margin:0 0 14px; padding-left:1.15em; }
+ul.plain li{ margin-bottom:8px; max-width:68ch; }
+.note{
+  font-size:13.5px; color:var(--ink-faint); border-left:2px solid var(--flag);
+  padding:6px 0 6px 12px; margin:14px 0; max-width:66ch;
+}
+
+/* ---------- entry list (category index) ---------- */
+.entry-list{ list-style:none; margin:0; padding:0; }
+.entry-list li{
+  border-top:1px solid var(--line); padding:16px 0;
+  display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;
+}
+.entry-list li:first-child{ border-top:none; }
+.entry-list .date{
+  font-family:"JetBrains Mono",monospace; font-size:13px; color:var(--accent); font-weight:600; white-space:nowrap;
+}
+.entry-list .label{ color:var(--ink); flex:1; min-width:180px; }
+.entry-list .empty{ color:var(--ink-faint); font-style:italic; }
+
+/* ---------- table ---------- */
+.twrap{ overflow-x:auto; margin:6px 0 18px; border:1px solid var(--line); border-radius:4px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; }
+thead th{
+  text-align:left; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--ink-soft); background:var(--surface-2);
+  padding:10px 14px; border-bottom:1px solid var(--line-strong); white-space:nowrap;
+}
+tbody td{ padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top; background:var(--surface); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td.num{ font-family:"JetBrains Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+/* ---------- pills ---------- */
+.pill{
+  display:inline-flex; align-items:center; gap:5px; font-family:"JetBrains Mono",monospace;
+  font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; font-weight:600;
+  padding:3px 8px; border-radius:20px; white-space:nowrap; line-height:1.6;
+}
+.pill-verified{ background:var(--accent-wash); color:var(--accent); border:1px solid var(--accent); }
+.pill-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line-strong); }
+.pill-trend{ background:var(--flag-wash); color:var(--flag); border:1px solid var(--flag); }
+.pill-rumor{ background:var(--rumor-wash); color:var(--rumor); border:1px solid var(--rumor); }
+.pill-unverified{ background:transparent; color:var(--ink-faint); border:1px dashed var(--line-strong); }
+
+/* ---------- source list ---------- */
+.src-group{ margin-bottom:22px; }
+.src-group h3{ margin-top:0; }
+.src-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px; }
+.src-list li{ font-size:13.5px; padding-left:16px; position:relative; max-width:70ch; color:var(--ink-soft); }
+.src-list li::before{ content:"—"; position:absolute; left:0; color:var(--ink-faint); }
+.src-list a{ color:var(--ink); }
+
+/* ---------- watch list ---------- */
+.watch{ counter-reset:w; list-style:none; margin:0; padding:0; }
+.watch li{
+  counter-increment:w; padding:16px 0 16px 46px; border-top:1px solid var(--line);
+  position:relative; max-width:66ch;
+}
+.watch li:first-child{ border-top:none; }
+.watch li::before{
+  content:counter(w,decimal-leading-zero); position:absolute; left:0; top:16px;
+  font-family:"JetBrains Mono",monospace; font-size:13px; color:var(--accent); font-weight:700;
+}
+
+/* ---------- summary block ---------- */
+.summary-block{
+  background:var(--surface); border:1px solid var(--line); border-radius:4px;
+  padding:22px 24px; font-size:16.5px; line-height:1.85;
+}
+
+footer.endcap{
+  margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong);
+  font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+}
+footer.endcap a{ color:var(--ink-faint); }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topstrip">
+    <span><span class="dot">●</span> NATTHASATH NEWS — DIGEST INDEX</span>
+    <span>ICT GMT+7</span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Automated News Digest</p>
+    <h1 class="title">ศูนย์รวมสรุปข่าว</h1>
+    <div class="meta-row">
+      <span>อัปเดตโดย &nbsp;<b>Claude Code Routine</b></span>
+      <span>หมวดข่าวทั้งหมด &nbsp;<b>10 หมวด</b></span>
+    </div>
+    <div class="stamp">
+      <span class="ring"></span>
+      สรุปข่าวอัตโนมัติรายวัน / รายสัปดาห์ / รายเดือน แยกตามหมวดหมู่
+    </div>
+  </header>
+
+  <section style="border-bottom:none; padding-bottom:0;">
+    <p class="sec-kicker">Categories</p>
+    <h2>เลือกหมวดข่าว</h2>
+
+    <div class="cat-grid">
+
+      <a class="cat-card" href="ai/">
+        <span class="freq">Daily</span>
+        <h3>AI &amp; เทคโนโลยี</h3>
+        <p>สรุปข่าว AI และเทคโนโลยีรายวัน</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+      <a class="cat-card" href="economics/">
+        <span class="freq">Daily</span>
+        <h3>เศรษฐกิจ</h3>
+        <p>สรุปข่าวเศรษฐกิจรายวัน</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+      <a class="cat-card" href="football/">
+        <span class="freq">Weekly</span>
+        <h3>พรีเมียร์ลีก</h3>
+        <p>สรุปข่าวฟุตบอลพรีเมียร์ลีกรายสัปดาห์</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+      <a class="cat-card" href="software/">
+        <span class="freq">Weekly</span>
+        <h3>Software Releases</h3>
+        <p>สรุปข่าวการเปิดตัวซอฟต์แวร์รายสัปดาห์</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+      <a class="cat-card" href="ratchakitcha/">
+        <span class="freq">Weekly</span>
+        <h3>ราชกิจจานุเบกษา</h3>
+        <p>สรุปประกาศราชกิจจานุเบกษารายสัปดาห์</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+      <a class="cat-card" href="sales/">
+        <span class="freq">Weekly</span>
+        <h3>ข่าวการขาย</h3>
+        <p>สรุปข่าวการขายและโปรโมชันรายสัปดาห์</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+      <a class="cat-card" href="jobs-government/">
+        <span class="freq">Weekly</span>
+        <h3>งานราชการ</h3>
+        <p>สรุปข่าวรับสมัครงานภาครัฐรายสัปดาห์</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+      <a class="cat-card" href="jobs-private/">
+        <span class="freq">Weekly</span>
+        <h3>งานเอกชน</h3>
+        <p>สรุปข่าวรับสมัครงานภาคเอกชนรายสัปดาห์</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+      <a class="cat-card" href="f1/">
+        <span class="freq">Weekly</span>
+        <h3>Formula 1</h3>
+        <p>สรุปข่าว F1 รายสัปดาห์</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+      <a class="cat-card" href="gov-projects/">
+        <span class="freq">Monthly · Follow-up</span>
+        <h3>โครงการภาครัฐ</h3>
+        <p>ติดตามความคืบหน้าโครงการภาครัฐรายเดือน</p>
+        <span class="go">ดูสรุปทั้งหมด →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <footer class="endcap">
+    <span>NATTHASATH-NEWS · AUTOMATED DIGEST INDEX</span>
+    <span><a href="https://github.com/natthasath/natthasath-news">GitHub Repository</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
