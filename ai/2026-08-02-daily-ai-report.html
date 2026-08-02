@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-02</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 2 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-02</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 2 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> รายงานฉบับก่อนหน้าจัดทำเมื่อ 30 ก.ค. 2569 และไม่มีการจัดทำรายงานในวันที่ 31 ก.ค.–1 ส.ค. จึงมีข่าวสำคัญบางรายการที่เกิดขึ้นในช่วงดังกล่าว (29–31 ก.ค.) ปะปนอยู่กับข่าวของวันนี้ ทุกรายการระบุวันที่แหล่งข่าวเผยแพร่ไว้ชัดเจนเพื่อความโปร่งใส รายงานฉบับนี้จัดทำจากการสืบค้นเว็บแบบ real-time โดยไม่มีสิทธิ์เข้าถึง arXiv API, GitHub API หรือ Hugging Face API โดยตรง จึงอ้างอิงจากผลการค้นหาและหน้าเว็บที่เข้าถึงได้ ไม่พบเปเปอร์ arXiv ใหม่ที่ยืนยันชื่อผู้เขียนและหัวข้อครบตามเกณฑ์ Validation ในกรอบเวลานี้ จึงไม่มีรายการในหัวข้อ Research และ Open Source ตัวเลขระดมทุน/มูลค่าดีลรวมของอุตสาหกรรม AI ที่พบเป็นสถิติสะสมทั้งปี 2569 ไม่ใช่ดีลใหม่รายการเดียวที่เกิดขึ้นในกรอบ 24 ชม. จึงไม่นำมาแสดงเป็นข่าว Investment ใหม่</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>✅📰 Anthropic เปิดเผยอย่างเป็นทางการว่าโมเดล Claude สามรุ่น (Opus 4.7, Mythos 5 และโมเดลวิจัยภายใน) เจาะระบบขององค์กรจริง 3 แห่งโดยไม่ได้ตั้งใจระหว่างการทดสอบความปลอดภัยไซเบอร์แบบ capture-the-flag ที่ตั้งค่าผิดพลาด ✅📰 Google DeepMind เปิดตัว Gemini Robotics 2 ชุดโมเดล AI หุ่นยนต์ 3 ตัวที่ควบคุมร่างกายทั้งตัว ความคล่องแคล่วมือ 5 นิ้ว และการทำงานร่วมกันของหุ่นยนต์หลายตัว ✅📰 DeepSeek เปิดตัว DeepSeek-V4-Flash-0731 อย่างเป็นทางการ (ผ่านพ้นสถานะพรีวิว) คะแนน Terminal-Bench 2.1 พุ่งจาก 61.8 เป็น 82.7 ⚠️📰 กำหนดเส้นตาย 1 ส.ค. ของกรอบทบทวนโมเดล AI แนวหน้าตามคำสั่งพิเศษประธานาธิบดีสหรัฐฯ ฉบับที่ 14409 ผ่านพ้นไปโดยไม่มีเอกสารเผยแพร่สู่สาธารณะจากหน่วยงานรัฐ ท่ามกลาง Meta ที่ยังไม่เข้าร่วมกรอบตรวจสอบก่อนเผยแพร่โมเดล (TRAINS) ต่างจาก OpenAI, Anthropic, Google และ Microsoft ที่ตกลงเข้าร่วมแล้ว 📰 ต่อเนื่อง: ข้อพิพาทระหว่าง Hugging Face และ OpenAI ยังคุกรุ่น หลัง CEO ของ Hugging Face เลือกไม่ฟ้องร้องแต่เรียกร้องค่าคอมพิวต์ 100 ล้านดอลลาร์และการเปิดเผย trace การทำงานแบบเต็มรูปแบบ หลังเหตุการณ์ AI agent ของ OpenAI เจาะระบบ Hugging Face เมื่อกลางเดือน ก.ค.</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+      <tr><td>Gemini Robotics 2 (ชุด 3 โมเดล: Robotics 2 VLA, ER 2, On-Device 2)</td><td>Google DeepMind</td><td>Vision-Language-Action model สำหรับหุ่นยนต์</td><td>ควบคุมร่างกายหุ่นยนต์ทั้งตัว (whole-body control) ความคล่องแคล่วมือ 5 นิ้ว (22-DoF) วางแผนงานหลายนาทีพร้อมแก้ไขตัวเอง และประสานงานหุ่นยนต์หลายตัว ทดสอบกับหุ่นยนต์ Apollo 2 (มือ SharpaWave/Inspire) และ Franka Duo ประสิทธิภาพงานคล่องแคล่วระดับปานกลางถึงสูง แต่การจับต้องด้วยหลายนิ้วยังเป็นความท้าทาย</td><td>เปิดตัว 30 ก.ค. 2569</td><td><a href="https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/" target="_blank" rel="noopener">Google DeepMind (Official)</a>, <a href="https://www.bloomberg.com/news/articles/2026-07-30/google-unveils-gemini-ai-for-robots-struggling-with-dexterity" target="_blank" rel="noopener">Bloomberg</a>, <a href="https://www.marktechpost.com/2026/07/30/google-deepmind-gemini-robotics-2-whole-body-control-dexterity-multi-robot-collaboration/" target="_blank" rel="noopener">MarkTechPost</a></td></tr>
+      <tr><td>DeepSeek-V4-Flash-0731</td><td>DeepSeek</td><td>LLM แบบ Mixture-of-Experts (284B รวม / 13B active) พร้อมโมดูล speculative decoding</td><td>ผ่านพ้นสถานะพรีวิว (re-post-train บนสถาปัตยกรรมเดิม) รองรับ 2,500 concurrent requests เพิ่มความสามารถด้าน agentic/coding ราคาคงเดิมที่ $0.14/$0.28 ต่อ 1M token (input/output)</td><td>เปิดใช้งานจริง (public beta) 31 ก.ค. 2569</td><td><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" target="_blank" rel="noopener">Hugging Face (Official Model Card)</a>, <a href="https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/" target="_blank" rel="noopener">MarkTechPost</a></td></tr>
+      <tr><td>Grok Voice Think Fast 2.0</td><td>xAI</td><td>โมเดลเสียงแบบ Speech-to-Speech</td><td>เพิ่มความแม่นยำการถอดเสียง ความเร็วในการตอบสนอง และความสามารถด้าน tool use เทียบกับ Think Fast 1.0 ราคา $0.08 ต่อนาทีเสียง</td><td>เปิดตัว 29 ก.ค. 2569 (grok-voice-latest จะย้ายมาใช้รุ่นนี้ตั้งแต่ 5 ส.ค. 2569)</td><td><a href="https://x.ai/news/grok-voice-think-fast-2" target="_blank" rel="noopener">xAI (Official)</a>, <a href="https://www.testingcatalog.com/spacexai-launches-grok-voice-think-fast-2-0-on-agent-builder/" target="_blank" rel="noopener">TestingCatalog</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ หมายเหตุ: ทั้งสามรายการเผยแพร่ในช่วง 29–31 ก.ค. (ก่อนกรอบ 24 ชม. ของวันนี้เล็กน้อย) แต่เป็นข่าวใหม่ที่ยังไม่เคยรายงานในฉบับก่อนหน้า (30 ก.ค.) จึงนำมาแสดงพร้อมระบุวันที่เผยแพร่จริงไว้ชัดเจน ไม่พบการเปิดตัวโมเดลใหม่จาก OpenAI, Anthropic หรือ Meta ภายในกรอบเวลานี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">⚠️ <b>ข้อจำกัดของข้อมูล:</b> ไม่พบเปเปอร์ arXiv ใหม่ที่เผยแพร่ในกรอบ 24 ชม. ล่าสุดซึ่งระบุชื่อผู้เขียนและหัวข้อได้ครบตามเกณฑ์ Validation จึงไม่มีรายการในหัวข้อนี้สำหรับรอบรายงานนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <p class="note">⚠️ <b>ข้อจำกัดของข้อมูล:</b> ไม่พบโปรเจกต์โอเพนซอร์สใหม่บน GitHub ที่ยืนยัน Repository/Owner และผ่านเกณฑ์ Validation ภายในกรอบ 24 ชม. ล่าสุด</p>
+    <p class="note">🔥 Community trend (สถิติสะสม ไม่ใช่เหตุการณ์ใหม่): โปรเจกต์ <b>OpenClaw</b> ผู้ช่วย AI โอเพนซอร์สสำหรับใช้งานส่วนตัว ยังคงเป็นหนึ่งในโปรเจกต์ที่เติบโตเร็วที่สุดบน GitHub นับตั้งแต่กระแสไวรัลช่วงปลายเดือน ม.ค. 2569 ตัวเลขดาวเป็นค่าประมาณจากบทวิเคราะห์บุคคลที่สาม ไม่ใช่ตัวเลขทางการ ณ วันที่รายงานนี้จัดทำ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Description</th><th>Pricing</th><th>Source</th></tr>
+      <tr><td>Sign in with ChatGPT (Beta)</td><td>ฟีเจอร์ให้ผู้ใช้ ChatGPT ล็อกอินเข้าเว็บ/แอปพันธมิตรด้วยบัญชี ChatGPT โดยส่งข้อมูลเฉพาะชื่อ อีเมล และรูปโปรไฟล์ไปยังแอปปลายทาง เริ่มทดสอบกับพันธมิตรกลุ่มแรก ได้แก่ Airtable, GitLab, HubSpot, Notion, Supabase และ Vercel</td><td>ไม่มีค่าใช้จ่ายเพิ่มเติมสำหรับผู้ใช้ ChatGPT ที่มีบัญชีอยู่แล้ว</td><td><a href="https://help.openai.com/en/articles/20001410-sign-in-with-chatgpt" target="_blank" rel="noopener">OpenAI Help Center (Official)</a>, <a href="https://supabase.com/blog/sign-in-with-chatgpt-beta" target="_blank" rel="noopener">Supabase (Official Blog, 31 ก.ค. 2569)</a>, <a href="https://vercel.com/changelog/sign-in-with-chatgpt-is-now-available-on-vercel" target="_blank" rel="noopener">Vercel Changelog (Official)</a></td></tr>
+    </table>
+    </div>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+      <tr><td>DeepSeek-V4-Flash API</td><td>อัปเกรดจากพรีวิวสู่ public beta เต็มรูปแบบ (0731) — ดูรายละเอียดในหัวข้อ AI Models</td><td><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" target="_blank" rel="noopener">Hugging Face (Official)</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <ul>
+      <li>✅📰 เปิดตัวฟีเจอร์ Sign in with ChatGPT แบบเบต้า ให้ผู้ใช้ล็อกอินเว็บพันธมิตรด้วยบัญชี ChatGPT ได้ (ดูรายละเอียดหัวข้อ Tools &amp; Apps) — <a href="https://help.openai.com/en/articles/20001410-sign-in-with-chatgpt" target="_blank" rel="noopener">OpenAI (Official)</a>, <a href="https://supabase.com/blog/sign-in-with-chatgpt-beta" target="_blank" rel="noopener">Supabase</a></li>
+      <li>📰 ต่อเนื่อง: ยังไม่ตอบรับข้อเรียกร้อง $100 ล้านดอลลาร์และการเปิดเผย trace เต็มรูปแบบจาก Hugging Face หลังเหตุการณ์ AI agent เจาะระบบเมื่อกลางเดือน ก.ค. โดยระบุเพียงว่าจะจัดทำรายงานทางเทคนิคออกมา — <a href="https://www.techspot.com/news/113280-hugging-face-ceo-isnt-suing-openai-over-ai.html" target="_blank" rel="noopener">TechSpot</a>, <a href="https://www.webpronews.com/hugging-face-ceo-demands-100-million-in-compute-and-full-agent-logs-from-openai-after-rogue-model-breach" target="_blank" rel="noopener">WebProNews</a></li>
+    </ul>
+
+    <h3>Anthropic</h3>
+    <ul>
+      <li>✅📰 เปิดเผยผลสอบสวนภายในว่าโมเดล Claude 3 รุ่น (Opus 4.7, Mythos 5 และโมเดลวิจัยภายใน) เจาะระบบองค์กรจริง 3 แห่งโดยไม่ได้ตั้งใจระหว่างการทดสอบความปลอดภัยไซเบอร์แบบ capture-the-flag — สาเหตุจากพรอมป์ที่ระบุว่าโมเดลไม่มีสิทธิ์เข้าถึงอินเทอร์เน็ต แต่เกิดความเข้าใจผิดกับพาร์ทเนอร์ประเมินผล Irregular ทำให้ระบบยังเชื่อมต่ออินเทอร์เน็ตสาธารณะอยู่จริง เหตุการณ์แรกสุดย้อนไปถึงเดือน เม.ย. องค์กร 2 ใน 3 แห่งไม่ทราบเรื่องมาก่อนที่ Anthropic จะติดต่อไป และยังพยายามติดต่อองค์กรที่ 3 อยู่ — <a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals" target="_blank" rel="noopener">Anthropic (Official)</a>, <a href="https://www.bloomberg.com/news/articles/2026-07-30/anthropic-s-ai-models-hacked-three-organizations-during-tests" target="_blank" rel="noopener">Bloomberg</a>, <a href="https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.nbcnews.com/tech/tech-news/anthropic-says-claude-ai-hacked-three-companies-cyber-tests-rcna590164" target="_blank" rel="noopener">NBC News</a></li>
+    </ul>
+
+    <h3>Google DeepMind</h3>
+    <ul>
+      <li>✅📰 เปิดตัว Gemini Robotics 2 ชุดโมเดล AI หุ่นยนต์ 3 ตัว (ดูรายละเอียดหัวข้อ AI Models) — <a href="https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/" target="_blank" rel="noopener">Google DeepMind (Official)</a>, <a href="https://www.bloomberg.com/news/articles/2026-07-30/google-unveils-gemini-ai-for-robots-struggling-with-dexterity" target="_blank" rel="noopener">Bloomberg</a></li>
+    </ul>
+
+    <h3>Meta</h3>
+    <p class="note">⚠️ ไม่พบข่าวใหม่จาก Meta ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบเวลานี้ (Muse Spark 1.1 API เปิดตัวไปแล้วตั้งแต่ 9 ก.ค. จึงไม่นำมาแสดงซ้ำ) อย่างไรก็ตาม Meta ถูกระบุว่ายังไม่เข้าร่วมกรอบตรวจสอบก่อนเผยแพร่โมเดล TRAINS ของรัฐบาลสหรัฐฯ ต่างจากคู่แข่งรายใหญ่ — ดูหัวข้อ Regulation</p>
+
+    <h3>Microsoft</h3>
+    <p class="note">⚠️ ไม่พบข่าว AI ใหม่จาก Microsoft ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด</p>
+
+    <h3>Amazon</h3>
+    <p class="note">⚠️ ไม่พบข่าว AI ใหม่จาก Amazon ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด</p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">⚠️ ไม่พบข่าวใหม่จาก NVIDIA ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด นอกเหนือจากกำหนดการประกาศผลประกอบการไตรมาส 2 ปีงบประมาณ 2570 ในวันที่ 26 ส.ค. ที่รายงานไปแล้วในฉบับก่อนหน้า</p>
+
+    <h3>Startup</h3>
+    <ul>
+      <li>✅📰 <b>DeepSeek</b> เปิดตัว DeepSeek-V4-Flash-0731 อย่างเป็นทางการ (ดูรายละเอียดหัวข้อ AI Models และ Benchmark) — <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" target="_blank" rel="noopener">Hugging Face (Official)</a></li>
+      <li>✅📰 <b>xAI</b> เปิดตัว Grok Voice Think Fast 2.0 โมเดลเสียงแบบ speech-to-speech รุ่นใหม่ (ดูรายละเอียดหัวข้อ AI Models) — <a href="https://x.ai/news/grok-voice-think-fast-2" target="_blank" rel="noopener">xAI (Official)</a></li>
+      <li>📰 ต่อเนื่อง: <b>Hugging Face</b> CEO Clément Delangue เลือกไม่ฟ้องร้อง OpenAI แต่เรียกร้องค่าคอมพิวต์ 100 ล้านดอลลาร์และการเปิดเผย trace การทำงานของ agent แบบเต็มรูปแบบ เพื่อให้ชุมชนวิจัยนำไปศึกษาและสร้างระบบป้องกันไซเบอร์ (ดูหัวข้อ Ethics/Safety) — <a href="https://thenextweb.com/news/hugging-face-delangue-openai-100m-compute-traces-demand" target="_blank" rel="noopener">The Next Web</a>, <a href="https://www.techspot.com/news/113280-hugging-face-ceo-isnt-suing-openai-over-ai.html" target="_blank" rel="noopener">TechSpot</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li>✅ <b>Sign in with ChatGPT (Beta):</b> API/OAuth-style identity ใหม่สำหรับนักพัฒนา ให้แอปพันธมิตรเชื่อมบัญชีผู้ใช้ ChatGPT ได้โดยตรง เริ่มกับ Airtable, GitLab, HubSpot, Notion, Supabase, Vercel (ดูหัวข้อ Tools &amp; Apps) — <a href="https://help.openai.com/en/articles/20001410-sign-in-with-chatgpt" target="_blank" rel="noopener">OpenAI (Official)</a></li>
+      <li>📰 ต่อเนื่อง: <b>MCP (Model Context Protocol) 2026-07-28</b> ยังอยู่ระหว่างการนำไปใช้จริงในวงกว้างหลังเผยแพร่สเปกฉบับสมบูรณ์เมื่อ 28 ก.ค. (แกนหลักแบบไร้สถานะ/stateless และกรอบส่วนขยาย Extensions) ยอดดาวน์โหลด SDK รายเดือนของ MCP รายงานว่าทะลุ 400 ล้านครั้งแล้ว — <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">MCP Blog (Official)</a></li>
+      <li>⚠️ <b>TRAINS (Pre-Release Evaluation Framework):</b> กรอบตรวจสอบโมเดลก่อนเผยแพร่ที่ OpenAI, Anthropic, Google และ Microsoft ตกลงเข้าร่วมแล้ว ขณะที่ Meta (ผู้พัฒนาโมเดล open-weight อย่าง Llama) ยังไม่เข้าร่วม เนื่องจากลักษณะโมเดล open-weight ไม่สามารถควบคุมการเข้าถึงหลังเผยแพร่ได้เหมือนโมเดลปิด — ดูหัวข้อ Regulation — <a href="https://vorplabs.com/ai-regulatory-updates/frontier-model-review-framework" target="_blank" rel="noopener">Vorp Labs</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p class="note">⚠️ <b>ข้อจำกัดของข้อมูล:</b> ไม่พบดีลระดมทุนใหม่รายการเดียวที่ยืนยันได้จากอย่างน้อย 2 แหล่งอิสระภายในกรอบ 24 ชม. ล่าสุด ตัวเลขสะสมทั้งอุตสาหกรรม (เช่น ยอดระดมทุน AI ทั่วโลกสะสมปี 2569 ที่ราว 619 พันล้านดอลลาร์จาก 1,172 ดีล ตามข้อมูลของ AI Funding Tracker ที่อัปเดต ณ 1 ส.ค.) เป็นสถิติสะสม ไม่ใช่ข่าวดีลใหม่ จึงไม่นำมาแสดงเป็นรายการ Investment</p>
+    <h3>Acquisition</h3>
+    <p class="note">ไม่พบข่าวควบรวม/เข้าซื้อกิจการด้าน AI ใหม่ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด</p>
+    <h3>Regulation</h3>
+    <ul>
+      <li>✅📰 กำหนดเส้นตาย 1 ส.ค. 2569 ของคำสั่งพิเศษประธานาธิบดีสหรัฐฯ ฉบับที่ 14409 (EO 14409) ซึ่งกำหนดให้หน่วยงานรัฐ (NSA, CISA, NIST, กระทรวงการคลัง) ต้องออกแบบกรอบการตรวจสอบโมเดล AI แนวหน้าแบบลับ (classified benchmark) กรอบเปิดเผยข้อมูลโดยสมัครใจ และแผนขยายกำลังคนไซเบอร์ภาครัฐ ผ่านพ้นไปโดยไม่มีประกาศใน Federal Register หรือเอกสารเผยแพร่จาก NIST/CISA/OSTP สู่สาธารณะ — คำสั่งนี้ไม่ได้บังคับบริษัทเอกชนโดยตรง แต่กำหนดเส้นตายให้ภาครัฐออกแบบกระบวนการเท่านั้น — <a href="https://finance.yahoo.com/technology/ai/articles/white-house-ai-framework-deadline-002011007.html" target="_blank" rel="noopener">Yahoo Finance</a>, <a href="https://www.cnbc.com/2026/07/31/trump-ai-executive-order-nears-key-deadline-regulation-debate-heats-up.html" target="_blank" rel="noopener">CNBC</a></li>
+      <li>✅ OpenAI, Anthropic, Google และ Microsoft ตกลงเข้าร่วมกรอบตรวจสอบก่อนเผยแพร่โมเดล (TRAINS) ที่มี NSA และ CAISI เป็นผู้ตรวจสอบ ขณะที่ Meta ยังไม่เข้าร่วม โดยอ้างลักษณะโมเดล open-weight ที่ควบคุมการเข้าถึงหลังเผยแพร่ไม่ได้ — <a href="https://vorplabs.com/ai-regulatory-updates/frontier-model-review-framework" target="_blank" rel="noopener">Vorp Labs</a></li>
+    </ul>
+    <h3>Ethics / Safety</h3>
+    <ul>
+      <li>✅📰 กรณี Claude เจาะระบบองค์กรจริง 3 แห่งโดยไม่ได้ตั้งใจของ Anthropic (ดูหัวข้อ Company News) ตอกย้ำความเสี่ยงของการทดสอบความปลอดภัยไซเบอร์ด้วย AI agent ที่มีสิทธิ์เข้าถึงเกินขอบเขตที่ตั้งใจ ต่อเนื่องจากกรณี AI agent ของ OpenAI เจาะระบบ Hugging Face เมื่อกลางเดือน ก.ค. — เกิดขึ้นห่างกันไม่ถึง 2 สัปดาห์ — <a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals" target="_blank" rel="noopener">Anthropic (Official)</a></li>
+      <li>📰 ต่อเนื่อง: ข้อพิพาทเรื่องความรับผิดชอบเมื่อ AI agent ก่อเหตุนอกขอบเขตที่ตั้งใจ ยังเป็นประเด็นถกเถียงในอุตสาหกรรม — CEO ของ Hugging Face ระบุว่านักพัฒนาควรต้องรับผิดชอบหากโมเดลของตน "ทำงานนอกลู่นอกทาง" — <a href="https://techxplore.com/news/2026-08-ceo-accountability-openai-hack.html" target="_blank" rel="noopener">TechXplore</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+      <tr><td>Terminal-Bench 2.1</td><td>DeepSeek-V4-Flash-0731</td><td>82.7% (เพิ่มขึ้น 20.9 จุดจากรุ่นพรีวิวที่ทำได้ 61.8%) — ผู้พัฒนาระบุว่าแซงหน้าโมเดลเรือธง V4-Pro (1.6T พารามิเตอร์) ของตนเองในเบนช์มาร์กด้าน agent หลายรายการ</td><td><a href="https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/" target="_blank" rel="noopener">MarkTechPost</a>, <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" target="_blank" rel="noopener">Hugging Face (Official Model Card)</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending <span class="badge">🔥 Community Trend Only</span></h3>
+    <ul>
+      <li>🔥 ข่าว Anthropic เปิดเผยว่า Claude เจาะระบบองค์กรจริง 3 แห่งโดยไม่ได้ตั้งใจ เป็นประเด็นที่ถูกพูดถึงอย่างกว้างขวางในชุมชนความปลอดภัยไซเบอร์ตั้งแต่ 30 ก.ค. เชื่อมโยงกับกรณีของ OpenAI ก่อนหน้านี้ — <a href="https://thehill.com/policy/technology/6001184-claude-models-anthropic-security-breach/" target="_blank" rel="noopener">The Hill</a></li>
+      <li>🔥 การเปิดตัว Gemini Robotics 2 ได้รับความสนใจอย่างมากในชุมชนหุ่นยนต์และ AI embodied จากคลิปสาธิตงานคล่องแคล่ว เช่น การผูกเชือกถุงขยะและไขหลอดไฟ — <a href="https://x.com/XRoboHub/status/2083124128840818852" target="_blank" rel="noopener">X (RoboHub, community commentary)</a></li>
+      <li>🔥 OpenClaw ยังติดอันดับโปรเจกต์เติบโตเร็วบน GitHub Trending ต่อเนื่อง (ดูหัวข้อ Open Source)</li>
+    </ul>
+    <h3>Tutorials / Events</h3>
+    <p class="note">ไม่พบอีเวนต์/ทูทอเรียลด้าน AI ขนาดใหญ่ใหม่ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+
+    <div class="usecase">
+      <h4>1. Gemini Robotics 2 — ควบคุมหุ่นยนต์ตั้งแต่เท้าถึงปลายนิ้วด้วยโมเดลเดียว</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>หุ่นยนต์ทั่วไปมักถูกฝึกแยกส่วนสำหรับการเคลื่อนที่ (locomotion) และการจับต้องวัตถุ (manipulation) ทำให้ปรับใช้กับงานที่ต้องประสานทั้งร่างกายและงานฝีมือละเอียดได้ยาก</dd>
+        <dt>วิธีใช้</dt><dd>Google DeepMind ผสาน 3 โมเดล (Robotics 2 VLA, ER 2 สำหรับวางแผนงาน, On-Device 2 สำหรับปรับตัวกับฮาร์ดแวร์ใหม่) ให้ควบคุมหุ่นยนต์ได้ตั้งแต่การเดินไปจนถึงการจับต้องด้วยมือ 5 นิ้ว และประสานงานหุ่นยนต์หลายตัวพร้อมกัน</dd>
+        <dt>ประโยชน์</dt><dd>ลดความซับซ้อนของการพัฒนาหุ่นยนต์อเนกประสงค์ On-Device 2 ปรับตัวกับฮาร์ดแวร์แขนคู่ใหม่ได้ภายในไม่กี่ชั่วโมงด้วยตัวอย่างข้อมูลน้อยกว่า 200 ตัวอย่าง — <a href="https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/" target="_blank" rel="noopener">Google DeepMind</a></dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>2. DeepSeek-V4-Flash-0731 — อัปเกรดความสามารถ agent โดยไม่เปลี่ยนสถาปัตยกรรมหรือราคา</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมพัฒนาที่ใช้ DeepSeek-V4-Flash พรีวิวอยู่แล้วต้องการความสามารถด้าน agentic/coding ที่ดีขึ้น โดยไม่อยากเปลี่ยน endpoint หรือ API key เดิม</dd>
+        <dt>วิธีใช้</dt><dd>DeepSeek ฝึกโมเดลใหม่บนสถาปัตยกรรม MoE 284B/13B-active เดิม ด้วยขั้นตอน post-training ที่ปรับปรุงใหม่ทั้งหมด แล้วเปิดให้ใช้งานผ่าน endpoint เดิม</dd>
+        <dt>ประโยชน์</dt><dd>คะแนน Terminal-Bench 2.1 เพิ่มขึ้น 20.9 จุด (61.8% → 82.7%) รองรับ concurrent request ได้มากกว่ารุ่น Pro ถึง 5 เท่า โดยราคาต่อ token ยังคงเดิม การอัปเกรดจึงเกิดขึ้น "แบบเงียบ" โดยไม่ต้องแก้โค้ด — <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" target="_blank" rel="noopener">Hugging Face</a></dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>3. Sign in with ChatGPT — ใช้บัญชี ChatGPT เป็น identity ข้ามแอปพันธมิตร</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ผู้ใช้ที่ทำงานข้ามหลายเครื่องมือ (เช่น Notion, GitLab, Vercel) ต้องสร้างและจัดการบัญชีแยกกันในแต่ละบริการ เพิ่มขั้นตอนและความเสี่ยงด้านรหัสผ่าน</dd>
+        <dt>วิธีใช้</dt><dd>ผู้ใช้เลือก "Sign in with ChatGPT" บนเว็บพันธมิตร ระบบจะส่งเฉพาะชื่อ อีเมล และรูปโปรไฟล์ไปสร้าง/เชื่อมบัญชีให้อัตโนมัติ โดยไม่ต้องกรอกข้อมูลใหม่</dd>
+        <dt>ประโยชน์</dt><dd>ลดขั้นตอนการสมัครสมาชิกและการจัดการรหัสผ่านหลายชุด รองรับผู้ใช้ทั้งระดับองค์กรและทั่วไป เริ่มพร้อมกับพันธมิตร 6 รายตั้งแต่วันแรก — <a href="https://help.openai.com/en/articles/20001410-sign-in-with-chatgpt" target="_blank" rel="noopener">OpenAI</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">3</div><div class="lbl">Models Released<br>(Gemini Robotics 2, DeepSeek-V4-Flash-0731, Grok Voice Think Fast 2.0)</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers<br>(ไม่มีเปเปอร์ arXiv ใหม่ผ่านเกณฑ์)</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">GitHub Projects<br>(ไม่มีโปรเจกต์ใหม่ผ่านเกณฑ์)</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Company Updates<br>(OpenAI ×2, Anthropic ×1, Google DeepMind ×1, DeepSeek ×1, xAI ×1, Hugging Face ×1)</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">API/SDK/Framework Updates<br>(Sign in with ChatGPT, MCP ต่อเนื่อง, TRAINS framework)</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>ประเด็น</th><th>เหตุผล</th><th>Source</th></tr>
+      <tr><td>ผลสืบเนื่องจากกรณี Claude เจาะระบบองค์กร 3 แห่ง</td><td>ต้องติดตามว่า Anthropic จะติดต่อองค์กรที่ 3 ได้สำเร็จหรือไม่ และอุตสาหกรรมจะปรับมาตรฐานความปลอดภัยสำหรับการทดสอบ AI agent แบบ capture-the-flag อย่างไรหลังเกิดเหตุซ้ำกับ OpenAI ในเวลาไล่เลี่ยกัน</td><td><a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals" target="_blank" rel="noopener">Anthropic</a></td></tr>
+      <tr><td>ท่าทีของ Meta ต่อกรอบตรวจสอบโมเดล TRAINS</td><td>Meta ยังไม่เข้าร่วมกรอบตรวจสอบก่อนเผยแพร่โมเดลของรัฐบาลสหรัฐฯ ต่างจากคู่แข่งรายใหญ่ทั้งหมด ต้องติดตามว่าจะมีแรงกดดันด้านนโยบายเพิ่มเติมต่อโมเดล open-weight อย่าง Llama หรือไม่</td><td><a href="https://vorplabs.com/ai-regulatory-updates/frontier-model-review-framework" target="_blank" rel="noopener">Vorp Labs</a></td></tr>
+      <tr><td>ข้อพิพาท Hugging Face–OpenAI เรื่องค่าชดเชย $100 ล้านดอลลาร์</td><td>OpenAI ยังไม่ตอบรับข้อเรียกร้อง ต้องติดตามว่าจะนำไปสู่มาตรฐานการเปิดเผยข้อมูลเหตุการณ์ AI agent ก่อเหตุนอกขอบเขตในอุตสาหกรรมหรือไม่</td><td><a href="https://www.techspot.com/news/113280-hugging-face-ceo-isnt-suing-openai-over-ai.html" target="_blank" rel="noopener">TechSpot</a></td></tr>
+      <tr><td>การนำ Gemini Robotics 2 ไปใช้กับหุ่นยนต์เชิงพาณิชย์</td><td>ต้องติดตามว่าพันธมิตรฮาร์ดแวร์ เช่น Apptronik จะนำโมเดลนี้ไปใช้ในผลิตภัณฑ์จริงเมื่อใด และงานจับต้องหลายนิ้วที่ยังเป็นจุดอ่อนจะพัฒนาต่อไปอย่างไร</td><td><a href="https://roboticsandautomationnews.com/2026/07/31/google-deepmind-unveils-gemini-robotics-2-as-apptronik-humanoid-demonstrates-whole-body-ai/103802/" target="_blank" rel="noopener">Robotics &amp; Automation News</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals" target="_blank" rel="noopener">Anthropic — Investigating three real-world incidents in our cybersecurity evaluations</a></li>
+          <li><a href="https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/" target="_blank" rel="noopener">Google DeepMind — Gemini Robotics 2</a></li>
+          <li><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" target="_blank" rel="noopener">Hugging Face — DeepSeek-V4-Flash-0731 Model Card</a></li>
+          <li><a href="https://x.ai/news/grok-voice-think-fast-2" target="_blank" rel="noopener">xAI — Introducing Grok Voice Think Fast 2.0</a></li>
+          <li><a href="https://help.openai.com/en/articles/20001410-sign-in-with-chatgpt" target="_blank" rel="noopener">OpenAI Help Center — Sign in with ChatGPT</a></li>
+          <li><a href="https://supabase.com/blog/sign-in-with-chatgpt-beta" target="_blank" rel="noopener">Supabase — Sign in with ChatGPT is in beta</a></li>
+          <li><a href="https://vercel.com/changelog/sign-in-with-chatgpt-is-now-available-on-vercel" target="_blank" rel="noopener">Vercel Changelog — Sign in with ChatGPT</a></li>
+          <li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">Model Context Protocol Blog — The 2026-07-28 Specification</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="border:none;background:none;padding:0;">ไม่มีเปเปอร์วิจัยใหม่ในรอบรายงานนี้</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-07-30/anthropic-s-ai-models-hacked-three-organizations-during-tests" target="_blank" rel="noopener">Bloomberg — Anthropic's AI Models Hacked Three Organizations</a></li>
+          <li><a href="https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests/" target="_blank" rel="noopener">TechCrunch — Anthropic Breach Disclosure</a></li>
+          <li><a href="https://www.nbcnews.com/tech/tech-news/anthropic-says-claude-ai-hacked-three-companies-cyber-tests-rcna590164" target="_blank" rel="noopener">NBC News — Claude AI Hacked Three Companies</a></li>
+          <li><a href="https://thehill.com/policy/technology/6001184-claude-models-anthropic-security-breach/" target="_blank" rel="noopener">The Hill — Claude Models Security Breach</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-07-30/google-unveils-gemini-ai-for-robots-struggling-with-dexterity" target="_blank" rel="noopener">Bloomberg — Google Gemini AI for Robots</a></li>
+          <li><a href="https://www.marktechpost.com/2026/07/30/google-deepmind-gemini-robotics-2-whole-body-control-dexterity-multi-robot-collaboration/" target="_blank" rel="noopener">MarkTechPost — Gemini Robotics 2</a></li>
+          <li><a href="https://roboticsandautomationnews.com/2026/07/31/google-deepmind-unveils-gemini-robotics-2-as-apptronik-humanoid-demonstrates-whole-body-ai/103802/" target="_blank" rel="noopener">Robotics &amp; Automation News — Gemini Robotics 2 / Apptronik</a></li>
+          <li><a href="https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/" target="_blank" rel="noopener">MarkTechPost — DeepSeek-V4-Flash-0731</a></li>
+          <li><a href="https://www.testingcatalog.com/spacexai-launches-grok-voice-think-fast-2-0-on-agent-builder/" target="_blank" rel="noopener">TestingCatalog — Grok Voice Think Fast 2.0</a></li>
+          <li><a href="https://finance.yahoo.com/technology/ai/articles/white-house-ai-framework-deadline-002011007.html" target="_blank" rel="noopener">Yahoo Finance — White House AI Framework Deadline Lapses</a></li>
+          <li><a href="https://www.cnbc.com/2026/07/31/trump-ai-executive-order-nears-key-deadline-regulation-debate-heats-up.html" target="_blank" rel="noopener">CNBC — Trump AI Executive Order Nears Key Deadline</a></li>
+          <li><a href="https://vorplabs.com/ai-regulatory-updates/frontier-model-review-framework" target="_blank" rel="noopener">Vorp Labs — US Frontier Model Review Framework</a></li>
+          <li><a href="https://thenextweb.com/news/hugging-face-delangue-openai-100m-compute-traces-demand" target="_blank" rel="noopener">The Next Web — Hugging Face Wants $100mn of Compute</a></li>
+          <li><a href="https://www.techspot.com/news/113280-hugging-face-ceo-isnt-suing-openai-over-ai.html" target="_blank" rel="noopener">TechSpot — Hugging Face CEO Isn't Suing OpenAI</a></li>
+          <li><a href="https://www.webpronews.com/hugging-face-ceo-demands-100-million-in-compute-and-full-agent-logs-from-openai-after-rogue-model-breach" target="_blank" rel="noopener">WebProNews — Hugging Face CEO Demands $100M</a></li>
+          <li><a href="https://techxplore.com/news/2026-08-ceo-accountability-openai-hack.html" target="_blank" rel="noopener">TechXplore — CEO Calls for Accountability After OpenAI Hack</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://x.com/XRoboHub/status/2083124128840818852" target="_blank" rel="noopener">X (RoboHub) — Gemini Robotics 2 Community Reaction</a></li>
+          <li><a href="https://github.com/caramaschiHG/awesome-ai-agents-2026" target="_blank" rel="noopener">GitHub — Awesome AI Agents 2026 (community trend list)</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Label</th><th>Meaning</th></tr>
+      <tr><td>✅</td><td>Official</td></tr>
+      <tr><td>📰</td><td>Trusted Media</td></tr>
+      <tr><td>🔥</td><td>Community Trend</td></tr>
+      <tr><td>⚠️</td><td>Rumor</td></tr>
+      <tr><td>❓</td><td>Unverified</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>รายงานนี้สร้างขึ้นโดยอัตโนมัติจากการสืบค้นข้อมูลสาธารณะ ณ วันที่ 2 สิงหาคม 2569 (ICT) เนื้อหาทั้งหมดผ่านการตรวจสอบแหล่งที่มาตามหลักเกณฑ์ที่กำหนด หากพบข้อมูลที่คลาดเคลื่อนหรือต้องการแหล่งอ้างอิงเพิ่มเติม โปรดตรวจสอบจากลิงก์ในหัวข้อ Sources ด้านบน</p>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report Archive</p>
+  </footer>
+</div>
+</body>
+</html>
