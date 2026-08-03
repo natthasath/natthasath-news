@@ -2,6 +2,7 @@
 
 Automated Thai news digest, published as a static site on GitHub Pages. Scheduled Claude Code cloud routines collect, cross-validate, and summarize news across 10 categories, write self-contained HTML reports directly into this repository, and keep each category's archive page up to date — no manual publishing step required.
 
+![license](https://img.shields.io/github/license/natthasath/natthasath-news)
 ![last-commit](https://img.shields.io/github/last-commit/natthasath/natthasath-news)
 ![issues](https://img.shields.io/github/issues/natthasath/natthasath-news)
 
@@ -43,3 +44,7 @@ python -m http.server 8000
 Open [https://natthasath.github.io/natthasath-news/](https://natthasath.github.io/natthasath-news/) as the landing page — pick a category from the grid. Each category has an archive page (`index.html`) linking to every report, newest first.
 
 Report filenames follow the `{YYYY-MM-DD}-{slug}-report.html` pattern so they sort chronologically and same-run overwrites are easy to detect.
+
+### 📜 License
+
+[MIT](LICENSE) © Natthasath Saksupanara
