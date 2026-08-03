@@ -48,4 +48,4 @@ Report filenames follow the `{YYYY-MM-DD}-{slug}-report.html` pattern so they so
 
 ### 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE)
