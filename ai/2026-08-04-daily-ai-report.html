@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-04</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 4 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-04</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 4 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> รายงานฉบับนี้จัดทำจากการสืบค้นเว็บแบบ real-time โดยการดึงข้อมูลโดยตรงจาก arxiv.org, huggingface.co/papers, lmarena.ai และหน้าบล็อกทางการบางแห่ง (เช่น blogs.nvidia.com, devblogs.microsoft.com, help.openai.com) ถูกปฏิเสธ HTTP 403 จึงไม่พบเปเปอร์วิจัยใหม่หรือผลเบนช์มาร์กที่ยืนยันแหล่งที่มาหลักได้ครบตามเกณฑ์ Validation ภายในกรอบ 24 ชม. ล่าสุด ไม่พบการเปิดตัวโมเดล AI ใหม่แบบ GA จากผู้เล่นหลักที่ยืนยันได้ครบเกณฑ์ในรอบนี้ ข่าวหลายรายการที่พบมีต้นกำเนิดในช่วง 30 ก.ค.–2 ส.ค. แต่ยังเป็นประเด็นที่สื่อรายงานต่อเนื่องถึงวันนี้ จึงนำมาแสดงพร้อมระบุ "ต่อเนื่อง" กำกับไว้ชัดเจน ตัวเลข GitHub star ของโครงการ OpenClaw พบความขัดแย้งกันมากระหว่างแหล่งข้อมูลบุคคลที่สาม (ตั้งแต่ 68,000 ถึง 346,000 stars) และไม่สามารถยืนยันผ่าน GitHub API ได้โดยตรงในรอบนี้ (สิทธิ์เข้าถึงถูกจำกัด) จึงนำเสนอเป็นประเด็นเทรนด์ชุมชนโดยไม่ระบุตัวเลขที่แน่นอน ข่าวระดมทุน/ควบรวมกิจการที่พบไม่ผ่านเกณฑ์ Cross Validation (ต้องมีอย่างน้อย 2 แหล่งอิสระ 1 แหล่งเป็นทางการ) จึงไม่นำมาแสดงเป็นข่าวหลัก หัวข้อที่ไม่ผ่านเกณฑ์ตรวจสอบถูกตัดออกหรือระบุข้อจำกัดไว้ในแต่ละหัวข้อ
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>✅📰 ต่อเนื่อง: กฎความโปร่งใสมาตรา 50 ของ EU AI Act ที่เริ่มบังคับใช้ตั้งแต่ 2 ส.ค. ยังเป็นประเด็นที่หน่วยงานกำกับดูแลและบริษัทเทคโนโลยีติดตามอย่างใกล้ชิด โดยคณะกรรมาธิการยุโรปเริ่มกระบวนการบังคับใช้อย่างเป็นทางการควบคู่กัน 📰 ต่อเนื่อง: สเปก MCP (Model Context Protocol) ฉบับ 2026-07-28 ที่ปรับสถาปัตยกรรมจาก stateful เป็น stateless ครั้งใหญ่ที่สุดนับตั้งแต่เปิดตัวโปรโตคอล ยังคงเป็นประเด็นที่นักพัฒนา agent ทั่วโลกกำลังปรับตัวตาม 📰 Microsoft Agent Framework Harness และ Foundry Hosted Agents ก้าวสู่สถานะ General Availability เปิดให้ทีมแพลตฟอร์มรัน/กำกับดูแล agent ในระดับองค์กร ไม่ใช่แค่ไลบรารีสำหรับสร้าง agent อีกต่อไป 🔥 ต่อเนื่อง: โครงการโอเพนซอร์ส OpenClaw ยังคงเป็นกระแสเติบโตรวดเร็วในชุมชนนักพัฒนา แม้ตัวเลข GitHub star ที่รายงานจากแหล่งต่าง ๆ จะขัดแย้งกันและไม่สามารถยืนยันได้แน่ชัดในรอบนี้ 📰 ต่อเนื่อง: OpenAI ปรับลดราคา GPT-5.6 Luna/Terra สูงสุด 80% พร้อม Fast mode สำหรับ Sol ยังเป็นประเด็นสงครามราคาโมเดล AI ที่สื่อยังรายงานต่อเนื่อง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">⚠️ <b>ข้อจำกัดของข้อมูล:</b> ไม่พบการเปิดตัวโมเดล AI ใหม่แบบ General Availability จาก OpenAI, Anthropic, Google DeepMind, Meta, Microsoft, Amazon, NVIDIA หรือ xAI ที่ยืนยันได้ครบตามเกณฑ์ Validation (Model, Company, Category, Status, Source อย่างน้อย 2 แหล่งสำหรับโมเดลใหม่) ภายในกรอบ 24 ชม. ล่าสุด DeepSeek-V4-Flash-0731 เผยแพร่ตั้งแต่ 31 ก.ค. และ GPT-5.6 (Luna/Terra/Sol) เป็นการปรับราคา/โหมดของโมเดลเดิมที่มีอยู่แล้ว ไม่ใช่การเปิดตัวโมเดลใหม่ จึงไม่นับเป็นรายการในหัวข้อนี้ (ดูรายละเอียดการปรับราคาในหัวข้อ Company News/OpenAI และ Technical Updates)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">⚠️ <b>ข้อจำกัดของข้อมูล:</b> ไม่พบเปเปอร์ arXiv หรือ Hugging Face Daily Papers ที่มีชื่อผู้เขียนและวันที่เผยแพร่ยืนยันได้ว่าอยู่ในกรอบ 24 ชม. ล่าสุดครบตามเกณฑ์ Validation (การดึงข้อมูลโดยตรงจาก arxiv.org และ huggingface.co/papers ถูกปฏิเสธ HTTP 403 ในการสืบค้นรอบนี้) จึงไม่นำเสนอรายการเปเปอร์วิจัยใหม่ในฉบับนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <p class="note">⚠️ <b>ข้อจำกัดของข้อมูล:</b> พบว่าโครงการ <b>openclaw/openclaw</b> (ผู้ช่วย AI ส่วนบุคคลแบบโอเพนซอร์สที่รันได้ทั้งบนเครื่องตนเองและผ่านแพลตฟอร์มส่งข้อความต่าง ๆ) ยังคงเป็นกระแสที่เติบโตเร็วมากในชุมชนนักพัฒนาต่อเนื่อง แต่ตัวเลข GitHub star ที่รายงานจากแหล่งข้อมูลบุคคลที่สามขัดแย้งกันมาก (ตั้งแต่ราว 68,000 ถึง 346,000 stars ขึ้นอยู่กับแหล่งและวันที่อ้างอิง) และไม่สามารถยืนยันผ่าน GitHub API โดยตรงได้ในรอบการสืบค้นนี้ (สิทธิ์เข้าถึงถูกจำกัด) จึงไม่นำมาแสดงเป็นรายการในตารางตามเกณฑ์ Validation ที่ต้องมี GitHub Repository และ Owner ยืนยันได้ครบถ้วน — ดูรายละเอียดเพิ่มเติมในหัวข้อ Community</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">⚠️ ไม่พบเครื่องมือ/แอปใหม่ที่เปิดตัวครั้งแรกภายในกรอบ 24 ชม. ล่าสุดที่ยืนยันได้ครบตามเกณฑ์ Validation</p>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+      <tr><td>Google Gemini (แอป)</td><td>โปรโมชันสร้างวิดีโอด้วย Gemini Omni ฟรี 10 คลิป สำหรับผู้ใช้ที่ยังไม่มีแพลน Google AI สิ้นสุดเวลา 23:59 น. ตามเวลาแปซิฟิก คืนวันที่ 4 ส.ค. 2569 (ตรงกับเช้าวันที่ 5 ส.ค. เวลา ICT)</td><td><a href="https://x.com/GeminiApp/status/2082563490431246623" target="_blank" rel="noopener">Google Gemini (Official, X)</a>, <a href="https://www.abijita.com/google-lets-gemini-users-create-10-ai-videos-for-free-for-a-limited-time/" target="_blank" rel="noopener">Abijita</a></td></tr>
+      <tr><td>Claude Code (Anthropic)</td><td>ต่อเนื่อง: ขยายเวลามาตรการเพิ่มโควตาการใช้งานรายสัปดาห์ 50% สำหรับผู้ใช้แผน Pro, Max, Team และ Enterprise (seat-based) ออกไปจนถึง 19 ส.ค. 2569 จากเดิมที่จะหมดอายุ</td><td><a href="https://claudelog.com/claude-news/" target="_blank" rel="noopener">ClaudeLog</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ไม่พบแหล่งข่าวทางการโดยตรงจาก anthropic.com สำหรับการขยายเวลาโควตา Claude Code จึงนำเสนอพร้อมระบุว่าอ้างอิงจากแหล่งข่าวสื่อ/ชุมชนเท่านั้น ยังไม่ผ่านเกณฑ์ Cross Validation แบบมีแหล่งทางการ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <ul>
+      <li>📰 ต่อเนื่อง: ประกาศปรับลดราคา GPT-5.6 Luna ลง 80% (เหลือ 0.20/1.20 ดอลลาร์ต่อล้านโทเคน อินพุต/เอาต์พุต) และ GPT-5.6 Terra ลง 20% (เหลือ 2/12 ดอลลาร์ต่อล้านโทเคน) มีผลตั้งแต่ 30 ก.ค. พร้อมเปิดตัว Fast mode สำหรับ GPT-5.6 Sol ที่เร็วขึ้นถึง 2.5 เท่าในราคาสองเท่าของโหมดมาตรฐาน โดยไม่กระทบระดับความฉลาดของโมเดล — <a href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/" target="_blank" rel="noopener">OpenAI (Official)</a>, <a href="https://venturebeat.com/technology/ai-price-wars-openai-cuts-gpt-5-6-luna-prices-by-80-as-model-competition-shifts-toward-cost" target="_blank" rel="noopener">VentureBeat</a></li>
+    </ul>
+
+    <h3>Anthropic</h3>
+    <ul>
+      <li>📰 ต่อเนื่อง: ขยายเวลามาตรการเพิ่มโควตาการใช้งานรายสัปดาห์ของ Claude Code อีก 50% ออกไปจนถึง 19 ส.ค. 2569 (ดูรายละเอียดหัวข้อ Tools &amp; Apps) — <a href="https://claudelog.com/claude-news/" target="_blank" rel="noopener">ClaudeLog</a></li>
+    </ul>
+    <p class="note">⚠️ ไม่พบข่าวใหม่อื่นจาก Anthropic ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด (ข้อตกลงขยายกำลังประมวลผลกับ Google/Broadcom เผยแพร่ตั้งแต่เดือน เม.ย. 2569 เกินกรอบเวลาแล้ว)</p>
+
+    <h3>Google DeepMind</h3>
+    <ul>
+      <li>✅ โปรโมชันสร้างวิดีโอฟรีด้วย Gemini Omni สิ้นสุดวันนี้ (ดูรายละเอียดหัวข้อ Tools &amp; Apps) — <a href="https://x.com/GeminiApp/status/2082563490431246623" target="_blank" rel="noopener">Google Gemini (Official)</a></li>
+    </ul>
+
+    <h3>Meta</h3>
+    <p class="note">⚠️ ไม่พบข่าวใหม่จาก Meta ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด</p>
+
+    <h3>Microsoft</h3>
+    <ul>
+      <li>📰 Microsoft Agent Framework Harness และ Foundry Hosted Agents เข้าสู่สถานะ General Availability อย่างเป็นทางการ ให้ทีมแพลตฟอร์มสามารถรันและกำกับดูแล agent ในระดับองค์กรได้ ไม่ใช่แค่ไลบรารีสำหรับพัฒนา agent เท่านั้น ต่อยอดจากที่ประกาศในงาน Build 2026 — <a href="https://www.infoq.com/news/2026/08/agent-framework-harness-ga/" target="_blank" rel="noopener">InfoQ</a></li>
+    </ul>
+    <p class="note">⚠️ ไม่พบแหล่งข่าวทางการโดยตรงจาก devblogs.microsoft.com สำหรับข่าวนี้ในรอบการสืบค้นนี้ (ถูกปฏิเสธ HTTP 403) จึงยืนยันจากแหล่งสื่อ Tier 2 เพียงแหล่งเดียว ยังไม่ผ่านเกณฑ์ Cross Validation ที่ต้องมีแหล่งทางการร่วมด้วย</p>
+
+    <h3>Amazon</h3>
+    <p class="note">⚠️ ไม่พบข่าวใหม่จาก Amazon ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด (ข่าว Bedrock Agents Classic ปิดรับลูกค้าใหม่เผยแพร่ตั้งแต่ 30 ก.ค. เกินกรอบเวลาแล้ว)</p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">⚠️ พบรายงานว่า NVIDIA นำเสนอความก้าวหน้าด้าน neural rendering และ agentic/physical AI ในงาน SIGGRAPH 2026 แต่ไม่สามารถเข้าถึงบล็อกทางการของ NVIDIA โดยตรงเพื่อยืนยันรายละเอียดและวันที่เผยแพร่ที่แน่ชัดได้ในรอบนี้ (ถูกปฏิเสธ HTTP 403) จึงไม่นำมายืนยันเป็นข่าวหลัก</p>
+
+    <h3>Startup</h3>
+    <p class="note">⚠️ ไม่พบข่าวระดมทุน/ควบรวมกิจการด้าน AI ใหม่ภายในกรอบ 24 ชม. ล่าสุดที่ผ่านเกณฑ์ Cross Validation (ต้องมีอย่างน้อย 2 แหล่งอิสระ 1 แหล่งเป็นทางการ)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li>📰 ต่อเนื่อง: <b>MCP (Model Context Protocol)</b> ยังคงอยู่ที่สเปกฉบับ 2026-07-28 ซึ่งปรับสถาปัตยกรรมจาก stateful/bidirectional เป็น stateless/request-response ครั้งใหญ่ที่สุดนับตั้งแต่เปิดตัวโปรโตคอล — เพิ่ม Multi Round-Trip Requests, header-based routing, cacheable list results (ttlMs/cacheScope), เข้มงวดเรื่อง authorization ตาม RFC 9207 และย้าย Tasks เข้าสู่ extensions framework แบบเป็นทางการ พร้อมเลิกใช้ Roots/Sampling/Logging (มีช่วงรองรับต่อเนื่องขั้นต่ำ 12 เดือน) SDK ภาษา TypeScript, Python, Go, C# อัปเดตรองรับแล้ว ส่วน Rust SDK อยู่ในสถานะเบต้า ยังไม่มีการอัปเดตสเปกใหม่ภายในกรอบ 24 ชม. ล่าสุด — <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">MCP Blog (Official)</a></li>
+      <li>✅ <b>GPT-5.6 Fast mode:</b> โหมดเร่งความเร็วใหม่สำหรับ GPT-5.6 Sol ในระดับ API เร็วขึ้นถึง 2.5 เท่าที่ราคาสองเท่าของโหมดมาตรฐาน รองรับ backward compatibility กับ request ที่ติดแท็ก priority โดยอัตโนมัติ (ดูหัวข้อ Company News/OpenAI) — <a href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/" target="_blank" rel="noopener">OpenAI (Official)</a></li>
+      <li>📰 <b>Microsoft Agent Framework Harness &amp; Foundry Hosted Agents:</b> เข้าสู่สถานะ General Availability (ดูหัวข้อ Company News) — <a href="https://www.infoq.com/news/2026/08/agent-framework-harness-ga/" target="_blank" rel="noopener">InfoQ</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p class="note">⚠️ ไม่พบข่าวระดมทุนใหม่ที่ยืนยันได้จากอย่างน้อย 2 แหล่งอิสระภายในกรอบ 24 ชม. ล่าสุด</p>
+    <h3>Acquisition</h3>
+    <p class="note">⚠️ ไม่พบข่าวควบรวมกิจการใหม่ที่ยืนยันได้จากอย่างน้อย 2 แหล่งอิสระภายในกรอบ 24 ชม. ล่าสุด</p>
+    <h3>Regulation</h3>
+    <ul>
+      <li>✅📰 ต่อเนื่อง: กฎการเปิดเผยความโปร่งใส (มาตรา 50) ภายใต้ EU AI Act ซึ่งมีผลบังคับใช้ตั้งแต่ 2 ส.ค. 2569 ยังเป็นประเด็นที่คณะกรรมาธิการยุโรปและหน่วยงานระดับชาติเริ่มกระบวนการบังคับใช้อย่างต่อเนื่อง กำหนดให้ระบบ AI ต้องแจ้งผู้ใช้เมื่อกำลังโต้ตอบกับแชทบอท ติดฉลากเนื้อหาที่สร้างจาก AI (รวมถึง deepfake) มีโทษปรับสูงสุด 15 ล้านยูโรหรือ 3% ของรายได้ทั่วโลก ทั้งนี้ข้อบังคับสำหรับระบบความเสี่ยงสูง (high-risk) ถูกเลื่อนออกไปเป็นเดือน ธ.ค. 2570 ตาม "Digital Omnibus on AI" ที่ลงนามเมื่อ 8 ก.ค. 2569 — <a href="https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august" target="_blank" rel="noopener">European Commission (Official)</a>, <a href="https://www.cooley.com/news/insight/2026/2026-08-03-eu-ai-act-transparency-obligations-take-effect-2-august-2026" target="_blank" rel="noopener">Cooley</a></li>
+    </ul>
+    <h3>Ethics / Safety</h3>
+    <p class="note">⚠️ ไม่พบประเด็นด้านจริยธรรม/ความปลอดภัยใหม่ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">⚠️ <b>ข้อจำกัดของข้อมูล:</b> ไม่สามารถเข้าถึงหน้าเว็บ lmarena.ai โดยตรงเพื่อยืนยันคะแนนล่าสุดได้ในรอบนี้ (ถูกปฏิเสธ HTTP 403) ตัวเลขที่พบจากเว็บไซต์รวบรวมข้อมูลบุคคลที่สาม (เช่น llm-stats.com, benchlm.ai, swfte.com) ไม่สามารถยืนยันแหล่งที่มาหลักได้ครบตามเกณฑ์ Validation (ต้องมี Benchmark, Model, Score, Source ที่ตรวจสอบได้) จึงไม่นำมาแสดงเป็นข้อมูลยืนยันในฉบับนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending <span class="badge">🔥 Community Trend Only</span></h3>
+    <ul>
+      <li>🔥 ต่อเนื่อง: โครงการโอเพนซอร์ส <b>OpenClaw</b> (ผู้ช่วย AI ส่วนบุคคลที่รันได้ทั้งบนเครื่องตนเองและเชื่อมกับแอปส่งข้อความต่าง ๆ) ยังคงเป็นหนึ่งในโครงการที่เติบโตเร็วที่สุดในประวัติศาสตร์ GitHub อย่างต่อเนื่อง โดยมีรายงานว่าเติบโตจากหลักหมื่นสู่หลักแสน star ภายในเวลาไม่กี่เดือน แต่ตัวเลขที่แน่นอน ณ ปัจจุบันยังไม่สามารถยืนยันได้เนื่องจากแหล่งข้อมูลขัดแย้งกัน (ดูข้อจำกัดในหัวข้อ Open Source) — <a href="https://www.digitalocean.com/resources/articles/what-is-openclaw" target="_blank" rel="noopener">DigitalOcean</a></li>
+      <li>🔥 แนวโน้มบน GitHub Trending เดือนนี้สะท้อนกระแสการสร้าง AI agent เฉพาะทางต่อเนื่อง เช่น coding agent, pentesting agent และ trading agent รวมถึงโครงสร้างพื้นฐานที่เชื่อมโยง agent เหล่านี้เข้าด้วยกัน (ข้อมูลจากเครื่องมือวิเคราะห์บุคคลที่สาม ยังไม่ยืนยันจาก GitHub โดยตรง) — <a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+    </ul>
+    <h3>Tutorials / Events</h3>
+    <p class="note">งาน <b>Ai4 2026</b> งานประชุม AI ที่ใหญ่ที่สุดในสหรัฐฯ จัดขึ้นที่ลาสเวกัสระหว่าง 4–6 ส.ค. 2569 (เริ่มวันนี้) คาดผู้เข้าร่วมกว่า 12,000 คน — <a href="https://ai4.io/" target="_blank" rel="noopener">Ai4 (Official)</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+
+    <div class="usecase">
+      <h4>1. GPT-5.6 Fast mode — เร่งความเร็วงาน API ที่ต้องการการตอบสนองทันที</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งานบางประเภท เช่น แชทบอทแบบเรียลไทม์หรือ agent ที่ต้องตอบสนองไว ต้องแลกความเร็วกับต้นทุนหรือคุณภาพของโมเดล</dd>
+        <dt>วิธีใช้</dt><dd>นักพัฒนาสามารถเรียกใช้ GPT-5.6 Sol ในโหมด Fast ผ่าน API ได้โดยตรง หรือให้ระบบสลับให้อัตโนมัติเมื่อ request ถูกติดแท็ก priority</dd>
+        <dt>ประโยชน์</dt><dd>ได้ความเร็วเพิ่มขึ้นถึง 2.5 เท่าโดยไม่ลดระดับความฉลาดของโมเดล เหมาะกับงานที่เวลาตอบสนองสำคัญกว่าต้นทุน — <a href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/" target="_blank" rel="noopener">OpenAI</a></dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>2. MCP แบบ Stateless — สเกล agent ได้ง่ายขึ้นในระบบ production</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>โปรโตคอล MCP รุ่นก่อนต้องอาศัย session/handshake แบบ stateful ทำให้การสเกลระบบ agent ผ่าน load balancer หรือ gateway หลายเครื่องทำได้ยาก และเสี่ยงต่อ single point of failure</dd>
+        <dt>วิธีใช้</dt><dd>ทีมพัฒนาที่สร้าง MCP server/client อัปเกรดเป็นสเปก 2026-07-28 ซึ่งใช้ request ที่ self-describing และ header-based routing แทน session ID</dd>
+        <dt>ประโยชน์</dt><dd>รองรับการสเกลระบบ agent ในระดับ production ได้ดีขึ้น ฟื้นตัวจากความล้มเหลวของ server ได้เร็วขึ้น และ gateway สามารถ route คำขอโดยไม่ต้องแกะ JSON body — <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">MCP Blog</a></dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>3. Microsoft Agent Framework Harness — กำกับดูแล agent ระดับองค์กร</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>องค์กรที่สร้าง AI agent จำนวนมากขาดเครื่องมือกลางในการรันและกำกับดูแล agent เหล่านั้นอย่างเป็นระบบ นอกเหนือจากไลบรารีพัฒนาโค้ด</dd>
+        <dt>วิธีใช้</dt><dd>ทีมแพลตฟอร์มใช้ Agent Harness และ Foundry Hosted Agents ที่เข้าสู่สถานะ GA แล้ว เพื่อรัน จัดการ และกำกับดูแล agent จาก GitHub Copilot, Claude Agent SDK และเฟรมเวิร์กอื่น ๆ ในที่เดียว</dd>
+        <dt>ประโยชน์</dt><dd>ช่วยให้องค์กรควบคุมและตรวจสอบการทำงานของ agent หลายตัวได้อย่างเป็นระบบมากขึ้น ลดความเสี่ยงจาก agent ที่ทำงานนอกขอบเขตที่กำหนด — <a href="https://www.infoq.com/news/2026/08/agent-framework-harness-ga/" target="_blank" rel="noopener">InfoQ</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released<br>(ไม่พบโมเดลใหม่แบบ GA ในกรอบเวลา)</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers<br>(ไม่พบเปเปอร์ arXiv/HF ใหม่ในกรอบเวลา)</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">GitHub Projects<br>(OpenClaw ยังยืนยันตัวเลขไม่ได้ครบเกณฑ์)</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Company Updates<br>(OpenAI, Anthropic, Google, Microsoft)</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">API/SDK/Framework Updates<br>(GPT-5.6 Fast mode, Agent Framework Harness GA)</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>ประเด็น</th><th>เหตุผล</th><th>Source</th></tr>
+      <tr><td>การบังคับใช้จริงของ EU AI Act มาตรา 50 ในทางปฏิบัติ</td><td>ต้องติดตามว่าบริษัท AI จะปรับระบบติดฉลากเนื้อหาและเปิดเผยตัวตนแชทบอทอย่างไร และจะมีการบังคับใช้บทลงโทษครั้งแรกเมื่อใด</td><td><a href="https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august" target="_blank" rel="noopener">European Commission</a></td></tr>
+      <tr><td>ตัวเลข GitHub star ที่แท้จริงของ OpenClaw</td><td>แหล่งข้อมูลบุคคลที่สามรายงานตัวเลขขัดแย้งกันมาก ควรตรวจสอบผ่าน GitHub API โดยตรงในรอบถัดไปเพื่อยืนยันอัตราการเติบโตที่แท้จริง</td><td><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub — openclaw/openclaw</a></td></tr>
+      <tr><td>งาน Ai4 2026 ที่ลาสเวกัส (4–6 ส.ค.)</td><td>งานประชุม AI ที่ใหญ่ที่สุดในสหรัฐฯ เริ่มวันนี้ อาจมีประกาศผลิตภัณฑ์/พันธมิตรใหม่จากผู้เล่นหลักในอุตสาหกรรมระหว่างงาน</td><td><a href="https://ai4.io/" target="_blank" rel="noopener">Ai4</a></td></tr>
+      <tr><td>ผลกระทบของ MCP 2026-07-28 ต่อความเข้ากันได้ของ server/client รุ่นเก่า</td><td>สเปกใหม่มีการเปลี่ยนแปลงที่ไม่ backward compatible บางส่วน อาจส่งผลต่อระบบ agent ที่ใช้งานอยู่ในปัจจุบันหากไม่อัปเกรดทั้งสองฝั่ง</td><td><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">MCP Blog</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/" target="_blank" rel="noopener">OpenAI — Advancing the Price-Performance Frontier with GPT-5.6</a></li>
+          <li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">Model Context Protocol Blog — The 2026-07-28 Specification</a></li>
+          <li><a href="https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august" target="_blank" rel="noopener">European Commission — Enforcing AI Act Rules and Transparency Requirements</a></li>
+          <li><a href="https://x.com/GeminiApp/status/2082563490431246623" target="_blank" rel="noopener">Google Gemini (Official, X) — Free Video Creation Trial</a></li>
+          <li><a href="https://ai4.io/" target="_blank" rel="noopener">Ai4 2026 — Official Event Site</a></li>
+          <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub — openclaw/openclaw</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="border:none;padding:0;background:none;">ไม่มีเปเปอร์วิจัยที่ยืนยันได้ในกรอบ 24 ชม. ล่าสุด (ดูหัวข้อ Research)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://venturebeat.com/technology/ai-price-wars-openai-cuts-gpt-5-6-luna-prices-by-80-as-model-competition-shifts-toward-cost" target="_blank" rel="noopener">VentureBeat — AI Price Wars: OpenAI Cuts GPT-5.6 Luna Prices</a></li>
+          <li><a href="https://claudelog.com/claude-news/" target="_blank" rel="noopener">ClaudeLog — Claude Code Usage Boost Extended</a></li>
+          <li><a href="https://www.infoq.com/news/2026/08/agent-framework-harness-ga/" target="_blank" rel="noopener">InfoQ — Microsoft Agent Framework Harness Reaches GA</a></li>
+          <li><a href="https://www.cooley.com/news/insight/2026/2026-08-03-eu-ai-act-transparency-obligations-take-effect-2-august-2026" target="_blank" rel="noopener">Cooley — EU AI Act Transparency Obligations</a></li>
+          <li><a href="https://www.abijita.com/google-lets-gemini-users-create-10-ai-videos-for-free-for-a-limited-time/" target="_blank" rel="noopener">Abijita — Gemini Free Video Creation</a></li>
+          <li><a href="https://www.digitalocean.com/resources/articles/what-is-openclaw" target="_blank" rel="noopener">DigitalOcean — What is OpenClaw?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Label</th><th>Meaning</th></tr>
+      <tr><td>✅</td><td>Official</td></tr>
+      <tr><td>📰</td><td>Trusted Media</td></tr>
+      <tr><td>🔥</td><td>Community Trend</td></tr>
+      <tr><td>⚠️</td><td>Rumor</td></tr>
+      <tr><td>❓</td><td>Unverified</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>รายงานนี้สร้างขึ้นโดยอัตโนมัติจากการสืบค้นข้อมูลสาธารณะ ณ วันที่ 4 สิงหาคม 2569 (ICT) เนื้อหาทั้งหมดผ่านการตรวจสอบแหล่งที่มาตามหลักเกณฑ์ที่กำหนด หากพบข้อมูลที่คลาดเคลื่อนหรือต้องการแหล่งอ้างอิงเพิ่มเติม โปรดตรวจสอบจากลิงก์ในหัวข้อ Sources ด้านบน</p>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report Archive</p>
+  </footer>
+</div>
+</body>
+</html>
