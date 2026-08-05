@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-05</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 5 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-05</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 5 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> รายงานฉบับนี้จัดทำจากการสืบค้นเว็บแบบ real-time การเข้าถึงหน้าเว็บทางการโดยตรงบางแห่ง (เช่น blog.google, blogs.nvidia.com, status.anthropic.com) ถูกปฏิเสธ HTTP 403 จึงอ้างอิงเนื้อหาจากผลการสืบค้นที่สรุปจากหน้าเหล่านั้นแทน โดยระบุ URL ต้นทางไว้ให้ตรวจสอบย้อนกลับได้ ไม่พบเปเปอร์วิจัย arXiv/Hugging Face ใหม่ที่ยืนยันชื่อผู้เขียนและวันที่เผยแพร่ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด ตัวเลข GitHub star ของโครงการ OpenClaw ยังคงขัดแย้งกันมากระหว่างแหล่งข้อมูลบุคคลที่สาม (ตั้งแต่ราว 200,000 ถึง 384,000+ stars) และไม่สามารถยืนยันผ่าน GitHub API โดยตรงได้ในรอบนี้ (สิทธิ์เข้าถึงถูกจำกัด) ข่าว Qwen3.8-Max, Kimi K3 และการเจรจา Meta–Anthropic มีจุดเริ่มต้นก่อนกรอบ 24 ชม. แต่ยังเป็นประเด็นที่สื่อรายงานต่อเนื่องถึงวันนี้ จึงนำมาแสดงพร้อมระบุ "ต่อเนื่อง" กำกับไว้ ข่าวควบรวมกิจการ Nextech3D.ai–ARway มีเพียงแหล่งประกาศทางการหนึ่งแหล่ง ยังไม่ผ่านเกณฑ์ Cross Validation แบบสองแหล่งอิสระอย่างสมบูรณ์ จึงนำเสนอพร้อมระบุข้อจำกัดนี้ไว้
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>✅📰 Google DeepMind ประกาศปรับโครงสร้างผู้นำครั้งใหญ่ Demis Hassabis ขึ้นเป็น Chair of Google DeepMind และ Chief Scientist ของ Alphabet เพื่อโฟกัสงานวิจัย AGI ส่วน Koray Kavukcuoglu รับตำแหน่ง SVP คุมการพัฒนาโมเดล Gemini โดยตรง ส่งผลให้หุ้น Alphabet ร่วงเกือบ 4% 📰 พร้อมกันนี้ Jeff Dean หัวหน้านักวิทยาศาสตร์ของ Google พร้อมทีมนักวิจัยระดับสูง (Sanjay Ghemawat, Oriol Vinyals, Quoc Le) ประกาศลาออกตั้งสตาร์ทอัพใหม่ Discovery Loop เพื่อ automate กระบวนการวิจัยวิทยาศาสตร์ โดย Google ร่วมลงทุนเป็นพันธมิตร ⚠️✅ Claude ของ Anthropic ล่มทั่วโลกนานกว่า 7 ชั่วโมงครึ่ง กระทบโมเดล Mythos 5, Fable 5, Opus 5 และ Sonnet 5 นับเป็นครั้งที่ 164 ของปีนี้ 📰✅ Microsoft เปิดเผยในรายงาน 10-K ว่ารายได้ AI ส่วนใหญ่มาจาก OpenAI (24.1 พันล้านดอลลาร์ในปีงบประมาณที่จบเดือน มิ.ย.) ขณะที่ NVIDIA นำกลุ่ม Open Secure AI Alliance เปิดตัวกรอบมาตรฐาน SAFE ที่งาน Black Hat พร้อม Mistral AI ปล่อยโมเดลความปลอดภัยโอเพนซอร์ส Shieldstral ✅ ศาลอุทธรณ์เขต 9 ของสหรัฐฯ พลิกคำสั่งห้าม AI agent "Comet" ของ Perplexity เข้าถึงบัญชี Amazon โดยตัดสินว่าผู้ใช้เป็นผู้ "เข้าถึง" ระบบ ไม่ใช่ Perplexity จึงไม่เข้าข่ายผิดกฎหมาย CFAA</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+      <tr><td>Qwen3.8-Max</td><td>Alibaba</td><td>Flagship multimodal LLM (MoE 2.4T พารามิเตอร์)</td><td>Coding, agent, งานวิจัย, context 1M token, รองรับภาพ — อันดับ 5 LMArena Text Arena, อันดับ 2 Vision Arena</td><td>✅ API ใช้งานได้ผ่าน Alibaba Cloud Model Studio ตั้งแต่ 3 ส.ค. น้ำหนักโมเดล (open weights) กำหนดเปิดสัปดาห์ถัดไป — <b>ต่อเนื่อง</b></td><td><a href="https://www.alizila.com/alibaba-unveils-qwen3-8-max-most-capable-flagship-model-to-date/" target="_blank" rel="noopener">Alizila (Official)</a>, <a href="https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/" target="_blank" rel="noopener">MarkTechPost</a></td></tr>
+      <tr><td>Kimi K3</td><td>Moonshot AI</td><td>Open-weight LLM (MoE 2.8T พารามิเตอร์)</td><td>โปรแกรมมิ่ง/agent, context 1M token, multimodal reasoning, ครองอันดับ 1 LMArena Frontend Code Arena (1,679 คะแนน)</td><td>✅ เผยแพร่น้ำหนักโมเดลเต็มบน Hugging Face แล้ว ขึ้นอันดับ 1 Trending ภายใน 30 นาที — <b>ต่อเนื่อง</b></td><td><a href="https://huggingface.co/moonshotai/Kimi-K3" target="_blank" rel="noopener">Hugging Face (Official)</a>, <a href="https://www.fastcompany.com/91581267/what-to-know-about-moonshot-ai-and-its-new-open-weight-model-kimi-k3" target="_blank" rel="noopener">Fast Company</a></td></tr>
+      <tr><td>Shieldstral</td><td>Mistral AI</td><td>Safety / Moderation Classifier (3B พารามิเตอร์)</td><td>ตรวจสอบเนื้อหาข้อความ/ภาพตามนโยบายที่กำหนดเองแบบ inference-time รันบน GPU 16GB เครื่องเดียว รองรับ 12 ภาษา</td><td>✅ เปิดตัวแล้ว 4 ส.ค. โอเพนซอร์สภายใต้ Apache 2.0</td><td><a href="https://mistral.ai/news/shieldstral/" target="_blank" rel="noopener">Mistral AI (Official)</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">⚠️ <b>ข้อจำกัดของข้อมูล:</b> ไม่พบเปเปอร์ arXiv หรือ Hugging Face Daily Papers ที่มีชื่อผู้เขียนและวันที่เผยแพร่ยืนยันได้ว่าอยู่ในกรอบ 24 ชม. ล่าสุดครบตามเกณฑ์ Validation ในรอบการสืบค้นนี้ จึงไม่นำเสนอรายการเปเปอร์วิจัยใหม่ในฉบับนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+      <tr><td>openclaw/openclaw</td><td>ตัวเลขขัดแย้งกันมาก ระหว่าง ~200,000–384,000+ (ยืนยันผ่าน GitHub API โดยตรงไม่ได้ในรอบนี้)</td><td>ไม่ระบุแน่ชัด</td><td>ผู้ช่วย AI ส่วนบุคคลโอเพนซอร์ส รันได้ทั้งบนเครื่องตนเองและเชื่อมแอปส่งข้อความ ยังคงเป็นโปรเจกต์ที่เติบโตเร็วที่สุดในประวัติศาสตร์ GitHub — <b>ต่อเนื่อง</b></td><td>🔥 <a href="https://www.star-history.com/blog/openclaw-surpasses-linux-14th-most-starred/" target="_blank" rel="noopener">star-history.com</a>, <a href="https://en.wikipedia.org/wiki/OpenClaw" target="_blank" rel="noopener">Wikipedia</a></td></tr>
+      <tr><td>moonshotai/Kimi-K3</td><td>ไม่ระบุตัวเลข star ที่ยืนยันได้ในรอบนี้</td><td>Python/PyTorch (checkpoint)</td><td>โมเดลภาษาโอเพนซอร์สขนาด 2.8 ล้านล้านพารามิเตอร์ (MoE) — ดูรายละเอียดหัวข้อ AI Models</td><td>✅ <b>ต่อเนื่อง</b> — <a href="https://huggingface.co/moonshotai/Kimi-K3" target="_blank" rel="noopener">Hugging Face (Official)</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ตัวเลข star ของ OpenClaw ไม่ผ่านเกณฑ์ Cross Validation ที่ต้องยืนยันจากแหล่งทางการ (GitHub API) เนื่องจากสิทธิ์เข้าถึงถูกจำกัดในรอบการสืบค้นนี้ จึงนำเสนอเป็นช่วงตัวเลขพร้อมระบุข้อจำกัดไว้ชัดเจน</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">Shieldstral (Mistral AI) เป็นเครื่องมือความปลอดภัย/moderation ใหม่ที่เปิดตัวในกรอบเวลานี้ — ดูรายละเอียดในหัวข้อ AI Models</p>
+    <h3>Updates</h3>
+    <p class="note">⚠️ ไม่พบการอัปเดตเครื่องมือ/แอปสำหรับผู้ใช้ทั่วไปเพิ่มเติมที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด นอกเหนือจากที่ระบุในหัวข้อ Technical Updates</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p class="note">⚠️ ไม่พบข่าวใหม่จาก OpenAI ที่ยืนยันได้ครบตามเกณฑ์ภายในกรอบ 24 ชม. ล่าสุด (การปรับราคา GPT-5.6 และ GPT-Red เผยแพร่ตั้งแต่ปลาย ก.ค. เกินกรอบเวลาแล้ว ดูสัดส่วนรายได้ที่มาจาก OpenAI ในหัวข้อ Microsoft)</p>
+
+    <h3>Anthropic</h3>
+    <ul>
+      <li>⚠️✅ Claude ล่มทั่วโลกนาน 7 ชั่วโมง 29 นาที (ราว 05:05–10:34 น. ET) กระทบโมเดล Mythos 5, Fable 5, Opus 5 และ Sonnet 5 พร้อมกัน ผู้ใช้ API พบ request ล้มเหลว latency สูง และเว็บแอปเข้าไม่ได้ Anthropic ระบุว่าพบสาเหตุแล้วและออก fix สองรอบ (Opus 5 มีปัญหาแยกเพิ่มเติมช่วง 09:51 น. ET) นับเป็นความขัดข้องครั้งที่ 164 ของปีนี้ — <a href="https://status.anthropic.com/incidents/mpwx6wbxy02h" target="_blank" rel="noopener">Anthropic Status (Official)</a>, <a href="https://www.androidauthority.com/claude-outage-august-5-2026-3694847/" target="_blank" rel="noopener">Android Authority</a>, <a href="https://www.techtimes.com/articles/323171/20260805/claude-goes-down-again-71b-compute-deal-cannot-prevent-anthropics-164th-outage.htm" target="_blank" rel="noopener">Tech Times</a></li>
+      <li>📰 ต่อเนื่อง: Meta อยู่ระหว่างเจรจาปล่อยเช่ากำลังประมวลผล AI ให้ Anthropic มูลค่าสูงสุด 10 พันล้านดอลลาร์ ระยะเวลา 2 ปี (ดูรายละเอียดหัวข้อ Meta)</li>
+    </ul>
+
+    <h3>Google DeepMind</h3>
+    <ul>
+      <li>✅📰 ปรับโครงสร้างผู้นำครั้งใหญ่: Demis Hassabis ขึ้นเป็น Chair of Google DeepMind และ Chief Scientist ของ Alphabet โฟกัสงานวิจัย AGI พร้อมยังคุม Isomorphic Labs ต่อ ส่วน Koray Kavukcuoglu (CTO เดิม, อยู่กับ DeepMind มา 13 ปี) รับตำแหน่ง SVP of Google DeepMind รายงานตรงต่อ Sundar Pichai คุมการพัฒนาโมเดล Gemini, งานวิจัย frontier AI และทีม Gemini app/developer หุ้น Alphabet ร่วงเกือบ 4% หลังประกาศ — <a href="https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/" target="_blank" rel="noopener">Google (Official Blog)</a>, <a href="https://www.axios.com/2026/08/05/google-deepmind-demis-hassabis-ai" target="_blank" rel="noopener">Axios</a>, <a href="https://9to5google.com/2026/08/05/demis-hassabis-deepmind/" target="_blank" rel="noopener">9to5Google</a></li>
+      <li>📰 Jeff Dean หัวหน้านักวิทยาศาสตร์ของ Google พร้อมทีมนักวิจัยระดับสูง (Sanjay Ghemawat, Oriol Vinyals, Quoc Le) ประกาศลาออกหลังทำงานที่ Google เกือบ 27 ปี เพื่อก่อตั้งสตาร์ทอัพ Discovery Loop มุ่ง automate กระบวนการวิจัยวิทยาศาสตร์ Google จะร่วมลงทุนในฐานะนักลงทุนผู้ก่อตั้งและพันธมิตร Cloud — ดูรายละเอียดหัวข้อ Startup — <a href="https://www.geekwire.com/2026/the-startup-idea-that-convinced-a-uw-computer-science-legend-to-leave-google-after-27-years/" target="_blank" rel="noopener">GeekWire</a>, <a href="https://www.techtimes.com/articles/323197/20260805/jeff-dean-sanjay-ghemawat-depart-google-co-found-discovery-loop.htm" target="_blank" rel="noopener">Tech Times</a></li>
+    </ul>
+
+    <h3>Meta</h3>
+    <ul>
+      <li>📰 ต่อเนื่อง: Meta อยู่ระหว่างเจรจาปล่อยเช่ากำลังประมวลผล AI จาก data center ของตนให้ Anthropic มูลค่าสูงสุด 10 พันล้านดอลลาร์ ระยะเวลา 2 ปี เป็นช่องทางรายได้ใหม่จากโครงสร้างพื้นฐานที่ลงทุนไปมาก (รายงานเริ่มตั้งแต่กลาง–ปลาย ก.ค. ยังเป็นประเด็นต่อเนื่องถึงต้นเดือน ส.ค.) — <a href="https://www.fool.com/investing/2026/07/29/mark-zuckerbergs-meta-is-in-early-talks-to-lease-1/" target="_blank" rel="noopener">The Motley Fool</a>, <a href="https://www.cnn.com/2026/07/17/tech/meta-anthropic-ai-cloud-computing" target="_blank" rel="noopener">CNN Business</a></li>
+    </ul>
+
+    <h3>Microsoft</h3>
+    <ul>
+      <li>✅📰 เปิดเผยในรายงานประจำปี 10-K ว่ามีรายได้จากข้อตกลงเชิงพาณิชย์กับ OpenAI (รวม revenue-sharing) 24.1 พันล้านดอลลาร์ในปีงบประมาณ 2026 (สิ้นสุด มิ.ย.) และมีลูกหนี้การค้าค้างจาก OpenAI 6.0 พันล้านดอลลาร์ ชี้ว่า OpenAI คิดเป็นสัดส่วนกว่าครึ่ง (อาจสูงถึงราว 70%) ของธุรกิจรายได้ AI ทั้งหมดของ Microsoft — <a href="https://www.bloomberg.com/news/articles/2026-08-05/microsoft-s-ai-sales-mostly-come-from-openai-disclosures-show" target="_blank" rel="noopener">Bloomberg</a>, Microsoft 10-K Filing (Official)</li>
+    </ul>
+
+    <h3>Amazon</h3>
+    <ul>
+      <li>✅ ศาลอุทธรณ์เขต 9 ของสหรัฐฯ พลิกคำสั่งห้ามชั่วคราวที่เคยกันไม่ให้ AI shopping agent "Comet" ของ Perplexity เข้าถึงหน้าบัญชีผู้ใช้ที่ล็อกอินบน Amazon โดยวินิจฉัยว่าผู้ใช้เป็นผู้ "เข้าถึง" ระบบของ Amazon ผ่านตัวช่วย ไม่ใช่ Perplexity จึงไม่เข้าข่ายผิดกฎหมาย Computer Fraud and Abuse Act (CFAA) คดีส่วนเครื่องหมายการค้ายังดำเนินต่อในชั้นศาลรัฐบาลกลาง — ดูรายละเอียดหัวข้อ Industry/Regulation — <a href="https://www.eff.org/deeplinks/2026/08/appeals-court-agrees-eff-building-web-browser-doesnt-violate-cfaa" target="_blank" rel="noopener">EFF</a>, <a href="https://www.courthousenews.com/ninth-circuit-lifts-block-on-ai-powered-shopping-assistant/" target="_blank" rel="noopener">Courthouse News</a></li>
+    </ul>
+
+    <h3>NVIDIA</h3>
+    <ul>
+      <li>✅📰 กลุ่มพันธมิตร Open Secure AI Alliance (OSAA) ที่ NVIDIA เป็นแกนนำ (ก่อตั้ง 27 ก.ค. ร่วมกับ Microsoft, SpaceX, Linux Foundation, Adobe, Siemens และอื่น ๆ) เติบโตเป็นกว่า 120 บริษัทภายในสัปดาห์แรก เปิดตัว working group ใหม่ชื่อ SAFE (Shared AI Findings Exchange) ที่งาน Black Hat เพื่อพัฒนาแนวทางรายงานเหตุการณ์ความปลอดภัยไซเบอร์ของ AI แบบไม่เปิดเผยตัวตนและวิเคราะห์แบบไม่กล่าวโทษ — <a href="https://blogs.nvidia.com/blog/open-secure-ai-alliance-contributions/" target="_blank" rel="noopener">NVIDIA Blog (Official)</a>, <a href="https://techcrunch.com/2026/08/04/nvidia-doesnt-mess-around-a-week-after-open-ai-industry-group-formed-its-already-showing-progress/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.pcguide.com/pro/news-pro/nvidia-backed-open-secure-ai-alliance-is-drafting-safe-cybersecurity-guidelines-as-it-grows-to-over-120-members/" target="_blank" rel="noopener">PCGuide</a></li>
+    </ul>
+
+    <h3>Startup</h3>
+    <ul>
+      <li>📰 Discovery Loop สตาร์ทอัพใหม่จาก Jeff Dean และอดีตนักวิจัยระดับสูงของ Google เริ่มต้นด้วยเป้าหมาย automate กระบวนการวิจัยและวิศวกรรมด้าน Machine Learning ก่อนขยายสู่ hardware design, drug discovery และพลังงานสะอาดในอนาคต — <a href="https://www.geekwire.com/2026/the-startup-idea-that-convinced-a-uw-computer-science-legend-to-leave-google-after-27-years/" target="_blank" rel="noopener">GeekWire</a>, <a href="https://www.unite.ai/jeff-dean-leaves-google-to-automate-the-scientific-method-with-discovery-loop/" target="_blank" rel="noopener">Unite.AI</a></li>
+      <li>✅📰 Valar Atomics สตาร์ทอัพเครื่องปฏิกรณ์นิวเคลียร์ขนาดเล็ก (SMR) สำหรับ data center AI ระดมทุน Series B มูลค่า 1 พันล้านดอลลาร์ นำโดย Sequoia Capital มูลค่ากิจการพุ่งเป็น 6 พันล้านดอลลาร์ พร้อมวงเงินสินเชื่อเพิ่มอีก 200 ล้านดอลลาร์จาก Erebor Bank และ J.P. Morgan — ดูรายละเอียดหัวข้อ Industry/Investment — <a href="https://www.valaratomics.com/docs/Announcing-our-1B-Series-B-Led-By-Sequoia" target="_blank" rel="noopener">Valar Atomics (Official)</a>, <a href="https://techcrunch.com/2026/08/03/sequoias-shaun-maguire-leads-1b-round-for-nuclear-startup-valar-atomics/" target="_blank" rel="noopener">TechCrunch</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li>✅ <b>Shieldstral (Mistral AI):</b> ตัวจำแนกความปลอดภัยเนื้อหาแบบ multimodal ขนาด 3B พารามิเตอร์ ยอมรับ policy ภาษาธรรมชาติแบบ inference-time แทนหมวดหมู่ความเสี่ยงตายตัว รองรับ 12 ภาษา รันบน GPU 16GB เครื่องเดียว เปิดเป็นโอเพนซอร์สภายใต้ Apache 2.0 เป็นส่วนหนึ่งของสมาชิกก่อตั้ง OSAA — <a href="https://mistral.ai/news/shieldstral/" target="_blank" rel="noopener">Mistral AI (Official)</a></li>
+      <li>✅ <b>High Bandwidth Flash (HBF):</b> SK hynix และ SanDisk เผยแพร่สเปกมาตรฐานเปิดฉบับแรกผ่าน Open Compute Project (OCP) ที่งาน FMS 2026 นิยามหน่วยความจำเลเยอร์ใหม่ระหว่าง HBM กับ SSD รองรับความจุสูงสุด 512GB (8/16-high NAND die stack) แบนด์วิดท์ 3 ระดับตั้งแต่ราว 0.4–3.0 TB/s เชื่อมต่อ CPU/GPU ด้วย UCIe interconnect เพื่อรองรับงาน AI inference ที่ต้องการหน่วยความจำความจุสูง — <a href="https://news.skhynix.com/en/hbf-at-fms-2026/" target="_blank" rel="noopener">SK hynix Newsroom (Official)</a>, <a href="https://www.prnewswire.com/news-releases/sk-hynix-unveils-first-hbf-standard-specifications-with-sandisk-presenting-ai-memory-solutions-at-fms-2026-302841792.html" target="_blank" rel="noopener">PR Newswire</a></li>
+      <li>📰 ต่อเนื่อง: MCP (Model Context Protocol) สเปกฉบับ 2026-07-28 ที่ปรับสถาปัตยกรรมเป็น stateless ยังอยู่ระหว่างการ adopt โดยนักพัฒนาทั่วโลก ยอดดาวน์โหลดสะสม SDK ภาษา TypeScript และ Python รวมกันทะลุ 1 พันล้านครั้งแล้ว — <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">MCP Blog (Official)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <ul>
+      <li>✅📰 Valar Atomics ระดมทุน Series B 1 พันล้านดอลลาร์ นำโดย Sequoia Capital (ดูรายละเอียดหัวข้อ Company News/Startup) — <a href="https://www.valaratomics.com/docs/Announcing-our-1B-Series-B-Led-By-Sequoia" target="_blank" rel="noopener">Valar Atomics (Official)</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-03/sequoia-leads-1-billion-funding-round-for-nuclear-startup-valar" target="_blank" rel="noopener">Bloomberg</a></li>
+      <li>📰 Base Power ระดมทุน Series D มูลค่า 1 พันล้านดอลลาร์ นำโดย JPMorgan Chase Strategic Investment Group ร่วมด้วย Ribbit Capital, Altimeter, Coatue และอื่น ๆ เพื่อขยายโครงสร้างพื้นฐานพลังงานรองรับดีมานด์ data center AI ที่เพิ่มขึ้นต่อเนื่อง — <a href="https://techstartups.com/2026/08/04/venture-capital-startup-funding-roundup-august-4-2026-a16z-base10-dream-ventures-jpmorgan-sequoia-capital-valor-equity-partners-yc-more/" target="_blank" rel="noopener">Tech Startups</a></li>
+    </ul>
+    <h3>Acquisition</h3>
+    <ul>
+      <li>✅ Nextech3D.ai ประกาศเข้าซื้อหุ้นทั้งหมดของ ARway Corporation ส่วนที่ยังไม่ได้ถือครอง ตามข้อตกลงลงนาม 24 ก.ค. 2569 คาดปิดดีลตุลาคม 2569 เสริมความแข็งแกร่งด้าน AI-first event technology, spatial computing และ AR — <a href="https://www.financialcontent.com/article/accwirecq-2026-8-4-arway-provides-update-on-proposed-acquisition-by-nextech3dai-closing-expected-in-october-2026" target="_blank" rel="noopener">Financial Content (ประกาศทางการ)</a></li>
+    </ul>
+    <p class="note">⚠️ ดีล Nextech3D.ai–ARway พบเพียงแหล่งประกาศทางการหนึ่งแหล่งในรอบการสืบค้นนี้ ยังไม่ผ่านเกณฑ์ Cross Validation แบบสองแหล่งอิสระอย่างสมบูรณ์</p>
+    <h3>Regulation</h3>
+    <ul>
+      <li>✅ ศาลอุทธรณ์เขต 9 ของสหรัฐฯ พลิกคำสั่งห้าม AI shopping agent "Comet" ของ Perplexity เข้าถึงบัญชี Amazon โดยวินิจฉัยว่าผู้ใช้ ไม่ใช่ Perplexity เป็นผู้ "เข้าถึง" ระบบภายใต้กฎหมาย CFAA และใช้หลัก rule of lenity ตีความข้อกฎหมายที่คลุมเครือให้เป็นคุณต่อจำเลย ศาลระบุว่ายังแทบไม่มีบรรทัดฐานเกี่ยวกับการกำหนดความรับผิดของ AI agent มาก่อน ถือเป็นคำตัดสินสำคัญต่อทิศทางกฎหมายด้าน AI agent ในสหรัฐฯ (คดีส่วนเครื่องหมายการค้ายังดำเนินต่อ) — <a href="https://www.eff.org/deeplinks/2026/08/appeals-court-agrees-eff-building-web-browser-doesnt-violate-cfaa" target="_blank" rel="noopener">EFF</a>, <a href="https://www.courthousenews.com/ninth-circuit-lifts-block-on-ai-powered-shopping-assistant/" target="_blank" rel="noopener">Courthouse News</a>, <a href="https://news.bloomberglaw.com/us-law-week/perplexity-overturns-amazon-ban-on-ai-shopping-bot-on-appeal" target="_blank" rel="noopener">Bloomberg Law</a></li>
+      <li>📰 ต่อเนื่อง: กฎความโปร่งใสมาตรา 50 ของ EU AI Act ที่เริ่มบังคับใช้ตั้งแต่ 2 ส.ค. ยังอยู่ระหว่างกระบวนการบังคับใช้โดยคณะกรรมาธิการยุโรปและหน่วยงานระดับชาติ — <a href="https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august" target="_blank" rel="noopener">European Commission (Official)</a></li>
+    </ul>
+    <h3>Ethics / Safety</h3>
+    <ul>
+      <li>✅ NVIDIA-led OSAA เปิดตัวกรอบ SAFE และ Mistral ปล่อย Shieldstral (ดูรายละเอียดหัวข้อ Company News/NVIDIA และ Technical Updates)</li>
+      <li>✅ rust-lang/rust ประกาศนโยบายการใช้ LLM ในการมีส่วนร่วมพัฒนาโค้ดอย่างเป็นทางการ อนุญาตให้ใช้ LLM ช่วยอ่าน วิเคราะห์ กลั่นกรอง และตรวจสอบ แต่ห้ามใช้ "สร้าง" โค้ดที่จะ commit เข้า repository โดยตรง เพื่อให้ผู้ร่วมพัฒนาใหม่เข้าใจกติกาชัดเจนและผู้รีวิวมีเหตุผลอ้างอิงที่เป็นทางการเวลาปิด PR สะท้อนทิศทางการกำกับดูแลการใช้ AI ในโครงการโอเพนซอร์สขนาดใหญ่ — <a href="https://blog.rust-lang.org/inside-rust/2026/08/05/rust-langrust-is-adopting-an-llm-policy/" target="_blank" rel="noopener">Rust Blog (Official)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+      <tr><td>LMArena Text Arena (Overall)</td><td>Claude Fable 5</td><td>~1525 ELO (อันดับ 1)</td><td><a href="https://news.lmarena.ai/leaderboard-changelog/" target="_blank" rel="noopener">LMArena (Official)</a></td></tr>
+      <tr><td>LMArena Frontend Code Arena</td><td>Kimi K3</td><td>1,679 คะแนน (อันดับ 1) — <b>ต่อเนื่อง</b></td><td><a href="https://news.lmarena.ai/leaderboard-changelog/" target="_blank" rel="noopener">LMArena (Official)</a></td></tr>
+      <tr><td>LMArena Text Arena</td><td>Qwen3.8-Max</td><td>อันดับ 5</td><td><a href="https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/" target="_blank" rel="noopener">MarkTechPost (อ้างอิง LMArena)</a></td></tr>
+      <tr><td>LMArena Vision Arena</td><td>Qwen3.8-Max</td><td>อันดับ 2</td><td><a href="https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/" target="_blank" rel="noopener">MarkTechPost (อ้างอิง LMArena)</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending <span class="badge">🔥 Community Trend Only</span></h3>
+    <ul>
+      <li>🔥 ต่อเนื่อง: โครงการโอเพนซอร์ส <b>OpenClaw</b> ยังคงเป็นกระแสที่มียอด star เติบโตเร็วที่สุดในประวัติศาสตร์ GitHub แต่ตัวเลขที่แท้จริงยังยืนยันไม่ได้ (ดูข้อจำกัดในหัวข้อ Open Source) — <a href="https://www.star-history.com/blog/openclaw-surpasses-linux-14th-most-starred/" target="_blank" rel="noopener">star-history.com</a></li>
+      <li>✅ นโยบายการใช้ LLM ของ rust-lang/rust กลายเป็นประเด็นถกเถียงในชุมชนนักพัฒนาโอเพนซอร์สทันทีที่ประกาศ (ดูรายละเอียดหัวข้อ Industry/Ethics) — <a href="https://news.ycombinator.com/item?id=49179039" target="_blank" rel="noopener">Hacker News</a></li>
+      <li>🔥 กระแส GitHub Trending เดือนนี้ยังคงเน้นการสร้าง AI agent เฉพาะทางต่อเนื่อง เช่น coding agent, pentesting agent และ trading agent รวมถึงโครงสร้างพื้นฐานที่เชื่อมโยง agent เหล่านี้เข้าด้วยกัน (ข้อมูลจากเครื่องมือวิเคราะห์บุคคลที่สาม ยังไม่ยืนยันจาก GitHub โดยตรง) — <a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+    </ul>
+    <h3>Tutorials / Events</h3>
+    <p class="note">งาน <b>Black Hat USA 2026</b> (4–7 ส.ค., ลาสเวกัส) เป็นเวทีที่ NVIDIA-led OSAA เปิดตัวกรอบ SAFE งาน <b>FMS 2026</b> (Flash Memory Summit, 4–6 ส.ค., Santa Clara) เป็นเวทีที่ SK hynix/SanDisk เปิดสเปก HBF และงาน <b>Ai4 2026</b> การประชุม AI ที่ใหญ่ที่สุดในสหรัฐฯ (4–6 ส.ค., ลาสเวกัส) ยังจัดต่อเนื่องถึงวันนี้ — <a href="https://www.blackhat.com/us-26/" target="_blank" rel="noopener">Black Hat (Official)</a>, <a href="https://www.flashmemorysummit.com/" target="_blank" rel="noopener">FMS (Official)</a>, <a href="https://ai4.io/" target="_blank" rel="noopener">Ai4 (Official)</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+
+    <div class="usecase">
+      <h4>1. Shieldstral — ตรวจสอบเนื้อหาแบบ self-hosted ปรับ policy ได้ทันที</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>บริการที่ต้องการควบคุมนโยบายการดูแลเนื้อหาของตนเองอย่างละเอียด มักต้องพึ่ง API ภายนอกที่ปรับแต่งได้จำกัด หรือฝึกโมเดล guardrail ใหม่ทุกครั้งที่นโยบายเปลี่ยน</dd>
+        <dt>วิธีใช้</dt><dd>ทีมพัฒนาดาวน์โหลดน้ำหนักโมเดล Shieldstral (Apache 2.0) มารันบน GPU 16GB เครื่องเดียว แล้วป้อนนโยบายเป็นข้อความภาษาธรรมชาติที่ inference-time โดยไม่ต้อง fine-tune ใหม่</dd>
+        <dt>ประโยชน์</dt><dd>ปรับนโยบายการดูแลเนื้อหาข้อความและภาพได้ทันทีโดยไม่ต้องฝึกโมเดลใหม่ ประสิทธิภาพเทียบเท่าโมเดล guard แบบเปิดที่ใหญ่กว่าถึง 7 เท่า — <a href="https://mistral.ai/news/shieldstral/" target="_blank" rel="noopener">Mistral AI</a></dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>2. Qwen3.8-Max Context 1M Token — งานเอกสาร/agent ระดับองค์กร</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งานวิเคราะห์เอกสารยาว หรือ agent ที่ต้องจดจำบริบทการทำงานต่อเนื่องหลายขั้นตอน มักติดข้อจำกัดความยาว context ของโมเดล</dd>
+        <dt>วิธีใช้</dt><dd>นักพัฒนาเรียกใช้ Qwen3.8-Max ผ่าน Alibaba Cloud Model Studio สำหรับงานที่ต้องประมวลผลเอกสาร โค้ด หรือประวัติการสนทนาที่ยาวมากในครั้งเดียว</dd>
+        <dt>ประโยชน์</dt><dd>รองรับ context สูงสุด 1 ล้านโทเคน ช่วยให้ agent ทำงานที่ต้องใช้บริบทระยะยาว (long-horizon task) ได้ต่อเนื่องโดยไม่ต้องตัดแบ่งข้อมูล — <a href="https://www.alizila.com/alibaba-unveils-qwen3-8-max-most-capable-flagship-model-to-date/" target="_blank" rel="noopener">Alizila</a></dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>3. AI Shopping Agent หลังคำตัดสินศาล — Perplexity Comet บน Amazon</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ผู้ให้บริการ AI agent ที่ทำธุรกรรมแทนผู้ใช้บนเว็บไซต์บุคคลที่สาม (เช่นช้อปปิ้ง) เผชิญความไม่แน่นอนทางกฎหมายว่าจะถูกฟ้องภายใต้กฎหมายป้องกันการเข้าถึงคอมพิวเตอร์โดยไม่ได้รับอนุญาตหรือไม่</dd>
+        <dt>วิธีใช้</dt><dd>หลังศาลอุทธรณ์เขต 9 วินิจฉัยว่าผู้ใช้เป็นผู้ "เข้าถึง" ระบบผ่าน agent ไม่ใช่ผู้พัฒนา agent เอง ผู้ให้บริการ AI agent สามารถอ้างอิงบรรทัดฐานนี้ในการออกแบบผลิตภัณฑ์ agent ที่ทำธุรกรรมแทนผู้ใช้บนเว็บไซต์อื่น</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงทางกฎหมายสำหรับผู้พัฒนา AI agent ที่ทำงานแทนผู้ใช้บนแพลตฟอร์มบุคคลที่สาม เปิดทางให้ตลาด AI shopping/browsing agent ขยายตัวต่อได้ (คดียังไม่จบทั้งหมด) — <a href="https://www.eff.org/deeplinks/2026/08/appeals-court-agrees-eff-building-web-browser-doesnt-violate-cfaa" target="_blank" rel="noopener">EFF</a></dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>4. SAFE Framework — แบ่งปันข้อมูลเหตุการณ์ความปลอดภัย AI ข้ามบริษัท</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>เหตุการณ์ด้านความปลอดภัยไซเบอร์ของระบบ AI แต่ละบริษัทมักถูกเก็บเป็นความลับ ทำให้อุตสาหกรรมโดยรวมเรียนรู้จากความผิดพลาดของกันและกันได้ช้า</dd>
+        <dt>วิธีใช้</dt><dd>บริษัทสมาชิก OSAA ใช้กรอบ SAFE ที่ NVIDIA, Cisco, CrowdStrike, Hugging Face และ Red Hat ร่วมพัฒนากับ Linux Foundation เพื่อรายงานเหตุการณ์และ near-miss แบบไม่เปิดเผยตัวตน</dd>
+        <dt>ประโยชน์</dt><dd>ช่วยแจ้งเตือนผู้ได้รับผลกระทบเร็วขึ้น ระบุจุดอ่อนของมาตรการควบคุมที่เกิดซ้ำ และเผยแพร่คำแนะนำเชิงปฏิบัติเพื่อลดความเสี่ยงเชิงระบบของอุตสาหกรรม AI โดยรวม — <a href="https://blogs.nvidia.com/blog/open-secure-ai-alliance-contributions/" target="_blank" rel="noopener">NVIDIA</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">3</div><div class="lbl">Models Released<br>(Qwen3.8-Max, Kimi K3, Shieldstral)</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers<br>(ไม่พบเปเปอร์ arXiv/HF ใหม่ในกรอบเวลา)</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">GitHub Projects<br>(OpenClaw, Kimi-K3 weights)</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Company Updates<br>(Anthropic, Meta, Google DeepMind ×2, Microsoft, Amazon, NVIDIA)</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">API/SDK/Framework Updates<br>(Shieldstral, HBF spec)</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>ประเด็น</th><th>เหตุผล</th><th>Source</th></tr>
+      <tr><td>กำหนดการเปิดตัว Gemini 4 หลังการปรับโครงสร้างผู้นำ DeepMind</td><td>โมเดลเรือธงรุ่นใหม่ล่าช้าจากแผนเดิมในเดือน มิ.ย. การเปลี่ยนตัวผู้คุมทีม Gemini เป็น Kavukcuoglu อาจส่งผลต่อกำหนดการเปิดตัวจริง</td><td><a href="https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/" target="_blank" rel="noopener">Google (Official)</a></td></tr>
+      <tr><td>ตัวเลข GitHub star ที่แท้จริงของ OpenClaw</td><td>แหล่งข้อมูลบุคคลที่สามรายงานตัวเลขขัดแย้งกันมาก (200,000–384,000+) ควรตรวจสอบผ่าน GitHub API โดยตรงในรอบถัดไป</td><td><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub — openclaw/openclaw</a></td></tr>
+      <tr><td>รายละเอียดเทคนิคและเงินทุนของ Discovery Loop</td><td>สตาร์ทอัพเพิ่งประกาศตั้งวันนี้ ยังไม่เปิดเผยรายละเอียดเงินทุนเริ่มต้นหรือแผนผลิตภัณฑ์ที่ชัดเจน</td><td><a href="https://www.geekwire.com/2026/the-startup-idea-that-convinced-a-uw-computer-science-legend-to-leave-google-after-27-years/" target="_blank" rel="noopener">GeekWire</a></td></tr>
+      <tr><td>ช่วงเปิดรับความคิดเห็นกรอบ SAFE ของ OSAA</td><td>Linux Foundation เพิ่งเปิดรับความคิดเห็นสัปดาห์นี้ ควรติดตามว่าจะมีบริษัทใหญ่รายใดเพิ่มเข้าร่วมหรือคัดค้านข้อเสนอ</td><td><a href="https://blogs.nvidia.com/blog/open-secure-ai-alliance-contributions/" target="_blank" rel="noopener">NVIDIA</a></td></tr>
+      <tr><td>คดี Amazon v. Perplexity ส่วนเครื่องหมายการค้าที่ยังไม่จบ</td><td>แม้ศาลอุทธรณ์จะพลิกคำสั่งห้ามด้าน CFAA แล้ว แต่คดีส่วนเครื่องหมายการค้ายังดำเนินต่อในศาลรัฐบาลกลางที่ซานฟรานซิสโก</td><td><a href="https://knightcolumbia.org/cases/amazon-v-perplexity-ai" target="_blank" rel="noopener">Knight First Amendment Institute</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/" target="_blank" rel="noopener">Google — The Next Chapter of Our AI Momentum</a></li>
+          <li><a href="https://status.anthropic.com/incidents/mpwx6wbxy02h" target="_blank" rel="noopener">Anthropic Status — Elevated Errors Across Models</a></li>
+          <li><a href="https://mistral.ai/news/shieldstral/" target="_blank" rel="noopener">Mistral AI — Introducing Shieldstral</a></li>
+          <li><a href="https://blogs.nvidia.com/blog/open-secure-ai-alliance-contributions/" target="_blank" rel="noopener">NVIDIA Blog — Open Secure AI Alliance / SAFE</a></li>
+          <li><a href="https://news.skhynix.com/en/hbf-at-fms-2026/" target="_blank" rel="noopener">SK hynix Newsroom — HBF Standard at FMS 2026</a></li>
+          <li><a href="https://www.valaratomics.com/docs/Announcing-our-1B-Series-B-Led-By-Sequoia" target="_blank" rel="noopener">Valar Atomics — Series B Announcement</a></li>
+          <li><a href="https://www.alizila.com/alibaba-unveils-qwen3-8-max-most-capable-flagship-model-to-date/" target="_blank" rel="noopener">Alizila — Qwen3.8-Max</a></li>
+          <li><a href="https://huggingface.co/moonshotai/Kimi-K3" target="_blank" rel="noopener">Hugging Face — moonshotai/Kimi-K3</a></li>
+          <li><a href="https://blog.rust-lang.org/inside-rust/2026/08/05/rust-langrust-is-adopting-an-llm-policy/" target="_blank" rel="noopener">Rust Blog — LLM Policy for rust-lang/rust</a></li>
+          <li><a href="https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august" target="_blank" rel="noopener">European Commission — AI Act Enforcement</a></li>
+          <li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">MCP Blog — The 2026-07-28 Specification</a></li>
+          <li><a href="https://news.lmarena.ai/leaderboard-changelog/" target="_blank" rel="noopener">LMArena — Leaderboard Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="border:none;padding:0;background:none;">ไม่มีเปเปอร์วิจัยที่ยืนยันได้ในกรอบ 24 ชม. ล่าสุด (ดูหัวข้อ Research)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.axios.com/2026/08/05/google-deepmind-demis-hassabis-ai" target="_blank" rel="noopener">Axios — Hassabis Steps Aside</a></li>
+          <li><a href="https://9to5google.com/2026/08/05/demis-hassabis-deepmind/" target="_blank" rel="noopener">9to5Google — Hassabis, Jeff Dean Departs</a></li>
+          <li><a href="https://www.geekwire.com/2026/the-startup-idea-that-convinced-a-uw-computer-science-legend-to-leave-google-after-27-years/" target="_blank" rel="noopener">GeekWire — Discovery Loop</a></li>
+          <li><a href="https://www.techtimes.com/articles/323197/20260805/jeff-dean-sanjay-ghemawat-depart-google-co-found-discovery-loop.htm" target="_blank" rel="noopener">Tech Times — Jeff Dean Departs</a></li>
+          <li><a href="https://www.androidauthority.com/claude-outage-august-5-2026-3694847/" target="_blank" rel="noopener">Android Authority — Claude Outage</a></li>
+          <li><a href="https://www.techtimes.com/articles/323171/20260805/claude-goes-down-again-71b-compute-deal-cannot-prevent-anthropics-164th-outage.htm" target="_blank" rel="noopener">Tech Times — Claude's 164th Outage</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-05/microsoft-s-ai-sales-mostly-come-from-openai-disclosures-show" target="_blank" rel="noopener">Bloomberg — Microsoft's AI Sales Mostly From OpenAI</a></li>
+          <li><a href="https://www.eff.org/deeplinks/2026/08/appeals-court-agrees-eff-building-web-browser-doesnt-violate-cfaa" target="_blank" rel="noopener">EFF — Ninth Circuit CFAA Ruling</a></li>
+          <li><a href="https://www.courthousenews.com/ninth-circuit-lifts-block-on-ai-powered-shopping-assistant/" target="_blank" rel="noopener">Courthouse News — Ninth Circuit Ruling</a></li>
+          <li><a href="https://techcrunch.com/2026/08/04/nvidia-doesnt-mess-around-a-week-after-open-ai-industry-group-formed-its-already-showing-progress/" target="_blank" rel="noopener">TechCrunch — NVIDIA OSAA Progress</a></li>
+          <li><a href="https://techcrunch.com/2026/08/03/sequoias-shaun-maguire-leads-1b-round-for-nuclear-startup-valar-atomics/" target="_blank" rel="noopener">TechCrunch — Valar Atomics Series B</a></li>
+          <li><a href="https://techstartups.com/2026/08/04/venture-capital-startup-funding-roundup-august-4-2026-a16z-base10-dream-ventures-jpmorgan-sequoia-capital-valor-equity-partners-yc-more/" target="_blank" rel="noopener">Tech Startups — Base Power Series D</a></li>
+          <li><a href="https://www.financialcontent.com/article/accwirecq-2026-8-4-arway-provides-update-on-proposed-acquisition-by-nextech3dai-closing-expected-in-october-2026" target="_blank" rel="noopener">Financial Content — Nextech3D.ai/ARway</a></li>
+          <li><a href="https://www.fool.com/investing/2026/07/29/mark-zuckerbergs-meta-is-in-early-talks-to-lease-1/" target="_blank" rel="noopener">The Motley Fool — Meta/Anthropic Compute</a></li>
+          <li><a href="https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/" target="_blank" rel="noopener">MarkTechPost — Qwen3.8-Max</a></li>
+          <li><a href="https://www.fastcompany.com/91581267/what-to-know-about-moonshot-ai-and-its-new-open-weight-model-kimi-k3" target="_blank" rel="noopener">Fast Company — Kimi K3</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+          <li><a href="https://www.star-history.com/blog/openclaw-surpasses-linux-14th-most-starred/" target="_blank" rel="noopener">star-history.com — OpenClaw</a></li>
+          <li><a href="https://news.ycombinator.com/item?id=49179039" target="_blank" rel="noopener">Hacker News — Rust LLM Policy Discussion</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Label</th><th>Meaning</th></tr>
+      <tr><td>✅</td><td>Official</td></tr>
+      <tr><td>📰</td><td>Trusted Media</td></tr>
+      <tr><td>🔥</td><td>Community Trend</td></tr>
+      <tr><td>⚠️</td><td>Rumor</td></tr>
+      <tr><td>❓</td><td>Unverified</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>รายงานนี้สร้างขึ้นโดยอัตโนมัติจากการสืบค้นข้อมูลสาธารณะ ณ วันที่ 5 สิงหาคม 2569 (ICT) เนื้อหาทั้งหมดผ่านการตรวจสอบแหล่งที่มาตามหลักเกณฑ์ที่กำหนด หากพบข้อมูลที่คลาดเคลื่อนหรือต้องการแหล่งอ้างอิงเพิ่มเติม โปรดตรวจสอบจากลิงก์ในหัวข้อ Sources ด้านบน</p>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report Archive</p>
+  </footer>
+</div>
+</body>
+</html>
