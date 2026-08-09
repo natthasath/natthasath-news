@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Economy, Finance &amp; Investment Report — 09 Aug 2026</title>
+<meta name="description" content="สรุปข่าวเศรษฐกิจ การเงิน และการลงทุนรายวัน 9 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --up:#0E7A3E; --up-wash:rgba(14,122,62,0.10);
+  --down:#B23B2E; --down-wash:rgba(178,59,46,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --up:#3FCB7B; --up-wash:rgba(63,203,123,0.12);
+    --down:#E6796A; --down-wash:rgba(230,121,106,0.12);
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:980px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:8px; }
+.masthead{ padding:44px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,4.6vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; display:flex; align-items:center; gap:8px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--ink); }
+.meta-row{ display:flex; gap:18px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:26px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:78ch; }
+ul{ margin:0 0 14px; padding-left:1.2em; }
+ul li{ margin-bottom:8px; max-width:74ch; }
+ul li:last-child{ margin-bottom:0; }
+
+.legend{ display:flex; flex-wrap:wrap; gap:10px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
+.legend span{ white-space:nowrap; }
+
+.table-wrap{ overflow-x:auto; margin:10px 0 16px; border:1px solid var(--line); border-radius:10px; }
+table{ width:100%; border-collapse:collapse; font-size:14.5px; min-width:560px; background:var(--surface); }
+th, td{ text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); background:var(--surface-2); }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td small, .src{ color:var(--ink-faint); font-size:12px; }
+
+.up{ color:var(--up); font-weight:600; }
+.down{ color:var(--down); font-weight:600; }
+.neutral{ color:var(--ink-soft); }
+
+.badge{ display:inline-block; font-size:12px; padding:1px 7px; border-radius:5px; font-family:"JetBrains Mono",monospace; }
+.badge.official{ background:var(--up-wash); color:var(--up); }
+.badge.media{ background:var(--accent-wash); color:var(--accent); }
+.badge.market{ background:var(--surface-2); color:var(--ink-soft); }
+
+.callout{ background:var(--accent-wash); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:14px 0; }
+.callout p:last-child{ margin-bottom:0; }
+.note{ font-size:13.5px; color:var(--ink-faint); border-left:3px solid var(--line-strong); padding-left:12px; margin:12px 0; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:12px 0; }
+.stat-card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+.stat-card .k{ font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.03em; margin-bottom:4px; }
+.stat-card .v{ font-size:15px; font-weight:600; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest — 09 August 2026</p>
+    <h1>💹 Daily Economy, Finance &amp; Investment Report — 2026-08-09</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 09 Aug 2026 (ICT, GMT+7), วันอาทิตย์</span>
+      <span><b>Window:</b> ย้อนหลัง 24 ชั่วโมงล่าสุด (ตลาดหลักปิดทำการวันเสาร์-อาทิตย์ ใช้ข้อมูลปิดตลาดล่าสุด ศุกร์ที่ 7 ส.ค. 2569 เป็นฐาน)</span>
+      <span><b>Category:</b> Economics / Finance / Investment</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="legend">
+      <span class="badge official">✅ ยืนยันแล้ว</span><span>Official (Tier 1)</span>
+      <span class="badge media">📰 รายงาน</span><span>Financial Media (Tier 2)</span>
+      <span class="badge market">📈 ข้อมูลตลาด</span><span>Market Data (Tier 3)</span>
+      <span>❓ ยังยืนยันไม่ได้</span>
+    </div>
+    <p class="note">หมายเหตุระเบียบวิธี: เนื่องจากวันนี้เป็นวันอาทิตย์ ตลาดหุ้น พันธบัตร และค่าเงินหลักส่วนใหญ่ปิดทำการ รายงานฉบับนี้จึงอ้างอิงข้อมูลปิดตลาดล่าสุดของวันศุกร์ที่ 7 ส.ค. 2569 เป็นหลัก (ระบุ "ต่อเนื่อง" สำหรับข้อมูลที่ยังไม่มีการอัปเดตใหม่) ยกเว้นคริปโตเคอร์เรนซีที่ซื้อขาย 24 ชั่วโมงจึงใช้ราคาล่าสุด ณ เช้าวันอาทิตย์ นอกจากนี้ การเข้าถึงหน้าเว็บโดยตรง (WebFetch) ของหลายแหล่งข้อมูล (เช่น TradingEconomics, Investing.com, Bloomberg, CNBC, Reuters, BoT) ถูกจำกัดโดยนโยบายเครือข่ายของระบบในการค้นครั้งนี้ ตัวเลขส่วนใหญ่จึงอ้างอิงผ่านผลการค้นหา (WebSearch) ที่อ้างอิงแหล่งข่าวเหล่านั้นแทนการเปิดหน้าเว็บโดยตรง — มีการตรวจสอบไขว้กับหลายแหล่งเท่าที่ทำได้ แต่ควรพิจารณาความละเอียดของตัวเลขเป็นระดับ "ใกล้เคียง" มากกว่า "ยืนยันทศนิยมแม่นยำ 100%"</p>
+  </section>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>ตลาดหุ้นสหรัฐฯ ปิดตลาดวันศุกร์ที่ 7 ส.ค. ด้วยแรงบวก หลัง S&amp;P 500 ทำสถิติปิดสูงสุดใหม่ที่ 7,757.64 จุด (+0.62%) และ Nasdaq พุ่ง +1.30% สู่ 26,690.62 จุด ขณะที่ Dow Jones ปิดบวกเล็กน้อยที่ 54,036.93 จุด (+0.28%) ส่งผลให้ทั้งสัปดาห์ (3-7 ส.ค.) เป็นสัปดาห์ที่ดีที่สุดนับตั้งแต่เดือนเมษายน (Nasdaq +5.2%, S&amp;P500 +3.6%, Dow +3.0%) แรงหนุนหลักมาจากตัวเลขจ้างงานนอกภาคเกษตร (Nonfarm Payrolls) เดือนกรกฎาคมที่ประกาศเช้าวันเดียวกัน ซึ่งพลิกลดลง -23,000 ตำแหน่ง สวนทางคาดการณ์ที่ +80,000 ถึง +83,000 ตำแหน่งอย่างรุนแรง ทำให้ตลาดปรับลดโอกาสที่ Fed จะขึ้นดอกเบี้ยในเดือนกันยายนลงอย่างมาก ตลาดเอเชียเคลื่อนไหวผสม — Nikkei 225 ปรับลง -0.12% จากแรงขายทำกำไรกลุ่ม AI/เซมิคอนดักเตอร์ ขณะที่ Hang Seng ปรับขึ้น +0.54% จากแรงซื้อกลุ่มเทคโนโลยีและการเงิน ส่วน SET Index ไทยปิดลบเล็กน้อย -0.16% ที่ 1,612.00 จุด ด้วยมูลค่าซื้อขายที่ค่อนข้างเบาบาง (฿63,391 ล้าน) เนื่องจากนักลงทุนรอดูตัวเลขจ้างงานสหรัฐฯ ก่อนตัดสินใจ</p>
+    <p>เงินบาทแข็งค่าต่อเนื่องตลอดสัปดาห์ จากระดับเปิด 33.42 บาท/ดอลลาร์เมื่อวันที่ 4 ส.ค. มาอยู่ที่ราว 33.00-33.25 บาท/ดอลลาร์ในวันที่ 7 ส.ค. โดย SCB Financial Markets ปรับกรอบคาดการณ์รายวันแคบลงต่อเนื่อง สอดคล้องกับดัชนีดอลลาร์ (DXY) ที่อ่อนค่าลง -0.33% ถึง -0.37% สู่ราว 99.55-99.60 จากตัวเลขจ้างงานสหรัฐฯ ที่อ่อนแอ ราคาทองคำโลกพุ่งแรงราว +2.4% ถึง +3% ในวันเดียว สู่ระดับ $4,340-4,356 ต่อออนซ์ ทำสัปดาห์ที่ดีที่สุดนับตั้งแต่เดือนมกราคม จากแรงซื้อสินทรัพย์ปลอดภัยและการคาดการณ์ Fed ลดดอกเบี้ยในเดือนกันยายนที่เพิ่มขึ้น ราคาน้ำมัน Brent ฟื้นตัวกลับสู่ราว $83.5 ต่อบาร์เรลหลังร่วงหลุด $80 กลางสัปดาห์จากความหวังข้อตกลงหยุดยิงอิหร่าน-สหรัฐฯ บริเวณช่องแคบฮอร์มุซ</p>
+    <p>ด้านเงินเฟ้อ ตัวเลข CPI จีนเดือนกรกฎาคมที่ประกาศวันนี้ (9 ส.ค.) อยู่ที่ +0.5% y/y ชะลอจากเดือนก่อน ขณะที่ CPI ไทยเดือนกรกฎาคม (ประกาศ 5 ส.ค.) ชะลอลงเป็นเดือนที่ 3 ติดต่อกันสู่ +1.95% y/y ธนาคารกลางหลักทั่วโลก (BoT ที่ 1.00%, Fed ที่ 3.50-3.75%, ECB ที่ 2.25%, BoJ ที่ 1.00%, PBoC) ยังคงอัตราดอกเบี้ยไว้ตามเดิมทั้งหมดในการประชุมล่าสุด โดยตลาดจับตารายงาน CPI สหรัฐฯ เดือนกรกฎาคมที่จะประกาศวันที่ 12 ส.ค. อย่างใกล้ชิด</p>
+    <p>ตลาดคริปโตเคลื่อนไหวในกรอบแคบช่วงสุดสัปดาห์ — BTC ยืนที่ราว $64,800-65,200 และ ETH ที่ราว $1,924-1,925 ขณะที่กระแสเงินทุนไหลเข้า Bitcoin ETF เป็นบวกต่อเนื่องเป็นวันที่ 5 ติดต่อกัน รวม $853.5 ล้านในสัปดาห์ 3-7 ส.ค. (IBIT ของ BlackRock ครองสัดส่วน 81%) ท่ามกลางเหตุแฮ็กกระเป๋าฮาร์ดแวร์ Coldcard ที่ยอดความเสียหายขยับสู่ราว 1,816 BTC (มูลค่าราว $116 ล้าน) นับเป็นการแฮ็กครั้งใหญ่อันดับ 3 ของปี 2569</p>
+  </section>
+
+  <section>
+    <h2>🌍 ภาพรวมตลาดโลก</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Index</th><th>Close</th><th>Change</th><th>%</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>Dow Jones Industrial Average</td><td>54,036.93</td><td class="up">▲ +151.83</td><td class="up">▲ +0.28%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://x.com/marketsday/status/2085938429976867286">Markets Today</a>, <a href="https://www.detroitnews.com/story/business/2026/08/07/us-stocks-wall-street/91211476007/">Detroit News (Reuters)</a> — ปิดตลาด 7 ส.ค. (แหล่งข้อมูลรองระบุ 54,036.43 / +151.33 ต่างกันเล็กน้อยในทศนิยม)</td></tr>
+          <tr><td>S&amp;P 500</td><td>7,757.64</td><td class="up">▲ +47.68</td><td class="up">▲ +0.62%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.cnbc.com/2026/08/06/stock-market-today-live-updates.html">CNBC</a> — ปิดสูงสุดใหม่เป็นประวัติการณ์ (แหล่งรอง Detroit News ระบุ +46.48/+0.60%)</td></tr>
+          <tr><td>Nasdaq Composite</td><td>26,690.62</td><td class="up">▲ +342.26</td><td class="up">▲ +1.30%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.washingtonpost.com/business/2026/08/07/stocks-dow-jones-iran-oil-fed-interest-rates/1f4daa84-929d-11f1-9fdc-0a725c989a7b_story.html">Washington Post</a>, <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-7-2026">TheStreet</a></td></tr>
+          <tr><td>FTSE 100</td><td>10,901.09</td><td class="up">▲ +33.20</td><td class="up">▲ +0.31%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://247wallst.com/cards/london-finished-at-10-921-68-another-step-deeper-into-recor-ftse-market-bell-01kzedqayvjf730f7k0tvnqbe7">24/7 Wall St.</a> — ปิดตลาด 7 ส.ค. (ตัวเลขระหว่างวันช่วงเช้าจากอีกแหล่งสูงกว่านี้ ไม่ใช่ราคาปิด)</td></tr>
+          <tr><td>Nikkei 225</td><td>65,606.71</td><td class="down">▼ -76.55</td><td class="down">▼ -0.12%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.bbntimes.com/companies/asian-markets-end-mixed-sse-composite-and-hang-seng-lead-gains-as-nikkei-and-kospi-slip">BBN Times</a>, <a href="https://finance.biggo.com/news/2ca4d202-8845-4a79-acc3-896c9d42918c">BiggoFinance</a></td></tr>
+          <tr><td>Hang Seng Index</td><td>25,668.03</td><td class="up">▲ +137.75</td><td class="up">▲ +0.54%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.bbntimes.com/companies/asian-markets-end-mixed-sse-composite-and-hang-seng-lead-gains-as-nikkei-and-kospi-slip">BBN Times</a> — แหล่งรอง (24/7 Wall St.) ระบุ +0.43% ต่างกันเล็กน้อย ทั้งสองยืนยันทิศทางบวก</td></tr>
+          <tr><td>SET Index</td><td>1,612.00</td><td class="down">▼ -2.64</td><td class="down">▼ -0.16%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.bangkokbiznews.com/finance/stock/1246515">Bangkok Biznews</a>, <a href="https://www.kaohoon.com/summary/852663">Kaohoon</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>ปัจจัยสำคัญ:</b></p>
+    <ul>
+      <li>ตัวเลขจ้างงานนอกภาคเกษตร (NFP) เดือนกรกฎาคมของสหรัฐฯ ลดลง -23,000 ตำแหน่ง สวนทางคาดการณ์ +80,000 ถึง +83,000 ตำแหน่งอย่างมาก อัตราว่างงานลดลงเหลือ 4.1% (จาก 4.2%) ส่งผลให้ Fed Funds Futures ปรับลดโอกาสขึ้นดอกเบี้ยเดือนกันยายนลงมาก (<span class="badge media">📰</span> <a href="https://eurasiabusinessnews.com/2026/08/07/u-s-lost-23000-jobs-in-july-2026-as-unemployment-rate-fell-to-4-1/">Eurasia Business News</a>)</li>
+      <li>หุ้นกลุ่มเทคโนโลยี/ซอฟต์แวร์นำตลาดสหรัฐฯ ขึ้น ผลักดัน Nasdaq +1.3% ขณะที่ตลาดเอเชียมีแรงขายทำกำไรกลุ่ม AI/เซมิคอนดักเตอร์ในญี่ปุ่น สวนทางกับแรงซื้อกลุ่มเทคโนโลยี/การเงินในฮ่องกง (<span class="badge media">📰</span> <a href="https://www.bbntimes.com/companies/asian-markets-end-mixed-sse-composite-and-hang-seng-lead-gains-as-nikkei-and-kospi-slip">BBN Times</a>)</li>
+      <li>SET Index ซื้อขายในกรอบแคบด้วยวอลุ่มเบาบาง นักลงทุนเข้าโหมด wait-and-see รอตัวเลขจ้างงานสหรัฐฯ และจับตาความตึงเครียดภูมิรัฐศาสตร์ต่อเนื่อง (<span class="badge media">📰</span> <a href="https://today.line.me/th/v3/article/nXRGavM">LINE Today</a>)</li>
+    </ul>
+    <h3>Earnings / M&amp;A / Sector Rotation</h3>
+    <ul>
+      <li>เม็ดเงินลงทุนในธีม AI เริ่มหมุนออกจากหุ้นกลุ่มชิป/ฮาร์ดแวร์ไปยังกลุ่มที่อยู่ในห่วงโซ่ AI ชั้นถัดไป (โครงสร้างพื้นฐานพลังงาน/การเชื่อมต่อ) เนื่องจากธีม "Magnificent Seven" เริ่มถูกมองว่าซื้อขายแน่นเกินไป (<span class="badge media">📰</span> <a href="https://www.fool.com/investing/2026/08/08/the-ai-trade-rotation-money-is-moving-out-of-chips/">The Motley Fool</a>)</li>
+      <li>ปฏิทินผลประกอบการวันที่ 7 ส.ค. มีบริษัทรายงานหลายราย อาทิ OKLO, Vistra (VST), MDA Space, Under Armour (UAA), Wendy's (WEN), Canopy Growth (CGC) (<span class="badge media">📰</span> <a href="https://www.stocktitan.net/news/2026-08-07/">StockTitan</a>)</li>
+      <li>ตลาด M&amp;A ปี 2569 ยังคงคึกคักต่อเนื่อง ดีลระดับหลายพันล้านดอลลาร์ในกลุ่มเทคโนโลยี สุขภาพ และพลังงานเกิดขึ้นเกือบทุกสัปดาห์ แม้ไม่มีดีลใหญ่เจาะจงวันที่ 7 ส.ค. ที่ยืนยันได้ในการค้นครั้งนี้ (<span class="badge media">📰</span> <a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-3-9-the-2026-m-and-a-resurgence-private-equity-confidence-hits-record-highs">Financial Content</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🇹🇭 ตลาดหุ้นไทย</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="k">SET Index</div><div class="v down">1,612.00 ▼ -2.64 (-0.16%)</div></div>
+      <div class="stat-card"><div class="k">มูลค่าซื้อขาย</div><div class="v">฿63,391.38 ล้าน</div></div>
+      <div class="stat-card"><div class="k">Foreign Flow (รายสัปดาห์ 3-7 ส.ค.)</div><div class="v">หุ้น: ขายสุทธิ ฿8,964 ล้าน · พันธบัตร: ซื้อสุทธิ ฿9,557 ล้าน</div></div>
+    </div>
+    <p class="note">ข้อมูล Foreign Flow รายวันเฉพาะวันที่ 7 ส.ค. ไม่สามารถยืนยันตัวเลขที่แน่ชัดได้จากแหล่งข้อมูลที่เข้าถึงได้ในการค้นครั้งนี้ (มีรายงานว่าพร็อพเทรดและต่างชาติขายสุทธิราว ฿3.8 พันล้าน แต่แหล่งข่าวไม่ชัดเจนพอที่จะยืนยันว่าตรงกับวันที่ 7 ส.ค. จึงแสดงเฉพาะยอดสุทธิรายสัปดาห์ที่ยืนยันได้แทน) (<span class="badge media">📰</span> <a href="https://www.bangkokbiznews.com/world/economics/1246534">Bangkok Biznews — Money and Stock Market Review 3-7 ส.ค. 69</a>)</p>
+    <h3>หุ้นเด่น (มูลค่าซื้อขายสูงสุด 5 อันดับ)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>หุ้น</th><th>มูลค่าซื้อขาย</th><th class="wrap">เหตุผล</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>PTT</td><td>฿5,046.80 ล้าน</td><td class="wrap">หุ้นพลังงานที่ได้รับความสนใจต่อเนื่องจากราคาน้ำมันที่ฟื้นตัว</td><td class="wrap"><span class="badge media">📰</span> ข่าวไทยรายวัน (ความเชื่อมั่นระดับปานกลาง — ไม่สามารถเปิดหน้าเว็บต้นทางยืนยันโดยตรงได้)</td></tr>
+          <tr><td>ADVANC</td><td>฿3,768.36 ล้าน</td><td class="wrap">หุ้นเด่นหลังรายงานกำไรไตรมาส 2/2569 ที่ ฿13.7 พันล้าน (+25% YoY)</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.naewna.com/business/columnist/67224">แนวหน้า</a></td></tr>
+          <tr><td>KTB</td><td>฿3,522.67 ล้าน</td><td class="wrap">กลุ่มธนาคารปรับตัวลงวันนี้ท่ามกลางวอลุ่มซื้อขายสูง</td><td class="wrap"><span class="badge media">📰</span> ข่าวไทยรายวัน</td></tr>
+          <tr><td>DELTA</td><td>฿3,401.76 ล้าน</td><td class="wrap">หุ้นกลุ่มอิเล็กทรอนิกส์/ห่วงโซ่ AI ยังคงมีมูลค่าซื้อขายสูงต่อเนื่อง</td><td class="wrap"><span class="badge media">📰</span> ข่าวไทยรายวัน</td></tr>
+          <tr><td>GULF</td><td>฿3,365.72 ล้าน</td><td class="wrap">หนึ่งในหุ้นที่โบรกเกอร์ (CGSI) แนะนำเป็น Top Pick</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.kaohoon.com/news/852392">Kaohoon</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">ตัวเลขมูลค่าซื้อขายรายหุ้นข้างต้นมีความเชื่อมั่นระดับปานกลาง (สังเคราะห์จากผลการค้นหาที่อ้างอิงสื่อไทย ไม่สามารถเปิดหน้าเว็บต้นทางโดยตรงเพื่อยืนยันซ้ำได้ในการค้นครั้งนี้)</p>
+    <h3>ข่าวบริษัทสำคัญ</h3>
+    <ul>
+      <li><b>ADVANC (AIS):</b> กำไรสุทธิไตรมาส 2/2569 ที่ ฿13.7 พันล้าน เพิ่มขึ้น +25% YoY (<span class="badge media">📰</span> แนวหน้า)</li>
+      <li><b>TRT:</b> กำไรไตรมาส 2 พุ่ง +271% สู่ ฿127 ล้าน จากยอดขายหม้อแปลงไฟฟ้าที่แข็งแกร่ง พร้อมอนุมัติเงินปันผลระหว่างกาล ฿0.17/หุ้น (<span class="badge media">📰</span> <a href="https://www.kaohoon.com/news/general/851230">Kaohoon</a>)</li>
+      <li><b>SCGD / SCGP:</b> ประกาศจ่ายเงินปันผลงวดครึ่งปีแรก 2569 ที่ ฿0.155/หุ้น และ ฿0.40/หุ้น ตามลำดับ (<span class="badge market">📈</span> <a href="https://www.set.or.th/th/market/stock-calendar/x-calendar">SET X-Calendar</a>)</li>
+      <li><b>มุมมองโบรกเกอร์ CGSI:</b> คาด SET เคลื่อนไหวในกรอบ 1,600-1,625 จุด ชูหุ้นเด่น ADVANC และ GULF (<span class="badge media">📰</span> Kaohoon)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💱 ค่าเงินและสินค้าโภคภัณฑ์</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Asset</th><th>Price</th><th>Change</th><th>%</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>USD/THB</td><td>33.03-33.04</td><td class="up">▼ (บาทแข็งค่า)</td><td class="up">▲ แข็งค่า</td><td class="wrap"><span class="badge market">📈</span> <a href="https://www.exchange-rates.org/exchange-rate-history/usd-thb-2026">exchange-rates.org</a> — ราคาปิด 7-8 ส.ค. 2569</td></tr>
+          <tr><td>EUR/USD</td><td>1.154-1.156</td><td class="up">▲</td><td class="up">▲ สูงสุดรอบ 7 สัปดาห์</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.vantagemarkets.com/market-analysis/us-dollar-index-dxy-forecast-worst-week-august-3-7-2026/">Vantage Markets</a></td></tr>
+          <tr><td>USD/JPY</td><td>157.65</td><td class="down">▼</td><td class="down">▼ -0.42%</td><td class="wrap"><span class="badge market">📈</span> Trading Economics (ผ่านผลค้นหา) — ช่วงราคาระหว่างวัน 156.68-158.57</td></tr>
+          <tr><td>USD/CNY</td><td>6.7420</td><td class="down">▼</td><td class="down">▼ -0.06%</td><td class="wrap"><span class="badge market">📈</span> Trading Economics (ผ่านผลค้นหา) — ใกล้จุดต่ำสุดปี 2569 ที่ 6.7471</td></tr>
+          <tr><td>US Dollar Index (DXY)</td><td>99.55-99.60</td><td class="down">▼</td><td class="down">▼ -0.33% ถึง -0.37%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://fxdailyreport.com/us-dollar-index-pulls-back-off-session-highs-to-trade-at-99-55/">FX Daily Report</a></td></tr>
+          <tr><td>Gold (Spot)</td><td>$4,340-4,356/oz</td><td class="up">▲</td><td class="up">▲ +2.4% ถึง +3% (วัน)</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.cnbc.com/amp/2026/08/07/gold-heads-for-best-week-since-january-us-jobs-data-in-focus.html">CNBC</a> — สัปดาห์ที่ดีที่สุดนับตั้งแต่ ม.ค.</td></tr>
+          <tr><td>Silver (Spot)</td><td>$63.54-65.05/oz</td><td class="up">▲</td><td class="up">▲ +3.3%</td><td class="wrap"><span class="badge market">📈</span> <a href="https://www.usagold.com/daily-precious-metals-market-report-august-7-2026/">USAGOLD</a> — สูงสุดรอบ 6 สัปดาห์</td></tr>
+          <tr><td>WTI Crude</td><td>$78.18-78.31/bbl</td><td class="up">▲</td><td class="up">▲ +1.15%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://fortune.com/article/price-of-oil-08-07-2026/">Fortune</a></td></tr>
+          <tr><td>Brent Crude</td><td>$83.49-83.55/bbl</td><td class="up">▲</td><td class="up">▲ +1.29%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.vantagemarkets.com/market-analysis/crude-oil-price-today-brent-wti-august-3-7-2026/">Vantage Markets</a> — ฟื้นจากจุดต่ำสุดกลางสัปดาห์ที่หลุด $80</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">ทุกราคาอ้างอิงข้อมูลปิดตลาด/ล่าสุด ณ วันศุกร์ที่ 7 ส.ค. 2569 หรือใกล้เคียง (ตลาดปิดวันเสาร์-อาทิตย์) ทิศทาง USD/THB ยืนยันแล้วว่าเป็นการอ่อนค่าของดอลลาร์/แข็งค่าของบาท สอดคล้องกับ DXY ที่ปรับลง</p>
+  </section>
+
+  <section>
+    <h2>🇹🇭 วิเคราะห์ค่าเงินบาท</h2>
+    <p><b>ค่าเงินบาทล่าสุด:</b> ราว 33.00-33.25 บาท/ดอลลาร์ (ปิดตลาด 7 ส.ค. 2569) <b>แนวโน้ม:</b> แข็งค่าต่อเนื่องตลอดสัปดาห์ จากระดับเปิด 33.42 บาท/ดอลลาร์เมื่อ 4 ส.ค. มาอยู่ที่ 33.00-33.25 บาท/ดอลลาร์ในวันที่ 7 ส.ค. (<span class="badge media">📰</span> <a href="https://www.bangkokbiznews.com/finance/investment/1246069">Bangkok Biznews</a>, <a href="https://siambusinessnews.com/89934">Siam Business News</a>)</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>วันที่</th><th>กรอบคาดการณ์ SCB FM</th></tr></thead>
+        <tbody>
+          <tr><td>6 ส.ค. 2569</td><td>32.95-33.20 บาท/ดอลลาร์</td></tr>
+          <tr><td>7 ส.ค. 2569</td><td>33.00-33.25 บาท/ดอลลาร์</td></tr>
+          <tr><td>10-14 ส.ค. 2569 (KBank รายสัปดาห์)</td><td>32.80-33.60 บาท/ดอลลาร์</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">ไม่พบข้อมูล High/Low ระหว่างวันและค่าเฉลี่ย 7 วันแบบตัวเลขแม่นยำจากแหล่งข้อมูล Tier 1/2 ที่เข้าถึงได้ในการค้นครั้งนี้ — ใช้กรอบคาดการณ์ของธนาคารพาณิชย์ (SCB Financial Markets, Kasikorn Research) แทน ซึ่งสะท้อนทิศทางและกรอบความผันผวนที่ตลาดคาดการณ์ได้ใกล้เคียงกัน</p>
+    <p><b>ปัจจัยสำคัญ:</b></p>
+    <ul>
+      <li><b>Dollar/Bond Yield:</b> ตัวเลขจ้างงานสหรัฐฯ ที่อ่อนแอ (NFP -23,000) กดดันดอลลาร์อ่อนค่าและผลตอบแทนพันธบัตรสหรัฐฯ ปรับลง หนุนบาทแข็งค่า (<span class="badge media">📰</span> <a href="https://www.bangkokbiznews.com/world/economics/1246534">Bangkok Biznews</a>)</li>
+      <li><b>ราคาน้ำมัน:</b> Brent ร่วงหลุด $80/บาร์เรลกลางสัปดาห์จากความหวังข้อตกลงหยุดยิงอิหร่าน-สหรัฐฯ ช่วยลดภาระนำเข้าพลังงานของไทย หนุนบาทผ่านช่องทางดุลการค้า</li>
+      <li><b>Capital Flow:</b> นักวิเคราะห์ยังคงระบุกระแสเงินทุนต่างชาติเข้า-ออกตลาดพันธบัตร/หุ้นไทยเป็นปัจจัยแกว่งทิศทางบาทระยะสั้น สัปดาห์ 3-7 ส.ค. ต่างชาติซื้อสุทธิพันธบัตรไทย ฿9,557 ล้าน แต่ขายสุทธิหุ้นไทย ฿8,964 ล้าน</li>
+      <li><b>Trade Balance:</b> ยอดส่งออกไทยยังขยายตัว +9.8% y/y ณ พ.ค. 2569 ได้อานิสงส์จากการลงทุนกลุ่มเทคโนโลยี/AI และความเสี่ยงภูมิรัฐศาสตร์ตะวันออกกลางที่คลี่คลายลง (<span class="badge media">📰</span> <a href="https://www.investing.com/news/economy-news/thai-economy-helped-by-exports-and-manufacturing-in-august-but-tourism-slows-3638401">Reuters via Investing.com</a>)</li>
+    </ul>
+    <p><b>ผลกระทบ:</b></p>
+    <ul>
+      <li><b>ส่งออก:</b> ได้อานิสงส์จากอุปสงค์เทคโนโลยี/AI แม้บาทแข็งอาจกดดันความสามารถแข่งขันด้านราคาในระยะถัดไป</li>
+      <li><b>ท่องเที่ยว:</b> สมาคมไทยธุรกิจการท่องเที่ยว (ATTA) เตือนว่าบาทที่แข็งเกินไปกระทบความสามารถแข่งขันด้านราคาเทียบคู่แข่งภูมิภาค (ญี่ปุ่น เวียดนาม) ท่ามกลางเป้าหมายนักท่องเที่ยว 39 ล้านคนในปี 2569 (<span class="badge media">📰</span> <a href="https://www.nationthailand.com/news/tourism/40060241">Nation Thailand</a>)</li>
+      <li><b>นักลงทุน/ธนาคารกลาง:</b> ธนาคารแห่งประเทศไทยยอมรับผ่านรายงานของ Reuters ว่าบาทแข็งค่ากดดันทั้งผู้ส่งออกและภาคท่องเที่ยว</li>
+    </ul>
+    <p><b>มุมมองนักวิเคราะห์:</b> ธนาคารพาณิชย์ (SCB, Kasikorn Research) ประเมินบาทจะเคลื่อนไหวในกรอบกว้าง 32.80-33.60 บาท/ดอลลาร์ ช่วงกลางเดือนสิงหาคม โดยทิศทางขึ้นอยู่กับการคาดการณ์ลดดอกเบี้ยของ Fed ความคืบหน้าเจรจาช่องแคบฮอร์มุซ และราคาน้ำมันเป็นหลัก มากกว่าจะมีแนวโน้มทางเดียวที่ชัดเจน</p>
+  </section>
+
+  <section>
+    <h2>📈 เงินเฟ้อ</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Country</th><th>CPI</th><th>Core</th><th>PPI</th><th>Status</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>ไทย</td><td>+1.95% y/y (ก.ค. 69)</td><td>+1.34% y/y</td><td>ไม่มีข้อมูล PPI ในรอบนี้</td><td>ชะลอตัวเดือนที่ 3 ติดต่อกัน (ประกาศ 5 ส.ค. 69)</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.bangkokpost.com/business/general/3296905/thailands-july-headline-cpi-rises-195-yearonyear-lower-than-forecast">Bangkok Post</a></td></tr>
+          <tr><td>สหรัฐฯ</td><td>+3.5% y/y (มิ.ย. 69)</td><td>+2.6% y/y</td><td>+5.5% y/y</td><td>ต่ำกว่าคาด (ประกาศ 14 ก.ค. 69); ตัวเลข ก.ค. รอประกาศ 12 ส.ค.</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.bls.gov/news.release/archives/cpi_07142026.htm">BLS</a></td></tr>
+          <tr><td>ยูโรโซน</td><td>+2.9% y/y (ก.ค. 69, flash)</td><td>+2.5% y/y</td><td>ไม่พบข้อมูลในรอบนี้</td><td>สูงกว่าเดือนก่อน (ประกาศ 31 ก.ค. 69)</td><td class="wrap"><span class="badge official">✅</span> <a href="https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-31072026-ap">Eurostat</a></td></tr>
+          <tr><td>จีน</td><td>+0.5% y/y (ก.ค. 69)</td><td>+0.9% y/y</td><td>+3.5% y/y</td><td>ชะลอตัว ต่ำกว่าคาด PPI (ประกาศวันนี้ 9 ส.ค. 69)</td><td class="wrap"><span class="badge official">✅</span> <a href="https://news.cgtn.com/news/2026-08-09/China-s-CPI-and-PPI-maintain-upward-trend-in-July-1PsKq8Nf3cQ/p.html">CGTN/NBS</a></td></tr>
+          <tr><td>ญี่ปุ่น</td><td>+1.7% y/y (มิ.ย. 69)</td><td>+1.6% y/y</td><td>ไม่พบข้อมูลในรอบนี้</td><td>สูงสุดในรอบหลายเดือน แต่ยังต่ำกว่าเป้า 2% ของ BOJ (ประกาศ 24 ก.ค. 69)</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.cnbc.com/2026/07/24/japan-cpi-june-inflation-oil-prices-yen.html">CNBC</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>สรุปแนวโน้ม:</b> เงินเฟ้อไทยและญี่ปุ่นยังอยู่ในกรอบต่ำ-ปานกลาง โดยไทยชะลอตัวต่อเนื่อง 3 เดือนติด ขณะที่สหรัฐฯ และยูโรโซนเงินเฟ้อยังสูงกว่าเป้าหมาย 2% ของธนาคารกลางค่อนข้างมาก ส่วนจีนเผชิญแรงกดดันเงินฝืดเชิงเปรียบเทียบ (CPI ใกล้ 0%) ท่ามกลาง PPI ที่ยังติดลบเชิงโมเมนตัมแม้ y/y เป็นบวก ตัวเลข CPI สหรัฐฯ เดือนกรกฎาคมที่จะประกาศ 12 ส.ค. จะเป็นดัชนีชี้วัดสำคัญต่อทิศทางดอกเบี้ย Fed ในการประชุมเดือนกันยายน</p>
+  </section>
+
+  <section>
+    <h2>📉 Bond Yield</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Country</th><th>2Y</th><th>10Y</th><th>Change</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>สหรัฐฯ</td><td>4.193%</td><td>4.60%</td><td class="down">▼ ทั้งคู่ปรับลง (10Y -7bps, 2Y -5bps)</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.bloomberg.com/news/articles/2026-08-07/us-treasuries-rally-as-soft-jobs-data-trims-fed-rate-hike-bets">Bloomberg</a>, <a href="https://www.cnbc.com/2026/08/07/treasury-yields-steady-ahead-of-key-nonfarm-payrolls-jobless-data.html">CNBC</a></td></tr>
+          <tr><td>ไทย</td><td>~1.92%</td><td>~2.34% (สูงสุดตั้งแต่ ก.พ. 68)</td><td class="up">▲ ทยอยขึ้นในรอบ 4 สัปดาห์</td><td class="wrap"><span class="badge market">📈</span> <a href="https://tradingeconomics.com/thailand/government-bond-yield">Trading Economics</a> (ผ่านผลค้นหา)</td></tr>
+          <tr><td>เยอรมนี/ยูโรโซน</td><td>ไม่พบข้อมูลในรอบนี้</td><td>3.14%</td><td class="up">▲ +2bps</td><td class="wrap"><span class="badge market">📈</span> Trading Economics (ผ่านผลค้นหา)</td></tr>
+          <tr><td>ญี่ปุ่น</td><td>ไม่พบข้อมูลในรอบนี้</td><td>2.80%</td><td class="up">▲ +4bps</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.marketscreener.com/quote/interest/JAPAN-10Y-CASH-146043429/news/JGB-yields-rise-as-hawkish-BOJ-rhetoric-trumps-slide-in-US-yields-46997803/">MarketScreener</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>Yield Curve / Spread:</b> เส้นอัตราผลตอบแทนพันธบัตรสหรัฐฯ ยังคงลาดขึ้นปกติ (ไม่กลับหัว) โดยส่วนต่าง 2s10s อยู่ที่ราว +40.7bps ผลตอบแทนทั้งเส้นปรับลงวันศุกร์จากตัวเลขจ้างงานที่อ่อนแอ กดโอกาสขึ้นดอกเบี้ย Fed เดือนกันยายนลงจาก ~55-67% เหลือราว 40-44% ตามข้อมูล CME FedWatch (ตัวเลขแตกต่างกันเล็กน้อยระหว่างแหล่งข่าว) ส่วนพันธบัตรญี่ปุ่นสวนทางโลก โดยผลตอบแทนปรับขึ้นจากท่าทีแข็งกร้าวของ BOJ แม้ผลตอบแทนสหรัฐฯ จะลดลง สะท้อน Bond Sentiment ที่แตกต่างกันในแต่ละภูมิภาค พันธบัตรไทยอายุ 10 ปี ปรับขึ้นแตะระดับสูงสุดในรอบ 18 เดือนจากแรงขายสุทธิของนักลงทุนต่างชาติในบางช่วงก่อนหน้า แม้สัปดาห์ล่าสุด (3-7 ส.ค.) ต่างชาติจะกลับมาซื้อสุทธิพันธบัตรไทย</p>
+  </section>
+
+  <section>
+    <h2>🏦 Central Banks</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ธนาคารกลาง</th><th>อัตราดอกเบี้ยปัจจุบัน</th><th>การประชุมล่าสุด</th><th>การประชุมถัดไป</th></tr></thead>
+        <tbody>
+          <tr><td>Bank of Thailand (BoT)</td><td>1.00%</td><td>คงอัตราดอกเบี้ย มติ 7-0 (24 มิ.ย. 69)</td><td>26 ส.ค. 2569</td></tr>
+          <tr><td>US Federal Reserve (Fed)</td><td>3.50-3.75%</td><td>คงอัตราดอกเบี้ย มติ 9-3 (29 ก.ค. 69) — 3 เสียงค้านต้องการขึ้นดอกเบี้ย</td><td>15-16 ก.ย. 2569</td></tr>
+          <tr><td>European Central Bank (ECB)</td><td>2.25% (Deposit Facility)</td><td>คงอัตราดอกเบี้ย (23 ก.ค. 69) หลังขึ้น 25bps ใน มิ.ย. 69</td><td>9-10 ก.ย. 2569</td></tr>
+          <tr><td>Bank of Japan (BoJ)</td><td>1.00% (สูงสุดตั้งแต่ปี 2538)</td><td>คงอัตราดอกเบี้ย มติ 8-1 (31 ก.ค. 69)</td><td>17-18 ก.ย. 2569</td></tr>
+          <tr><td>People's Bank of China (PBoC)</td><td>7-Day Reverse Repo 1.40% / LPR 1Y 3.0%, 5Y 3.5%</td><td>คง LPR ต่อเนื่องเดือนที่ 14 (ก.ค. 69)</td><td>ประกาศ LPR รอบถัดไป 20 ส.ค. 2569</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>BoT ประเมินเศรษฐกิจไทยปี 2569 จะขยายตัวชะลอลงเหลือราว 1.5% (แย่ที่สุดตั้งแต่ปี 2563) ขณะที่เงินเฟ้อคาดเพิ่มขึ้นในระยะสั้นจากแรงกดดันด้านอุปทานที่เกี่ยวข้องกับความขัดแย้งตะวันออกกลาง ก่อนจะทยอยผ่อนคลายลง Fed คงดอกเบี้ยต่อเนื่องเป็นครั้งที่ 5 ติดต่อกัน แต่มีความเห็นแตกแยกภายในคณะกรรมการ (3 เสียงต้องการขึ้นดอกเบี้ยจากความเสี่ยงเงินเฟ้อจากตะวันออกกลาง) ส่วน BOJ ส่งสัญญาณเงินเฟ้อพื้นฐานอาจเร่งตัว "ชัดเจนเกิน 2%" ตั้งแต่ครึ่งหลังปีงบประมาณ 2569 จากค่าจ้างและเงินเยนที่อ่อนค่า (<span class="badge official">✅</span> <a href="https://www.bot.or.th/en/news-and-media/news/mpc/news-20260624-NVHKxr00.html">BoT</a>, <a href="https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html">CNBC/Fed</a>, <a href="https://www.cnbc.com/2026/07/31/boj-rates-yen-intervention-inflation-japan.html">CNBC/BOJ</a>)</p>
+  </section>
+
+  <section>
+    <h2>🏛 Government Policy</h2>
+    <h3>ไทย</h3>
+    <ul>
+      <li>กระทรวงการท่องเที่ยวและกีฬาเร่งผลักดัน 3 มาตรการกระตุ้นท่องเที่ยวนอกฤดูกาล อาทิ โครงการ "เที่ยวไทยคนละครึ่ง Plus" งบรวมราว 2.45 พันล้านบาท คาดสร้างรายได้ท่องเที่ยว ~5.6 หมื่นล้านบาท ตั้งเป้าเสนอ ครม. ภายในสิ้นเดือนสิงหาคม โดยจะหารือแหล่งงบกับกระทรวงการคลังภายใต้ พ.ร.ก. กู้เงินฉุกเฉิน (<span class="badge media">📰</span> <a href="https://www.nationthailand.com/news/general/40069267">Nation Thailand</a>)</li>
+      <li>งบประมาณปี 2569 อยู่ที่ 3.78 ล้านล้านบาท ขาดดุล 8.6 แสนล้านบาท ตามที่ ครม. อนุมัติไปก่อนหน้า</li>
+    </ul>
+    <h3>ต่างประเทศ</h3>
+    <ul>
+      <li><b>สหรัฐฯ:</b> รัฐบาลทรัมป์บังคับใช้ภาษีนำเข้าตามมาตรา 301 (10-12.5%) เชื่อมโยงประเด็นแรงงานบังคับ ครอบคลุมคู่ค้ากว่า 80 ประเทศ มีผล 23 ก.ค. 69; ภาษีนำเข้าสินค้าจากแคนาดารอบใหม่ (แอลกอฮอล์ อุปกรณ์ฮอกกี้ นม ไม้ อิเล็กทรอนิกส์ พลาสติก เฟอร์นิเจอร์ เครื่องจักร) มีผล 19 ส.ค. 69; เลื่อนการขึ้นภาษีตอบโต้เม็กซิโกเป็น 30% ออกไป 90 วัน (ประกาศ 31 ก.ค. 69); คืนภาษี IEEPA "Liberation Day" มูลค่าราว $1 แสนล้าน (ราว 60% ของ $1.66 แสนล้านที่เก็บไป) หลังศาลฎีกาสหรัฐฯ ตัดสินว่าภาษีดังกล่าวขัดกฎหมาย (ประกาศ 5 ส.ค. 69) (<span class="badge media">📰</span> <a href="https://www.cnbc.com/2026/08/05/trump-tariffs-refunds-ieepa-lawsuit.html">CNBC</a>)</li>
+      <li><b>จีน:</b> ผู้นำจีนส่งสัญญาณสนับสนุนเศรษฐกิจที่ชะลอตัวด้วยการเร่งเบิกจ่ายงบลงทุนโครงสร้างพื้นฐานที่อนุมัติไว้แล้ว มากกว่าออกมาตรการกระตุ้นใหม่ขนาดใหญ่ ท่ามกลางความกังวลกำลังการผลิตส่วนเกินและวินัยหนี้รัฐบาลท้องถิ่น หลัง GDP ไตรมาส 2 ขยายตัวช้าที่สุดในรอบกว่า 3 ปี</li>
+      <li><b>ยุโรป:</b> มีความกังวลเรื่องความยั่งยืนทางการคลังของยูโรโซน หลังหนี้สาธารณะต่อ GDP อยู่ที่ 88.9% ต้นปี 2569 ขณะที่กองทุนฟื้นฟู RRF ของ EU มีกำหนดส่งมอบเป้าหมาย/รายงานสำคัญในช่วง ส.ค.-ธ.ค. 69 (<span class="badge media">📰</span> <a href="https://cyprus-mail.com/2026/08/09/concerns-regarding-sustainability-of-eu-fiscal-policy">Cyprus Mail</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 Economic Indicators</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Country</th><th>Indicator</th><th>Actual</th><th>Forecast</th><th>Previous</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>ไทย</td><td>GDP Q1/2569</td><td>+2.8% y/y</td><td>+2.2% y/y</td><td>ดูรายงาน NESDC ไตรมาสก่อน</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.nesdc.go.th/">NESDC</a></td></tr>
+          <tr><td>สหรัฐฯ</td><td>GDP Q2/2569 (advance)</td><td>+1.5% (annualized)</td><td>+2.1%</td><td>Q1: +2.1%</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.bea.gov/news/2026/gdp-advance-estimate-2nd-quarter-2026">BEA</a></td></tr>
+          <tr><td>ยูโรโซน</td><td>GDP Q2/2569 (flash)</td><td>+0.4% q/q, +1.0% y/y</td><td>+0.2% q/q</td><td>Q1: +0.1% q/q</td><td class="wrap"><span class="badge official">✅</span> <a href="https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-30072026-ap">Eurostat</a></td></tr>
+          <tr><td>จีน</td><td>GDP Q2/2569</td><td>+4.3% y/y</td><td>+4.5% y/y</td><td>Q1: +5.0% y/y</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.stats.gov.cn/english/PressRelease/202607/t20260715_1964120.html">NBS China</a></td></tr>
+          <tr><td>สหรัฐฯ</td><td>ISM Manufacturing PMI (ก.ค.)</td><td>55.6</td><td>53.9-54.0</td><td>53.3</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.prnewswire.com/news-releases/manufacturing-pmi-at-55-6-july-2026-ism-manufacturing-pmi-report-302840669.html">ISM</a></td></tr>
+          <tr><td>สหรัฐฯ</td><td>ISM Services PMI (ก.ค.)</td><td>54.1</td><td>54.5</td><td>54.0</td><td class="wrap"><span class="badge media">📰</span> InvestingLive</td></tr>
+          <tr><td>ยูโรโซน</td><td>S&amp;P Composite PMI (ก.ค., final)</td><td>52.0</td><td>ไม่มีการคาดการณ์สำหรับตัวเลข final (flash คาด ~50.3)</td><td>50.0</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.pmi.spglobal.com/">S&amp;P Global</a></td></tr>
+          <tr><td>จีน</td><td>NBS Manufacturing PMI (ก.ค.)</td><td>49.2</td><td>ไม่มีการคาดการณ์ระบุตัวเลขชัดเจนในแหล่งข้อมูล</td><td>50.3</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.focus-economics.com/countries/china/news/pmi/china-pmi-31-07-2026-manufacturing-and-non-manufacturing-pmis-disappoint-in-july/">FocusEconomics/NBS</a></td></tr>
+          <tr><td>ไทย</td><td>S&amp;P Global Manufacturing PMI (ก.ค.)</td><td>54.2</td><td>ไม่มีการคาดการณ์สำหรับตัวเลขนี้</td><td>53.6</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.pmi.spglobal.com/">S&amp;P Global</a></td></tr>
+          <tr><td>สหรัฐฯ</td><td>Nonfarm Payrolls (ก.ค.)</td><td>-23,000</td><td>+80,000 ถึง +83,000</td><td>+20,000 (มิ.ย., ปรับทบทวนลง)</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.bls.gov/news.release/pdf/empsit.pdf">BLS</a></td></tr>
+          <tr><td>สหรัฐฯ</td><td>Unemployment Rate (ก.ค.)</td><td>4.1%</td><td>ไม่มีตัวเลขคาดการณ์เดี่ยวที่ชัดเจนจากแหล่งข้อมูล</td><td>4.2%</td><td class="wrap"><span class="badge official">✅</span> BLS</td></tr>
+          <tr><td>สหรัฐฯ</td><td>Initial Jobless Claims (สัปดาห์สิ้นสุด 1 ส.ค.)</td><td>199,000</td><td>ต่ำกว่าคาด (ไม่มีตัวเลข consensus เดี่ยวชัดเจน)</td><td>198,000</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.pnc.com/content/dam/pnc-com/pdf/aboutpnc/EconomicReports/EconomicUpdates/2026/PNC_Economics_Research_Claims_6_August_2026.pdf">PNC Economics</a></td></tr>
+          <tr><td>ไทย</td><td>อัตราว่างงาน (Q1/2569)</td><td>0.94% (~390,000 คน)</td><td>ไม่มีการคาดการณ์สำหรับตัวเลขนี้</td><td>0.89% (Q1/2568)</td><td class="wrap"><span class="badge official">✅</span> NSO Thailand</td></tr>
+          <tr><td>สหรัฐฯ</td><td>Retail Sales (มิ.ย.)</td><td>+0.2% m/m, +6.7% y/y</td><td>+0.2%</td><td>+1.0% m/m (พ.ค.)</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.census.gov/retail/marts/www/marts_current.pdf">US Census Bureau</a></td></tr>
+          <tr><td>จีน</td><td>Retail Sales (มิ.ย.)</td><td>+1.0% y/y</td><td>-0.1%</td><td>-0.6% y/y (พ.ค.)</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.cnbc.com/2026/07/15/china-gdp-retail-sales-investment-june-.html">CNBC/NBS</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">GDP ไทยไตรมาส 2/2569 และ GDP ญี่ปุ่นไตรมาส 2/2569 ยังไม่ประกาศ ณ วันที่รายงาน (คาดว่า NESDC จะประกาศกลาง-ปลายเดือนสิงหาคม และคณะรัฐมนตรีญี่ปุ่นจะประกาศราว 15-16 ส.ค. 69) ยอดค้าปลีกไทยแบบมูลค่า (คล้ายรูปแบบสหรัฐฯ) ไม่พบข้อมูลที่ยืนยันได้จากหน่วยงานทางการในรอบนี้ — มีเพียงดัชนีความเชื่อมั่นผู้ค้าปลีก (RSI) ซึ่งเป็นดัชนีเชิงคุณภาพจากหอการค้าไทยที่ปรับดีขึ้น 16.0 จุด m/m ในเดือนมิถุนายน ซึ่งไม่สามารถเทียบเคียงกับตัวเลขมูลค่ายอดขายได้โดยตรง</p>
+  </section>
+
+  <section>
+    <h2>🏢 Business</h2>
+    <ul>
+      <li><b>Earnings:</b> ปฏิทินผลประกอบการสัปดาห์ 7 ส.ค. มี OKLO, Vistra, MDA Space, Under Armour, Wendy's, Canopy Growth รายงาน; สัปดาห์ถัดไป (10-14 ส.ค.) จับตา CoreWeave, Cisco, Applied Materials (13 ส.ค. หลังปิดตลาด), Super Micro Computer, Lumentum Holdings, Cardinal Health เป็นตัวชี้วัดว่าการลงทุน AI/Capex ยังแข็งแกร่งหรือไม่ (<span class="badge media">📰</span> <a href="https://www.cnbc.com/2026/08/07/stock-market-next-week-outlook-for-aug-10-14-2026-.html">CNBC</a>)</li>
+      <li><b>M&amp;A:</b> ตลาดควบรวมกิจการทั่วโลกปี 2569 ยังคึกคักต่อเนื่อง ดีลมูลค่าหลายพันล้านดอลลาร์ในกลุ่มเทคโนโลยี สุขภาพ และพลังงานเกิดขึ้นเกือบทุกสัปดาห์ (<span class="badge media">📰</span> Financial Content)</li>
+      <li><b>Sector Rotation:</b> เม็ดเงินเริ่มหมุนออกจากหุ้นกลุ่มชิป/ฮาร์ดแวร์ AI ที่ราคาแพงไปยังกลุ่มโครงสร้างพื้นฐาน AI ชั้นถัดไป (พลังงาน สายส่ง) ต่อเนื่องจากแนวโน้มที่เห็นในสัปดาห์ก่อนหน้าที่เงินทุนหมุนไปกลุ่มพลังงาน ธนาคาร ยานยนต์ และสินทรัพย์จริง (<span class="badge media">📰</span> <a href="https://www.fool.com/investing/2026/08/08/the-ai-trade-rotation-money-is-moving-out-of-chips/">The Motley Fool</a>, <a href="https://www.morningstar.com/markets/markets-brief-big-2026-sector-rotation-ai-disrupts-disruptors">Morningstar</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🪙 Crypto</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Coin</th><th>Price</th><th>Change</th><th>%</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>Bitcoin (BTC)</td><td>$64,800-65,200</td><td class="neutral">◆ ทรงตัว</td><td class="neutral">-0.26% ถึง +1.08% (ต่างกันตามแหล่ง/เวลา)</td><td class="wrap"><span class="badge market">📈</span> <a href="https://coinmarketcap.com/currencies/bitcoin/">CoinMarketCap</a>, <a href="https://en.bloomingbit.io/feed/news/117961">Bloomingbit (alternative.me)</a></td></tr>
+          <tr><td>Ethereum (ETH)</td><td>$1,924-1,925</td><td class="up">▲</td><td class="up">+0.20%</td><td class="wrap"><span class="badge market">📈</span> <a href="https://coinmarketcap.com/currencies/ethereum/">CoinMarketCap</a>, <a href="https://www.coindesk.com/price/ethereum">CoinDesk</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">ราคาคริปโตอ้างอิง ณ เช้าวันที่ 9 ส.ค. 2569 (ตลาดซื้อขาย 24 ชั่วโมง) ตัวเลข % เปลี่ยนแปลงของ BTC แตกต่างกันตามช่วงเวลาสแนปช็อตและแพลตฟอร์ม จึงแสดงเป็นช่วงแทนค่าเดียว</p>
+    <h3>ข่าวสำคัญ</h3>
+    <ul>
+      <li><b>กระแสเงินทุน Bitcoin ETF เป็นบวกต่อเนื่อง:</b> ไหลเข้าสุทธิเป็นวันที่ 5 ติดต่อกัน รวม $853.5 ล้านในสัปดาห์ 3-7 ส.ค. โดย IBIT ของ BlackRock ครองสัดส่วนถึง 81% ($693 ล้าน) (<span class="badge media">📰</span> <a href="https://news.bitcoin.com/crypto-news/bitcoin-ether-etf-inflow-streak-blackrock-august-2026/">Bitcoin.com News</a>, <a href="https://cryptobriefing.com/blackrock-ibit-bitcoin-etf-inflows/">CryptoBriefing</a>)</li>
+      <li><b>เหตุแฮ็กกระเป๋าฮาร์ดแวร์ Coldcard:</b> ผู้โจมตีใช้ช่องโหว่เฟิร์มแวร์อายุ 5 ปีในกระเป๋าเย็น Coldcard ของ Coinkite ตั้งแต่ 30 ก.ค. 2569 ดูดเหรียญไปแล้วราว 1,816 BTC (มูลค่าราว $116 ล้าน) ครอบคลุมกว่า 5,200 ที่อยู่กระเป๋า นับเป็นการแฮ็กครั้งใหญ่อันดับ 3 ของปี 2569 ผลักดันยอดความเสียหายจากการแฮ็กคริปโตทั้งปี 2569 ทะลุ $1.2 พันล้านจาก 276 เหตุการณ์ (<span class="badge media">📰</span> <a href="https://fortune.com/2026/08/03/bitcoin-owners-116-million-hack-coldcard-coinkite-exploit/">Fortune</a>, <a href="https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack">TRM Labs</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📈 Market Sentiment</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="k">VIX</div><div class="v">14.90-14.92 (ปิด 7 ส.ค.) — ความผันผวนต่ำ</div></div>
+      <div class="stat-card"><div class="k">Crypto Fear &amp; Greed</div><div class="v">31 "Fear" (alternative.me) — แหล่งอื่น (CoinCodex) ระบุ 52 "Neutral" ต่างกันตามระเบียบวิธี</div></div>
+      <div class="stat-card"><div class="k">CNN Fear &amp; Greed (หุ้นสหรัฐฯ)</div><div class="v">64 "Greed"</div></div>
+      <div class="stat-card"><div class="k">US Dollar Index (DXY)</div><div class="v">99.60 ▼ -0.33%</div></div>
+    </div>
+    <h3>Fund Flow</h3>
+    <p>ตามรายงาน ICI สัปดาห์สิ้นสุด 29 ก.ค. 2569: กองทุนหุ้นไหลออกสุทธิ $22.72 พันล้าน (ไม่รวม ETF) แต่ไหลเข้าสุทธิ $17.20 พันล้านเมื่อรวมการออกหน่วยลงทุน ETF สุทธิ ส่วนกองทุนตราสารหนี้ไหลออกสุทธิเล็กน้อย $40 ล้าน (ตราสารหนี้ที่ต้องเสียภาษีไหลออก $445 ล้าน ขณะที่พันธบัตรเทศบาลไหลเข้า $405 ล้าน) (<span class="badge official">✅</span> <a href="https://www.ici.org/research/stats/flows">ICI</a>)</p>
+    <p class="note">ข้อมูล Fund Flow ข้างต้นเป็นข้อมูลรายสัปดาห์ล่าสุดที่ยืนยันได้ (สิ้นสุด 29 ก.ค.) ซึ่งเก่ากว่ากรอบ 24 ชั่วโมง แต่เป็นข้อมูลล่าสุดที่มีการเผยแพร่จากแหล่งที่เชื่อถือได้ ณ เวลาที่จัดทำรายงาน — ระบุตาม policy ว่าเป็นข้อมูล "ต่อเนื่อง"</p>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>12 ส.ค. 2569:</b> รายงาน CPI เดือนกรกฎาคมของสหรัฐฯ — ดัชนีเงินเฟ้อสำคัญก่อนการประชุม FOMC เดือนกันยายน</li>
+      <li><b>13 ส.ค. 2569:</b> รายงาน PPI เดือนกรกฎาคมของสหรัฐฯ; Applied Materials รายงานผลประกอบการหลังปิดตลาด</li>
+      <li><b>14-15 ส.ค. 2569:</b> Retail Sales และ Industrial Production เดือนกรกฎาคมของสหรัฐฯ; ดัชนีความเชื่อมั่นผู้บริโภคมหาวิทยาลัยมิชิแกน (เบื้องต้น) — วันที่แน่ชัดยังมีความคลาดเคลื่อนเล็กน้อยระหว่างแหล่งข้อมูล ควรตรวจสอบปฏิทิน Census/BLS ก่อนอ้างอิงซ้ำ</li>
+      <li><b>~15 ส.ค. 2569:</b> Retail Sales และ Industrial Production เดือนกรกฎาคมของจีน</li>
+      <li><b>15-16 ส.ค. 2569:</b> GDP ไตรมาส 2/2569 เบื้องต้นของญี่ปุ่น</li>
+      <li><b>กลาง-ปลาย ส.ค. 2569 (ยังไม่ยืนยันวันที่แน่ชัด):</b> GDP ไตรมาส 2/2569 ของไทยจาก สศช. (NESDC)</li>
+      <li><b>20 ส.ค. 2569:</b> ประกาศ Loan Prime Rate รอบถัดไปของ PBoC</li>
+      <li><b>26 ส.ค. 2569:</b> การประชุม กนง. (BoT MPC) ครั้งถัดไป</li>
+      <li><b>27-29 ส.ค. 2569:</b> การประชุมสัมมนาเศรษฐกิจ Jackson Hole ของ Fed สาขาแคนซัสซิตี — หัวข้อปีนี้ "Financial Innovation: Implications for Payments and Policy"</li>
+      <li><b>9-10 ก.ย. 2569:</b> การประชุมคณะกรรมการนโยบายการเงิน ECB ครั้งถัดไป</li>
+      <li><b>15-16 ก.ย. 2569:</b> การประชุม FOMC ครั้งถัดไป</li>
+    </ul>
+    <div class="callout">
+      <p><b>ปัจจัยที่ต้องติดตามใกล้ชิด:</b> รายงาน CPI สหรัฐฯ เดือนกรกฎาคม (12 ส.ค.) จะเป็นตัวชี้วัดสำคัญต่อทิศทางนโยบายการเงินของ Fed ในการประชุมเดือนกันยายน หลังตัวเลขจ้างงานที่อ่อนแอเปลี่ยนโฟกัสตลาดจากความเสี่ยงเงินเฟ้อกลับมาที่ความเสี่ยงเศรษฐกิจชะลอตัว ความคืบหน้าการเจรจาช่องแคบฮอร์มุซระหว่างอิหร่าน-สหรัฐฯ ยังเป็นตัวแปรหลักต่อราคาน้ำมันและความผันผวนตลาดโลกในระยะสั้น การหมุนเวียนเงินทุนออกจากกลุ่มชิป/ฮาร์ดแวร์ AI ไปยังกลุ่มโครงสร้างพื้นฐาน AI ชั้นถัดไปเป็นแนวโน้มที่ควรติดตามต่อเนื่อง เช่นเดียวกับทิศทางค่าเงินบาทที่ยังผันผวนตามการคาดการณ์ดอกเบี้ย Fed และราคาพลังงาน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="k">ตลาดหุ้น</div><div class="v">Dow ▲0.28% · S&amp;P500 ▲0.62% (นิวไฮ) · Nasdaq ▲1.30% · Nikkei ▼0.12% · Hang Seng ▲0.54% · SET ▼0.16%</div></div>
+      <div class="stat-card"><div class="k">ค่าเงิน</div><div class="v">USD/THB ~33.03-33.04 ▼ (บาทแข็งค่าต่อเนื่อง) · DXY 99.55-99.60 ▼</div></div>
+      <div class="stat-card"><div class="k">สินค้าโภคภัณฑ์</div><div class="v">ทองคำ $4,340-4,356 ▲ (สัปดาห์ดีสุดตั้งแต่ ม.ค.) · Brent $83.5 ▲ · WTI $78.2-78.3 ▲</div></div>
+      <div class="stat-card"><div class="k">ตัวเลขเศรษฐกิจ</div><div class="v">NFP ก.ค. -23K (พลาดคาดมาก) · Fed 3.50-3.75% (คง) · BoT 1.00% (คง) · CPI จีน ก.ค. +0.5% y/y</div></div>
+      <div class="stat-card"><div class="k">Crypto</div><div class="v">BTC ~$64.8-65.2K ทรงตัว · ETH ~$1,924-1,925 ▲เล็กน้อย</div></div>
+    </div>
+    <p class="note">รายงานฉบับนี้อ้างอิงข้อมูลปิดตลาดล่าสุด (ส่วนใหญ่วันศุกร์ที่ 7 ส.ค. 2569) เนื่องจากตลาดหลักปิดทำการวันเสาร์-อาทิตย์ ยกเว้นคริปโตและ CPI จีนที่เป็นข้อมูลสดของวันนี้ (9 ส.ค. 2569)</p>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul>
+      <li><a href="https://www.bot.or.th/en/news-and-media/news/mpc/news-20260624-NVHKxr00.html">Bank of Thailand (BoT) — MPC</a></li>
+      <li><a href="https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html">US Federal Reserve (FOMC decision, via CNBC)</a></li>
+      <li><a href="https://www.cnbc.com/2026/07/31/boj-rates-yen-intervention-inflation-japan.html">Bank of Japan (BoJ decision, via CNBC)</a></li>
+      <li><a href="https://www.bls.gov/news.release/pdf/empsit.pdf">US Bureau of Labor Statistics (BLS) — Employment Situation</a></li>
+      <li><a href="https://www.bls.gov/news.release/archives/cpi_07142026.htm">US BLS — CPI June 2026</a></li>
+      <li><a href="https://www.bea.gov/news/2026/gdp-advance-estimate-2nd-quarter-2026">US Bureau of Economic Analysis (BEA)</a></li>
+      <li><a href="https://www.census.gov/retail/marts/www/marts_current.pdf">US Census Bureau — Retail Sales</a></li>
+      <li><a href="https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-31072026-ap">Eurostat — HICP</a></li>
+      <li><a href="https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-30072026-ap">Eurostat — GDP Q2 2026</a></li>
+      <li><a href="https://www.stats.gov.cn/english/PressRelease/202607/t20260715_1964120.html">National Bureau of Statistics of China (NBS) — GDP</a></li>
+      <li><a href="https://news.cgtn.com/news/2026-08-09/China-s-CPI-and-PPI-maintain-upward-trend-in-July-1PsKq8Nf3cQ/p.html">NBS China — CPI/PPI July (via CGTN)</a></li>
+      <li><a href="https://www.prnewswire.com/news-releases/manufacturing-pmi-at-55-6-july-2026-ism-manufacturing-pmi-report-302840669.html">Institute for Supply Management (ISM)</a></li>
+      <li><a href="https://www.pmi.spglobal.com/">S&amp;P Global PMI</a></li>
+      <li><a href="https://www.ici.org/research/stats/flows">Investment Company Institute (ICI) — Fund Flows</a></li>
+    </ul>
+    <h3>Financial Media</h3>
+    <ul>
+      <li><a href="https://www.cnbc.com/2026/08/06/stock-market-today-live-updates.html">CNBC</a>, <a href="https://www.washingtonpost.com/business/2026/08/07/stocks-dow-jones-iran-oil-fed-interest-rates/1f4daa84-929d-11f1-9fdc-0a725c989a7b_story.html">Washington Post</a>, <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-7-2026">TheStreet</a></li>
+      <li><a href="https://www.bbntimes.com/companies/asian-markets-end-mixed-sse-composite-and-hang-seng-lead-gains-as-nikkei-and-kospi-slip">BBN Times</a> (ตลาดเอเชีย)</li>
+      <li><a href="https://www.bangkokbiznews.com/finance/stock/1246515">Bangkok Biznews</a>, <a href="https://www.kaohoon.com/summary/852663">Kaohoon</a>, <a href="https://today.line.me/th/v3/article/nXRGavM">LINE Today</a> (SET)</li>
+      <li><a href="https://www.bangkokpost.com/business/general/3296905/thailands-july-headline-cpi-rises-195-yearonyear-lower-than-forecast">Bangkok Post</a> (CPI ไทย)</li>
+      <li><a href="https://www.nationthailand.com/news/tourism/40060241">Nation Thailand</a> (ผลกระทบบาทแข็งต่อท่องเที่ยว)</li>
+      <li><a href="https://www.cnbc.com/amp/2026/08/07/gold-heads-for-best-week-since-january-us-jobs-data-in-focus.html">CNBC</a> (ทองคำ), <a href="https://www.bloomberg.com/news/articles/2026-08-07/us-treasuries-rally-as-soft-jobs-data-trims-fed-rate-hike-bets">Bloomberg</a> (พันธบัตร)</li>
+      <li><a href="https://news.bitcoin.com/crypto-news/bitcoin-ether-etf-inflow-streak-blackrock-august-2026/">Bitcoin.com News</a>, <a href="https://fortune.com/2026/08/03/bitcoin-owners-116-million-hack-coldcard-coinkite-exploit/">Fortune</a> (คริปโต)</li>
+      <li><a href="https://www.cnbc.com/2026/08/05/trump-tariffs-refunds-ieepa-lawsuit.html">CNBC</a> (นโยบายภาษีสหรัฐฯ)</li>
+    </ul>
+    <h3>Market Data</h3>
+    <ul>
+      <li><a href="https://tradingeconomics.com/thailand/government-bond-yield">Trading Economics</a></li>
+      <li><a href="https://www.exchange-rates.org/exchange-rate-history/usd-thb-2026">exchange-rates.org</a></li>
+      <li><a href="https://coinmarketcap.com/currencies/bitcoin/">CoinMarketCap</a>, <a href="https://www.coindesk.com/price/ethereum">CoinDesk</a> (ราคาคริปโต)</li>
+      <li><a href="https://www.investing.com/indices/volatility-s-p-500">Investing.com</a> (VIX)</li>
+      <li><a href="https://www.usagold.com/daily-precious-metals-market-report-august-7-2026/">USAGOLD</a> (เงิน)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily Economy, Finance &amp; Investment Report · 09 Aug 2026 (ICT)</p>
+    <p>ข้อมูลทั้งหมดรวบรวมจากแหล่งข่าวสาธารณะที่อ้างอิงไว้ในรายงาน หากพบข้อมูลไม่ตรงกันระหว่างแหล่ง จะแสดงไว้ทั้งสองค่าพร้อมอธิบายความแตกต่างในรายงาน ไม่มีการประมาณการหรือสร้างตัวเลขขึ้นเองในรายงานฉบับนี้ เนื่องจากเป็นวันหยุดสุดสัปดาห์ ข้อมูลส่วนใหญ่อ้างอิงราคาปิดตลาดล่าสุด (ศุกร์ที่ 7 ส.ค. 2569)</p>
+    <p><a href="/">Back to Home</a></p>
+  </footer>
+</div>
+</body>
+</html>
