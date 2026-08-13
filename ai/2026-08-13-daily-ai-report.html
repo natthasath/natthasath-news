@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-13</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 13 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-13</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 13 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> session การสืบค้นในรอบนี้ไม่สามารถเข้าถึงโดเมน arxiv.org, huggingface.co, openai.com, blog.google และ deepmind.google โดยตรงได้ (ถูกบล็อกโดย network egress proxy) จึงงดแสดงหมวด Research เนื่องจากยืนยันรายชื่อผู้เขียนไม่ได้ครบตามเกณฑ์ Validation ลิงก์อย่างเป็นทางการ (OpenAI, Google) ที่ปรากฏในรายงานนี้ยืนยันการมีอยู่ผ่านผลการค้นเว็บ (หัวข้อ/URL ตรงกับหน้าทางการ) แต่ไม่สามารถเปิดอ่านเนื้อหาเต็มโดยตรงในรอบนี้ ข่าวบางรายการ (การปรับโครงสร้างผู้นำ Google DeepMind, MCP Specification, กฎ EU AI Act) เริ่มต้นก่อนหน้าช่วง 24 ชม. แต่ยังมีพัฒนาการ/ถูกพูดถึงต่อเนื่องถึงวันนี้ จึงนำมารายงานพร้อมระบุป้าย "ต่อเนื่อง" ตัวเลข benchmark ของ DeepSeek V4 Pro 0813 มาจากแหล่งสื่อเท่านั้น (ไม่พบบล็อกทางการแยก) จึงงดติดป้าย ✅ Official ให้รายการนี้
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>✅📰 Google เปิดตัว Gemini 3.7 Flash โมเดล workhorse รุ่นใหม่ที่เก่งด้านโค้ดดิ้งขึ้นชัดเจนและราคาถูกลงครึ่งหนึ่ง ท่ามกลางการปรับโครงสร้างผู้นำ Google DeepMind ที่ยังดำเนินต่อเนื่อง (Demis Hassabis ขึ้นเป็น Chairman/Chief Scientist, Koray Kavukcuoglu รับตำแหน่ง SVP ดูแล Gemini, Jeff Dean ออกไปตั้ง Discovery Loop) ✅📰 OpenAI เปิดพรีวิว "Ultrafast" โหมดความเร็วสูงสำหรับ GPT-5.6 Sol ที่เร็วขึ้นถึง 14 เท่าโดยใช้โครงสร้างพื้นฐานของ Cerebras พร้อมแต่งตั้ง Dali Rajic เป็น Chief Revenue Officer คนใหม่ และเริ่มทดสอบโฆษณาใน ChatGPT กับผู้ใช้ในสหรัฐฯ 📰 DeepSeek ปิดช่วงพรีวิวและเปิดใช้งาน DeepSeek V4 Pro 0813 เป็นโมเดลหลักบน API อย่างเป็นทางการ ด้วยคะแนน benchmark ด้าน agentic/coding ที่เพิ่มขึ้นชัดเจน 📰 มีรายงานว่า Anthropic กำลังจะรายงานไตรมาสแรกที่มีกำไรจากการดำเนินงาน (ราว 559 ล้านดอลลาร์ จากรายได้ 10.9 พันล้านดอลลาร์ในไตรมาส 2) พร้อมยื่นแบบ S-1 ลับต่อ ก.ล.ต. สหรัฐฯ เพื่อเตรียม IPO 📰 งานประชุมความปลอดภัยไซเบอร์ Black Hat 2026 เปิดฉากที่ลาสเวกัส พร้อมแนวปฏิบัติใหม่ด้านความปลอดภัย agentic AI จาก Open Secure AI Alliance ที่ขยายเป็นกว่า 120 องค์กร</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+      <tr><td>Gemini 3.7 Flash</td><td>Google DeepMind</td><td>Multimodal workhorse model (flash tier)</td><td>ดีขึ้นชัดเจนด้านโค้ดดิ้ง — DeepSWE v1.1 จาก 49.0% เป็น 65.3%, FrontierCode 1.1 Main จาก 34.4% เป็น 43.6% เทียบรุ่น 3.6 Flash ราคาลดลงครึ่งหนึ่งเหลือ $0.75/1M input, $3.75/1M output (ราคาแนะนำถึงสิ้นปี 2569)</td><td>✅ เปิดให้ใช้งานแล้ว ขับเคลื่อน Gemini Spark</td><td>✅📰 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Google (Official)</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-13/google-debuts-new-gemini-flash-while-top-ai-model-still-delayed" target="_blank" rel="noopener">Bloomberg</a>, <a href="https://9to5google.com/2026/08/13/gemini-3-7-flash-launch/" target="_blank" rel="noopener">9to5Google</a>, <a href="https://www.axios.com/2026/08/13/google-gemini-37-flash" target="_blank" rel="noopener">Axios</a></td></tr>
+      <tr><td>GPT-5.6 Sol — Ultrafast mode</td><td>OpenAI (ร่วมกับ Cerebras)</td><td>Service tier ความเร็วสูงของโมเดลที่มีอยู่แล้ว</td><td>เร็วขึ้นถึง 14 เท่า สร้างได้ 750 token/วินาที ความสามารถเทียบเท่า GPT-5.6 Sol มาตรฐาน เจาะกลุ่มงาน voice, customer support, commerce, developer agent, security response</td><td>✅ เปิดพรีวิวผ่าน API ให้ลูกค้ากลุ่มแรกทดลองใช้</td><td>✅📰 <a href="https://openai.com/index/previewing-ultrafast/" target="_blank" rel="noopener">OpenAI (Official)</a>, <a href="https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai" target="_blank" rel="noopener">Cerebras (Official)</a>, <a href="https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://9to5mac.com/2026/08/13/openai-previews-ultrafast-gpt-5-6-sol-running-up-to-14-times-faster/" target="_blank" rel="noopener">9to5Mac</a></td></tr>
+      <tr><td>DeepSeek V4 Pro 0813</td><td>DeepSeek</td><td>Flagship MoE (1.6T พารามิเตอร์รวม / ~49B active), context 1M token</td><td>คะแนน agentic/coding เพิ่มขึ้นชัดเจนจากรุ่น Preview — Terminal-Bench 2.1 จาก 72.1 เป็น 87.9, DeepSWE จาก 12.8 เป็น 62.7, DSBench-FullStack จาก 41.8 เป็น 71.1</td><td>✅ พ้นสถานะพรีวิว เป็น endpoint หลักบน API แล้ว (ราคาคงเดิม)</td><td>📰 <a href="https://www.unite.ai/deepseek-ships-v4-pro-as-its-flagship-model-leaves-preview/" target="_blank" rel="noopener">Unite.AI</a>, <a href="https://www.gmicloud.ai/en/blog/deepseek-v4-pro-steps-out-of-preview-the-0813-build-is-live/" target="_blank" rel="noopener">GMI Cloud</a>, <a href="https://www.globaltimes.cn/page/202608/1368125.shtml" target="_blank" rel="noopener">Global Times</a></td></tr>
+      <tr><td>Grok 4.6 <span class="badge">ต่อเนื่อง</span></td><td>xAI</td><td>Frontier LLM 1.5T พารามิเตอร์ (สืบทอด V9 foundation เดิม)</td><td>เน้นงาน agent ระยะยาวและงานภาพ/โต้ตอบที่ซับซ้อนขึ้น context 500,000 token ราคาครึ่งหนึ่งของโมเดลชายแดนคู่แข่ง</td><td>✅ เปิดใช้งานผ่าน API, Grok Build, Cursor</td><td>✅📰 <a href="https://x.ai/news/grok-4-6" target="_blank" rel="noopener">xAI (Official)</a>, <a href="https://www.basenor.com/blogs/news/xai-launches-grok-4-6-1753-elo-half-the-price-of-rival-frontier-models" target="_blank" rel="noopener">Basenor</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">⚠️ ไม่สามารถเข้าถึง arxiv.org และ huggingface.co โดยตรงในรอบนี้ (ถูกบล็อกโดย network egress proxy) จึงไม่สามารถยืนยันรายชื่อผู้เขียน (Authors) ของบทความวิจัยตามเกณฑ์ Validation ได้ งดแสดงตารางในหมวดนี้เพื่อป้องกันข้อมูลที่ยืนยันไม่ครบ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+      <tr><td>anthropics/skills</td><td>168,932 (+383 วันนี้)</td><td>Python</td><td>Repository อย่างเป็นทางการของ Anthropic สำหรับ agent skills/ความสามารถเสริมของ Claude ติดอันดับ GitHub Trending วันนี้</td><td>✅ <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">GitHub (Anthropic — Official)</a></td></tr>
+      <tr><td>semantica-agi/semantica</td><td>6,489 (+727 วันนี้)</td><td>Python</td><td>โครงสร้างพื้นฐานแบบ graph-native สำหรับ context graph และ decision intelligence ของ AI agent สัญญาอนุญาต MIT เคยขึ้นอันดับ 1 GitHub Trending เมื่อ 10 ส.ค.</td><td>📰 <a href="https://github.com/semantica-agi/semantica" target="_blank" rel="noopener">GitHub</a>, <a href="https://trendshift.io/repositories/18986" target="_blank" rel="noopener">Trendshift</a></td></tr>
+      <tr><td>cactus-compute/needle</td><td>4,864 (+768 วันนี้)</td><td>—</td><td>Needle 2 โมเดล agentic LLM ขนาด 14MB (45M พารามิเตอร์) สำหรับอุปกรณ์ขนาดเล็ก เช่น โทรศัพท์ อุปกรณ์สวมใส่ สมาร์ทโฮม และหุ่นยนต์ ใช้เทคนิค Cactus Quants แบบ 2-bit ตั้งแต่ pretraining</td><td>📰 <a href="https://github.com/cactus-compute/needle" target="_blank" rel="noopener">GitHub</a>, <a href="https://cactuscompute.com/needle" target="_blank" rel="noopener">Cactus Compute</a>, <a href="https://huggingface.co/Cactus-Compute/needle2" target="_blank" rel="noopener">Hugging Face</a></td></tr>
+    </table>
+    </div>
+    <p class="note">ที่มาอันดับ Trending: อ่านจากหน้า <a href="https://github.com/trending" target="_blank" rel="noopener">github.com/trending</a> โดยตรง ณ เวลาที่จัดทำรายงาน</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Description</th><th>Pricing</th><th>Source</th></tr>
+      <tr><td>ChatGPT Ads (US)</td><td>OpenAI เริ่มทดสอบโฆษณาใน ChatGPT กับผู้ใช้ที่ล็อกอินแล้วในสหรัฐฯ (tier Free และ Go) ต่อยอดจากที่เปิดใช้แล้วในสหราชอาณาจักร เม็กซิโก บราซิล ญี่ปุ่น และเกาหลีใต้เมื่อ 11 ส.ค. ยืนยันหลักการว่าคำตอบยังคงเป็นอิสระไม่ลำเอียง และบทสนทนาเป็นส่วนตัว</td><td>ฟรี (สนับสนุนด้วยโฆษณาใน tier ฟรี/Go)</td><td>✅ <a href="https://openai.com/index/testing-ads-in-chatgpt/" target="_blank" rel="noopener">OpenAI (Official)</a></td></tr>
+    </table>
+    </div>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+      <tr><td>Gemini Spark</td><td>เปลี่ยนมาใช้ Gemini 3.7 Flash เป็นโมเดลขับเคลื่อนหลักตั้งแต่วันนี้ ได้ประโยชน์จากความสามารถโค้ดดิ้งที่ดีขึ้นและราคาที่ถูกลง</td><td>✅ <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Google (Official)</a>, 📰 <a href="https://9to5google.com/2026/08/13/gemini-3-7-flash-launch/" target="_blank" rel="noopener">9to5Google</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>✅📰 เปิดพรีวิวโหมด "Ultrafast" สำหรับ GPT-5.6 Sol เร็วขึ้นถึง 14 เท่า (750 token/วินาที) โดยใช้โครงสร้างพื้นฐานของ Cerebras ความสามารถเทียบเท่ารุ่นมาตรฐาน เจาะกลุ่มงานที่ต้องการความเร็วแบบเรียลไทม์ ✅📰 แต่งตั้ง Dali Rajic อดีตประธาน/COO ของ Wiz เป็น Chief Revenue Officer คนใหม่ แทน Denise Dresser หลังทำงานเพียง 9 เดือน นับเป็นหัวหน้าฝ่ายรายได้คนที่สองในรอบไม่ถึงหนึ่งปี ✅ เริ่มทดสอบโฆษณาใน ChatGPT กับผู้ใช้ในสหรัฐฯ (tier Free/Go) ต่อยอดจากตลาดอื่นที่เปิดแล้วก่อนหน้า</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://openai.com/index/previewing-ultrafast/" target="_blank" rel="noopener">OpenAI — Ultrafast (Official)</a>, <a href="https://openai.com/index/dali-rajic-chief-revenue-officer/" target="_blank" rel="noopener">OpenAI — Dali Rajic (Official)</a>, <a href="https://openai.com/index/testing-ads-in-chatgpt/" target="_blank" rel="noopener">OpenAI — ChatGPT Ads (Official)</a>, 📰 <a href="https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-13/openai-hires-new-chief-revenue-officer-after-less-than-a-year" target="_blank" rel="noopener">Bloomberg</a>, <a href="https://techcrunch.com/2026/08/13/openai-hires-new-cro-as-executive-shake-up-continues/" target="_blank" rel="noopener">TechCrunch (CRO)</a></p>
+
+    <h3>Anthropic</h3>
+    <p>📰 มีรายงานว่า Anthropic กำลังจะรายงานไตรมาสแรกที่มีกำไรจากการดำเนินงาน โดยคาดรายได้ไตรมาส 2 ปี 2569 ที่ 10.9 พันล้านดอลลาร์ (เพิ่มขึ้นกว่าเท่าตัวจาก 4.8 พันล้านดอลลาร์ในไตรมาสก่อน) และกำไรจากการดำเนินงานราว 559 ล้านดอลลาร์ ท่ามกลางรายงานว่าใกล้ปิดรอบระดมทุน 3 หมื่นล้านดอลลาร์ที่มูลค่าบริษัทราว 9 แสนล้านดอลลาร์ และได้ยื่นแบบ S-1 ลับต่อ ก.ล.ต. สหรัฐฯ เพื่อเตรียม IPO ซึ่งอาจเกิดขึ้นเร็วสุดในเดือน ต.ค. 2569</p>
+    <p class="note">⚠️ ตัวเลขนี้เป็นการประมาณการ/รายงานจากสื่อ ยังไม่พบแถลงการณ์อย่างเป็นทางการจาก Anthropic โดยตรงในรอบนี้ แหล่งอ้างอิง: 📰 <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-track-first-profitable-quarter-124217577.html" target="_blank" rel="noopener">Yahoo Finance</a>, <a href="https://www.digitimes.com/news/a20260521VL219/anthropic-ai-operating-profit-revenue-growth.html" target="_blank" rel="noopener">Digitimes</a>, <a href="https://www.engadget.com/2178340/anthropic-first-profitable-quarter/" target="_blank" rel="noopener">Engadget</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>✅📰 เปิดตัว Gemini 3.7 Flash โมเดล workhorse รุ่นใหม่ที่เก่งด้านโค้ดดิ้งขึ้นชัดเจนและราคาถูกลงครึ่งหนึ่ง ขับเคลื่อน Gemini Spark ตั้งแต่วันนี้ 📰 ต่อเนื่อง: การปรับโครงสร้างผู้นำยังดำเนินต่อ — Koray Kavukcuoglu รับตำแหน่ง SVP ของ Google DeepMind อย่างเป็นทางการ รายงานตรงต่อ Sundar Pichai ดูแลการพัฒนาโมเดล Gemini งานวิจัยชายแดน แอป Gemini และแพลตฟอร์มนักพัฒนา AI ขณะที่ Demis Hassabis ขยับไปเป็น Chairman และ Chief Scientist ของ Alphabet และ Jeff Dean ลาออกหลังทำงาน 27 ปี เพื่อไปร่วมก่อตั้งบริษัท Discovery Loop กับ Sanjay Ghemawat มุ่งเร่งกระบวนการค้นพบทางวิทยาศาสตร์ด้วย AI หุ้น Alphabet ปรับตัวลงราว 4% หลังข่าวนี้</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Google (Official)</a>, 📰 <a href="https://www.axios.com/2026/08/13/google-gemini-37-flash" target="_blank" rel="noopener">Axios (Gemini 3.7)</a>, <a href="https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html" target="_blank" rel="noopener">CNBC (Koray Kavukcuoglu)</a>, <a href="https://fortune.com/2026/08/13/googles-deepmind-is-having-an-identity-crisis/" target="_blank" rel="noopener">Fortune</a>, <a href="https://www.digitimes.com/news/a20260813VL203/alphabet-deepmind-google-gemini-anthropic.html" target="_blank" rel="noopener">Digitimes</a></p>
+
+    <h3>Microsoft</h3>
+    <p>📰 เตือนองค์กรให้เลิกใช้การยืนยันตัวตนผ่าน SMS/เสียง เนื่องจากความเสี่ยงจากฟิชชิงที่ขับเคลื่อนด้วย AI เพิ่มขึ้น พร้อมผลักดันให้เปลี่ยนไปใช้ passkey โดยจะเริ่มบล็อกวิธีเดิมผ่าน Entra ID 📰 ลดการซื้อ carbon-removal credit ลงราว 80% ในครึ่งปีแรก ท่ามกลางการเร่งลงทุนด้าน AI</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.windowslatest.com/2026/08/13/microsoft-warns-you-to-stop-using-sms-based-passwords-because-of-ai-phishing-and-itll-block-you-starting-with-entra-id/" target="_blank" rel="noopener">Windows Latest</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-13/microsoft-cuts-purchases-of-carbon-removals-by-80-amid-ai-push" target="_blank" rel="noopener">Bloomberg</a></p>
+
+    <h3>NVIDIA</h3>
+    <p>📰 กลุ่มพันธมิตร Open Secure AI Alliance ขยายเป็นกว่า 120 องค์กร เตรียมออกแนวปฏิบัติใหม่เพื่อเสริมความปลอดภัยไซเบอร์ของ agentic AI พร้อมกับการเปิดงาน Black Hat 2026 ที่ลาสเวกัส 📰 กำหนดจัด conference call แถลงผลประกอบการไตรมาส 2 ปีงบประมาณ 2570 (สิ้นสุด 26 ก.ค.) ในวันที่ 26 ส.ค.</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://techstartups.com/2026/08/13/top-tech-news-today-august-13-2026-anthropic-deepmind-google-lenovo-microsoft-spacexai-more/" target="_blank" rel="noopener">Tech Startups</a>, ✅ <a href="https://nvidianews.nvidia.com/news/latest" target="_blank" rel="noopener">NVIDIA Newsroom (Official)</a></p>
+
+    <h3>Amazon</h3>
+    <p class="note">⚠️ ไม่พบข่าว Amazon/AWS ที่เจาะจงในช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ยืนยันของรอบนี้</p>
+
+    <h3>Startup</h3>
+    <p>📰 DeepSeek เปิดใช้งาน DeepSeek V4 Pro 0813 เป็น endpoint หลักบน API แล้ว จบช่วงพรีวิวที่ยาวเกือบ 4 เดือน คะแนน benchmark ด้าน agentic/coding เพิ่มขึ้นชัดเจนจากรุ่น Preview 📰 ต่อเนื่อง: xAI เปิดใช้งาน Grok 4.6 เต็มรูปแบบผ่าน API, Grok Build และ Cursor</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.unite.ai/deepseek-ships-v4-pro-as-its-flagship-model-leaves-preview/" target="_blank" rel="noopener">Unite.AI</a>, <a href="https://www.gmicloud.ai/en/blog/deepseek-v4-pro-steps-out-of-preview-the-0813-build-is-live/" target="_blank" rel="noopener">GMI Cloud</a> · ✅ <a href="https://x.ai/news/grok-4-6" target="_blank" rel="noopener">xAI (Official)</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>MCP Specification 2026-07-28 <span class="badge">ต่อเนื่อง</span>:</b> การอัปเดตครั้งใหญ่ที่สุดของ Model Context Protocol นับตั้งแต่เปิดตัวเมื่อ 20 เดือนก่อน ปรับให้ protocol core เป็น stateless เต็มรูปแบบ เพิ่ม Extensions framework, Tasks (งานอะซิงโครนัสระยะยาว), MCP Apps (UI แบบโต้ตอบในเซิร์ฟเวอร์), เข้มงวดโมเดล authorization มากขึ้น และกำหนดนโยบาย deprecation อย่างเป็นทางการ 12 เดือน ชิปเมื่อ 28 ก.ค. แต่ยังเป็นประเด็นที่วงการ agent พูดถึงต่อเนื่องถึงสัปดาห์นี้ (✅ <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/" target="_blank" rel="noopener">Model Context Protocol Blog (Official)</a>, 📰 <a href="https://venturebeat.com/orchestration/mcp-just-got-its-biggest-update-ever-heres-what-changes-for-ai-agents" target="_blank" rel="noopener">VentureBeat</a>)</li>
+      <li><b>Cerebras infrastructure สำหรับ GPT-5.6 Sol Ultrafast:</b> Cerebras เป็นผู้ให้บริการโครงสร้างพื้นฐานเบื้องหลังโหมด Ultrafast ของ OpenAI ทำความเร็วได้ถึง 750 token/วินาที (✅ <a href="https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai" target="_blank" rel="noopener">Cerebras Blog (Official)</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment <span class="badge">ต่อเนื่อง</span></h3>
+    <p>📰 มีรายงานว่า Anthropic ใกล้ปิดรอบระดมทุนมูลค่าราว 3 หมื่นล้านดอลลาร์ ที่มูลค่าบริษัทประมาณ 9 แสนล้านดอลลาร์ สอดคล้องกับผลประกอบการไตรมาส 2 ที่คาดว่าจะมีกำไรเป็นครั้งแรก</p>
+    <p class="note">⚠️ ยังเป็นตัวเลขประมาณการ ยังไม่ปิดดีลอย่างเป็นทางการ แหล่งอ้างอิง: 📰 <a href="https://markmancapitalinsight.substack.com/p/anthropic-just-booked-its-first-profitable" target="_blank" rel="noopener">Markman Capital Insight</a>, <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-track-first-profitable-quarter-124217577.html" target="_blank" rel="noopener">Yahoo Finance</a></p>
+
+    <h3>Acquisition</h3>
+    <p class="note">⚠️ ไม่พบดีลควบรวม/เข้าซื้อกิจการใหม่ที่ระบุวันที่ชัดเจนในช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ cross-validation ของรอบนี้</p>
+
+    <h3>Regulation <span class="badge">ต่อเนื่อง</span></h3>
+    <p>✅📰 กฎเกณฑ์ EU AI Act ในส่วนความโปร่งใส (เช่น การติดป้ายเนื้อหาที่สร้างโดย AI และการเปิดเผยเมื่อผู้ใช้กำลังโต้ตอบกับแชทบอท) เริ่มบังคับใช้ตั้งแต่ 2 ส.ค. 2569 โดยคณะกรรมาธิการยุโรปและหน่วยงานระดับประเทศเริ่มกำกับดูแลอย่างเป็นทางการ ขณะที่ข้อตกลง "Digital Omnibus" ยืดเวลาข้อบังคับความเสี่ยงสูงบางส่วนออกไป ยังเป็นประเด็นที่ภาคธุรกิจต้องปรับตัวต่อเนื่องถึงสัปดาห์นี้</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1714" target="_blank" rel="noopener">European Commission (Official)</a>, 📰 <a href="https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline" target="_blank" rel="noopener">Holland &amp; Knight</a>, <a href="https://www.collibra.com/blog/ai-regulatory-compliance-in-2026-eu-ai-act-us-orders-and-state-laws-and-how-to-operationalize" target="_blank" rel="noopener">Collibra</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+      <tr><td>DeepSWE v1.1</td><td>Gemini 3.7 Flash</td><td>65.3% (จาก 49.0% ใน 3.6 Flash)</td><td>✅📰 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Google (Official)</a>, <a href="https://www.thurrott.com/google/340392/google-launches-gemini-3-7-flash-model" target="_blank" rel="noopener">Thurrott</a></td></tr>
+      <tr><td>FrontierCode 1.1 Main</td><td>Gemini 3.7 Flash</td><td>43.6% (จาก 34.4% ใน 3.6 Flash)</td><td>✅📰 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Google (Official)</a>, <a href="https://www.geeky-gadgets.com/gemini-3-7-flash-expected/" target="_blank" rel="noopener">Geeky Gadgets</a></td></tr>
+      <tr><td>Terminal-Bench 2.1</td><td>DeepSeek V4 Pro 0813</td><td>87.9 (จาก 72.1 ใน V4 Pro Preview)</td><td>📰 <a href="https://www.unite.ai/deepseek-ships-v4-pro-as-its-flagship-model-leaves-preview/" target="_blank" rel="noopener">Unite.AI</a>, <a href="https://www.gmicloud.ai/en/blog/deepseek-v4-pro-steps-out-of-preview-the-0813-build-is-live/" target="_blank" rel="noopener">GMI Cloud</a></td></tr>
+      <tr><td>Ultrafast Throughput</td><td>GPT-5.6 Sol (Ultrafast/Cerebras)</td><td>750 token/วินาที (เร็วขึ้น 14 เท่าจากมาตรฐาน)</td><td>✅📰 <a href="https://openai.com/index/previewing-ultrafast/" target="_blank" rel="noopener">OpenAI (Official)</a>, <a href="https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai" target="_blank" rel="noopener">Cerebras (Official)</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ตัวเลขของ DeepSeek V4 Pro 0813 มาจากตารางที่บริษัทเผยแพร่พร้อมการอัปเดต แต่พบผ่านแหล่งสื่อเท่านั้น ยังไม่พบบล็อกทางการแยกยืนยันในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <ul>
+      <li>🔥 GitHub Trending วันนี้ (จาก github.com/trending โดยตรง): <b>diagram-design</b> (cathrynlavery, HTML, +4,504 วันนี้ — ชุดแม่แบบไดอะแกรมสำหรับ Claude Code), <b>anthropics/skills</b> (+383), <b>semantica-agi/semantica</b> (+727), <b>cactus-compute/needle</b> (+768), <b>infiniflow/ragflow</b> (Go, 87,957★, +473 — เอนจิน RAG โอเพนซอร์ส)</li>
+      <li>🔥 โปรเจกต์ OpenClaw ของ Peter Steinberger (อดีตผู้ก่อตั้ง PSPDFKit) ยังคงเป็นกระแสต่อเนื่อง โดยมีรายงานว่าทะลุ 210,000 ดาวบน GitHub นับเป็นหนึ่งในโปรเจกต์โอเพนซอร์สที่โตเร็วที่สุดในประวัติศาสตร์ GitHub (ข้อมูลจากบทความสื่อ ยังไม่ตรวจสอบยืนยันตัวเลขซ้ำในรอบนี้)</li>
+    </ul>
+    <h3>Events</h3>
+    <p>📰 งานประชุมความปลอดภัยไซเบอร์ Black Hat 2026 เปิดฉากที่ลาสเวกัสวันนี้ (13 ส.ค.) โดยมีการหารือแนวปฏิบัติด้านความปลอดภัย agentic AI จากกลุ่ม Open Secure AI Alliance ที่ขยายเป็นกว่า 120 องค์กร (<a href="https://techstartups.com/2026/08/13/top-tech-news-today-august-13-2026-anthropic-deepmind-google-lenovo-microsoft-spacexai-more/" target="_blank" rel="noopener">Tech Startups</a>)</p>
+    <p class="note">⚠️ ไม่พบ tutorial ใหม่ที่ยืนยันแหล่งอ้างอิงได้เฉพาะช่วง 24 ชม. ล่าสุดในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. นักพัฒนาซอฟต์แวร์ใช้ Gemini 3.7 Flash ผ่าน Gemini Spark เพื่อ debug และส่งมอบโค้ด production-ready</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งาน debug และแก้ปัญหาโค้ดใช้เวลานาน ต้นทุน token ของโมเดลรุ่นก่อนสูง</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ Gemini 3.7 Flash ผ่าน Gemini Spark สำหรับงาน debug และเขียนโค้ด deploy ได้ตั้งแต่ครั้งแรก</dd>
+        <dt>ประโยชน์</dt><dd>คะแนน DeepSWE v1.1 เพิ่มจาก 49.0% เป็น 65.3% ราคาลดลงครึ่งหนึ่งเทียบรุ่นก่อน</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. ทีมบริการลูกค้า/เสียง/ความปลอดภัยใช้ GPT-5.6 Sol โหมด Ultrafast สำหรับงานเรียลไทม์</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งานที่ต้องตอบสนองแบบเรียลไทม์ เช่น บริการเสียง งานการเงิน หรือการตอบสนองด้านความปลอดภัย ต้องการโมเดลที่เร็วโดยไม่ลดทอนความสามารถ</dd>
+        <dt>วิธีใช้</dt><dd>เรียกใช้ GPT-5.6 Sol ผ่านโหมด Ultrafast ที่ขับเคลื่อนด้วยโครงสร้างพื้นฐานของ Cerebras ผ่าน API</dd>
+        <dt>ประโยชน์</dt><dd>สร้างคำตอบได้เร็วขึ้นถึง 14 เท่า (750 token/วินาที) โดยคุณภาพเทียบเท่าโมเดลมาตรฐาน</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. องค์กรเลือก DeepSeek V4 Pro 0813 เป็นทางเลือกโมเดล agentic ต้นทุนต่ำ</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งาน agent/coding ขนาดใหญ่ต้องการโมเดลที่มีบริบทยาว (1M token) แต่ควบคุมต้นทุนให้ต่ำ</dd>
+        <dt>วิธีใช้</dt><dd>เชื่อมต่อ endpoint deepseek-v4-pro บน API ซึ่งอัปเดตเป็นบิลด์ 0813 แล้วโดยราคาคงเดิม</dd>
+        <dt>ประโยชน์</dt><dd>คะแนน Terminal-Bench 2.1 เพิ่มจาก 72.1 เป็น 87.9 และ DeepSWE จาก 12.8 เป็น 62.7 เทียบรุ่น Preview</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. ทีมพัฒนา agent ใช้ anthropics/skills ขยายความสามารถ Claude Code</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การสร้างความสามารถเฉพาะทาง (skills) ให้ agent ต้องเขียนโครงสร้างซ้ำๆ เอง</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ repository ทางการ anthropics/skills เป็นแม่แบบ/คลังความสามารถสำหรับต่อยอด agent ของตนเอง</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาพัฒนา ได้แนวทางที่ Anthropic รับรองและดูแลต่อเนื่อง (168,932 ดาว)</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>5. ผู้ผลิตอุปกรณ์ IoT/wearable ใช้ Needle 2 รัน agent บนอุปกรณ์ขนาดเล็ก</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>อุปกรณ์ขนาดเล็ก (โทรศัพท์ราคาประหยัด, อุปกรณ์สวมใส่, ไมโครคอนโทรลเลอร์) มีหน่วยความจำและพลังประมวลผลจำกัด ไม่สามารถรันโมเดลภาษาขนาดใหญ่ได้</dd>
+        <dt>วิธีใช้</dt><dd>ฝังโมเดล Needle 2 ขนาด 14MB (45M พารามิเตอร์) ที่บีบอัดแบบ CQ2-bit ลงในอุปกรณ์เพื่อทำ tool calling และดึงข้อมูลแบบมีโครงสร้าง</dd>
+        <dt>ประโยชน์</dt><dd>ทำงานได้ถึง 500+ token/วินาทีบน Raspberry Pi 5 รันได้แม้บนไมโครคอนโทรลเลอร์อย่าง ESP32-S3</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">3</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers ยืนยันได้</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">GitHub Projects เด่น</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ทิศทาง Google DeepMind ภายใต้ผู้นำใหม่ Koray Kavukcuoglu และผลกระทบต่อการแข่งขัน Gemini</dd>
+        <dt>เหตุผล</dt><dd>เป็นการเปลี่ยนผู้นำครั้งใหญ่ท่ามกลางแรงกดดันจากคู่แข่ง (OpenAI, Anthropic, xAI) และการที่ Gemini 3.5 Pro เลื่อนกำหนดเปิดตัวมาแล้วสามครั้ง</dd>
+        <dt>Source</dt><dd><a href="https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html" target="_blank" rel="noopener">CNBC</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ผลตอบรับและการขยายผลของการทดสอบโฆษณาใน ChatGPT ในตลาดสหรัฐฯ</dd>
+        <dt>เหตุผล</dt><dd>เป็นการเปลี่ยนโมเดลรายได้ครั้งสำคัญของ OpenAI อาจกระทบความไว้วางใจของผู้ใช้และรูปแบบธุรกิจของคู่แข่ง</dd>
+        <dt>Source</dt><dd><a href="https://openai.com/index/testing-ads-in-chatgpt/" target="_blank" rel="noopener">OpenAI (Official)</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>กำหนดการ IPO ของ Anthropic และตัวเลขผลประกอบการไตรมาส 2 ฉบับทางการ</dd>
+        <dt>เหตุผล</dt><dd>หากยืนยันกำไรไตรมาสแรกได้จริง จะเป็นจุดเปรียบเทียบสำคัญกับ OpenAI ที่ยังขาดทุนต่อเนื่อง และกระทบมูลค่าบริษัทช่วง IPO</dd>
+        <dt>Source</dt><dd><a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-track-first-profitable-quarter-124217577.html" target="_blank" rel="noopener">Yahoo Finance</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>การบังคับใช้ EU AI Act ในส่วนความโปร่งใสที่เริ่มมีผลตั้งแต่ 2 ส.ค. จะกระทบผู้ให้บริการ AI นอกยุโรปอย่างไร</dd>
+        <dt>เหตุผล</dt><dd>บริษัทสหรัฐฯ ที่ให้บริการในยุโรปต้องปรับ compliance ตามกำหนดเวลาที่ต่างจากสหรัฐฯ และสหราชอาณาจักร</dd>
+        <dt>Source</dt><dd><a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1714" target="_blank" rel="noopener">European Commission (Official)</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Google — Gemini 3.7 Flash</a></li>
+          <li><a href="https://openai.com/index/previewing-ultrafast/" target="_blank" rel="noopener">OpenAI — Ultrafast</a></li>
+          <li><a href="https://openai.com/index/dali-rajic-chief-revenue-officer/" target="_blank" rel="noopener">OpenAI — Dali Rajic CRO</a></li>
+          <li><a href="https://openai.com/index/testing-ads-in-chatgpt/" target="_blank" rel="noopener">OpenAI — Testing Ads in ChatGPT</a></li>
+          <li><a href="https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai" target="_blank" rel="noopener">Cerebras Blog</a></li>
+          <li><a href="https://x.ai/news/grok-4-6" target="_blank" rel="noopener">xAI — Grok 4.6</a></li>
+          <li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/" target="_blank" rel="noopener">Model Context Protocol Blog</a></li>
+          <li><a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1714" target="_blank" rel="noopener">European Commission — AI Act</a></li>
+          <li><a href="https://nvidianews.nvidia.com/news/latest" target="_blank" rel="noopener">NVIDIA Newsroom</a></li>
+          <li><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">GitHub — anthropics/skills</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:6px 0;border:none;background:none;">ไม่มีในรอบนี้ (arxiv.org/huggingface.co เข้าถึงไม่ได้)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-13/google-debuts-new-gemini-flash-while-top-ai-model-still-delayed" target="_blank" rel="noopener">Bloomberg (Gemini 3.7 Flash)</a></li>
+          <li><a href="https://9to5google.com/2026/08/13/gemini-3-7-flash-launch/" target="_blank" rel="noopener">9to5Google</a></li>
+          <li><a href="https://www.axios.com/2026/08/13/google-gemini-37-flash" target="_blank" rel="noopener">Axios (Gemini 3.7 Flash)</a></li>
+          <li><a href="https://www.thurrott.com/google/340392/google-launches-gemini-3-7-flash-model" target="_blank" rel="noopener">Thurrott</a></li>
+          <li><a href="https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/" target="_blank" rel="noopener">TechCrunch (Ultrafast)</a></li>
+          <li><a href="https://9to5mac.com/2026/08/13/openai-previews-ultrafast-gpt-5-6-sol-running-up-to-14-times-faster/" target="_blank" rel="noopener">9to5Mac</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-13/openai-hires-new-chief-revenue-officer-after-less-than-a-year" target="_blank" rel="noopener">Bloomberg (OpenAI CRO)</a></li>
+          <li><a href="https://techcrunch.com/2026/08/13/openai-hires-new-cro-as-executive-shake-up-continues/" target="_blank" rel="noopener">TechCrunch (OpenAI CRO)</a></li>
+          <li><a href="https://www.unite.ai/deepseek-ships-v4-pro-as-its-flagship-model-leaves-preview/" target="_blank" rel="noopener">Unite.AI (DeepSeek)</a></li>
+          <li><a href="https://www.gmicloud.ai/en/blog/deepseek-v4-pro-steps-out-of-preview-the-0813-build-is-live/" target="_blank" rel="noopener">GMI Cloud (DeepSeek)</a></li>
+          <li><a href="https://www.globaltimes.cn/page/202608/1368125.shtml" target="_blank" rel="noopener">Global Times (DeepSeek)</a></li>
+          <li><a href="https://www.basenor.com/blogs/news/xai-launches-grok-4-6-1753-elo-half-the-price-of-rival-frontier-models" target="_blank" rel="noopener">Basenor (Grok 4.6)</a></li>
+          <li><a href="https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html" target="_blank" rel="noopener">CNBC (DeepMind leadership)</a></li>
+          <li><a href="https://fortune.com/2026/08/13/googles-deepmind-is-having-an-identity-crisis/" target="_blank" rel="noopener">Fortune (DeepMind)</a></li>
+          <li><a href="https://www.digitimes.com/news/a20260813VL203/alphabet-deepmind-google-gemini-anthropic.html" target="_blank" rel="noopener">Digitimes (DeepMind)</a></li>
+          <li><a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-track-first-profitable-quarter-124217577.html" target="_blank" rel="noopener">Yahoo Finance (Anthropic)</a></li>
+          <li><a href="https://www.digitimes.com/news/a20260521VL219/anthropic-ai-operating-profit-revenue-growth.html" target="_blank" rel="noopener">Digitimes (Anthropic)</a></li>
+          <li><a href="https://www.engadget.com/2178340/anthropic-first-profitable-quarter/" target="_blank" rel="noopener">Engadget (Anthropic)</a></li>
+          <li><a href="https://www.windowslatest.com/2026/08/13/microsoft-warns-you-to-stop-using-sms-based-passwords-because-of-ai-phishing-and-itll-block-you-starting-with-entra-id/" target="_blank" rel="noopener">Windows Latest (Microsoft)</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-13/microsoft-cuts-purchases-of-carbon-removals-by-80-amid-ai-push" target="_blank" rel="noopener">Bloomberg (Microsoft)</a></li>
+          <li><a href="https://techstartups.com/2026/08/13/top-tech-news-today-august-13-2026-anthropic-deepmind-google-lenovo-microsoft-spacexai-more/" target="_blank" rel="noopener">Tech Startups</a></li>
+          <li><a href="https://venturebeat.com/orchestration/mcp-just-got-its-biggest-update-ever-heres-what-changes-for-ai-agents" target="_blank" rel="noopener">VentureBeat (MCP)</a></li>
+          <li><a href="https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline" target="_blank" rel="noopener">Holland &amp; Knight (EU AI Act)</a></li>
+          <li><a href="https://www.collibra.com/blog/ai-regulatory-compliance-in-2026-eu-ai-act-us-orders-and-state-laws-and-how-to-operationalize" target="_blank" rel="noopener">Collibra (EU AI Act)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+          <li><a href="https://trendshift.io/repositories/18986" target="_blank" rel="noopener">Trendshift (Semantica)</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · จัดทำโดยกระบวนการอัตโนมัติจากการสืบค้นเว็บสาธารณะ ณ วันที่ 13 ส.ค. 2569 (ICT) · โปรดตรวจสอบแหล่งอ้างอิงต้นทางก่อนนำไปอ้างอิงต่อ</p>
+  </footer>
+</div>
+</body>
+</html>
