@@ -1,6 +1,6 @@
 # 🎉 natthasath-news
 
-Automated Thai news digest, published as a static site on GitHub Pages. Scheduled Claude Code cloud routines collect, cross-validate, and summarize news across 10 categories, write self-contained HTML reports directly into this repository, and keep each category's archive page up to date — no manual publishing step required.
+Automated Thai news digest, published as a static site on GitHub Pages. Scheduled Claude Code cloud routines collect, cross-validate, and summarize news across 11 categories, write self-contained HTML reports directly into this repository, and keep each category's archive page up to date — no manual publishing step required.
 
 ![license](https://img.shields.io/github/license/natthasath/natthasath-news)
 ![stars](https://img.shields.io/github/stars/natthasath/natthasath-news)
@@ -21,6 +21,7 @@ Automated Thai news digest, published as a static site on GitHub Pages. Schedule
 |---|---|---|---|
 | [`ai/`](ai/) | Daily | AI & Technology | [Open](https://natthasath.github.io/natthasath-news/ai/) |
 | [`economics/`](economics/) | Daily | Economics | [Open](https://natthasath.github.io/natthasath-news/economics/) |
+| [`github/`](github/) | Weekly | GitHub Trending Open Source | [Open](https://natthasath.github.io/natthasath-news/github/) |
 | [`football/`](football/) | Weekly | Premier League | [Open](https://natthasath.github.io/natthasath-news/football/) |
 | [`software/`](software/) | Weekly | Software Releases | [Open](https://natthasath.github.io/natthasath-news/software/) |
 | [`ratchakitcha/`](ratchakitcha/) | Weekly | Royal Gazette | [Open](https://natthasath.github.io/natthasath-news/ratchakitcha/) |
