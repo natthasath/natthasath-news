@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly GitHub Trending Report — Week 33, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#B5502A; --warn-soft:rgba(181,80,42,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14);
+    --warn:#E08A63; --warn-soft:rgba(224,138,99,0.14);
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:980px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+h2{ font-size:22px; font-weight:800; margin:48px 0 16px; padding-top:8px; border-top:1px solid var(--line-strong); display:flex; align-items:center; gap:10px; }
+h2:first-of-type{ border-top:none; }
+h3{ font-size:17px; font-weight:700; margin:26px 0 10px; color:var(--ink); }
+p{ margin:0 0 14px; color:var(--ink-soft); }
+ul, ol{ padding-left:22px; color:var(--ink-soft); }
+li{ margin-bottom:6px; }
+strong{ color:var(--ink); }
+code{ font-family:"JetBrains Mono",monospace; font-size:0.9em; background:var(--surface-2); padding:1px 5px; border-radius:4px; }
+
+.summary-box{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:8px; }
+.summary-box p{ margin:0; color:var(--ink); }
+
+.tablewrap{ overflow-x:auto; margin:14px 0 22px; border:1px solid var(--line); border-radius:10px; }
+table{ width:100%; border-collapse:collapse; font-size:14px; background:var(--surface); min-width:640px; }
+thead th{ text-align:left; font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-faint); padding:12px 14px; border-bottom:1px solid var(--line-strong); background:var(--surface-2); white-space:nowrap; }
+tbody td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ color:var(--ink); font-weight:600; }
+tbody td a{ text-decoration:none; }
+tbody td a:hover{ text-decoration:underline; }
+
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.card-title{ font-weight:700; font-size:15.5px; color:var(--ink); margin-bottom:4px; }
+.card-title a{ text-decoration:none; }
+.card-meta{ font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); margin-bottom:10px; }
+.card p{ margin:0 0 8px; font-size:14.5px; }
+.card ul{ margin:6px 0 0; font-size:14px; }
+
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; background:var(--accent-soft); color:var(--accent); margin-right:6px; }
+.badge.warn{ background:var(--warn-soft); color:var(--warn); }
+
+.note-box{ background:var(--warn-soft); border:1px solid rgba(181,80,42,0.28); border-radius:10px; padding:14px 18px; margin:14px 0; font-size:14px; color:var(--ink); }
+.note-box strong{ color:var(--warn); }
+
+.legend-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px 20px; font-size:14px; }
+.legend-grid div{ display:flex; gap:8px; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin:16px 0; }
+.stat-tile{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+.stat-num{ font-family:"JetBrains Mono",monospace; font-size:24px; font-weight:700; color:var(--accent); }
+.stat-label{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer a{ color:var(--ink-faint); }
+
+@media (max-width:640px){
+  h1{ font-size:26px; }
+  h2{ font-size:19px; }
+  .meta-row{ gap:10px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="index.html">← กลับไปหน้ารวม Weekly GitHub Trending</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest · Week 33</p>
+    <h1>⭐ Weekly GitHub Trending Open Source Report</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 7–14 ส.ค. 2026 (ICT)</span>
+      <span><b>หมวด:</b> GitHub Open Source</span>
+      <span><b>เผยแพร่:</b> 14 ส.ค. 2026</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้แรงขับเคลื่อนหลักของวงการ Open Source อยู่ที่ระบบนิเวศ AI Agent และ MCP (Model Context Protocol) โดย <strong>PrimeIntellect-ai/prime-agent</strong> และ <strong>TencentCloud/TencentDB-Agent-Memory</strong> เติบโตแบบก้าวกระโดดหลายพันดาวในเจ็ดวัน สะท้อนความสนใจใน Agent ที่จดจำและปรับปรุงตัวเองได้ ฝั่งเครื่องมือพัฒนามีการออก Release สำคัญพร้อมกันจากหลายค่าย ทั้ง Ollama, Hugging Face Transformers, Next.js, Svelte และ Zed Editor ขณะที่ฝั่ง Cloud Native/Security มีข่าวใหญ่คือ Cloud Native Buildpacks graduate เป็นโครงการ CNCF เต็มตัว และ Kubernetes SIG ออก Kueue v0.19.1 ที่มาพร้อม Breaking Change ด้าน LeaderWorkerSet ที่ต้องระวัง โดยรวมแนวโน้มสัปดาห์นี้ชี้ว่าตลาดกำลังเปลี่ยนจาก "AI Assistant แบบเดี่ยว" ไปสู่ "Agent ที่ทำงานร่วมกันเป็นทีมและมีหน่วยความจำระยะยาว" อย่างชัดเจน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Top Trending Repositories</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Owner</th><th>Language</th><th>Stars</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/n8n-io/n8n" target="_blank" rel="noopener">n8n</a></td><td>n8n-io</td><td>TypeScript</td><td>200.6k</td><td>AI Agents / Automation</td><td>GitHub</td></tr>
+          <tr><td><a href="https://github.com/ollama/ollama" target="_blank" rel="noopener">ollama</a></td><td>ollama</td><td>Go</td><td>178.5k</td><td>AI / LLM</td><td>GitHub</td></tr>
+          <tr><td><a href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener">firecrawl</a></td><td>firecrawl</td><td>TypeScript</td><td>167.3k (+4,820 สัปดาห์นี้)</td><td>API / Web Scraping</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">transformers</a></td><td>huggingface</td><td>Python</td><td>164.1k</td><td>AI / LLM</td><td>GitHub</td></tr>
+          <tr><td><a href="https://github.com/vercel/next.js" target="_blank" rel="noopener">next.js</a></td><td>vercel</td><td>JavaScript</td><td>141.8k</td><td>Web Framework</td><td>GitHub</td></tr>
+          <tr><td><a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">gemini-cli</a></td><td>google-gemini</td><td>TypeScript</td><td>106.5k</td><td>AI Agents / CLI</td><td>GitHub</td></tr>
+          <tr><td><a href="https://github.com/zed-industries/zed" target="_blank" rel="noopener">zed</a></td><td>zed-industries</td><td>Rust</td><td>88.6k</td><td>IDE Tools</td><td>GitHub</td></tr>
+          <tr><td><a href="https://github.com/sveltejs/svelte" target="_blank" rel="noopener">svelte</a></td><td>sveltejs</td><td>JavaScript</td><td>87.9k</td><td>Web Framework</td><td>GitHub</td></tr>
+          <tr><td><a href="https://github.com/unslothai/unsloth" target="_blank" rel="noopener">unsloth</a></td><td>unslothai</td><td>Python</td><td>71.3k</td><td>AI / LLM</td><td>GitHub</td></tr>
+          <tr><td><a href="https://github.com/TencentCloud/TencentDB-Agent-Memory" target="_blank" rel="noopener">TencentDB-Agent-Memory</a></td><td>TencentCloud</td><td>TypeScript</td><td>21.6k (+5,388 สัปดาห์นี้)</td><td>AI Agents / Data</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/PrimeIntellect-ai/prime-agent" target="_blank" rel="noopener">prime-agent</a></td><td>PrimeIntellect-ai</td><td>TypeScript</td><td>15.8k (+12,476 สัปดาห์นี้)</td><td>AI Agents</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/kubescape/kubescape" target="_blank" rel="noopener">kubescape</a></td><td>kubescape</td><td>Go</td><td>11.6k (+35 สัปดาห์นี้)</td><td>Cloud Native Security</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>n8n</strong> คือแพลตฟอร์ม Workflow Automation แบบ Fair-code ที่เพิ่มความสามารถ AI Agent และ MCP เข้าไปในตัว มี Release ออกถี่มาก (8+ ครั้งในสัปดาห์นี้) สะท้อนการพัฒนาที่ active สูง — <strong>ollama</strong> ยังคงเป็นผู้นำการรัน LLM แบบ local ด้วย Release ต่อเนื่อง 4 ครั้งในสัปดาห์เดียว รองรับโมเดลใหม่อย่าง DeepSeek Harness — <strong>firecrawl</strong> โตขึ้นเกือบ 5,000 ดาวในสัปดาห์เดียวทั้งที่มีฐานผู้ใช้ใหญ่อยู่แล้ว (167k) ซึ่งผิดปกติสำหรับ Repository ขนาดนี้และน่าจับตา — <strong>prime-agent</strong> และ <strong>TencentDB-Agent-Memory</strong> คือสอง Agent Memory/Coding Agent ที่ไวรัลที่สุดของสัปดาห์ ตอกย้ำเทรนด์ Agent ที่มีความจำระยะยาวและทำงานอัตโนมัติต่อเนื่อง</p>
+  </section>
+
+  <section>
+    <h2>🤖 AI &amp; LLM</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">huggingface/transformers</a></div>
+      <div class="card-meta">Python · Apache-2.0 · 164.1k ⭐ · 34.2k forks</div>
+      <p>Framework นิยามโมเดล ML ระดับ state-of-the-art ครอบคลุมข้อความ วิดีโอ เสียง และ multimodal ออก <strong>v5.15.0 (10 ส.ค. 2026)</strong> เพิ่มโมเดลใหม่ เช่น Meta Muse Glimmer, GraniteMoeSWA, A.X-K1/K2, Cosmos3 Edge พร้อมปรับปรุงระบบ attention/vision</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/ollama/ollama" target="_blank" rel="noopener">ollama/ollama</a></div>
+      <div class="card-meta">Go · MIT · 178.5k ⭐ · 17.4k forks</div>
+      <p>เครื่องมือรัน LLM แบบ local (Kimi-K2.6, GLM-5.2, MiniMax, DeepSeek, Qwen, Gemma ฯลฯ) ออก Release ต่อเนื่อง 4 ครั้งในสัปดาห์นี้ ล่าสุด <strong>v0.32.11 (14 ส.ค. 2026)</strong> เพิ่มการรองรับ DeepSeek Harness และ OpenAI-compatible Responses API สำหรับ web search</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/unslothai/unsloth" target="_blank" rel="noopener">unslothai/unsloth</a></div>
+      <div class="card-meta">Python · Apache-2.0 · 71.3k ⭐ · 6.4k forks</div>
+      <p>เครื่องมือรันและเทรน LLM/Diffusion Model แบบ local เปิดตัว <strong>Unsloth Desktop</strong> สำหรับ Windows/macOS/Linux ในสัปดาห์นี้ (v0.1.70-beta ถึง v0.1.71-beta ระหว่าง 11–14 ส.ค. 2026) พร้อมรองรับ tool-calling และเพิ่มความเร็ว inference ราว 10%</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener">langchain-ai/langchain</a></div>
+      <div class="card-meta">Python · MIT · 144.2k ⭐ · 24.0k forks</div>
+      <p>แพลตฟอร์มสร้าง Agent ("agent engineering platform") ออก Release ย่อยของหลาย Sub-package ต่อเนื่องตลอดสัปดาห์ เช่น langchain-openai 1.5.0 (13 ส.ค., รองรับ OpenAI SDK 3.0), langchain-core 1.5.4 (แก้ปัญหาความเข้ากันได้กับ Pydantic 2.14)</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/stanfordnlp/dspy" target="_blank" rel="noopener">stanfordnlp/dspy</a></div>
+      <div class="card-meta">Python · MIT · 37.2k ⭐ · 3.2k forks</div>
+      <p>Framework สำหรับ "โปรแกรม" LLM แทนการเขียน Prompt ต้นกำเนิดจาก Stanford NLP มี Commit ต่อเนื่องถึงวันที่ 14 ส.ค. 2026 แม้ไม่มี Release ใหม่ในสัปดาห์นี้</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🧠 MCP &amp; AI Agents</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/github/github-mcp-server" target="_blank" rel="noopener">github/github-mcp-server</a> ✅</div>
+      <div class="card-meta">Go · MIT · 32.2k ⭐ · 4.8k forks</div>
+      <p>MCP Server อย่างเป็นทางการของ GitHub ออก <strong>v1.9.0 (10 ส.ค. 2026)</strong> ปรับปรุงการเรียงลำดับผลลัพธ์ของ <code>list_label</code> ตามจำนวน Issue</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener">ChromeDevTools/chrome-devtools-mcp</a> ✅</div>
+      <div class="card-meta">TypeScript · Apache-2.0 · 49.2k ⭐ · 3.4k forks</div>
+      <p>MCP Server สำหรับ Chrome DevTools ที่ให้ Agent ควบคุมเบราว์เซอร์ ออก <strong>v1.7.0 (10 ส.ค. 2026)</strong> เพิ่มเครื่องมือวิเคราะห์ Heap Snapshot และอัปเดต Lighthouse เป็น 13.4.1</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/PrimeIntellect-ai/prime-agent" target="_blank" rel="noopener">PrimeIntellect-ai/prime-agent</a> 🔥</div>
+      <div class="card-meta">TypeScript · MIT · 15.8k ⭐ (+12,476 สัปดาห์นี้) · 1.7k forks</div>
+      <p>Agent สำหรับงานเขียนโค้ด/วิจัยที่ปรับปรุงตัวเองได้ต่อเนื่อง (Recursive Language Model) พร้อม "Continual Harness" สำหรับจัดการทักษะและหน่วยความจำ เติบโตเกือบ 80% ของดาวทั้งหมดภายในสัปดาห์เดียว</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/TencentCloud/TencentDB-Agent-Memory" target="_blank" rel="noopener">TencentCloud/TencentDB-Agent-Memory</a> 🔥 ✅</div>
+      <div class="card-meta">TypeScript · Other License · 21.6k ⭐ (+5,388 สัปดาห์นี้) · 2.0k forks</div>
+      <p>ศูนย์กลางหน่วยความจำระดับทีมสำหรับ AI Agent แปลงบทสนทนา/เอกสาร/โค้ดให้เป็นสินทรัพย์ที่ใช้ซ้ำได้ (Chat Memory, Skill, Wiki, Code-Graph) โครงการทางการของ Tencent Cloud</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/awslabs/mcp" target="_blank" rel="noopener">awslabs/mcp</a> ✅ ⚠️</div>
+      <div class="card-meta">Python · Apache-2.0 · 9.6k ⭐ · 1.7k forks</div>
+      <p>ชุด MCP Server เฉพาะทางสำหรับบริการ AWS ออก 2 Release ในสัปดาห์นี้ รวมถึงแพตช์ความปลอดภัย <strong>CVE-2026-54466</strong> สำหรับไลบรารี websocket-driver (14 ส.ค. 2026)</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/microsoft/mcp" target="_blank" rel="noopener">microsoft/mcp</a> ✅</div>
+      <div class="card-meta">MIT · 3.6k ⭐ · 589 forks</div>
+      <p>แคตตาล็อก MCP Server อย่างเป็นทางการของ Microsoft (Azure, Fabric) ออก 4 Release ในสัปดาห์นี้ รวมถึง Azure.Mcp.Server 3.0.0-beta.35 (13 ส.ค.) และ Fabric.Mcp.Server 1.3.0 (10 ส.ค.)</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/PrefectHQ/fastmcp" target="_blank" rel="noopener">PrefectHQ/fastmcp</a> ✅ ⚠️</div>
+      <div class="card-meta">Python · Apache-2.0 · 27.2k ⭐ · 2.2k forks</div>
+      <p>เครื่องมือสร้าง MCP Server/Client แบบ Pythonic ออก v3.4.7 (10 ส.ค., คืนค่า <code>private_key_jwt</code> auth) และ v4.0.0b2 รุ่นเบต้า (7 ส.ค.) ที่เริ่มปรับให้รองรับ MCP แบบ Stateless</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/cloudflare/computer" target="_blank" rel="noopener">cloudflare/computer</a> 🔥 ✅</div>
+      <div class="card-meta">TypeScript · MIT · 8.1k ⭐ (+3,599 สัปดาห์นี้) · 443 forks</div>
+      <p>"มอบคอมพิวเตอร์ให้ Agent" — พื้นที่รันไฟล์/คำสั่งแบบ pluggable (Container/Isolate) สำหรับ Sandbox ของ Agent โครงการทางการของ Cloudflare ยังอยู่ในสถานะ Preview ไม่พร้อมใช้งานจริง</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>⚙️ Developer Tools</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/zed-industries/zed" target="_blank" rel="noopener">zed-industries/zed</a></div>
+      <div class="card-meta">Rust · Custom License · 88.6k ⭐ · 10.1k forks</div>
+      <p>Code Editor ประสิทธิภาพสูงรองรับหลายผู้ใช้พร้อมกัน จากผู้สร้าง Atom และ Tree-sitter ออก <strong>v1.15.0 (12 ส.ค. 2026)</strong> เพิ่มการลาก-วางไฟล์และ Linked Editing สำหรับ JSX/TSX พร้อม Pre-release v1.16.0 ที่ผนวก Gemini 3.6 Flash เข้ากับตัวแก้ไข</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/jdx/mise" target="_blank" rel="noopener">jdx/mise</a></div>
+      <div class="card-meta">Rust · MIT · 32.4k ⭐ (+503 สัปดาห์นี้) · 1.4k forks</div>
+      <p>เครื่องมือจัดการ Dev Tools/Env Vars/Task Runner แบบไบนารีเดียว ออก 2 Release ในสัปดาห์นี้ (v2026.8.4, v2026.8.5) ปรับปรุง cross-backend list และการเรียง semver</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>☁️ Cloud Native &amp; DevOps</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/kubescape/kubescape" target="_blank" rel="noopener">kubescape/kubescape</a> ✅</div>
+      <div class="card-meta">Go · Apache-2.0 · 11.6k ⭐ (+35 สัปดาห์นี้) · 1.0k forks · CNCF Incubating</div>
+      <p>แพลตฟอร์มความปลอดภัย Kubernetes ครบวงจร ออก <strong>v4.0.12 (12 ส.ค. 2026)</strong> เพิ่ม Pipeline สแกนภาพแบบ Concurrent, รูปแบบผลลัพธ์ Markdown และการสแกน Terraform K8s Resource</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/helm/helm" target="_blank" rel="noopener">helm/helm</a> ✅</div>
+      <div class="card-meta">Go · Apache-2.0 · 30.2k ⭐ (+55 สัปดาห์นี้) · 7.8k forks · CNCF Graduated</div>
+      <p>Package Manager ของ Kubernetes ออก 2 Release พร้อมกัน <strong>v4.2.4 และ v3.21.4 (13 ส.ค. 2026)</strong> เอกสารระบุชัดว่า Helm v3 ใกล้ End-of-Life แนะนำให้ย้ายไป v4</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/buildpacks/pack" target="_blank" rel="noopener">buildpacks/pack</a> ✅</div>
+      <div class="card-meta">Go · Apache-2.0 · 3.0k ⭐ · 355 forks · CNCF Graduated (11 ส.ค. 2026)</div>
+      <p>CLI สำหรับสร้างภาพ OCI ด้วย Cloud Native Buildpacks ข่าวใหญ่ของสัปดาห์คือ <strong>Cloud Native Buildpacks graduate เป็นโครงการ CNCF เต็มตัว</strong> เมื่อ 11 ส.ค. 2026 พร้อม Release v0.40.9 (9 ส.ค. 2026)</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/kubernetes-sigs/kueue" target="_blank" rel="noopener">kubernetes-sigs/kueue</a> ✅ ⚠️</div>
+      <div class="card-meta">Go · Apache-2.0 · 2.8k ⭐ (+47 สัปดาห์นี้) · 745 forks</div>
+      <p>ระบบจัดคิวงาน Batch/AI-ML แบบ Kubernetes-native โดย SIG-Scheduling ออก v0.19.1/v0.18.5 (12 ส.ค. 2026) พร้อม <strong>Breaking Change</strong> — ดูรายละเอียดในหมวด Breaking Changes ด้านล่าง</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/containers/kubernetes-mcp-server" target="_blank" rel="noopener">containers/kubernetes-mcp-server</a> ✅</div>
+      <div class="card-meta">Go · Apache-2.0 · 2.0k ⭐ · 414 forks · Red Hat</div>
+      <p>MCP Server สำหรับ Kubernetes/OpenShift ให้ AI Agent ควบคุมคลัสเตอร์ได้โดยตรง (Pods, Helm, Tekton, KubeVirt) พัฒนาโดย Red Hat ยัง Active ต่อเนื่องแม้ Release ล่าสุด (v0.0.66) จะออกก่อนสัปดาห์นี้เล็กน้อย</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/cilium/cilium" target="_blank" rel="noopener">cilium/cilium</a> ✅</div>
+      <div class="card-meta">Go · Apache-2.0 · 24.9k ⭐ · 4.0k forks · CNCF Graduated</div>
+      <p>เครือข่าย/ความปลอดภัย/Observability บน eBPF (CNI เริ่มต้นของ EKS/GKE) มี Pre-release 1.21.0-pre.0 เพิ่มโหมด Delta-split Envoy xDS sync ยัง Active ต่อเนื่องถึงวันที่ 14 ส.ค. 2026</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔒 Security</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">aquasecurity/trivy</a></div>
+      <div class="card-meta">Go · Apache-2.0 · 37.4k ⭐ · 588 forks</div>
+      <p>เครื่องมือสแกนช่องโหว่/Misconfiguration/Secret/SBOM ครอบคลุม Container, K8s, IaC ออก <strong>v0.74.0 (14 ส.ค. 2026)</strong> ต่อจาก v0.73.0 เมื่อต้นเดือน</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/google/osv-scanner" target="_blank" rel="noopener">google/osv-scanner</a> ✅</div>
+      <div class="card-meta">Go · Apache-2.0 · 10.8k ⭐ · 756 forks</div>
+      <p>เครื่องมือสแกนช่องโหว่จากฐานข้อมูล osv.dev ครอบคลุมกว่า 11 ภาษา ออก <strong>v2.5.0 (7 ส.ค. 2026)</strong> ย้ายระบบสแกน/กรอง/จับคู่ไปใช้ osv-scalibr ทั้งหมด</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/goauthentik/authentik" target="_blank" rel="noopener">goauthentik/authentik</a></div>
+      <div class="card-meta">Python · Custom License · 24.8k ⭐ (+1,882 สัปดาห์นี้) · 1.9k forks</div>
+      <p>ระบบ SSO/Identity Provider โอเพนซอร์ส ออก <strong>2026.8.0-rc7 (10 ส.ค. 2026)</strong> ปรับปรุง OAuth2 Provider, การผนวก Enterprise Agent และเสริมความปลอดภัยด้วย Constant-time Comparison</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/trufflesecurity/trufflehog" target="_blank" rel="noopener">trufflesecurity/trufflehog</a></div>
+      <div class="card-meta">Go · AGPL-3.0 · 27.5k ⭐ (+122 สัปดาห์นี้) · 2.5k forks</div>
+      <p>เครื่องมือค้นหาและยืนยัน Credential/Secret รองรับกว่า 800 ประเภท มี Commit ต่อเนื่องถึง 13 ส.ค. 2026 แม้ไม่มี Release ใหม่ในสัปดาห์นี้ (Release ล่าสุด v3.96.0 ออกก่อนหน้าสัปดาห์)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🗄️ Database</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/duckdb/duckdb" target="_blank" rel="noopener">duckdb/duckdb</a></div>
+      <div class="card-meta">C++ · MIT · 40.2k ⭐ · 3.6k forks</div>
+      <p>ฐานข้อมูล SQL เชิงวิเคราะห์แบบ In-process ยัง Active ต่อเนื่องถึง 14 ส.ค. 2026 แม้ไม่มี Release ใหม่ในสัปดาห์นี้ (Release ล่าสุด v1.5.5 ออกก่อนหน้า)</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/drawdb-io/drawdb" target="_blank" rel="noopener">drawdb-io/drawdb</a></div>
+      <div class="card-meta">JavaScript · AGPL-3.0 · 39.1k ⭐ (+693 สัปดาห์นี้) · 3.2k forks</div>
+      <p>เครื่องมือออกแบบ Database Diagram และสร้าง SQL ออนไลน์แบบฟรี ใช้งานง่าย มี Commit ต่อเนื่องถึง 13 ส.ค. 2026</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🌐 Web Frameworks</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/vercel/next.js" target="_blank" rel="noopener">vercel/next.js</a> ✅</div>
+      <div class="card-meta">JavaScript · MIT · 141.8k ⭐ · 31.8k forks</div>
+      <p>React Framework ยอดนิยม ออก <strong>v16.3.1 (13 ส.ค. 2026)</strong> พร้อม Canary Build ต่อเนื่อง 8 ครั้งในสัปดาห์ ปรับปรุง Turbopack, Image Optimization และแก้ปัญหา Cache ไม่มี Breaking Change</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/sveltejs/svelte" target="_blank" rel="noopener">sveltejs/svelte</a></div>
+      <div class="card-meta">JavaScript · MIT · 88.0k ⭐ · 5.2k forks</div>
+      <p>Framework Web Development ออก <strong>svelte@5.56.9 (12 ส.ค. 2026)</strong> แก้บั๊กเรื่อง reactive batch และการรักษา CSS comment ใน AST printer ไม่มี Breaking Change</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/fastapi/fastapi" target="_blank" rel="noopener">fastapi/fastapi</a></div>
+      <div class="card-meta">Python · MIT · 101.6k ⭐ · 9.8k forks</div>
+      <p>Framework สร้าง API บน Python ประสิทธิภาพสูง เรียนรู้ง่าย ยัง Active ต่อเนื่องถึง 14 ส.ค. 2026</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📱 Mobile</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/expo/expo" target="_blank" rel="noopener">expo/expo</a></div>
+      <div class="card-meta">TypeScript · MIT · 51.6k ⭐ · 13.5k forks</div>
+      <p>Framework โอเพนซอร์สสำหรับสร้างแอป Native ข้ามแพลตฟอร์มด้วย React มี Commit ต่อเนื่องถึง 13–14 ส.ค. 2026 ครอบคลุม Native Module ของ iOS/Android และปรับปรุง Router (Expo เผยแพร่เวอร์ชันผ่าน npm/EAS ไม่ใช้ GitHub Releases โดยตรง)</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/mihonapp/mihon" target="_blank" rel="noopener">mihonapp/mihon</a></div>
+      <div class="card-meta">Kotlin · Apache-2.0 · 22.8k ⭐ (+218 สัปดาห์นี้) · 1.4k forks</div>
+      <p>แอปอ่านมังงะโอเพนซอร์สฟรีสำหรับ Android มี Commit ต่อเนื่องถึง 13 ส.ค. 2026</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📦 New Releases</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Project</th><th>Version</th><th>Release Date</th><th>Highlights</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>ollama/ollama</td><td>v0.32.11</td><td>14 ส.ค. 2026</td><td>DeepSeek Harness, Responses API web search</td><td>GitHub Releases</td></tr>
+          <tr><td>aquasecurity/trivy</td><td>v0.74.0</td><td>14 ส.ค. 2026</td><td>อัปเดตต่อเนื่องจาก v0.73.0</td><td>GitHub Releases</td></tr>
+          <tr><td>awslabs/mcp</td><td>2026.08.20260813230114</td><td>14 ส.ค. 2026</td><td>แก้ไข Compute Optimizer/DynamoDB/ECS</td><td>GitHub Releases</td></tr>
+          <tr><td>unslothai/unsloth</td><td>v0.1.71-beta</td><td>14 ส.ค. 2026</td><td>Qwen3.8-27B/2.4T local support, dynamic GGUF</td><td>GitHub Releases</td></tr>
+          <tr><td>huggingface/transformers</td><td>v5.15.0</td><td>10 ส.ค. 2026</td><td>เพิ่มโมเดลใหม่หลายตัว, ปรับปรุง attention/vision</td><td>GitHub Releases</td></tr>
+          <tr><td>google-gemini/gemini-cli</td><td>v0.55.1 (stable)</td><td>11 ส.ค. 2026</td><td>แก้บั๊ก 80+ รายการ</td><td>GitHub Releases</td></tr>
+          <tr><td>github/github-mcp-server</td><td>v1.9.0</td><td>10 ส.ค. 2026</td><td>ปรับการเรียงลำดับ list_label</td><td>GitHub Releases</td></tr>
+          <tr><td>ChromeDevTools/chrome-devtools-mcp</td><td>v1.7.0</td><td>10 ส.ค. 2026</td><td>Heap snapshot analysis, Lighthouse 13.4.1</td><td>GitHub Releases</td></tr>
+          <tr><td>vercel/next.js</td><td>v16.3.1</td><td>13 ส.ค. 2026</td><td>Turbopack, image optimization, cache fixes</td><td>GitHub Releases</td></tr>
+          <tr><td>sveltejs/svelte</td><td>svelte@5.56.9</td><td>12 ส.ค. 2026</td><td>แก้บั๊ก reactive batch/AST printer</td><td>GitHub Releases</td></tr>
+          <tr><td>zed-industries/zed</td><td>v1.15.0</td><td>12 ส.ค. 2026</td><td>File-dragging, linked editing JSX/TSX</td><td>GitHub Releases</td></tr>
+          <tr><td>kubescape/kubescape</td><td>v4.0.12</td><td>12 ส.ค. 2026</td><td>Concurrent image scan, Markdown output</td><td>GitHub Releases</td></tr>
+          <tr><td>helm/helm</td><td>v4.2.4 / v3.21.4</td><td>13 ส.ค. 2026</td><td>Dual-track patch release</td><td>GitHub Releases</td></tr>
+          <tr><td>google/osv-scanner</td><td>v2.5.0</td><td>7 ส.ค. 2026</td><td>ย้ายไป osv-scalibr, extractor ใหม่</td><td>GitHub Releases</td></tr>
+          <tr><td>goauthentik/authentik</td><td>2026.8.0-rc7</td><td>10 ส.ค. 2026</td><td>OAuth2 improvements, security hardening</td><td>GitHub Releases</td></tr>
+          <tr><td>jdx/mise</td><td>v2026.8.5</td><td>12 ส.ค. 2026</td><td>PyPy precompiled path, Node source patches</td><td>GitHub Releases</td></tr>
+          <tr><td>anthropics/anthropic-sdk-typescript</td><td>sdk v0.117.1</td><td>13 ส.ค. 2026</td><td>เพิ่มพารามิเตอร์ output_behavior</td><td>GitHub Releases</td></tr>
+          <tr><td>kubernetes-sigs/kueue</td><td>v0.19.1 / v0.18.5</td><td>12 ส.ค. 2026</td><td>⚠️ มี Breaking Change (ดูหมวดด้านล่าง)</td><td>GitHub Releases</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔥 Viral This Week</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars Growth</th><th>Fork Growth</th><th>เหตุผล</th></tr></thead>
+        <tbody>
+          <tr><td>PrimeIntellect-ai/prime-agent</td><td>+12,476</td><td>ไม่มีข้อมูลรายสัปดาห์ (รวม 1.7k)</td><td>Self-improving coding/research agent เติบโตเกือบ 80% ของดาวทั้งหมดในสัปดาห์เดียว</td></tr>
+          <tr><td>TencentCloud/TencentDB-Agent-Memory</td><td>+5,388</td><td>ไม่มีข้อมูลรายสัปดาห์ (รวม 2.0k)</td><td>Agent Memory Hub อย่างเป็นทางการของ Tencent Cloud</td></tr>
+          <tr><td>firecrawl/firecrawl</td><td>+4,820</td><td>ไม่มีข้อมูลรายสัปดาห์ (รวม 9.4k)</td><td>การเติบโตผิดปกติสำหรับ Repository ขนาดใหญ่ (167k ดาว) ที่โตแล้ว</td></tr>
+          <tr><td>pranshuparmar/witr</td><td>+2,215</td><td>ไม่มีข้อมูลรายสัปดาห์ (รวม 748)</td><td>CLI/TUI ตรวจสอบ Process/Port/Container จากนักพัฒนาเดี่ยว ขึ้นอันดับ 3 Go Trending รายสัปดาห์</td></tr>
+          <tr><td>vitali87/code-graph-rag</td><td>+1,628</td><td>ไม่มีข้อมูลรายสัปดาห์ (รวม 590)</td><td>RAG สำหรับ Monorepo ด้วย Knowledge Graph โตราว 38% ของดาวทั้งหมดในสัปดาห์เดียว</td></tr>
+          <tr><td>3b1b/manim</td><td>+1,530</td><td>ไม่มีข้อมูลรายสัปดาห์ (รวม 7.5k)</td><td>Animation Engine ของ 3Blue1Brown ยังคงได้รับความนิยมต่อเนื่อง</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box">ตัวเลข Fork Growth รายสัปดาห์ไม่มีในแหล่งข้อมูล (GitHub Trending แสดงเฉพาะ Star Growth) จึงแสดงเฉพาะยอด Fork รวมแทน</div>
+  </section>
+
+  <section>
+    <h2>📈 Fastest Growing Projects</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars</th><th>Growth</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>PrimeIntellect-ai/prime-agent</td><td>15.8k</td><td>+12,476 (~79%)</td><td>AI Agents</td><td>GitHub Trending</td></tr>
+          <tr><td>vitali87/code-graph-rag</td><td>4.3k</td><td>+1,628 (~38%)</td><td>RAG / Data Science</td><td>GitHub Trending</td></tr>
+          <tr><td>TencentCloud/TencentDB-Agent-Memory</td><td>21.6k</td><td>+5,388 (~25%)</td><td>AI Agents</td><td>GitHub Trending</td></tr>
+          <tr><td>Agent-Field/pr-af</td><td>540</td><td>+142 (~26%)</td><td>Developer Tools</td><td>GitHub Trending</td></tr>
+          <tr><td>pranshuparmar/witr</td><td>21.4k</td><td>+2,215 (~10%)</td><td>CLI Tools</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>💎 Hidden Gems</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/pranshuparmar/witr" target="_blank" rel="noopener">pranshuparmar/witr</a></div>
+      <div class="card-meta">Go · Apache-2.0 · 21.4k ⭐ (+2,215 สัปดาห์นี้)</div>
+      <ul>
+        <li><strong>จุดเด่น:</strong> เครื่องมือ CLI/TUI ที่ตอบคำถาม "ทำไมโปรเซสนี้ถึงรันอยู่" โดยสืบย้อนต้นตอของ Process/Port/Container/File</li>
+        <li><strong>เหตุผลที่น่าสนใจ:</strong> จากโปรเจกต์ส่วนตัวที่สร้างโดยนักพัฒนาคนเดียวเมื่อ ธ.ค. 2025 กลายเป็นอันดับ 3 บน GitHub Go Trending รายสัปดาห์ด้วยดาวเพิ่มกว่า 2,200 ดวง</li>
+        <li><strong>เหมาะกับใคร:</strong> SRE / DevOps ที่ต้องดีบัก Process หรือ Port ค้างบนเครื่อง</li>
+        <li><strong>Source:</strong> <a href="https://github.com/pranshuparmar/witr" target="_blank" rel="noopener">github.com/pranshuparmar/witr</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/kdlbs/kandev" target="_blank" rel="noopener">kdlbs/kandev</a></div>
+      <div class="card-meta">Go · AGPL-3.0 · 619 ⭐ (+55 สัปดาห์นี้)</div>
+      <ul>
+        <li><strong>จุดเด่น:</strong> สภาพแวดล้อม Kanban สำหรับควบคุม Coding Agent หลายตัวพร้อมกัน ตรวจรีวิวการเปลี่ยนแปลง และเปิด PR ให้อัตโนมัติ แบบ Self-hosted ไม่มี Telemetry</li>
+        <li><strong>เหตุผลที่น่าสนใจ:</strong> ออก Release ถึง 5 ครั้งในสัปดาห์เดียว (v0.85.0–v0.87.1) สะท้อนการพัฒนาที่รวดเร็วมาก</li>
+        <li><strong>เหมาะกับใคร:</strong> ทีมที่อยากจัดการ Agent เขียนโค้ดหลายตัวในที่เดียว โดยไม่พึ่งบริการ Cloud</li>
+        <li><strong>Source:</strong> <a href="https://github.com/kdlbs/kandev" target="_blank" rel="noopener">github.com/kdlbs/kandev</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/Agent-Field/pr-af" target="_blank" rel="noopener">Agent-Field/pr-af</a></div>
+      <div class="card-meta">Go · License ไม่ระบุใน API (ควรตรวจสอบก่อนใช้งานเชิงพาณิชย์) · 540 ⭐ (+142 สัปดาห์นี้)</div>
+      <ul>
+        <li><strong>จุดเด่น:</strong> AI Code Reviewer โอเพนซอร์สที่อ้างว่าอยู่อันดับ 1 บน Code-Review-Bench</li>
+        <li><strong>เหตุผลที่น่าสนใจ:</strong> อัตราการเติบโตราว 26% ของดาวทั้งหมดในสัปดาห์เดียว และมีสัดส่วน Issue ต่อดาวต่ำ (สัญญาณคุณภาพดี)</li>
+        <li><strong>เหมาะกับใคร:</strong> ทีมที่ต้องการ Automated PR Review โดยไม่ต้องพึ่งบริการ SaaS</li>
+        <li><strong>Source:</strong> <a href="https://github.com/Agent-Field/pr-af" target="_blank" rel="noopener">github.com/Agent-Field/pr-af</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/vitali87/code-graph-rag" target="_blank" rel="noopener">vitali87/code-graph-rag</a></div>
+      <div class="card-meta">Python · MIT · 4.3k ⭐ (+1,628 สัปดาห์นี้)</div>
+      <ul>
+        <li><strong>จุดเด่น:</strong> RAG สำหรับ Monorepo ที่ใช้ Tree-sitter parsing ร่วมกับ Memgraph Knowledge Graph ให้ค้นหา/แก้ไขโค้ดด้วยภาษาธรรมชาติ พร้อม MCP Server สำหรับ Claude Code</li>
+        <li><strong>เหตุผลที่น่าสนใจ:</strong> เติบโตราว 38% ของดาวทั้งหมดในสัปดาห์เดียว พร้อมเพิ่มการรองรับ Ruby และ Structural Search-replace ใหม่</li>
+        <li><strong>เหมาะกับใคร:</strong> ทีมที่ทำงานกับ Monorepo ขนาดใหญ่และต้องการให้ AI Agent เข้าใจโครงสร้างโค้ดเชิงลึก</li>
+        <li><strong>Source:</strong> <a href="https://github.com/vitali87/code-graph-rag" target="_blank" rel="noopener">github.com/vitali87/code-graph-rag</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/MinishLab/semble" target="_blank" rel="noopener">MinishLab/semble</a></div>
+      <div class="card-meta">Python · MIT · 5.9k ⭐ · 256 forks</div>
+      <ul>
+        <li><strong>จุดเด่น:</strong> เครื่องมือค้นหาโค้ดสำหรับ Agent ที่รวดเร็วและแม่นยำ ใช้ Token น้อยกว่าวิธี grep+read ถึง 99% รันได้บน CPU ล้วนโดยไม่ต้องใช้ API Key</li>
+        <li><strong>เหตุผลที่น่าสนใจ:</strong> ทำดัชนี Repository ได้ในราว 500ms และรายงานค่า NDCG@10 ที่ 0.854 ในเอกสารประกอบ</li>
+        <li><strong>เหมาะกับใคร:</strong> นักพัฒนาที่ใช้ Claude Code/Cursor และต้องการลดต้นทุน Token จากการค้นหาโค้ด</li>
+        <li><strong>Source:</strong> <a href="https://github.com/MinishLab/semble" target="_blank" rel="noopener">github.com/MinishLab/semble</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠 Developer Recommendations</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/ollama/ollama" target="_blank" rel="noopener">ollama/ollama</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> รัน LLM แบบ local บนเครื่องตัวเอง — <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการทดลอง LLM โดยไม่ส่งข้อมูลออกนอกเครื่อง — <strong>ความยากในการเริ่มต้น:</strong> ง่ายมาก (ติดตั้งแล้วรันคำสั่งเดียว) — <strong>เหตุผลที่แนะนำ:</strong> อัปเดตต่อเนื่องรองรับโมเดลใหม่เร็วที่สุดในกลุ่ม local LLM runner</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">google-gemini/gemini-cli</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> นำ Gemini เข้ามาทำงานในรูปแบบ AI Agent บน Terminal — <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ทำงานบน CLI เป็นหลัก — <strong>ความยากในการเริ่มต้น:</strong> ง่าย — <strong>เหตุผลที่แนะนำ:</strong> ทีม Google อัปเดตแทบทุกวัน มั่นใจได้ว่าตามทันฟีเจอร์ล่าสุด</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/zed-industries/zed" target="_blank" rel="noopener">zed-industries/zed</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> Code Editor ประสิทธิภาพสูง รองรับการทำงานร่วมกันแบบ Multiplayer และเริ่มผนวก AI Model เข้าไปในตัวแก้ไข — <strong>เหมาะกับใคร:</strong> ทีมที่ต้องการ Editor เร็วพร้อมฟีเจอร์ AI ในตัว — <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง (ต้องปรับตัวจาก VS Code) — <strong>เหตุผลที่แนะนำ:</strong> Release ต่อเนื่องและกำลังทดลองผนวก Gemini 3.6 Flash</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/jdx/mise" target="_blank" rel="noopener">jdx/mise</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> จัดการ Dev Tools, Environment Variables และ Task Runner ในไบนารีเดียว — <strong>เหมาะกับใคร:</strong> ทีมที่เบื่อการสลับใช้ nvm/pyenv/rbenv หลายตัว — <strong>ความยากในการเริ่มต้น:</strong> ง่าย — <strong>เหตุผลที่แนะนำ:</strong> Release สม่ำเสมอ แก้บั๊กและเพิ่มการรองรับ Backend ใหม่ต่อเนื่อง</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">aquasecurity/trivy</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> สแกนช่องโหว่ Container, IaC, Secret และ SBOM ในเครื่องมือเดียว — <strong>เหมาะกับใคร:</strong> ทีม DevSecOps — <strong>ความยากในการเริ่มต้น:</strong> ง่าย (ติดตั้งแล้วสแกนได้ทันที) — <strong>เหตุผลที่แนะนำ:</strong> ออก Release ล่าสุดในวันที่เผยแพร่รายงานนี้พอดี สะท้อนการดูแลต่อเนื่อง</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/kubescape/kubescape" target="_blank" rel="noopener">kubescape/kubescape</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> แพลตฟอร์มความปลอดภัย Kubernetes ครบวงจรตั้งแต่ IDE ถึง Runtime — <strong>เหมาะกับใคร:</strong> ทีมที่ดูแลคลัสเตอร์ Kubernetes ขนาดใหญ่ — <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง — <strong>เหตุผลที่แนะนำ:</strong> เป็นโครงการ CNCF Incubating ที่ Active สูง อัปเดตทุกสัปดาห์</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/github/github-mcp-server" target="_blank" rel="noopener">github/github-mcp-server</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> MCP Server อย่างเป็นทางการที่ให้ AI Agent เชื่อมต่อกับ GitHub API ได้โดยตรง — <strong>เหมาะกับใคร:</strong> ทีมที่ใช้ Claude Code หรือ AI Agent อื่นๆ ทำงานกับ Repository — <strong>ความยากในการเริ่มต้น:</strong> ง่าย — <strong>เหตุผลที่แนะนำ:</strong> เป็นมาตรฐานทางการที่ GitHub ดูแลเอง</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/duckdb/duckdb" target="_blank" rel="noopener">duckdb/duckdb</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ฐานข้อมูล SQL เชิงวิเคราะห์แบบ In-process คล้าย "SQLite สำหรับงาน Analytics" — <strong>เหมาะกับใคร:</strong> Data Engineer/Data Scientist ที่ต้องวิเคราะห์ข้อมูลขนาดใหญ่ในเครื่องเดียว — <strong>ความยากในการเริ่มต้น:</strong> ง่าย — <strong>เหตุผลที่แนะนำ:</strong> เสถียร มีชุมชนใหญ่ และใช้งานได้ทันทีโดยไม่ต้องตั้ง Server</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Company Adoption</h2>
+    <ul>
+      <li><strong>Google:</strong> google-gemini/gemini-cli (AI Agent Terminal), ChromeDevTools/chrome-devtools-mcp, google/osv-scanner</li>
+      <li><strong>Microsoft / GitHub:</strong> github/github-mcp-server, microsoft/mcp</li>
+      <li><strong>Anthropic:</strong> anthropics/anthropic-sdk-typescript</li>
+      <li><strong>AWS:</strong> awslabs/mcp (รวมถึงแพตช์ความปลอดภัย CVE-2026-54466)</li>
+      <li><strong>Tencent:</strong> TencentCloud/TencentDB-Agent-Memory</li>
+      <li><strong>Vercel:</strong> vercel/next.js</li>
+      <li><strong>Red Hat:</strong> containers/kubernetes-mcp-server</li>
+      <li><strong>Cloudflare:</strong> cloudflare/computer (Preview)</li>
+      <li><strong>CNCF / Linux Foundation:</strong> kubescape (Incubating), helm (Graduated), cilium (Graduated), buildpacks/pack (Graduated เมื่อ 11 ส.ค. 2026), opentofu (Linux Foundation Project), prometheus (Graduated), opentelemetry-collector (Graduated)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>⚠️ Breaking Changes</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/kubernetes-sigs/kueue" target="_blank" rel="noopener">kubernetes-sigs/kueue v0.19.1</a></div>
+      <p>ฟิลด์ <code>spec.leaderWorkerTemplate.size</code> ของ LeaderWorkerSet ที่จัดการโดย Kueue เปลี่ยนเป็น Immutable (เปิดใช้งานโดย Default ผ่าน Feature Gate <code>LWSImmutableGroupSize</code>) — Object เดิมที่ต้องการเปลี่ยนขนาดต้องสร้างใหม่ นอกจากนี้ Topology-Aware-Scheduling บังคับให้ต้องตั้งค่า <code>podSetSliceSize</code> เมื่อใช้ <code>podSetSliceRequiredTopology</code> — ต้องปรับ Manifest ก่อนอัปเกรด</p>
+    </div>
+    <div class="card">
+      <div class="card-title">MCP Spec — เปลี่ยนเป็น Stateless (28 ก.ค. 2026)</div>
+      <p>ข้อกำหนดของ Model Context Protocol เปลี่ยนไปเป็นแบบ Stateless ตั้งแต่ Release Candidate เมื่อ 28 ก.ค. 2026 ส่งผลต่อ MCP Server/Client ที่สร้างบน Transport แบบ Stateful เดิม — <strong>PrefectHQ/fastmcp v4.0.0b2</strong> (7 ส.ค. 2026) เริ่มปรับตัวรองรับการเปลี่ยนแปลงนี้ในเวอร์ชันเบต้า ผู้ที่ใช้ FastMCP 3.x ควรอ่านคำแนะนำการย้ายก่อนอัปเกรด</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/ollama/ollama" target="_blank" rel="noopener">ollama v0.32.10</a></div>
+      <p>เปลี่ยนค่า Default ของ <code>repeat_penalty</code> จาก 1.1 เป็น 1.0 ซึ่งเป็นการเปลี่ยนพฤติกรรม Sampling เริ่มต้น ผู้ที่ Pin ค่าพฤติกรรมเดิมไว้ควรตรวจสอบ Config</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Top Categories</h2>
+    <ol>
+      <li>AI Agents / MCP</li>
+      <li>AI &amp; LLM</li>
+      <li>Cloud Native / Kubernetes</li>
+      <li>Developer Tools / CLI</li>
+      <li>Security</li>
+      <li>Web Frameworks</li>
+      <li>Database</li>
+      <li>Data Science</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-num">40+</div><div class="stat-label">New Trending Repositories</div></div>
+      <div class="stat-tile"><div class="stat-num">18</div><div class="stat-label">New Releases</div></div>
+      <div class="stat-tile"><div class="stat-num">9</div><div class="stat-label">AI Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">8</div><div class="stat-label">MCP Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">11</div><div class="stat-label">Agent Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">3</div><div class="stat-label">CLI Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">8</div><div class="stat-label">Cloud Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">4</div><div class="stat-label">Security Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Hidden Gems</div></div>
+      <div class="stat-tile"><div class="stat-num">3</div><div class="stat-label">Breaking Releases</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>เหตุผล</th><th>สิ่งที่ต้องติดตาม</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>kubernetes-sigs/kueue</td><td>เพิ่ง Release ที่มี Breaking Change</td><td>การตอบรับจากผู้ใช้และ Patch แก้ปัญหาการอัปเกรด</td><td>GitHub Releases</td></tr>
+          <tr><td>buildpacks/pack</td><td>เพิ่ง Graduate เป็นโครงการ CNCF เต็มตัว</td><td>Roadmap และการยอมรับจากองค์กรหลัง Graduation</td><td>GitHub / CNCF</td></tr>
+          <tr><td>zed-industries/zed</td><td>Pre-release v1.16.0 ผนวก Gemini 3.6 Flash</td><td>ฟีเจอร์ AI จะ Stable เมื่อใดและได้รับผลตอบรับอย่างไร</td><td>GitHub Releases</td></tr>
+          <tr><td>PrimeIntellect-ai/prime-agent</td><td>เติบโตไวรัลที่สุดของสัปดาห์</td><td>อัตราการเติบโตจะต่อเนื่องหรือชะลอตัวในสัปดาห์หน้า</td><td>GitHub Trending</td></tr>
+          <tr><td>unslothai/unsloth</td><td>เพิ่งเปิดตัว Unsloth Desktop</td><td>เสถียรภาพและ Feedback จากผู้ใช้กลุ่มแรก</td><td>GitHub Releases</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>GitHub</h3>
+    <p>github.com/trending (weekly, ทุกภาษา), GitHub Search API (search_repositories) สำหรับข้อมูล Stars/Forks/License/Description/pushed_at ของทุก Repository, หน้า /releases และ /releases.atom ของแต่ละ Repository, github.com/&lt;owner&gt;/&lt;repo&gt;/commits และ /pulse</p>
+    <h3>Official Documentation</h3>
+    <p>blog.modelcontextprotocol.io (ประกาศ MCP Spec เปลี่ยนเป็น Stateless), next.goauthentik.io/docs/releases</p>
+    <h3>Community (Trend Only)</h3>
+    <p>ใช้ WebSearch เพื่อยืนยันข่าว CNCF Graduation/Incubation (Cloud Native Buildpacks, k8gb) เนื่องจาก cncf.io ไม่สามารถเข้าถึงได้โดยตรงในสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>🏷️ Labels</h2>
+    <div class="legend-grid">
+      <div>✅ <span>Official</span></div>
+      <div>⭐ <span>Trending</span></div>
+      <div>🚀 <span>Fast Growing</span></div>
+      <div>🔥 <span>Viral</span></div>
+      <div>🤖 <span>AI</span></div>
+      <div>🧠 <span>MCP / Agent</span></div>
+      <div>☁️ <span>Cloud Native</span></div>
+      <div>🔒 <span>Security</span></div>
+      <div>📦 <span>New Release</span></div>
+      <div>⚠️ <span>Breaking Change</span></div>
+      <div>💎 <span>Hidden Gem</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📝 บทสรุปแนวโน้ม</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้ตอกย้ำว่าจุดสนใจของ Open Source Ecosystem กำลังย้ายจาก "โมเดล AI เดี่ยว" ไปสู่ "ระบบ Agent ที่ทำงานร่วมกันและมีหน่วยความจำระยะยาว" อย่างชัดเจน ผ่านการเติบโตแบบก้าวกระโดดของ prime-agent และ TencentDB-Agent-Memory ควบคู่กับการขยายตัวของ MCP Ecosystem ที่ทั้ง Microsoft, AWS, Google และ GitHub ต่างออก Release ของตัวเองอย่างต่อเนื่อง ฝั่ง Cloud Native เริ่มเห็นสัญญาณของการรวมมาตรฐาน (Cloud Native Buildpacks graduate) ควบคู่กับความท้าทายด้าน Breaking Change ที่ทีม Platform ต้องเตรียมรับมือ (Kueue, MCP Stateless Transition) สัปดาห์หน้าควรจับตาการตอบรับของ Unsloth Desktop, ทิศทางของ Zed หลังผนวก AI เข้ากับตัวแก้ไขโดยตรง และว่าความเร็วการเติบโตของกลุ่ม Agent Memory/Coding Agent จะต่อเนื่องหรือชะลอตัวลง</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly GitHub Trending · ข้อมูลรวบรวมจากแหล่งที่ตรวจสอบได้จริงเท่านั้น ไม่มีการคาดเดาหรือสร้างข้อมูลขึ้นเอง</p>
+    <p>UNCERTAIN: cncf.io เข้าถึงไม่ได้โดยตรงในสัปดาห์นี้ (Egress Blocked) — ข่าว Graduation/Incubation ของ CNCF ยืนยันผ่าน WebSearch snippet เท่านั้น ยังไม่ได้อ่านเนื้อหาต้นฉบับจากหน้าเว็บ CNCF โดยตรง ควรตรวจสอบซ้ำหากนำไปอ้างอิงต่อ</p>
+    <p><a href="index.html">← กลับไปหน้ารวม Weekly GitHub Trending</a></p>
+  </footer>
+</div>
+</body>
+</html>
