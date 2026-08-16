@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Premier League Report — Week 33, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#9A5B12; --warn-bg:rgba(154,91,18,0.10); --warn-line:rgba(154,91,18,0.30);
+  --rumor:#8A3B5A;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.12);
+    --warn:#E0A855; --warn-bg:rgba(224,168,85,0.10); --warn-line:rgba(224,168,85,0.30);
+    --rumor:#D98FB2;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:6px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; padding-top:2px; }
+h3{ font-size:16.5px; font-weight:700; margin:20px 0 8px; color:var(--ink); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:30px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:72ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:70ch; }
+ul li ul{ margin-top:8px; }
+
+.callout{ background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px; padding:16px 18px; margin:0 0 18px; }
+.callout p{ margin:0; max-width:none; color:var(--ink); }
+.callout p + p{ margin-top:8px; }
+.callout .label{ font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--warn); text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.note{ font-size:14px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:12px 14px; margin:10px 0 16px; max-width:none; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 14px; border:1px solid var(--line); border-radius:10px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px; }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td a, th a{ white-space:nowrap; }
+
+.badge{ display:inline-block; font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:600; padding:2px 8px; border-radius:999px; white-space:nowrap; }
+.badge-official{ background:var(--accent-soft); color:var(--accent); }
+.badge-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-rumor{ background:rgba(138,59,90,0.12); color:var(--rumor); }
+.badge-cont{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+
+.subhead{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin:18px 0 8px; }
+.subhead:first-child{ margin-top:0; }
+
+.club-block{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px dashed var(--line); }
+.club-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.club-block h3{ margin-top:0; }
+.club-block p{ margin-bottom:6px; }
+
+.src-list{ list-style:none; padding:0; margin:0 0 14px; }
+.src-list li{ margin-bottom:6px; font-size:14.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 33, 2026</p>
+    <h1>⚽ Weekly Premier League Report — Week 33</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 9–16 สิงหาคม 2026 (ICT)</span>
+      <span><b>Category:</b> Football</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="callout">
+      <span class="label">ข้อจำกัดของข้อมูลสัปดาห์นี้</span>
+      <p>ฤดูกาล 2026-27 ของพรีเมียร์ลีกยังไม่เริ่มแข่งขันอย่างเป็นทางการ — นัดแรกของฤดูกาลคือ Arsenal พบ Coventry City วันศุกร์ที่ 21 สิงหาคม 2026 ดังนั้นในช่วง 7 วันที่ผ่านมา (9–16 ส.ค.) จึงไม่มีตารางคะแนน ผลการแข่งขันพรีเมียร์ลีกอย่างเป็นทางการ ดาวซัลโว หรือสถิติรายสัปดาห์ของฤดูกาลปัจจุบันให้รายงาน รายงานฉบับนี้จึงเน้นข่าวพรีซีซั่นและตลาดซื้อขายนักเตะแทน โดยทุกหัวข้อที่ไม่มีข้อมูลจะระบุข้อจำกัดไว้อย่างชัดเจนแทนการใส่ข้อมูลคาดเดา</p>
+      <p><b>หมายเหตุเรื่องเวลา:</b> ศึก FA Community Shield ระหว่าง Arsenal กับ Manchester City เริ่มการแข่งขันเวลา 21:00 น. ICT (15:00 น. BST) ของวันที่ 16 สิงหาคม 2026 ซึ่งตรงกับช่วงเวลาที่จัดทำรายงานฉบับนี้พอดี การแข่งขัน<b>ยังไม่จบลง ณ เวลาที่รวบรวมข้อมูล</b> จึงไม่มีการรายงานสกอร์ในรายงานฉบับนี้ตามกฎห้ามใช้ผลการแข่งขันที่ยังไม่สิ้นสุด</p>
+    </div>
+    <ul>
+      <li>ไฮไลต์สำคัญที่สุดของสัปดาห์คือศึก FA Community Shield ระหว่างแชมป์พรีเมียร์ลีก Arsenal และแชมป์ FA Cup Manchester City ที่สนาม Principality Stadium เมืองคาร์ดิฟฟ์ วันที่ 16 ส.ค. ซึ่งเป็นเกมการแข่งขันอย่างเป็นทางการนัดแรกของ Enzo Maresca ในฐานะผู้จัดการทีม Manchester City</li>
+      <li>ทั้ง Jurrien Timber (Arsenal) และ Rodri (Manchester City) ยืนยันพลาดลงเล่นนัด Community Shield เนื่องจากยังฟื้นตัวจากอาการบาดเจ็บที่ต่อเนื่องมาจากช่วงซัมเมอร์ <span class="badge badge-cont">ต่อเนื่อง</span></li>
+      <li>ตลาดซื้อขายนักเตะยังคึกคักต่อเนื่อง โดย Nottingham Forest ปิดดีล Ousmane Diomande และ Fulham ปิดดีล Shea Charles สำเร็จในสัปดาห์นี้ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>ดีลใหญ่ที่กำลังจับตาคือ Pedro Neto ของ Chelsea ที่ตกลงเงื่อนไขส่วนตัวกับ Al Hilal แล้ว รอเจรจาค่าตัวกับสโมสร ขณะที่อนาคตของ Gabriel Martinelli ที่ Arsenal เริ่มไม่แน่นอนหลังมีสโมสรใน Serie A เปิดเจรจา <span class="badge badge-report">📰 รายงาน</span></li>
+      <li>โปรแกรมถัดไปที่สำคัญที่สุดคือนัดเปิดฤดูกาลพรีเมียร์ลีก Matchweek 1 ระหว่างวันที่ 21–25 ส.ค. 2026 ก่อนตลาดซื้อขายนักเตะจะปิดในวันที่ 1 ก.ย. 2026</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 ตารางคะแนน Top 6</h2>
+    <div class="note">หมายเหตุ: ฤดูกาล 2026-27 ยังไม่เริ่มแข่งขัน จึงไม่มีตารางคะแนนปัจจุบัน ตารางด้านล่างคือ<b>ตารางคะแนนสุดท้ายของฤดูกาล 2025-26 ที่จบไปแล้ว</b> แสดงไว้เพื่อเป็นข้อมูลอ้างอิงพื้นหลังเท่านั้น (ไม่เปลี่ยนแปลงจากรายงานสัปดาห์ก่อนหน้า)</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Club</th><th>Played</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>Source</th></tr>
+      <tr><td>1</td><td>Arsenal (แชมป์)</td><td>38</td><td>26</td><td>7</td><td>5</td><td>85</td><td><a href="https://www.nbcsports.com/premier-league-table-2025-26-season-standings" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>2</td><td>Manchester City</td><td>38</td><td>23</td><td>9</td><td>6</td><td>78</td><td><a href="https://www.nbcsports.com/premier-league-table-2025-26-season-standings" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>3</td><td>Manchester United</td><td>38</td><td>20</td><td>11</td><td>7</td><td>71</td><td><a href="https://sports.yahoo.com/articles/premier-league-2025-26-table-181100855.html" target="_blank" rel="noopener">Yahoo Sports</a></td></tr>
+      <tr><td>4</td><td>Aston Villa</td><td>38</td><td>19</td><td>8</td><td>11</td><td>65</td><td><a href="https://sports.yahoo.com/articles/premier-league-2025-26-table-181100855.html" target="_blank" rel="noopener">Yahoo Sports</a></td></tr>
+      <tr><td>5</td><td>Liverpool</td><td>38</td><td>17</td><td>9</td><td>12</td><td>60</td><td><a href="https://sports.yahoo.com/articles/premier-league-2025-26-table-181100855.html" target="_blank" rel="noopener">Yahoo Sports</a></td></tr>
+      <tr><td>6</td><td>AFC Bournemouth</td><td>38</td><td>13</td><td>18</td><td>7</td><td>57</td><td><a href="https://www.nbcsports.com/premier-league-table-2025-26-season-standings" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">ตรวจสอบ Consistency แล้ว: Played = W+D+L และ Points = W×3+D ถูกต้องครบทุกทีม ข้อมูลตรงกันระหว่าง NBC Sports และ Yahoo Sports (สื่อ Tier 2) ซึ่งอ้างอิงจากตารางทางการของ premierleague.com</p>
+  </section>
+
+  <section>
+    <h2>⚽ ผลการแข่งขันสำคัญ</h2>
+    <div class="callout">
+      <span class="label">ไม่มีข้อมูลผลการแข่งขันอย่างเป็นทางการ</span>
+      <p>เนื่องจากพรีเมียร์ลีกฤดูกาล 2026-27 ยังไม่เริ่มแข่งขัน (นัดแรก 21 ส.ค. 2026) จึงไม่มี<b>ผลการแข่งขันพรีเมียร์ลีกอย่างเป็นทางการ</b>ให้รายงานในสัปดาห์นี้</p>
+      <p>ศึก FA Community Shield ระหว่าง Arsenal กับ Manchester City ที่ Principality Stadium คาร์ดิฟฟ์ เริ่มเตะเวลา 21:00 น. ICT (15:00 น. BST) วันที่ 16 ส.ค. 2026 ตรงกับช่วงเวลาจัดทำรายงานพอดี การแข่งขัน<b>ยังไม่สิ้นสุด</b> ณ เวลาที่รวบรวมข้อมูล จึงไม่แสดงสกอร์เพื่อหลีกเลี่ยงการคาดเดาผลที่ยังไม่เป็นทางการ</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🥇 ดาวซัลโว Top 5</h2>
+    <div class="note">หมายเหตุ: ฤดูกาล 2026-27 ยังไม่เริ่มแข่งขัน จึงไม่มีดาวซัลโวของฤดูกาลปัจจุบัน ตารางด้านล่างคือผู้ทำประตูสูงสุดของ<b>ฤดูกาล 2025-26 ที่จบไปแล้ว</b> (รางวัล Golden Boot) แสดงไว้เพื่อเป็นข้อมูลอ้างอิงเท่านั้น ข้อมูลแอสซิสต์และอันดับ 4-5 ไม่สามารถยืนยันได้จากแหล่งข่าวที่ตรวจสอบในรอบนี้</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Player</th><th>Club</th><th>Goals</th><th>Assists</th><th>Source</th></tr>
+      <tr><td>1</td><td>Erling Haaland</td><td>Manchester City</td><td>27</td><td>ไม่พบข้อมูลยืนยันในแหล่งอ้างอิงที่ตรวจสอบ</td><td><a href="https://www.premierleague.com/en/news/4591856/haaland-wins-202526-premier-league-golden-boot-award" target="_blank" rel="noopener">Premier League</a></td></tr>
+      <tr><td>2</td><td>Igor Thiago</td><td>Brentford</td><td>22</td><td>ไม่พบข้อมูลยืนยันในแหล่งอ้างอิงที่ตรวจสอบ</td><td><a href="https://www.nbcsports.com/soccer/news/premier-league-2025-26-top-scorers-who-will-win-the-golden-boot" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>3</td><td>Antoine Semenyo</td><td>Bournemouth → Manchester City*</td><td>17</td><td>ไม่พบข้อมูลยืนยันในแหล่งอ้างอิงที่ตรวจสอบ</td><td><a href="https://www.nbcsports.com/soccer/news/premier-league-2025-26-top-scorers-who-will-win-the-golden-boot" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">*Semenyo ทำ 10 ประตูให้ Bournemouth และ 7 ประตูให้ Manchester City หลังย้ายทีมช่วงเดือนมกราคม รวม 17 ประตูตลอดฤดูกาล 2025-26 ตามรายงานของ NBC Sports</p>
+  </section>
+
+  <section>
+    <h2>🔥 ข่าวสำคัญ</h2>
+
+    <h3>Official <span class="badge badge-official">✅ ยืนยันแล้ว</span></h3>
+    <ul>
+      <li><b>Nottingham Forest ปิดดีลเซ็นสัญญา Ousmane Diomande จาก Sporting CP</b> (ยืนยัน 11 ส.ค. 2026) กองหลังทีมชาติไอวอรีโคสต์ ค่าตัวราว £34.2 ล้าน สัญญา 4 ปี — <a href="https://www.nottinghamforest.co.uk/news/2026/august/11/forest-complete-signing-of-ousmane-diomande/" target="_blank" rel="noopener">Nottingham Forest (ทางการ)</a></li>
+      <li><b>Fulham ปิดดีลเซ็นสัญญา Shea Charles จาก Southampton</b> (ยืนยัน 11 ส.ค. 2026) มิดฟิลด์ทีมชาติไอร์แลนด์เหนือ ค่าตัวเริ่มต้นราว £26 ล้าน บวกเงื่อนไขเพิ่มเติมอีกราว £6 ล้าน สัญญา 5 ปี — <a href="https://www.fulhamfc.com/news/2026/august/11/charles-joins-fulham/" target="_blank" rel="noopener">Fulham FC (ทางการ)</a></li>
+      <li><b>Arsenal ยืนยัน Jurrien Timber จะพลาดนัด FA Community Shield</b> โดย Mikel Arteta ระบุว่านักเตะยัง "อีกไม่กี่สัปดาห์" กว่าจะกลับมาลงเล่นได้ หลังพักฟื้นจากการผ่าตัดขาหนีบเล็กน้อยในช่วงซัมเมอร์ — <a href="https://www.beinsports.com/en-us/soccer/premier-league/articles/timber-still-weeks-away-from-arsenal-return-says-arteta-2026-08-10" target="_blank" rel="noopener">beIN Sports</a></li>
+      <li><b>Manchester City ยืนยัน Rodri พลาดชุดลงเล่น FA Community Shield</b> ยังอยู่ระหว่างฟื้นฟูร่างกายหลังผ่าตัดหลัง — <a href="https://www.nst.com.my/amp/sports/football/2026/08/1511459/manchester-citys-maresca-coy-rodri-future-ahead-community-shield" target="_blank" rel="noopener">New Straits Times</a></li>
+    </ul>
+
+    <h3>Report <span class="badge badge-report">📰 รายงาน</span></h3>
+    <ul>
+      <li>Manchester United เปิดเจรจากับ Paris Saint-Germain และเริ่มคุยเงื่อนไขส่วนตัวกับ Ibrahim Mbaye (18 ปี) ปีกดาวรุ่งชาวเซเนกัล โดย PSG ยอมขายหากได้ราคาเกิน €50 ล้าน ขณะที่ Liverpool, Bayern Munich และสโมสรยุโรปอื่นๆ ก็สนใจเช่นกัน — <a href="https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/man-utd-transfer-news-ibrahim-mbaye-psg-enquiry-summer-2026" target="_blank" rel="noopener">FootballTransfers</a>, <a href="https://thepeoplesperson.com/2026/08/15/ibrahim-mbaye-man-united-discussing-personal-terms-with-paris-saint-germains-wonderkid-314080/" target="_blank" rel="noopener">The Peoples Person</a></li>
+      <li>Al Hilal เร่งเจรจาดึงตัว Pedro Neto จาก Chelsea โดยตกลงเงื่อนไขส่วนตัวกับนักเตะแล้ว เหลือเพียงเจรจาค่าตัวกับสโมสรที่ Chelsea ต้องการราว €60 ล้าน — <a href="https://sports.yahoo.com/articles/al-hilal-accelerate-move-pedro-081500720.html" target="_blank" rel="noopener">Yahoo Sports</a></li>
+      <li>Arsenal เปิดทางให้ Gabriel Martinelli ย้ายทีม โดยมีทั้ง AS Roma และ Napoli จาก Serie A เข้ามาเจรจากับตัวแทนนักเตะ เนื่องจากสโมสรเสริมปีกใหม่ Christos Tzolis เข้ามาแล้ว และ Martinelli เหลือสัญญาปีสุดท้าย — <a href="https://www.caughtoffside.com/2026/08/16/sources-arsenal-martinelli-exit-dialouge-underway-top-club/" target="_blank" rel="noopener">CaughtOffside</a>, <a href="https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/arsenal-transfer-news-gabriel-martinelli-galatasaray" target="_blank" rel="noopener">FootballTransfers</a></li>
+    </ul>
+
+    <h3>Rumor <span class="badge badge-rumor">⚠️ ข่าวลือ</span></h3>
+    <ul>
+      <li>มีรายงานว่า Galatasaray เคยยื่นข้อเสนอ €40 ล้านขอตัว Gabriel Martinelli แต่ถูกปฏิเสธเนื่องจากนักเตะไม่สนใจย้ายไปตุรกี ยังไม่มีการยืนยันจากทั้งสองสโมสรอย่างเป็นทางการ — <a href="https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/arsenal-transfer-news-gabriel-martinelli-galatasaray" target="_blank" rel="noopener">FootballTransfers</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏥 Injury &amp; Suspension</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Club</th><th>Player</th><th>Status</th><th>Return</th><th>Source</th></tr>
+      <tr><td>Arsenal</td><td>William Saliba</td><td>บาดเจ็บหลัง (พักฟื้น ไม่ผ่าตัด) — ต่อเนื่อง</td><td>ยังไม่มีวันที่ยืนยันชัดเจนจากสโมสร</td><td><a href="https://www.arsenal.com/news/medical-update-william-saliba-aVUca3q2han2" target="_blank" rel="noopener">Arsenal.com</a></td></tr>
+      <tr><td>Arsenal</td><td>Jurrien Timber</td><td>ฟื้นตัวจากผ่าตัดขาหนีบเล็กน้อย พลาด Community Shield</td><td>Arteta ระบุ "อีกไม่กี่สัปดาห์" ยังไม่มีวันที่แน่นอน มีความเสี่ยงพลาดนัดเปิดฤดูกาลด้วย</td><td><a href="https://www.beinsports.com/en-us/soccer/premier-league/articles/timber-still-weeks-away-from-arsenal-return-says-arteta-2026-08-10" target="_blank" rel="noopener">beIN Sports</a></td></tr>
+      <tr><td>Manchester City</td><td>Rodri</td><td>ฟื้นตัวจากผ่าตัดหลัง พลาดชุดลงเล่น Community Shield — ต่อเนื่อง</td><td>ยังไม่มีวันที่ยืนยันชัดเจน มีความเสี่ยงพลาดนัดเปิดฤดูกาล (21-22 ส.ค.)</td><td><a href="https://www.nst.com.my/amp/sports/football/2026/08/1511459/manchester-citys-maresca-coy-rodri-future-ahead-community-shield" target="_blank" rel="noopener">New Straits Times</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Weekly Statistics</h2>
+    <div class="callout">
+      <span class="label">ไม่มีข้อมูลสถิติรายสัปดาห์</span>
+      <p>เนื่องจากฤดูกาล 2026-27 ยังไม่เริ่มแข่งขัน จึงไม่มีสถิติ Most Goals, Best Defence, Clean Sheets, Possession, Expected Goals หรือ Player of the Week ที่ตรวจสอบย้อนกลับได้สำหรับสัปดาห์นี้ ไม่มีการใส่ข้อมูลคาดเดาหรือ Placeholder แทนที่</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔵 Big 6 Analysis</h2>
+    <div class="note">เนื่องจากยังไม่มีการแข่งขันพรีเมียร์ลีกในฤดูกาล 2026-27 หัวข้อนี้สรุปสถานะการเตรียมทีมก่อนเปิดฤดูกาลของแต่ละสโมสรแทนการวิเคราะห์ฟอร์มการแข่งขัน</div>
+
+    <div class="club-block">
+      <h3>Arsenal</h3>
+      <p><b>ผู้จัดการทีม:</b> Mikel Arteta (ไม่เปลี่ยนแปลง)</p>
+      <p><b>จุดเด่น:</b> ลงเล่น FA Community Shield กับ Manchester City ในฐานะแชมป์เก่า เป็นนัดเปิดสนามอย่างเป็นทางการนัดแรกของฤดูกาลใหม่</p>
+      <p><b>จุดอ่อน/สิ่งที่ต้องจับตา:</b> ขาด Jurrien Timber จากอาการบาดเจ็บขาหนีบ และ William Saliba ยังพักฟื้นอาการบาดเจ็บหลังต่อเนื่อง ขณะที่อนาคตของ Gabriel Martinelli เริ่มไม่แน่นอนหลังมีสโมสรจาก Serie A เข้าเจรจา</p>
+    </div>
+
+    <div class="club-block">
+      <h3>Chelsea</h3>
+      <p><b>ผู้จัดการทีม:</b> Xabi Alonso (ไม่เปลี่ยนแปลง)</p>
+      <p><b>จุดเด่น:</b> เดินหน้าสร้างทีมใหม่ต่อเนื่องหลังเสริมผู้เล่นจำนวนมากในซัมเมอร์นี้</p>
+      <p><b>จุดอ่อน/สิ่งที่ต้องจับตา:</b> Pedro Neto ตกลงเงื่อนไขส่วนตัวกับ Al Hilal แล้ว มีความเป็นไปได้สูงที่จะย้ายออกก่อนตลาดปิด ซึ่งอาจกระทบแผนแนวรุกของ Alonso</p>
+    </div>
+
+    <div class="club-block">
+      <h3>Liverpool</h3>
+      <p><b>ผู้จัดการทีม:</b> Andoni Iraola (ไม่เปลี่ยนแปลง)</p>
+      <p><b>จุดเด่น:</b> เตรียมทีมต่อเนื่องก่อนเปิดฤดูกาล โดยมีรายงานว่าทีมเคยสนใจ Ibrahim Mbaye แต่ล่าสุดลดความสนใจลงตามรายงานของสื่อบางแหล่ง</p>
+      <p><b>จุดอ่อน/สิ่งที่ต้องจับตา:</b> ยังไม่มีข่าวสรุปเรื่องตัวเสริมแนวรุกที่ชัดเจนจากแหล่งข้อมูลที่ตรวจสอบได้ในสัปดาห์นี้</p>
+    </div>
+
+    <div class="club-block">
+      <h3>Manchester City</h3>
+      <p><b>ผู้จัดการทีม:</b> Enzo Maresca (ไม่เปลี่ยนแปลง)</p>
+      <p><b>จุดเด่น:</b> ลงเล่นเกมการแข่งขันอย่างเป็นทางการนัดแรกในฐานะผู้จัดการทีมที่ FA Community Shield วันที่ 16 ส.ค.</p>
+      <p><b>จุดอ่อน/สิ่งที่ต้องจับตา:</b> ต้องลงเล่นโดยไม่มี Rodri ซึ่งยังฟื้นตัวจากผ่าตัดหลัง และมีความเสี่ยงพลาดนัดเปิดฤดูกาลพรีเมียร์ลีกด้วย</p>
+    </div>
+
+    <div class="club-block">
+      <h3>Manchester United</h3>
+      <p><b>ผู้จัดการทีม:</b> Michael Carrick (ไม่เปลี่ยนแปลง)</p>
+      <p><b>จุดเด่น:</b> เดินหน้าเสริมทัพช่วงโค้งสุดท้ายของตลาด ด้วยการเปิดเจรจาดึงตัว Ibrahim Mbaye ปีกดาวรุ่งจาก PSG</p>
+      <p><b>จุดอ่อน/สิ่งที่ต้องจับตา:</b> ต้องแข่งกับหลายสโมสรยุโรป (Liverpool, Bayern Munich, Borussia Dortmund และอื่นๆ) เพื่อปิดดีล Mbaye ก่อนตลาดปิด 1 ก.ย.</p>
+    </div>
+
+    <div class="club-block">
+      <h3>Tottenham Hotspur</h3>
+      <p><b>ผู้จัดการทีม:</b> Roberto De Zerbi (ไม่เปลี่ยนแปลง)</p>
+      <p><b>จุดเด่น:</b> ใช้เงินเสริมทัพไปแล้วกว่า £237 ล้านในซัมเมอร์นี้ De Zerbi ระบุว่านี่คือฤดูกาลแรกที่แท้จริงของเขากับสโมสร หลังฤดูกาลก่อนเน้นหนีตกชั้น</p>
+      <p><b>จุดอ่อน/สิ่งที่ต้องจับตา:</b> ต้องประสานผู้เล่นใหม่จำนวนมากให้เข้าที่ก่อนนัดเปิดฤดูกาลกับ Brentford วันที่ 22 ส.ค.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 Title Race</h2>
+    <p>ยังไม่สามารถวิเคราะห์การลุ้นแชมป์ได้ เนื่องจากฤดูกาล 2026-27 ยังไม่เริ่มแข่งขัน Arsenal จะเริ่มป้องกันแชมป์ในนัดเปิดฤดูกาลวันที่ 21 ส.ค. 2026 ผลการแข่งขัน FA Community Shield วันนี้ (16 ส.ค.) ระหว่าง Arsenal กับ Manchester City ยังไม่สิ้นสุดขณะจัดทำรายงาน จึงยังไม่มีข้อมูลผลการแข่งขันใดๆ ให้วิเคราะห์รูปแบบการลุ้นแชมป์ในขณะนี้</p>
+  </section>
+
+  <section>
+    <h2>🎯 Top 4 Race</h2>
+    <p>ยังไม่สามารถวิเคราะห์การลุ้นโซนแชมเปียนส์ลีกได้ เนื่องจากยังไม่มีการแข่งขันในฤดูกาลนี้ ทีมที่จบ Top 5 ของฤดูกาลก่อนหน้า (Arsenal, Manchester City, Manchester United, Aston Villa, Liverpool) ล้วนผ่านการเปลี่ยนแปลงผู้จัดการทีมหรือปัญหาผู้เล่นบาดเจ็บสำคัญในช่วงพรีซีซั่นนี้ (เช่น Timber และ Rodri) แต่ยังไม่มีข้อมูลที่ตรวจสอบได้เพียงพอสำหรับการวิเคราะห์เชิงลึก</p>
+  </section>
+
+  <section>
+    <h2>⬇️ Relegation Battle</h2>
+    <p>ยังไม่สามารถวิเคราะห์การลุ้นหนีตกชั้นได้ เนื่องจากยังไม่มีการแข่งขันในฤดูกาลนี้ สโมสรที่เลื่อนชั้นขึ้นมาสู่พรีเมียร์ลีกฤดูกาลนี้คือ Coventry City, Hull City และ Ipswich Town แต่ยังไม่มีข้อมูลผลการแข่งขันให้วิเคราะห์สถานการณ์การหนีตกชั้นในขณะนี้</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Week Fixtures</h2>
+    <p style="font-size:14px;color:var(--ink-soft);">ตารางด้านล่างคือโปรแกรมทางการที่ยืนยันแล้วในช่วงถัดจากนี้ ได้แก่นัดเปิดฤดูกาลพรีเมียร์ลีก Matchweek 1 ทั้งหมดแปลงเวลาเป็น ICT (GMT+7) แล้ว (ข้อมูลเดิมจาก Premier League ยืนยันตรงกับรายงานสัปดาห์ก่อนหน้า ไม่มีการเปลี่ยนแปลง)</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Time (ICT)</th><th>Home</th><th>VS</th><th>Away</th><th>Source</th></tr>
+      <tr><td>22 ส.ค. 2026</td><td>02:00</td><td>Arsenal</td><td>vs</td><td>Coventry City <span class="badge badge-cont">MW1</span></td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League</a></td></tr>
+      <tr><td>22 ส.ค. 2026</td><td>18:30</td><td>Hull City</td><td>vs</td><td>Manchester United <span class="badge badge-cont">MW1</span></td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League</a></td></tr>
+      <tr><td>22 ส.ค. 2026</td><td>18:30</td><td>Everton</td><td>vs</td><td>Crystal Palace <span class="badge badge-cont">MW1</span></td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League</a></td></tr>
+      <tr><td>22 ส.ค. 2026</td><td>23:30</td><td>Brentford</td><td>vs</td><td>Tottenham Hotspur <span class="badge badge-cont">MW1</span></td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League</a></td></tr>
+      <tr><td>23 ส.ค. 2026</td><td>20:00</td><td>Manchester City</td><td>vs</td><td>AFC Bournemouth <span class="badge badge-cont">MW1</span></td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League</a></td></tr>
+      <tr><td>23 ส.ค. 2026</td><td>22:30</td><td>Newcastle United</td><td>vs</td><td>Liverpool <span class="badge badge-cont">MW1</span></td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League</a></td></tr>
+      <tr><td>25 ส.ค. 2026</td><td>02:00</td><td>Fulham</td><td>vs</td><td>Chelsea <span class="badge badge-cont">MW1</span></td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League</a></td></tr>
+    </table>
+    </div>
+    <h3>คู่เด่น</h3>
+    <ul>
+      <li><b>Arsenal vs Coventry City (นัดเปิดฤดูกาล, 22 ส.ค.)</b> — แชมป์เก่าเริ่มต้นป้องกันแชมป์ ท่ามกลางปัญหาผู้เล่นบาดเจ็บของ Timber และ Saliba</li>
+      <li><b>Newcastle United vs Liverpool (23 ส.ค.)</b> — นัดเปิดตัวอย่างเป็นทางการของ Andoni Iraola ในฐานะกุนซือ Liverpool กับทีมภายใต้ผู้จัดการทีมใหม่ Matthias Jaissle เช่นกัน <span class="badge badge-cont">ต่อเนื่อง</span></li>
+      <li><b>Fulham vs Chelsea (24-25 ส.ค.)</b> — นัดเปิดฤดูกาลอย่างเป็นทางการของ Xabi Alonso กับ Chelsea ท่ามกลางกระแสข่าวการย้ายทีมของ Pedro Neto</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <div class="callout">
+      <span class="label">ไม่มีข้อมูลสถิติการแข่งขัน</span>
+      <p>เนื่องจากฤดูกาล 2026-27 ยังไม่เริ่มแข่งขัน จึงไม่มีข้อมูล Matches, Goals, Clean Sheets, Red Cards, Yellow Cards หรือ Penalties ที่ตรวจสอบย้อนกลับได้สำหรับสัปดาห์นี้</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>โปรแกรมสำคัญ:</b> ผลการแข่งขัน FA Community Shield (Arsenal vs Manchester City, 16 ส.ค.) และนัดเปิดฤดูกาลพรีเมียร์ลีก Matchweek 1 (22-25 ส.ค.)</li>
+      <li><b>ข่าวย้ายทีม:</b> ความคืบหน้าดีล Pedro Neto ไป Al Hilal, อนาคตของ Gabriel Martinelli ที่ Arsenal และผลการเจรจา Ibrahim Mbaye ระหว่าง Man United กับคู่แข่งยุโรป ก่อนตลาดปิดวันที่ 1 ก.ย. 2026 เวลา 23:00 น. (ตามเวลาอังกฤษ)</li>
+      <li><b>ผู้เล่นบาดเจ็บ:</b> ความคืบหน้าการฟื้นตัวของ Jurrien Timber และ William Saliba (Arsenal) รวมถึง Rodri (Manchester City) ว่าจะทันลงเล่นนัดเปิดฤดูกาลหรือไม่</li>
+      <li><b>ข่าวผู้จัดการทีม:</b> ผลงานนัดแรกของ Enzo Maresca กับ Manchester City ที่ Community Shield และการปรับตัวของผู้จัดการทีมใหม่รายอื่นก่อนฤดูกาลจริงเริ่มต้น</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul class="src-list">
+      <li><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League — All 380 Fixtures for 2026/27 Season</a></li>
+      <li><a href="https://www.nottinghamforest.co.uk/news/2026/august/11/forest-complete-signing-of-ousmane-diomande/" target="_blank" rel="noopener">Nottingham Forest — Forest Complete Signing of Ousmane Diomande</a></li>
+      <li><a href="https://www.fulhamfc.com/news/2026/august/11/charles-joins-fulham/" target="_blank" rel="noopener">Fulham FC — Charles Joins Fulham</a></li>
+      <li><a href="https://www.arsenal.com/news/medical-update-william-saliba-aVUca3q2han2" target="_blank" rel="noopener">Arsenal — Medical Update: William Saliba</a></li>
+    </ul>
+    <h3>Media</h3>
+    <ul class="src-list">
+      <li><a href="https://www.beinsports.com/en-us/soccer/premier-league/articles/timber-still-weeks-away-from-arsenal-return-says-arteta-2026-08-10" target="_blank" rel="noopener">beIN Sports — Timber Still 'Weeks Away' from Arsenal Return</a></li>
+      <li><a href="https://www.nst.com.my/amp/sports/football/2026/08/1511459/manchester-citys-maresca-coy-rodri-future-ahead-community-shield" target="_blank" rel="noopener">New Straits Times — Maresca Coy on Rodri Future Ahead of Community Shield</a></li>
+      <li><a href="https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/man-utd-transfer-news-ibrahim-mbaye-psg-enquiry-summer-2026" target="_blank" rel="noopener">FootballTransfers — Man Utd Transfer News: Ibrahim Mbaye PSG Enquiry</a></li>
+      <li><a href="https://thepeoplesperson.com/2026/08/15/ibrahim-mbaye-man-united-discussing-personal-terms-with-paris-saint-germains-wonderkid-314080/" target="_blank" rel="noopener">The Peoples Person — Man United Discussing Personal Terms with Ibrahim Mbaye</a></li>
+      <li><a href="https://sports.yahoo.com/articles/al-hilal-accelerate-move-pedro-081500720.html" target="_blank" rel="noopener">Yahoo Sports — Al Hilal Accelerate Move for Pedro Neto</a></li>
+      <li><a href="https://www.caughtoffside.com/2026/08/16/sources-arsenal-martinelli-exit-dialouge-underway-top-club/" target="_blank" rel="noopener">CaughtOffside — Arsenal Continue to Target Martinelli Exit</a></li>
+      <li><a href="https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/arsenal-transfer-news-gabriel-martinelli-galatasaray" target="_blank" rel="noopener">FootballTransfers — Gabriel Martinelli Talks &amp; Galatasaray Bid</a></li>
+      <li><a href="https://www.espn.com/soccer/story/_/id/48937196/premier-league-giants-hit-managerial-reset-button-capitalize" target="_blank" rel="noopener">ESPN — Premier League Giants Hit Managerial Reset Button</a></li>
+    </ul>
+    <h3>Statistics</h3>
+    <ul class="src-list">
+      <li><a href="https://www.nbcsports.com/premier-league-table-2025-26-season-standings" target="_blank" rel="noopener">NBC Sports — Premier League 2025-26 Final Table</a></li>
+      <li><a href="https://sports.yahoo.com/articles/premier-league-2025-26-table-181100855.html" target="_blank" rel="noopener">Yahoo Sports — Premier League 2025-26 Final Table</a></li>
+      <li><a href="https://www.premierleague.com/en/news/4591856/haaland-wins-202526-premier-league-golden-boot-award" target="_blank" rel="noopener">Premier League — Haaland Wins 2025/26 Golden Boot</a></li>
+    </ul>
+    <div class="note">UNCERTAIN: premierleague.com และ espn.com ไม่สามารถเข้าถึงได้โดยตรงผ่าน WebFetch ในรอบนี้ (network egress ปฏิเสธการเชื่อมต่อ) จึงใช้ WebSearch และแหล่งข้อมูล Tier 2 ทดแทนตามขั้นตอน Network Access Resilience — ข้อมูลจาก premierleague.com ที่อ้างอิงในรายงานนี้มาจากผลการค้นหาที่ดึงเนื้อหาผ่านสื่อ Tier 2 ที่อ้างอิงถึง ไม่ใช่การเปิดหน้าเว็บโดยตรง</div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Premier League Report · Week 33, 2026 · จัดทำ 16 ส.ค. 2026 (ICT)</p>
+    <p><a href="/">Back to Home</a></p>
+  </footer>
+</div>
+</body>
+</html>
