@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Bangkok Sales & Events Report — 16 Aug 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{ --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3; --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F; --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28); --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12); --warn:#B4590E; }
+@media (prefers-color-scheme: dark){ :root{ --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B; --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D; --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26); --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14); --warn:#E0A458; } }
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:1080px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:8px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+h2{ font-size:22px; font-weight:700; margin:36px 0 14px; padding-top:8px; }
+h3{ font-size:17px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:20px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 14px; max-width:78ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:74ch; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 18px; border:1px solid var(--line); border-radius:8px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; background:var(--surface); font-size:14.5px; }
+caption{ caption-side:top; text-align:left; padding:8px 12px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+th{ background:var(--surface-2); font-weight:600; font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.02em; white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+td a{ word-break:break-word; }
+
+.badge{ display:inline-block; font-size:12px; padding:1px 7px; border-radius:20px; background:var(--accent-soft); color:var(--accent); font-weight:600; margin-right:4px; }
+.note{ background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:6px; padding:12px 16px; font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; }
+.limit{ border-left-color:var(--warn); }
+.empty{ font-style:italic; color:var(--ink-faint); }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin:0 0 18px; }
+.stat{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+.deal{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin-bottom:12px; }
+.deal h4{ margin:0 0 6px; font-size:15.5px; }
+.deal .meta{ font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-faint); margin-top:6px; }
+
+.legend{ display:flex; flex-wrap:wrap; gap:10px 18px; font-size:13.5px; color:var(--ink-soft); }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 33, 2026</p>
+    <h1>🛍 Weekly Bangkok Sales & Events Report</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 16 Aug 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 09–30 Aug 2026</span>
+      <span><b>Region:</b> กรุงเทพฯ และปริมณฑล</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>สัปดาห์นี้กรุงเทพฯ กำลังปิดฉากงาน OTOP Fair ที่ IMPACT และเข้าสู่คลัสเตอร์งานแสดงสินค้าขนาดใหญ่ต่อเนื่องที่ BITEC และ QSNCC ระหว่างวันที่ 19–30 สิงหาคม ครอบคลุมทั้งโลจิสติกส์ (TILOG-LOGISTIX) อาหาร/โรงแรม (FHT) ท่องเที่ยว (ไทยเที่ยวไทย) ยานยนต์ (Big Motor Sale, Bangkok Auto Salon) และเทคโนโลยี (Techsauce Global Summit, THECA) ด้านโปรโมชันศูนย์การค้ายังคงเน้นแคมเปญวันแม่ต่อเนื่อง (Central MOM MOMENTS, Robinson Mom Moments) ควบคู่กับแคมเปญยาวข้ามเดือน (Makro 37th Anniversary, Robinson ไทยช่วยไทยพลัส) และเตรียมรับ PAYDAY PLUS รอบใหม่ที่ EM District ปลายเดือน ฝั่งอีคอมเมิร์ซ Lazada จับมือ adidas เปิดตัวรองเท้า ZENBOOST แบบ Regional Exclusive วันที่ 18 สิงหาคม ทั้งนี้พบข้อมูลขัดแย้งเรื่องวันเปิดร้าน On ที่ ICONSIAM ซึ่งตัดออกจากรายงานสัปดาห์นี้ (ดูหมายเหตุ) และแหล่งข้อมูลปฐมภูมิจำนวนมากไม่สามารถเข้าถึงโดยตรงได้ในรอบนี้ ทำให้หลายรายการอ้างอิงจากผลค้นหาและแหล่งข่าวรองแทน (ดูหมายเหตุข้อจำกัดข้อมูลท้ายรายงาน)</p>
+  </section>
+
+  <section>
+    <h2>🎪 งานที่กำลังจัด</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>เวลา</th><th>ไฮไลท์</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">🎪</span>ศิลปาชีพ ประทีปไทย OTOP หลอมดวงใจด้วยพระบารมี 2569</td>
+          <td>Challenger Hall 1–3, IMPACT เมืองทองธานี, นนทบุรี</td>
+          <td>8–16 ส.ค. 2569 (วันสุดท้าย)</td>
+          <td>ไม่ระบุ</td>
+          <td>ร้านค้า OTOP/หัตถกรรมกว่า 2,000 ราย ยอดขายสะสมกว่า 437 ล้านบาท (6 วัน)</td>
+          <td><a href="https://www.thairath.co.th/news/politic/2952981" target="_blank" rel="noopener">ไทยรัฐ</a>, <a href="https://www.sanook.com/money/955007/" target="_blank" rel="noopener">sanook.com</a>, <a href="https://www.prd.go.th/th/content/category/detail/id/33/iid/531251" target="_blank" rel="noopener">PRD</a></td>
+        </tr>
+        <tr>
+          <td><span class="badge">🎪</span>The Lost Jurassic World</td>
+          <td>MBK Center</td>
+          <td>1–16 ส.ค. 2569 (วันสุดท้าย)</td>
+          <td>ไม่ระบุ</td>
+          <td>นิทรรศการธีมไดโนเสาร์ จุดถ่ายภาพ ฟรีเข้าชม</td>
+          <td>MBK Center (แหล่งข้อมูลเดียว) ❓</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🎪</span>ผ้าไทย ศิลปะ และงานคราฟต์ เดือนแม่ 2569</td>
+          <td>ICONCRAFT ชั้น 4–5 และ หอศิลป์เจริญนคร, ICONSIAM</td>
+          <td>ตลอดเดือน ส.ค. 2569 (บางกิจกรรมย่อย 11–13, 14–31 ส.ค.)</td>
+          <td>ไม่ระบุ</td>
+          <td>นิทรรศการผ้าไทยและงานหัตถกรรมเทิดพระเกียรติ ฟรีเข้าชม</td>
+          <td><a href="https://www.brandbuffet.in.th/2026/07/thai-craft-exhibition-throughout-august/" target="_blank" rel="noopener">Brand Buffet</a>, <a href="https://thestandard.co/iconsiam-thai-art-crafts-exhibit/" target="_blank" rel="noopener">The Standard</a>, <a href="https://www.silpa-mag.com/news/article_165323" target="_blank" rel="noopener">ศิลปวัฒนธรรม</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">ตัดรายการ "The Lost Jurassic World" ออกจากการนับสถิติหลัก เนื่องจากยืนยันได้จากแหล่งข้อมูลเดียวเท่านั้น แสดงไว้เพื่อความครบถ้วนของปฏิทินกิจกรรมที่สิ้นสุดวันนี้</div>
+  </section>
+
+  <section>
+    <h2>📅 งานที่กำลังจะมาถึง (7–14 วัน)</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>ประเภท</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>TILOG–LOGISTIX 2026</td>
+          <td>Hall 98, BITEC บางนา</td>
+          <td>19–21 ส.ค. 2569</td>
+          <td>Trade Fair (โลจิสติกส์)</td>
+          <td><a href="https://www.thaipr.net/exhibition/3731804" target="_blank" rel="noopener">ThaiPR.NET</a>, <a href="https://www.tilog-logistix.com/" target="_blank" rel="noopener">tilog-logistix.com</a> ✅</td>
+        </tr>
+        <tr>
+          <td>Food & Hospitality Thailand (FHT) 2026</td>
+          <td>QSNCC</td>
+          <td>19–22 ส.ค. 2569 (10:00–18:00)</td>
+          <td>Trade Fair (F&B/Hospitality)</td>
+          <td><a href="https://fhtevent.com/food/2026/en/about_show.asp" target="_blank" rel="noopener">fhtevent.com</a>, <a href="https://www.qsncc.com/en/whats-on/event-calendar/food--hospitality-thailand-2026/" target="_blank" rel="noopener">QSNCC</a> ✅</td>
+        </tr>
+        <tr>
+          <td>ไทยเที่ยวไทย ครั้งที่ 79 (พร้อมไทยเที่ยวนอก ครั้งที่ 8 และ Wellness Travel Fair ครั้งที่ 1)</td>
+          <td>Hall LG 5–6, QSNCC</td>
+          <td>20–23 ส.ค. 2569 (10:00–21:00)</td>
+          <td>Travel Fair</td>
+          <td><a href="https://www.thaiteawthai.com/" target="_blank" rel="noopener">thaiteawthai.com</a>, <a href="https://www.allthaievent.com/event/29989/" target="_blank" rel="noopener">AllThaiEvent</a> ✅</td>
+        </tr>
+        <tr>
+          <td>InterCare Asia 2026</td>
+          <td>Hall LG 5–6, QSNCC</td>
+          <td>20–23 ส.ค. 2569 (10:00–21:00)</td>
+          <td>Exhibition (การแพทย์/สุขภาวะ)</td>
+          <td><a href="https://www.qsncc.com/en/whats-on/event-calendar/intercare-asia-2026/" target="_blank" rel="noopener">QSNCC</a>, <a href="https://exposale.net/en/exhibition/intercare-asia" target="_blank" rel="noopener">ExpoSale.net</a></td>
+        </tr>
+        <tr>
+          <td>SIAM PARAGON THE WONDROUS JAPAN HERITAGE 2026</td>
+          <td>Siam Paragon</td>
+          <td>20–30 ส.ค. 2569</td>
+          <td>Exhibition (วัฒนธรรมไทย–ญี่ปุ่น)</td>
+          <td><a href="https://www.dailynews.co.th/news/6101953/" target="_blank" rel="noopener">เดลินิวส์</a>, <a href="https://www.brandbuffet.in.th/2026/08/siam-paragon-the-wondrous-japan-heritage-2026/" target="_blank" rel="noopener">Brand Buffet</a></td>
+        </tr>
+        <tr>
+          <td>Big Motor Sale 2026 (ครั้งที่ 13)</td>
+          <td>Hall EH 101–104, BITEC บางนา</td>
+          <td>21–30 ส.ค. 2569</td>
+          <td>Trade Fair (ยานยนต์)</td>
+          <td><a href="https://www.siamsport.co.th/motoring/107031/" target="_blank" rel="noopener">สยามสปอร์ต</a>, <a href="https://www.sanook.com/auto/100595/" target="_blank" rel="noopener">sanook.com</a></td>
+        </tr>
+        <tr>
+          <td>Techsauce Global Summit 2026</td>
+          <td>Exhibition Hall 3–4 (G Floor), QSNCC</td>
+          <td>26–28 ส.ค. 2569 (08:00–18:00)</td>
+          <td>Consumer/Tech Expo</td>
+          <td><a href="https://summit.techsauce.co/" target="_blank" rel="noopener">Techsauce</a>, <a href="https://www.qsncc.com/en/whats-on/event-calendar/techsauce-global-summit-2026/" target="_blank" rel="noopener">QSNCC</a> ✅</td>
+        </tr>
+        <tr>
+          <td>Thailand Electronics Circuit Asia 2026 (THECA)</td>
+          <td>Hall EH 98–99, BITEC บางนา</td>
+          <td>26–28 ส.ค. 2569</td>
+          <td>Trade Fair (IT/อิเล็กทรอนิกส์)</td>
+          <td><a href="https://www.bitec.co.th/event/thailand-electronics-circuit-asia-2026-theca" target="_blank" rel="noopener">BITEC</a>, <a href="https://thailandelectronicscircuitasia.com/" target="_blank" rel="noopener">THECA</a> ✅</td>
+        </tr>
+        <tr>
+          <td>Bangkok Auto Salon 2026 (ครั้งที่ 12)</td>
+          <td>Hall 100, BITEC บางนา</td>
+          <td>26–30 ส.ค. 2569 (12:00–21:30)</td>
+          <td>Trade Fair/Exhibition (ยานยนต์แต่ง)</td>
+          <td><a href="https://bangkokinternationalautosalon.com/" target="_blank" rel="noopener">bangkokinternationalautosalon.com</a> ✅</td>
+        </tr>
+        <tr>
+          <td>FLO — "Therapy At The Club" Tour Bangkok <span class="badge">🎫</span></td>
+          <td>Sphere Hall ชั้น 5M, EmSphere</td>
+          <td>29 ส.ค. 2569</td>
+          <td>Concert & Festival (มีจำหน่ายสินค้า/บัตร)</td>
+          <td><a href="https://www.timeout.com/bangkok/news/grammy-nominated-r-b-trio-hit-sphere-hall-on-august-29-072526" target="_blank" rel="noopener">Time Out Bangkok</a>, <a href="https://www.livenationtero.co.th/en/event/flo-therapy-at-the-club-tour-bangkok-tickets-edp1687170" target="_blank" rel="noopener">Live Nation TERO</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">คลัสเตอร์งานแสดงสินค้าใหญ่ที่ BITEC/QSNCC ในสัปดาห์นี้กระจุกตัวหนาแน่นช่วง 19–30 สิงหาคม ครอบคลุมหลายอุตสาหกรรมพร้อมกัน ผู้สนใจควรตรวจสอบรายละเอียดค่าเข้าชม/การลงทะเบียนล่วงหน้าโดยตรงกับผู้จัดงานแต่ละราย เนื่องจากบางงาน (FHT, THECA) ยังไม่พบราคาบัตรที่ยืนยันได้ในรอบเก็บข้อมูลนี้</div>
+  </section>
+
+  <section>
+    <h2>💸 โปรโมชันตามหมวด</h2>
+
+    <h3>💻 Electronics & IT</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>แบรนด์</th><th>รายละเอียด</th><th>ส่วนลด/ราคา</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Samsung <span class="badge">🔄</span></td><td>ส่วนลด Galaxy S25/S25+/S25 Ultra/S25 FE — ลูกค้าใหม่ + SPayLater + เทิร์นสมาร์ทวอทช์/หูฟัง/แท็บเล็ต</td><td>ลดสูงสุด ฿12,000 (S25 Ultra)</td><td>3 ส.ค.–6 ก.ย. 2569</td><td><a href="https://www.samsung.com/th/offer/galaxy-s25-series/" target="_blank" rel="noopener">samsung.com</a> ✅</td></tr>
+        <tr><td>Xiaomi</td><td>เปิดตัว Redmi 17 Series — แบตเตอรี่ 7,500mAh พร้อมแพ็กประกันขยายฟรี</td><td>เริ่มต้น ฿6,999 (5G จาก ฿7,999)</td><td>เปิดตัว 14 ส.ค., โปรฯ ถึง 31 ส.ค. 2569</td><td><a href="https://www.telecomlover.com/2026/08/14/xiaomi-redmi-17-series-thailand-launch-price-specs/" target="_blank" rel="noopener">Telecomlover</a></td></tr>
+        <tr><td>iStudio by Copperwired</td><td>รีแบรนด์สาขาเซ็นทรัล พระราม 3 เป็น Apple Premium Partner พร้อมศูนย์บริการ iServe</td><td>ลดสูงสุด ฿8,400</td><td>17–31 ส.ค. 2569</td><td>Threads @kit_ronnakit ❓ (แหล่งข้อมูลเดียว)</td></tr>
+        <tr><td>Power Buy</td><td>โปรโมชันสินค้าทั่วร้าน + โค้ดส่วนลดเพิ่ม 8%</td><td>ลดเพิ่ม 8%</td><td>1–31 ส.ค. 2569</td><td>powerbuy.co.th ❓</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>👕 Fashion</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>แบรนด์</th><th>รายละเอียด</th><th>ส่วนลด/ราคา</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Central <span class="badge">🔄</span></td><td>CENTRAL MOM MOMENTS — 260+ แบรนด์ใน 9 กลุ่มธุรกิจของ Central Retail แฟชั่น/ความงาม/ของแต่งบ้าน</td><td>ลดสูงสุด 50%</td><td>1–31 ส.ค. 2569</td><td><a href="https://www.bangkokfocusnews.com/2026/08/CENTRAL-RETAIL-MOM-MOMENTS.html" target="_blank" rel="noopener">Bangkok Focus News</a>, <a href="https://www.sanook.com/money/955571/" target="_blank" rel="noopener">sanook.com</a>, <a href="https://www.naewna.com/lady/981590" target="_blank" rel="noopener">แนวหน้า</a> ✅</td></tr>
+        <tr><td>Central</td><td>SHOP & WIN — แคมเปญนักท่องเที่ยว แฟชั่น/ความงาม/นาฬิกา/เครื่องประดับ/ของแต่งบ้าน ผูกกับตัวการ์ตูน "CENTRAL BABY CEE"</td><td>ไม่ระบุ % ที่แน่นอน</td><td>ถึง 31 ส.ค. 2569</td><td><a href="https://www.thaipr.net/travel/3743348" target="_blank" rel="noopener">ThaiPR.NET</a></td></tr>
+        <tr><td>Central <span class="badge">🔄</span></td><td>กระเป๋าสนามมวยราชดำเนิน x Central — ของสะสมร่วมกับสนามมวยราชดำเนิน 23 สาขาทั่วประเทศ</td><td>฿990 หรือฟรีเมื่อซื้อครบ ฿15,000–20,000</td><td>1 ก.ค.–31 ต.ค. 2569</td><td><a href="https://www.thairath.co.th/" target="_blank" rel="noopener">ไทยรัฐ</a>, Brand Buffet, เดลินิวส์, The Standard, Thaiger ✅</td></tr>
+        <tr><td>adidas Originals</td><td>เปิดตัวรองเท้ารุ่นใหม่ SAMBA JANE "Light of the City" ที่ adidas Brand Center, adidas Originals, JD Sports และออนไลน์</td><td>฿3,500</td><td>เปิดตัว 14 ส.ค. 2569</td><td><a href="https://snkrtoday.com/adidas-originals-samba-jane-light-of-the-city/" target="_blank" rel="noopener">SNKRTODAY</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>🛋 Home & Furniture</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>แบรนด์</th><th>รายละเอียด</th><th>ส่วนลด/ราคา</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>IKEA</td><td>ชุดห้องนอน สำหรับสมาชิก IKEA Family (สิ้นสุดวันนี้)</td><td>ลดสูงสุด 20%</td><td>16 ก.ค.–16 ส.ค. 2569</td><td><a href="https://www.ikea.com/th/en/offers/limited-time-offers/" target="_blank" rel="noopener">ikea.com/th</a> ✅</td></tr>
+        <tr><td>IKEA</td><td>ปรับลดราคาสินค้ากว่า 800 รายการ (ใกล้สิ้นสุดในสัปดาห์นี้)</td><td>ไม่ระบุ % รวม</td><td>5 มี.ค.–19 ส.ค. 2569</td><td>ikea.com/th ❓</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">ยังไม่พบแคมเปญ IKEA ต่อเนื่องหลังวันที่ 16–19 ส.ค. ในรอบเก็บข้อมูลนี้ (เว็บไซต์ทางการเข้าถึงไม่ได้โดยตรง) แนะนำติดตามในรายงานสัปดาห์ถัดไป</div>
+
+    <h3>🍜 Food & Beverage</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>แบรนด์</th><th>รายละเอียด</th><th>ส่วนลด/ราคา</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>MK Restaurant <span class="badge">🔄</span></td><td>บุฟเฟต์ "คุ้มเกินคุ้ม" 33 เมนู (รวมเมนูซีฟู้ดใหม่) จำกัดเวลา 90 นาที</td><td>฿299/ท่าน</td><td>3 ส.ค.–30 ก.ย. 2569</td><td><a href="https://www.brandbuffet.in.th/2026/06/mk-restaurants-buffet-2026/" target="_blank" rel="noopener">Brand Buffet</a> ✅</td></tr>
+        <tr><td>MK Restaurant</td><td>MK Buffet Subscription — แพ็กเกจสมาชิกรายเดือน</td><td>฿1,495–2,990</td><td>ก.ค.–ส.ค. 2569</td><td><a href="https://www.brandbuffet.in.th/2026/07/mk-buffet-299-mk-buffet-subscription/" target="_blank" rel="noopener">Brand Buffet</a></td></tr>
+        <tr><td>McDonald's <span class="badge">🔄</span></td><td>เมนู "Mc Cheesy Dunk"</td><td>฿49–319</td><td>ถึง 30 ส.ค. 2569</td><td><a href="https://www.marketingoops.com/pr-news/mcdonalds-mc-cheesy-dunk-2026/" target="_blank" rel="noopener">Marketing Oops</a></td></tr>
+        <tr><td>KFC</td><td>ดิปปาร์ตี้บักเก็ต (3 ซอสจิ้มใหม่) และชุดพอใจบักเก็ต</td><td>฿199 (สาขาเลือกสรร ฿239)</td><td>23 ก.ค.–26 ส.ค. 2569</td><td>maneedee.com ❓</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>💄 Health & Beauty</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>แบรนด์</th><th>รายละเอียด</th><th>ส่วนลด/ราคา</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Boots</td><td>สินค้าอาบน้ำเริ่มต้น ฿99 และเซรั่ม No7 Good Intent Dew Bank Water</td><td>เริ่มต้น ฿99 / ฿769</td><td>ถึง 26 ส.ค. 2569</td><td>Boots App/Picodi TH ❓</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>🎁 Other</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>🏬 โปรโมชันศูนย์การค้า</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>ศูนย์การค้า</th><th>สาขา</th><th>โปรโมชัน</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Central <span class="badge">🔄</span></td><td>ทุกสาขา</td><td>CENTRAL MOM MOMENTS — ลดสูงสุด 50% ครอบคลุม 260+ แบรนด์ + งานแฟนมีต Orm Kornnaphat (30 ส.ค., CentralWorld ชั้น 7)</td><td>1–31 ส.ค. 2569</td><td><a href="https://www.bangkokfocusnews.com/2026/08/CENTRAL-RETAIL-MOM-MOMENTS.html" target="_blank" rel="noopener">Bangkok Focus News</a>, <a href="https://www.posttoday.com/pr-news/pr-news/746427" target="_blank" rel="noopener">โพสต์ทูเดย์</a> ✅</td></tr>
+        <tr><td>Central Chidlom / Central Embassy</td><td>ชิดลม</td><td>Luxe Unfolded — คูปอง/เงินคืนสูงสุด ฿135,000 กับสินค้าแฟชั่นหรู (รายสัปดาห์) + Exclusive Luxe Weekend รอบพิเศษ 29–30 ส.ค.</td><td>30 มิ.ย.–31 ส.ค. 2569</td><td>centralembassy.com ❓ (แหล่งข้อมูลเดียว)</td></tr>
+        <tr><td>Robinson</td><td>Robinson (ทุกสาขา)</td><td>Robinson Mom Moments — สะสมสติกเกอร์ส่วนลดเมื่อซื้อครบ ฿2,000 ลดสูงสุด 20%; ซื้อครบ ฿80,000 รับบัตรของขวัญ ฿5,000</td><td>3–24 ส.ค. 2569</td><td><a href="https://www.central.co.th/e-shopping/robinson-mom-moments-29-jul-2026" target="_blank" rel="noopener">central.co.th</a> ✅</td></tr>
+        <tr><td>Robinson Lifestyle <span class="badge">🔄</span></td><td>26 สาขาทั่วประเทศ</td><td>"ไทยช่วยไทย พลัส" — รัฐร่วมจ่าย 60% ผ่านแอปเป๋าตัง ที่ร้านค้าร่วมรายการ 500+ ร้าน</td><td>1 มิ.ย.–30 ก.ย. 2569</td><td><a href="https://www.naewna.com/relation/980372" target="_blank" rel="noopener">แนวหน้า</a>, RYT9, Marketthink, Workpoint Today ✅</td></tr>
+        <tr><td>EmQuartier / EmSphere / Emporium</td><td>EM District</td><td>PAYDAY PLUS รอบ 2 — ลดสูงสุด 50% + คืนเงิน/ส่วนลดเพิ่ม 18–20% ด้วยบัตร M Card</td><td>27 ส.ค.–1 ก.ย. 2569</td><td>emsphere.co.th ❓ (แหล่งข้อมูลเดียว จากการค้นหา)</td></tr>
+        <tr><td>EmQuartier / EmSphere / Emporium <span class="badge">🔄</span></td><td>EM District</td><td>Tourist Dining Cash Coupon รอบ 1 — คูปองอาหาร ฿200 เมื่อใช้จ่ายขั้นต่ำ ฿1,500/วัน (จำกัด 100 สิทธิ์/รอบ)</td><td>28 ก.ค.–31 ส.ค. 2569</td><td>emdistrict.com ✅</td></tr>
+        <tr><td>ICONSIAM</td><td>ชั้น 1</td><td>Dyson เทิร์นสินค้าเก่าแลกซื้อสินค้าใหม่</td><td>ลดสูงสุด ฿10,000</td><td>1 ส.ค.–30 ก.ย. 2569</td><td>iconsiam.com ❓ (แหล่งข้อมูลเดียว)</td></tr>
+        <tr><td>Terminal 21</td><td>อโศก</td><td>Mid Year Mega Deal 2026 — ดีลกลางปีจากร้านค้าร่วมรายการ (ใกล้สิ้นสุด)</td><td>1 พ.ค.–31 ส.ค. 2569</td><td><a href="https://www.terminal21.co.th/rama3/en/promotion-en/" target="_blank" rel="noopener">terminal21.co.th</a> ✅</td></tr>
+        <tr><td>Makro <span class="badge">🔄</span></td><td>170+ สาขา + Makro PRO</td><td>ครบรอบ 37 ปี "รักมาก แม็คโคร" — ของแถมและส่วนลดหมุนเวียนรายสัปดาห์สูงสุด 50%</td><td>22 ก.ค.–29 ก.ย. 2569</td><td>ThaiPR.NET, Kaohoon International, Brand Buffet, Workpoint Today, Hoonsmart ✅</td></tr>
+        <tr><td>Lotus's <span class="badge">🔄</span></td><td>ทุกสาขา</td><td>ส่วนลดนักท่องเที่ยวต่างชาติ ฿100 ผ่าน TAGTHAi Easy Pay (สแกน QR + พาสปอร์ต)</td><td>ถึง 31 ธ.ค. 2569</td><td><a href="https://www.tagthai.com/explore/p/get-discount-at-lotus-with-easy-pay" target="_blank" rel="noopener">TAGTHAi</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty">Siam Paragon, MBK Center, Big C: ไม่พบโปรโมชันลดราคาที่ระบุช่วงเวลาชัดเจนในสัปดาห์นี้ (Siam Paragon มีเพียงนิทรรศการฟรีเข้าชม "Japan Heritage" ดูหมวดงานอีเวนต์ด้านบน; Amazing Thailand Grand Sale ที่ Big C สิ้นสุดไปแล้วเมื่อ 15 ส.ค.)</p>
+  </section>
+
+  <section>
+    <h2>🛒 E-Commerce Campaigns</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Platform</th><th>Campaign</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Shopee</td><td>Mid Month Sale — ลดสูงสุด 70% + ส่งฟรี, คูปอง Shopee Mall ลดสูงสุด 30% (สิ้นสุดคืนนี้)</td><td>13–16 ส.ค. 2569</td><td>iPrice TH ❓</td></tr>
+        <tr><td>Lazada</td><td>Regional Super Brand Day x adidas — เปิดตัวรองเท้า ZENBOOST แบบ Exclusive ระดับภูมิภาค ลดสูงสุด 50% + คูปอง/บันเดิลพิเศษ</td><td>เริ่ม 18 ส.ค. 2569 (ไทย)</td><td><a href="https://www.prnewswire.com/apac/news-releases/lazada-partners-adidas-for-exclusive-regional-launch-of-the-all-new-zenboost-running-shoes-302844516.html" target="_blank" rel="noopener">PR Newswire</a>, <a href="https://brandinside.asia/adidas-regional-super-brand-day/" target="_blank" rel="noopener">Brand Inside</a> ✅</td></tr>
+        <tr><td>Central Online <span class="badge">🔄</span></td><td>CENTRAL MOM MOMENTS ขยายสู่ช่องทางออนไลน์ — ลดสูงสุด 50%</td><td>1–31 ส.ค. 2569</td><td>Bangkok Focus News, sanook.com ✅</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note limit">พบข้อมูลอ้างว่า TikTok Shop ขยายแคมเปญ 8.8 ต่อเนื่องถึง 31 ส.ค. 2569 จากเว็บไซต์รวมคูปองเท่านั้น (iPrice) ไม่พบยืนยันจากช่องทางทางการของ TikTok Shop และขัดแย้งกับกำหนดการ 8.8 ที่ทราบว่าสิ้นสุดไปแล้วเมื่อ 10 ส.ค. จึงไม่นำมาแสดงในตารางนี้ — ระบุเป็นรายการเฝ้าติดตามแทน</div>
+  </section>
+
+  <section>
+    <h2>📰 Brand News</h2>
+
+    <h3>New Store</h3>
+    <ul>
+      <li><b>Central Northville</b> (นนทบุรี) — ศูนย์การค้าใหม่บนพื้นที่เดิมของเซ็นทรัลพลาซา รัตนาธิเบศร์ พื้นที่ 59 ไร่ ชูคอนเซปต์ "Longevity Destination" แห่งแรกของไทย เปิดให้บริการเต็มรูปแบบตั้งแต่ 3 ก.ค. 2569 — <a href="https://www.thairath.co.th/money/business_marketing/trends/2943940" target="_blank" rel="noopener">ไทยรัฐ</a></li>
+      <li><b>Barbeque Nation</b> (แบรนด์บุฟเฟต์อินเดีย) — เปิดร้านแรกในไทยที่ Hyatt Regency Bangkok Sukhumvit ชั้น 2 ใกล้ BTS นานา บุฟเฟต์เปิดตัวเริ่มต้น ฿399++ เปิดให้บริการต้น–กลาง ส.ค. 2569 — <a href="https://www.chiangraitimes.com/food/barbeque-nation-makes-its-debut-in-bangkok/" target="_blank" rel="noopener">Chiang Rai Times</a>, <a href="https://thailandhotel.news/hyatt-regency-bangkok-sukhumvit-hotel-presents-barbeque-nation-with-an-incredible-indian-buffet-priced-at-399-baht/" target="_blank" rel="noopener">Thailand Hotel News</a></li>
+      <li><b>SENSAI</b> (แบรนด์สกินแคร์พรีเมียมของ Kao) <span class="badge">🔄</span> — เปิดร้านแรกในไทยที่เซ็นทรัล ชิดลม เมื่อ 31 ก.ค. 2569 — <a href="https://www.kao.com/global/en/newsroom/news/release/2026/20260731-004/" target="_blank" rel="noopener">Kao Corporation</a></li>
+    </ul>
+
+    <h3>Campaign</h3>
+    <ul>
+      <li><b>adidas Originals</b> — เปิดตัวรองเท้า SAMBA JANE "Light of the City" สีใหม่ ฿3,500 วางจำหน่าย adidas Brand Center, adidas Originals, JD Sports และออนไลน์ ตั้งแต่ 14 ส.ค. 2569 — <a href="https://snkrtoday.com/adidas-originals-samba-jane-light-of-the-city/" target="_blank" rel="noopener">SNKRTODAY</a></li>
+      <li><b>Lazada x adidas</b> — Regional Super Brand Day เปิดตัวรองเท้า ZENBOOST แบบ Exclusive ทั่วภูมิภาค เริ่มในไทยวันที่ 18 ส.ค. 2569 — <a href="https://www.prnewswire.com/apac/news-releases/lazada-partners-adidas-for-exclusive-regional-launch-of-the-all-new-zenboost-running-shoes-302844516.html" target="_blank" rel="noopener">PR Newswire</a></li>
+    </ul>
+
+    <h3>Seasonal Promotion</h3>
+    <p class="empty">ดูรายละเอียดในหมวดโปรโมชันศูนย์การค้า (Central MOM MOMENTS, Robinson Mom Moments, กระเป๋าราชดำเนิน x Central)</p>
+
+    <h3>Limited-Time Sale</h3>
+    <ul>
+      <li><b>Shopee Mid Month Sale</b> — ลดสูงสุด 70% + ส่งฟรี, 13–16 ส.ค. 2569 (สิ้นสุดคืนนี้) — iPrice TH</li>
+      <li><b>Boots</b> — สินค้าอาบน้ำเริ่มต้น ฿99 และเซรั่ม No7 ถึง 26 ส.ค. 2569 — Boots App/Picodi TH</li>
+    </ul>
+
+    <h3>Product Launch</h3>
+    <ul>
+      <li><b>Xiaomi Redmi 17 Series</b> — เปิดตัว 14 ส.ค. 2569 เริ่มต้น ฿6,999 พร้อมแพ็กประกันขยายฟรี — <a href="https://www.telecomlover.com/2026/08/14/xiaomi-redmi-17-series-thailand-launch-price-specs/" target="_blank" rel="noopener">Telecomlover</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📍 แนะนำตามพื้นที่</h2>
+    <ul>
+      <li><b>กรุงเทพฯ ชั้นใน:</b> Siam Paragon Japan Heritage (20–30 ส.ค.), Central Chidlom/Central Embassy Luxe Unfolded + SENSAI, งานแฟร์คลัสเตอร์ที่ QSNCC (TILOG-LOGISTIX ไม่รวม, FHT, ไทยเที่ยวไทย, InterCare Asia, Techsauce Global Summit)</li>
+      <li><b>กรุงเทพฯ เหนือ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>กรุงเทพฯ ตะวันออก:</b> TILOG-LOGISTIX / Big Motor Sale / THECA / Bangkok Auto Salon ที่ BITEC บางนา, PAYDAY PLUS รอบ 2 และ FLO Concert ที่ EM District</li>
+      <li><b>กรุงเทพฯ ตะวันตก:</b> ผ้าไทย ศิลปะ และงานคราฟต์ เดือนแม่ 2569 และ Dyson เทิร์นสินค้า ที่ ICONSIAM</li>
+      <li><b>นนทบุรี:</b> OTOP Fair ที่ IMPACT เมืองทองธานี (วันสุดท้ายวันนี้), Central Northville เปิดใหม่</li>
+      <li><b>ปทุมธานี:</b> <span class="empty">ไม่มีข้อมูลที่ยืนยันได้ในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรปราการ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรสาคร:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นครปฐม:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💡 Best Deals</h2>
+    <div class="deal">
+      <h4>🔥 Central MOM MOMENTS — ลดสูงสุด 50% ครอบคลุม 260+ แบรนด์ 🔄</h4>
+      <p style="margin:0;">แคมเปญวันแม่ที่ครอบคลุม 9 กลุ่มธุรกิจของ Central Retail ทั้งแฟชั่น ความงาม และของแต่งบ้าน ทั้งหน้าร้านและออนไลน์</p>
+      <div class="meta">ระยะเวลา: 1–31 ส.ค. 2569 · Source: Bangkok Focus News, sanook.com</div>
+    </div>
+    <div class="deal">
+      <h4>Robinson Lifestyle ไทยช่วยไทย พลัส — รัฐร่วมจ่าย 60% 🔄</h4>
+      <p style="margin:0;">แคมเปญร่วมกับภาครัฐผ่านแอปเป๋าตัง ครอบคลุมร้านอาหาร/ร้านค้ากว่า 500 ร้านใน 26 สาขา Robinson Lifestyle ทั่วประเทศ</p>
+      <div class="meta">ระยะเวลา: 1 มิ.ย.–30 ก.ย. 2569 · Source: แนวหน้า, RYT9</div>
+    </div>
+    <div class="deal">
+      <h4>Lazada x adidas ZENBOOST — Regional Super Brand Day ลดสูงสุด 50%</h4>
+      <p style="margin:0;">เปิดตัวรองเท้ารุ่นใหม่แบบ Exclusive ระดับภูมิภาค พร้อมส่วนลด/คูปอง/บันเดิลพิเศษบน LazMall</p>
+      <div class="meta">เริ่ม: 18 ส.ค. 2569 · Source: PR Newswire, Brand Inside</div>
+    </div>
+    <div class="deal">
+      <h4>Makro 37th Anniversary "รักมาก แม็คโคร" 🔄</h4>
+      <p style="margin:0;">ของแถมและส่วนลดหมุนเวียนรายสัปดาห์สูงสุด 50% พร้อมของรางวัลรวมมูลค่ากว่า 3.7 ล้านบาท ที่สาขา Makro 170+ แห่ง</p>
+      <div class="meta">ระยะเวลา: 22 ก.ค.–29 ก.ย. 2569 · Source: ThaiPR.NET, Brand Buffet</div>
+    </div>
+    <div class="deal">
+      <h4>MK Restaurant บุฟเฟต์ ฿299 🔄</h4>
+      <p style="margin:0;">บุฟเฟต์ "คุ้มเกินคุ้ม" 33 เมนู รวมเมนูซีฟู้ดใหม่ ที่สาขากว่า 100 แห่งทั่วกรุงเทพฯ และปริมณฑล</p>
+      <div class="meta">ระยะเวลา: 3 ส.ค.–30 ก.ย. 2569 · Source: Brand Buffet</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📅 Event Calendar</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>วันที่</th><th>งาน</th><th>สถานที่</th><th>ประเภท</th></tr></thead>
+      <tbody>
+        <tr><td>ถึง 16 ส.ค.</td><td>ศิลปาชีพ ประทีปไทย OTOP 2569</td><td>IMPACT, นนทบุรี</td><td>Exhibition</td></tr>
+        <tr><td>ถึง 16 ส.ค.</td><td>The Lost Jurassic World</td><td>MBK Center</td><td>Event ❓</td></tr>
+        <tr><td>ถึง 16 ส.ค.</td><td>Shopee Mid Month Sale</td><td>ออนไลน์</td><td>E-Commerce Campaign</td></tr>
+        <tr><td>ถึง 16 ส.ค.</td><td>IKEA ชุดห้องนอนลด 20%</td><td>IKEA ทุกสาขา</td><td>Promotion</td></tr>
+        <tr><td>17–31 ส.ค.</td><td>iStudio รีแบรนด์เซ็นทรัล พระราม 3</td><td>เซ็นทรัล พระราม 3</td><td>Promotion / New Store</td></tr>
+        <tr><td>18 ส.ค.</td><td>Lazada x adidas ZENBOOST</td><td>ออนไลน์</td><td>E-Commerce Campaign</td></tr>
+        <tr><td>ถึง 19 ส.ค.</td><td>IKEA ลดราคา 800+ รายการ</td><td>IKEA ทุกสาขา</td><td>Promotion</td></tr>
+        <tr><td>19–21 ส.ค.</td><td>TILOG–LOGISTIX 2026</td><td>BITEC บางนา</td><td>Trade Fair</td></tr>
+        <tr><td>19–22 ส.ค.</td><td>Food & Hospitality Thailand (FHT) 2026</td><td>QSNCC</td><td>Trade Fair</td></tr>
+        <tr><td>20–23 ส.ค.</td><td>ไทยเที่ยวไทย ครั้งที่ 79 / InterCare Asia 2026</td><td>QSNCC</td><td>Travel Fair / Exhibition</td></tr>
+        <tr><td>20–30 ส.ค.</td><td>Siam Paragon: The Wondrous Japan Heritage 2026</td><td>Siam Paragon</td><td>Exhibition</td></tr>
+        <tr><td>21–30 ส.ค.</td><td>Big Motor Sale 2026</td><td>BITEC บางนา</td><td>Trade Fair</td></tr>
+        <tr><td>ถึง 24 ส.ค.</td><td>Robinson Mom Moments</td><td>Robinson ทุกสาขา</td><td>Mall Promotion</td></tr>
+        <tr><td>ถึง 26 ส.ค.</td><td>KFC ดิปปาร์ตี้บักเก็ต</td><td>ทุกสาขา</td><td>Promotion</td></tr>
+        <tr><td>ถึง 26 ส.ค.</td><td>Boots สินค้าอาบน้ำ/เซรั่ม No7</td><td>ทุกสาขา</td><td>Promotion</td></tr>
+        <tr><td>26–28 ส.ค.</td><td>Techsauce Global Summit 2026 / THECA 2026</td><td>QSNCC / BITEC</td><td>Consumer Expo / Trade Fair</td></tr>
+        <tr><td>26–30 ส.ค.</td><td>Bangkok Auto Salon 2026</td><td>BITEC บางนา</td><td>Trade Fair</td></tr>
+        <tr><td>27 ส.ค.–1 ก.ย.</td><td>PAYDAY PLUS รอบ 2</td><td>EM District</td><td>Mall Promotion</td></tr>
+        <tr><td>29–30 ส.ค.</td><td>Exclusive Luxe Weekend</td><td>Central Embassy</td><td>Mall Promotion</td></tr>
+        <tr><td>29 ส.ค.</td><td>FLO — Therapy At The Club Tour Bangkok</td><td>EmSphere</td><td>Concert</td></tr>
+        <tr><td>30 ส.ค.</td><td>Central MOM MOMENTS แฟนมีต Orm Kornnaphat</td><td>CentralWorld</td><td>Mall Promotion</td></tr>
+        <tr><td>31 ส.ค.</td><td>สิ้นสุด Central MOM MOMENTS, Terminal 21 Mid Year Mega Deal, EM District Tourist Coupon รอบ 1</td><td>หลายพื้นที่</td><td>Mall Promotion</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">12</div><div class="lbl">Events</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Exhibitions</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Trade Fairs</div></div>
+      <div class="stat"><div class="num">15</div><div class="lbl">Promotions</div></div>
+      <div class="stat"><div class="num">10</div><div class="lbl">Mall Campaigns</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Brand Campaigns</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">E-Commerce Campaigns</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">New Store Openings</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <ul>
+      <li><b>วันเปิดร้าน On ที่ ICONSIAM ต้องยืนยันซ้ำ</b> — รายงานสัปดาห์ก่อนระบุว่าเปิด 22 ส.ค. 2569 แต่รอบนี้พบแหล่งข่าวที่ระบุวันที่แตกต่างกัน (ดูหมายเหตุด้านล่าง) — Source: Siam Piwat, Inside Retail Asia, superfuture.com</li>
+      <li><b>PAYDAY PLUS รอบ 2 ที่ EM District</b> (27 ส.ค.–1 ก.ย.) — ใกล้เริ่มหลังช่วงหน้าต่างรายงานนี้ ควรติดตามรายละเอียดส่วนลดที่ยืนยันอย่างเป็นทางการ — Source: emsphere.co.th</li>
+      <li><b>คลัสเตอร์งานแฟร์ที่ BITEC/QSNCC ช่วง 26–30 ส.ค.</b> (Techsauce Global Summit, THECA, Bangkok Auto Salon) — ควรติดตามราคาบัตร/เงื่อนไขลงทะเบียนที่จะประกาศเพิ่มเติม — Source: summit.techsauce.co, bitec.co.th</li>
+      <li><b>Watsons Anniversary Sale</b> — ยังไม่พบวันที่ยืนยันสำหรับปี 2569 แต่ในอดีตมักจัดช่วงปลายเดือนสิงหาคม ควรติดตามในรายงานสัปดาห์ถัดไป</li>
+      <li><b>TikTok Shop แคมเปญขยายเวลา (อ้างว่าถึง 31 ส.ค.)</b> — ยังไม่ยืนยันจากช่องทางทางการ ควรตรวจสอบก่อนนำเสนอเป็นข้อมูลยืนยัน</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <p>samsung.com/th, ikea.com/th, terminal21.co.th, central.co.th, tagthai.com, tilog-logistix.com, fhtevent.com, qsncc.com, thaiteawthai.com, bitec.co.th, thailandelectronicscircuitasia.com, bangkokinternationalautosalon.com, summit.techsauce.co, siampiwat.com, kao.com, emsphere.co.th, emdistrict.com, iconsiam.com, powerbuy.co.th</p>
+    <h3>Event Platforms</h3>
+    <p>Live Nation TERO, exposale.net</p>
+    <h3>Trusted Sources</h3>
+    <p>ไทยรัฐ, sanook.com, แนวหน้า, โพสต์ทูเดย์, PRD.go.th, Brand Buffet, The Standard, ศิลปวัฒนธรรม, ThaiPR.NET, Bangkok Focus News, สยามสปอร์ต, เดลินิวส์, Time Out Bangkok, SNKRTODAY, PR Newswire, Brand Inside, Chiang Rai Times, Thailand Hotel News, Marketing Oops, Telecomlover, AllThaiEvent, Kaohoon International, Workpoint Today, Hoonsmart, RYT9, Marketthink, iPrice Thailand, Picodi Thailand, maneedee.com</p>
+    <h3>Community (Verification Only)</h3>
+    <p>Threads @kit_ronnakit</p>
+    <div class="note limit">
+      <b>ข้อจำกัดของข้อมูล:</b> ในรอบเก็บข้อมูลนี้ WebFetch ไม่สามารถเข้าถึงโดเมนส่วนใหญ่ที่ทดสอบได้เลย (ยืนยันเป็น EGRESS_BLOCKED จากนโยบายเครือข่ายระดับองค์กร ไม่ใช่ปัญหาชั่วคราว) รวมถึง siamparagon.co.th, iconsiam.com, terminal21.co.th, central.co.th, corporate.bigc.co.th, emsphere.co.th, qsncc.com, bitec.co.th, ikea.com, jib.co.th, sanook.com, wikipedia.org และอื่น ๆ ข้อมูลเกือบทั้งหมดในรายงานนี้จึงมาจากผลสรุปของ WebSearch แทนการอ่านหน้าเว็บทางการโดยตรง รายการที่มีเครื่องหมาย ❓ คือรายการที่ยืนยันแหล่งทางการหรือช่วงเวลาที่แน่นอนไม่ได้เต็มร้อยเปอร์เซ็นต์ และรายการที่มีเครื่องหมาย ✅ คือมีการยืนยันข้ามหลายแหล่งข้อมูลแล้ว โปรโมชันหรืองานที่หมดอายุหรือตรวจสอบไม่ได้ถูกตัดออกทั้งหมด (เช่น ICONSIAM Big Bang Sale, Central Grand Grand Sale, Big C Amazing Thailand Grand Sale, JIB โปรโมชันเก่า, Starbucks Buy 1 Get 1, Lotus's Go Fresh 20% ที่ไม่ระบุช่วงเวลาชัดเจน)<br><br>
+      <b>UNCERTAIN — ข้อมูลขัดแย้งเรื่อง On ที่ ICONSIAM:</b> รายงานสัปดาห์ก่อน (9 ส.ค. 2569) ระบุว่าร้าน On แฟล็กชิปแรกในไทยจะเปิดที่ ICONSIAM วันที่ 22 ส.ค. 2569 แต่ในรอบเก็บข้อมูลนี้พบแหล่งข่าว Inside Retail Asia (ลงวันที่ 5 ก.ย. 2568) และ superfuture.com (ส.ค. 2568) ที่ระบุว่าร้านดังกล่าวเปิดให้บริการไปแล้วตั้งแต่วันที่ 22 ส.ค. 2568 (ปีก่อนหน้า) ขณะที่หน้าเว็บ siampiwat.com ซึ่งเป็นแหล่งข้อมูลทางการไม่สามารถเข้าถึงได้โดยตรงเพื่อยืนยันวันที่ที่แท้จริงในรอบนี้ เนื่องจากข้อมูลขัดแย้งกันและไม่สามารถยืนยันได้ 100% จึงตัดรายการนี้ออกจากหมวด "เปิดร้านใหม่" ของสัปดาห์นี้ และแนะนำให้ตรวจสอบซ้ำโดยตรงกับ siampiwat.com หรือ on.com/th ในรอบรายงานถัดไป
+    </div>
+  </section>
+
+  <section>
+    <h2>🔎 แนวโน้มสัปดาห์นี้</h2>
+    <p>สัปดาห์นี้กรุงเทพฯ และปริมณฑลเปลี่ยนผ่านจากแคมเปญวันแม่และงาน OTOP ที่กำลังปิดฉาก เข้าสู่ช่วงไฮซีซันของงานแสดงสินค้า B2B/B2C ขนาดใหญ่ที่กระจุกตัวหนาแน่นที่สุดของเดือนสิงหาคม ระหว่างวันที่ 19–30 สิงหาคม ที่ BITEC และ QSNCC ครอบคลุมหลากหลายอุตสาหกรรมพร้อมกัน ทั้งโลจิสติกส์ อาหาร/โรงแรม ท่องเที่ยว การแพทย์/สุขภาวะ เทคโนโลยี และยานยนต์ สะท้อนว่าภาคธุรกิจ B2B และการท่องเที่ยวในประเทศกำลังเร่งกิจกรรมก่อนเข้าสู่ไตรมาสสุดท้ายของปี ด้านโปรโมชันค้าปลีกยังคงพึ่งพาแคมเปญระยะยาวข้ามเดือนเป็นหลัก (Central MOM MOMENTS, Robinson ไทยช่วยไทยพลัส, Makro 37th Anniversary) มากกว่าแคมเปญตัวเลขคู่แบบเร่งด่วนเหมือนช่วงต้นเดือน ขณะที่อีคอมเมิร์ซเริ่มหันมาใช้การจับมือกับแบรนด์เฉพาะราย (Lazada x adidas ZENBOOST) แทนแคมเปญส่วนลดกว้าง ๆ ฝั่งเปิดร้านใหม่มีทั้งศูนย์การค้าคอนเซปต์ใหม่ในนนทบุรี (Central Northville) และแบรนด์อาหารนานาชาติหน้าใหม่ (Barbeque Nation) สะท้อนความเชื่อมั่นต่อกำลังซื้อในตลาดกรุงเทพฯ และปริมณฑลที่ยังคงต่อเนื่อง แม้ข้อมูลบางส่วนในรอบนี้จะมีข้อจำกัดด้านการเข้าถึงแหล่งข้อมูลปฐมภูมิโดยตรง</p>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="legend">
+      <span>✅ Official</span>
+      <span>🎪 Event</span>
+      <span>🛍 Promotion</span>
+      <span>🏬 Shopping Mall</span>
+      <span>🛒 E-Commerce</span>
+      <span>🔄 Continuing Event</span>
+      <span>🔥 Popular Event</span>
+      <span>❓ Information Incomplete</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Bangkok Sales & Events Report · 16 Aug 2026 (Week 33)</p>
+    <p><a href="/">Back to Home</a> · <a href="./">Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>
