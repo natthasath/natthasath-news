@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-17</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 17 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-17</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 17 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> session การสืบค้นในรอบนี้ไม่สามารถเข้าถึงโดเมน openai.com, anthropic.com, deepmind.google, huggingface.co, arxiv.org, stripe.com และ techstartups.com โดยตรงผ่าน WebFetch ได้แม้ลอง retry แล้ว (network egress proxy) จึงใช้ WebSearch พร้อม site: query เพื่อดึงข้อมูลจากผลการค้นหาแทน ลิงก์อย่างเป็นทางการที่ปรากฏยืนยันการมีอยู่ผ่านผลค้นหา (หัวข้อ/URL ตรงกับหน้าทางการ) แต่ไม่ได้เปิดอ่านหน้าเว็บโดยตรงในรอบนี้ ดีล Stripe–OpenRouter ยังไม่มีการยืนยันอย่างเป็นทางการจาก Stripe (ปฏิเสธให้ความเห็นกับ TechCrunch) จึงติดป้าย 📰 เท่านั้น ดีล Anthropic–Decart ยังอยู่ระหว่างเจรจา ไม่ใช่ดีลที่ปิดแล้ว ข่าวบางรายการ (Muse Glimmer, Gemini 1B users, NVIDIA financing platform) เริ่มต้นก่อนหน้าช่วง 24 ชม. แต่ยังมีพัฒนาการ/ถูกอ้างอิงต่อเนื่องถึงวันนี้ จึงนำมารายงานพร้อมระบุป้าย "ต่อเนื่อง" หมวด Regulation ไม่พบข่าวใหม่เฉพาะช่วง 24 ชม. ที่ผ่านเกณฑ์ยืนยันของรอบนี้ จึงงดแสดง</b>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>✅📰 NVIDIA รับประกันเงินทุนสูงสุด 1.05 แสนล้านดอลลาร์สำหรับเฟสแรกของศูนย์ข้อมูล OpenAI ที่รัฐโอไฮโอ ร่วมกับ SB Energy (บริษัทลูกของ SoftBank) พร้อมลงทุนตรง 1.5 พันล้านดอลลาร์ใน SB Energy 📰 Stripe ปิดดีลซื้อกิจการ OpenRouter สตาร์ทอัพ AI gateway มูลค่ากว่า 7 พันล้านดอลลาร์ตามรายงานสื่อหลายสำนัก แต่ Stripe ยังไม่ยืนยันอย่างเป็นทางการ ขณะที่ Anthropic เจรจาขั้นสูงเพื่อซื้อ Decart ในราคาที่ขยับขึ้นเป็นราว 7 พันล้านดอลลาร์ (จากเดิม 6 พันล้าน) ก่อนแผน IPO ที่มีรายงานว่าอาจเกิดขึ้นเดือนหน้า ✅ Anthropic เผชิญเหตุขัดข้องด้านการยืนยันตัวตนนาน 36 นาทีเมื่อคืนที่ผ่านมา (21:58–22:34 UTC) กระทบ Claude.ai, API, Claude Code และ Claude Cowork ก่อนแก้ไขสำเร็จ ✅ Google ปลดระวาง API endpoint ของ Imagen 4 ทั้งสามรุ่นอย่างเป็นทางการวันนี้ บังคับให้นักพัฒนาย้ายไปใช้ Gemini 3.1 Flash Image งานวิจัยใหม่เปิดเผยช่องโหว่ทางสถาปัตยกรรมที่ทำให้สามารถขโมย/ถอดรหัส chain-of-thought reasoning traces จาก LLM API เชิงพาณิชย์ได้ ขณะที่มีรายงานว่าหญิงรายหนึ่งฟ้อง xAI กรณีภาพล่วงละเมิดที่สร้างโดย Grok</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+      <tr><td>Muse Glimmer 30B <span class="badge">ต่อเนื่อง</span></td><td>Meta Superintelligence Labs</td><td>Open-weight agentic model (30B พารามิเตอร์ กลั่นจาก Muse Spark พร้อม perception encoder ในตัว)</td><td>SWE-Bench Verified 76.0, SWE-Bench Pro 51.2%, AIME 2026 94.7%, MCP Atlas (Public) 75.5, DeepSearch QA 74.6 — full precision ใช้ RAM กว่า 55GB, quantized 4-bit เหลือต่ำกว่า 20GB รันบน GPU เครื่องเดียวได้</td><td>✅ เปิดซอร์สแล้วบน Hugging Face สัญญาอนุญาต Apache 2.0 (เผยแพร่ 10 ส.ค. ยังเป็นประเด็นที่พูดถึงต่อเนื่อง)</td><td>✅ <a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" target="_blank" rel="noopener">Hugging Face — meta-models (Official)</a>, 📰 <a href="https://venturebeat.com/technology/meta-returns-to-open-source-with-muse-glimmer-an-apache-2-0-licensed-30b-parameter-ai-model-optimized-for-agents-available-now" target="_blank" rel="noopener">VentureBeat</a>, <a href="https://www.marktechpost.com/2026/08/10/meta-ai-releases-muse-glimmer/" target="_blank" rel="noopener">MarkTechPost</a></td></tr>
+      <tr><td>Grok 4.6 <span class="badge">ต่อเนื่อง</span></td><td>xAI</td><td>Frontier LLM สำหรับงาน agent ระยะยาว, โค้ดดิ้ง และงานภาพ/โต้ตอบซับซ้อน</td><td>เปิดใช้งานผ่าน API, Grok Build, Cursor ตั้งแต่ 13 ส.ค. และเพิ่งถูกเพิ่มเข้า GitHub Copilot ให้เลือกใช้ใน VS Code และเวิร์กโฟลว์ GitHub ได้</td><td>✅ ให้บริการเต็มรูปแบบ ขยายช่องทางการเข้าถึงเพิ่มเติม</td><td>✅ <a href="https://x.ai/news/grok-4-6" target="_blank" rel="noopener">xAI (Official)</a>, 📰 <a href="https://releasebot.io/updates/xai" target="_blank" rel="noopener">Releasebot</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+      <tr><td>Stealing Reasoning Traces from Proprietary LLM APIs</td><td>Alexander Panfilov, David Schmotz, Ilia Shumailov, Luca Beurer-Kellner, Joachim Schaeffer, Ameya Prabhu, Jonas Geiping, Maksym Andriushchenko</td><td>ช่องโหว่ด้านความปลอดภัย — บล็อก chain-of-thought ที่เข้ารหัสสามารถใช้แลกเปลี่ยนข้ามเซสชัน/โมเดลในผู้ให้บริการเดียวกันได้ ทำให้ถอดรหัส reasoning trace ออกมาเป็น plaintext ได้ด้วยการเรียก API เพียง 2 ครั้ง</td><td>📰 <a href="https://arxiv.org/abs/2608.09867" target="_blank" rel="noopener">arXiv:2608.09867</a>, <a href="https://huggingface.co/papers/2608.09867" target="_blank" rel="noopener">Hugging Face Papers</a></td></tr>
+      <tr><td>Agentic Transaction: Towards ACID-Compliant Agent Systems <span class="badge">ต่อเนื่อง</span></td><td>Zhaoyan Sun, Xiaoxiao Wang, Guoliang Li (Tsinghua University)</td><td>เสนอกรอบแนวคิด agentic transaction ตีความคุณสมบัติ ACID ใหม่สำหรับการทำงานของ agent ผ่าน 4 semantic guarantee (Atomicity, Consistency, Isolation, Durability)</td><td>📰 <a href="https://arxiv.org/abs/2608.13900" target="_blank" rel="noopener">arXiv:2608.13900</a></td></tr>
+      <tr><td>Discovering Efficient and Explainable Communication Topologies for LLM-based Multi-Agent Systems via Causal Inference <span class="badge">ต่อเนื่อง</span></td><td>Junzhi Li, Peng He, Qirui Ji, Wei Wang, Lixiang Liu, Chuxiong Sun</td><td>ใช้ causal inference ค้นหาโครงสร้างการสื่อสารที่มีประสิทธิภาพและอธิบายได้สำหรับระบบ multi-agent ที่ขับเคลื่อนด้วย LLM ส่งงานให้ AAAI 2027</td><td>📰 <a href="https://arxiv.org/abs/2608.12921" target="_blank" rel="noopener">arXiv:2608.12921</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ไม่สามารถเปิดหน้า arxiv.org โดยตรงเพื่ออ่านบทคัดย่อฉบับเต็มในรอบนี้ (network egress) รายชื่อผู้เขียนและรายละเอียดข้างต้นยืนยันผ่านผลการค้นเว็บที่อ้างอิงหน้า arXiv/Hugging Face Papers เดียวกันจากหลายแหล่ง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+      <tr><td>harry0703/MoneyPrinterTurbo</td><td>105,784 (+1,275 วันนี้)</td><td>Python</td><td>ใช้โมเดล AI ขนาดใหญ่และเวิร์กโฟลว์อัตโนมัติสร้างวิดีโอสั้นจากหัวข้อหรือคำค้น ติดอันดับ GitHub Trending วันนี้</td><td>✅ <a href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>usestrix/strix</td><td>53,991 (+656 วันนี้)</td><td>Python</td><td>เครื่องมือ AI penetration testing โอเพนซอร์ส หาและแก้ช่องโหว่ของแอปพลิเคชันด้วย agent อัตโนมัติ</td><td>✅ <a href="https://github.com/usestrix/strix" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>AlexsJones/llmfit</td><td>32,181 (+239 วันนี้)</td><td>Rust</td><td>CLI/TUI จับคู่โมเดล LLM กับฮาร์ดแวร์ (RAM/CPU/GPU) ของผู้ใช้ รองรับกว่า 497 โมเดล และผู้ให้บริการ 133 ราย</td><td>✅ <a href="https://github.com/AlexsJones/llmfit" target="_blank" rel="noopener">GitHub</a></td></tr>
+    </table>
+    </div>
+    <p class="note">ที่มาอันดับ Trending: อ่านจากหน้า <a href="https://github.com/trending" target="_blank" rel="noopener">github.com/trending</a> โดยตรง ณ เวลาที่จัดทำรายงาน</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">⚠️ ไม่พบเครื่องมือ/แอปเปิดตัวใหม่ที่ผ่านเกณฑ์ยืนยันเฉพาะช่วง 24 ชม. ล่าสุดในรอบนี้ นอกเหนือจากที่แสดงในหมวด AI Models</p>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+      <tr><td>GitHub Copilot</td><td>เพิ่ม Grok 4.6 ของ xAI เข้าใน model picker ให้นักพัฒนาเลือกใช้ใน VS Code และเวิร์กโฟลว์ GitHub ได้</td><td>📰 <a href="https://releasebot.io/updates/xai" target="_blank" rel="noopener">Releasebot</a></td></tr>
+      <tr><td>Microsoft Copilot (web/desktop/mobile)</td><td>เริ่มอัปเดต UI ตั้งแต่ 18 ส.ค. เพื่อให้แยกแยะบัญชีงาน (work) กับบัญชีส่วนตัว (personal) ได้ชัดเจนขึ้น</td><td>📰 <a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-august" target="_blank" rel="noopener">Microsoft Learn — Partner Center Announcements</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>✅📰 NVIDIA รับประกันเงินทุนสูงสุด 1.05 แสนล้านดอลลาร์สำหรับเฟสแรกของศูนย์ข้อมูลของ OpenAI ที่ PORTS-Pike Technology Campus รัฐโอไฮโอ กำลังผลิตไฟฟ้าเริ่มต้น 4.25 กิกะวัตต์ (มีออปชันเพิ่มอีก 3.75 กิกะวัตต์) ดำเนินการโดย SB Energy ภายใต้สัญญาเช่า 20 ปีกับ OpenAI คาดเริ่มเดินเครื่องปี 2571 สนับสนุนงานก่อสร้างราว 35,000 ตำแหน่งถึงปี 2575 และตำแหน่งงานระยะยาว 2,500 ตำแหน่ง</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://nvidianews.nvidia.com/news/nvidia-guarantees-sb-energy-s-ports-pike-technology-campus-in-ohio-to-exclusively-host-nvidia-ai-compute" target="_blank" rel="noopener">NVIDIA Newsroom (Official)</a>, 📰 <a href="https://www.axios.com/2026/08/17/openai-nvidia-ohio-data-center-sb-energy" target="_blank" rel="noopener">Axios</a>, <a href="https://www.cnbc.com/2026/08/17/nvidia-financing-open-ai-data-center-ohio.html" target="_blank" rel="noopener">CNBC</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-17/nvidia-to-invest-up-to-105-billion-for-openai-data-center-in-ohio" target="_blank" rel="noopener">Bloomberg</a></p>
+
+    <h3>Anthropic</h3>
+    <p>✅ เกิดเหตุขัดข้องด้านการยืนยันตัวตนนาน 36 นาที (21:58–22:34 UTC คืนวันที่ 16 ส.ค.) กระทบ Claude.ai, Claude API, Claude Code, Claude Cowork และ platform.claude.com ก่อนประกาศแก้ไขสำเร็จ 📰 เจรจาขั้นสูงเพื่อซื้อกิจการ Decart สตาร์ทอัพ world model สัญชาติอิสราเอล ราคาดีลขยับขึ้นเป็นราว 7 พันล้านดอลลาร์ (จากรายงานก่อนหน้าที่ 6 พันล้าน) โดยเอาชนะ NVIDIA ที่เคยเสนอราคาสูงกว่าในฐานะนักลงทุนเดิม ยังไม่มีการเซ็นสัญญา คาดอาจปิดดีลได้เร็วสุดเดือนหน้าก่อนแผน IPO</p>
+    <p class="note">⚠️ ตัวเลขมูลค่า IPO ของ Anthropic ที่ปรากฏในบางสื่อ (สูงกว่า 2 ล้านล้านดอลลาร์) ยังเป็นการคาดการณ์ของนักลงทุน ไม่ใช่ตัวเลขที่บริษัทยืนยัน แหล่งอ้างอิง: ✅ <a href="https://status.claude.com/" target="_blank" rel="noopener">Claude Status (Official)</a>, 📰 <a href="https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-confirms-claude-is-down-in-major-outage-affecting-multiple-services/" target="_blank" rel="noopener">BleepingComputer</a>, <a href="https://www.calcalistech.com/ctechnews/article/b1evv3aufg" target="_blank" rel="noopener">Calcalist</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-13/anthropic-said-in-talks-to-buy-ai-startup-decart-for-6-billion" target="_blank" rel="noopener">Bloomberg</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>✅ ปลดระวาง API endpoint ของ Imagen 4 ทั้งสามรุ่น (imagen-4.0-generate-001, imagen-4.0-ultra-generate-001, imagen-4.0-fast-generate-001) อย่างเป็นทางการวันนี้ (17 ส.ค.) แอปที่ยังเรียก generate_images() ของรุ่นเดิมจะพบ hard error ทันที ไม่มีคำเตือนล่วงหน้า ต้องย้ายไปใช้ Gemini 3.1 Flash Image แทน 📰 ต่อเนื่อง: แอป Gemini ทะลุ 1 พันล้านผู้ใช้ต่อเดือน กลายเป็นผลิตภัณฑ์ของ Google ที่เติบโตเร็วที่สุดในประวัติศาสตร์บริษัท (ประกาศเมื่อ 11 ส.ค.)</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://ai.google.dev/gemini-api/docs/models/imagen" target="_blank" rel="noopener">Google AI for Developers (Official)</a>, <a href="https://firebase.google.com/docs/ai-logic/imagen-models-migration" target="_blank" rel="noopener">Firebase (Official)</a>, ✅ <a href="https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users/" target="_blank" rel="noopener">Google Blog (Official)</a>, 📰 <a href="https://kingy.ai/ai-launch-tracker/google-will-shut-down-three-imagen-4-api-models-august-17/" target="_blank" rel="noopener">Kingy AI</a></p>
+
+    <h3>Meta</h3>
+    <p>📰 ต่อเนื่อง: Muse Glimmer 30B โมเดล agent แบบโอเพนซอร์สจาก Meta Superintelligence Labs (นำโดย Alexandr Wang) ยังเป็นประเด็นที่ถูกพูดถึงต่อเนื่องในสัปดาห์นี้ เนื่องจากรันบน GPU เครื่องเดียวได้และให้คะแนน benchmark ระดับแข่งขันกับโมเดลขนาดใหญ่กว่า</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" target="_blank" rel="noopener">Hugging Face — meta-models (Official)</a>, 📰 <a href="https://venturebeat.com/technology/meta-returns-to-open-source-with-muse-glimmer-an-apache-2-0-licensed-30b-parameter-ai-model-optimized-for-agents-available-now" target="_blank" rel="noopener">VentureBeat</a></p>
+
+    <h3>Microsoft</h3>
+    <p>📰 เตรียมอัปเดต Copilot บนเว็บ เดสก์ท็อป และมือถือ เริ่ม 18 ส.ค. เพื่อช่วยให้ผู้ใช้แยกแยะระหว่างบัญชีงานกับบัญชีส่วนตัวได้ง่ายขึ้น</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-august" target="_blank" rel="noopener">Microsoft Learn</a></p>
+
+    <h3>NVIDIA</h3>
+    <p>✅ ประกาศรับประกันเงินทุนสูงสุด 1.05 แสนล้านดอลลาร์สำหรับศูนย์ข้อมูล OpenAI ในโอไฮโอ พร้อมลงทุนตรง 1.5 พันล้านดอลลาร์ใน SB Energy ร่วมกับนักลงทุนเดิมคือ SoftBank Group และ OpenAI 📰 ต่อเนื่อง: เมื่อ 10 ส.ค. เพิ่งลงนามบันทึกความเข้าใจ (MOU) กับ Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs และ KKR เพื่อจัดตั้งแพลตฟอร์มการเงินระดมทุนบุคคลที่สามกว่า 5 แสนล้านดอลลาร์สำหรับโครงสร้างพื้นฐาน AI (ยังไม่มีการเปิดเผยมูลค่าโครงการแรกหรือจำนวนเงินที่แน่ชัด) กำหนดแถลงผลประกอบการไตรมาส 2 ปีงบประมาณ 2570 วันที่ 26 ส.ค.</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://nvidianews.nvidia.com/news/nvidia-guarantees-sb-energy-s-ports-pike-technology-campus-in-ohio-to-exclusively-host-nvidia-ai-compute" target="_blank" rel="noopener">NVIDIA Newsroom (Official)</a>, <a href="https://nvidianews.nvidia.com/news/nvidia-partners-with-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr-to-establish-ai-compute-infrastructure-financing-platforms-to-mobilize-over-500-billion-of-third-party-capital" target="_blank" rel="noopener">NVIDIA Newsroom — Financing Platform (Official)</a>, 📰 <a href="https://www.upi.com/Top_News/US/2026/08/17/nvidia-openai-sb-energy-ports-pike-data-center-ohio/4201786985547/" target="_blank" rel="noopener">UPI</a></p>
+
+    <h3>Amazon</h3>
+    <p class="note">⚠️ ไม่พบข่าว Amazon/AWS ที่เจาะจงในช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ยืนยันของรอบนี้</p>
+
+    <h3>Startup</h3>
+    <p>📰 Stripe ปิดดีลซื้อกิจการ OpenRouter สตาร์ทอัพ AI gateway ที่ให้เข้าถึงโมเดล AI กว่า 400 รายการผ่าน API เดียว (ผู้ใช้ 8 ล้านคนทั่วโลก) มูลค่ากว่า 7 พันล้านดอลลาร์ — สูงกว่ามูลค่า 1.3 พันล้านดอลลาร์เมื่อ 3 เดือนก่อนกว่า 5 เท่า อย่างไรก็ตาม Stripe ปฏิเสธที่จะยืนยันหรือแสดงความเห็นต่อ TechCrunch เกี่ยวกับดีลนี้</p>
+    <p class="note">⚠️ ไม่พบแถลงการณ์อย่างเป็นทางการจาก Stripe หรือ OpenRouter โดยตรงในรอบนี้ ข้อมูลมาจากรายงานสื่อหลายสำนักที่ตรงกัน แหล่งอ้างอิง: 📰 <a href="https://www.bloomberg.com/news/articles/2026-08-16/stripe-nears-deal-to-buy-ai-firm-openrouter-for-over-7-billion" target="_blank" rel="noopener">Bloomberg</a>, <a href="https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://fortune.com/2026/08/16/stripe-7-billion-deal-ai-firm-openrouter-acquisition/" target="_blank" rel="noopener">Fortune</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>Imagen 4 API retirement:</b> Google ปลดระวาง endpoint imagen-4.0-generate-001, imagen-4.0-ultra-generate-001 และ imagen-4.0-fast-generate-001 วันนี้ (17 ส.ค.) แบบ hard cutoff ไม่มีช่วงเตือนล่วงหน้า ต้องย้ายไปสร้าง GenerativeModel instance สำหรับ gemini-3.1-flash-image แทน ImagenModel เดิม (✅ <a href="https://ai.google.dev/gemini-api/docs/models/imagen" target="_blank" rel="noopener">Google AI for Developers (Official)</a>, <a href="https://firebase.google.com/docs/ai-logic/imagen-models-migration" target="_blank" rel="noopener">Firebase Migration Guide (Official)</a>)</li>
+      <li><b>Agentic Transaction framework <span class="badge">ต่อเนื่อง</span>:</b> ทีม Tsinghua University เสนอกรอบแนวคิด ACID-compliant agent system ตีความ Atomicity, Consistency, Isolation, Durability ใหม่ในบริบทของ agent ที่ทำงานกับ environment ที่คงอยู่ถาวรและ workflow หลายขั้นตอน (📰 <a href="https://arxiv.org/abs/2608.13900" target="_blank" rel="noopener">arXiv:2608.13900</a>)</li>
+      <li><b>Microsoft Copilot account separation:</b> อัปเดต UI เริ่ม 18 ส.ค. แยกบัญชีงานกับบัญชีส่วนตัวให้ชัดเจนขึ้นบน web/desktop/mobile (📰 <a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-august" target="_blank" rel="noopener">Microsoft Learn</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p>✅📰 NVIDIA รับประกันเงินทุนสูงสุด 1.05 แสนล้านดอลลาร์สำหรับเฟสแรกของศูนย์ข้อมูล OpenAI ในโอไฮโอ พร้อมลงทุนตรง 1.5 พันล้านดอลลาร์ใน SB Energy ต่อเนื่องจากการลงนาม MOU กับ 6 สถาบันการเงินยักษ์ใหญ่ (Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, KKR) เมื่อ 10 ส.ค. เพื่อระดมทุนบุคคลที่สามกว่า 5 แสนล้านดอลลาร์สำหรับโครงสร้างพื้นฐาน AI ทั่วทั้งระบบนิเวศ</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://nvidianews.nvidia.com/news/nvidia-guarantees-sb-energy-s-ports-pike-technology-campus-in-ohio-to-exclusively-host-nvidia-ai-compute" target="_blank" rel="noopener">NVIDIA Newsroom (Official)</a>, 📰 <a href="https://www.cnbc.com/2026/08/17/nvidia-financing-open-ai-data-center-ohio.html" target="_blank" rel="noopener">CNBC</a></p>
+
+    <h3>Acquisition</h3>
+    <p>📰 Stripe ปิดดีลซื้อ OpenRouter มูลค่ากว่า 7 พันล้านดอลลาร์ตามรายงานสื่อ (Stripe ยังไม่ยืนยันอย่างเป็นทางการ) 📰 Anthropic เจรจาขั้นสูงเพื่อซื้อ Decart ราคาขยับขึ้นเป็นราว 7 พันล้านดอลลาร์ (จาก 6 พันล้านที่รายงานเมื่อ 13 ส.ค.) ยังไม่มีการเซ็นสัญญา คาดปิดดีลได้เร็วสุดเดือนหน้า</p>
+    <p class="note">⚠️ ทั้งสองดีลยังไม่มีการยืนยันอย่างเป็นทางการจากบริษัทคู่กรณีโดยตรง แหล่งอ้างอิง: 📰 <a href="https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/" target="_blank" rel="noopener">TechCrunch (Stripe)</a>, <a href="https://www.calcalistech.com/ctechnews/article/b1evv3aufg" target="_blank" rel="noopener">Calcalist (Anthropic–Decart)</a></p>
+
+    <h3>Ethics</h3>
+    <p>📰 มีรายงานว่าหญิงรายหนึ่งฟ้อง xAI เมื่อ 16 ส.ค. หลังพบว่าภาพจากวัยเด็กของเธอถูกนำไปใช้สร้างภาพล่วงละเมิดหลายพันภาพผ่าน Grok และถูกเผยแพร่ต่อสาธารณะ</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://americanbazaaronline.com/2026/08/16/woman-sues-xai-over-grok-generated-abuse-images/" target="_blank" rel="noopener">American Bazaar</a></p>
+
+    <h3>Regulation</h3>
+    <p class="note">⚠️ ไม่พบข่าวกฎระเบียบใหม่ที่เจาะจงในช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ยืนยันของรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+      <tr><td>SWE-Bench Verified</td><td>Muse Glimmer 30B</td><td>76.0</td><td>✅📰 <a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" target="_blank" rel="noopener">Hugging Face (Official)</a>, <a href="https://www.marktechpost.com/2026/08/10/meta-ai-releases-muse-glimmer/" target="_blank" rel="noopener">MarkTechPost</a></td></tr>
+      <tr><td>SWE-Bench Pro</td><td>Muse Glimmer 30B</td><td>51.2%</td><td>✅📰 <a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" target="_blank" rel="noopener">Hugging Face (Official)</a>, <a href="https://venturebeat.com/technology/meta-returns-to-open-source-with-muse-glimmer-an-apache-2-0-licensed-30b-parameter-ai-model-optimized-for-agents-available-now" target="_blank" rel="noopener">VentureBeat</a></td></tr>
+      <tr><td>AIME 2026</td><td>Muse Glimmer 30B</td><td>94.7%</td><td>✅📰 <a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" target="_blank" rel="noopener">Hugging Face (Official)</a>, <a href="https://www.infoq.com/news/2026/08/meta-muse-glimmer/" target="_blank" rel="noopener">InfoQ</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ตัวเลขข้างต้นยืนยันผ่านหน้า Hugging Face ขององค์กร meta-models และสื่อเทคโนโลยีหลายสำนักที่รายงานตรงกัน แต่ไม่สามารถเปิดหน้า huggingface.co โดยตรงเพื่อดู model card ฉบับเต็มในรอบนี้ (network egress)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <ul>
+      <li>🔥 GitHub Trending วันนี้ (จาก github.com/trending โดยตรง): <b>harry0703/MoneyPrinterTurbo</b> (+1,275), <b>usestrix/strix</b> (+656, เครื่องมือ AI pentest), <b>immich-app/immich</b> (TypeScript, 111,044★, +140), <b>AlexsJones/llmfit</b> (+239), <b>nautechsystems/nautilus_trader</b> (Rust, 25,819★, +115), <b>OMLX</b> (Python, LLM inference server สำหรับ Apple Silicon, +96)</li>
+    </ul>
+    <h3>Tutorials</h3>
+    <p class="note">⚠️ ไม่พบ tutorial ใหม่ที่ยืนยันแหล่งอ้างอิงได้เฉพาะช่วง 24 ชม. ล่าสุดในรอบนี้</p>
+    <h3>Events</h3>
+    <p class="note">⚠️ ไม่พบกิจกรรม/งานประชุมใหม่ที่เจาะจงในช่วง 24 ชม. ล่าสุดในรอบนี้ (งานประชุมผลประกอบการ NVIDIA กำหนด 26 ส.ค. ดูหมวด Company News — NVIDIA)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. นักพัฒนา on-device / IoT ใช้ Muse Glimmer 30B รัน agent บน GPU เครื่องเดียวโดยไม่พึ่ง cloud</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งาน agent ที่ต้องการความเป็นส่วนตัวหรือทำงานแบบออฟไลน์ ต้องพึ่งพา API บนคลาวด์ที่มีค่าใช้จ่ายต่อเนื่องและ latency สูง</dd>
+        <dt>วิธีใช้</dt><dd>ดาวน์โหลดโมเดล Muse Glimmer 30B แบบ quantized 4-bit (ต่ำกว่า 20GB) มารันบน GPU consumer เครื่องเดียว</dd>
+        <dt>ประโยชน์</dt><dd>ได้คะแนน SWE-Bench Verified 76.0 และ AIME 2026 94.7% ระดับใกล้เคียงโมเดลขนาดใหญ่กว่า โดยไม่ต้องส่งข้อมูลออกนอกเครื่อง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. ทีม AppSec ใช้ Strix ทำ automated penetration testing ก่อนขึ้น production</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การทดสอบเจาะระบบด้วยมือใช้เวลานานและต้องพึ่งผู้เชี่ยวชาญด้านความปลอดภัยที่มีจำกัด</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้ง usestrix/strix ให้ agent สแกนหาช่องโหว่ของแอปพลิเคชันแบบอัตโนมัติและเสนอแนวทางแก้ไข</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาค้นหาช่องโหว่ก่อนปล่อยจริง เป็นเครื่องมือโอเพนซอร์สฟรีที่กำลังได้รับความนิยมสูงบน GitHub Trending</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. ผู้ให้บริการ LLM API ใช้งานวิจัย "Stealing Reasoning Traces" เพื่อตรวจสอบและปิดช่องโหว่ encrypted chain-of-thought</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ผู้ให้บริการโมเดลปิดบัง reasoning trace เพื่อป้องกันทรัพย์สินทางปัญญา แต่บล็อกที่เข้ารหัสสามารถใช้ข้ามเซสชัน/โมเดลได้ ทำให้ถูกขโมยออกมาเป็น plaintext ได้</dd>
+        <dt>วิธีใช้</dt><dd>ทีมความปลอดภัยศึกษาช่องโหว่จากงานวิจัยและ demo repo เพื่อออกแบบระบบเข้ารหัสที่ผูกกับ session/model โดยเฉพาะ ป้องกันการ decrypt ข้ามบริบท</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงการรั่วไหลของทรัพย์สินทางปัญญาด้าน reasoning และป้องกัน jailbreak ที่อาศัยช่องโหว่นี้</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. นักพัฒนาเลือกฮาร์ดแวร์รัน LLM local ด้วย llmfit ก่อนดาวน์โหลดโมเดลผิดขนาด</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การเลือกโมเดล LLM ให้เข้ากับ RAM/GPU ของเครื่องตัวเองทำได้ยาก มักดาวน์โหลดโมเดลที่ใหญ่เกินไปจนรันไม่ได้</dd>
+        <dt>วิธีใช้</dt><dd>รัน llmfit เพื่อตรวจสอบสเปกเครื่อง (NVIDIA/AMD/Intel Arc) แล้วจับคู่กับโมเดลที่รองรับกว่า 497 รายการจาก 133 ผู้ให้บริการ</dd>
+        <dt>ประโยชน์</dt><dd>ประหยัดเวลาลองผิดลองถูก เลือกโมเดลที่เหมาะกับฮาร์ดแวร์ได้ตั้งแต่ครั้งแรก</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>5. ทีมวิศวกรรมองค์กรใช้กรอบแนวคิด Agentic Transaction ออกแบบ agent ให้ทำงานกับระบบสำคัญได้อย่างน่าเชื่อถือ</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>agent ที่ทำงานหลายขั้นตอนกับ environment ที่คงอยู่ถาวร (เช่น ฐานข้อมูล, ไฟล์ระบบ) เสี่ยงต่อผลลัพธ์ไม่สมบูรณ์เมื่อขั้นตอนกลางทางล้มเหลว</dd>
+        <dt>วิธีใช้</dt><dd>นำ 4 semantic guarantee (Atomicity, Consistency, Isolation, Durability) จากงานวิจัยมาออกแบบ transaction layer ให้ agent</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงจากการทำงานค้างครึ่งทาง เพิ่มความน่าเชื่อถือของ agent ในงานที่กระทบระบบจริง</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">2</div><div class="lbl">AI Models เด่น</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Research Papers ยืนยันได้</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">GitHub Projects เด่น</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ดีล Anthropic ซื้อ Decart จะปิดที่ราคาเท่าใด และจะเซ็นสัญญาก่อน IPO ของ Anthropic ตามที่คาดหรือไม่</dd>
+        <dt>เหตุผล</dt><dd>ราคาดีลขยับจาก 6 เป็น 7 พันล้านดอลลาร์ในเวลาไม่ถึงสัปดาห์ สะท้อนการแข่งขันแย่งซื้อกับ NVIDIA และจะเป็นการซื้อกิจการครั้งใหญ่ที่สุดของ Anthropic</dd>
+        <dt>Source</dt><dd><a href="https://www.calcalistech.com/ctechnews/article/b1evv3aufg" target="_blank" rel="noopener">Calcalist</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>Stripe จะออกแถลงการณ์ยืนยันดีลซื้อ OpenRouter อย่างเป็นทางการเมื่อใด และจะเปิดเผยรายละเอียดการผนวกรวมอย่างไร</dd>
+        <dt>เหตุผล</dt><dd>ปัจจุบันข้อมูลทั้งหมดมาจากแหล่งข่าวไม่เปิดเผยตัวตนผ่านสื่อเท่านั้น Stripe ยังปฏิเสธที่จะยืนยัน</dd>
+        <dt>Source</dt><dd><a href="https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/" target="_blank" rel="noopener">TechCrunch</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ผู้ให้บริการ LLM รายใหญ่จะออกแพตช์ปิดช่องโหว่ encrypted reasoning trace ที่ถูกเปิดเผยในงานวิจัยหรือไม่ และเร็วเพียงใด</dd>
+        <dt>เหตุผล</dt><dd>ช่องโหว่นี้กระทบความเป็นส่วนตัวของ IP ด้าน reasoning และอาจถูกใช้เป็นช่องทาง jailbreak ข้ามโมเดลในผู้ให้บริการเดียวกัน</dd>
+        <dt>Source</dt><dd><a href="https://arxiv.org/abs/2608.09867" target="_blank" rel="noopener">arXiv:2608.09867</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ผลกระทบต่อนักพัฒนาที่ยังไม่ย้ายจาก Imagen 4 API ไปยัง Gemini 3.1 Flash Image ทันเวลา</dd>
+        <dt>เหตุผล</dt><dd>เป็นการ cutoff แบบ hard error ทันทีไม่มีช่วงเตือนล่วงหน้า อาจกระทบแอปพลิเคชัน production ที่ยังไม่อัปเดต</dd>
+        <dt>Source</dt><dd><a href="https://ai.google.dev/gemini-api/docs/models/imagen" target="_blank" rel="noopener">Google AI for Developers (Official)</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://nvidianews.nvidia.com/news/nvidia-guarantees-sb-energy-s-ports-pike-technology-campus-in-ohio-to-exclusively-host-nvidia-ai-compute" target="_blank" rel="noopener">NVIDIA Newsroom — Ohio Data Center</a></li>
+          <li><a href="https://nvidianews.nvidia.com/news/nvidia-partners-with-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr-to-establish-ai-compute-infrastructure-financing-platforms-to-mobilize-over-500-billion-of-third-party-capital" target="_blank" rel="noopener">NVIDIA Newsroom — Financing Platform</a></li>
+          <li><a href="https://status.claude.com/" target="_blank" rel="noopener">Claude Status (Anthropic)</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/docs/models/imagen" target="_blank" rel="noopener">Google AI for Developers — Imagen 4</a></li>
+          <li><a href="https://firebase.google.com/docs/ai-logic/imagen-models-migration" target="_blank" rel="noopener">Firebase — Imagen Migration Guide</a></li>
+          <li><a href="https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users/" target="_blank" rel="noopener">Google Blog — Gemini 1B Users</a></li>
+          <li><a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" target="_blank" rel="noopener">Hugging Face — Muse Glimmer 30B (Meta)</a></li>
+          <li><a href="https://x.ai/news/grok-4-6" target="_blank" rel="noopener">xAI — Grok 4.6</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2608.09867" target="_blank" rel="noopener">arXiv:2608.09867 — Stealing Reasoning Traces</a></li>
+          <li><a href="https://arxiv.org/abs/2608.13900" target="_blank" rel="noopener">arXiv:2608.13900 — Agentic Transaction</a></li>
+          <li><a href="https://arxiv.org/abs/2608.12921" target="_blank" rel="noopener">arXiv:2608.12921 — Communication Topologies</a></li>
+          <li><a href="https://huggingface.co/papers/2608.09867" target="_blank" rel="noopener">Hugging Face Papers — 2608.09867</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.axios.com/2026/08/17/openai-nvidia-ohio-data-center-sb-energy" target="_blank" rel="noopener">Axios (NVIDIA–OpenAI Ohio)</a></li>
+          <li><a href="https://www.cnbc.com/2026/08/17/nvidia-financing-open-ai-data-center-ohio.html" target="_blank" rel="noopener">CNBC (NVIDIA financing)</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-17/nvidia-to-invest-up-to-105-billion-for-openai-data-center-in-ohio" target="_blank" rel="noopener">Bloomberg (NVIDIA–OpenAI)</a></li>
+          <li><a href="https://www.upi.com/Top_News/US/2026/08/17/nvidia-openai-sb-energy-ports-pike-data-center-ohio/4201786985547/" target="_blank" rel="noopener">UPI</a></li>
+          <li><a href="https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-confirms-claude-is-down-in-major-outage-affecting-multiple-services/" target="_blank" rel="noopener">BleepingComputer (Claude outage)</a></li>
+          <li><a href="https://www.calcalistech.com/ctechnews/article/b1evv3aufg" target="_blank" rel="noopener">Calcalist (Anthropic–Decart)</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-13/anthropic-said-in-talks-to-buy-ai-startup-decart-for-6-billion" target="_blank" rel="noopener">Bloomberg (Anthropic–Decart, 13 ส.ค.)</a></li>
+          <li><a href="https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/" target="_blank" rel="noopener">TechCrunch (Stripe–OpenRouter)</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-16/stripe-nears-deal-to-buy-ai-firm-openrouter-for-over-7-billion" target="_blank" rel="noopener">Bloomberg (Stripe–OpenRouter)</a></li>
+          <li><a href="https://fortune.com/2026/08/16/stripe-7-billion-deal-ai-firm-openrouter-acquisition/" target="_blank" rel="noopener">Fortune (Stripe–OpenRouter)</a></li>
+          <li><a href="https://kingy.ai/ai-launch-tracker/google-will-shut-down-three-imagen-4-api-models-august-17/" target="_blank" rel="noopener">Kingy AI (Imagen 4 shutdown)</a></li>
+          <li><a href="https://venturebeat.com/technology/meta-returns-to-open-source-with-muse-glimmer-an-apache-2-0-licensed-30b-parameter-ai-model-optimized-for-agents-available-now" target="_blank" rel="noopener">VentureBeat (Muse Glimmer)</a></li>
+          <li><a href="https://www.marktechpost.com/2026/08/10/meta-ai-releases-muse-glimmer/" target="_blank" rel="noopener">MarkTechPost (Muse Glimmer)</a></li>
+          <li><a href="https://www.infoq.com/news/2026/08/meta-muse-glimmer/" target="_blank" rel="noopener">InfoQ (Muse Glimmer)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-august" target="_blank" rel="noopener">Microsoft Learn (Copilot accounts)</a></li>
+          <li><a href="https://americanbazaaronline.com/2026/08/16/woman-sues-xai-over-grok-generated-abuse-images/" target="_blank" rel="noopener">American Bazaar (xAI lawsuit)</a></li>
+          <li><a href="https://releasebot.io/updates/xai" target="_blank" rel="noopener">Releasebot (Grok 4.6 / GitHub Copilot)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · จัดทำโดยกระบวนการอัตโนมัติจากการสืบค้นเว็บสาธารณะ ณ วันที่ 17 ส.ค. 2569 (ICT) · โปรดตรวจสอบแหล่งอ้างอิงต้นทางก่อนนำไปอ้างอิงต่อ</p>
+  </footer>
+</div>
+</body>
+</html>
