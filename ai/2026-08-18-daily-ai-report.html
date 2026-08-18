@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-18</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 18 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-18</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 18 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> session การสืบค้นในรอบนี้ไม่สามารถเข้าถึงโดเมน arxiv.org, huggingface.co, status.claude.com และ claude.com โดยตรงผ่าน WebFetch ได้แม้ลอง retry แล้ว (network egress proxy) จึงใช้ WebSearch พร้อม site: query เพื่อยืนยันข้อมูลจากผลการค้นหาแทน ส่วน github.com/trending เปิดอ่านได้โดยตรงตามปกติ ไม่พบข่าวเปิดตัวโมเดล AI ใหม่เฉพาะช่วง 24 ชม. ล่าสุดที่ผ่านเกณฑ์ยืนยันของรอบนี้ จึงงดแสดงตาราง AI Models หมวด Benchmark งดแสดงเนื่องจากตัวเลขที่พบมาจาก leaderboard aggregator เท่านั้น ไม่มีแหล่งทางการยืนยันคะแนนตรงกับวันที่รายงาน หมวด Google DeepMind, Meta (ผลิตภัณฑ์), Microsoft, Amazon และ NVIDIA ไม่พบข่าวใหม่เฉพาะช่วง 24 ชม. ที่ผ่านเกณฑ์ จึงงดแสดงเนื้อหาในหมวดนั้น
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>✅ Anthropic ยืนยันเหตุขัดข้องรอบใหม่ตั้งแต่ 16:20 UTC วันนี้ กระทบโมเดล Claude หลายรุ่น (Mythos 5, Fable 5, Opus 5, Sonnet 5, Haiku 4.5) โดยเฉพาะ Claude Code มีรายงานผู้ใช้กว่า 4,000 รายบน Downdetector และยังไม่มีกำหนดแก้ไข เกิดขึ้นเพียง 2 วันหลังเหตุขัดข้องล็อกอินเมื่อ 16 ส.ค. ✅ OpenAI เปิดตัว ChatGPT for Teens ทั่วโลกสำหรับผู้ใช้อายุ 13-17 ปี เริ่มวันนี้ พร้อมมาตรการความปลอดภัยเฉพาะกลุ่มและระบบควบคุมของผู้ปกครอง 📰 Anthropic เตรียมขยายวงเงินสินเชื่อก่อน IPO ให้เกิน 1 หมื่นล้านดอลลาร์ ขณะรายได้ต่อปีแตะ 6.5 หมื่นล้านดอลลาร์เมื่อสิ้นเดือนกรกฎาคม และประกาศ Claude Cowork เปิดให้ใช้งานบนมือถือครบทุกแผนชำระเงินแล้ว 📰 Etched สตาร์ทอัพชิป AI inference ระดมทุนเพิ่ม 700 ล้านดอลลาร์นำโดย Jane Street มูลค่าพุ่งเป็น 2.1 หมื่นล้านดอลลาร์ภายในเวลาไม่ถึงเดือน ขณะ Pony.ai ประกาศไปป์ไลน์ robotaxi ต่างประเทศเกิน 4,000 คัน รวมดีลกับ Uber ในยุโรปกว่า 2,000 คัน 📰 Meta เริ่มขึ้นศาลคดี 29 รัฐฟ้องร้องกรณีออกแบบ Facebook/Instagram ให้เสพติดในกลุ่มเยาวชน ขณะ Reddit เริ่มทดสอบแปลงโพสต์ข้อความเป็นวิดีโอ/เสียงพากย์ด้วย AI ในบางชุมชน</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">⚠️ ไม่พบการเปิดตัวโมเดล AI ใหม่เฉพาะช่วง 24 ชม. ล่าสุดที่ผ่านเกณฑ์ยืนยันของรอบนี้ (โมเดลล่าสุดที่พบจาก tracker คือ Gemini 3.7 Flash และ Qwen3.8-27B ซึ่งเปิดตัวเมื่อ 13-14 ส.ค. เกินช่วงเวลาที่กำหนด)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+      <tr><td>Batch-wise Adaptive Pruning: Periodic Neuron Activation-Aware Weight Pruning for Language Reasoning Model</td><td>Yongmin Kim, Shota Takashiro, Yusuke Iwasawa, Takeshi Kojima, Yutaka Matsuo (The University of Tokyo)</td><td>เสนอวิธี pruning น้ำหนักโมเดลแบบไม่ต้อง fine-tune โดยอิงรูปแบบการทำงานของนิวรอนที่เกิดขึ้นเป็นช่วง (periodic activation) เพื่อลดต้นทุนการอนุมานของโมเดล reasoning แบบ batch</td><td>📰 <a href="https://arxiv.org/abs/2608.14003" target="_blank" rel="noopener">arXiv:2608.14003</a></td></tr>
+      <tr><td>BiasTrace: Linking Reasoning Behaviours to Biased Outputs in LLMs</td><td>Varsha Ramineni, Hossein A. Rahmani, Jerome Ramos, Karin Sevegnani, Emine Yilmaz</td><td>วิเคราะห์ความเชื่อมโยงระหว่างพฤติกรรมของ chain-of-thought reasoning กับผลลัพธ์ที่มีอคติ (bias) ใน LLM เพื่อหาจุดที่อคติแทรกเข้าไปในกระบวนการให้เหตุผล</td><td>📰 <a href="https://arxiv.org/abs/2608.14161" target="_blank" rel="noopener">arXiv:2608.14161</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ไม่สามารถเปิดหน้า arxiv.org โดยตรงเพื่ออ่านบทคัดย่อฉบับเต็มในรอบนี้ (network egress) รายชื่อผู้เขียนยืนยันผ่านผลการค้นเว็บที่อ้างอิงหน้า arXiv เดียวกัน ยังไม่พบผู้เขียนหลักที่ระบุจากหลายแหล่งอิสระซ้ำกัน จึงยืนยันได้เพียงระดับเดียว</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+      <tr><td>harry0703/MoneyPrinterTurbo <span class="badge">ต่อเนื่อง</span></td><td>108,351 (+2,306 วันนี้)</td><td>Python</td><td>ใช้โมเดล AI ขนาดใหญ่และเวิร์กโฟลว์อัตโนมัติสร้างวิดีโอสั้นจากหัวข้อหรือคำค้น ยังคงเป็นอันดับ 1 บน GitHub Trending ต่อเนื่อง</td><td>✅ <a href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>akitaonrails/ai-memory</td><td>2,637 (+730 วันนี้)</td><td>Rust</td><td>โซลูชันหน่วยความจำ (memory) สำหรับเครื่องมือ AI coding agent พร้อมความสามารถส่งต่อบริบทข้าม vendor</td><td>✅ <a href="https://github.com/akitaonrails/ai-memory" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>volcengine/OpenViking</td><td>29,262 (+298 วันนี้)</td><td>Python</td><td>ฐานข้อมูลบริบทที่พัฒนาตัวเองได้ (self-evolving) รวม agent memory, knowledge RAG และ skills ไว้ในระบบเดียว</td><td>✅ <a href="https://github.com/volcengine/OpenViking" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>mukul975/Anthropic-Cybersecurity-Skills</td><td>29,055 (+726 วันนี้)</td><td>Python</td><td>ชุดทักษะความปลอดภัยไซเบอร์ 817 รายการ จัดโครงสร้างตาม framework ด้านความปลอดภัยหลัก</td><td>✅ <a href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>jundot/omlx</td><td>19,336 (+366 วันนี้)</td><td>Python</td><td>เซิร์ฟเวอร์ inference สำหรับ LLM รองรับ continuous batching ออกแบบมาสำหรับ Apple Silicon</td><td>✅ <a href="https://github.com/jundot/omlx" target="_blank" rel="noopener">GitHub</a></td></tr>
+    </table>
+    </div>
+    <p class="note">ที่มาอันดับ Trending: อ่านจากหน้า <a href="https://github.com/trending" target="_blank" rel="noopener">github.com/trending</a> โดยตรง ณ เวลาที่จัดทำรายงาน</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Description</th><th>Pricing</th><th>Source</th></tr>
+      <tr><td>ChatGPT for Teens</td><td>ประสบการณ์ ChatGPT เฉพาะสำหรับผู้ใช้อายุ 13-17 ปี มีข้อจำกัดเนื้อหาที่เข้มงวดกว่า (บทสนทนาเชิงเพศ/โรแมนติก ความรุนแรงกราฟิก การทำร้ายตัวเอง) เครื่องมือช่วยเรียนรู้ (Study Mode) และระบบควบคุมของผู้ปกครอง เปิดให้ใช้งานทั่วโลกเริ่ม 18 ส.ค. สำหรับบัญชีที่ระบบประเมินว่าอายุต่ำกว่า 18 หรือระบุอายุ 13-17</td><td>ฟรีและแผนชำระเงินส่วนบุคคลเดิมของ ChatGPT</td><td>✅ <a href="https://openai.com/index/chatgpt-for-teens/" target="_blank" rel="noopener">OpenAI (Official)</a>, <a href="https://help.openai.com/en/articles/20001421-chatgpt-for-teens" target="_blank" rel="noopener">OpenAI Help Center (Official)</a></td></tr>
+    </table>
+    </div>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+      <tr><td>Claude Cowork</td><td>เปิดให้ใช้งานบนมือถือและเว็บครบทุกแผนชำระเงินแล้ว (Pro, Max 5x, Max 20x, Team) จากเดิมที่เริ่มทดสอบเฉพาะแผน Max ตั้งแต่ ก.ค.</td><td>📰 <a href="https://9to5mac.com/2026/08/18/anthropic-says-claude-cowork-is-now-available-on-mobile-for-all-paid-plans/" target="_blank" rel="noopener">9to5Mac</a></td></tr>
+      <tr><td>Reddit</td><td>เริ่มทดสอบแปลงโพสต์ข้อความและคอมเมนต์เด่นเป็นวิดีโอ/เสียงพากย์ AI แบบ multi-voice text-to-speech พร้อม subtitle ในบางชุมชน เริ่มบนเว็บ 17 ส.ค. และแอป iOS/Android 18 ส.ค. เพื่อทดสอบว่าผู้ใช้ชอบรูปแบบนี้หรือไม่</td><td>📰 <a href="https://www.engadget.com/2238585/reddit-is-experimenting-with-video-and-audio-versions-of-posts/" target="_blank" rel="noopener">Engadget</a>, <a href="https://dataconomy.com/2026/08/18/reddit-tests-ai-voiced-videos-based-on-user-posts/" target="_blank" rel="noopener">Dataconomy</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>✅ เปิดตัว ChatGPT for Teens ทั่วโลกสำหรับผู้ใช้อายุ 13-17 ปี เริ่มวันนี้ พร้อม onboarding เฉพาะกลุ่ม เครื่องมือการเรียนรู้ และการป้องกันเนื้อหาที่ละเอียดอ่อนตามช่วงวัย ระบบจะจัดผู้ใช้เข้ากลุ่มนี้อัตโนมัติหากประเมินว่าอายุต่ำกว่า 18 หรือผู้ใช้ระบุอายุ 13-17 เอง</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://openai.com/index/chatgpt-for-teens/" target="_blank" rel="noopener">OpenAI (Official)</a>, <a href="https://help.openai.com/en/articles/20001421-chatgpt-for-teens" target="_blank" rel="noopener">OpenAI Help Center (Official)</a></p>
+
+    <h3>Anthropic</h3>
+    <p>✅ ยืนยันเหตุขัดข้อง (elevated errors) ตั้งแต่ 16:20 UTC วันนี้ กระทบโมเดล Claude Mythos 5, Fable 5, Opus 5, Sonnet 5 และ Haiku 4.5 โดยเฉพาะผู้ใช้ Claude Code ที่ได้รับผลกระทบมากที่สุด Downdetector รายงานผู้ใช้แจ้งปัญหากว่า 4,000 รายภายในเวลาไม่กี่ชั่วโมง ยังไม่มีการระบุสาเหตุหรือกำหนดเวลาแก้ไขบนหน้าสถานะ 📰 ขยายวงเงินสินเชื่อหมุนเวียนก่อน IPO ให้เกินเป้าหมายเดิมที่ราว 1 หมื่นล้านดอลลาร์ โดยขอให้ธนาคารกลุ่มหลักผูกพันวงเงินรายละ 1.25 พันล้านดอลลาร์ ต่อเนื่องจากรายได้ต่อปี (annualized revenue run rate) ที่แตะ 6.5 หมื่นล้านดอลลาร์ ณ สิ้นเดือน ก.ค. (เพิ่มขึ้นราว 7 เท่าจากปีก่อน) ✅ ประกาศ Claude Cowork เปิดให้ใช้งานบนมือถือครบทุกแผนชำระเงินแล้ว</p>
+    <p class="note">⚠️ เหตุขัดข้องวันนี้เกิดขึ้นเพียง 2 วันหลังเหตุขัดข้องด้านการยืนยันตัวตนเมื่อ 16 ส.ค. ซึ่งเป็นคนละเหตุการณ์กัน แหล่งอ้างอิง: 📰 <a href="https://gvwire.com/2026/08/18/claude-ai-goes-down-for-thousands-tuesday-downdetector-shows/" target="_blank" rel="noopener">GV Wire</a>, <a href="https://sqmagazine.co.uk/claude-down-anthropic-investigates-multi-model-errors/" target="_blank" rel="noopener">SQ Magazine</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-18/anthropic-pre-ipo-credit-facility-set-to-climb-past-10-billion" target="_blank" rel="noopener">Bloomberg (Credit Facility)</a>, <a href="https://www.cnbc.com/2026/08/17/anthropic-says-annualized-revenue-climbed-to-65-billion-in-july.html" target="_blank" rel="noopener">CNBC (Revenue)</a></p>
+
+    <h3>Meta</h3>
+    <p>📰 เริ่มขึ้นศาลวันนี้ในคดีที่ 29 รัฐของสหรัฐฯ ฟ้องร้อง Meta ต่อศาลรัฐบาลกลางในแคลิฟอร์เนีย กล่าวหาว่าออกแบบ Facebook และ Instagram ให้เสพติดในกลุ่มเด็กและวัยรุ่น และเก็บ/ใช้ข้อมูลส่วนบุคคลของเด็กโดยผิดกฎหมาย คาดใช้เวลาไต่สวน 6-8 สัปดาห์ Mark Zuckerberg และ Adam Mosseri คาดต้องขึ้นให้การ รัฐโจทก์เรียกร้องค่าปรับและมาตรการเปลี่ยนแปลงแพลตฟอร์ม เช่น จำกัดอายุและฟีเจอร์ infinite scroll</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.aol.com/articles/meta-faces-29-state-trial-100301000.html" target="_blank" rel="noopener">AOL / Reuters</a>, <a href="https://www.technology.org/2026/08/18/meta-29-state-trial-instagram-facebook-teens/" target="_blank" rel="noopener">Technology.org</a></p>
+
+    <h3>Startup</h3>
+    <p>📰 Etched สตาร์ทอัพชิป AI inference ระดมทุนรอบใหม่ 700 ล้านดอลลาร์ นำโดย Jane Street ซึ่งเป็นทั้งนักลงทุนและลูกค้ารายแรกหลังทดสอบและซื้อฮาร์ดแวร์ของบริษัท ทำให้มูลค่าบริษัทเพิ่มเป็น 2.1 หมื่นล้านดอลลาร์ จากเดิม 1.03 หมื่นล้านดอลลาร์เมื่อเดือน ก.ค. (เพิ่มขึ้นเกือบ 1.1 หมื่นล้านดอลลาร์ในเวลาราว 1 เดือน) บริษัทระดมทุนรวมแล้ว 1.9 พันล้านดอลลาร์ และมีสัญญาลูกค้ามูลค่ากว่า 1 พันล้านดอลลาร์ 📰 Pony.ai ประกาศไปป์ไลน์ robotaxi ในต่างประเทศที่เซ็นสัญญาแล้วกว่า 4,000 คัน รวมดีลขยายกับ Uber ในยุโรปกว่า 2,000 คัน (จากเดิมให้บริการที่ซาเกร็บ โครเอเชีย ขยายไปอีก 4 เมือง) และแผนในตะวันออกกลาง รายได้ธุรกิจ robotaxi ของบริษัทเติบโต 691.2% ในไตรมาสที่ผ่านมา</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://techcrunch.com/2026/08/18/etcheds-valuation-doubles-to-21b-in-a-month/" target="_blank" rel="noopener">TechCrunch (Etched)</a>, <a href="https://uk.finance.yahoo.com/news/etched-valuation-doubles-21b-month-172158893.html" target="_blank" rel="noopener">Yahoo Finance (Etched)</a>, <a href="https://www.tradingview.com/news/reuters.com,2026:newsml_P8N43G01C:0-china-s-pony-ai-s-overseas-robotaxi-pipeline-expands-to-over-4-000-vehicles/" target="_blank" rel="noopener">Reuters via TradingView (Pony.ai)</a>, <a href="https://electriccarsreport.com/2026/08/pony-ai-and-uber-plan-over-2000-robotaxis-across-europe/" target="_blank" rel="noopener">Electric Cars Report (Pony.ai–Uber)</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>Claude Cowork mobile GA:</b> ขยายจากช่วงทดสอบ (beta) เฉพาะแผน Max ไปเป็นเปิดให้ใช้งานเต็มรูปแบบครบทุกแผนชำระเงิน (Pro, Max, Team) บนมือถือและเว็บ (📰 <a href="https://9to5mac.com/2026/08/18/anthropic-says-claude-cowork-is-now-available-on-mobile-for-all-paid-plans/" target="_blank" rel="noopener">9to5Mac</a>)</li>
+      <li><b>Batch-wise Adaptive Pruning:</b> วิธี pruning น้ำหนักโมเดลแบบไม่ต้อง fine-tune อิงจังหวะการทำงานของนิวรอน ลดต้นทุนการอนุมานสำหรับ language reasoning model แบบ batch (📰 <a href="https://arxiv.org/abs/2608.14003" target="_blank" rel="noopener">arXiv:2608.14003</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p>📰 Etched ระดมทุน Series D มูลค่า 700 ล้านดอลลาร์ นำโดย Jane Street มูลค่าบริษัทพุ่งเป็น 2.1 หมื่นล้านดอลลาร์ 📰 Anthropic เตรียมขยายวงเงินสินเชื่อก่อน IPO ให้เกิน 1 หมื่นล้านดอลลาร์ เพื่อเสริมสภาพคล่องก่อนเข้าตลาดหลักทรัพย์</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://techcrunch.com/2026/08/18/etcheds-valuation-doubles-to-21b-in-a-month/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-18/anthropic-pre-ipo-credit-facility-set-to-climb-past-10-billion" target="_blank" rel="noopener">Bloomberg</a></p>
+
+    <h3>Acquisition</h3>
+    <p class="note">⚠️ ไม่พบดีลควบรวม/เข้าซื้อกิจการใหม่เฉพาะช่วง 24 ชม. ล่าสุดที่ผ่านเกณฑ์ยืนยันของรอบนี้ (ดีล Stripe–OpenRouter และ Anthropic–Decart ที่รายงานก่อนหน้ายังไม่มีความคืบหน้าใหม่ในรอบนี้)</p>
+
+    <h3>Regulation</h3>
+    <p class="note">⚠️ ไม่พบข่าวกฎระเบียบใหม่ที่เจาะจงในช่วง 24 ชม. ล่าสุดที่ผ่านเกณฑ์ยืนยันของรอบนี้ (มาตรการเลื่อนเส้นตาย EU AI Act สำหรับระบบความเสี่ยงสูงมีผลตั้งแต่ 27 ก.ค. เกินช่วงเวลาที่กำหนด)</p>
+
+    <h3>Ethics</h3>
+    <p>📰 คดี 29 รัฐฟ้อง Meta เริ่มไต่สวนในศาลรัฐบาลกลางแคลิฟอร์เนียวันนี้ กล่าวหาออกแบบ Facebook/Instagram ให้เสพติดเด็กและวัยรุ่น พร้อมเก็บข้อมูลส่วนบุคคลของเด็กโดยผิดกฎหมาย</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.aol.com/articles/meta-faces-29-state-trial-100301000.html" target="_blank" rel="noopener">AOL / Reuters</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">⚠️ งดแสดงหมวดนี้ในรอบนี้ — ตัวเลข benchmark ที่พบ (เช่น อันดับ BenchLM, Swfte, SWE-bench Pro) มาจากเว็บไซต์ leaderboard aggregator เท่านั้น ไม่มีแหล่งทางการ (official model card/บริษัทผู้พัฒนา) ยืนยันคะแนนที่ตรงกับวันที่รายงานนี้ จึงไม่ผ่านเกณฑ์ cross-validation ที่ต้องมีอย่างน้อยหนึ่งแหล่งเป็น official</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <ul>
+      <li>🔥 GitHub Trending วันนี้ (จาก github.com/trending โดยตรง): <b>harry0703/MoneyPrinterTurbo</b> ยังคงอันดับ 1 (+2,306), <b>akitaonrails/ai-memory</b> (Rust, +730), <b>volcengine/OpenViking</b> (+298), <b>mukul975/Anthropic-Cybersecurity-Skills</b> (+726), <b>jundot/omlx</b> (+366), <b>public-apis/public-apis</b> (+1,139), <b>chaitanyagiri/munder-difflin</b> (TypeScript, multi-agent harness, +256)</li>
+      <li>🔥 กระแส Reddit ทดสอบแปลงโพสต์เป็นวิดีโอ/เสียงพากย์ AI ได้รับความสนใจจากสื่อเทคโนโลยีหลายสำนักพร้อมกันในวันนี้</li>
+    </ul>
+    <h3>Tutorials</h3>
+    <p class="note">⚠️ ไม่พบ tutorial ใหม่ที่ยืนยันแหล่งอ้างอิงได้เฉพาะช่วง 24 ชม. ล่าสุดในรอบนี้</p>
+    <h3>Events</h3>
+    <p class="note">⚠️ ไม่พบกิจกรรม/งานประชุมใหม่ที่เจาะจงในช่วง 24 ชม. ล่าสุดในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. ครอบครัวใช้ ChatGPT for Teens ให้บุตรหลานวัย 13-17 ปีเรียนรู้อย่างปลอดภัย</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ผู้ปกครองกังวลเรื่องเนื้อหาที่ไม่เหมาะสมและความเสี่ยงต่อการพึ่งพาทางอารมณ์กับแชทบอทของวัยรุ่น</dd>
+        <dt>วิธีใช้</dt><dd>บัญชีที่ระบบประเมินว่าอายุ 13-17 จะถูกจัดเข้ากลุ่ม ChatGPT for Teens อัตโนมัติ พร้อม Study Mode และระบบควบคุมของผู้ปกครอง</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงจากเนื้อหาละเอียดอ่อน ให้เครื่องมือช่วยเรียนที่มีคำแนะนำแบบเป็นขั้นตอนและ knowledge check</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. นักพัฒนา coding agent ใช้ ai-memory เก็บบริบทข้ามเซสชันและข้าม vendor</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>เครื่องมือ AI coding agent มักลืมบริบทเมื่อเปลี่ยนเซสชันหรือสลับ vendor ทำให้ต้องอธิบายบริบทซ้ำ</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้ง akitaonrails/ai-memory เป็นเลเยอร์หน่วยความจำกลางที่ส่งต่อบริบทระหว่างเครื่องมือ coding agent ต่างค่าย</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาที่เสียไปกับการอธิบายบริบทซ้ำ เพิ่มความต่อเนื่องของงานเมื่อสลับเครื่องมือ</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. ทีมวิศวกร ML ใช้ Batch-wise Adaptive Pruning ลดต้นทุนการรันโมเดล reasoning ขนาดใหญ่</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>โมเดล language reasoning ที่ต้อง reasoning หลายขั้นตอนใช้ทรัพยากรการอนุมานสูง โดยเฉพาะเมื่อรันแบบ batch</dd>
+        <dt>วิธีใช้</dt><dd>นำวิธี pruning ที่อิงจังหวะการทำงานของนิวรอน (periodic activation) จากงานวิจัยมาปรับใช้กับโมเดลที่มีอยู่โดยไม่ต้อง fine-tune ใหม่</dd>
+        <dt>ประโยชน์</dt><dd>ลดต้นทุนการอนุมานโดยไม่ต้องฝึกโมเดลใหม่ทั้งหมด เหมาะกับทีมที่มีทรัพยากรจำกัด</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. องค์กรใช้ OpenViking รวมระบบ agent memory, RAG และ skills ไว้ในฐานข้อมูลเดียว</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ระบบ agent ขององค์กรมักแยกส่วน memory, knowledge base และ skills ออกจากกัน ทำให้จัดการและซิงค์ข้อมูลยาก</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ volcengine/OpenViking เป็นฐานข้อมูลบริบทกลางที่พัฒนาตัวเองได้ รวมทั้งสามส่วนไว้ในระบบเดียว</dd>
+        <dt>ประโยชน์</dt><dd>ลดความซับซ้อนของสถาปัตยกรรม agent และเพิ่มความสอดคล้องของบริบทระหว่าง agent หลายตัว</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Research Papers ยืนยันได้</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">GitHub Projects เด่น</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>Anthropic จะระบุสาเหตุและแก้ไขเหตุขัดข้องที่กระทบ Claude Code และโมเดลหลักได้เมื่อใด</dd>
+        <dt>เหตุผล</dt><dd>เกิดขึ้นเป็นครั้งที่สองในรอบ 2 วัน กระทบผู้ใช้กว่า 4,000 รายและอาจกระทบความเชื่อมั่นของนักลงทุนช่วงใกล้ IPO</dd>
+        <dt>Source</dt><dd><a href="https://gvwire.com/2026/08/18/claude-ai-goes-down-for-thousands-tuesday-downdetector-shows/" target="_blank" rel="noopener">GV Wire</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ผลการไต่สวนคดี 29 รัฐฟ้อง Meta จะนำไปสู่ข้อบังคับใหม่ เช่น จำกัดอายุหรือปิดฟีเจอร์ infinite scroll หรือไม่</dd>
+        <dt>เหตุผล</dt><dd>คดีมีระยะเวลาไต่สวน 6-8 สัปดาห์ และอาจกำหนดบรรทัดฐานด้านการออกแบบแพลตฟอร์มสำหรับเยาวชนทั่วอุตสาหกรรม</dd>
+        <dt>Source</dt><dd><a href="https://www.aol.com/articles/meta-faces-29-state-trial-100301000.html" target="_blank" rel="noopener">AOL / Reuters</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>วงเงินสินเชื่อก่อน IPO ของ Anthropic จะปิดที่ตัวเลขเท่าใด และจะเกิน 1 หมื่นล้านดอลลาร์ตามคาดหรือไม่</dd>
+        <dt>เหตุผล</dt><dd>สะท้อนความเชื่อมั่นของธนาคารต่อแผน IPO ของ Anthropic ท่ามกลางเหตุขัดข้องต่อเนื่องของบริการ</dd>
+        <dt>Source</dt><dd><a href="https://www.bloomberg.com/news/articles/2026-08-18/anthropic-pre-ipo-credit-facility-set-to-climb-past-10-billion" target="_blank" rel="noopener">Bloomberg</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://openai.com/index/chatgpt-for-teens/" target="_blank" rel="noopener">OpenAI — ChatGPT for Teens</a></li>
+          <li><a href="https://help.openai.com/en/articles/20001421-chatgpt-for-teens" target="_blank" rel="noopener">OpenAI Help Center — ChatGPT for Teens</a></li>
+          <li><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2608.14003" target="_blank" rel="noopener">arXiv:2608.14003 — Batch-wise Adaptive Pruning</a></li>
+          <li><a href="https://arxiv.org/abs/2608.14161" target="_blank" rel="noopener">arXiv:2608.14161 — BiasTrace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://gvwire.com/2026/08/18/claude-ai-goes-down-for-thousands-tuesday-downdetector-shows/" target="_blank" rel="noopener">GV Wire (Claude outage)</a></li>
+          <li><a href="https://sqmagazine.co.uk/claude-down-anthropic-investigates-multi-model-errors/" target="_blank" rel="noopener">SQ Magazine (Claude outage)</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-18/anthropic-pre-ipo-credit-facility-set-to-climb-past-10-billion" target="_blank" rel="noopener">Bloomberg (Anthropic credit facility)</a></li>
+          <li><a href="https://www.cnbc.com/2026/08/17/anthropic-says-annualized-revenue-climbed-to-65-billion-in-july.html" target="_blank" rel="noopener">CNBC (Anthropic revenue)</a></li>
+          <li><a href="https://9to5mac.com/2026/08/18/anthropic-says-claude-cowork-is-now-available-on-mobile-for-all-paid-plans/" target="_blank" rel="noopener">9to5Mac (Claude Cowork mobile)</a></li>
+          <li><a href="https://www.engadget.com/2238585/reddit-is-experimenting-with-video-and-audio-versions-of-posts/" target="_blank" rel="noopener">Engadget (Reddit AI video)</a></li>
+          <li><a href="https://dataconomy.com/2026/08/18/reddit-tests-ai-voiced-videos-based-on-user-posts/" target="_blank" rel="noopener">Dataconomy (Reddit AI video)</a></li>
+          <li><a href="https://techcrunch.com/2026/08/18/etcheds-valuation-doubles-to-21b-in-a-month/" target="_blank" rel="noopener">TechCrunch (Etched)</a></li>
+          <li><a href="https://uk.finance.yahoo.com/news/etched-valuation-doubles-21b-month-172158893.html" target="_blank" rel="noopener">Yahoo Finance (Etched)</a></li>
+          <li><a href="https://www.tradingview.com/news/reuters.com,2026:newsml_P8N43G01C:0-china-s-pony-ai-s-overseas-robotaxi-pipeline-expands-to-over-4-000-vehicles/" target="_blank" rel="noopener">Reuters via TradingView (Pony.ai)</a></li>
+          <li><a href="https://electriccarsreport.com/2026/08/pony-ai-and-uber-plan-over-2000-robotaxis-across-europe/" target="_blank" rel="noopener">Electric Cars Report (Pony.ai–Uber)</a></li>
+          <li><a href="https://www.aol.com/articles/meta-faces-29-state-trial-100301000.html" target="_blank" rel="noopener">AOL / Reuters (Meta trial)</a></li>
+          <li><a href="https://www.technology.org/2026/08/18/meta-29-state-trial-instagram-facebook-teens/" target="_blank" rel="noopener">Technology.org (Meta trial)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · จัดทำโดยกระบวนการอัตโนมัติจากการสืบค้นเว็บสาธารณะ ณ วันที่ 18 ส.ค. 2569 (ICT) · โปรดตรวจสอบแหล่งอ้างอิงต้นทางก่อนนำไปอ้างอิงต่อ</p>
+  </footer>
+</div>
+</body>
+</html>
