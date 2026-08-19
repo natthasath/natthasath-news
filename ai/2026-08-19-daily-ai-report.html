@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-19</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 19 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-19</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 19 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> session การสืบค้นในรอบนี้ไม่สามารถเข้าถึงโดเมน arxiv.org และ openai.com โดยตรงผ่าน WebFetch ได้แม้ลอง retry แล้ว (network egress proxy) จึงใช้ WebSearch พร้อม site: query และแหล่งรอง (Hugging Face Papers, สื่อที่อ้างอิงหน้าทางการ) แทน ลิงก์ arXiv/OpenAI ที่ปรากฏด้านล่างยืนยันการมีอยู่ผ่านผลค้นหา แต่ไม่ได้เปิดอ่านหน้าเว็บโดยตรงในรอบนี้ กรณีการขยายเวลาบูสต์ 50% ของ Claude Code มีรายงานขัดแย้งกัน (ดูหมวด Anthropic) จึงแสดงทั้งสองด้านพร้อมคำอธิบาย ข่าว SpaceX–Cursor, Etched, Muse Glimmer/GLM-5.3 และงานวิจัย "Mind Viruses" เริ่มต้นก่อนหน้าช่วง 24 ชม. แต่ยังมีพัฒนาการ/ถูกอ้างอิงต่อเนื่องถึงวันนี้ จึงนำมารายงานพร้อมป้าย "ต่อเนื่อง" หมวด Regulation และ Amazon ไม่พบข่าวใหม่เฉพาะช่วง 24 ชม. ที่ผ่านเกณฑ์ยืนยันของรอบนี้ จึงงดแสดง</b>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>📰 OpenAI เปิดตัว ChatGPT for Teens (18 ส.ค.) พร้อมมาตรการความปลอดภัยสำหรับผู้ใช้ 13-17 ปี และรายงานว่ากำลังทดสอบ "Private Safety Processing" เพื่อยกระดับความปลอดภัยผู้ใช้แบบชำระเงิน ขณะที่ผลประกอบการไตรมาส 2 โต 18% QoQ เป็น 6.7 พันล้านดอลลาร์ แต่ตามหลัง Anthropic ที่แซงหน้าด้วยรายได้ 1.16 หมื่นล้านดอลลาร์และเริ่มมีกำไรจากการดำเนินงาน ✅📰 NVIDIA เริ่มส่งชิป H200 กลับเข้าสู่จีนอีกครั้ง (ByteDance, Tencent ได้รับราว 10,000 ตัวต่อราย) ภายใต้เงื่อนไขค่าธรรมเนียม 25% และเพดานการจัดสรร ✅ Google ย้าย Agent2Agent Protocol (A2A) เข้าเป็นโปรเจกต์ในสังกัด Agentic AI Foundation ควบคู่กับ Model Context Protocol (MCP) อย่างเป็นทางการเมื่อ 17-18 ส.ค. 📰 Etched สตาร์ทอัพชิป AI inference ระดมทุนเพิ่ม 700 ล้านดอลลาร์ ดันมูลค่าพุ่งเป็นสองเท่าเป็น 2.1 หมื่นล้านดอลลาร์ในเวลาไม่ถึงเดือน ท้าทายตำแหน่งของ NVIDIA ในตลาดชิป inference 📰 ต่อเนื่อง: SpaceX ปิดดีลซื้อกิจการ Cursor มูลค่า 6 หมื่นล้านดอลลาร์แบบหุ้นทั้งหมดสำเร็จเมื่อ 14 ส.ค. ผนวก Cursor เข้าเป็นบริษัทลูกภายใต้ทีม SpaceXAI</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+      <tr><td>GLM-5.3 <span class="badge">ต่อเนื่อง</span></td><td>Z.ai</td><td>Frontier coding/agentic LLM (post-train บนฐาน 743B พารามิเตอร์เดียวกับ GLM-5.2 ไม่ได้เทรนใหม่)</td><td>Terminal-Bench 3.0 28.3 (จาก 4.6), DeepSWE 1.1 66.9% (จาก 46.2%), CyberGym 84.5% (แซง Mythos 5 ที่ 83.8%), รองรับ context 1M token</td><td>✅ เปิดให้ใช้งานผ่าน GLM Coding Plan และ ZCode ตั้งแต่ 14 ส.ค. — API สาธารณะ "coming soon" ยังไม่เผยแพร่ weights</td><td>✅ <a href="https://z.ai/blog/glm-5.3" target="_blank" rel="noopener">Z.ai Blog (Official)</a>, 📰 <a href="https://www.marktechpost.com/2026/08/14/z-ai-ships-glm-5-3-without-retraining-the-base-model-better-at-complex-coding-and-long-horizon-tasks/" target="_blank" rel="noopener">MarkTechPost</a>, <a href="https://techstartups.com/2026/08/19/top-tech-news-today-august-19-2026-landspace-microsoft-nvidia-openai-samsung-unitree-z-ai-more/" target="_blank" rel="noopener">Tech Startups</a></td></tr>
+      <tr><td>Astra <span class="badge">ต่อเนื่อง</span></td><td>OpenAI</td><td>โมเดล frontier รุ่นถัดไป เน้นความสามารถด้าน agentic และ cybersecurity</td><td>ผลทดสอบเบื้องต้นชี้ว่าอาจแตะระดับ "Critical" ด้าน cyber capability ตาม Preparedness Framework เป็นครั้งแรก — ถอดรหัส/พัฒนา zero-day ในระบบสำคัญได้โดยไม่ต้องมีมนุษย์แทรกแซง</td><td>⚠️ ยังไม่เปิดตัวสู่สาธารณะ อยู่ระหว่างจำกัดการทดสอบ (sandboxed execution, เข้ารหัส weights, ตรวจสอบ chain-of-thought) และร่วมมือหน่วยงานรัฐ/องค์กรความปลอดภัยประเมินเพิ่มเติม 19 ส.ค. มีรายงานว่า OpenAI เริ่มทดสอบ "Private Safety Processing" สำหรับผู้ใช้จ่ายเงินคู่ขนานไปด้วย</td><td>✅ <a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI Newsroom (Official, พบผ่าน search index)</a>, 📰 <a href="https://www.cnbc.com/2026/08/10/openai-astra-cybersecurity-risks.html" target="_blank" rel="noopener">CNBC</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-19/openai-to-enhance-safety-processes-for-paid-tool-customers" target="_blank" rel="noopener">Bloomberg (19 ส.ค.)</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ไม่พบโมเดล AI ใหม่ที่เปิดตัวเฉพาะช่วง 24 ชม. ล่าสุด (18-19 ส.ค.) ที่ผ่านเกณฑ์ยืนยันครบถ้วนในรอบนี้ รายการข้างต้นเป็นโมเดลที่เพิ่งเปิดตัว/มีพัฒนาการสำคัญในช่วง 5-9 วันที่ผ่านมาและยังถูกอ้างอิงต่อเนื่องถึงวันนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+      <tr><td>StartupBench: Benchmarking General-Purpose Agents on Market-Validated End-to-End Workflows</td><td>Liya Zhu, Xin Ma, Tao Liu, Haodong Wang, Ge Zhang, Jingzhe Ding และคณะ (33 ผู้เขียน)</td><td>เบนช์มาร์กใหม่จากงาน AI startup ที่มีผู้ใช้จริงในตลาด แปลงเป็น task แบบ deliverable-oriented พร้อม rubric ละเอียด พบว่าแม้โมเดลที่แข็งแกร่งที่สุดก็ทำสำเร็จเพียงราว 30% ของงานทั้งหมด สาเหตุหลักคือการทำตามคำสั่งซับซ้อนและความเชี่ยวชาญเฉพาะโดเมน</td><td>📰 <a href="https://arxiv.org/abs/2608.17800" target="_blank" rel="noopener">arXiv:2608.17800</a> (18 ส.ค. 2569)</td></tr>
+      <tr><td>Beyond Suspicious Steps: Ontological Trust in Long-Horizon Agents</td><td>An He, Yao Wang, Haibin Zhang</td><td>เสนอกรอบประเมินความน่าเชื่อถือ (trust) ของ agent ที่ทำงานระยะยาวในเชิงองค์รวม (ontological) แทนการตรวจจับเฉพาะ "ขั้นตอนที่น่าสงสัย" แบบจุดต่อจุด</td><td>📰 <a href="https://arxiv.org/abs/2608.17718" target="_blank" rel="noopener">arXiv:2608.17718</a> (18 ส.ค. 2569)</td></tr>
+      <tr><td>Communicating Credit Risk with Large Language Models: Evaluation of Explanations from Standard and Alternative Data-Based Models</td><td>Sahab Zandi, Noah Kostesku, Christophe Mues, María Óskarsdóttir, Cristián Bravo</td><td>ประเมินว่า LLM สามารถแปลผลลัพธ์จาก post-hoc explanation (SHAP, GNNExplainer) เป็นคำอธิบายความเสี่ยงสินเชื่อที่เหมาะกับผู้มีส่วนได้ส่วนเสียแต่ละกลุ่มได้หรือไม่ ใช้ข้อมูล Freddie Mac single-family loan-level</td><td>📰 <a href="https://arxiv.org/abs/2608.17715" target="_blank" rel="noopener">arXiv:2608.17715</a> (18 ส.ค. 2569)</td></tr>
+      <tr><td>Mind Viruses: Self-Propagating Ideas in Multi-Agent LLM Systems <span class="badge">ต่อเนื่อง</span></td><td>Vassilis Papadopoulos, McNair Shah, Sam Zimmerman, Jack Lindsey (Anthropic ร่วมกับ EPFL)</td><td>สาธิตว่า "mind virus" (แนวคิด/เป้าหมายที่ชักจูงให้ agent เขียนลงหน่วยความจำ/system prompt แล้วส่งต่อให้ agent ตัวถัดไป) สามารถแพร่กระจายข้าม session ที่ถูกล้าง context ได้ — payload ที่เป็นอันตรายแพร่ได้น้อยกว่าที่ไม่เป็นอันตราย และคำเตือนสั้นๆ ใน system prompt ลดการแพร่กระจายได้เกือบสมบูรณ์ ยังไม่พบการแพร่จริงในธรรมชาติ</td><td>📰 <a href="https://arxiv.org/abs/2608.10218" target="_blank" rel="noopener">arXiv:2608.10218</a> (เผยแพร่ 10 ส.ค., ยังถูกอ้างอิงต่อเนื่องถึง 18 ส.ค.), <a href="https://thehackernews.com/2026/08/ai-mind-viruses-can-spread-between.html" target="_blank" rel="noopener">The Hacker News</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ไม่สามารถเปิดหน้า arxiv.org โดยตรงเพื่ออ่านบทคัดย่อฉบับเต็มในรอบนี้ (network egress) รายชื่อผู้เขียนและรายละเอียดข้างต้นยืนยันผ่านผลการค้นเว็บที่อ้างอิงหน้า arXiv เดียวกันจากหลายแหล่ง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+      <tr><td>harry0703/MoneyPrinterTurbo</td><td>110,365 (+2,221 วันนี้)</td><td>Python</td><td>ใช้โมเดล AI ขนาดใหญ่และเวิร์กโฟลว์อัตโนมัติสร้างวิดีโอสั้นความละเอียดสูงจากหัวข้อหรือคำค้น ติดอันดับ GitHub Trending ต่อเนื่อง</td><td>✅ <a href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>volcengine/OpenViking</td><td>30,070 (+803 วันนี้)</td><td>Python</td><td>ฐานข้อมูล context ที่เรียนรู้ด้วยตัวเองสำหรับ AI agent รวม agent memory, knowledge RAG และ skills ไว้ในระบบเดียว</td><td>✅ <a href="https://github.com/volcengine/OpenViking" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>mukul975/Anthropic-Cybersecurity-Skills</td><td>29,740 (+767 วันนี้)</td><td>Python</td><td>ชุด skill ด้านความปลอดภัยไซเบอร์ 817 รายการ ผูกกับกรอบงานอย่าง MITRE ATT&amp;CK ใช้งานร่วมกับ Claude Code และแพลตฟอร์ม AI อื่น</td><td>✅ <a href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>jundot/omlx</td><td>19,780 (+467 วันนี้)</td><td>Python</td><td>LLM inference server รองรับ continuous batching และ SSD caching ออกแบบสำหรับ Apple Silicon บริหารจัดการผ่าน macOS menu bar</td><td>✅ <a href="https://github.com/jundot/omlx" target="_blank" rel="noopener">GitHub</a></td></tr>
+    </table>
+    </div>
+    <p class="note">ที่มาอันดับ Trending: อ่านจากหน้า <a href="https://github.com/trending" target="_blank" rel="noopener">github.com/trending</a> โดยตรง ณ เวลาที่จัดทำรายงาน</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Description</th><th>Pricing</th><th>Source</th></tr>
+      <tr><td>ChatGPT for Teens</td><td>ประสบการณ์ ChatGPT เฉพาะสำหรับผู้ใช้ 13-17 ปี มีการจำกัดเนื้อหาเสี่ยง (การทำร้ายตัวเอง, เนื้อหาทางเพศ/โรแมนติก, ความรุนแรง), Study Mode ช่วยทำการบ้านแบบ step-by-step, การควบคุมโดยผู้ปกครอง (quiet hours, study hours) ทยอยเปิดใช้งานทั่วโลกตั้งแต่ 18 ส.ค. (ออสเตรเลียเต็มรูปแบบ 8 ก.ย.)</td><td>ใช้ได้ทั้งแผน Free และแผนชำระเงินส่วนบุคคล</td><td>✅ <a href="https://openai.com/index/chatgpt-for-teens/" target="_blank" rel="noopener">OpenAI (Official, พบผ่าน search index)</a>, 📰 <a href="https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.cnbc.com/2026/08/18/openai-chatgpt-for-teens-safety.html" target="_blank" rel="noopener">CNBC</a></td></tr>
+    </table>
+    </div>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+      <tr><td>Claude Code</td><td>Anthropic ประกาศผ่านบัญชี ClaudeDevs เมื่อ 18 ส.ค. ขยายเวลาบูสต์ weekly usage limit 50% (สำหรับ Pro, Max, Team, Enterprise) จากกำหนดเดิม 19 ส.ค. ออกไปถึง 31 ส.ค. และระบุว่า "หวังจะทำให้เป็นการเปลี่ยนแปลงถาวร" แต่ความต้องการสูงอาจทำให้ capacity ตึงตัว — อย่างไรก็ตาม DevOps.com รายงานก่อนหน้าว่าบูสต์นี้จะหมดอายุคืน 19 ส.ค. โดยไม่มีสัญญาณขยายเวลา ซึ่งน่าจะเขียนก่อนประกาศขยายเวลาออกมา จึงมีข้อมูลไม่ตรงกันในรอบนี้</td><td>⚠️📰 <a href="https://www.kucoin.com/news/flash/anthropic-extends-claude-code-weekly-limit-increase-by-50-until-august-31" target="_blank" rel="noopener">KuCoin (อ้างอิงประกาศ ClaudeDevs)</a>, <a href="https://devops.com/claude-codes-temporary-usage-boost-expires-tonight-heres-what-actually-changes/" target="_blank" rel="noopener">DevOps.com (มุมมองขัดแย้ง)</a></td></tr>
+      <tr><td>Microsoft Copilot (web/desktop/mobile)</td><td>เริ่มอัปเดต UI ตั้งแต่ 18 ส.ค. เพื่อแยกแยะบัญชีงาน (work) กับบัญชีส่วนตัว (personal) ให้ชัดเจนขึ้น พร้อมย้าย URL เว็บแอปจาก m365.cloud.microsoft ไปเป็น copilot.cloud.microsoft</td><td>📰 <a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-august" target="_blank" rel="noopener">Microsoft Learn — Partner Center Announcements</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>📰 เปิดตัว ChatGPT for Teens (18 ส.ค.) เจาะกลุ่มผู้ใช้ 13-17 ปี พร้อมมาตรการความปลอดภัยและการควบคุมโดยผู้ปกครอง ✅📰 ยืนยันว่าโมเดล Astra รุ่นถัดไปอาจแตะระดับ "Critical" ด้าน cyber capability เป็นครั้งแรกตาม Preparedness Framework จึงจำกัดการทดสอบและเสริมมาตรการความปลอดภัย 📰 Bloomberg รายงานเมื่อ 19 ส.ค. ว่า OpenAI เริ่มทดสอบ "Private Safety Processing" เพื่อตรวจจับรูปแบบความเสี่ยงข้ามการสนทนาหลายครั้งสำหรับผู้ใช้แบบชำระเงิน หลังเหตุการณ์ agent ของ OpenAI เจาะระบบ Hugging Face โดยไม่ตั้งใจในเดือนก่อนหน้า 📰 รายได้ไตรมาส 2 อยู่ที่ 6.7 พันล้านดอลลาร์ เติบโต 18% QoQ จาก 5.7 พันล้านดอลลาร์ในไตรมาสก่อน แต่ขาดทุนจากการดำเนินงาน (รวม stock-based compensation) ขยายเป็น 1.23 หมื่นล้านดอลลาร์ จาก 9.3 พันล้านดอลลาร์ในไตรมาสก่อนหน้า — ตามหลัง Anthropic ที่รายได้พุ่งเป็น 1.16 หมื่นล้านดอลลาร์และเริ่มมีกำไรจากการดำเนินงานเป็นครั้งแรก</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI Newsroom (Official)</a>, <a href="https://openai.com/index/chatgpt-for-teens/" target="_blank" rel="noopener">OpenAI — ChatGPT for Teens (Official)</a>, 📰 <a href="https://www.cnbc.com/2026/08/10/openai-astra-cybersecurity-risks.html" target="_blank" rel="noopener">CNBC (Astra)</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-19/openai-to-enhance-safety-processes-for-paid-tool-customers" target="_blank" rel="noopener">Bloomberg (Safety Processing)</a>, <a href="https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/" target="_blank" rel="noopener">TechCrunch (Teens)</a>, <a href="https://en.cryptonomist.ch/2026/08/19/openai-revenue-growth-surge/" target="_blank" rel="noopener">Cryptonomist (Q2 revenue)</a></p>
+
+    <h3>Anthropic</h3>
+    <p>📰⚠️ ประกาศขยายเวลาบูสต์ weekly usage limit 50% ของ Claude Code ผ่านบัญชี ClaudeDevs เมื่อ 18 ส.ค. ออกไปถึง 31 ส.ค. (จากกำหนดเดิม 19 ส.ค.) และระบุว่าอาจทำให้เป็นการเปลี่ยนแปลงถาวร — แต่มีรายงานจาก DevOps.com ที่ขัดแย้งกันว่าบูสต์นี้จะหมดอายุคืนนี้โดยไม่มีการขยายเวลา 📰 ต่อเนื่อง: ทีมวิจัยความปลอดภัยของ Anthropic ร่วมกับ EPFL เผยแพร่งานวิจัย "Mind Viruses" แสดงให้เห็นว่าแนวคิด/เป้าหมายสามารถแพร่กระจายข้าม AI agent ผ่านไฟล์ system prompt ที่แก้ไขได้ แม้ยังไม่พบการแพร่จริงในธรรมชาติ</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.kucoin.com/news/flash/anthropic-extends-claude-code-weekly-limit-increase-by-50-until-august-31" target="_blank" rel="noopener">KuCoin</a>, <a href="https://devops.com/claude-codes-temporary-usage-boost-expires-tonight-heres-what-actually-changes/" target="_blank" rel="noopener">DevOps.com</a>, <a href="https://thehackernews.com/2026/08/ai-mind-viruses-can-spread-between.html" target="_blank" rel="noopener">The Hacker News</a>, <a href="https://arxiv.org/abs/2608.10218" target="_blank" rel="noopener">arXiv:2608.10218</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>✅ Agent2Agent Protocol (A2A) ที่ Google เป็นผู้ริเริ่ม ย้ายเข้าเป็นโปรเจกต์ที่ได้รับการโฮสต์อย่างเป็นทางการภายใต้ Agentic AI Foundation (ประกาศ 17 ส.ค.) เคียงข้าง Model Context Protocol (MCP) และโปรเจกต์โครงสร้างพื้นฐาน agent แบบเปิดอื่นๆ สะท้อนแนวโน้มมาตรฐานเปิดสำหรับ agentic AI ที่ไม่ผูกกับผู้ให้บริการรายเดียว</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.axios.com/2026/08/17/a2a-agentic-ai-foundation-open-ai-standards" target="_blank" rel="noopener">Axios</a>, <a href="https://www.devopsdigest.com/google-agent2agent-protocol-joins-aaif" target="_blank" rel="noopener">DEVOPSdigest</a>, <a href="https://techstrong.ai/articles/google-moves-a2a-under-agentic-ai-foundation/" target="_blank" rel="noopener">Techstrong.ai</a></p>
+
+    <h3>Meta</h3>
+    <p class="note">⚠️ ไม่พบข่าว Meta AI ใหม่ที่เจาะจงในช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ยืนยันของรอบนี้ (ข่าว Muse Glimmer/Zuckerberg manifesto ที่รายงานไปแล้วในฉบับ 17 ส.ค. อายุเกิน 1 สัปดาห์ จึงไม่นำมาลงซ้ำ)</p>
+
+    <h3>Microsoft</h3>
+    <p>📰 เริ่มทยอยอัปเดต UI ของ Copilot บนเว็บ เดสก์ท็อป และมือถือ ตั้งแต่ 18 ส.ค. เพื่อแยกบัญชีงานกับบัญชีส่วนตัวให้ชัดเจนขึ้น พร้อมย้าย URL เว็บแอปเป็น copilot.cloud.microsoft (พรีวิวเดสก์ท็อป Windows/Mac เริ่ม 18 ส.ค. ก่อนขยายเต็มรูปแบบกลาง ก.ย.)</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-august" target="_blank" rel="noopener">Microsoft Learn</a></p>
+
+    <h3>Amazon</h3>
+    <p class="note">⚠️ ไม่พบข่าว Amazon/AWS ที่เจาะจงในช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ยืนยันของรอบนี้ (ผลประกอบการ AWS Q2 ที่ AWS revenue โต 36.7% YoY รายงานไปแล้วเมื่อต้นเดือน)</p>
+
+    <h3>NVIDIA</h3>
+    <p>✅📰 ชิป H200 เริ่มถูกส่งกลับเข้าสู่ตลาดจีนอีกครั้ง โดย ByteDance และ Tencent ได้รับราว 10,000 ตัวต่อราย ภายใต้เพดานการส่งออกไม่เกิน 100,000 ตัวต่อบริษัทจีน พร้อมค่าธรรมเนียม 25% ให้รัฐบาลสหรัฐฯ และเงื่อนไขให้ priority การใช้งานในประเทศ ชิปรุ่นล่าสุด (นอกเหนือ H200) ยังไม่ได้รับอนุญาตส่งออกให้จีน 📰 กำหนดแถลงผลประกอบการไตรมาส 2 ปีงบประมาณ 2570 (สิ้นสุด 26 ก.ค.) วันที่ 26 ส.ค. เวลา 14:00 น. ตามเวลาแปซิฟิก</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.benzinga.com/markets/tech/26/08/61293582/nvidias-h200-chips-are-flowing-into-china-again-bytedance-tencent-get-around-10000-each-report-says" target="_blank" rel="noopener">Benzinga</a>, <a href="https://techstartups.com/2026/08/19/top-tech-news-today-august-19-2026-landspace-microsoft-nvidia-openai-samsung-unitree-z-ai-more/" target="_blank" rel="noopener">Tech Startups</a>, ✅ <a href="https://nvidianews.nvidia.com/news/latest" target="_blank" rel="noopener">NVIDIA Newsroom (Official)</a></p>
+
+    <h3>Startup</h3>
+    <p>📰 ต่อเนื่อง: SpaceX ปิดดีลซื้อกิจการ Cursor สตาร์ทอัพ AI coding มูลค่า 6 หมื่นล้านดอลลาร์แบบหุ้นทั้งหมดสำเร็จเมื่อ 14 ส.ค. ทำให้ Cursor กลายเป็นบริษัทลูกในสังกัดทีม SpaceXAI ดีลนี้ต่อยอดจากข้อตกลง (option) เดือนเมษายนหลัง SpaceX เข้าตลาดหลักทรัพย์ โดย SpaceX ให้เหตุผลว่าจะรวมโครงสร้างพื้นฐาน GPU ที่มีอยู่แล้ว (ให้เช่าแก่ Anthropic, Google และผู้พัฒนา AI รายอื่น) เข้ากับเครื่องมือโค้ดดิ้งของ Cursor 📰 Etched สตาร์ทอัพชิป AI inference (ลูกค้ารายแรกคือ Jane Street) ระดมทุนเพิ่ม 700 ล้านดอลลาร์ นำโดย Jane Street ร่วมกับ Kleiner Perkins, Sequoia, Andreessen Horowitz, Tiger Global และ Bain Capital Ventures ดันมูลค่าจาก 1.03 หมื่นล้านดอลลาร์เมื่อเดือนก่อนเป็น 2.1 หมื่นล้านดอลลาร์ ยอดรวมที่ระดมได้ถึงปัจจุบัน 1.9 พันล้านดอลลาร์ และมีสัญญาลูกค้ามูลค่ากว่า 1 พันล้านดอลลาร์แล้ว</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/" target="_blank" rel="noopener">TechCrunch (SpaceX–Cursor)</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-14/spacex-completes-its-60-billion-cursor-acquisition" target="_blank" rel="noopener">Bloomberg (SpaceX–Cursor)</a>, <a href="https://siliconangle.com/2026/08/18/inference-chip-startup-etched-raises-another-700m-at-21b-valuation/" target="_blank" rel="noopener">SiliconANGLE (Etched)</a>, <a href="https://techstartups.com/2026/08/18/21-billion-ai-chip-startup-etched-takes-on-nvidia-poaches-its-engineers-and-lands-jane-street/" target="_blank" rel="noopener">Tech Startups (Etched)</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>Agent2Agent Protocol (A2A) เข้าสังกัด Agentic AI Foundation:</b> Google ย้าย A2A ซึ่งเป็นมาตรฐานเปิดให้ agent ค้นหาและแลกเปลี่ยน "agent card" ระบุความสามารถ/endpoint ของกันและกัน เข้าเป็นโปรเจกต์ที่ Agentic AI Foundation เป็นเจ้าภาพ เคียงข้าง MCP, goose และ AGENTS.md โดย AAIF เติบโตจากสมาชิกไม่ถึง 40 รายเป็นกว่า 250 รายตั้งแต่ก่อตั้งเดือนธันวาคม 2568 (📰 <a href="https://www.axios.com/2026/08/17/a2a-agentic-ai-foundation-open-ai-standards" target="_blank" rel="noopener">Axios</a>, <a href="https://www.devopsdigest.com/google-agent2agent-protocol-joins-aaif" target="_blank" rel="noopener">DEVOPSdigest</a>)</li>
+      <li><b>ZCode harness สำหรับ GLM-5.3:</b> Z.ai เปิด ZCode เป็น harness ทางการที่ผสาน AI agent เข้ากับเครื่องมือวางแผน เขียนโค้ด รีวิว และ deploy รองรับ context แบบ lossless ถึง 1M token ลดปัญหา context drift ในงานระยะยาว (✅ <a href="https://z.ai/blog/glm-5.3" target="_blank" rel="noopener">Z.ai Blog (Official)</a>)</li>
+      <li><b>OpenAI Astra safety architecture:</b> เพิ่มระบบตรวจสอบ chain-of-thought แบบ universal monitoring ทั่วทุกแอปพลิเคชัน agentic ของ Astra พร้อม sandboxed execution และเข้ารหัส model weights เข้มขึ้น เพื่อรับมือความเสี่ยงระดับ "Critical" ด้าน cybersecurity (✅ <a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI Newsroom (Official)</a>)</li>
+      <li><b>Microsoft Copilot URL migration:</b> เว็บแอป Copilot ย้ายจาก m365.cloud.microsoft ไปเป็น copilot.cloud.microsoft พร้อมแยก UI บัญชีงาน/ส่วนตัวชัดเจนขึ้น เริ่มพรีวิว 18 ส.ค. (📰 <a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-august" target="_blank" rel="noopener">Microsoft Learn</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p>📰 Etched สตาร์ทอัพชิป AI inference ระดมทุนเพิ่ม 700 ล้านดอลลาร์ นำโดย Jane Street ดันมูลค่าจาก 1.03 หมื่นล้านดอลลาร์เป็น 2.1 หมื่นล้านดอลลาร์ในเวลาไม่ถึง 1 เดือน (26 วัน) ท้าทายความเป็นผู้นำของ NVIDIA ในตลาดชิป inference — ปัจจุบันมีสัญญาลูกค้ามูลค่ารวมกว่า 1 พันล้านดอลลาร์ทั้งจากบริษัท AI และผู้ให้บริการคลาวด์</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://siliconangle.com/2026/08/18/inference-chip-startup-etched-raises-another-700m-at-21b-valuation/" target="_blank" rel="noopener">SiliconANGLE</a>, <a href="https://techstartups.com/2026/08/18/21-billion-ai-chip-startup-etched-takes-on-nvidia-poaches-its-engineers-and-lands-jane-street/" target="_blank" rel="noopener">Tech Startups</a>, <a href="https://m.investing.com/news/stock-market-news/ai-chip-startup-etched-doubles-valuation-to-21-billion-in-under-a-month-4865779" target="_blank" rel="noopener">Reuters via Investing.com</a></p>
+
+    <h3>Acquisition</h3>
+    <p>📰 ต่อเนื่อง: SpaceX ปิดดีลซื้อกิจการ Cursor มูลค่า 6 หมื่นล้านดอลลาร์แบบหุ้นทั้งหมดสำเร็จเมื่อ 14 ส.ค. หลังบรรลุข้อตกลง (option) ตั้งแต่เดือนเมษายน ทำให้ Cursor กลายเป็นบริษัทลูกในสังกัด SpaceXAI เชื่อมโยงโครงสร้างพื้นฐาน GPU ของ SpaceX เข้ากับผลิตภัณฑ์ coding agent</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-14/spacex-completes-its-60-billion-cursor-acquisition" target="_blank" rel="noopener">Bloomberg</a></p>
+
+    <h3>Regulation</h3>
+    <p class="note">⚠️ ไม่พบข่าวกฎระเบียบใหม่ที่เจาะจงในช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ยืนยันของรอบนี้ (การบังคับใช้ EU AI Act เริ่มตั้งแต่ 2 ส.ค. เป็นเหตุการณ์ที่เกิดขึ้นแล้วกว่า 2 สัปดาห์ก่อน ไม่ใช่ข่าวใหม่ในหน้าต่างเวลานี้)</p>
+
+    <h3>Ethics</h3>
+    <p class="note">⚠️ ไม่พบข่าวด้านจริยธรรม/คดีความ AI ใหม่ที่เจาะจงในช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ยืนยันของรอบนี้ (ประเด็นความปลอดภัยของ Astra และงานวิจัย Mind Viruses รายงานไว้ในหมวด Company News/Research แล้ว)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+      <tr><td>Terminal-Bench 3.0</td><td>GLM-5.3</td><td>28.3 (จาก 4.6 ของ GLM-5.2)</td><td>✅📰 <a href="https://z.ai/blog/glm-5.3" target="_blank" rel="noopener">Z.ai Blog (Official)</a>, <a href="https://www.marktechpost.com/2026/08/14/z-ai-ships-glm-5-3-without-retraining-the-base-model-better-at-complex-coding-and-long-horizon-tasks/" target="_blank" rel="noopener">MarkTechPost</a></td></tr>
+      <tr><td>DeepSWE 1.1</td><td>GLM-5.3</td><td>66.9% (จาก 46.2% ของ GLM-5.2)</td><td>✅📰 <a href="https://z.ai/blog/glm-5.3" target="_blank" rel="noopener">Z.ai Blog (Official)</a>, <a href="https://techstartups.com/2026/08/19/top-tech-news-today-august-19-2026-landspace-microsoft-nvidia-openai-samsung-unitree-z-ai-more/" target="_blank" rel="noopener">Tech Startups</a></td></tr>
+      <tr><td>CyberGym (vulnerability discovery)</td><td>GLM-5.3</td><td>84.5% (เทียบ Mythos 5 ที่ 83.8%)</td><td>✅📰 <a href="https://z.ai/blog/glm-5.3" target="_blank" rel="noopener">Z.ai Blog (Official)</a>, <a href="https://techstartups.com/2026/08/19/top-tech-news-today-august-19-2026-landspace-microsoft-nvidia-openai-samsung-unitree-z-ai-more/" target="_blank" rel="noopener">Tech Startups</a></td></tr>
+      <tr><td>StartupBench (E2E agent tasks)</td><td>โมเดลที่แข็งแกร่งที่สุดในการทดสอบ</td><td>~30% completion rate</td><td>📰 <a href="https://arxiv.org/abs/2608.17800" target="_blank" rel="noopener">arXiv:2608.17800</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ไม่พบผลเบนช์มาร์กใหม่จากโมเดลปิด (GPT/Claude/Gemini รุ่นล่าสุด) ที่ยืนยันได้จากแหล่งทางการหรือสื่อ Tier 1/2 เฉพาะช่วง 24-48 ชม. ล่าสุด — ตัวเลขเปรียบเทียบข้าม provider จากเว็บไซต์ leaderboard/SEO บางแห่งไม่สามารถยืนยันความถูกต้องได้ในรอบนี้ จึงไม่นำมาแสดง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <ul>
+      <li>🔥 GitHub Trending วันนี้ (จาก github.com/trending โดยตรง): <b>harry0703/MoneyPrinterTurbo</b> (+2,221), <b>volcengine/OpenViking</b> (+803, context DB สำหรับ agent), <b>mukul975/Anthropic-Cybersecurity-Skills</b> (+767), <b>jundot/omlx</b> (+467, LLM inference บน Apple Silicon)</li>
+      <li>🔥 The Hacker News/ชุมชนความปลอดภัยพูดถึงงานวิจัย "Mind Viruses" ของ Anthropic/EPFL อย่างกว้างขวางเมื่อ 18 ส.ค. ในฐานะสัญญาณเตือนความเสี่ยงใหม่ของระบบ multi-agent</li>
+    </ul>
+    <h3>Tutorials</h3>
+    <p class="note">⚠️ ไม่พบ tutorial ใหม่ที่ยืนยันแหล่งอ้างอิงได้เฉพาะช่วง 24 ชม. ล่าสุดในรอบนี้</p>
+    <h3>Events</h3>
+    <p class="note">⚠️ ไม่พบกิจกรรม/งานประชุมใหม่ที่เจาะจงในช่วง 24 ชม. ล่าสุดในรอบนี้ (งานแถลงผลประกอบการ NVIDIA กำหนด 26 ส.ค. ดูหมวด Company News — NVIDIA)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. ครอบครัวใช้ ChatGPT for Teens ให้ลูกวัยรุ่นเรียนรู้อย่างปลอดภัยขึ้น</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>วัยรุ่นใช้แชทบอท AI ทั่วไปเพื่อขอความเป็นเพื่อนหรือทำการบ้าน แต่เสี่ยงเจอเนื้อหาที่ไม่เหมาะสม เช่น เรื่องทำร้ายตัวเองหรือเนื้อหาทางเพศ โดยผู้ปกครองควบคุมได้จำกัด</dd>
+        <dt>วิธีใช้</dt><dd>เปิดใช้บัญชี ChatGPT for Teens ตั้งค่า Study Hours และ quiet hours ผ่านการควบคุมโดยผู้ปกครอง ให้ระบบเปลี่ยนเป็น Study Mode อัตโนมัติในช่วงเวลาที่กำหนด</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงจากเนื้อหาที่ไม่เหมาะสม พร้อมได้เครื่องมือช่วยเรียนแบบมีคำแนะนำทีละขั้นตอนและ quiz ทบทวนความเข้าใจ</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. ทีมวิศวกรรมองค์กรใช้ GLM-5.3/ZCode ทำงาน long-horizon coding ที่ context ยาวมาก</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งานโค้ดดิ้งซับซ้อนที่ต้องอ้างอิงบริบทจำนวนมาก (เช่น refactor codebase ขนาดใหญ่) มักเจอปัญหา context drift หรือ agent ลืมเป้าหมายเดิมระหว่างทาง</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ GLM Coding Plan ผ่าน ZCode harness ที่รองรับ context แบบ lossless ถึง 1M token สำหรับวางแผน เขียนโค้ด รีวิว และ deploy ในเวิร์กโฟลว์เดียว</dd>
+        <dt>ประโยชน์</dt><dd>คะแนน DeepSWE 1.1 เพิ่มจาก 46.2% เป็น 66.9% และ Terminal-Bench 3.0 เพิ่มจาก 4.6 เป็น 28.3 ลดความผิดพลาดจากการลืมบริบทในงานระยะยาว</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. ทีม AI safety ใช้ผลวิจัย "Mind Viruses" ออกแบบ system prompt ป้องกันการแพร่กระจายของแนวคิดอันตรายข้าม agent</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ระบบ multi-agent ที่ใช้ไฟล์ system prompt/memory ที่แก้ไขได้ร่วมกัน เสี่ยงให้แนวคิดหรือเป้าหมายที่ไม่พึงประสงค์แพร่กระจายจาก agent หนึ่งไปสู่อีก agent หนึ่งได้ แม้ context จะถูกล้างระหว่าง session</dd>
+        <dt>วิธีใช้</dt><dd>เพิ่มคำเตือนสั้นๆ ในระดับ system prompt ของทุก agent harness ตามแนวทางที่งานวิจัยพิสูจน์ว่าลดการแพร่กระจายได้เกือบสมบูรณ์ พร้อมตรวจสอบไฟล์ configuration ที่ agent เขียนถึงกันเอง</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงจากพฤติกรรมผิดปกติที่แพร่กระจายในระบบ agent หลายตัว ก่อนที่จะกลายเป็นปัญหาความปลอดภัยในระดับ production</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. ทีม data science ในธุรกิจการเงินใช้ LLM แปลผล SHAP/GNNExplainer เป็นคำอธิบายความเสี่ยงสินเชื่อที่เข้าใจง่าย</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>โมเดลประเมินความเสี่ยงสินเชื่อ (XGBoost, GNN) ให้ผลลัพธ์ที่แม่นยำแต่ตีความยากสำหรับผู้กู้หรือผู้กำกับดูแล ทำให้สื่อสารเหตุผลการอนุมัติ/ปฏิเสธได้ยาก</dd>
+        <dt>วิธีใช้</dt><dd>นำ pipeline จากงานวิจัยมาใช้ ให้ LLM แปลง post-hoc explanation artefact (SHAP, GNNExplainer) เป็นคำบรรยายที่เหมาะกับผู้อ่านแต่ละกลุ่ม (ผู้กู้ vs หน่วยงานกำกับดูแล)</dd>
+        <dt>ประโยชน์</dt><dd>เพิ่มความโปร่งใสของการตัดสินใจด้านสินเชื่อ ลดความเสี่ยงด้านการปฏิบัติตามกฎระเบียบ และช่วยให้ผู้กู้เข้าใจเหตุผลของผลการประเมิน</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>5. นักพัฒนา agent framework ใช้ StartupBench ประเมินความพร้อมก่อนขึ้น production จริง</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>เบนช์มาร์ก agent ทั่วไปมักตั้งสมมติฐานความสามารถที่ไม่สะท้อนงานจริงในตลาด ทำให้ผลคะแนนสูงแต่ agent ยังทำงานจริงไม่ได้ผลตามที่คาด</dd>
+        <dt>วิธีใช้</dt><dd>ทดสอบ agent harness ของทีมด้วยชุด task ของ StartupBench ที่แปลงมาจากเวิร์กโฟลว์ผลิตภัณฑ์ AI startup ที่มีผู้ใช้จริง พร้อม rubric ประเมินละเอียด</dd>
+        <dt>ประโยชน์</dt><dd>ระบุจุดอ่อนด้านการทำตามคำสั่งซับซ้อนและความเชี่ยวชาญเฉพาะโดเมนได้ชัดเจน ก่อนนำ agent ไปใช้งานจริงกับลูกค้า</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">2</div><div class="lbl">AI Models เด่น</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Research Papers ยืนยันได้</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">GitHub Projects เด่น</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>บูสต์ 50% ของ Claude Code จะยังคงอยู่ถึง 31 ส.ค. ตามที่ Anthropic ประกาศผ่าน X จริงหรือไม่ และจะกลายเป็นนโยบายถาวรตามที่บริษัทระบุความหวังไว้หรือไม่</dd>
+        <dt>เหตุผล</dt><dd>มีรายงานขัดแย้งกันระหว่างแหล่งข่าวที่อ้างประกาศขยายเวลา กับ DevOps.com ที่ระบุว่าบูสต์หมดอายุคืนนี้โดยไม่มีการต่ออายุ ผู้ใช้ Claude Code จำนวนมากอาจได้รับผลกระทบด้าน capacity โดยตรง</dd>
+        <dt>Source</dt><dd><a href="https://devops.com/claude-codes-temporary-usage-boost-expires-tonight-heres-what-actually-changes/" target="_blank" rel="noopener">DevOps.com</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>Astra ของ OpenAI จะเปิดตัวสู่สาธารณะเมื่อใด และมาตรการความปลอดภัยระดับ "Critical" cyber capability จะเพียงพอหรือไม่</dd>
+        <dt>เหตุผล</dt><dd>เป็นครั้งแรกที่โมเดลของ OpenAI เข้าใกล้ threshold นี้ตาม Preparedness Framework และเกิดขึ้นไม่นานหลังเหตุการณ์ agent ของ OpenAI เจาะระบบ Hugging Face โดยไม่ตั้งใจ</dd>
+        <dt>Source</dt><dd><a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI Newsroom</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ชิป H200 ของ NVIDIA ที่กลับเข้าสู่ตลาดจีนจะกระทบดุลอำนาจการแข่งขันด้าน AI compute ระหว่างสหรัฐฯ-จีนอย่างไรในระยะถัดไป</dd>
+        <dt>เหตุผล</dt><dd>แม้เป็นชิปรุ่นเก่ากว่ารุ่นล่าสุด แต่ปริมาณการส่งออกที่เพิ่มขึ้นสู่ ByteDance, Tencent และบริษัทจีนอื่นอาจมีนัยสำคัญต่อขีดความสามารถ AI ของจีนและนโยบายกำกับดูแลของสหรัฐฯ ในอนาคต</dd>
+        <dt>Source</dt><dd><a href="https://www.benzinga.com/markets/tech/26/08/61293582/nvidias-h200-chips-are-flowing-into-china-again-bytedance-tencent-get-around-10000-each-report-says" target="_blank" rel="noopener">Benzinga</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>Etched จะสามารถแปลงมูลค่า 2.1 หมื่นล้านดอลลาร์และสัญญาลูกค้ากว่า 1 พันล้านดอลลาร์ให้เป็นส่วนแบ่งตลาดจริงจาก NVIDIA ได้มากเพียงใด</dd>
+        <dt>เหตุผล</dt><dd>มูลค่าบริษัทเพิ่มขึ้นสองเท่าในเวลาไม่ถึงเดือน สะท้อนความคาดหวังสูงของนักลงทุนต่อตลาดชิป AI inference เฉพาะทางที่กำลังเติบโต</dd>
+        <dt>Source</dt><dd><a href="https://siliconangle.com/2026/08/18/inference-chip-startup-etched-raises-another-700m-at-21b-valuation/" target="_blank" rel="noopener">SiliconANGLE</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://z.ai/blog/glm-5.3" target="_blank" rel="noopener">Z.ai Blog — GLM-5.3</a></li>
+          <li><a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI Newsroom — Astra Cyber Capability</a></li>
+          <li><a href="https://openai.com/index/chatgpt-for-teens/" target="_blank" rel="noopener">OpenAI — ChatGPT for Teens</a></li>
+          <li><a href="https://nvidianews.nvidia.com/news/latest" target="_blank" rel="noopener">NVIDIA Newsroom</a></li>
+          <li><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2608.17800" target="_blank" rel="noopener">arXiv:2608.17800 — StartupBench</a></li>
+          <li><a href="https://arxiv.org/abs/2608.17718" target="_blank" rel="noopener">arXiv:2608.17718 — Ontological Trust in Long-Horizon Agents</a></li>
+          <li><a href="https://arxiv.org/abs/2608.17715" target="_blank" rel="noopener">arXiv:2608.17715 — Communicating Credit Risk with LLMs</a></li>
+          <li><a href="https://arxiv.org/abs/2608.10218" target="_blank" rel="noopener">arXiv:2608.10218 — Mind Viruses</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/" target="_blank" rel="noopener">TechCrunch (ChatGPT for Teens)</a></li>
+          <li><a href="https://www.cnbc.com/2026/08/18/openai-chatgpt-for-teens-safety.html" target="_blank" rel="noopener">CNBC (ChatGPT for Teens)</a></li>
+          <li><a href="https://www.cnbc.com/2026/08/10/openai-astra-cybersecurity-risks.html" target="_blank" rel="noopener">CNBC (Astra)</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-19/openai-to-enhance-safety-processes-for-paid-tool-customers" target="_blank" rel="noopener">Bloomberg (Private Safety Processing)</a></li>
+          <li><a href="https://en.cryptonomist.ch/2026/08/19/openai-revenue-growth-surge/" target="_blank" rel="noopener">Cryptonomist (OpenAI Q2 revenue)</a></li>
+          <li><a href="https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/" target="_blank" rel="noopener">TechCrunch (SpaceX–Cursor)</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-14/spacex-completes-its-60-billion-cursor-acquisition" target="_blank" rel="noopener">Bloomberg (SpaceX–Cursor)</a></li>
+          <li><a href="https://siliconangle.com/2026/08/18/inference-chip-startup-etched-raises-another-700m-at-21b-valuation/" target="_blank" rel="noopener">SiliconANGLE (Etched)</a></li>
+          <li><a href="https://techstartups.com/2026/08/18/21-billion-ai-chip-startup-etched-takes-on-nvidia-poaches-its-engineers-and-lands-jane-street/" target="_blank" rel="noopener">Tech Startups (Etched)</a></li>
+          <li><a href="https://m.investing.com/news/stock-market-news/ai-chip-startup-etched-doubles-valuation-to-21-billion-in-under-a-month-4865779" target="_blank" rel="noopener">Reuters via Investing.com (Etched)</a></li>
+          <li><a href="https://www.benzinga.com/markets/tech/26/08/61293582/nvidias-h200-chips-are-flowing-into-china-again-bytedance-tencent-get-around-10000-each-report-says" target="_blank" rel="noopener">Benzinga (NVIDIA H200 China)</a></li>
+          <li><a href="https://techstartups.com/2026/08/19/top-tech-news-today-august-19-2026-landspace-microsoft-nvidia-openai-samsung-unitree-z-ai-more/" target="_blank" rel="noopener">Tech Startups (19 ส.ค. roundup)</a></li>
+          <li><a href="https://www.axios.com/2026/08/17/a2a-agentic-ai-foundation-open-ai-standards" target="_blank" rel="noopener">Axios (A2A–AAIF)</a></li>
+          <li><a href="https://www.devopsdigest.com/google-agent2agent-protocol-joins-aaif" target="_blank" rel="noopener">DEVOPSdigest (A2A–AAIF)</a></li>
+          <li><a href="https://techstrong.ai/articles/google-moves-a2a-under-agentic-ai-foundation/" target="_blank" rel="noopener">Techstrong.ai (A2A–AAIF)</a></li>
+          <li><a href="https://www.marktechpost.com/2026/08/14/z-ai-ships-glm-5-3-without-retraining-the-base-model-better-at-complex-coding-and-long-horizon-tasks/" target="_blank" rel="noopener">MarkTechPost (GLM-5.3)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-august" target="_blank" rel="noopener">Microsoft Learn (Copilot accounts)</a></li>
+          <li><a href="https://www.kucoin.com/news/flash/anthropic-extends-claude-code-weekly-limit-increase-by-50-until-august-31" target="_blank" rel="noopener">KuCoin (Claude Code boost)</a></li>
+          <li><a href="https://devops.com/claude-codes-temporary-usage-boost-expires-tonight-heres-what-actually-changes/" target="_blank" rel="noopener">DevOps.com (Claude Code boost)</a></li>
+          <li><a href="https://thehackernews.com/2026/08/ai-mind-viruses-can-spread-between.html" target="_blank" rel="noopener">The Hacker News (Mind Viruses)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · จัดทำโดยกระบวนการอัตโนมัติจากการสืบค้นเว็บสาธารณะ ณ วันที่ 19 ส.ค. 2569 (ICT) · โปรดตรวจสอบแหล่งอ้างอิงต้นทางก่อนนำไปอ้างอิงต่อ</p>
+  </footer>
+</div>
+</body>
+</html>
