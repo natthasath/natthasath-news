@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-20</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 20 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-20</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 20 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> รอบนี้ WebFetch ไปยัง guidelight.ai ถูกบล็อกโดย network egress proxy ในความพยายามครั้งแรก จึงใช้ WebSearch พร้อม site: query เพื่อดึงเนื้อหาผ่านผลการค้นหาแทน (ตัวเลขคะแนนละเอียดรายบริษัทของ Guidelight ไม่สามารถเปิดหน้าต้นทางยืนยันได้โดยตรงในรอบนี้ จึงรายงานเฉพาะภาพรวมที่ผลค้นหาระบุตรงกัน) ข่าวหลายรายการเป็นการ "ประกาศ/พรีวิว" ที่จะเริ่มมีผลจริงในภายหลัง (เช่น ChatGPT Ads เริ่ม 24 ส.ค., white paper ของ Private Safety Processing กำหนด ก.ย.) ได้ระบุกำหนดการไว้ในเนื้อหาแต่ละรายการ ข่าวบางรายการ (Astra frontier-training pause, Koray Kavukcuoglu, MCP 2026-07-28 spec) เริ่มต้นก่อนช่วง 24 ชม. แต่ยังมีพัฒนาการ/ถูกอ้างอิงต่อเนื่องถึงวันนี้ จึงติดป้าย "ต่อเนื่อง" หมวด Benchmark ไม่พบผลทดสอบโมเดลใหม่เฉพาะช่วง 24 ชม. ที่ผ่านเกณฑ์ครบทุกฟิลด์ จึงแสดงเฉพาะผลการประเมิน Control ของ Guidelight พร้อมระบุข้อจำกัด</b>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>✅ OpenAI พรีวิว "Private Safety Processing" ระบบตรวจจับการใช้งานในทางที่ผิดข้ามเซสชันโดยยังคงการันตี zero data retention สำหรับลูกค้า API/องค์กร พร้อมประกาศขยาย ChatGPT Ads สู่ 31 ตลาดยุโรปเริ่ม 24 ส.ค. และยังคงระงับการเทรน frontier RL run ใหญ่ที่สุดต่อเนื่อง หลัง Astra อาจแตะเกณฑ์ "Critical" ด้านความสามารถโจมตีไซเบอร์ ✅ Anthropic เปิด Files API และ Admin API user-management endpoints เป็น GA บน Claude API พร้อมอัปเดต Claude Code หลายรายการ (default model setting, cross-session idle notifications, macOS sandbox) ท่ามกลางรายงานเหตุขัดข้องบางช่วงเมื่อ 19 ส.ค. 📰 Meta เปิดตัวแอป Meta AI บน Mac ที่เชื่อมต่อ Instagram/Facebook/Google Workspace และมีรายงานว่ากลายเป็นหนึ่งในลูกค้า AI รายใหญ่ที่สุดของ Microsoft ผ่าน Azure 📰 องค์กรอิสระ Guidelight AI Standards เผยแพร่ผลประเมิน "Control" ครั้งแรกของ 5 บริษัท frontier (Anthropic, Google, Meta, OpenAI, xAI) พบว่าไม่มีบริษัทใดได้คะแนนเกิน 3 จาก 5 ในทุกหลักปฏิบัติ สะท้อนว่าแนวปฏิบัติควบคุม AI ยังตามหลังขีดความสามารถ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+      <tr><td>Astra <span class="badge">ต่อเนื่อง</span></td><td>OpenAI</td><td>Upcoming frontier model (ยังไม่เปิดตัว)</td><td>ผลประเมินภายในชี้ว่าอาจแตะเกณฑ์ "Critical" ด้านความสามารถโจมตีไซเบอร์ตาม Preparedness Framework (ความสามารถ agentic coding / cybersecurity ขั้นสูง) — ก่อนหน้านี้มีรายงานว่าแก้โจทย์คณิตศาสตร์ที่ยังไม่มีคำตอบได้ 10 ข้อ</td><td>⚠️ ยังไม่เปิดตัว — OpenAI ระงับ frontier RL run ใหญ่ที่สุดชั่วคราวเพื่อยกระดับมาตรฐาน alignment/security/monitoring</td><td>✅ <a href="https://openai.com/index/pacing-model-development-cyber-capabilities/" target="_blank" rel="noopener">OpenAI (Official)</a>, 📰 <a href="https://www.axios.com/2026/08/18/openai-pause-astra-preparedness-framework" target="_blank" rel="noopener">Axios</a></td></tr>
+      <tr><td>GPT-5.6 Luna <span class="badge">ต่อเนื่อง</span></td><td>OpenAI</td><td>LLM ราคาประหยัดสำหรับงานปริมาณมาก</td><td>มีรายงานว่าราคา API ลดลงราว 80% เหลือประมาณ $0.20 ต่อล้านโทเคน ทำให้การนำ AI ไปใช้อัตโนมัติในธุรกิจถูกลงมาก</td><td>📰 ให้บริการผ่าน API (รายงานสื่อ ยังไม่พบหน้าราคาทางการยืนยันในรอบนี้)</td><td>📰 <a href="https://kraviona.com/blog/latest-ai-news-august-2026" target="_blank" rel="noopener">Kraviona</a>, <a href="https://releasebot.io/updates/openai" target="_blank" rel="noopener">Releasebot</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ รอบ 24 ชม. นี้ไม่พบการเปิดตัวโมเดล frontier ตัวใหม่ที่พร้อมใช้งานทั่วไป รายการข้างต้นเป็นโมเดลที่ยังไม่เปิดตัว (Astra) และการปรับราคาที่มาจากรายงานสื่อ (GPT-5.6 Luna) — โปรดตรวจสอบแหล่งทางการก่อนอ้างอิงตัวเลขราคา</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+      <tr><td>REDAgentBench: Executable Red Teaming and Faithful Measurement of LLM Agent Systems <span class="badge">ต่อเนื่อง</span></td><td>ผู้เขียนตามที่ระบุในหน้า arXiv (submitted 11 ส.ค. 2569)</td><td>เบนช์มาร์ก red-teaming ที่รันได้จริงสำหรับระบบ LLM agent ครอบคลุม 1,661 เคสบน 5 service surface</td><td>📰 <a href="https://arxiv.org/abs/2608.10669" target="_blank" rel="noopener">arXiv:2608.10669</a></td></tr>
+      <tr><td>Benchmarking LLM Judges for Mobile Agent Evaluation <span class="badge">ต่อเนื่อง</span></td><td>ผู้เขียนตามที่ระบุในหน้า arXiv (submitted 11 ส.ค. 2569)</td><td>ประเมิน LLM ในบทบาท "ผู้ตัดสิน" สำหรับ mobile agent พบว่า baseline judge ที่ใช้ screenshot แบบสุ่มแข่งขันได้กับวิธีเฉพาะทาง — LLM backbone เป็นตัวขับหลัก</td><td>📰 <a href="https://arxiv.org/abs/2608.11434" target="_blank" rel="noopener">arXiv:2608.11434</a></td></tr>
+      <tr><td>GABench: A Comprehensive Benchmark for Evaluating LLM Agents on Graph Analysis Tasks <span class="badge">ต่อเนื่อง</span></td><td>ผู้เขียนตามที่ระบุในหน้า arXiv (submitted 3 ส.ค. 2569)</td><td>เบนช์มาร์กครอบคลุมสำหรับประเมิน LLM agent บนงานวิเคราะห์กราฟ</td><td>📰 <a href="https://arxiv.org/abs/2608.01684" target="_blank" rel="noopener">arXiv:2608.01684</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ ไม่สามารถเปิดหน้า arxiv.org โดยตรงเพื่ออ่านบทคัดย่อ/รายชื่อผู้เขียนฉบับเต็มในรอบนี้ รายละเอียดข้างต้นยืนยันหัวข้อ/หมายเลข arXiv ผ่านผลการค้นเว็บที่อ้างอิงหน้า arXiv เดียวกัน งานเหล่านี้เผยแพร่ในช่วงต้น–กลางเดือน ส.ค. และยังเป็นประเด็นที่ถูกอ้างอิงต่อเนื่อง (ป้าย "ต่อเนื่อง")</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+      <tr><td>harry0703/MoneyPrinterTurbo</td><td>112,779 (+2,774 วันนี้)</td><td>Python</td><td>เวิร์กโฟลว์ขับเคลื่อนด้วย AI สร้างวิดีโอสั้น HD จากหัวข้อหรือคำค้น ติดอันดับ GitHub Trending วันนี้</td><td>✅ <a href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>mattpocock/skills</td><td>226,041 (+2,267 วันนี้)</td><td>Shell</td><td>ชุด "skills" สำหรับ AI coding agent (จาก .agents directory ของผู้พัฒนา) กำลังมาแรงบน GitHub Trending</td><td>✅ <a href="https://github.com/mattpocock/skills" target="_blank" rel="noopener">GitHub</a></td></tr>
+      <tr><td>volcengine/OpenViking</td><td>30,934 (+955 วันนี้)</td><td>Python</td><td>Context database แบบ self-evolving สำหรับ AI agent รวม agent memory, knowledge RAG และ skills ไว้ด้วยกัน</td><td>✅ <a href="https://github.com/volcengine/OpenViking" target="_blank" rel="noopener">GitHub</a></td></tr>
+    </table>
+    </div>
+    <p class="note">ที่มาอันดับ Trending: อ่านจากหน้า <a href="https://github.com/trending" target="_blank" rel="noopener">github.com/trending</a> (daily) โดยตรง ณ เวลาที่จัดทำรายงาน จำนวนดาวเป็นค่า ณ ขณะจัดทำและเปลี่ยนแปลงตลอดวัน</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Description</th><th>Pricing</th><th>Source</th></tr>
+      <tr><td>Meta AI — Mac Desktop App</td><td>แอปเดสก์ท็อปบน Mac เชื่อมต่อ Instagram/Facebook, แคมเปญโฆษณา Meta และ Google Workspace (inbox/calendar/docs) วางตำแหน่งเป็นเครื่องมือสำหรับครีเอเตอร์/SMB วางแผนคอนเทนต์และดูผลโฆษณาในที่เดียว</td><td>ไม่ระบุค่าบริการชัดเจน (หมายเหตุความเป็นส่วนตัว: ข้อมูลธุรกิจอาจถูกใช้เทรนโมเดล/ยิงแอดหากไม่เปิด Incognito Mode)</td><td>📰 <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly</a></td></tr>
+    </table>
+    </div>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+      <tr><td>Claude Code</td><td>เพิ่ม default model setting, cross-session idle notifications และ macOS sandbox protection ที่แข็งแกร่งขึ้น พร้อมปรับปรุง auto mode, Remote Control, startup speed และ VS Code screen reader support</td><td>📰 <a href="https://releasebot.io/updates/anthropic/claude-code" target="_blank" rel="noopener">Releasebot — Claude Code</a></td></tr>
+      <tr><td>Claude API (Files API)</td><td>Files API เป็น GA แล้ว — เรียก /v1/files และอ้างอิงไฟล์ใน Messages API ได้โดยไม่ต้องใส่ beta header files-api-2025-04-14 อีกต่อไป</td><td>✅ <a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">Claude Platform Release Notes (Official)</a></td></tr>
+      <tr><td>OpenAI ChatGPT Ads</td><td>ประกาศขยายโฆษณาสู่ 31 ตลาดยุโรป เริ่ม 24 ส.ค. (แสดงเฉพาะผู้ใช้ Free และ Go; Plus/Pro/Enterprise ไม่มีโฆษณา) โฆษณาแยกออกจากคำตอบชัดเจน และผู้ลงโฆษณาไม่เข้าถึงประวัติแชท</td><td>✅ <a href="https://openai.com/index/chatgpt-ads-expands-across-europe/" target="_blank" rel="noopener">OpenAI (Official)</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>✅ พรีวิว <b>Private Safety Processing</b> (19 ส.ค.) สถาปัตยกรรมความเป็นส่วนตัวที่ตรวจจับรูปแบบการใช้งานในทางที่ผิด "ข้ามหลายการโต้ตอบ" โดยเมื่อระบบอัตโนมัติตั้งค่าสถานะ OpenAI จะได้รับเพียงสัญญาณแคบ ๆ ที่ระบุ "หมวดหมู่ของความกังวล" เท่านั้น ไม่มี prompt หรือ response แนบมาด้วย — ปัจจุบันใช้กับลูกค้า enterprise/API ที่เข้าเกณฑ์ (ไม่รวมผู้ใช้ ChatGPT ทั่วไป) กำลังทดสอบกับลูกค้ากลุ่มเล็ก มีแผนขยายวงกว้างและออก technical white paper ในเดือน ก.ย. ✅ ต่อเนื่อง: ยังคงระงับ frontier RL run ใหญ่ที่สุดหลัง Astra อาจแตะเกณฑ์ "Critical" ด้านไซเบอร์ ✅ ประกาศขยาย ChatGPT Ads สู่ 31 ตลาดยุโรปเริ่ม 24 ส.ค.</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI — Private Safety Processing (Official)</a>, ✅ <a href="https://openai.com/index/pacing-model-development-cyber-capabilities/" target="_blank" rel="noopener">OpenAI — Pacing Model Development (Official)</a>, 📰 <a href="https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.axios.com/2026/08/19/openai-previews-zero-retention-safety-system-as-anthropic-requires-data-logs" target="_blank" rel="noopener">Axios</a></p>
+
+    <h3>Anthropic</h3>
+    <p>✅ เปิด <b>Files API เป็น GA</b> บน Claude API และ Admin API user-management endpoints สำหรับองค์กร Claude Enterprise (claude.ai) เป็น GA พร้อมอัปเดต Claude Code หลายรายการ (default model setting, cross-session idle notifications, macOS sandbox) และขยายโบนัสการใช้งานรายสัปดาห์ +50% สำหรับผู้ใช้ Claude Code ต่อเนื่องถึง 19 ส.ค. 📰 มีรายงานเหตุขัดข้องบางช่วงเมื่อ 19 ส.ค. (ผู้ใช้จำนวนหนึ่งแจ้งผ่าน DownDetector)</p>
+    <p class="note">แหล่งอ้างอิง: ✅ <a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">Claude Platform Release Notes (Official)</a>, 📰 <a href="https://releasebot.io/updates/anthropic/claude-developer-platform" target="_blank" rel="noopener">Releasebot — Developer Platform</a>, <a href="https://releasebot.io/updates/anthropic/claude-code" target="_blank" rel="noopener">Releasebot — Claude Code</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>📰 ต่อเนื่อง: <b>Koray Kavukcuoglu</b> ขึ้นเป็นหัวหน้า DeepMind หน่วย AI ของ Google รายงานตรงต่อ CEO Sundar Pichai ดูแลการพัฒนาโมเดล Gemini, งานวิจัย frontier AI และทีมแอป/นักพัฒนา Gemini (รายงานราว 12 ส.ค.) ท่ามกลางการแข่งขันด้าน coding ที่ทวีความเข้มข้นกับ OpenAI และ Anthropic</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html" target="_blank" rel="noopener">CNBC</a>, ✅ <a href="https://deepmind.google/blog/" target="_blank" rel="noopener">Google DeepMind Blog (Official)</a></p>
+
+    <h3>Meta</h3>
+    <p>📰 เปิดตัว <b>แอป Meta AI บน Mac</b> (19 ส.ค.) เชื่อมต่อ Instagram/Facebook, แคมเปญโฆษณา Meta และ Google Workspace วางตำแหน่งเป็นเครื่องมือครีเอเตอร์/SMB — คอนเนกเตอร์เดียวกันกำลังทยอยไปยังแอปมือถือและเว็บ (มีหมายเหตุความเป็นส่วนตัวเรื่องการนำข้อมูลธุรกิจไปเทรน/ยิงแอดหากไม่เปิด Incognito Mode)</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly (AI News Today, 19 ส.ค.)</a></p>
+
+    <h3>Microsoft</h3>
+    <p>📰 มีรายงาน (Bloomberg, 20 ส.ค.) ว่า <b>Meta กลายเป็นหนึ่งในลูกค้า AI รายใหญ่ที่สุดของ Microsoft</b> โดยใช้จ่ายหลักร้อยล้านดอลลาร์ต่อปีเพื่อเข้าถึงโมเดล AI ผ่านบริการคลาวด์ Azure</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.bloomberg.com/news/articles/2026-08-20/meta-has-quietly-become-one-of-microsoft-s-largest-ai-customers" target="_blank" rel="noopener">Bloomberg</a></p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">⚠️ ไม่พบข่าว NVIDIA ที่เจาะจงและผ่านเกณฑ์ยืนยันเฉพาะช่วง 24 ชม. ล่าสุดในรอบนี้ (กำหนดแถลงผลประกอบการไตรมาส 2 ปีงบประมาณ 2570 วันที่ 26 ส.ค. — เป็นกำหนดการล่วงหน้า)</p>
+
+    <h3>Amazon</h3>
+    <p class="note">⚠️ ไม่พบข่าว Amazon/AWS ที่เจาะจงในช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ยืนยันของรอบนี้</p>
+
+    <h3>Startup</h3>
+    <p>📰 รอบการระดมทุนวันที่ 19 ส.ค.: <b>Castelion</b> (สตาร์ทอัพอาวุธความเร็วเหนือเสียง) ปิด Series C กว่า 1 พันล้านดอลลาร์ ที่มูลค่ากิจการราว 1.3 หมื่นล้านดอลลาร์; <b>Rillet</b> (ซอฟต์แวร์บัญชี) ระดม 100 ล้านดอลลาร์ที่มูลค่า 1 พันล้านดอลลาร์; ในภาพรวมเดือน ส.ค. มีดีลใหญ่ด้าน AI infrastructure เช่น <b>Fireworks AI</b> Series D 1.505 พันล้านดอลลาร์ และ <b>Together AI</b> Series C 800 ล้านดอลลาร์</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://techstartups.com/2026/08/19/venture-capital-startup-funding-roundup-august-19-2026-andreessen-horowitz-battery-ventures-iconiq-jpmorgan-chase-prosus-more/" target="_blank" rel="noopener">Tech Startups</a>, <a href="https://blog.mean.ceo/ai-startup-funding-news-august-2026/" target="_blank" rel="noopener">mean.ceo (AI Funding, ส.ค.)</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>Claude Files API GA:</b> เรียก /v1/files และอ้างอิงไฟล์ที่อัปโหลดใน Messages API ได้โดยไม่ต้องใส่ beta header อีกต่อไป (✅ <a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">Claude Platform (Official)</a>)</li>
+      <li><b>OpenAI Private Safety Processing:</b> สถาปัตยกรรมตรวจจับ misuse ข้ามการโต้ตอบโดยคง zero data retention สำหรับ enterprise/API — white paper กำหนด ก.ย. (✅ <a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI (Official)</a>)</li>
+      <li><b>MCP 2026-07-28 Specification <span class="badge">ต่อเนื่อง</span>:</b> spec ใหม่ย้ายไป stateless core ปลดล็อก horizontal scaling บน HTTP มาตรฐาน, เพิ่ม Multi Round-Trip Requests, header-based routing, cacheable list results และ authorization hardening; deprecate Roots/Sampling/Logging และ HTTP+SSE transport (มี offramp 12 เดือน) — Tier 1 SDK (TS/Python) ทะลุ 1 พันล้านดาวน์โหลดสะสม (📰 <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">MCP Blog</a>)</li>
+      <li><b>Claude Code:</b> เพิ่ม default model setting, cross-session idle notifications, macOS sandbox protection (📰 <a href="https://releasebot.io/updates/anthropic/claude-code" target="_blank" rel="noopener">Releasebot</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p>📰 การระดมทุน AI เดือน ส.ค. ยังร้อนแรง: ดีลใหญ่รวม Fireworks AI (Series D 1.505 พันล้านดอลลาร์) และ Together AI (Series C 800 ล้านดอลลาร์) ด้าน AI infrastructure ขณะที่รอบวันที่ 19 ส.ค. มี Castelion ปิด Series C กว่า 1 พันล้านดอลลาร์ที่มูลค่าราว 1.3 หมื่นล้านดอลลาร์ ภาพรวมตลาด AI funding ปี 2569 ทะลุ 4.07 แสนล้านดอลลาร์ในเวลาเพียง 6 เดือน แซงยอดทั้งปี 2568 (2.64 แสนล้านดอลลาร์)</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://techstartups.com/2026/08/19/venture-capital-startup-funding-roundup-august-19-2026-andreessen-horowitz-battery-ventures-iconiq-jpmorgan-chase-prosus-more/" target="_blank" rel="noopener">Tech Startups</a>, <a href="https://news.crunchbase.com/ai/biggest-funding-rounds-databricks-river-ai-data-energy/" target="_blank" rel="noopener">Crunchbase News</a></p>
+
+    <h3>Acquisition</h3>
+    <p class="note">⚠️ ไม่พบดีลซื้อกิจการใหม่ที่ประกาศเฉพาะช่วง 24 ชม. ล่าสุดและผ่านเกณฑ์ยืนยันของรอบนี้ (ดีล Stripe–OpenRouter และ Anthropic–Decart ที่รายงานก่อนหน้ายังไม่มีการยืนยันปิดดีลอย่างเป็นทางการเพิ่มเติมในรอบนี้)</p>
+
+    <h3>Regulation</h3>
+    <p>📰 ต่อเนื่อง: Anthropic นำ machine-readable watermark มาใช้กับคอนเทนต์ที่สร้างด้วย AI เพื่อให้สอดคล้องกับข้อกำหนดความโปร่งใสของ EU AI Act โดยโมเดล Claude ใหม่ที่เปิดตัวใน EU ตั้งแต่ 2 ส.ค. 2569 ต้องรองรับการทำเครื่องหมายนี้</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://www.aidapted.ro/en/articles/ai-news-of-the-day-august-20-2026/" target="_blank" rel="noopener">AIdapted (AI News, 20 ส.ค.)</a></p>
+
+    <h3>Ethics</h3>
+    <p>📰 องค์กรอิสระ <b>Guidelight AI Standards</b> เผยแพร่ผลประเมิน "Control" ครั้งแรก (ข้อมูลถึง 18 ส.ค.) ของ 5 บริษัท frontier (Anthropic, Google, Meta, OpenAI, xAI) พบว่าบนสเกล 0–5 ไม่มีบริษัทใดได้คะแนนเกิน 3 (การนำไปใช้บางส่วนอย่างมีนัยสำคัญ) ในหลักปฏิบัติใด ๆ ส่วนใหญ่อยู่ที่ 2 หรือต่ำกว่า สะท้อนว่าแนวปฏิบัติ "ควบคุม AI" ยังตามหลังขีดความสามารถ</p>
+    <p class="note">แหล่งอ้างอิง: 📰 <a href="https://guidelight.ai/blog/control-assessment-august-2026" target="_blank" rel="noopener">Guidelight AI Standards</a> (ยืนยันภาพรวมผ่านผลค้นหา — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Benchmark / Assessment</th><th>Subject</th><th>Score</th><th>Source</th></tr>
+      <tr><td>Guidelight Control Assessment (สเกล 0–5)</td><td>Anthropic, Google, Meta, OpenAI, xAI</td><td>ไม่มีบริษัทใดเกิน 3 ในทุกหลักปฏิบัติ; ส่วนใหญ่อยู่ที่ 2 หรือต่ำกว่า</td><td>📰 <a href="https://guidelight.ai/blog/control-assessment-august-2026" target="_blank" rel="noopener">Guidelight AI Standards</a></td></tr>
+    </table>
+    </div>
+    <p class="note">⚠️ รอบ 24 ชม. นี้ไม่พบผลทดสอบเบนช์มาร์กโมเดลใหม่ (เช่น SWE-Bench, AIME) ที่ผ่านเกณฑ์ครบทุกฟิลด์ (Benchmark/Model/Score/Source) ตารางข้างต้นเป็น "การประเมินด้านความปลอดภัย/การควบคุม" ระดับบริษัท ไม่ใช่คะแนนความสามารถของโมเดล และเป็นภาพรวมที่ยืนยันผ่านผลค้นหาเนื่องจากเปิดหน้าต้นทางโดยตรงไม่ได้ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <ul>
+      <li>🔥 GitHub Trending วันนี้ (จาก github.com/trending — daily): <b>harry0703/MoneyPrinterTurbo</b> (+2,774), <b>mattpocock/skills</b> (+2,267, ชุด skills สำหรับ AI agent), <b>AprilNEA/OpenLogi</b> (Rust, +1,540), <b>volcengine/OpenViking</b> (+955, context DB สำหรับ agent), <b>santifer/career-ops</b> (JavaScript, +855, แพลตฟอร์มหางานด้วย AI), <b>obra/superpowers</b> (Shell, +749, agentic skills framework)</li>
+      <li>🔥 กระแสเด่นในชุมชน AI: การเปรียบเทียบ "safety scores" ของบริษัท frontier หลัง Guidelight เผยแพร่ผลประเมิน และการถกเถียงเรื่อง ZDR/privacy ระหว่างแนวทางของ OpenAI (Private Safety Processing) กับ Anthropic (data retention)</li>
+    </ul>
+    <h3>Tutorials</h3>
+    <p class="note">⚠️ ไม่พบ tutorial ใหม่ที่ยืนยันแหล่งอ้างอิงได้เฉพาะช่วง 24 ชม. ล่าสุดในรอบนี้</p>
+    <h3>Events</h3>
+    <p class="note">กำหนดการล่วงหน้า: OpenAI ChatGPT Ads เริ่มในตลาดยุโรป 24 ส.ค. · NVIDIA แถลงผลประกอบการ 26 ส.ค. (ดูหมวด Company News)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. องค์กรที่ต้องการความเป็นส่วนตัวใช้ OpenAI Private Safety Processing เพื่อคง zero data retention</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>องค์กรในอุตสาหกรรมกำกับดูแลต้องการใช้ AI แต่ไม่ต้องการให้ prompt/response ถูกเก็บหรือให้พนักงานผู้ให้บริการเข้าถึง ขณะเดียวกันผู้ให้บริการก็ต้องตรวจจับการใช้งานในทางที่ผิด</dd>
+        <dt>วิธีใช้</dt><dd>เปิดใช้ Private Safety Processing บนบัญชี enterprise/API ที่เข้าเกณฑ์ — ระบบตรวจจับรูปแบบ misuse ข้ามการโต้ตอบ และส่งเพียง "หมวดหมู่ของความกังวล" กลับไปโดยไม่มีเนื้อหาแนบ</dd>
+        <dt>ประโยชน์</dt><dd>ได้ทั้งการปฏิบัติตามข้อกำหนด zero data retention และการควบคุมความปลอดภัยไปพร้อมกัน ลดความเสี่ยงข้อมูลรั่วไหล</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. ทีมพัฒนา AI agent ใช้ REDAgentBench ทดสอบ red-teaming ก่อนขึ้น production</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ระบบ LLM agent อาจถูกโจมตี/ชักจูงให้ทำงานผิดพลาด แต่การทดสอบความทนทานทำได้ยากและไม่เป็นมาตรฐาน</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ REDAgentBench ที่มี 1,661 เคสบน 5 service surface รัน red-teaming ที่ execute ได้จริงและวัดผลอย่างซื่อตรงกับพฤติกรรม agent</dd>
+        <dt>ประโยชน์</dt><dd>ระบุจุดอ่อนด้านความปลอดภัยของ agent ก่อนใช้งานจริง ลดความเสี่ยงถูกโจมตีในสภาพแวดล้อม production</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. ครีเอเตอร์/SMB ใช้แอป Meta AI บน Mac วางแผนคอนเทนต์และดูผลโฆษณาในที่เดียว</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การจัดการคอนเทนต์ออร์แกนิกและรีวิวผลโฆษณาต้องสลับไปมาระหว่างหลายแพลตฟอร์ม (Instagram, Facebook, อีเมล, ปฏิทิน)</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้งแอป Meta AI บน Mac เชื่อมต่อบัญชี Instagram/Facebook, แคมเปญโฆษณา Meta และ Google Workspace แล้วให้ AI ช่วยวางแผน/สรุปผลในหน้าเดียว (เปิด Incognito Mode หากไม่ต้องการให้ข้อมูลถูกใช้เทรน/ยิงแอด)</dd>
+        <dt>ประโยชน์</dt><dd>รวมเวิร์กโฟลว์คอนเทนต์และโฆษณาไว้ที่เดียว ประหยัดเวลา แต่ต้องระวังการตั้งค่าความเป็นส่วนตัว</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. ทีม MLOps ใช้ MCP 2026-07-28 stateless core ปรับ scale โครงสร้างพื้นฐาน agent</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>สถาปัตยกรรม MCP แบบเดิมที่ต้องคง connection เปิดค้างทำให้ scale แนวราบยากและต้องพึ่ง shared storage</dd>
+        <dt>วิธีใช้</dt><dd>อัปเกรดไปใช้ spec 2026-07-28 ที่เป็น stateless — แต่ละ request พกข้อมูลครบในตัว กระจายผ่าน load balancer ธรรมดาได้โดยไม่ต้องใช้ shared state</dd>
+        <dt>ประโยชน์</dt><dd>ขยายระบบบน HTTP มาตรฐานได้ง่ายขึ้น เพิ่มความน่าเชื่อถือในสภาพแวดล้อมที่มีทราฟฟิกสูง</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">2</div><div class="lbl">AI Models ในสปอตไลต์</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Research Papers อ้างอิงได้</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">GitHub Projects เด่น</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>OpenAI จะกลับมาเดินหน้า frontier RL run ใหญ่ที่สุดเมื่อใด และ Astra จะถูกจัดว่าแตะเกณฑ์ "Critical" ด้านไซเบอร์จริงหรือไม่</dd>
+        <dt>เหตุผล</dt><dd>เป็นครั้งแรกที่ OpenAI เปิดเผยการระงับการเทรนด้วยเหตุผลด้านความสามารถโจมตีไซเบอร์ตาม Preparedness Framework จะเป็นบรรทัดฐานสำคัญของอุตสาหกรรม</dd>
+        <dt>Source</dt><dd><a href="https://openai.com/index/pacing-model-development-cyber-capabilities/" target="_blank" rel="noopener">OpenAI (Official)</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>white paper ของ Private Safety Processing (กำหนด ก.ย.) จะเปิดเผยรายละเอียดทางเทคนิคและขยายวงผู้ใช้อย่างไร</dd>
+        <dt>เหตุผล</dt><dd>เป็นการวางตำแหน่งแข่งกับแนวทาง data retention ของ Anthropic โดยตรง อาจกำหนดมาตรฐาน privacy-vs-safety ของอุตสาหกรรม</dd>
+        <dt>Source</dt><dd><a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI (Official)</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ผลกระทบจากการเริ่ม ChatGPT Ads ใน 31 ตลาดยุโรป (24 ส.ค.) ต่อผู้ใช้ Free/Go และคู่แข่ง</dd>
+        <dt>เหตุผล</dt><dd>เป็นการขยายธุรกิจโฆษณาครั้งใหญ่ของ OpenAI ภายใต้กรอบ privacy/consent ของ EU ซึ่งจะถูกจับตาด้านการปฏิบัติตามกฎ</dd>
+        <dt>Source</dt><dd><a href="https://openai.com/index/chatgpt-ads-expands-across-europe/" target="_blank" rel="noopener">OpenAI (Official)</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>บริษัท frontier จะยกระดับคะแนน Control Assessment ของ Guidelight ในรอบถัดไปหรือไม่</dd>
+        <dt>เหตุผล</dt><dd>ผลประเมินครั้งแรกชี้ว่าไม่มีบริษัทใดเกิน 3/5 สะท้อนว่าแนวปฏิบัติควบคุม AI ยังตามหลังขีดความสามารถอย่างมีนัยสำคัญ</dd>
+        <dt>Source</dt><dd><a href="https://guidelight.ai/blog/control-assessment-august-2026" target="_blank" rel="noopener">Guidelight AI Standards</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/" target="_blank" rel="noopener">OpenAI — Private Safety Processing</a></li>
+          <li><a href="https://openai.com/index/pacing-model-development-cyber-capabilities/" target="_blank" rel="noopener">OpenAI — Pacing Model Development (Cyber)</a></li>
+          <li><a href="https://openai.com/index/chatgpt-ads-expands-across-europe/" target="_blank" rel="noopener">OpenAI — ChatGPT Ads Expands Across Europe</a></li>
+          <li><a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">Claude Platform Release Notes (Anthropic)</a></li>
+          <li><a href="https://deepmind.google/blog/" target="_blank" rel="noopener">Google DeepMind Blog</a></li>
+          <li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">Model Context Protocol — 2026-07-28 Spec</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2608.10669" target="_blank" rel="noopener">arXiv:2608.10669 — REDAgentBench</a></li>
+          <li><a href="https://arxiv.org/abs/2608.11434" target="_blank" rel="noopener">arXiv:2608.11434 — LLM Judges for Mobile Agent Eval</a></li>
+          <li><a href="https://arxiv.org/abs/2608.01684" target="_blank" rel="noopener">arXiv:2608.01684 — GABench</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/" target="_blank" rel="noopener">TechCrunch (OpenAI privacy)</a></li>
+          <li><a href="https://www.axios.com/2026/08/19/openai-previews-zero-retention-safety-system-as-anthropic-requires-data-logs" target="_blank" rel="noopener">Axios (Private Safety Processing)</a></li>
+          <li><a href="https://www.axios.com/2026/08/18/openai-pause-astra-preparedness-framework" target="_blank" rel="noopener">Axios (Astra pause)</a></li>
+          <li><a href="https://www.helpnetsecurity.com/2026/08/19/openai-model-safety-updates/" target="_blank" rel="noopener">Help Net Security (frontier training hold)</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-20/meta-has-quietly-become-one-of-microsoft-s-largest-ai-customers" target="_blank" rel="noopener">Bloomberg (Meta–Microsoft)</a></li>
+          <li><a href="https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html" target="_blank" rel="noopener">CNBC (DeepMind leadership)</a></li>
+          <li><a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly (AI News Today, 19 ส.ค.)</a></li>
+          <li><a href="https://techstartups.com/2026/08/19/venture-capital-startup-funding-roundup-august-19-2026-andreessen-horowitz-battery-ventures-iconiq-jpmorgan-chase-prosus-more/" target="_blank" rel="noopener">Tech Startups (VC funding roundup)</a></li>
+          <li><a href="https://news.crunchbase.com/ai/biggest-funding-rounds-databricks-river-ai-data-energy/" target="_blank" rel="noopener">Crunchbase News (biggest rounds)</a></li>
+          <li><a href="https://www.aidapted.ro/en/articles/ai-news-of-the-day-august-20-2026/" target="_blank" rel="noopener">AIdapted (AI News, 20 ส.ค.)</a></li>
+          <li><a href="https://releasebot.io/updates/anthropic/claude-code" target="_blank" rel="noopener">Releasebot (Claude Code)</a></li>
+          <li><a href="https://releasebot.io/updates/openai" target="_blank" rel="noopener">Releasebot (OpenAI)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a></li>
+          <li><a href="https://guidelight.ai/blog/control-assessment-august-2026" target="_blank" rel="noopener">Guidelight AI Standards (Control Assessment)</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏷</span>UNCERTAIN / โดเมนที่ควรตรวจสอบการตั้งค่า</h2>
+    <p class="note"><b>UNCERTAIN:</b> guidelight.ai — WebFetch ถูกบล็อกโดย network egress proxy ในรอบนี้ (ยืนยันภาพรวมผ่าน WebSearch แทน) หากโดเมนนี้เข้าถึงไม่ได้ต่อเนื่องหลายวัน (3 วันทำการขึ้นไป) ควรตรวจสอบการตั้งค่า network access ของ environment</p>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · จัดทำโดยกระบวนการอัตโนมัติจากการสืบค้นเว็บสาธารณะ ณ วันที่ 20 ส.ค. 2569 (ICT) · โปรดตรวจสอบแหล่งอ้างอิงต้นทางก่อนนำไปอ้างอิงต่อ</p>
+  </footer>
+</div>
+</body>
+</html>
