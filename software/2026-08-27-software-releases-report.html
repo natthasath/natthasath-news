@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Software Releases — 27 Aug 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73;
+  --crit:#B3261E; --high:#C05621; --med:#B7860B; --low:#5A6B57;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF;
+    --crit:#FF6B5E; --high:#FFA05C; --med:#F0C34D; --low:#9BB396;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:1100px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); word-break:break-word; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+h2{ font-size:22px; font-weight:700; margin:0 0 14px; }
+h3{ font-size:16px; font-weight:700; margin:20px 0 8px; color:var(--ink-soft); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:28px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:80ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:78ch; }
+
+.dashboard{ display:flex; flex-wrap:wrap; gap:12px; }
+.stat{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 18px; min-width:140px; flex:1; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+.table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:var(--surface); }
+table{ border-collapse:collapse; width:100%; min-width:640px; font-size:14.5px; }
+thead th{ text-align:left; background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.02em; text-transform:uppercase; color:var(--ink-soft); padding:10px 12px; border-bottom:1px solid var(--line-strong); white-space:nowrap; }
+tbody td{ padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ font-weight:600; white-space:nowrap; }
+.empty-note{ padding:14px 16px; color:var(--ink-faint); font-size:14px; font-style:italic; }
+
+.badge{ display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--line-strong); white-space:nowrap; }
+.badge.crit{ color:var(--crit); border-color:var(--crit); }
+.badge.high{ color:var(--high); border-color:var(--high); }
+.badge.med{ color:var(--med); border-color:var(--med); }
+.badge.low{ color:var(--low); border-color:var(--low); }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 35, 2026</p>
+    <h1>💻 Weekly Software Releases Report — Week 35</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 27 Aug 2026</span>
+      <span><b>ช่วงเวลา:</b> 20–27 Aug 2026 (ICT)</span>
+      <span><b>Category:</b> Software</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>สัปดาห์นี้มี Major Release สำคัญคือ <b>Kubernetes v1.37 "Garhwal"</b> ที่เข้าสู่ GA อย่างเป็นทางการเมื่อ 26 Aug 2026 พร้อมการเลิกใช้ kube-dns แบบเก่า, IPVS mode และเดินหน้าถอด cgroup v1 ต่อเนื่อง ฝั่งภาษาโปรแกรมมิ่งมี Node.js v26.8.0 (Current) / v24.20.0 (LTS Krypton) และ Rust 1.98.0 ออกใหม่ ส่วน DevOps มี Terraform v1.16.0 และ GitLab 19.3.1 (Patch พร้อม Security Fix) ออกพร้อมกันในวันเดียวกัน (26 Aug)</p>
+    <p>ด้านความปลอดภัย สัปดาห์นี้ไม่มี Critical CVE ขนาดใหญ่แบบสัปดาห์ก่อน แต่มีความเคลื่อนไหวสำคัญจาก Ubuntu ที่ออก Patch แก้ CVE-2026-64531 ช่องโหว่ Local Privilege Escalation ผ่าน Open vSwitch บน Kernel 26.04 LTS และ CVE ใน FFmpeg (USN-8680-1) รวมถึง Debian ออก DSA สำหรับ OpenSSL (DSA-6465-1) และ Linux Kernel (DSA-6466-1) ในวันเดียวกัน (25 Aug) ฝั่ง GitLab พบช่องโหว่ระดับ Medium (CVSS 6.5) สองรายการที่แก้ไขในเวอร์ชัน Patch เดียวกัน</p>
+    <p>Elasticsearch 9.5.2 และ MariaDB 12.3.3 เป็น Maintenance Release ที่ออกในสัปดาห์นี้เช่นกัน ส่วน Spring Boot ออกพร้อมกันสามสาย (4.0.8 / 4.1.1 / 4.2.0-M1) และ VS Code อัปเดตเป็น 1.135</p>
+    <p>ไม่พบประกาศ End of Life ที่ยืนยันได้จากแหล่งข้อมูลทางการในช่วงสัปดาห์นี้ — มีข้อมูลจากแหล่งรอง (Tier 2/บทความ) กล่าวถึง Amazon Aurora MySQL v2 และ TrueNAS SCALE ว่าจะครบกำหนด EOL ในช่วงนี้ แต่เมื่อตรวจสอบกับเอกสารทางการของ AWS และ TrueNAS แล้วไม่พบวันที่ตรงกัน จึงไม่นำมาแสดงในรายงานนี้ (ดูหมายเหตุท้ายรายงาน)</p>
+    <p>สิ่งที่ต้องติดตามต่อคือ Oracle Java Critical Patch Update เดือนสิงหาคม (18 Aug, นอกช่วงรายงานนี้เล็กน้อย) ที่แก้ไข CVE จำนวนมาก และ Go 1.27 / Cisco Security Hardening Release ที่ออกก่อนช่วงรายงานหนึ่งวัน (19 Aug) ควรตรวจสอบผลกระทบต่อเนื่อง</p>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="stat"><div class="num">13</div><div class="lbl">Software Releases / Advisories</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Major Releases</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Security Releases</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Patch Releases</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">EOL Announcements (ยืนยันได้)</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Node.js</td>
+          <td>v26.8.0 (Current) / v24.20.0 (LTS Krypton)</td>
+          <td>อัปเดตทั้งสองสายพร้อมกัน ครอบคลุมการแก้บั๊กและปรับปรุงด้าน performance, streams และ networking ตามรอบ release ปกติ</td>
+          <td>26 Aug 2026</td>
+          <td><span class="badge low">🔹 Minor Release</span></td>
+          <td><a href="https://nodejs.org/en/blog/release/v24.20.0" target="_blank" rel="noopener">nodejs.org — v24.20.0 (LTS)</a></td>
+        </tr>
+        <tr>
+          <td>Rust</td>
+          <td>1.98.0</td>
+          <td>เพิ่ม algebraic floating-point methods (add/sub/mul/div/rem) สำหรับ f32/f64, ฟังก์ชัน format_into + NumBuffer สำหรับ integer serialization (ทดแทน itoa crate), ปรับ lifetime coercion ของ &amp;mut ในตำแหน่ง invariant, เพิ่ม lint ใหม่ invalid_runtime_symbol_definitions</td>
+          <td>20 Aug 2026</td>
+          <td><span class="badge low">🔹 Minor Release</span></td>
+          <td><a href="https://blog.rust-lang.org/2026/08/20/Rust-1.98.0/" target="_blank" rel="noopener">blog.rust-lang.org</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Python, Java, .NET, PHP, Go: ไม่มี Release ใหม่ในช่วง 20–27 Aug 2026 — Go 1.27 GA ออกไปแล้วเมื่อ 19 Aug 2026 (หนึ่งวันก่อนช่วงรายงานนี้), Java ได้รับ Oracle CSPU เมื่อ 18 Aug 2026 (นอกช่วงรายงาน), .NET/Java servicing รอบถัดไปอยู่ในรอบเดือนกันยายน</p>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Framework</th><th>Version</th><th>Highlights</th><th>Migration</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Spring Boot</td>
+          <td>4.1.1 (stable) / 4.0.8 (patch) / 4.2.0-M1 (milestone)</td>
+          <td>ออกพร้อมกันสามสาย — 4.2.0-M1 เพิ่ม enhancement 113 รายการ รวมถึงรองรับ AMQP 1.0 (RabbitMQ-specific features), 4.1.1 และ 4.0.8 เป็น Maintenance Release แก้บั๊กและปรับ dependency</td>
+          <td>ไม่มี Breaking Change ที่ระบุใน Release Notes ของรอบนี้</td>
+          <td><a href="https://spring.io/blog/2026/08/20/spring-boot-4-1-1-available-now/" target="_blank" rel="noopener">spring.io — Spring Boot 4.1.1</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">React, Vue, Angular, Django, Laravel, FastAPI: ไม่มี Release ใหม่ในช่วง 20–27 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ</p>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps &amp; CI/CD</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Kubernetes</td>
+          <td>v1.37 "Garhwal"</td>
+          <td>67 การเปลี่ยนแปลง: 16 ฟีเจอร์ขึ้น Stable (รวม Metrics API GA), 23 Beta, 27 Alpha และ 1 Deprecation — ดูรายละเอียด Breaking Change ด้านล่าง</td>
+          <td><span class="badge crit">🚀 Major Release</span></td>
+          <td><a href="https://kubernetes.io/blog/2026/08/26/kubernetes-v1-37-release/" target="_blank" rel="noopener">kubernetes.io</a></td>
+        </tr>
+        <tr>
+          <td>Terraform</td>
+          <td>v1.16.0</td>
+          <td>เพิ่ม store block สำหรับเก็บค่า ephemeral/sensitive ข้าม plan-apply, providers ใช้ nested block แบบ computed value ได้, import block ในโมดูล, pre-built binary สำหรับ Linux s390x, state show รองรับ -json flag</td>
+          <td><span class="badge low">🔹 Minor Release</span></td>
+          <td><a href="https://github.com/hashicorp/terraform/releases/tag/v1.16.0" target="_blank" rel="noopener">GitHub Releases — hashicorp/terraform</a></td>
+        </tr>
+        <tr>
+          <td>GitLab</td>
+          <td>19.3.1 / 19.2.5 / 19.1.7</td>
+          <td>Patch Release พร้อม Security Fix สองรายการ (ดูรายละเอียดในตาราง Security &amp; CVE) — GitLab.com อัปเดตเป็นเวอร์ชันนี้แล้ว แนะนำให้ Self-managed อัปเกรดทันที</td>
+          <td><span class="badge med">🩹 Patch / 🔒 Security</span></td>
+          <td><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/" target="_blank" rel="noopener">docs.gitlab.com</a></td>
+        </tr>
+        <tr>
+          <td>Pulumi (AWS Provider)</td>
+          <td>v7.43.0</td>
+          <td>อัปเดต resource/property รองรับบริการ AWS ล่าสุดสำหรับ Infrastructure-as-Code ผ่าน Pulumi</td>
+          <td><span class="badge low">🔹 Minor Release</span></td>
+          <td><a href="https://github.com/pulumi/pulumi-aws/releases" target="_blank" rel="noopener">GitHub Releases — pulumi/pulumi-aws</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Docker, Jenkins, GitHub Actions, ArgoCD, Ansible: ไม่มี Release ใหม่ในช่วง 20–27 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ (Docker Engine v29 ออกไปแล้วเมื่อ 5 Aug 2026, Jenkins ล่าสุดคือ 2.565 ตั้งแต่ 20 May 2026)</p>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Database</th><th>Version</th><th>Features</th><th>Type</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Elasticsearch</td>
+          <td>9.5.2</td>
+          <td>อัปเดตด้าน Reliability และ Security ครอบคลุม Search, ES|QL, Vector Search, Inference, Snapshot Restore, Transforms และ ML พร้อมอัปเกรด bundled JDK, Lucene และไลบรารีที่เกี่ยวข้อง</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://www.elastic.co/blog/elastic-stack-9-5-2-released" target="_blank" rel="noopener">elastic.co — Elastic Blog</a></td>
+        </tr>
+        <tr>
+          <td>MariaDB</td>
+          <td>12.3.3</td>
+          <td>Q3 2026 Maintenance Release สายหลัก (พร้อม 11.8, 11.4) แก้บั๊กและเสถียรภาพ — เป็นส่วนหนึ่งของรอบ Maintenance เดียวกับที่ MariaDB 10.6 ครบกำหนด EOL แล้ว</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://mariadb.org/mariadb-server-12-3-11-8-11-4-and-10-11-q3-2026-maintenance-releases-and-goodbye-10-6/" target="_blank" rel="noopener">mariadb.org</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">PostgreSQL, MySQL (Oracle), SQL Server, MongoDB, Redis, Cassandra, AWS RDS/Aurora, Azure SQL, Google Cloud SQL: ไม่มี Release ใหม่ในช่วง 20–27 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ (PostgreSQL ออกรอบล่าสุดไปแล้วเมื่อ 13 Aug 2026, Redis 8.10.1/7.4.11 เมื่อ 17 Aug 2026 — ทั้งสองอยู่นอกช่วงรายงานนี้)</p>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>OS</th><th>Version</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Ubuntu</td>
+          <td>26.04 LTS (Kernel) — USN-8660-1</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td>แก้ไข CVE-2026-64531 ช่องโหว่ Local Privilege Escalation ผ่าน Open vSwitch action validation ที่ผู้ใช้ local ทั่วไปสามารถยกระดับสิทธิ์เป็น root ได้</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8660-1" target="_blank" rel="noopener">ubuntu.com/security</a></td>
+        </tr>
+        <tr>
+          <td>Ubuntu</td>
+          <td>16.04–26.04 LTS (FFmpeg) — USN-8680-1</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td>แก้ไข CVE-2026-70628 และ CVE-2026-70632 ใน FFmpeg (DVB subtitle parser signed integer overflow) ที่อาจนำไปสู่ Denial of Service หรือ Arbitrary Code Execution</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8680-1" target="_blank" rel="noopener">ubuntu.com/security</a></td>
+        </tr>
+        <tr>
+          <td>Debian</td>
+          <td>DSA-6465-1 (OpenSSL)</td>
+          <td><span class="badge med">🔒 Security Release</span></td>
+          <td>แก้ไข CVE-2026-14456 และ CVE-2026-14457 ช่องโหว่ Denial of Service ใน OpenSSL</td>
+          <td><a href="https://linuxsecurity.com/advisories/debian/debian-dsa-6465-1-openssl" target="_blank" rel="noopener">Debian Security Advisory — DSA-6465-1</a></td>
+        </tr>
+        <tr>
+          <td>Debian</td>
+          <td>DSA-6466-1 (Linux Kernel)</td>
+          <td><span class="badge med">🔒 Security Release</span></td>
+          <td>Security Update สำหรับ Linux Kernel ของ Debian แก้ไขช่องโหว่หลายรายการ (รายละเอียด CVE ครบถ้วนดูได้จาก Advisory ต้นทาง)</td>
+          <td><a href="https://www.linux.org/threads/dsa-6466-1-linux-security-update.70602/" target="_blank" rel="noopener">Debian Security Advisory — DSA-6466-1</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">RHEL, Rocky Linux, AlmaLinux, Windows Server: ไม่พบ Release/Errata ที่ระบุวันที่แน่ชัดอยู่ในช่วง 20–27 Aug 2026 จากการตรวจสอบ — Windows Server Cumulative Update ล่าสุดออกไปแล้วเมื่อ 11 Aug 2026 (Patch Tuesday, นอกช่วงรายงานนี้) ส่วน RHEL/Rocky/AlmaLinux มี Errata ต่อเนื่องแต่ไม่สามารถยืนยันวันที่เจาะจงในสัปดาห์นี้ได้ แนะนำตรวจสอบ Errata Portal โดยตรง</p>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <p class="empty-note">VMware, Proxmox, Hyper-V, KVM: ไม่มี Release หรือ Security Advisory ใหม่ในช่วง 20–27 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ — Proxmox VE 9.2.4 (รองรับ Arm64) ออกไปแล้วเมื่อ 4–5 Aug 2026 และ VMSA-2026-0006 ของ VMware ออกไปแล้วตั้งแต่ 29 Jul 2026 ทั้งสองอยู่นอกช่วงรายงานนี้</p>
+  </section>
+
+  <section>
+    <h2>🌐 Network &amp; Security</h2>
+    <p class="empty-note">Nginx, Apache, HAProxy, Traefik, Caddy, WireGuard, pfSense, OPNsense, Nmap, Wireshark, Nessus, OpenVAS, Metasploit: ไม่มี Release ใหม่ในช่วง 20–27 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ — Traefik v3.7.11 ออกไปแล้วเมื่อ 19 Aug 2026 (หนึ่งวันก่อนช่วงรายงานนี้) แก้ไข Advisory GHSA-5w68-77r2-r64c และ GHSA-g55h-rg46-x9c5</p>
+  </section>
+
+  <section>
+    <h2>☁ Cloud &amp; Infrastructure</h2>
+    <p class="empty-note">ไม่พบประกาศจาก AWS What's New, Azure Updates หรือ Google Cloud Release Notes ที่ระบุวันที่ประกาศอย่างชัดเจนอยู่ในช่วง 20–27 Aug 2026 จากการตรวจสอบรอบนี้ — พบข่าวการ GA ของ Azure Firewall Explicit Proxy และ Public Preview ของ Route Maps for Azure Route Server จากบล็อกบุคคลที่สาม แต่ไม่สามารถยืนยันวันที่ประกาศอย่างเป็นทางการภายในช่วง 7 วันนี้ได้ จึงไม่นำมาแสดงในตาราง (ดูหมายเหตุ UNCERTAIN ท้ายรายงาน)</p>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools &amp; IDE</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool</th><th>Version</th><th>Highlights</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>VS Code</td>
+          <td>1.135</td>
+          <td>External agent sessions (ทำงานต่อเซสชัน Copilot/Claude agent จากแอปอื่นได้), Rubber Duck (Experimental) สำหรับขอความเห็นที่สองจากอีกโมเดล, ปรับปรุง UX ของ Agents window</td>
+          <td><a href="https://code.visualstudio.com/updates/v1_135" target="_blank" rel="noopener">code.visualstudio.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">JetBrains IDEs, Eclipse, Git, GitHub, GitLab (core), npm, pip, Composer, Maven, Gradle: ไม่มี Release ใหม่ในช่วง 20–27 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ (PyCharm 2026.2.1/2026.1.5 ออกไปแล้วเมื่อ 12–13 Aug 2026)</p>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <p class="empty-note">Nginx, Apache, Caddy, IIS: ไม่มี Release ใหม่ในช่วง 20–27 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ</p>
+  </section>
+
+  <section>
+    <h2>🔒 Security &amp; CVE</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Ubuntu Kernel (Open vSwitch)</td>
+          <td>CVE-2026-64531</td>
+          <td><span class="badge high">High — Local Privilege Escalation</span></td>
+          <td>USN-8660-1 (26.04 LTS)</td>
+          <td><a href="https://ubuntu.com/security/CVE-2026-64531" target="_blank" rel="noopener">ubuntu.com/security/CVE-2026-64531</a></td>
+        </tr>
+        <tr>
+          <td>FFmpeg (Ubuntu)</td>
+          <td>CVE-2026-70628, CVE-2026-70632</td>
+          <td><span class="badge high">High — DoS / Possible Code Execution</span></td>
+          <td>USN-8680-1</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8680-1" target="_blank" rel="noopener">Ubuntu Security Notices</a></td>
+        </tr>
+        <tr>
+          <td>OpenSSL (Debian)</td>
+          <td>CVE-2026-14456, CVE-2026-14457</td>
+          <td><span class="badge med">Medium — Denial of Service</span></td>
+          <td>DSA-6465-1</td>
+          <td><a href="https://linuxsecurity.com/advisories/debian/debian-dsa-6465-1-openssl" target="_blank" rel="noopener">Debian Security Advisory — DSA-6465-1</a></td>
+        </tr>
+        <tr>
+          <td>Linux Kernel (Debian)</td>
+          <td>ดูรายละเอียดครบถ้วนใน Advisory ต้นทาง</td>
+          <td><span class="badge med">Mixed</span></td>
+          <td>DSA-6466-1</td>
+          <td><a href="https://www.linux.org/threads/dsa-6466-1-linux-security-update.70602/" target="_blank" rel="noopener">Debian Security Advisory — DSA-6466-1</a></td>
+        </tr>
+        <tr>
+          <td>GitLab CE/EE</td>
+          <td>SCIM Provisioning DoS (CVSS 6.5), Protected Environment Terminal Access (CVSS 6.5)</td>
+          <td><span class="badge med">Medium — CVSS 6.5 (ทั้งสองรายการ)</span></td>
+          <td>19.3.1 / 19.2.5 / 19.1.7</td>
+          <td><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/" target="_blank" rel="noopener">docs.gitlab.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">หมายเหตุ: Oracle Java Critical Security Patch Update (CSPU) เดือนสิงหาคม 2026 ซึ่งแก้ไข CVE จำนวน 925 รายการ ออกไปแล้วเมื่อ 18 Aug 2026 อยู่นอกช่วงรายงานนี้เล็กน้อย (2 วันก่อนเริ่มช่วง 7 วัน) เช่นเดียวกับ Cisco Security Hardening Release (Crosswork, Secure Workload — CVSS 10.0) ที่ออกเมื่อ 19 Aug 2026</p>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>Version</th><th>Breaking Change</th><th>Migration Guide</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Kubernetes</td>
+          <td>v1.37</td>
+          <td>ต้องใช้ containerd 2.0 ขึ้นไป, <code>kubectl run --filename</code> ถูก deprecate, Static Pods ไม่สามารถอ้างอิง Secrets หรือ ConfigMaps ได้อีกต่อไป, ipvs mode ใน kube-proxy เดินหน้า deprecate ต่อเนื่องหลาย release, cgroup v1 เดินหน้าสู่การถอดออกต่อเนื่อง</td>
+          <td>มี Official Upgrade Notes — ควรตรวจสอบ containerd version และการใช้งาน Secrets/ConfigMaps ใน Static Pods ก่อนอัปเกรด</td>
+          <td><a href="https://kubernetes.io/blog/2026/08/26/kubernetes-v1-37-release/" target="_blank" rel="noopener">kubernetes.io</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">ซอฟต์แวร์อื่นที่ Release ในสัปดาห์นี้ (Node.js, Rust, Spring Boot, Terraform, Elasticsearch, MariaDB, VS Code) ไม่มี Breaking Change ที่ระบุไว้อย่างชัดเจนใน Official Release Notes ของรอบนี้</p>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <p class="empty-note">ไม่พบประกาศ End of Life ที่ยืนยันได้จากแหล่งข้อมูลทางการในช่วง 20–27 Aug 2026 จากการตรวจสอบรอบนี้ (ดูหมายเหตุเกี่ยวกับข้อมูลที่ตรวจสอบแล้วไม่ตรงกันในส่วนท้ายรายงาน)</p>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>Go 1.27 GA</b> — ออกแล้วเมื่อ 19 Aug 2026 (หนึ่งวันก่อนช่วงรายงานนี้) เพิ่ม generic methods, encoding/json/v2, size-specialized memory allocation — ควรประเมินผลกระทบต่อ toolchain ในองค์กร</li>
+      <li><b>Oracle Java CSPU สิงหาคม 2026</b> — แก้ไข 925 CVE (943 patches) เมื่อ 18 Aug 2026 — Oracle เริ่มปรับเป็นรอบ Monthly Update ตั้งแต่รอบนี้ ควรวางแผน Patch Cycle ใหม่</li>
+      <li><b>Cisco Security Hardening Release (Crosswork / Secure Workload)</b> — CVSS 10.0 ออกเมื่อ 19 Aug 2026 — ควรตรวจสอบว่าอุปกรณ์ในองค์กรได้รับผลกระทบหรือไม่</li>
+      <li><b>Redis 8.10.1 / 7.4.11 Security Release</b> — ออกเมื่อ 17 Aug 2026 แก้ไข CVE-2026-62356 และช่องโหว่อื่น — ควรตรวจสอบว่าอัปเดตแล้วหากยังไม่ได้ดำเนินการ</li>
+      <li><b>PostgreSQL 18.6 / 17.11 / 16.15 / 15.19 / 14.24</b> — ออกเมื่อ 13 Aug 2026 แก้ไข 28 ช่องโหว่ — PostgreSQL 14 จะหยุดรับการแก้ไขตั้งแต่ 12 Nov 2026</li>
+      <li><b>Microsoft Patch Tuesday รอบถัดไป</b> — คาดว่าจะออกประมาณสัปดาห์ที่สองของเดือนกันยายน 2026 (นอกช่วงรายงานนี้)</li>
+      <li><b>RHEL / Rocky Linux / AlmaLinux Errata</b> — มี Errata ต่อเนื่องหลายรายการแต่ไม่สามารถยืนยันวันที่เจาะจงในสัปดาห์นี้ได้ ควรตรวจสอบ Errata Portal ของแต่ละ Distro โดยตรง</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <ul>
+      <li><b>Total Releases/Advisories:</b> 13 รายการ</li>
+      <li><b>Major Releases:</b> 1 (Kubernetes v1.37)</li>
+      <li><b>Security Releases:</b> 5 (Ubuntu ×2, Debian ×2, GitLab ×1)</li>
+      <li><b>Patch Releases:</b> 4 (Elasticsearch, MariaDB, Spring Boot 4.0.8, GitLab Patch)</li>
+      <li><b>New CVEs:</b> อย่างน้อย 7 หมายเลขที่ระบุชัดเจน (CVE-2026-64531, CVE-2026-70628, CVE-2026-70632, CVE-2026-14456, CVE-2026-14457 และ GitLab 2 รายการที่ยังไม่มีเลข CVE เผยแพร่ต่อสาธารณะ) — DSA-6466-1 ของ Debian มี CVE เพิ่มเติมที่ไม่ได้แจกแจงครบในแหล่งข้อมูลที่เข้าถึงได้รอบนี้</li>
+      <li><b>EOL Announcements:</b> 0 (ยืนยันได้จากแหล่งทางการ)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul>
+      <li><a href="https://nodejs.org/en/blog/release/v24.20.0" target="_blank" rel="noopener">Node.js Blog — v24.20.0</a></li>
+      <li><a href="https://blog.rust-lang.org/2026/08/20/Rust-1.98.0/" target="_blank" rel="noopener">Rust Blog</a></li>
+      <li><a href="https://spring.io/blog/2026/08/20/spring-boot-4-1-1-available-now/" target="_blank" rel="noopener">Spring.io Blog</a></li>
+      <li><a href="https://kubernetes.io/blog/2026/08/26/kubernetes-v1-37-release/" target="_blank" rel="noopener">Kubernetes Blog</a></li>
+      <li><a href="https://github.com/hashicorp/terraform/releases/tag/v1.16.0" target="_blank" rel="noopener">Terraform — GitHub Releases</a></li>
+      <li><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-1-released/" target="_blank" rel="noopener">GitLab Docs — Patch Release Notes</a></li>
+      <li><a href="https://www.elastic.co/blog/elastic-stack-9-5-2-released" target="_blank" rel="noopener">Elastic Blog</a></li>
+      <li><a href="https://mariadb.org/mariadb-server-12-3-11-8-11-4-and-10-11-q3-2026-maintenance-releases-and-goodbye-10-6/" target="_blank" rel="noopener">MariaDB.org</a></li>
+      <li><a href="https://code.visualstudio.com/updates/v1_135" target="_blank" rel="noopener">VS Code Release Notes</a></li>
+      <li><a href="https://ubuntu.com/security/CVE-2026-64531" target="_blank" rel="noopener">Ubuntu Security — CVE-2026-64531</a></li>
+      <li><a href="https://ubuntu.com/security/notices/USN-8680-1" target="_blank" rel="noopener">Ubuntu Security Notices — USN-8680-1</a></li>
+      <li><a href="https://github.com/pulumi/pulumi-aws/releases" target="_blank" rel="noopener">Pulumi AWS Provider — GitHub Releases</a></li>
+    </ul>
+    <h3>Security Advisory</h3>
+    <ul>
+      <li><a href="https://linuxsecurity.com/advisories/debian/debian-dsa-6465-1-openssl" target="_blank" rel="noopener">Debian Security Advisory — DSA-6465-1 (OpenSSL)</a></li>
+      <li><a href="https://www.linux.org/threads/dsa-6466-1-linux-security-update.70602/" target="_blank" rel="noopener">Debian Security Advisory — DSA-6466-1 (Linux Kernel)</a></li>
+      <li><a href="https://ubuntu.com/security/notices/USN-8660-1" target="_blank" rel="noopener">Ubuntu Security Notices — USN-8660-1</a></li>
+    </ul>
+    <h3>Trusted Media</h3>
+    <ul>
+      <li><a href="https://www.theregister.com/devops/2026/08/26/kubernetes-cleans-house-bins-legacy-kube-dns-ipvs-and-cgroup-v1/5292717" target="_blank" rel="noopener">The Register — Kubernetes v1.37</a></li>
+      <li><a href="https://blog.jetbrains.com/go/2026/08/20/ready-for-go-1-27-on-day-one/" target="_blank" rel="noopener">JetBrains Blog — Go 1.27</a></li>
+      <li><a href="https://securityarsenal.com/blog/oracle-august-2026-cspu-925-cves-943-patches-prioritization-detection-and-remediation-guide" target="_blank" rel="noopener">Security Arsenal — Oracle August 2026 CSPU</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📝 หมายเหตุข้อมูล / Data Notes</h2>
+    <ul>
+      <li>บทความจากแหล่งข้อมูลรอง (dev.to) ระบุว่า Amazon Aurora MySQL v2 และ TrueNAS SCALE จะครบกำหนด EOL ในวันที่ 23 Aug 2026 แต่เมื่อตรวจสอบกับเอกสารทางการของ AWS (Aurora MySQL v2 end of standard support คือ 31 Oct 2024) และ TrueNAS Documentation Hub (ไม่มีการกำหนดวันที่ EOL ตายตัว) พบว่าข้อมูลไม่ตรงกัน จึงไม่นำรายการทั้งสองมาแสดงในส่วน End of Life ของรายงานนี้</li>
+      <li>UNCERTAIN: ไม่สามารถยืนยันวันที่ประกาศอย่างเป็นทางการของ Azure Firewall Explicit Proxy (GA) และ Azure Route Server Route Maps (Public Preview) ว่าอยู่ในช่วง 20–27 Aug 2026 หรือไม่ — พบเฉพาะจากบล็อกบุคคลที่สาม (simonpainter.com) ไม่พบวันที่ประกาศบนหน้า Azure Updates อย่างเป็นทางการที่ตรวจสอบได้ในรอบนี้</li>
+      <li>Debian DSA-6466-1 (Linux Kernel): แหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ไม่ได้แจกแจงหมายเลข CVE ทั้งหมดที่ครอบคลุมใน Advisory — แนะนำตรวจสอบ Advisory ต้นทางบน lists.debian.org โดยตรงสำหรับรายละเอียดครบถ้วน</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Software Releases · 27 Aug 2026</p>
+    <p><a href="/">Back to Home</a></p>
+  </footer>
+</div>
+</body>
+</html>
