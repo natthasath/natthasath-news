@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Premier League Report — Week 35, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#9A5B12; --warn-bg:rgba(154,91,18,0.10); --warn-line:rgba(154,91,18,0.30);
+  --rumor:#8A3B5A;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.12);
+    --warn:#E0A855; --warn-bg:rgba(224,168,85,0.10); --warn-line:rgba(224,168,85,0.30);
+    --rumor:#D98FB2;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:6px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; padding-top:2px; }
+h3{ font-size:16.5px; font-weight:700; margin:20px 0 8px; color:var(--ink); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:30px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:72ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:70ch; }
+ul li ul{ margin-top:8px; }
+
+.callout{ background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px; padding:16px 18px; margin:0 0 18px; }
+.callout p{ margin:0; max-width:none; color:var(--ink); }
+.callout p + p{ margin-top:8px; }
+.callout .label{ font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--warn); text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.note{ font-size:14px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:12px 14px; margin:10px 0 16px; max-width:none; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 14px; border:1px solid var(--line); border-radius:10px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px; }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td a, th a{ white-space:nowrap; }
+
+.badge{ display:inline-block; font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:600; padding:2px 8px; border-radius:999px; white-space:nowrap; }
+.badge-official{ background:var(--accent-soft); color:var(--accent); }
+.badge-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-rumor{ background:rgba(138,59,90,0.12); color:var(--rumor); }
+.badge-cont{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+
+.subhead{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin:18px 0 8px; }
+.subhead:first-child{ margin-top:0; }
+
+.club-block{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px dashed var(--line); }
+.club-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.club-block h3{ margin-top:0; }
+.club-block p{ margin-bottom:6px; }
+
+.src-list{ list-style:none; padding:0; margin:0 0 14px; }
+.src-list li{ margin-bottom:6px; font-size:14.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 35, 2026</p>
+    <h1>⚽ Weekly Premier League Report — Week 35</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 23–30 สิงหาคม 2026 (ICT)</span>
+      <span><b>Category:</b> Football</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="note">หมายเหตุขอบเขต: รายงานฉบับนี้ครอบคลุมผลการแข่งขันวันที่ 23-30 ส.ค. 2026 คู่ที่แข่งวันที่ 23-24 ส.ค. (Brighton vs Aston Villa, Man City vs Bournemouth, Newcastle vs Liverpool, Fulham vs Chelsea) ได้รายงานรายละเอียดครบถ้วนไปแล้วในรายงาน Week 34 จึงสรุปย่อในสัปดาห์นี้พร้อมป้าย <span class="badge badge-cont">ต่อเนื่อง</span> และเน้นรายละเอียดเต็มที่ Matchweek 2 (27-30 ส.ค.) ซึ่งเป็นเนื้อหาใหม่ของสัปดาห์นี้ คู่ Aston Villa vs Arsenal ที่แข่งวันที่ 1 ก.ย. อยู่นอกกรอบ 7 วันจึงไม่รวมในรายงานนี้ (จะรายงานสัปดาห์หน้า)</div>
+    <ul>
+      <li>Matchweek 2 ของพรีเมียร์ลีก 2026-27 ทยอยแข่งขันระหว่าง 28-31 ส.ค. โดย 9 ใน 10 คู่จบลงภายในกรอบ 7 วันของรายงานนี้ (23-30 ส.ค.) เหลือเพียง Aston Villa vs Arsenal ที่จะแข่งวันที่ 1 ก.ย. <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Manchester City ภายใต้ Enzo Maresca เก็บชัยชนะที่สองติดต่อกันด้วยการถล่ม Crystal Palace 4-1 ที่ Selhurst Park โดย Erling Haaland ยิงคนเดียว 2 ประตูรวมกับ Rayan Cherki อีก 1 ลูก <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Chelsea ของ Xabi Alonso เก็บชัยชนะที่สองติดต่อกันเช่นกัน เอาชนะ Brighton &amp; Hove Albion ไปแบบดุเดือด 4-3 ที่ Stamford Bridge ในเกมที่มีประตูรวมกันถึง 7 ลูก <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Manchester United พลิกกลับมาเอาชนะ Ipswich Town 5-2 ที่ Old Trafford ได้สำเร็จ ด้วยแฮตทริกของ Bruno Fernandes หลังจากตามหลังก่อนในช่วงต้นเกม เก็บชัยชนะนัดแรกของฤดูกาลได้สำเร็จ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Liverpool ภายใต้ Andoni Iraola ยังไม่ชนะใครในพรีเมียร์ลีกฤดูกาลนี้ หลังเสมอ Nottingham Forest 2-2 ที่ Anfield ต่อจากที่เสมอ Newcastle ในนัดเปิดฤดูกาล รวมเป็น 2 นัด 2 เสมอ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Tottenham Hotspur ภายใต้ Roberto De Zerbi แพ้ติดต่อกันเป็นนัดที่สอง (0-2 ให้ Newcastle United ที่บ้าน) ยังไม่เก็บแต้มและยังไม่ยิงประตูได้เลยในฤดูกาลนี้ แม้จะทุ่มเงินซื้อนักเตะไปแล้วกว่า 320 ล้านปอนด์ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 ตารางคะแนน Top 6</h2>
+    <div class="note">คำนวณจากผลการแข่งขันที่ยืนยันแล้วราย นัด ของ Matchweek 1 (21-24 ส.ค.) รวมกับ Matchweek 2 เท่าที่แข่งจบภายใน 30 ส.ค. (9 ใน 10 คู่ — ขาดเฉพาะ Aston Villa vs Arsenal ที่ยังไม่แข่ง) จัดอันดับตาม Points → Goal Difference → Goals For เนื่องจากไม่สามารถเข้าถึงหน้าตารางคะแนนอย่างเป็นทางการของ premierleague.com ได้โดยตรงในสภาพแวดล้อมนี้ (ดูหมายเหตุ UNCERTAIN ท้ายรายงาน) Arsenal ลงเล่นเพียง 1 นัด (มี 1 นัดในมือ) จึงยังไม่ติด Top 6 แม้จะชนะนัดเดียวที่ลงเล่น</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Club</th><th>Played</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>Source</th></tr>
+      <tr><td>1</td><td>Manchester City</td><td>2</td><td>2</td><td>0</td><td>0</td><td>6</td><td><a href="https://www.skysports.com/football/crystal-palace-vs-manchester-city/559458" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Hull City</td><td>2</td><td>2</td><td>0</td><td>0</td><td>6</td><td><a href="https://www.skysports.com/football/coventry-city-vs-hull-city/559457" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>3</td><td>Chelsea</td><td>2</td><td>2</td><td>0</td><td>0</td><td>6</td><td><a href="https://www.skysports.com/football/chelsea-vs-brighton-and-hove-albion/report/559456" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>4</td><td>Brentford</td><td>2</td><td>1</td><td>1</td><td>0</td><td>4</td><td><a href="https://www.skysports.com/football/leeds-united-vs-brentford/report/559459" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>5</td><td>Newcastle United</td><td>2</td><td>1</td><td>1</td><td>0</td><td>4</td><td><a href="https://www.skysports.com/football/tottenham-hotspur-vs-newcastle-united/report/559463" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>6</td><td>Everton</td><td>2</td><td>1</td><td>1</td><td>0</td><td>4</td><td><a href="https://www.skysports.com/football/bournemouth-vs-everton/559455" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">ตรวจสอบ Consistency แล้ว: Played = W+D+L และ Points = W×3+D ถูกต้องครบทุกทีมที่คำนวณ ผลรวมคะแนนทั้ง 20 ทีมหลัง 19 นัด (10+9) เท่ากับ 53 แต้ม ตรงตามสูตร (นัดที่ตัดสินผลแพ้ชนะ×3 + นัดเสมอ×2) Brighton และ Manchester United เก็บได้ 3 แต้มเท่ากันแต่ผลต่างประตูได้เสียน้อยกว่าทีมใน Top 6 จึงตกไปอยู่นอกอันดับที่แสดง</p>
+  </section>
+
+  <section>
+    <h2>⚽ ผลการแข่งขันสำคัญ</h2>
+    <h3 class="subhead">23-24 สิงหาคม (ต่อเนื่องจาก Matchweek 1 — รายงานฉบับเต็มใน Week 34)</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th class="wrap">Summary</th><th>Source</th></tr>
+      <tr><td>23 ส.ค. <span class="badge badge-cont">ต่อเนื่อง</span></td><td>Brighton &amp; Hove Albion</td><td>4-0</td><td>Aston Villa</td><td class="wrap">Jack Hinshelwood ยิง 2 ประตู นำทีมถล่ม Aston Villa</td><td><a href="https://www.skysports.com/football/brighton-and-hove-albion-vs-aston-villa/559450" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>23 ส.ค. <span class="badge badge-cont">ต่อเนื่อง</span></td><td>Manchester City</td><td>2-1</td><td>Bournemouth</td><td class="wrap">Gvardiol ยิงชัยช่วงทดเวลาบาดเจ็บ เกมแรกของ Enzo Maresca</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879320/afc-bournemouth-manchester-city" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>23 ส.ค. <span class="badge badge-cont">ต่อเนื่อง</span></td><td>Newcastle United</td><td>2-2</td><td>Liverpool</td><td class="wrap">Szoboszlai ยิงจุดโทษนาทีที่ 90+9 เกมแรกของ Andoni Iraola</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879319/liverpool-newcastle-united" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>24 ส.ค. <span class="badge badge-cont">ต่อเนื่อง</span></td><td>Fulham</td><td>2-3</td><td>Chelsea</td><td class="wrap">João Pedro, Rogers, Palmer ยิงพาชนะเกมแรกของ Xabi Alonso</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879318/chelsea-fulham" target="_blank" rel="noopener">ESPN</a></td></tr>
+    </table>
+    </div>
+
+    <h3 class="subhead">Matchweek 2 (27-30 สิงหาคม) — เนื้อหาใหม่ของสัปดาห์นี้</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th class="wrap">Summary</th><th>Source</th></tr>
+      <tr><td>28 ส.ค.</td><td>Crystal Palace</td><td>1-4</td><td>Manchester City</td><td class="wrap">Haaland (17', 84'), Cherki ยิงคนละ/สองประตู, Donnarumma โดนบอลตัวเองเข้าประตู พา Man City ชนะติดต่อกัน 2 นัด</td><td><a href="https://www.skysports.com/football/crystal-palace-vs-manchester-city/559458" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>29 ส.ค.</td><td>Coventry City</td><td>0-1</td><td>Hull City</td><td class="wrap">ตัวสำรอง Liam Millar ยิงชัยนาทีที่ 82 พา Hull ชนะติดต่อกัน 2 นัด ขณะที่ Coventry ของ Frank Lampard แพ้ 2 นัดติด</td><td><a href="https://www.skysports.com/football/coventry-city-vs-hull-city/559457" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>29 ส.ค.</td><td>Bournemouth</td><td>1-1</td><td>Everton</td><td class="wrap">Alex Scott นำ Bournemouth ก่อนหมดครึ่งแรก ก่อน James Tarkowski ตีเสมอช่วงท้ายเกม เกมเหย้านัดแรกของ Marco Rose ที่ Bournemouth</td><td><a href="https://www.skysports.com/football/bournemouth-vs-everton/559455" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>29 ส.ค.</td><td>Tottenham Hotspur</td><td>0-2</td><td>Newcastle United</td><td class="wrap">Anthony Elanga (62'), Yoane Wissa (72') ยิงพา Newcastle ชนะ Tottenham ที่ยังไม่ยิงประตูได้เลยในฤดูกาลนี้</td><td><a href="https://www.skysports.com/football/tottenham-hotspur-vs-newcastle-united/report/559463" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>29 ส.ค.</td><td>Liverpool</td><td>2-2</td><td>Nottingham Forest</td><td class="wrap">Dan Ndoye นำ Forest ก่อน Alexander Isak ตีเสมอ, Morgan Gibbs-White ยิงจุดโทษนำอีกครั้ง ก่อน Victor Munoz ยิงตีเสมอช่วงท้ายเกมด้วยแอสซิสต์จาก Wirtz</td><td><a href="https://www.skysports.com/football/liverpool-vs-nottingham-forest/559460" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>30 ส.ค.</td><td>Chelsea</td><td>4-3</td><td>Brighton &amp; Hove Albion</td><td class="wrap">Romeo Lavia, Pedro Neto (14'), João Pedro (32') นำ Chelsea 3-0 ก่อน Brighton ไล่ตีตื้นผ่าน Yalcouyle และ Gross (2 ประตู) แต่ Cole Palmer (74') ยิงปิดเกมให้ Chelsea เอาชนะเกม 7 ประตู</td><td><a href="https://www.skysports.com/football/chelsea-vs-brighton-and-hove-albion/report/559456" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>30 ส.ค.</td><td>Leeds United</td><td>1-1</td><td>Brentford</td><td class="wrap">Kevin Schade (41') นำ Brentford ก่อน Dominic Calvert-Lewin ตีเสมอนาทีที่ 79 ให้ Leeds เก็บแต้ม</td><td><a href="https://www.skysports.com/football/leeds-united-vs-brentford/report/559459" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>30 ส.ค.</td><td>Sunderland</td><td>1-0</td><td>Fulham</td><td class="wrap">ตัวสำรอง Wilson Isidor ยิงประตูชัยนาทีที่ 75 ช่วย Sunderland ทวงแต้มคืนหลังแพ้นัดแรก ขณะที่ Fulham แพ้ 2 นัดติด</td><td><a href="https://www.skysports.com/football/sunderland-vs-fulham/559462" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>30 ส.ค.</td><td>Manchester United</td><td>5-2</td><td>Ipswich Town</td><td class="wrap">Bruno Fernandes ยิงแฮตทริก ช่วยทีมพลิกกลับมาชนะหลังตามหลังก่อนในช่วงต้นเกม เก็บชัยชนะนัดแรกของฤดูกาลได้สำเร็จที่ Old Trafford</td><td><a href="https://www.skysports.com/football/manchester-united-vs-ipswich-town/559461" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+    </table>
+    </div>
+    <div class="note">คู่ Aston Villa vs Arsenal มีกำหนดแข่งวันที่ 1 ก.ย. 2026 ซึ่งอยู่นอกกรอบเวลา 7 วันของรายงานนี้ (23-30 ส.ค.) จึงไม่นำผลมารวมไว้ในตารางนี้ จะรายงานในสัปดาห์ถัดไป</div>
+  </section>
+
+  <section>
+    <h2>🥇 ดาวซัลโว Top 5</h2>
+    <div class="note">จัดอันดับจากประตูที่ยิงได้ภายในกรอบ 7 วันของรายงานนี้ (23-30 ส.ค.) เท่านั้น ไม่รวมประตูจากนัดเปิดฤดูกาล 21-22 ส.ค. ที่รายงานไปแล้วใน Week 34 ข้อมูล<b>แอสซิสต์รายบุคคลสะสม</b>ยังไม่สามารถยืนยันแยกเป็นรายผู้เล่นได้ครบถ้วนจากแหล่งข่าวที่ตรวจสอบในรอบนี้</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Player</th><th>Club</th><th>Goals</th><th>Assists</th><th>Source</th></tr>
+      <tr><td>1</td><td>Bruno Fernandes</td><td>Manchester United</td><td>3</td><td>–</td><td><a href="https://www.skysports.com/football/manchester-united-vs-ipswich-town/559461" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Erling Haaland</td><td>Manchester City</td><td>2</td><td>–</td><td><a href="https://www.skysports.com/football/crystal-palace-vs-manchester-city/559458" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Anthony Elanga</td><td>Newcastle United</td><td>2</td><td>–</td><td><a href="https://www.skysports.com/football/tottenham-hotspur-vs-newcastle-united/report/559463" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>João Pedro</td><td>Chelsea</td><td>2</td><td>–</td><td><a href="https://www.skysports.com/football/chelsea-vs-brighton-and-hove-albion/report/559456" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Cole Palmer</td><td>Chelsea</td><td>2</td><td>–</td><td><a href="https://www.skysports.com/football/chelsea-vs-brighton-and-hove-albion/report/559456" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+    </table>
+    </div>
+    <div class="note">หมายเหตุ: ประตูของ Anthony Elanga นับรวม 1 ลูกจากเกม Newcastle 2-2 Liverpool วันที่ 23 ส.ค. (นาทีที่ 5) และอีก 1 ลูกจากเกม Tottenham 0-2 Newcastle วันที่ 29 ส.ค. (นาทีที่ 62) ส่วนของ João Pedro นับรวม 1 ลูกจากเกม Fulham 2-3 Chelsea วันที่ 24 ส.ค. และอีก 1 ลูกจากเกม Chelsea 4-3 Brighton วันที่ 30 ส.ค. เช่นเดียวกับ Cole Palmer</div>
+  </section>
+
+  <section>
+    <h2>🔥 ข่าวสำคัญ</h2>
+    <h3>Official</h3>
+    <ul>
+      <li>Liverpool บรรลุข้อตกลงในหลักการ (deal in principle) มูลค่าประมาณ 120 ล้านปอนด์ กับ Paris Saint-Germain เพื่อคว้าตัว <b>Bradley Barcola</b> เมื่อวันศุกร์ที่ 29 ส.ค. โดยดีลอย่างเป็นทางการเสร็จสมบูรณ์วันที่ 31 ส.ค. (นอกกรอบ 7 วันของรายงานนี้) <span class="badge badge-official">✅ ยืนยันแล้ว (ตกลงหลักการ)</span> — <a href="https://www.skysports.com/football/news/11669/13577569/bradley-barcola-transfer-news-liverpool-reach-lb120m-deal-in-principle-for-psg-forward" target="_blank" rel="noopener">Sky Sports</a></li>
+      <li>Nottingham Forest เซ็นสัญญาคว้าตัว <b>Liam Delap</b> จาก Chelsea ด้วยค่าตัวสถิติสโมสรประมาณ 45-50 ล้านปอนด์ (สัญญา 5 ปี) หลังผ่านการตรวจร่างกายช่วงปลายเดือนสิงหาคม <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.skysports.com/football/news/11095/13577306/liam-delap-joins-nottingham-forest-in-club-record-lb50m-deal-as-chelsea-make-profit-on-striker" target="_blank" rel="noopener">Sky Sports</a></li>
+    </ul>
+    <h3>Report</h3>
+    <ul>
+      <li>Tottenham Hotspur ใกล้บรรลุข้อตกลงยืมตัว <b>Omar Marmoush</b> จาก Manchester City พร้อมเงื่อนไขบังคับซื้อขาดสูงสุด 60 ล้านปอนด์ ต่อเนื่องจากการเซ็น Savinho ก่อนหน้านี้ <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.skysports.com/transfer/news/12691/13575264/savinho-transfer-tottenham-agree-lb85m-deal-to-sign-man-city-winger-as-spurs-close-in-on-omar-marmoush" target="_blank" rel="noopener">Sky Sports</a></li>
+      <li>Liverpool ยังคงเจรจากับ Crystal Palace เรื่องตัว <b>Ismaila Sarr</b> ต่อเนื่องก่อนตลาดปิดวันที่ 1 ก.ย. <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.skysports.com/football/transfer-paper-talk" target="_blank" rel="noopener">Sky Sports</a></li>
+    </ul>
+    <h3>Rumor</h3>
+    <ul>
+      <li>Chelsea อาจคว้าตัว <b>Lamine Camara</b> จาก Monaco ได้ในช่วงโค้งสุดท้ายก่อนตลาดปิด <span class="badge badge-rumor">⚠️ ข่าวลือ</span> — <a href="https://www.skysports.com/football/transfer-paper-talk" target="_blank" rel="noopener">Sky Sports</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏥 Injury &amp; Suspension</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Club</th><th>Player</th><th>Status</th><th>Return</th><th>Source</th></tr>
+      <tr><td>Arsenal</td><td>Jurrien Timber</td><td>บาดเจ็บที่ขาหนีบ <span class="badge badge-cont">ต่อเนื่อง</span></td><td>ยังไม่มีกำหนดกลับมาลงสนามที่ชัดเจน</td><td><a href="https://www.foxsports.com/soccer/jurrien-timber-player" target="_blank" rel="noopener">Fox Sports</a></td></tr>
+      <tr><td>Manchester City</td><td>Jeremy Doku</td><td>บาดเจ็บกล้ามเนื้อน่อง <span class="badge badge-cont">ต่อเนื่อง</span></td><td>ประมาณ 2-3 สัปดาห์ (นับจากรายงานสัปดาห์ก่อน)</td><td><a href="https://www.espn.com/soccer/story/_/id/46915937/premier-league-injuries-weekend-updates-suspensions-fpl-latest" target="_blank" rel="noopener">ESPN</a></td></tr>
+    </table>
+    </div>
+    <div class="note">ไม่พบรายงานอาการบาดเจ็บหรือแบนใหม่เพิ่มเติมที่ยืนยันได้จากแหล่งข่าวที่ตรวจสอบสำหรับช่วง 23-30 ส.ค. นอกเหนือจากรายการที่ต่อเนื่องมาจากสัปดาห์ก่อน</div>
+  </section>
+
+  <section>
+    <h2>📈 Weekly Statistics</h2>
+    <ul>
+      <li><b>Most Goals (Matchweek 2):</b> Manchester City ยิง 4 ประตูใส่ Crystal Palace และ Chelsea ยิง 4 ประตูใส่ Brighton เป็นสองนัดที่ยิงประตูมากที่สุดในสัปดาห์นี้</li>
+      <li><b>Best Defence:</b> Manchester City และ Newcastle United เป็นสองทีมที่เสียประตูน้อยที่สุดใน Matchweek 2 (คนละ 1 ลูก ในนัดที่ชนะ)</li>
+      <li><b>Clean Sheets:</b> Hull City และ Newcastle United เก็บคลีนชีตได้ใน Matchweek 2</li>
+      <li><b>Player of the Week:</b> Bruno Fernandes (Manchester United) — ยิงแฮตทริกช่วยทีมพลิกกลับมาชนะ Ipswich Town 5-2 หลังตามหลังก่อน เป็นผู้เล่นเพียงคนเดียวที่ยิงได้ 3 ประตูในนัดเดียวของสัปดาห์นี้</li>
+    </ul>
+    <div class="note">สถิติใบเหลือง/ใบแดงรายบุคคลสรุปครบถ้วนยังไม่มีแหล่งข้อมูลอย่างเป็นทางการเผยแพร่ครบ ณ เวลารวบรวมข้อมูล จุดโทษที่ยิงสำเร็จใน Matchweek 2 มี 1 ลูก โดย Morgan Gibbs-White (Nottingham Forest) ในเกมพบ Liverpool</div>
+  </section>
+
+  <section>
+    <h2>🔵 Big 6 Analysis</h2>
+    <div class="club-block">
+      <h3>Arsenal</h3>
+      <p><b>ฟอร์ม:</b> ยังคงสถิติไร้พ่ายด้วยชัยชนะนัดเดียวที่ลงเล่น (3-0 Coventry City เมื่อ 21 ส.ค.) โดยยังไม่ได้ลงเล่นใน Matchweek 2 ภายในกรอบ 7 วันนี้ (คิวพบ Aston Villa เลื่อนไปวันที่ 1 ก.ย.)</p>
+      <p><b>จุดอ่อน:</b> Jurrien Timber ยังบาดเจ็บต่อเนื่องที่ขาหนีบ ไม่มีกำหนดกลับมาลงสนามชัดเจน มีนัดในมือ 1 นัดเมื่อเทียบกับคู่แข่งใน Top 6</p>
+    </div>
+    <div class="club-block">
+      <h3>Chelsea</h3>
+      <p><b>ฟอร์ม:</b> ชนะติดต่อกัน 2 นัด (3-2 Fulham, 4-3 Brighton) เก็บ 6 แต้มเต็มภายใต้ Xabi Alonso</p>
+      <p><b>จุดเด่น:</b> แนวรุกร้อนแรง João Pedro และ Cole Palmer ยิงคนละ 2 ประตูในสัปดาห์นี้ ขณะที่ Romeo Lavia และ Pedro Neto ก็ทำประตูช่วยทีมในเกมพบ Brighton</p>
+      <p><b>จุดอ่อน:</b> แนวรับยังรั่วต่อเนื่อง เสียรวม 5 ประตูใน 2 นัด (2 ลูกพบ Fulham, 3 ลูกพบ Brighton) แม้จะเก็บชัยชนะได้ทั้งคู่</p>
+    </div>
+    <div class="club-block">
+      <h3>Liverpool</h3>
+      <p><b>ฟอร์ม:</b> เสมอติดต่อกัน 2 นัด (2-2 Newcastle, 2-2 Nottingham Forest) ยังไม่ชนะใครในฤดูกาลนี้ภายใต้ Andoni Iraola</p>
+      <p><b>จุดเด่น:</b> Alexander Isak และ Victor Munoz ยิงตีเสมอช่วยทีมไม่แพ้ในเกมพบ Forest โดย Florian Wirtz มีส่วนร่วมกับแอสซิสต์ประตูตีเสมอ</p>
+      <p><b>จุดอ่อน:</b> แนวรับเสียประตูตามหลังถึง 2 ครั้งในเกมเดียว (Ndoye และจุดโทษของ Gibbs-White) สะท้อนปัญหาเกมรับที่ต้องแก้ไข</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester City</h3>
+      <p><b>ฟอร์ม:</b> ชนะติดต่อกัน 2 นัด (2-1 Bournemouth, 4-1 Crystal Palace) เก็บ 6 แต้มเต็มภายใต้ Enzo Maresca ผลต่างประตูได้เสียดีที่สุดในบรรดา Big 6 (+4)</p>
+      <p><b>จุดเด่น:</b> Erling Haaland เปิดตัวประตูแรกของฤดูกาลด้วยการยิง 2 ประตูในเกมเดียวพบ Crystal Palace ร่วมกับ Rayan Cherki ที่เล่นได้โดดเด่น</p>
+      <p><b>จุดอ่อน:</b> Jeremy Doku ยังบาดเจ็บกล้ามเนื้อน่องต่อเนื่อง</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester United</h3>
+      <p><b>ฟอร์ม:</b> เก็บชัยชนะนัดแรกของฤดูกาลได้สำเร็จ ชนะ Ipswich Town 5-2 หลังแพ้ Hull City ในนัดเปิดฤดูกาล</p>
+      <p><b>จุดเด่น:</b> Bruno Fernandes ยิงแฮตทริกคนเดียวพลิกเกมจากที่ตามหลังก่อน แสดงถึงความเป็นผู้นำในสนามภายใต้ Michael Carrick</p>
+      <p><b>จุดอ่อน:</b> ยังเสียประตูให้คู่แข่งตามหลังก่อนได้ตั้งแต่ต้นเกม สะท้อนปัญหาเกมรับที่ยังไม่นิ่ง แม้จะเก็บ 3 แต้มได้</p>
+    </div>
+    <div class="club-block">
+      <h3>Tottenham Hotspur</h3>
+      <p><b>ฟอร์ม:</b> แพ้ติดต่อกัน 2 นัด (0-3 Brentford, 0-2 Newcastle) ยังไม่เก็บแต้มและยังไม่ยิงประตูได้เลยในฤดูกาลนี้</p>
+      <p><b>จุดเด่น:</b> เสริมทัพต่อเนื่องด้วย Sandro Tonali, Savinho และใกล้ปิดดีล Omar Marmoush แม้ผลงานในสนามยังไม่สะท้อนการลงทุน</p>
+      <p><b>จุดอ่อน:</b> Roberto De Zerbi ยังหาจังหวะทำประตูไม่เจอเลยใน 2 นัดแรก แม้ทุ่มเงินซื้อนักเตะไปแล้วกว่า 320 ล้านปอนด์ ทีมยังต้องปรับตัวกับระบบการเล่นใหม่อย่างเร่งด่วน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 Title Race</h2>
+    <p>Manchester City และ Chelsea โชว์ฟอร์มสมบูรณ์แบบ 2 นัด 2 ชนะเท่ากันที่ 6 แต้ม โดย Man City มีผลต่างประตูได้เสียดีกว่า (+4 ต่อ +2) ขณะที่ Arsenal แชมป์เก่ายังมีนัดในมือหลังคิวพบ Aston Villa เลื่อนออกไป Liverpool ภายใต้ Iraola ยังน่าเป็นห่วงหลังเสมอ 2 นัดติดโดยไม่ชนะใครเลย ต้องจับตาว่าจะปรับตัวทันในสัปดาห์หน้าหรือไม่</p>
+  </section>
+
+  <section>
+    <h2>🎯 Top 4 Race</h2>
+    <p>Chelsea และ Manchester City เก็บ 6 แต้มเต็มขึ้นนำกลุ่มบนของตาราง ตามด้วย Brentford, Newcastle และ Everton ที่เก็บ 4 แต้มเท่ากัน Manchester United เริ่มทวงฟอร์มคืนได้หลังชนะนัดแรก แต่ Tottenham ยังรั้งท้ายกลุ่มบิ๊กคลับด้วยผลงาน 0 แต้มจาก 2 นัด ทำให้การลุ้น 4 อันดับแรกยังเปิดกว้างมากในช่วงต้นฤดูกาลนี้</p>
+  </section>
+
+  <section>
+    <h2>⬇️ Relegation Battle</h2>
+    <p>Hull City เก็บ 6 แต้มเต็มจาก 2 นัดแรก (ชนะทั้ง Manchester United และ Coventry City) เป็นผลงานที่โดดเด่นที่สุดในบรรดาทีมเลื่อนชั้น ขณะที่ Sunderland ทวงแต้มคืนได้จากชัยชนะเหนือ Fulham แต่ Coventry City แพ้ติดต่อกัน 2 นัดโดยยังไม่ยิงประตูได้เลย เช่นเดียวกับ Crystal Palace ที่แพ้ 2 นัดติดเสียไปแล้วรวม 6 ประตู ทั้งสองทีมนี้เริ่มมีสัญญาณน่าเป็นห่วงตั้งแต่ต้นฤดูกาล</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Week Fixtures</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Time (ICT)</th><th>Home</th><th>VS</th><th>Away</th><th>Source</th></tr>
+      <tr><td>1 ก.ย.</td><td>02:00</td><td>Aston Villa</td><td>vs</td><td>Arsenal</td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:14px;">คู่เด่นของสัปดาห์หน้า:</p>
+    <ul>
+      <li><b>Aston Villa vs Arsenal</b> (1 ก.ย., 02:00 ICT) — แชมป์เก่า Arsenal ที่ยังไร้พ่ายบุกเยือน Aston Villa ที่เพิ่งพ่ายแพ้ยับเยิน 0-4 ในนัดเปิดฤดูกาล</li>
+      <li>ตลาดซื้อขายนักเตะฤดูร้อนปิดตัวลงเวลา 23:00 น. ของวันที่ 1 ก.ย. (เวลาอังกฤษ) ต้องจับตาดีล Omar Marmoush ไป Tottenham และ Ismaila Sarr ไป Liverpool ว่าจะจบก่อนตลาดปิดหรือไม่</li>
+    </ul>
+    <div class="note">โปรแกรม Matchweek 3 เต็มรูปแบบยังไม่ประกาศครบถ้วนภายในกรอบเวลาที่ตรวจสอบได้ของรายงานนี้ จะรายงานในสัปดาห์ถัดไปเมื่อข้อมูลครบถ้วน</div>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <ul>
+      <li><b>Matches:</b> 9 นัด (Matchweek 2 เท่าที่แข่งจบภายใน 30 ส.ค. จากทั้งหมด 10 คู่)</li>
+      <li><b>Goals:</b> 25 ประตู จาก 9 นัด (เฉลี่ย 2.8 ประตู/นัด)</li>
+      <li><b>Clean Sheets:</b> 2 นัด (Manchester City, Newcastle United)</li>
+      <li><b>Red Cards:</b> ไม่พบรายงานใบแดงในนัดใดของ Matchweek 2 ที่ตรวจสอบ</li>
+      <li><b>Yellow Cards:</b> ยังไม่มีแหล่งข้อมูลสรุปแยกรายใบอย่างเป็นทางการเผยแพร่ครบถ้วน ณ เวลารวบรวมข้อมูล</li>
+      <li><b>Penalties:</b> 1 ลูก — Morgan Gibbs-White (Nottingham Forest) ยิงสำเร็จในเกมพบ Liverpool</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>โปรแกรมสำคัญ:</b> Aston Villa vs Arsenal (1 ก.ย.) จะปิดท้าย Matchweek 2 ให้ครบทั้ง 10 คู่ ต้องติดตามว่าแชมป์เก่าจะรักษาสถิติไร้พ่ายได้ต่อหรือไม่</li>
+      <li><b>ข่าวย้ายทีม:</b> ตลาดซื้อขายนักเตะปิดวันที่ 1 ก.ย. ต้องจับตาดีล Omar Marmoush ไป Tottenham, Ismaila Sarr ไป Liverpool และ Lamine Camara ไป Chelsea ว่าจะจบก่อนตลาดปิดหรือไม่</li>
+      <li><b>ผู้เล่นบาดเจ็บ:</b> ติดตามกำหนดกลับมาของ Jurrien Timber (Arsenal) และ Jeremy Doku (Manchester City)</li>
+      <li><b>ข่าวผู้จัดการทีม:</b> Liverpool ภายใต้ Iraola และ Tottenham ภายใต้ De Zerbi ยังหาชัยชนะนัดแรกไม่เจอ ต้องติดตามว่าจะปรับตัวทันใน Matchweek 3 หรือไม่</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul class="src-list">
+      <li><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League — All 380 fixtures for 2026/27 season</a></li>
+    </ul>
+    <h3>Media</h3>
+    <ul class="src-list">
+      <li><a href="https://www.skysports.com/football/crystal-palace-vs-manchester-city/559458" target="_blank" rel="noopener">Sky Sports — Crystal Palace 1-4 Manchester City</a></li>
+      <li><a href="https://www.skysports.com/football/coventry-city-vs-hull-city/559457" target="_blank" rel="noopener">Sky Sports — Coventry City 0-1 Hull City</a></li>
+      <li><a href="https://www.skysports.com/football/bournemouth-vs-everton/559455" target="_blank" rel="noopener">Sky Sports — Bournemouth 1-1 Everton</a></li>
+      <li><a href="https://www.skysports.com/football/tottenham-hotspur-vs-newcastle-united/report/559463" target="_blank" rel="noopener">Sky Sports — Tottenham Hotspur 0-2 Newcastle United</a></li>
+      <li><a href="https://www.skysports.com/football/liverpool-vs-nottingham-forest/559460" target="_blank" rel="noopener">Sky Sports — Liverpool 2-2 Nottingham Forest</a></li>
+      <li><a href="https://www.skysports.com/football/chelsea-vs-brighton-and-hove-albion/report/559456" target="_blank" rel="noopener">Sky Sports — Chelsea 4-3 Brighton &amp; Hove Albion</a></li>
+      <li><a href="https://www.skysports.com/football/leeds-united-vs-brentford/report/559459" target="_blank" rel="noopener">Sky Sports — Leeds United 1-1 Brentford</a></li>
+      <li><a href="https://www.skysports.com/football/sunderland-vs-fulham/559462" target="_blank" rel="noopener">Sky Sports — Sunderland 1-0 Fulham</a></li>
+      <li><a href="https://www.skysports.com/football/manchester-united-vs-ipswich-town/559461" target="_blank" rel="noopener">Sky Sports — Manchester United 5-2 Ipswich Town</a></li>
+      <li><a href="https://www.skysports.com/football/news/11669/13577569/bradley-barcola-transfer-news-liverpool-reach-lb120m-deal-in-principle-for-psg-forward" target="_blank" rel="noopener">Sky Sports — Bradley Barcola deal in principle</a></li>
+      <li><a href="https://www.skysports.com/football/news/11095/13577306/liam-delap-joins-nottingham-forest-in-club-record-lb50m-deal-as-chelsea-make-profit-on-striker" target="_blank" rel="noopener">Sky Sports — Liam Delap joins Nottingham Forest</a></li>
+      <li><a href="https://www.skysports.com/transfer/news/12691/13575264/savinho-transfer-tottenham-agree-lb85m-deal-to-sign-man-city-winger-as-spurs-close-in-on-omar-marmoush" target="_blank" rel="noopener">Sky Sports — Savinho transfer, Marmoush update</a></li>
+      <li><a href="https://www.skysports.com/football/transfer-paper-talk" target="_blank" rel="noopener">Sky Sports — Transfer Paper Talk (Sarr, Camara)</a></li>
+      <li><a href="https://www.foxsports.com/soccer/jurrien-timber-player" target="_blank" rel="noopener">Fox Sports — Jurrien Timber player news</a></li>
+      <li><a href="https://www.espn.com/soccer/story/_/id/46915937/premier-league-injuries-weekend-updates-suspensions-fpl-latest" target="_blank" rel="noopener">ESPN — Premier League injuries this weekend</a></li>
+    </ul>
+    <div class="note"><b>UNCERTAIN:</b> premierleague.com/tables, espn.com, bbc.com และแหล่งสถิติอย่าง sofascore.com, worldfootball.net ไม่สามารถเข้าถึงได้โดยตรงผ่าน WebFetch ในสภาพแวดล้อมนี้ (network egress ปฏิเสธการเชื่อมต่อ) จึงใช้ผลค้นหา (WebSearch) และแหล่งข่าว Tier 2 (Sky Sports เป็นหลัก) แทนตามลำดับการแก้ปัญหาที่กำหนดไว้ ตารางคะแนนในรายงานนี้จึงเป็นการคำนวณเองจากผลการแข่งขันรายนัดที่ยืนยันได้ ไม่ใช่การคัดลอกจากหน้าตารางคะแนนอย่างเป็นทางการโดยตรง ข้อมูลแอสซิสต์รายบุคคลสะสมและใบเหลืองรายบุคคลยังไม่สามารถยืนยันครบถ้วนได้เช่นเดียวกับสัปดาห์ก่อน</div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Premier League Report · จัดทำโดย Claude Code Routine · ข้อมูลทั้งหมดอ้างอิงจากแหล่งข่าวที่ระบุไว้ข้างต้น หากมีข้อมูลใดไม่สามารถยืนยันได้ จะระบุข้อจำกัดไว้อย่างชัดเจนแทนการคาดเดา</p>
+  </footer>
+</div>
+</body>
+</html>
