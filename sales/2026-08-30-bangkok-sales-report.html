@@ -61,7 +61,7 @@ body {
 
 .header h1 {
   margin: 0 0 10px;
-  font-size: 2.5em;
+  font-size: 2.3em;
   color: var(--primary);
   font-weight: 700;
 }
@@ -74,7 +74,7 @@ body {
 
 .header .meta {
   display: flex;
-  gap: 30px;
+  gap: 24px;
   flex-wrap: wrap;
   font-size: 0.95em;
   color: var(--text-lighter);
@@ -85,7 +85,7 @@ body {
 }
 
 .section-title {
-  font-size: 1.8em;
+  font-size: 1.7em;
   color: var(--primary);
   margin: 30px 0 20px;
   padding-bottom: 10px;
@@ -94,9 +94,9 @@ body {
 }
 
 .section-subtitle {
-  font-size: 1.3em;
+  font-size: 1.25em;
   color: var(--text);
-  margin: 20px 0 15px;
+  margin: 24px 0 14px;
   font-weight: 600;
 }
 
@@ -127,7 +127,8 @@ body {
 
 .info-label {
   font-weight: 600;
-  min-width: 80px;
+  min-width: 84px;
+  flex-shrink: 0;
   color: var(--text-light);
 }
 
@@ -162,6 +163,9 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 table th {
@@ -175,6 +179,7 @@ table th {
 table td {
   padding: 12px;
   border-bottom: 1px solid var(--border);
+  white-space: normal;
 }
 
 table tr:nth-child(even) {
@@ -221,6 +226,7 @@ table tr:nth-child(even) {
 
 .source-list li {
   padding: 5px 0;
+  word-break: break-word;
 }
 
 .source-list a {
@@ -241,28 +247,14 @@ table tr:nth-child(even) {
   margin-right: 8px;
 }
 
-.badge-event {
-  background: var(--primary);
-  color: white;
-}
-
-.badge-promo {
-  background: #F59E0B;
-  color: white;
-}
-
-.badge-mall {
-  background: #8B5CF6;
-  color: white;
-}
-
-.badge-ecom {
-  background: #EC4899;
-  color: white;
-}
+.badge-event { background: var(--primary); color: white; }
+.badge-promo { background: #F59E0B; color: white; }
+.badge-mall { background: #8B5CF6; color: white; }
+.badge-ecom { background: #EC4899; color: white; }
+.badge-continuing { background: #6366F1; color: white; }
 
 .highlight {
-  background-color: rgba(15, 122, 115, 0.1);
+  background-color: rgba(15, 122, 115, 0.12);
   padding: 2px 5px;
   border-radius: 3px;
 }
@@ -290,11 +282,12 @@ table tr:nth-child(even) {
 }
 
 .no-data {
-  padding: 20px;
+  padding: 16px 20px;
   background: var(--surface-dark);
   border-radius: 6px;
   color: var(--text-light);
   font-style: italic;
+  margin-bottom: 12px;
 }
 
 .footer {
@@ -306,27 +299,26 @@ table tr:nth-child(even) {
   text-align: center;
 }
 
+.footer p {
+  margin: 6px 0;
+}
+
+.note-box {
+  background: rgba(245, 158, 11, 0.1);
+  border-left: 4px solid #F59E0B;
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 0.95em;
+}
+
 @media (max-width: 768px) {
-  .header h1 {
-    font-size: 1.8em;
-  }
-
-  .section-title {
-    font-size: 1.4em;
-  }
-
-  .header .meta {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  table {
-    font-size: 0.9em;
-  }
-
-  table th, table td {
-    padding: 8px;
-  }
+  .header h1 { font-size: 1.6em; }
+  .section-title { font-size: 1.3em; }
+  .header .meta { flex-direction: column; gap: 8px; }
+  table th, table td { padding: 8px; font-size: 0.9em; }
+  .info-row { flex-direction: column; gap: 2px; }
+  .info-label { min-width: unset; }
 }
 </style>
 </head>
@@ -336,388 +328,335 @@ table tr:nth-child(even) {
     <h1>🛍 รายงานการจัดงาน โปรโมชัน และข่าวสารกรุงเทพฯ</h1>
     <p class="subtitle">Weekly Bangkok Sales & Events Report</p>
     <div class="meta">
-      <span><strong>สัปดาห์:</strong> W35 (Aug 23-30, 2026)</span>
+      <span><strong>สัปดาห์:</strong> W35 (23–30 สิงหาคม 2026)</span>
       <span><strong>พื้นที่:</strong> กรุงเทพมหานครและปริมณฑล</span>
-      <span><strong>อัปเดต:</strong> 30 สิงหาคม 2026</span>
+      <span><strong>อัปเดต:</strong> 1 กันยายน 2026</span>
     </div>
   </div>
 
   <div class="section">
-    <h2 class="section-title">📌 สรุปภาพรวม</h2>
+    <h2 class="section-title">📌 Executive Summary</h2>
     <div class="summary-box">
       <p>
-        สัปดาห์นี้เป็นช่วงที่มีกิจกรรมส่วนตัวและงานด่านศิลปะ-วัฒนธรรมจำนวนมากในกรุงเทพฯ โดยเน้นไปที่ประสบการณ์ญี่ปุ่น
-        งานเดินทางท่องเที่ยว และเทศกาลวัฒนธรรมเด็ก นอกจากนี้ยังมีโปรโมชันสำคัญจากศูนย์การค้นหลักหลายแห่ง
-        และแพลตฟอร์มอีคอมเมิร์สที่มีส่วนลดสูงถึง 85-93% ในขณะที่เตรียมตัวสำหรับงานแสดงสินค้าขนาดใหญ่
-        ที่จะมีขึ้นในช่วงสัปดาห์แรกของเดือนกันยายน
+        สัปดาห์นี้กรุงเทพฯ เต็มไปด้วยกิจกรรมด้านวัฒนธรรมและครอบครัว นำโดย Nippon Haku Bangkok 2026
+        (เข้าฟรี ที่ศูนย์สิริกิติ์) และ BICT Fest 2026 เทศกาลละครเด็กนานาชาติครบรอบ 10 ปีที่ One Bangkok
+        ขณะที่ฝั่งช้อปปิ้งออนไลน์เตรียมความพร้อมสำหรับแคมเปญ Shopee 9.9 Super Shopping Day ที่จะเริ่มต้นสัปดาห์หน้า
+        สำหรับสัปดาห์ที่ 2 ของเดือนกันยายน ต้องจับตา 74th Bangkok Gems & Jewelry Fair งานอัญมณีระดับโลกที่ศูนย์สิริกิติ์
+        และ ASEAN SHOP 2026 ที่อิมแพ็ค เมืองทองธานี ส่วนโปรโมชันศูนย์การค้าขนาดใหญ่ในรอบสัปดาห์นี้ยังไม่พบข้อมูลใหม่ที่ยืนยันได้ครบตามเกณฑ์
       </p>
     </div>
   </div>
 
   <div class="section">
-    <h2 class="section-title">🎪 งานกำลังจัดอยู่ (Aug 23-30)</h2>
-
-    <div class="event-card">
-      <h4><span class="badge badge-event">🎪</span>Siam Paragon The Wondrous Japan Heritage 2026</h4>
-      <div class="event-info">
-        <div class="info-row">
-          <div class="info-label">📍 สถานที่:</div>
-          <div class="info-value">Siam Paragon, Parc Paragon และ The Main Stage</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">📅 วันที่:</div>
-          <div class="info-value">20-30 สิงหาคม 2026</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">⏰ เวลา:</div>
-          <div class="info-value">แตกต่างกันตามกิจกรรม (Live shows 2pm-5pm)</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">🎯 ไฮไลท์:</div>
-          <div class="info-value">Live samurai swordsmanship และ ninja performances (Aug 20-23)</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">💰 ค่าเข้า:</div>
-          <div class="info-value">ตามราคาศูนย์การค้า</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="event-card">
-      <h4><span class="badge badge-event">🎭</span>Bangkok International Children's Theatre Festival (BICT Fest 2026)</h4>
-      <div class="event-info">
-        <div class="info-row">
-          <div class="info-label">📍 สถานที่:</div>
-          <div class="info-value">สถานที่ต่างๆ ในกรุงเทพฯ</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">📅 วันที่:</div>
-          <div class="info-value">21-30 สิงหาคม 2026</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">🎯 ไฮไลท์:</div>
-          <div class="info-value">11 การแสดงจาก 9 ประเทศ รวมถึง theatre, circus, dance และกิจกรรมเชิงปฏิสัมพันธ์</div>
-        </div>
-      </div>
-    </div>
+    <h2 class="section-title">🎪 งานที่กำลังจัด</h2>
 
     <div class="event-card">
       <h4><span class="badge badge-event">🎌</span>Nippon Haku Bangkok 2026</h4>
       <div class="event-info">
-        <div class="info-row">
-          <div class="info-label">📍 สถานที่:</div>
-          <div class="info-value">Queen Sirikit National Convention Center Halls 5-6 (LG Floor)</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">📅 วันที่:</div>
-          <div class="info-value">28-30 สิงหาคม 2026</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">⏰ เวลา:</div>
-          <div class="info-value">10:00 AM - 8:00 PM</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">💰 ค่าเข้า:</div>
-          <div class="info-value">เข้าฟรี (แนะนำให้ลงทะเบียนล่วงหน้า)</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">🎯 ไฮไลท์:</div>
-          <div class="info-value">ศูนย์รวมสินค้าและการศึกษา วัฒนธรรม ท่องเที่ยว อาหาร เทคโนโลยี และธุรกิจญี่ปุ่น กับ 390+ ผู้แสดงสินค้า</div>
-        </div>
+        <div class="info-row"><div class="info-label">📍 สถานที่:</div><div class="info-value">Queen Sirikit National Convention Center (QSNCC) ชั้น LG ฮอลล์ 5-6</div></div>
+        <div class="info-row"><div class="info-label">📅 วันที่:</div><div class="info-value">28-30 สิงหาคม 2026</div></div>
+        <div class="info-row"><div class="info-label">⏰ เวลา:</div><div class="info-value">10:00-20:00 น.</div></div>
+        <div class="info-row"><div class="info-label">💰 ค่าเข้า:</div><div class="info-value">เข้าฟรี (แนะนำลงทะเบียนล่วงหน้าเพื่อลดคิว)</div></div>
+        <div class="info-row"><div class="info-label">🎯 ไฮไลท์:</div><div class="info-value">งานญี่ปุ่นครบวงจรที่ใหญ่ที่สุดในไทย ธีม "Japanese Way for Better Day" ครอบคลุมการศึกษา ท่องเที่ยว อาหาร สินค้า วัฒนธรรม เทคโนโลยี ธุรกิจ และการแสดงบนเวที รวมถึงงาน Japan Job Fair</div></div>
+        <div class="info-row"><div class="info-label">🔗 Source:</div><div class="info-value"><a href="https://nipponhaku.com/" class="source-link" target="_blank">nipponhaku.com</a> · <a href="https://www.qsncc.com/en/whats-on/event-calendar/nippon-haku-bangkok-2026/" class="source-link" target="_blank">QSNCC (Official Venue)</a></div></div>
       </div>
     </div>
 
     <div class="event-card">
-      <h4><span class="badge badge-event">✈️</span>Thai Teaw Thai 79th Edition Travel Fair (สิ้นสุดแล้ว)</h4>
+      <h4><span class="badge badge-event">🎭</span>BICT Fest 2026 (Bangkok International Children's Theatre Festival) <span class="badge badge-continuing">🔄 กิจกรรมต่อเนื่อง</span></h4>
       <div class="event-info">
-        <div class="info-row">
-          <div class="info-label">📍 สถานที่:</div>
-          <div class="info-value">Queen Sirikit National Convention Center Halls 5-6 (LG Floor)</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">📅 วันที่:</div>
-          <div class="info-value">20-23 สิงหาคม 2026</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">⏰ เวลา:</div>
-          <div class="info-value">10:00 AM - 9:00 PM</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">💰 ค่าเข้า:</div>
-          <div class="info-value">เข้าฟรี</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">🎯 ไฮไลท์:</div>
-          <div class="info-value">800+ ผู้แสดงสินค้า พร้อมส่วนลดเฉพาะสำหรับโรงแรม รีสอร์ท บิน ทัวร์ สปา และดึงดูดนักท่องเที่ยว</div>
-        </div>
+        <div class="info-row"><div class="info-label">📍 สถานที่:</div><div class="info-value">One Bangkok, Goethe-Institut Thailand, และ Sodsai Pantoomkomol Centre for Dramatic Arts (จุฬาฯ)</div></div>
+        <div class="info-row"><div class="info-label">📅 วันที่:</div><div class="info-value">21-30 สิงหาคม 2026</div></div>
+        <div class="info-row"><div class="info-label">💰 ค่าเข้า:</div><div class="info-value">5 การแสดงมีค่าบัตร / 6 การแสดงเข้าฟรี</div></div>
+        <div class="info-row"><div class="info-label">🎯 ไฮไลท์:</div><div class="info-value">ครบรอบ 10 ปีเทศกาล ธีม "Play Attention: Look Who's Growing Up!" รวม 11 การแสดงจาก 9 ประเทศ (ไทย ญี่ปุ่น เกาหลีใต้ ไต้หวัน สิงคโปร์ อินโดนีเซีย เบลเยียม ฝรั่งเศส สหราชอาณาจักร) ครอบคลุม circus, dance, theatre สำหรับทุกวัย</div></div>
+        <div class="info-row"><div class="info-label">🔗 Source:</div><div class="info-value"><a href="https://www.onebangkok.com/en/whats-happening/bict-fest-2026/" class="source-link" target="_blank">One Bangkok (Official)</a> · <a href="https://bictfest.com/2026/" class="source-link" target="_blank">bictfest.com</a> · <a href="https://www.eventpop.me/c/bictfest2026" class="source-link" target="_blank">Eventpop</a></div></div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <h4><span class="badge badge-promo">🛍</span>Drôle de Monsieur Pop-up Store <span class="badge badge-continuing">🔄 กิจกรรมต่อเนื่อง</span></h4>
+      <div class="event-info">
+        <div class="info-row"><div class="info-label">📍 สถานที่:</div><div class="info-value">Central Embassy ชั้น 2</div></div>
+        <div class="info-row"><div class="info-label">📅 วันที่:</div><div class="info-value">3 กรกฎาคม - 28 กันยายน 2026</div></div>
+        <div class="info-row"><div class="info-label">🎯 ไฮไลท์:</div><div class="info-value">ป็อปอัพสโตร์แรกในกรุงเทพฯ ของแบรนด์แฟชั่นฝรั่งเศส Drôle de Monsieur พร้อมคอลเลกชัน Pre-Fall 2026</div></div>
+        <div class="info-row"><div class="info-label">🔗 Source:</div><div class="info-value">Official brand social media (ยืนยันผ่านโพสต์ทางการ) — <em>หมายเหตุ: ไม่พบหน้าโปรโมชันทางการของ Central Embassy โดยตรง ใช้ข้อมูลจาก Official Facebook เป็นแหล่งยืนยัน</em></div></div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <h2 class="section-title">📅 งานที่กำลังจะมาถึง (Sep 1-14)</h2>
+    <h2 class="section-title">📅 งานที่กำลังจะมาถึง (1-14 กันยายน)</h2>
 
     <div class="event-card">
       <h4><span class="badge badge-event">💎</span>74th Bangkok Gems & Jewelry Fair</h4>
       <div class="event-info">
-        <div class="info-row">
-          <div class="info-label">📍 สถานที่:</div>
-          <div class="info-value">Queen Sirikit National Convention Center Halls 1-8 และ Plenary Halls 1-4</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">📅 วันที่:</div>
-          <div class="info-value">8-12 กันยายน 2026</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">🎯 หมวดสินค้า:</div>
-          <div class="info-value">อัญมณี แผนพลอย เพชร ไข่มุก โลหะมีค่า เครื่องประดับ และอุปกรณ์ที่เกี่ยวข้อง</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">📊 ข้อมูล:</div>
-          <div class="info-value">ครั้งที่ 73 บันทึกมูลค่าการค้า 4.75 พันล้านบาท, 40,000+ ผู้เข้าชมจาก 118 ประเทศ</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="event-card">
-      <h4><span class="badge badge-event">🛒</span>ASEAN SHOP 2026</h4>
-      <div class="event-info">
-        <div class="info-row">
-          <div class="info-label">📍 สถานที่:</div>
-          <div class="info-value">IMPACT Exhibition Centre, Muang Thong Thani</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">📅 วันที่:</div>
-          <div class="info-value">10-12 กันยายน 2026</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">🎯 ประเภท:</div>
-          <div class="info-value">งานแสดงสินค้าสำหรับ retail, food service, automated sales และ POS systems ในอาเซียน</div>
-        </div>
+        <div class="info-row"><div class="info-label">📍 สถานที่:</div><div class="info-value">QSNCC ฮอลล์ 1-8 และ Plenary Halls 1-4 (ใช้พื้นที่ทั้งศูนย์เป็นครั้งแรก)</div></div>
+        <div class="info-row"><div class="info-label">📅 วันที่:</div><div class="info-value">8-12 กันยายน 2026</div></div>
+        <div class="info-row"><div class="info-label">🎯 ไฮไลท์:</div><div class="info-value">งานแสดงสินค้าอัญมณีและเครื่องประดับชั้นนำของโลก จัดปีละ 2 ครั้ง มีผู้แสดงสินค้ากว่า 1,300 ราย ครั้งที่ 73 ทำมูลค่าการค้ากว่า 4.75 พันล้านบาท ผู้เข้าชม 40,000+ คนจาก 118 ประเทศ</div></div>
+        <div class="info-row"><div class="info-label">🔗 Source:</div><div class="info-value"><a href="https://www.businesseventsthailand.com/tceb-event-preview/bangkok-gems-jewelry-fair-74th/" class="source-link" target="_blank">TCEB (Official)</a> · <a href="https://event.moc.go.th/en/event/detail/4574" class="source-link" target="_blank">กระทรวงพาณิชย์</a></div></div>
       </div>
     </div>
 
     <div class="event-card">
       <h4><span class="badge badge-event">🍽️</span>Vitafoods Asia 2026</h4>
       <div class="event-info">
-        <div class="info-row">
-          <div class="info-label">📍 สถานที่:</div>
-          <div class="info-value">Queen Sirikit National Convention Center</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">📅 วันที่:</div>
-          <div class="info-value">8-12 กันยายน 2026</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">🎯 ประเภท:</div>
-          <div class="info-value">งานแสดงสินค้า ผลิตภัณฑ์เสริมอาหาร และสุขภาพ</div>
-        </div>
+        <div class="info-row"><div class="info-label">📍 สถานที่:</div><div class="info-value">QSNCC</div></div>
+        <div class="info-row"><div class="info-label">📅 วันที่:</div><div class="info-value">8-12 กันยายน 2026</div></div>
+        <div class="info-row"><div class="info-label">🎯 ประเภท:</div><div class="info-value">งานแสดงสินค้าผลิตภัณฑ์เสริมอาหารและสุขภาพระดับภูมิภาค</div></div>
       </div>
     </div>
 
     <div class="event-card">
-      <h4><span class="badge badge-event">🔧</span>Gastech Bangkok 2026</h4>
+      <h4><span class="badge badge-event">🛒</span>ASEAN SHOP 2026</h4>
       <div class="event-info">
-        <div class="info-row">
-          <div class="info-label">📍 สถานที่:</div>
-          <div class="info-value">BITEC - Bangkok International Trade & Exhibition Center</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">📅 วันที่:</div>
-          <div class="info-value">15-18 กันยายน 2026</div>
-        </div>
+        <div class="info-row"><div class="info-label">📍 สถานที่:</div><div class="info-value">IMPACT Exhibition Centre, เมืองทองธานี</div></div>
+        <div class="info-row"><div class="info-label">📅 วันที่:</div><div class="info-value">10-12 กันยายน 2026</div></div>
+        <div class="info-row"><div class="info-label">🎯 ประเภท:</div><div class="info-value">งานแสดงสินค้าค้าปลีก ฟู้ดเซอร์วิส ระบบขายอัตโนมัติ และ POS สำหรับตลาดอาเซียน</div></div>
+        <div class="info-row"><div class="info-label">🔗 Source:</div><div class="info-value"><a href="https://www.tradeindia.com/tradeshows/153168/asean-shop-2026.html" class="source-link" target="_blank">TradeIndia</a></div></div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <h4><span class="badge badge-event">⚙️</span>ASEAN International Machinery, Equipment & Technology Exhibition 2026</h4>
+      <div class="event-info">
+        <div class="info-row"><div class="info-label">📍 สถานที่:</div><div class="info-value">BITEC</div></div>
+        <div class="info-row"><div class="info-label">📅 วันที่:</div><div class="info-value">2-4 กันยายน 2026</div></div>
+        <div class="info-row"><div class="info-label">🎯 ประเภท:</div><div class="info-value">งานแสดงเครื่องจักรและเทคโนโลยีอุตสาหกรรมอาเซียน</div></div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <h2 class="section-title">💸 โปรโมชัน</h2>
+    <h2 class="section-title">💸 โปรโมชันตามหมวด</h2>
 
-    <div class="section-subtitle">🏬 โปรโมชันศูนย์การค้า</div>
+    <div class="section-subtitle">💻 Electronics & IT</div>
+    <div class="no-data">ไม่มีข้อมูลโปรโมชันที่ยืนยันแหล่งที่มาได้ครบถ้วนในหมวดนี้สำหรับสัปดาห์นี้</div>
 
+    <div class="section-subtitle">👕 Fashion</div>
     <div class="promotion-item">
-      <h5>Siam Paragon - The Wondrous Japan Heritage 2026 (สิ้นสุดแล้ว)</h5>
-      <p>
-        Siam Paragon มอบส่วนลดและของขวัญอุ้มลูกค้า ในการฉลองมิตรภาพยาวนานกับญี่ปุ่น
-      </p>
-      <div class="details">
-        • 100 THB Siam Gift Card (ใช้ได้กับซื้อขั้นต่ำ 200 THB)<br/>
-        • 300 THB Paragon Department Store Cash Coupon (ใช้ได้กับซื้อขั้นต่ำ 3,000 THB)<br/>
-        • โปรโมชันพิเศษสำหรับนักท่องเที่ยว: ใช้ 1,000 THB ได้ส่วนลด 300 THB (เมื่อซื้อ TAGTHAI Bangkok Pass)<br/>
-        ✅ สิ้นสุด: 31 สิงหาคม 2026
-      </div>
+      <h5>Drôle de Monsieur Pop-up — Central Embassy</h5>
+      <p>ป็อปอัพสโตร์แรกในไทยของแบรนด์แฟชั่นฝรั่งเศส วางจำหน่ายคอลเลกชัน Pre-Fall 2026</p>
+      <div class="details">ระยะเวลา: 3 ก.ค. – 28 ก.ย. 2026 · <span class="badge badge-continuing" style="margin:0;">🔄 กิจกรรมต่อเนื่อง</span></div>
     </div>
 
-    <div class="promotion-item">
-      <h5>Siam Center & Siam Discovery (สิ้นสุดแล้ว)</h5>
-      <p>
-        100 THB Siam Gift Card สำหรับผู้ซื้อครั้งต่อไป (ซื้อขั้นต่ำ 200 THB ต่อใบเสร็จ)
-      </p>
-      <div class="details">
-        ✅ สิ้นสุด: 31 สิงหาคม 2026
-      </div>
-    </div>
+    <div class="section-subtitle">🛋 Home & Furniture</div>
+    <div class="no-data">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ (โปรโมชัน Robinson Home Sale ที่พบระหว่างการค้นหาจัดขึ้นช่วงเดือนเมษายน-พฤษภาคม 2026 ซึ่งหมดอายุไปแล้ว จึงไม่นำมาแสดง)</div>
 
-    <div class="promotion-item">
-      <h5>Bangkok Shopping Festival - Emporium & Co.</h5>
-      <p>
-        M Cardmembers ได้ตอบแทนด้วย M Cash Coupons มากถึง 1,500 บาท และส่วนลดเฉพาะ
-      </p>
-      <div class="details">
-        ข้อมูลโปรโมชันล่าสุด: จุนและกรกฎาคม 2026
-      </div>
-    </div>
+    <div class="section-subtitle">🍜 Food & Beverage</div>
+    <div class="no-data">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</div>
 
-    <div class="section-subtitle">💻 E-Commerce Promotions</div>
+    <div class="section-subtitle">💄 Health & Beauty</div>
+    <div class="no-data">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</div>
 
-    <div class="promotion-item">
-      <h5>Lazada Thailand</h5>
-      <p>
-        ส่วนลดจนถึง <span class="highlight">85%</span> สำหรับหมวดสินค้าต่างๆ รวมถึง skincare, home essentials และอื่นๆ
-      </p>
-      <div class="details">
-        เช่น Cicafuse Calming Mask ลดราคา ส่วนลดเฉพาะปกติสูงถึง 60%
-      </div>
-    </div>
-
-    <div class="promotion-item">
-      <h5>Shopee Thailand</h5>
-      <p>
-        ส่วนลดจนถึง <span class="highlight">93%</span> บนหมวดต่างๆ รวมถึง beauty, haircare, wellness, และ fashion
-      </p>
-      <div class="details">
-        • Beauty & wellness: ลดสูงถึง 87%<br/>
-        • Fashion items (dresses, sneakers, handbags): ลด 25% พร้อม Shopee promo code<br/>
-        • Women's boots: ลดสูงถึง 75%
-      </div>
-    </div>
+    <div class="section-subtitle">🎁 Other</div>
+    <div class="no-data">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</div>
   </div>
 
   <div class="section">
-    <h2 class="section-title">🎯 แนะนำ Best Deals</h2>
-
-    <div class="promotion-item">
-      <h5>🏆 Nippon Haku Bangkok 2026 - เข้าฟรี (Aug 28-30)</h5>
-      <p>
-        ประสบการณ์วัฒนธรรมญี่ปุ่นแบบครบเครื่องกับ 390+ ผู้แสดงสินค้า ตั้งแต่สินค้า อาหาร ไปจนถึงมหกรรมหางาน
-      </p>
-      <div class="details">
-        ✨ คุ้มค่า: ไม่มีค่าเข้า + ได้เรียนรู้วัฒนธรรมญี่ปุ่น + ติดต่องานที่ผู้บริหารมาจากแบรนด์ญี่ปุ่น
-      </div>
+    <h2 class="section-title">🏬 โปรโมชันศูนย์การค้า</h2>
+    <div class="note-box">
+      ⚠️ <strong>ข้อจำกัดของข้อมูล:</strong> ไม่พบโปรโมชันศูนย์การค้าขนาดใหญ่ (Siam Paragon, CentralWorld, ICONSIAM, EmQuartier, MBK, Terminal 21, The Mall, Central, Robinson, Big C, Lotus's, Makro) ที่ยัง<strong>มีผลอยู่จริง</strong>ในช่วงสัปดาห์ 23-30 สิงหาคม 2026 จากการตรวจสอบ — โปรโมชันของ Siam Paragon/Siam Center (Japan Heritage gift card, Bangkok Pass) และ Inter Grand Grand Sale ของ CentralWorld ที่พบระหว่างการค้นหาล้วน<strong>สิ้นสุดไปแล้วก่อนช่วงเวลารายงาน</strong> จึงถูกตัดออกตามกฎ Validation
     </div>
-
-    <div class="promotion-item">
-      <h5>💰 Shopee & Lazada Back-to-School Sales - ลดสูงถึง 93%</h5>
-      <p>
-        สำหรับการช้อปปิ้งออนไลน์อย่างคุ้มค่าบนแพลตฟอร์ม e-commerce ชั้นนำที่ Shopee กำลังจะลดราคาเฉพาะคน
-      </p>
-      <div class="details">
-        ✨ คุ้มค่า: ส่วนลดขนาดใหญ่ + เลือกจากสินค้ามากมาย + ส่งฟรีบ่อยครั้ง
-      </div>
-    </div>
-
-    <div class="promotion-item">
-      <h5>👑 Siam Paragon Bangkok Watch Week 2026 (Sep 22-27)</h5>
-      <p>
-        ติดตามกำหนดการ: กิจกรรมฉลองวัฒนธรรมนาฬิการ่วม 45+ แบรนด์นาฬิกาชั้นใหญ่ของโลก
-      </p>
-      <div class="details">
-        ✨ สิ่งที่น่าสนใจ: ฟอรั่มสนทนาว่าด้วยเรื่องนาฬิการ + นิทรรศการพิเศษ + ถ้อยทีมผู้เชี่ยวชาญ + แสดงนาฬิกาโฉมใหม่
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2 class="section-title">📊 Quick Stats</h2>
     <table>
       <tr>
-        <th>หมวดหมู่</th>
-        <th>จำนวน</th>
+        <th>ศูนย์การค้า</th>
+        <th>สาขา</th>
+        <th>โปรโมชัน</th>
+        <th>ระยะเวลา</th>
+        <th>Source</th>
       </tr>
       <tr>
-        <td>🎪 งานกำลังจัด (Aug 23-30)</td>
-        <td>4 งาน</td>
-      </tr>
-      <tr>
-        <td>📅 งานที่จะมาถึง (Sep 1-14)</td>
-        <td>5 งาน</td>
-      </tr>
-      <tr>
-        <td>💸 โปรโมชันศูนย์การค้า</td>
-        <td>3 โปรโมชัน</td>
-      </tr>
-      <tr>
-        <td>🛒 E-Commerce Campaigns</td>
-        <td>2 แพลตฟอร์ม</td>
-      </tr>
-      <tr>
-        <td>💎 Trade Fairs</td>
-        <td>2 งาน</td>
+        <td colspan="5" style="text-align:center; color:var(--text-light); font-style:italic;">ไม่มีข้อมูลที่ผ่านการตรวจสอบครบถ้วนสำหรับสัปดาห์นี้</td>
       </tr>
     </table>
   </div>
 
   <div class="section">
-    <h2 class="section-title">👀 Watch List - ติดตามสัปดาห์หน้า</h2>
+    <h2 class="section-title">🛒 E-Commerce Campaigns</h2>
+    <table>
+      <tr>
+        <th>Platform</th>
+        <th>Campaign</th>
+        <th>ระยะเวลา</th>
+        <th>Source</th>
+      </tr>
+      <tr>
+        <td>Shopee Thailand</td>
+        <td>9.9 Super Shopping Day — "Buy 3 Get 33% off" voucher, ดีลราคา 99 บาท, ส่งฟรีทั่วประเทศ</td>
+        <td>เริ่มแคมเปญตั้งแต่ 6 ก.ย. ช่วงโปรโมชันหลัก 8-11 ก.ย. 2026</td>
+        <td><a href="https://play.google.com/store/apps/details?id=com.shopee.th" class="source-link" target="_blank">Shopee TH (Official App)</a></td>
+      </tr>
+    </table>
+    <p style="color:var(--text-light); font-size:0.9em; margin-top:-10px;">
+      ❓ ไม่พบข้อมูลแคมเปญ 9.9 ของ Lazada Thailand และ TikTok Shop Thailand ที่ยืนยันแหล่งที่มาทางการได้ในช่วงเวลาค้นหา — ไม่นำมาแสดงตามหลัก Validation
+    </p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📰 Brand News</h2>
+
+    <div class="section-subtitle">New Store / Pop-up</div>
+    <div class="promotion-item">
+      <h5>Thailand Creative & Design Pop-up Showcase</h5>
+      <p>The Storeys, One Bangkok · 25-29 กันยายน 2026 · 10:00-22:00 น.</p>
+      <div class="details">
+        <a href="https://www.timeout.com/bangkok/things-to-do/thailand-creative-design-pop-up-showcase" class="source-link" target="_blank">Time Out Bangkok</a> — งานแสดงสินค้าดีไซน์และความคิดสร้างสรรค์ของไทย นอกช่วง 7-14 วันของรายงาน แต่ระบุไว้เพื่อการติดตาม
+      </div>
+    </div>
+
+    <div class="promotion-item">
+      <h5>Pokémon Center Bangkok (กำหนดเปิดปี 2026)</h5>
+      <p>CentralWorld — ภายใต้ความร่วมมือระหว่าง The Pokémon Company และ Central Pattana</p>
+      <div class="details">❓ ยังไม่มีวันที่เปิดอย่างเป็นทางการที่ยืนยันได้ — จัดอยู่ใน Watch List</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📍 แนะนำตามพื้นที่</h2>
     <div class="summary-box">
       <ul>
-        <li><strong>74th Bangkok Gems & Jewelry Fair (Sep 8-12):</strong> งานแสดงสินค้าอัญมณีขนาดใหญ่ที่สุดเอเชีย ต้องดู</li>
-        <li><strong>Siam Paragon Bangkok Watch Week 2026 (Sep 22-27):</strong> อีเวนต์ไฮไลท์ของศูนย์การค้า Siam Paragon พร้อมนาฬิกาหรูชั้นโลก</li>
-        <li><strong>ASEAN SHOP 2026 (Sep 10-12):</strong> งานแสดงสินค้านำเข้าต่างประเทศและอุปกรณ์ POS เป็นสิ่งที่ต้องติดตาม</li>
+        <li><strong>กรุงเทพฯ ชั้นใน (ปทุมวัน/ราชประสงค์):</strong> Nippon Haku Bangkok 2026 ที่ QSNCC (28-30 ส.ค.)</li>
+        <li><strong>กรุงเทพฯ ชั้นใน (สีลม/ราชเทวี):</strong> BICT Fest 2026 ที่ One Bangkok และ Goethe-Institut (ถึง 30 ส.ค.); Drôle de Monsieur pop-up ที่ Central Embassy</li>
+        <li><strong>กรุงเทพฯ เหนือ:</strong> ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</li>
+        <li><strong>กรุงเทพฯ ตะวันออก:</strong> ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</li>
+        <li><strong>กรุงเทพฯ ตะวันตก:</strong> ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</li>
+        <li><strong>นนทบุรี (ปากเกร็ด):</strong> ASEAN SHOP 2026 ที่ IMPACT เมืองทองธานี (10-12 ก.ย., สัปดาห์หน้า)</li>
+        <li><strong>ปทุมธานี:</strong> ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</li>
+        <li><strong>สมุทรปราการ:</strong> ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</li>
+        <li><strong>สมุทรสาคร:</strong> ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</li>
+        <li><strong>นครปฐม:</strong> ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">💡 Best Deals</h2>
+
+    <div class="promotion-item">
+      <h5>🏆 Nippon Haku Bangkok 2026 — เข้าฟรี</h5>
+      <p>ประสบการณ์วัฒนธรรมญี่ปุ่นครบวงจรที่ใหญ่ที่สุดในไทย พร้อมงานหางานภาคธุรกิจญี่ปุ่นในตัว</p>
+      <div class="details">✨ คุ้มค่า: ไม่มีค่าเข้า + เนื้อหาครอบคลุมทั้งวัฒนธรรม สินค้า และโอกาสงาน · ระยะเวลา: 28-30 ส.ค. 2026 · Source: <a href="https://nipponhaku.com/" class="source-link" target="_blank">nipponhaku.com</a></div>
+    </div>
+
+    <div class="promotion-item">
+      <h5>🎭 BICT Fest 2026 — การแสดงฟรี 6 รอบ</h5>
+      <p>เทศกาลละครเด็กนานาชาติครบรอบ 10 ปี มีทั้งการแสดงแบบเสียค่าบัตรและเข้าฟรีจากศิลปิน 9 ประเทศ</p>
+      <div class="details">✨ คุ้มค่า: เหมาะสำหรับครอบครัว มีตัวเลือกทั้งฟรีและเสียค่าใช้จ่าย · ระยะเวลา: ถึง 30 ส.ค. 2026 · Source: <a href="https://bictfest.com/2026/" class="source-link" target="_blank">bictfest.com</a></div>
+    </div>
+
+    <div class="promotion-item">
+      <h5>🛒 Shopee 9.9 Super Shopping Day — เตรียมตัวล่วงหน้า</h5>
+      <p>แคมเปญใหญ่ประจำเดือนกันยายน พร้อมดีล 99 บาท และส่งฟรีทั่วประเทศ</p>
+      <div class="details">✨ คุ้มค่า: เริ่มแคมเปญ 6 ก.ย. ช่วงหลัก 8-11 ก.ย. 2026 · Source: Shopee TH Official App</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📅 Event Calendar</h2>
+    <table>
+      <tr>
+        <th>วันที่</th>
+        <th>งาน</th>
+        <th>สถานที่</th>
+        <th>ประเภท</th>
+      </tr>
+      <tr><td>21-30 ส.ค. 2026</td><td>BICT Fest 2026</td><td>One Bangkok / Goethe-Institut / จุฬาฯ</td><td>Lifestyle / Family Event</td></tr>
+      <tr><td>28-30 ส.ค. 2026</td><td>Nippon Haku Bangkok 2026</td><td>QSNCC ฮอลล์ 5-6</td><td>Cultural Expo</td></tr>
+      <tr><td>2-4 ก.ย. 2026</td><td>ASEAN Machinery Equipment & Technology Exhibition</td><td>BITEC</td><td>Trade Fair</td></tr>
+      <tr><td>6-11 ก.ย. 2026</td><td>Shopee 9.9 Super Shopping Day</td><td>ออนไลน์</td><td>E-Commerce Campaign</td></tr>
+      <tr><td>8-12 ก.ย. 2026</td><td>74th Bangkok Gems & Jewelry Fair</td><td>QSNCC</td><td>Trade Fair</td></tr>
+      <tr><td>8-12 ก.ย. 2026</td><td>Vitafoods Asia 2026</td><td>QSNCC</td><td>Trade Fair</td></tr>
+      <tr><td>10-12 ก.ย. 2026</td><td>ASEAN SHOP 2026</td><td>IMPACT เมืองทองธานี</td><td>Trade Fair</td></tr>
+      <tr><td>ถึง 28 ก.ย. 2026</td><td>Drôle de Monsieur Pop-up 🔄</td><td>Central Embassy</td><td>Pop-up Store</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📊 Quick Stats</h2>
+    <table>
+      <tr><th>หมวดหมู่</th><th>จำนวน</th></tr>
+      <tr><td>🎪 Events (กำลังจัด)</td><td>2 งาน</td></tr>
+      <tr><td>🏛 Exhibitions (กำลังจะมาถึง)</td><td>1 งาน (BICT Fest ครอบคลุม)</td></tr>
+      <tr><td>💎 Trade Fairs (กำลังจะมาถึง)</td><td>4 งาน</td></tr>
+      <tr><td>🏬 Mall Promotions</td><td>0 รายการ (ไม่พบข้อมูลที่ยืนยันได้ในช่วงเวลารายงาน)</td></tr>
+      <tr><td>🛒 E-Commerce Campaigns</td><td>1 แพลตฟอร์ม</td></tr>
+      <tr><td>🛍 Pop-up / New Store</td><td>2 รายการ (1 กำลังจัด, 1 กำลังจะมาถึง)</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">👀 Watch List</h2>
+    <div class="summary-box">
+      <ul>
+        <li>
+          <strong>74th Bangkok Gems & Jewelry Fair (8-12 ก.ย.):</strong> งานแสดงสินค้าอัญมณีระดับโลกที่ใช้พื้นที่เต็มศูนย์สิริกิติ์เป็นครั้งแรก
+          — เหตุผล: ขนาดใหญ่ระดับนานาชาติ มูลค่าการค้าปีก่อนกว่า 4.75 พันล้านบาท · Source: <a href="https://www.businesseventsthailand.com/tceb-event-preview/bangkok-gems-jewelry-fair-74th/" class="source-link" target="_blank">TCEB</a>
+        </li>
+        <li>
+          <strong>Siam Paragon Bangkok Watch Week 2026 (22-27 ก.ย.):</strong> งานฉลองวัฒนธรรมนาฬิกาหรูครั้งที่ 2 มีแบรนด์เข้าร่วมกว่า 45 แบรนด์ เพิ่มขึ้น 50% จากปีแรก รวมแบรนด์ใหม่ Blancpain, Breguet, Omega, Tudor คาดว่าจะมีผู้เข้าชม 40,000 คน
+          — เหตุผล: งานระดับ flagship ของ Siam Paragon แม้จะอยู่นอกช่วง 7-14 วันของรายงานนี้ · Source: <a href="https://www.siamparagon.co.th/events/siam-paragon-bangkok-watch-week-2026-172" class="source-link" target="_blank">Siam Paragon (Official)</a>
+        </li>
+        <li>
+          <strong>Shopee 9.9 Super Shopping Day (เริ่ม 6 ก.ย.):</strong> แคมเปญอีคอมเมิร์สรายเดือนที่คาดว่าจะมีส่วนลดจำนวนมาก
+          — เหตุผล: เริ่มต้นในสัปดาห์หน้า ควรติดตามรายละเอียดส่วนลดเพิ่มเติมเมื่อใกล้วันจริง
+        </li>
+        <li>
+          <strong>Pokémon Center Bangkok ที่ CentralWorld:</strong> ยืนยันแผนเปิดร้านในปี 2026 แต่ยังไม่มีวันที่แน่ชัด
+          — เหตุผล: กระแสความสนใจสูง ควรติดตามประกาศวันเปิดอย่างเป็นทางการ
+        </li>
       </ul>
     </div>
   </div>
 
   <div class="sources">
-    <h3>📖 แหล่งอ้างอิง</h3>
+    <h3>📖 Sources</h3>
 
     <div class="source-category">
-      <h4>🎪 Event & Exhibition Information</h4>
+      <h4>Official</h4>
       <ul class="source-list">
-        <li><a href="https://www.tatnews.org/2026/07/august-2026-event-and-calendar/" class="source-link" target="_blank">TAT Newsroom - August 2026 Event Calendar</a></li>
-        <li><a href="https://www.timeout.com/bangkok/news/nippon-haku-bangkok-2026-072526" class="source-link" target="_blank">Time Out Bangkok - Nippon Haku 2026</a></li>
-        <li><a href="https://nipponhaku.com/" class="source-link" target="_blank">Nippon Haku Official Website</a></li>
-        <li><a href="https://www.qsncc.com/en/whats-on/event-calendar/nippon-haku-bangkok-2026/" class="source-link" target="_blank">QSNCC - Nippon Haku 2026</a></li>
-        <li><a href="https://www.timeout.com/bangkok/news/bict-fest-2026-071326" class="source-link" target="_blank">Time Out Bangkok - BICT Fest 2026</a></li>
-        <li><a href="https://www.timeout.com/bangkok/news/free-orchestra-shows-at-lumphini-hall-this-august-080626" class="source-link" target="_blank">Time Out Bangkok - Lumphini Hall August Events</a></li>
+        <li><a href="https://www.onebangkok.com/en/whats-happening/bict-fest-2026/" class="source-link" target="_blank">One Bangkok — BICT Fest 2026</a></li>
+        <li><a href="https://www.qsncc.com/en/whats-on/event-calendar/nippon-haku-bangkok-2026/" class="source-link" target="_blank">QSNCC — Nippon Haku Bangkok 2026</a></li>
+        <li><a href="https://nipponhaku.com/" class="source-link" target="_blank">Nippon Haku Bangkok — Official Site</a></li>
+        <li><a href="https://www.siamparagon.co.th/events/siam-paragon-bangkok-watch-week-2026-172" class="source-link" target="_blank">Siam Paragon — Bangkok Watch Week 2026</a></li>
       </ul>
     </div>
 
     <div class="source-category">
-      <h4>🛍 Shopping & Promotion Information</h4>
+      <h4>Event Platforms</h4>
       <ul class="source-list">
-        <li><a href="https://www.manilatimes.net/2026/08/28/tmt-newswire/media-outreach-newswire/siam-paragon-bangkok-watch-week-2026-elevates-bangkok-as-a-global-watch-destination/2413887" class="source-link" target="_blank">Manila Times - Siam Paragon Bangkok Watch Week 2026</a></li>
-        <li><a href="https://tourist.onesiam.com/en/11518/bangkok-shopping-festival/" class="source-link" target="_blank">One Siam - Bangkok Shopping Festival</a></li>
-        <li><a href="https://www.emquartier.co.th/en/promotion/bkk-shopping-festival-2026/" class="source-link" target="_blank">EmQuartier - Bangkok Shopping Festival 2026</a></li>
+        <li><a href="https://bictfest.com/2026/" class="source-link" target="_blank">bictfest.com</a></li>
+        <li><a href="https://www.eventpop.me/c/bictfest2026" class="source-link" target="_blank">Eventpop — BICT Fest 2026</a></li>
+        <li><a href="https://www.tradeindia.com/tradeshows/153168/asean-shop-2026.html" class="source-link" target="_blank">TradeIndia — ASEAN SHOP 2026</a></li>
       </ul>
     </div>
 
     <div class="source-category">
-      <h4>💎 Trade Fairs & Exhibitions</h4>
+      <h4>Trusted Sources</h4>
       <ul class="source-list">
-        <li><a href="https://www.businesseventsthailand.com/tceb-event-preview/bangkok-gems-jewelry-fair-74th/" class="source-link" target="_blank">Thailand Convention & Exhibition Bureau - 74th Bangkok Gems & Jewelry Fair</a></li>
-        <li><a href="https://www.tradeindia.com/tradeshows/150726/74th-bangkok-gems-jewelry-fair-2026.html" class="source-link" target="_blank">Trade India - 74th Bangkok Gems & Jewelry Fair 2026</a></li>
-        <li><a href="https://www.tradeindia.com/tradeshows/153168/asean-shop-2026.html" class="source-link" target="_blank">Trade India - ASEAN SHOP 2026</a></li>
-        <li><a href="https://www.thailandexhibition.com/thai-trade-show-details/thai-teaw-thai-79th-edition-2026/32218" class="source-link" target="_blank">Thailand Exhibition - Thai Teaw Thai 79th Edition 2026</a></li>
+        <li><a href="https://www.businesseventsthailand.com/tceb-event-preview/bangkok-gems-jewelry-fair-74th/" class="source-link" target="_blank">TCEB — 74th Bangkok Gems & Jewelry Fair</a></li>
+        <li><a href="https://event.moc.go.th/en/event/detail/4574" class="source-link" target="_blank">กระทรวงพาณิชย์ — 74th Bangkok Gems & Jewelry Fair</a></li>
+        <li><a href="https://www.timeout.com/bangkok/things-to-do/thailand-creative-design-pop-up-showcase" class="source-link" target="_blank">Time Out Bangkok — Thailand Creative & Design Pop-up Showcase</a></li>
+        <li><a href="https://www.manilatimes.net/2026/08/28/tmt-newswire/media-outreach-newswire/siam-paragon-bangkok-watch-week-2026-elevates-bangkok-as-a-global-watch-destination/2413887" class="source-link" target="_blank">Manila Times — Siam Paragon Bangkok Watch Week 2026</a></li>
+        <li><a href="https://revolutionwatch.com/bangkok-watch-week-returns-for-a-bigger-second-edition-in-2026/" class="source-link" target="_blank">Revolution Watch — Bangkok Watch Week 2026</a></li>
       </ul>
     </div>
 
     <div class="source-category">
-      <h4>🛒 E-Commerce & Online Sales</h4>
+      <h4>Community (Verification Only)</h4>
       <ul class="source-list">
-        <li><a href="https://promocodes.bangkokpost.com/lazada" class="source-link" target="_blank">Bangkok Post - Lazada Coupon Codes August 2026</a></li>
-        <li><a href="https://promocodes.bangkokpost.com/shopee" class="source-link" target="_blank">Bangkok Post - Shopee Coupon Codes August 2026</a></li>
-        <li><a href="https://anchanto.com/thailand-e-commerce-industry/" class="source-link" target="_blank">Anchanto - Thailand E-commerce Market Guide 2026</a></li>
+        <li>Drôle de Monsieur — Official Facebook post (Central Embassy pop-up)</li>
       </ul>
     </div>
   </div>
 
+  <div class="note-box" style="margin-top:20px;">
+    <strong>UNCERTAIN:</strong> www.bitec.co.th, www.impact.co.th, www.tatnews.org — โดเมนเหล่านี้ไม่สามารถเข้าถึงได้โดยตรงผ่าน network egress proxy ในการดึงข้อมูลครั้งนี้ (EGRESS_BLOCKED) จึงใช้ผลลัพธ์จาก WebSearch และแหล่งข้อมูลสำรอง (TradeIndia, TCEB, กระทรวงพาณิชย์) แทน ผู้ใช้ควรตรวจสอบข้อมูลกำหนดการล่าสุดจากเว็บไซต์ทางการโดยตรงหากต้องการความแม่นยำสูงสุด
+  </div>
+
   <div class="footer">
-    <p>
-      📊 <strong>Weekly Bangkok Sales & Events Report</strong> | สัปดาห์ที่ 35, ปี 2026<br/>
-      ข้อมูลอ้างอิงมาจากแหล่งที่เชื่อถือได้ เช่น TAT, TCEB, ศูนย์การค้า แพลตฟอร์มอีเวนต์ และเทพลาจน์ยอดนิยม<br/>
-      <em>ข้อมูลอัปเดต: 30 สิงหาคม 2026</em>
-    </p>
+    <p><strong>สรุปแนวโน้ม:</strong> ช่วงปลายเดือนสิงหาคมถึงต้นกันยายน 2026 กรุงเทพฯ เน้นกิจกรรมเชิงวัฒนธรรมและครอบครัวเป็นหลัก ก่อนจะเข้าสู่ฤดูกาลงานแสดงสินค้า B2B ขนาดใหญ่ (อัญมณี อาหารเสริม ค้าปลีก) ในสัปดาห์ที่ 2 ของกันยายน ฝั่งพฤติกรรมผู้บริโภคเริ่มเคลื่อนไปทางแคมเปญอีคอมเมิร์สประจำเดือน (9.9) มากกว่าโปรโมชันหน้าร้านศูนย์การค้าแบบดั้งเดิม ซึ่งในสัปดาห์นี้ยังไม่พบแคมเปญขนาดใหญ่จากศูนย์การค้าหลักที่ยืนยันได้</p>
+    <p>📊 <strong>Weekly Bangkok Sales & Events Report</strong> | สัปดาห์ที่ 35, ปี 2026</p>
+    <p><em>ข้อมูลอัปเดต: 1 กันยายน 2026 · จัดทำโดยรวบรวมจากแหล่งข้อมูลที่ตรวจสอบได้เท่านั้น</em></p>
   </div>
 </div>
 </body>
