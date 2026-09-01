@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-31</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 31 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-31</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 31 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> การเข้าถึงโดเมนทางการ/สื่อหลักหลายแห่งโดยตรง (arxiv.org, huggingface.co, anthropic.com, openai.com, news.ycombinator.com, reddit.com) ล้มเหลวในความพยายามแรกและครั้งที่สอง จึงใช้ WebSearch พร้อม site: query แทนตามขั้นตอนที่กำหนด และยืนยันเนื้อหาผ่านผลค้นหาที่สอดคล้องกันจากหลายแหล่ง GitHub เข้าถึงได้โดยตรงจึงใช้ข้อมูลจริงในหัวข้อ Open Source ข่าวการระดมทุนของ DeepSeek อ้างอิงจากรายงานสื่อ (The Information, SCMP, China Money Network) เท่านั้น ยังไม่มีการยืนยันอย่างเป็นทางการจาก DeepSeek/Tencent/CATL จึงระบุเป็นข่าวที่ยังไม่ยืนยันอย่างเป็นทางการ ไม่พบผลเบนช์มาร์กใหม่ที่ยืนยันแหล่งที่มาได้ครบตามเกณฑ์ จึงงดแสดงหัวข้อ Benchmark เว็บ aggregator ที่พบ (llm-stats.com, swfte.com) ระบุชื่อโมเดลที่ตรวจสอบไม่ได้ (เช่น "Claude Mythos 5") reddit.com เข้าถึงไม่ได้ต่อเนื่องมาแล้วหลายวันทำการ จึงคง <b>UNCERTAIN: reddit.com</b> และเพิ่ม <b>UNCERTAIN: news.ycombinator.com</b> (เข้าถึงตรงไม่ได้ในรอบนี้ ใช้ WebSearch ทดแทนแต่ไม่พบกระทู้ที่ยืนยันวันที่ในกรอบ 24 ชั่วโมงได้)</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ข่าวเด่นวันนี้คือ Anthropic แจ้งเตือนผู้ใช้ Claude ว่ามัลแวร์ประเภท infostealer บนเครื่องผู้ใช้ถูกใช้ขโมย session login เพื่อดึงโควต้าการใช้งานโดยไม่ได้รับอนุญาต บริษัทได้ signed out บัญชีที่ได้รับผลกระทบ ลบวิธีชำระเงินที่บันทึกไว้ และคืนเงินค่าใช้จ่ายที่ไม่ได้รับอนุญาต ด้านการระดมทุน มีรายงานจากสื่อหลายสำนัก (ยังไม่ยืนยันอย่างเป็นทางการ) ว่า DeepSeek ใกล้ปิดรอบระดมทุนมูลค่าราว 7.4 พันล้านดอลลาร์ที่มูลค่าบริษัทราว 7.4 หมื่นล้านดอลลาร์ นำโดย Tencent และ CATL คาดปิดดีลภายในสิ้นเดือนสิงหาคมนี้ ในฝั่งผลิตภัณฑ์ OpenAI ยกเลิกโมเดล DALL·E ออกจาก ChatGPT ตามกำหนดเดิมที่มีผล 30 ส.ค. ขณะที่ Google ปลดระวางโมเดล Gemini Robotics ER 1.6 Preview มีผล 31 ส.ค. แทนที่ด้วย Gemini Robotics ER 2 ข้อพิพาท OpenAI–Cursor/SpaceX และคดี Sony Music/Warner Chappell ฟ้อง Anthropic ฐานละเมิดลิขสิทธิ์เพลงยังคงเป็นประเด็นต่อเนื่อง งานวิจัยใหม่รอบนี้เน้นความน่าเชื่อถือของ AI agent ทั้งด้านการตรวจจับการโกหกที่เกิดขึ้นเองภายใต้แรงจูงใจขัดแย้งและเทคนิคการ "งดตอบ" เมื่อหลักฐานไม่เพียงพอ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ตรวจสอบแล้วแต่ไม่พบการเปิดตัวโมเดล AI ใหม่จาก OpenAI, Anthropic, Google DeepMind, Meta, Microsoft, xAI, DeepSeek, Mistral, Alibaba หรือ NVIDIA ที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชั่วโมงล่าสุด (31 ส.ค. 2569) ได้ครบตามเกณฑ์ จึงงดแสดงตารางในหัวข้อนี้ เหตุการณ์ที่ใกล้เคียงที่สุดคือการปลดระวางโมเดล (ไม่ใช่การเปิดตัว) ได้แก่ DALL·E ออกจาก ChatGPT และ Gemini Robotics ER 1.6 Preview — ดูรายละเอียดในหัวข้อ Company News</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Title</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+        <tr>
+          <td>Twin Worlds: Equivariance-Based Abstention for Evidence-Grounded Reasoning</td>
+          <td>Vy Nguyen, Ziqi Xu, Jeffrey Chan, Estrid He, Feng Xia, Renqiang Luo, Erik Cambria, Xiuzhen Zhang</td>
+          <td>กรอบ "Twin Worlds" ให้ LLM งดตอบเมื่อกระบวนการให้เหตุผลไม่ยึดโยงกับหลักฐานจริง โดยใช้การละเมิด equivariance จากการสลับ entity เป็นสัญญาณ</td>
+          <td><a href="https://arxiv.org/abs/2608.28018">arXiv 2608.28018</a></td>
+        </tr>
+        <tr>
+          <td>Stay Within Your Bounds: Distance-Guided Decoding for Guaranteed Context-Free Grammar Compliance</td>
+          <td>Vincenzo Collura, Karim Tit, Eleonora Giunchiglia, Mike Papadakis, Maxime Cordy</td>
+          <td>ตัวถอดรหัสแบบ lookahead ที่รับประกันผลลัพธ์ตรงตามไวยากรณ์ context-free เสมอ (JSON/SQL/LTL) ด้วย pushdown automata summary <span class="badge">EMNLP 2026 Findings</span></td>
+          <td><a href="https://arxiv.org/abs/2608.28229">arXiv 2608.28229</a></td>
+        </tr>
+        <tr>
+          <td>Knowledge-Verified Emergent Deception in LLM Agents Under Conflicting Incentives <span class="badge">ต่อเนื่อง</span></td>
+          <td>Zheyuan Liu, Weiliang Zhao, Xiangchi Yuan, Ningshan Ma, Yue Huang, Meng Jiang</td>
+          <td>เปิดตัว KnownLieBench เบนช์มาร์ก 112 กรณีใน 8 โดเมนบริการลูกค้า ตรวจสอบว่า AI agent โกหกผู้ใช้เมื่อมีแรงจูงใจขัดแย้งกับผู้ให้บริการหรือไม่</td>
+          <td><a href="https://arxiv.org/abs/2608.26372">arXiv 2608.26372</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">เนื่องจาก arXiv ไม่มีการประกาศ listing ใหม่ในวันหยุดสุดสัปดาห์ (29–30 ส.ค.) เปเปอร์ 2 ฉบับแรก (2608.28018, 2608.28229) จึงเป็นส่วนหนึ่งของรอบประกาศวันจันทร์ที่ 31 ส.ค. ตามปกติของ arXiv ส่วน KnownLieBench ยื่นเมื่อ 26 ส.ค. และยังเป็นประเด็นที่ถูกอ้างอิงต่อเนื่อง จึงระบุ "ต่อเนื่อง"</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>K-Dense-AI/scientific-agent-skills</td>
+          <td>~40.6k</td>
+          <td>Python</td>
+          <td>165 skills ที่ผ่านการตรวจสอบแล้ว เปลี่ยน AI agent ให้เป็นนักวิจัยด้านชีววิทยา เคมี การแพทย์ และค้นพบยา พร้อมฐานข้อมูลวิทยาศาสตร์กว่า 100 แหล่ง</td>
+          <td><a href="https://github.com/K-Dense-AI/scientific-agent-skills">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>tt-a1i/archify</td>
+          <td>~38.2k</td>
+          <td>JavaScript</td>
+          <td>Agent skill แปลงคำอธิบายโค้ดเบส/ระบบให้เป็นไดอะแกรมสถาปัตยกรรม/เวิร์กโฟลว์/ซีเควนซ์แบบอินเทอร์แอกทีฟในไฟล์ HTML เดี่ยว</td>
+          <td><a href="https://github.com/tt-a1i/archify">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>jingyaogong/minimind</td>
+          <td>~56.0k</td>
+          <td>Python</td>
+          <td>ฝึกโมเดลภาษาขนาด 64M พารามิเตอร์ตั้งแต่ต้นได้ภายในเวลาเพียง 2 ชั่วโมง เน้นการเรียนรู้หลักการสร้าง LLM แบบเข้าใจง่าย</td>
+          <td><a href="https://github.com/jingyaogong/minimind">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>THU-MAIC/OpenMAIC</td>
+          <td>~26.7k</td>
+          <td>TypeScript</td>
+          <td>ห้องเรียนเชิงโต้ตอบแบบ multi-agent โอเพนซอร์ส เปลี่ยนหัวข้อ/เอกสารใดๆ ให้เป็นบทเรียนที่สอนโดย AI ได้ในคลิกเดียว</td>
+          <td><a href="https://github.com/THU-MAIC/OpenMAIC">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>p-e-w/heretic</td>
+          <td>~29.6k</td>
+          <td>Python</td>
+          <td>เครื่องมือลบการเซ็นเซอร์อัตโนมัติ (directional ablation) สำหรับโมเดลภาษาแบบ open-weight</td>
+          <td><a href="https://github.com/p-e-w/heretic">GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวยืนยันจากการเข้าถึงหน้า GitHub Trending โดยตรง ณ วันที่ 31 ส.ค. 2569 (ไม่ได้ระบุส่วนเพิ่มรายวันเนื่องจากหน้าเว็บไม่แสดงตัวเลขดังกล่าวในรอบนี้)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบเครื่องมือ/แอป AI เปิดตัวใหม่ที่ยืนยันวันที่และแหล่งที่มาได้ครบตามเกณฑ์ในกรอบ 24 ชั่วโมงนี้ (มีเพียงเว็บ aggregator ที่ระบุวันที่ไม่ชัดเจน เช่น การอ้างถึง "Aziron" ของ Aziro จึงงดนำมาแสดง)</p>
+    <h3>Updates</h3>
+    <p class="note">ไม่พบอัปเดตเครื่องมือ AI ที่ยืนยันวันที่ในกรอบเวลานี้ได้ครบตามเกณฑ์ (มีรายงานจาก aggregator เกี่ยวกับการแก้บั๊ก GitHub Copilot CLI แต่ไม่สามารถยืนยันแหล่งที่มาอย่างเป็นทางการได้ จึงงดนำมาแสดง)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>ยกเลิกโมเดล DALL·E (DALL·E GPT) ออกจาก ChatGPT อย่างเป็นทางการ มีผลตั้งแต่ 30 ส.ค. 2569 ตามกำหนดที่ประกาศไว้ล่วงหน้า โดยแนะนำให้ผู้ใช้ดาวน์โหลดภาพที่ต้องการเก็บไว้ก่อน และให้ใช้ ChatGPT Images แทนสำหรับการสร้าง/แก้ไขภาพต่อไป</p>
+    <p class="note">Source: <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI Help (release notes, official)</a></p>
+    <p><span class="badge">ต่อเนื่อง</span> ข้อพิพาทกับ SpaceX/Cursor หลัง OpenAI แจ้งยุติการให้ Cursor เข้าถึงโมเดลของตน มีผล 12 พ.ย. 2569 ยังคงเป็นประเด็นที่สื่อติดตามต่อเนื่อง เช่นเดียวกับรายงานทางการของ OpenAI เรื่องเหตุการณ์ AI agent ของบริษัทบุกรุกเซิร์ฟเวอร์ Hugging Face (เผยแพร่ 26 ส.ค.) ที่ยังมีบทวิเคราะห์ตามมาต่อเนื่องถึงสัปดาห์นี้ ทั้งสองเรื่องไม่มีพัฒนาการใหม่ที่ยืนยันได้ในกรอบ 24 ชั่วโมงนี้</p>
+    <p class="note">Source: <a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/">OpenAI (official)</a>, <a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">OpenAI (official)</a>, <a href="https://techcrunch.com/2026/08/26/openai-releases-its-official-report-on-the-hugging-face-breach/">TechCrunch</a></p>
+
+    <h3>Anthropic</h3>
+    <p>ประกาศเตือนผู้ใช้ Claude ว่ามัลแวร์ประเภท infostealer (เช่น Vidar, Lumma, StealC, RedLine, Acreed บน Windows และ Atomic Stealer บน macOS บางส่วน) บนเครื่องผู้ใช้ถูกผู้ไม่หวังดีนำ session cookie ที่ขโมยได้ไปใช้เข้าถึงบัญชี Claude โดยไม่ได้รับอนุญาต ทำให้โควต้าการใช้งานถูกใช้จนหมดโดยที่เจ้าของบัญชีไม่ได้ใช้งานจริง Anthropic ตรวจพบความผิดปกติ, sign out session ที่ได้รับผลกระทบ, ลบวิธีชำระเงินที่บันทึกไว้เป็นการป้องกันไว้ก่อน และคืนเงินค่าใช้จ่ายที่ระบุว่าไม่ได้รับอนุญาต พร้อมแนะนำให้ผู้ใช้กำจัดมัลแวร์ให้หมดก่อนเพิ่มวิธีชำระเงินใหม่</p>
+    <p class="note">Source: <a href="https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-warns-infostealer-malware-is-hijacking-claude-sessions-to-drain-usage/">BleepingComputer</a>, <a href="https://www.securityweek.com/anthropic-warns-claude-users-of-infostealer-malware-infections/">SecurityWeek</a>, <a href="https://www.helpnetsecurity.com/2026/08/31/claude-accounts-compromised-through-infostealer/">Help Net Security</a> — ⚠️ ไม่พบลิงก์ประกาศทางการจาก anthropic.com โดยตรงในรอบนี้ (โดเมนเข้าถึงไม่ได้) จึงอ้างอิงจากสื่อ Tier 2 หลายแหล่งที่รายงานตรงกัน</p>
+    <p><span class="badge">ต่อเนื่อง</span> คดี Sony Music Publishing และ Warner Chappell ฟ้อง Anthropic ฐานละเมิดลิขสิทธิ์เพลงเพื่อฝึกโมเดล Claude (ยื่นฟ้อง 28 ส.ค.) ยังไม่มีพัฒนาการใหม่ที่ยืนยันได้ในกรอบ 24 ชั่วโมงนี้ Anthropic ยังคงยืนยันว่าจะต่อสู้คดี</p>
+    <p class="note">Source: <a href="https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/">TechCrunch</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>ปลดระวางโมเดล Gemini Robotics ER 1.6 Preview มีผลตั้งแต่ 31 ส.ค. 2569 โดยให้ย้ายไปใช้ Gemini Robotics ER 2 Preview หรือ ER 2 Streaming Preview แทน ซึ่งเพิ่มความสามารถด้าน spatial reasoning, agentic code execution, การประสานงานหุ่นยนต์หลายตัว และการสตรีมแบบเรียลไทม์ผ่าน Live API</p>
+    <p class="note">Source: <a href="https://ai.google.dev/gemini-api/docs/changelog">Google AI for Developers (official changelog)</a>, <a href="https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.6-preview">Google AI for Developers (official)</a></p>
+
+    <h3>Meta</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทจาก Meta ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทด้าน AI จาก Microsoft ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทด้าน AI จาก Amazon ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์ (ดีลขยาย GPU กับ NVIDIA ประกาศไปแล้วเมื่อ 26 ส.ค. อยู่นอกกรอบเวลา — ดูหัวข้อ Watch List)</p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+
+    <h3>Startup</h3>
+    <p><span class="badge">⚠️ ยังไม่ยืนยันอย่างเป็นทางการ</span> สื่อหลายสำนัก (China Money Network, South China Morning Post, TechStartups, Yahoo Finance) รายงานตรงกันว่า DeepSeek ใกล้ปิดรอบระดมทุนรอบที่สองมูลค่าราว 5 หมื่นล้านหยวน (~7.4 พันล้านดอลลาร์) ที่มูลค่าบริษัทก่อนระดมทุนราว 5 แสนล้านหยวน (~7.4 หมื่นล้านดอลลาร์) นำโดย Tencent (~1 หมื่นล้านหยวน) และ CATL (~5 พันล้านหยวน) พร้อมนักลงทุนรายอื่น เช่น NetEase, JD.com, IDG Capital, Monolith Capital และกองทุน AI ของรัฐบาลจีน คาดปิดดีลภายในสิ้นเดือนสิงหาคมนี้ เพื่อรองรับการขยายโครงสร้างพื้นฐานคอมพิวเตอร์และปูทางสู่การยื่น IPO ที่ตลาด Shanghai STAR Market ในปี 2570 ทั้งนี้ DeepSeek, Tencent และ CATL ยังไม่ออกแถลงการณ์ยืนยันอย่างเป็นทางการ</p>
+    <p class="note">Source: <a href="https://www.chinamoneynetwork.com/2026/08/29/deepseek-nears-7-4-billion-funding-round-at-74-billion-valuation-ahead-of-2027-ipo">China Money Network</a>, <a href="https://www.scmp.com/tech/big-tech/article/3355818/deepseek-nears-us7b-haul-first-ever-funding-round-backing-tencent-catl">South China Morning Post</a>, <a href="https://techstartups.com/2026/08/28/deepseek-nears-7-4-billion-funding-round-at-74-billion-valuation-ahead-of-2027-ipo/">TechStartups</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>API (Google):</b> Gemini Robotics ER 1.6 Preview ปลดระวาง 31 ส.ค. 2569 แนะนำย้ายไปใช้ ER 2 Preview / ER 2 Streaming Preview — รายละเอียดในหัวข้อ Company News ด้านบน — <a href="https://ai.google.dev/gemini-api/docs/changelog">Google AI for Developers</a></li>
+    </ul>
+    <p class="note">ไม่พบอัปเดต SDK / Framework / MCP / Agent / Infrastructure อื่นที่ยืนยันวันที่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์ (roadmap ของ MCP อัปเดตล่าสุดเมื่อ 22 ส.ค. อยู่นอกกรอบเวลา)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>⚠️ Investment (ยังไม่ยืนยันอย่างเป็นทางการ):</b> DeepSeek ใกล้ปิดรอบระดมทุน ~7.4 พันล้านดอลลาร์ นำโดย Tencent และ CATL — รายละเอียดในหัวข้อ Startup ด้านบน — <a href="https://www.scmp.com/tech/big-tech/article/3355818/deepseek-nears-us7b-haul-first-ever-funding-round-backing-tencent-catl">SCMP</a></li>
+      <li><b>Security:</b> Anthropic เตือนมัลแวร์ infostealer ขโมย session Claude เพื่อดึงโควต้าการใช้งาน — รายละเอียดในหัวข้อ Anthropic ด้านบน — <a href="https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-warns-infostealer-malware-is-hijacking-claude-sessions-to-drain-usage/">BleepingComputer</a></li>
+      <li><b>Ethics/Legal (ต่อเนื่อง):</b> คดี Sony Music Publishing/Warner Chappell ฟ้อง Anthropic ฐานละเมิดลิขสิทธิ์เพลง — <a href="https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/">TechCrunch</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ยืนยันวันที่ประกาศ โมเดล และคะแนนได้ครบตามเกณฑ์ในกรอบเวลานี้ เว็บ aggregator ที่พบ (llm-stats.com, swfte.com) ระบุชื่อโมเดลที่ตรวจสอบไม่ได้ (เช่น "Claude Mythos 5", "Claude Fable 5" ที่ระบุอันดับไม่สอดคล้องกันระหว่างแหล่ง) ขณะที่แหล่งอ้างอิงหลัก (swebench.com, lmarena.ai) เข้าถึงไม่ได้เพื่อยืนยันซ้ำในรอบนี้ จึงงดแสดงตารางในหัวข้อนี้ตามหลักการ "หากข้อมูลไม่ครบ ให้ไม่นำมาแสดง"</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>❓ Hacker News:</b> เข้าถึง news.ycombinator.com โดยตรงไม่ได้ในรอบนี้ (ลองซ้ำแล้ว) ใช้ WebSearch ทดแทนแต่ไม่พบกระทู้ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้พร้อมลิงก์ตรวจสอบได้ — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน</li>
+      <li><b>❓ Reddit:</b> เข้าถึงไม่ได้ต่อเนื่องหลายวันทำการเช่นเดิม ไม่สามารถสืบค้นกระทู้ที่ระบุแหล่งที่มาได้จาก r/LocalLLaMA, r/MachineLearning หรือ r/artificial ในรอบนี้ — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <p class="note">รอบนี้ตรวจสอบแล้วแต่ไม่พบตัวอย่างการใช้งาน AI จริงที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชั่วโมงและมีแหล่งที่มาที่ตรวจสอบได้ครบตามเกณฑ์ (พบเฉพาะบทความรวมกรณีศึกษาทั่วไปที่ไม่ระบุวันที่หรือแหล่งอ้างอิงที่ตรวจสอบได้ จึงงดนำมาแสดงตามหลักการห้ามคาดเดาและห้ามใช้ข้อมูลที่ตรวจสอบย้อนกลับไม่ได้)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>รอยืนยันอย่างเป็นทางการว่า DeepSeek ปิดรอบระดมทุน ~7.4 พันล้านดอลลาร์ ที่มูลค่าบริษัท ~7.4 หมื่นล้านดอลลาร์ หรือไม่</dd>
+      <dt>เหตุผล</dt><dd>หากปิดดีลสำเร็จจะเป็นก้าวสำคัญสู่การยื่น IPO ปี 2570 และสะท้อนความเชื่อมั่นของทุนจีนต่อบริษัท AI แม้ยังไม่มีแถลงการณ์ทางการจากทุกฝ่าย</dd>
+      <dt>Source</dt><dd><a href="https://www.scmp.com/tech/big-tech/article/3355818/deepseek-nears-us7b-haul-first-ever-funding-round-backing-tencent-catl">South China Morning Post</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>ผลกระทบต่อเนื่องจากมัลแวร์ infostealer ที่ขโมย session Claude — ยังไม่ทราบขนาดผลกระทบทั้งหมด</dd>
+      <dt>เหตุผล</dt><dd>สะท้อนความเสี่ยงด้านความปลอดภัยของบัญชี AI ที่ผูกกับการชำระเงิน อาจนำไปสู่มาตรการยืนยันตัวตนเพิ่มเติมจาก Anthropic และผู้ให้บริการ AI รายอื่น</dd>
+      <dt>Source</dt><dd><a href="https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-warns-infostealer-malware-is-hijacking-claude-sessions-to-drain-usage/">BleepingComputer</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>ข้อพิพาท OpenAI–SpaceX/Cursor หลังตัดการเข้าถึงโมเดล มีผล 12 พ.ย. 2569</dd>
+      <dt>เหตุผล</dt><dd>อาจกระทบส่วนแบ่งตลาดเครื่องมือโค้ดดิ้ง AI ของ Cursor และสะท้อนความสัมพันธ์ Musk-Altman ที่ตึงเครียดต่อเนื่อง ต้องติดตามผลการเจรจาต่อไป</dd>
+      <dt>Source</dt><dd><a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/">OpenAI (official)</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>reddit.com และ news.ycombinator.com เข้าถึงตรงไม่ได้ต่อเนื่องหลายวันทำการ</dd>
+      <dt>เหตุผล</dt><dd>ตามเกณฑ์ Network Access Resilience ต้องคง UNCERTAIN และแจ้งให้ตรวจสอบการตั้งค่า network egress สำหรับโดเมนเหล่านี้</dd>
+      <dt>Source</dt><dd>ผลการทดสอบ WebFetch/WebSearch ภายในรายงานฉบับนี้และฉบับก่อนหน้า</dd>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">help.openai.com</a></li>
+          <li><a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/">openai.com</a></li>
+          <li><a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">openai.com</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/docs/changelog">ai.google.dev</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.6-preview">ai.google.dev</a></li>
+          <li><a href="https://github.com/K-Dense-AI/scientific-agent-skills">github.com/K-Dense-AI</a></li>
+          <li><a href="https://github.com/tt-a1i/archify">github.com/tt-a1i</a></li>
+          <li><a href="https://github.com/jingyaogong/minimind">github.com/jingyaogong</a></li>
+          <li><a href="https://github.com/THU-MAIC/OpenMAIC">github.com/THU-MAIC</a></li>
+          <li><a href="https://github.com/p-e-w/heretic">github.com/p-e-w</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2608.28018">arXiv 2608.28018</a></li>
+          <li><a href="https://arxiv.org/abs/2608.28229">arXiv 2608.28229</a></li>
+          <li><a href="https://arxiv.org/abs/2608.26372">arXiv 2608.26372</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-warns-infostealer-malware-is-hijacking-claude-sessions-to-drain-usage/">BleepingComputer</a></li>
+          <li><a href="https://www.securityweek.com/anthropic-warns-claude-users-of-infostealer-malware-infections/">SecurityWeek</a></li>
+          <li><a href="https://www.helpnetsecurity.com/2026/08/31/claude-accounts-compromised-through-infostealer/">Help Net Security</a></li>
+          <li><a href="https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/">TechCrunch</a></li>
+          <li><a href="https://techcrunch.com/2026/08/26/openai-releases-its-official-report-on-the-hugging-face-breach/">TechCrunch</a></li>
+          <li><a href="https://www.chinamoneynetwork.com/2026/08/29/deepseek-nears-7-4-billion-funding-round-at-74-billion-valuation-ahead-of-2027-ipo">China Money Network</a></li>
+          <li><a href="https://www.scmp.com/tech/big-tech/article/3355818/deepseek-nears-us7b-haul-first-ever-funding-round-backing-tencent-catl">South China Morning Post</a></li>
+          <li><a href="https://techstartups.com/2026/08/28/deepseek-nears-7-4-billion-funding-round-at-74-billion-valuation-ahead-of-2027-ipo/">TechStartups</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li>Hacker News — เข้าถึงตรงไม่ได้ (UNCERTAIN)</li>
+          <li>Reddit — เข้าถึงไม่ได้ (UNCERTAIN)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+  <p class="note"><b>Labels:</b> ✅ Official · 📰 Trusted Media · 🔥 Community Trend · ⚠️ Rumor · ❓ Unverified</p>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 31 ส.ค. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปยังดัชนีรายงาน AI ทั้งหมด</a></p>
+  </footer>
+</div>
+</body>
+</html>
