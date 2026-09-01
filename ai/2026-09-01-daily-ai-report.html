@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-09-01</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 1 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-09-01</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 1 ก.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> การเข้าถึงโดเมนทางการหลายแห่งโดยตรงผ่าน WebFetch ล้มเหลวทั้งในความพยายามแรกและการลองซ้ำ (arxiv.org, huggingface.co, paperswithcode.com, openai.com, www.anthropic.com, deepmind.google — ทั้งหมดขึ้น "EGRESS_BLOCKED") จึงใช้ WebSearch พร้อม site: query และคำค้นเฉพาะเจาะจงแทนตามขั้นตอนที่กำหนด และยืนยันเนื้อหาผ่านผลค้นหาที่สอดคล้องกันจากหลายแหล่ง (รวมถึงหน้าเอกสารทางการ platform.claude.com ที่เข้าถึงได้ผ่านผลค้นหา) GitHub เข้าถึงได้โดยตรงจึงใช้ข้อมูล GitHub Trending จริง ณ เวลาที่ดึงข้อมูล ข่าวการระดมทุนของ DeepSeek พบรายงานที่ขัดแย้งกันระหว่างแหล่งข่าว (บางแหล่งระบุว่า "ใกล้ปิดดีล" ปลายเดือน ส.ค. บางแหล่งระบุว่า "ปิดดีลแล้ว" ตั้งแต่เดือน มิ.ย.) จึงนำเสนอทั้งสองด้านพร้อมระบุแหล่งที่มาและงดสรุปเกินกว่าที่แหล่งข้อมูลยืนยัน ไม่พบผลเบนช์มาร์กของ Claude Fable 5.1 / Mythos 5.1 ที่ยืนยันแหล่งที่มาและคะแนนได้ครบตามเกณฑ์ในกรอบเวลานี้ จึงงดแสดงหัวข้อ Benchmark เช่นเดียวกับ MCP/SDK/Framework อื่นที่ไม่พบอัปเดตยืนยันวันที่ในกรอบ 24 ชั่วโมง</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ข่าวเด่นวันนี้คือ Anthropic เปิดตัว Claude Fable 5.1 และ Claude Mythos 5.1 อย่างเป็นทางการ (1 ก.ย. 2569) โมเดลรุ่นใหม่สำหรับงานโค้ดดิ้งและงานความรู้ พร้อมฟีเจอร์ mid-conversation effort adjustment, content provenance tracking และราคาที่ถูกลงสูงสุดราว 45% สำหรับงานแบบ agentic หนักๆ ด้าน OpenAI ประกาศว่าธุรกิจโฆษณาใน ChatGPT (ChatGPT Ads) แตะรายได้ระดับ 1 พันล้านดอลลาร์ต่อปี (annualized run rate) ภายในเวลาไม่ถึง 200 วัน พร้อมขยาย Ads Manager ไปยังอินเดีย ยุโรป และตะวันออกกลาง/แอฟริกาเหนือ ตั้งแต่ 31 ส.ค. ข่าวการระดมทุนของ DeepSeek มูลค่าราว 7.4 พันล้านดอลลาร์จาก Tencent และ CATL ยังคงเป็นประเด็นต่อเนื่องที่มีรายงานขัดแย้งกันเรื่องสถานะการปิดดีล งานวิจัยใหม่ในกรอบเวลานี้เน้นการตรวจสอบโปรแกรมแบบ agentic ด้วย solver และการปรับปรุงคุณภาพการถอดเสียงยาวแบบต่อเนื่อง ขณะที่ GitHub Trending ยังคงถูกครองโดยโปรเจกต์ agent skills และห้องเรียน multi-agent โอเพนซอร์ส</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Model</th><th>Company</th><th>Category</th><th>Status</th><th>Source</th></tr>
+        <tr>
+          <td>Claude Fable 5.1</td>
+          <td>Anthropic</td>
+          <td>LLM — โค้ดดิ้งและงานความรู้ (coding &amp; knowledge work)</td>
+          <td>เปิดใช้งานทั่วไป (GA) 1 ก.ย. 2569 — รองรับ context 1M token, output สูงสุด 128K token, มี mid-conversation effort adjustment (beta) และ content provenance tracking</td>
+          <td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic (official)</a></td>
+        </tr>
+        <tr>
+          <td>Claude Mythos 5.1</td>
+          <td>Anthropic</td>
+          <td>LLM — โมเดลเดียวกับ Fable 5.1 แต่ปลด safeguard บางส่วนเพื่องานไซเบอร์ซีเคียวริตี้และวิทยาศาสตร์ชีวภาพ</td>
+          <td>เข้าถึงได้เฉพาะผ่านโปรแกรม trusted access เท่านั้น เผยแพร่ 1 ก.ย. 2569</td>
+          <td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic (official)</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">Cross-validated: แหล่งทางการ Anthropic + เอกสาร <a href="https://platform.claude.com/docs/en/models/fable-5-1/overview">platform.claude.com (official docs)</a> + สื่อ Tier 2 หลายแหล่ง (9to5Mac, MacRumors, VentureBeat) รายงานตรงกัน ราคา Fable 5.1: input $10/MTok, output $50/MTok, cache read ลดลง 75% เหลือ $0.25/MTok เมื่อเทียบกับ Fable 5 ทำให้ต้นทุนงานทั่วไปลดลง ~25% และงาน agentic หนักๆ ลดลงสูงสุด ~45%</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+        <tr>
+          <td>Schwarz: Solver-Aware Agentic Program Verification</td>
+          <td>Jingyu Ke, Ling-I Wu, Guoqiang Li (Shanghai Jiao Tong University)</td>
+          <td>เฟรมเวิร์กตรวจสอบความถูกต้องของโปรแกรมแบบ agentic ที่ผสาน solver เข้ากับ agent เพื่อพิสูจน์คุณสมบัติของโปรแกรมโดยอัตโนมัติ</td>
+          <td><a href="https://arxiv.org/abs/2608.30803">arXiv 2608.30803</a></td>
+        </tr>
+        <tr>
+          <td>Context-Aware Interleaved Batching for WhisperX</td>
+          <td>Carlos Bain, Max Bain</td>
+          <td>ปรับปรุงเทคนิค batching ของ WhisperX โดยใช้ขอบเขต segment จาก VAD เพื่อรักษาบริบทประวัติเสียงต่อเนื่องข้าม batch ลด Word Error Rate และเพิ่มความแม่นยำในการถอดชื่อเฉพาะ พร้อมคงความเร็วการประมวลผลสูง</td>
+          <td><a href="https://arxiv.org/abs/2608.31170">arXiv 2608.31170</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ทั้งสองฉบับยื่นเมื่อ 31 ส.ค. 2569 อยู่ในกรอบ 24 ชั่วโมงล่าสุด ตรวจสอบชื่อผู้เขียนและหมายเลข arXiv ผ่านผลการค้นหาที่สอดคล้องกันหลายแหล่ง เนื่องจากเข้าถึง arxiv.org โดยตรงไม่ได้ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>Imbad0202/academic-research-skills</td>
+          <td>~44.8k</td>
+          <td>Python</td>
+          <td>ชุด Academic Research Skills สำหรับ Claude Code ครอบคลุมการวิจัย เขียน ทบทวน แก้ไข และสรุปงานวิชาการแบบครบวงจร</td>
+          <td><a href="https://github.com/Imbad0202/academic-research-skills">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>jingyaogong/minimind</td>
+          <td>~57.0k</td>
+          <td>Python</td>
+          <td>ฝึกโมเดลภาษาขนาด 64M พารามิเตอร์ตั้งแต่ต้นได้ภายในเวลาเพียง 2 ชั่วโมง <span class="badge">ต่อเนื่อง</span></td>
+          <td><a href="https://github.com/jingyaogong/minimind">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>THU-MAIC/OpenMAIC</td>
+          <td>~29.3k</td>
+          <td>TypeScript</td>
+          <td>ห้องเรียนเชิงโต้ตอบแบบ multi-agent โอเพนซอร์ส เปลี่ยนหัวข้อ/เอกสารใดๆ ให้เป็นบทเรียนที่สอนโดย AI ได้ในคลิกเดียว <span class="badge">ต่อเนื่อง</span></td>
+          <td><a href="https://github.com/THU-MAIC/OpenMAIC">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>Gitlawb/openclaude</td>
+          <td>~31.2k</td>
+          <td>TypeScript</td>
+          <td>"runs anywhere. uses anything" — เฟรมเวิร์ก agent ที่ออกแบบให้รันได้หลากหลายสภาพแวดล้อมและเชื่อมต่อเครื่องมือได้กว้าง</td>
+          <td><a href="https://github.com/Gitlawb/openclaude">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>debpalash/VoiceStudio</td>
+          <td>~13.7k</td>
+          <td>Python</td>
+          <td>ทางเลือกโอเพนซอร์สแทน ElevenLabs รองรับ voice cloning, voice design, dubbing และการถอดเสียงกว่า 646 ภาษา</td>
+          <td><a href="https://github.com/debpalash/VoiceStudio">GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวยืนยันจากการเข้าถึงหน้า GitHub Trending โดยตรง ณ วันที่ 1 ก.ย. 2569 (เป็นตัวเลขสะสม ไม่ใช่ส่วนเพิ่มรายวัน) รายการที่ทำเครื่องหมาย "ต่อเนื่อง" เคยปรากฏในรายงานฉบับก่อนหน้าและยังคงติดอันดับ Trending ต่อเนื่อง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">พบการเปิดตัวผลิตภัณฑ์ AI ใหม่หลายรายการผ่าน Product Hunt/Launch HN ในวันนี้ (เช่น Almanac โดย YC S26 — ดูรายละเอียดในหัวข้อ Use Cases ด้านล่าง) แต่ส่วนใหญ่ไม่สามารถยืนยันข้อมูลราคา (Pricing) จากแหล่งทางการได้ครบตามเกณฑ์ในรอบนี้ จึงงดแสดงเป็นตารางตามหลักการ "หากข้อมูลไม่ครบ ให้ไม่นำมาแสดง"</p>
+    <h3>Updates</h3>
+    <ul>
+      <li><b>Claude Fable 5.1 (Anthropic):</b> ปรับราคา cache read ลดลง 75% เหลือ $0.25/MTok เทียบกับ Fable 5 — <a href="https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1">Claude Platform Docs (official)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>ประกาศว่าธุรกิจโฆษณาบน ChatGPT (ChatGPT Ads) แตะรายได้ระดับ 1 พันล้านดอลลาร์สหรัฐต่อปี (annualized revenue run rate) ภายในเวลาไม่ถึง 200 วันหลังเปิดตัว มีผู้ลงโฆษณาแล้วนับหมื่นราย และตั้งแต่ 31 ส.ค. 2569 ผู้ลงโฆษณาสามารถซื้อโฆษณาผ่าน Ads Manager ได้โดยตรงในอินเดีย ยุโรป ตะวันออกกลาง และแอฟริกาเหนือ บริษัทตั้งเป้ารายได้โฆษณา 2.5 พันล้านดอลลาร์ในปีนี้</p>
+    <p class="note">Source: <a href="https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/">OpenAI (official)</a>, <a href="https://www.forbes.com/sites/jonmarkman/2026/08/31/chatgpt-built-a-1-billion-ad-business-in-200-days/">Forbes</a>, <a href="https://siliconangle.com/2026/08/31/openai-says-its-ad-business-has-already-hit-1b-in-annualized-revenue/">SiliconANGLE</a></p>
+
+    <h3>Anthropic</h3>
+    <p>เปิดตัว Claude Fable 5.1 และ Claude Mythos 5.1 อย่างเป็นทางการ — รายละเอียดเต็มในหัวข้อ AI Models ด้านบน</p>
+    <p class="note">Source: <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic (official)</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์ (Gemini 3.5 Transcribe เปิดตัวไปแล้วเมื่อ 26 ส.ค. อยู่นอกกรอบเวลา จึงงดนำมาแสดงเป็นข่าวใหม่)</p>
+
+    <h3>Meta</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทด้าน AI ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทด้าน AI ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทด้าน AI ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+
+    <h3>Startup</h3>
+    <p><span class="badge">ต่อเนื่อง</span> <span class="badge">⚠️ ข้อมูลขัดแย้งกัน</span> ข่าวการระดมทุนของ DeepSeek มูลค่าราว 7.4 พันล้านดอลลาร์ นำโดย Tencent และ CATL ยังคงมีรายงานที่ขัดแย้งกันระหว่างแหล่งข่าว: รายงานบางส่วนจากปลาย ส.ค. (SCMP, China Money Network) ยังระบุว่าดีล "ใกล้ปิด" ขณะที่แหล่งอื่น (BigGo Finance, TechTimes) ระบุว่าดีลได้ "ปิดแล้ว" ที่มูลค่าเกิน 5 หมื่นล้านหยวน โดยกองทุน AI แห่งชาติของจีนเป็นผู้ถือหุ้นรายเดียวที่มีสิทธิ์ออกเสียง ส่วน Tencent, CATL และผู้ร่วมลงทุนรายอื่นสละสิทธิ์ออกเสียงและถูกล็อกเงินทุน 5 ปี ยังไม่มีแถลงการณ์ทางการร่วมจากทุกฝ่ายที่ยืนยันวันปิดดีลที่ตรงกันในรอบนี้ จึงนำเสนอทั้งสองรายงานพร้อมแหล่งอ้างอิงตามหลัก Cross Validation</p>
+    <p class="note">Source: <a href="https://www.scmp.com/tech/big-tech/article/3355818/deepseek-nears-us7b-haul-first-ever-funding-round-backing-tencent-catl">South China Morning Post</a>, <a href="https://finance.biggo.com/news/bb90b835-cbbe-4a7e-983f-fa0cdaa61d38">BigGo Finance</a>, <a href="https://www.techtimes.com/articles/318483/20260616/deepseek-closes-74-billion-round-state-fund-gets-votes-other-investors-get-none.htm">Tech Times</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>API/Pricing (Anthropic):</b> Claude Fable 5.1 — cache read ลดราคา 75% เหลือ $0.25/MTok, input $10/MTok, output $50/MTok, รองรับ context 1M token / output 128K token — <a href="https://platform.claude.com/docs/en/models/fable-5-1/overview">Claude Platform Docs</a></li>
+      <li><b>Agent (Anthropic):</b> เพิ่มฟีเจอร์ mid-conversation effort adjustment (beta, ต้องใช้ beta header <code>mid-conversation-output-config-2026-07-01</code>) ให้ปรับระดับความพยายามของโมเดลกลางบทสนทนาได้โดยไม่ทำลาย prompt cache — <a href="https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1">Claude Platform Docs</a></li>
+      <li><b>Trust/Provenance (Anthropic):</b> เพิ่ม content provenance tracking ติดแท็กแหล่งที่มาของผลลัพธ์ที่ AI สร้างขึ้น เพื่อรองรับอุตสาหกรรมที่มีการกำกับดูแลเข้มงวด เช่น การเงิน สุขภาพ และกฎหมาย — <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic (official)</a></li>
+    </ul>
+    <p class="note">ไม่พบอัปเดต MCP / SDK / Framework / Infrastructure อื่นที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>⚠️ Investment (ข้อมูลขัดแย้งกัน, ต่อเนื่อง):</b> สถานะการปิดรอบระดมทุน ~7.4 พันล้านดอลลาร์ของ DeepSeek — รายละเอียดในหัวข้อ Startup ด้านบน — <a href="https://www.scmp.com/tech/big-tech/article/3355818/deepseek-nears-us7b-haul-first-ever-funding-round-backing-tencent-catl">SCMP</a></li>
+      <li><b>Revenue Diversification:</b> OpenAI ผลักดันรายได้จากโฆษณาใน ChatGPT แตะ 1 พันล้านดอลลาร์ต่อปี ก่อนแผน IPO ที่คาดว่าจะเกิดขึ้นในเดือนนี้ (ยื่น S-1 แบบลับกับ ก.ล.ต. สหรัฐฯ ไปก่อนหน้านี้) — <a href="https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/">OpenAI (official)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กของ Claude Fable 5.1 / Mythos 5.1 หรือโมเดลอื่นที่ยืนยันคะแนน แหล่งที่มา และวันที่ประกาศได้ครบตามเกณฑ์ในกรอบ 24 ชั่วโมงนี้ (คะแนน SWE-bench Pro ที่พบสำหรับ Claude Mythos 5 / Fable 5 รุ่นก่อนหน้าลงวันที่ 29 ส.ค. อยู่นอกกรอบเวลาและเป็นคนละเวอร์ชันกับรุ่น 5.1 ที่เพิ่งเปิดตัว จึงงดนำมาแสดงตามหลักการ "หากข้อมูลไม่ครบ ให้ไม่นำมาแสดง")</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Launch HN:</b> กระทู้ "Launch HN: Almanac (YC S26) – AI that knows your company" ได้รับความสนใจใน Hacker News วันนี้ — ดูรายละเอียดในหัวข้อ Use Cases ด้านล่าง — <a href="https://news.ycombinator.com/item?id=49511007">Hacker News</a></li>
+      <li><b>❓ ไม่พบกระทู้อื่น:</b> ตรวจสอบผ่าน WebSearch แล้วแต่ไม่พบกระทู้ Reddit (r/LocalLLaMA, r/MachineLearning) ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้พร้อมลิงก์ตรวจสอบได้เกี่ยวกับ Claude Fable 5.1/Mythos 5.1 ในรอบนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>Almanac — AI Assistant ที่รู้จักบริบทองค์กรทั้งหมด (YC S26)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ความรู้ขององค์กรกระจัดกระจายอยู่ใน Slack, Gmail, เอกสาร, GitHub และการประชุมต่างๆ ทำให้ทีมเสียเวลาค้นหาบริบทเดิมซ้ำๆ</dd>
+        <dt>วิธีใช้</dt><dd>ดึงข้อมูลจาก Slack, Gmail, Calendar, GitHub, เอกสาร และบันทึกการประชุม มาสร้างเป็น Wiki ภายในที่อัปเดตตัวเองอยู่เสมอ ผู้ใช้สอบถามผ่าน Slack หรือ iMessage ได้โดยตรง</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาการค้นหาบริบทเดิม ช่วยให้ทีมเข้าใจสถานะโครงการ ลูกค้า และการตัดสินใจที่ผ่านมาได้เร็วขึ้นโดยไม่ต้องถามคนในทีม</dd>
+      </dl>
+      <p class="note">Source: <a href="https://www.ycombinator.com/launches/Rdq-almanac-the-agent-with-a-company-brain">Y Combinator (official launch page)</a>, <a href="https://news.ycombinator.com/item?id=49511007">Hacker News</a></p>
+    </div>
+    <div class="usecase">
+      <h4>Mid-Conversation Effort Adjustment — ควบคุมต้นทุน Agent แบบเรียลไทม์</h4>
+      <dt>ปัญหา</dt><dd>งาน agentic ที่ยาวมักมีบางขั้นตอนที่ต้องใช้การคิดหนัก และบางขั้นตอนที่เป็นงานประจำที่ไม่จำเป็นต้องใช้ทรัพยากรมาก แต่การเริ่ม session ใหม่เพื่อปรับระดับความพยายามทำให้เสีย prompt cache</dd>
+      <dt>วิธีใช้</dt><dd>Claude Fable 5.1 ให้ปรับระดับ effort ขึ้นหรือลงกลางบทสนทนาได้โดยไม่ต้องเริ่ม session ใหม่และไม่ทำลาย cache ที่สะสมไว้</dd>
+      <dt>ประโยชน์</dt><dd>ลดต้นทุนของ workflow แบบ agentic ที่ซับซ้อนได้สูงสุดถึง ~45% โดยยังคงคุณภาพงานในขั้นตอนที่ต้องการความแม่นยำสูง</dd>
+      <p class="note">Source: <a href="https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1">Claude Platform Docs (official)</a></p>
+    </div>
+    <div class="usecase">
+      <h4>Content Provenance Tracking — รองรับอุตสาหกรรมที่มีการกำกับดูแลเข้มงวด</h4>
+      <dt>ปัญหา</dt><dd>เนื้อหาที่สร้างโดย AI แยกแยะจากงานที่มนุษย์สร้างได้ยากขึ้นเรื่อยๆ สร้างความเสี่ยงด้าน compliance ในอุตสาหกรรมการเงิน สุขภาพ และกฎหมาย</dd>
+      <dt>วิธีใช้</dt><dd>Claude Fable 5.1 ติดแท็กแหล่งที่มาไว้ในผลลัพธ์ที่สร้างขึ้น เพื่อให้ระบบปลายทางตรวจสอบที่มาของเนื้อหาได้</dd>
+      <dt>ประโยชน์</dt><dd>ช่วยให้องค์กรในภาคที่มีการกำกับดูแลเข้มงวดมีหลักฐานที่ตรวจสอบย้อนกลับได้ว่าเนื้อหาส่วนใดสร้างโดย AI</dd>
+      <p class="note">Source: <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic (official)</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">2</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>สถานะจริงของการปิดรอบระดมทุน DeepSeek ~7.4 พันล้านดอลลาร์ ยังขัดแย้งกันระหว่างแหล่งข่าว</dd>
+      <dt>เหตุผล</dt><dd>หากยืนยันว่าปิดดีลแล้วจริง จะเป็นก้าวสำคัญสู่การยื่น IPO ที่ตลาด Shanghai STAR Market ในปี 2570 และสะท้อนความเชื่อมั่นของทุนจีนต่อบริษัท AI ต้องรอแถลงการณ์ทางการที่ตรงกันจากทุกฝ่าย</dd>
+      <dt>Source</dt><dd><a href="https://www.scmp.com/tech/big-tech/article/3355818/deepseek-nears-us7b-haul-first-ever-funding-round-backing-tencent-catl">South China Morning Post</a>, <a href="https://finance.biggo.com/news/bb90b835-cbbe-4a7e-983f-fa0cdaa61d38">BigGo Finance</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>กำหนดการ IPO ของ OpenAI หลังยื่น S-1 แบบลับต่อ ก.ล.ต. สหรัฐฯ คาดเปิดตัวในเดือน ก.ย. 2569 ที่มูลค่าประเมิน 8.52 แสนล้าน–กว่า 1 ล้านล้านดอลลาร์</dd>
+      <dt>เหตุผล</dt><dd>จะเป็น IPO เทคโนโลยีที่ใหญ่ที่สุดครั้งหนึ่งในประวัติศาสตร์ และรายได้โฆษณาที่เพิ่งประกาศเป็นส่วนหนึ่งของการสร้างความเชื่อมั่นด้านรายได้ที่หลากหลายก่อน IPO</dd>
+      <dt>Source</dt><dd><a href="https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/">OpenAI (official)</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>การขยายการเข้าถึง Claude Mythos 5.1 ผ่านโปรแกรม trusted access (ต่อเนื่องจาก Project Glasswing ของ Mythos 5)</dd>
+      <dt>เหตุผล</dt><dd>Mythos 5.1 มีความสามารถด้านไซเบอร์ซีเคียวริตี้สูงและเข้าถึงได้จำกัด การขยาย/จำกัดสิทธิ์เข้าถึงในอนาคตอาจกระทบพันธมิตรด้านความมั่นคงและวิทยาศาสตร์ชีวภาพ</dd>
+      <dt>Source</dt><dd><a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic (official)</a></dd>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">anthropic.com</a></li>
+          <li><a href="https://platform.claude.com/docs/en/models/fable-5-1/overview">platform.claude.com</a></li>
+          <li><a href="https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1">platform.claude.com</a></li>
+          <li><a href="https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/">openai.com</a></li>
+          <li><a href="https://www.ycombinator.com/launches/Rdq-almanac-the-agent-with-a-company-brain">ycombinator.com</a></li>
+          <li><a href="https://github.com/Imbad0202/academic-research-skills">github.com/Imbad0202</a></li>
+          <li><a href="https://github.com/jingyaogong/minimind">github.com/jingyaogong</a></li>
+          <li><a href="https://github.com/THU-MAIC/OpenMAIC">github.com/THU-MAIC</a></li>
+          <li><a href="https://github.com/Gitlawb/openclaude">github.com/Gitlawb</a></li>
+          <li><a href="https://github.com/debpalash/VoiceStudio">github.com/debpalash</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2608.30803">arXiv 2608.30803</a></li>
+          <li><a href="https://arxiv.org/abs/2608.31170">arXiv 2608.31170</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.forbes.com/sites/jonmarkman/2026/08/31/chatgpt-built-a-1-billion-ad-business-in-200-days/">Forbes</a></li>
+          <li><a href="https://siliconangle.com/2026/08/31/openai-says-its-ad-business-has-already-hit-1b-in-annualized-revenue/">SiliconANGLE</a></li>
+          <li><a href="https://9to5mac.com/2026/09/01/anthropic-upgrades-claude-with-new-fable-5-1-model-details-here/">9to5Mac</a></li>
+          <li><a href="https://www.macrumors.com/2026/09/01/anthropic-claude-fable-5-1/">MacRumors</a></li>
+          <li><a href="https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads">VentureBeat</a></li>
+          <li><a href="https://www.scmp.com/tech/big-tech/article/3355818/deepseek-nears-us7b-haul-first-ever-funding-round-backing-tencent-catl">South China Morning Post</a></li>
+          <li><a href="https://finance.biggo.com/news/bb90b835-cbbe-4a7e-983f-fa0cdaa61d38">BigGo Finance</a></li>
+          <li><a href="https://www.techtimes.com/articles/318483/20260616/deepseek-closes-74-billion-round-state-fund-gets-votes-other-investors-get-none.htm">Tech Times</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://news.ycombinator.com/item?id=49511007">Hacker News — Launch HN: Almanac</a></li>
+          <li>Reddit — ไม่พบกระทู้ที่ยืนยันได้ในกรอบเวลานี้</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+  <p class="note"><b>Labels:</b> ✅ Official · 📰 Trusted Media · 🔥 Community Trend · ⚠️ Rumor · ❓ Unverified</p>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 1 ก.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>
