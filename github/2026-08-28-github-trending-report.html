@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly GitHub Trending Report — Week 35, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#B5502A; --warn-soft:rgba(181,80,42,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14);
+    --warn:#E08A63; --warn-soft:rgba(224,138,99,0.14);
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:980px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+h2{ font-size:22px; font-weight:800; margin:48px 0 16px; padding-top:8px; border-top:1px solid var(--line-strong); display:flex; align-items:center; gap:10px; }
+h2:first-of-type{ border-top:none; }
+h3{ font-size:17px; font-weight:700; margin:26px 0 10px; color:var(--ink); }
+p{ margin:0 0 14px; color:var(--ink-soft); }
+ul, ol{ padding-left:22px; color:var(--ink-soft); }
+li{ margin-bottom:6px; }
+strong{ color:var(--ink); }
+code{ font-family:"JetBrains Mono",monospace; font-size:0.9em; background:var(--surface-2); padding:1px 5px; border-radius:4px; }
+
+.summary-box{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:8px; }
+.summary-box p{ margin:0; color:var(--ink); }
+
+.tablewrap{ overflow-x:auto; margin:14px 0 22px; border:1px solid var(--line); border-radius:10px; }
+table{ width:100%; border-collapse:collapse; font-size:14px; background:var(--surface); min-width:640px; }
+thead th{ text-align:left; font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-faint); padding:12px 14px; border-bottom:1px solid var(--line-strong); background:var(--surface-2); white-space:nowrap; }
+tbody td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ color:var(--ink); font-weight:600; }
+tbody td a{ text-decoration:none; }
+tbody td a:hover{ text-decoration:underline; }
+
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.card-title{ font-weight:700; font-size:15.5px; color:var(--ink); margin-bottom:4px; }
+.card-title a{ text-decoration:none; }
+.card-meta{ font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); margin-bottom:10px; }
+.card p{ margin:0 0 8px; font-size:14.5px; }
+.card ul{ margin:6px 0 0; font-size:14px; }
+
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; background:var(--accent-soft); color:var(--accent); margin-right:6px; }
+.badge.warn{ background:var(--warn-soft); color:var(--warn); }
+
+.note-box{ background:var(--warn-soft); border:1px solid rgba(181,80,42,0.28); border-radius:10px; padding:14px 18px; margin:14px 0; font-size:14px; color:var(--ink); }
+.note-box strong{ color:var(--warn); }
+
+.legend-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px 20px; font-size:14px; }
+.legend-grid div{ display:flex; gap:8px; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin:16px 0; }
+.stat-tile{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+.stat-num{ font-family:"JetBrains Mono",monospace; font-size:24px; font-weight:700; color:var(--accent); }
+.stat-label{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer a{ color:var(--ink-faint); }
+
+@media (max-width:640px){
+  h1{ font-size:26px; }
+  h2{ font-size:19px; }
+  .meta-row{ gap:10px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="index.html">← กลับไปหน้ารวม Weekly GitHub Trending</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest · Week 35</p>
+    <h1>⭐ Weekly GitHub Trending Open Source Report</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 21–28 ส.ค. 2026 (ICT)</span>
+      <span><b>หมวด:</b> GitHub Open Source</span>
+      <span><b>เผยแพร่:</b> 28 ส.ค. 2026</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้เหตุการณ์ใหญ่ที่สุดของฝั่งโครงสร้างพื้นฐานคือ <strong>Kubernetes v1.37 "Garhwal" ประกาศ GA เมื่อ 26 ส.ค.</strong> พร้อม breaking change ชุดใหญ่ที่สุดในรอบหลายรุ่น ทั้งการถอด kubelet flag เดิมออกจริง และการบังคับใช้ containerd 2.0 ขึ้นไป ฝั่งความปลอดภัย <strong>Next.js ปล่อยแพตช์ฉุกเฉินแก้ CVE ระดับวิกฤตสองรายการ</strong> เมื่อ 25 ส.ค. ทั้ง RCE ผ่านไฟล์ AVIF และ path traversal บน Windows ขณะที่ <strong>Anthropic ประกาศกองทุน Defender Advantage Fund มูลค่า 35 ล้านดอลลาร์</strong> เพื่อสนับสนุนความปลอดภัยของ open source เมื่อ 21 ส.ค. ฝั่ง Developer Tools ยังคงถูกครอบงำด้วยเครื่องมือ AI agent โดย <strong>openai/codex โตเร็วที่สุดในสัปดาห์นี้ด้วย +12,358 ดาว</strong> ตามด้วยกระแส "agent workspace" ที่ขยายไปถึงระดับ Apache Software Foundation ผ่านโครงการ incubating ใหม่ <code>apache/maka</code> ภาพรวมคือ ecosystem กำลังผสานสองแรงเข้าด้วยกัน คือความเร่งรีบของฝั่ง AI agent tooling กับความรับผิดชอบด้าน supply-chain security ที่เข้มงวดขึ้นเรื่อย ๆ</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Top Trending Repositories</h2>
+    <p>เรียงตามความสำคัญและผลกระทบต่อ Developer Community ตัวเลขทั้งหมดเป็น snapshot จากหน้า GitHub Trending รายสัปดาห์ ณ 28 ส.ค. 2026</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Owner</th><th>Language</th><th>Stars</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/openai/codex">codex</a> 🔥🤖</td><td>openai</td><td>Rust</td><td>119,478</td><td>Coding Agent CLI</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/anthropics/claude-plugins-community">claude-plugins-community</a> ⭐✅</td><td>anthropics</td><td>Apache-2.0</td><td>2,496</td><td>Plugin Marketplace</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/freestylefly/awesome-gpt-image-2">awesome-gpt-image-2</a> 🔥</td><td>freestylefly</td><td>JavaScript</td><td>24,019</td><td>Prompt Engineering</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/tt-a1i/archify">archify</a> 🚀</td><td>tt-a1i</td><td>JavaScript</td><td>25,848</td><td>Agent Skill / Diagram</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/basecamp/omarchy">omarchy</a> ⭐📦</td><td>basecamp</td><td>Shell</td><td>32,961</td><td>Linux Desktop</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/AprilNEA/OpenLogi">OpenLogi</a> 🚀</td><td>AprilNEA</td><td>Rust</td><td>17,299</td><td>Peripheral Tool</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/MadsLorentzen/ai-job-search">ai-job-search</a> 🚀💎</td><td>MadsLorentzen</td><td>Python</td><td>37,475</td><td>Agent Workflow</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/tinyhumansai/openhuman">openhuman</a> 🧠</td><td>tinyhumansai</td><td>Rust</td><td>38,665</td><td>Agent Orchestrator</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/apache/maka">maka</a> ✅🧠</td><td>Apache (incubating)</td><td>TypeScript</td><td>3,848</td><td>Agent Workspace</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/VoltAgent/awesome-agent-skills">awesome-agent-skills</a> 🧠</td><td>VoltAgent</td><td>MIT</td><td>32,988</td><td>Agent Skills List</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/harry0703/MoneyPrinterTurbo">MoneyPrinterTurbo</a> ⭐</td><td>harry0703</td><td>Python</td><td>117,894</td><td>AI Video Generation</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/public-apis/public-apis">public-apis</a> ⭐</td><td>public-apis</td><td>Python</td><td>472,102</td><td>Reference List</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥 <a href="https://github.com/openai/codex">openai/codex</a></div>
+      <div class="card-meta">Rust · Apache-2.0 · 119,478 ★ · 18,200 forks · <strong>+12,358 ดาวสัปดาห์นี้</strong></div>
+      <p>Coding agent น้ำหนักเบาของ OpenAI ที่รันในเทอร์มินัล พร้อมส่วนขยายสำหรับ VS Code, Cursor และ Windsurf รวมถึงแอปเดสก์ท็อป เป็น repository ที่ได้ดาวเพิ่มมากที่สุดในสัปดาห์นี้ในบรรดาเครื่องมือที่เปิดตัวมาแล้วระยะหนึ่ง สะท้อนว่าตลาด coding agent CLI ยังไม่นิ่งและมีการแย่งส่วนแบ่งความสนใจต่อเนื่อง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⭐✅ <a href="https://github.com/anthropics/claude-plugins-community">anthropics/claude-plugins-community</a></div>
+      <div class="card-meta">Apache-2.0 · 2,496 ★ · 212 forks · <strong>+2,069 ดาวสัปดาห์นี้ (เติบโตกว่า 480%)</strong></div>
+      <p>Repository มิเรอร์แบบอ่านอย่างเดียวของตลาดปลั๊กอินชุมชนสำหรับ Claude Cowork และ Claude Code ไฟล์ <code>marketplace.json</code> จะ sync ทุกคืนจาก pipeline ตรวจสอบภายในของ Anthropic ปลั๊กอินทุกตัวต้องผ่านการสแกนความปลอดภัยอัตโนมัติและได้รับอนุมัติก่อนเผยแพร่ ไม่รับ pull request โดยตรง เป็นสัญญาณชัดว่าตลาดปลั๊กอิน agent กำลังเข้าสู่โมเดล curated marketplace แบบเดียวกับ app store</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅🧠 <a href="https://github.com/apache/maka">apache/maka</a></div>
+      <div class="card-meta">TypeScript · Apache-2.0 · 3,848 ★ · 359 forks · <strong>+1,978 ดาวสัปดาห์นี้</strong> · สถานะ Apache Incubating</div>
+      <p>Agent workspace แบบ local-first ที่บันทึกทุกข้อความโมเดล การเรียกเครื่องมือ ผลลัพธ์ และการตัดสินใจด้านสิทธิ์เป็น append-only log เพื่อรักษาหลักฐานแม้จะย่อ context ลง เน้นความเป็นเจ้าของข้อมูลโดย session และการตั้งค่าอยู่บนเครื่องผู้ใช้เป็นค่าเริ่มต้น รองรับทั้งเดสก์ท็อป (เฉพาะ Apple Silicon ในตอนนี้), CLI และกรอบการประเมินผลแบบทำซ้ำได้ ยังไม่มีการปล่อย release อย่างเป็นทางการของ Apache เนื่องจากยังอยู่ระหว่างบ่มเพาะ (incubating) รูปแบบข้อมูลและคำสั่งยังเปลี่ยนได้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀💎 <a href="https://github.com/MadsLorentzen/ai-job-search">MadsLorentzen/ai-job-search</a></div>
+      <div class="card-meta">Python · MIT · 37,475 ★ · 12,700 forks · <strong>+4,706 ดาวสัปดาห์นี้</strong></div>
+      <p>กรอบการทำงานสมัครงานด้วย AI ที่รันในเครื่องตัวเองทั้งหมด สร้างบน Claude Code ทำหน้าที่ประเมินความเหมาะสมของประกาศงาน ปรับ CV ให้ตรงตำแหน่ง เขียน cover letter และเตรียมสัมภาษณ์ ผู้สร้างเปิดเผยว่าใช้ framework นี้สมัครงานจริง 69 ครั้ง ได้สัมภาษณ์รอบแรก 20 ครั้ง และได้งานเป็น AI engineer ในเดือน มิ.ย. 2026 ออกแบบให้ fork และปรับแต่งสำหรับตลาดแรงงานประเทศอื่นได้ พร้อมกฎเข้มว่าห้ามสร้างประสบการณ์ปลอมในใบสมัคร</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🤖 AI &amp; LLM</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/harry0703/MoneyPrinterTurbo">harry0703/MoneyPrinterTurbo</a> ⭐</div>
+      <div class="card-meta">Python · 117,894 ★ · <strong>+4,951 ดาวสัปดาห์นี้</strong></div>
+      <p>รวมขั้นตอนเขียนสคริปต์ หาฟุตเทจ บันทึกเสียง และตัดต่อวิดีโอสั้นเข้าเป็นพรอมป์ต์เดียว ยังคงติด Trending ต่อเนื่องหลายสัปดาห์และเป็นตัวแทนชัดเจนของกลุ่มเครื่องมือสร้างวิดีโอด้วย AI แบบ end-to-end</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/rohitg00/ai-engineering-from-scratch">rohitg00/ai-engineering-from-scratch</a></div>
+      <div class="card-meta">Python · 50,484 ★ · <strong>+2,853 ดาวสัปดาห์นี้</strong></div>
+      <p>แหล่งเรียนรู้ด้าน AI engineering ตั้งแต่พื้นฐานจนถึงการส่งมอบระบบจริง ได้รับความสนใจสูงต่อเนื่องในกลุ่มผู้เริ่มต้นสายนี้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a></div>
+      <div class="card-meta">32,988 ★ (VoltAgent list) ·  35,931 ★ (repo) · <strong>+1,636 ดาวสัปดาห์นี้</strong></div>
+      <p>คลัง skill ที่ผ่านการตรวจสอบแล้ว 163 รายการสำหรับ agent ด้านวิทยาศาสตร์ ครอบคลุมชีววิทยา เคมี และการแพทย์ เป็นตัวอย่างของ "vertical skill pack" เฉพาะทางที่กำลังเติบโตคู่ขนานกับ skill แบบทั่วไป</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills">mukul975/Anthropic-Cybersecurity-Skills</a></div>
+      <div class="card-meta">31,463 ★ · <strong>+1,011 ดาวสัปดาห์นี้</strong></div>
+      <p>ชุด skill ด้านความปลอดภัยไซเบอร์ 817 รายการที่แม็ปกับกรอบงาน MITRE ATT&amp;CK และ NIST สำหรับให้ AI agent ใช้งาน สะท้อนแนวโน้มเดียวกันคือ skill เฉพาะทางกำลังเป็นหน่วยเผยแพร่ความรู้รูปแบบใหม่แทนไลบรารีโค้ด</p>
+    </div>
+
+    <p><strong>ข้อสังเกตหมวด AI:</strong> สัปดาห์นี้ไม่มี foundation model ใหม่ที่โดดเด่นบน Trending โดยตรง แรงส่งส่วนใหญ่อยู่ที่ "ชุดความรู้/skill" สำหรับป้อนให้ agent ใช้งานเฉพาะทาง มากกว่าตัวโมเดลหรือเฟรมเวิร์กเทรนเอง</p>
+  </section>
+
+  <section>
+    <h2>🧠 MCP &amp; AI Agents</h2>
+
+    <div class="note-box">
+      <strong>บริบทสำคัญ:</strong> ทีม Model Context Protocol เผยแพร่ roadmap ฉบับปรับปรุงเมื่อ 22 ส.ค. 2026 สรุปความคืบหน้าจากสเปก 2026-07-28 (stateless core, multi round-trip, header-based routing) และวางทิศทางต่อไปด้าน transport, การสื่อสารระหว่าง agent, governance และความพร้อมระดับองค์กร สัปดาห์นี้ยังไม่มีสเปกใหม่ประกาศ แต่ทิศทางดังกล่าวสะท้อนชัดในโครงการที่ trending อยู่</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/tinyhumansai/openhuman">tinyhumansai/openhuman</a> 🧠</div>
+      <div class="card-meta">Rust · GPL-3.0 · 38,665 ★ · 3,800 forks · <strong>+2,178 ดาวสัปดาห์นี้</strong></div>
+      <p>อธิบายตัวเองว่าเป็น "personal AI super intelligence" ที่มีหน่วยความจำระยะยาวแบบ local-first ผ่าน Memory Tree และเชื่อมกับ Obsidian wiki พร้อมระบบ orchestration หลาย agent แบบ checkpointed graph เชื่อมต่อบริการผ่าน OAuth กว่า 100 ตัว MCP server กว่า 5,000 ตัว และช่องทางส่งข้อความ 17 ช่องทางรวมอีเมล เน้นความเป็นส่วนตัวด้วยการเข้ารหัสในเครื่องและโหมด local-only</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/VoltAgent/awesome-agent-skills">VoltAgent/awesome-agent-skills</a> 🧠</div>
+      <div class="card-meta">MIT · 32,988 ★ · 3,500 forks · <strong>+2,324 ดาวสัปดาห์นี้</strong></div>
+      <p>รวม agent skill กว่า 1,000 รายการจากทีมพัฒนาทางการและชุมชน เข้ากันได้กับ Claude Code, Codex, Gemini CLI, Cursor และอื่น ๆ เน้นว่าเป็น skill จากทีมวิศวกรที่ใช้งานจริง ไม่ใช่เนื้อหาที่ AI สร้างจำนวนมาก มี skill ทางการจากองค์กรใหญ่อย่าง Anthropic, Google, Vercel, Stripe, Cloudflare, Netlify และ Microsoft รวมอยู่ด้วย</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/TencentCloud/TencentDB-Agent-Memory">TencentCloud/TencentDB-Agent-Memory</a> 🧠</div>
+      <div class="card-meta">TypeScript/JavaScript · MIT · ประมาณ 25,000 ★ · release ล่าสุด v2.0.0</div>
+      <p>ศูนย์กลางความจำระดับทีมสำหรับ AI agent แปลงบทสนทนา เอกสาร และโค้ดเป็นสินทรัพย์ความจำสี่ประเภท (Chat Memory, Skill, LLM-Wiki, Code-Graph) ที่กำกับดูแลและแชร์ข้ามเฟรมเวิร์กได้ เมื่อรวมกับ OpenClaw รายงานว่าลดการใช้ token ได้ถึง 61% และเพิ่มอัตราความสำเร็จของงาน 51% <strong>ตัวเลขดาวเพิ่มรายสัปดาห์ที่แน่นอนยืนยันไม่ได้</strong> มีเพียงข้อมูลการเติบโตรายเดือน (ราว +14,568 ดาว/เดือน) จึงนับเป็นข้อจำกัดของข้อมูลชุดนี้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/cursor/plugins">cursor/plugins</a></div>
+      <div class="card-meta">TypeScript · 5,850 ★ · <strong>+1,732 ดาวสัปดาห์นี้</strong></div>
+      <p>สเปกปลั๊กอินอย่างเป็นทางการของ Cursor พร้อมปลั๊กอินตัวอย่าง เป็นอีกสัญญาณของสงครามระบบนิเวศปลั๊กอิน agent ที่ตามหลัง Claude Code และ deepseek-harness มาติด ๆ</p>
+    </div>
+
+    <p><strong>สรุปแนวโน้ม MCP และ Agent:</strong> จุดสนใจย้ายจาก "ตัว agent loop" ไปที่ "ชั้นความจำและ skill ที่ป้อนให้ agent" อย่างชัดเจนในสัปดาห์นี้ ทั้ง openhuman, TencentDB-Agent-Memory และคลัง skill ต่าง ๆ ต่างพยายามแก้ปัญหาเดียวกันคือทำให้ agent จำและเรียนรู้ข้ามเซสชันได้ดีขึ้น ขณะที่ระบบนิเวศปลั๊กอินของผู้ให้บริการรายใหญ่ (Anthropic, Cursor) กำลังเข้าสู่รูปแบบ curated marketplace</p>
+  </section>
+
+  <section>
+    <h2>⚙️ Developer Tools</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Language</th><th>License</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/openai/codex">openai/codex</a></td><td>Rust</td><td>Apache-2.0</td><td>119,478</td><td>+12,358 ดาว, ยังคงเป็นอันดับหนึ่งของสัปดาห์</td></tr>
+          <tr><td><a href="https://github.com/AprilNEA/OpenLogi">AprilNEA/OpenLogi</a></td><td>Rust</td><td>Apache-2.0</td><td>17,299</td><td>+5,946 ดาว ต่อเนื่องจากสัปดาห์ก่อน</td></tr>
+          <tr><td><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></td><td>JavaScript</td><td>MIT</td><td>25,848</td><td>+8,530 ดาว repo ใหม่ที่โตเร็วที่สุดสายเครื่องมือ</td></tr>
+          <tr><td><a href="https://github.com/xingkongliang/skills-manager">xingkongliang/skills-manager</a></td><td>Rust</td><td>—</td><td>4,172</td><td>+250 ดาว แอปเดสก์ท็อปจัดการ skill ข้าม 50 เครื่องมือ</td></tr>
+          <tr><td><a href="https://github.com/dani-garcia/vaultwarden">dani-garcia/vaultwarden</a></td><td>Rust</td><td>—</td><td>66,414</td><td>+703 ดาว เติบโตสม่ำเสมอ ไม่เกี่ยวกับ AI</td></tr>
+          <tr><td><a href="https://github.com/GitoxideLabs/gitoxide">GitoxideLabs/gitoxide</a></td><td>Rust</td><td>—</td><td>11,880</td><td>+87 ดาว Git implementation แบบ pure Rust</td></tr>
+          <tr><td><a href="https://github.com/oxc-project/oxc">oxc-project/oxc</a></td><td>Rust</td><td>—</td><td>22,534</td><td>+144 ดาว ชุดเครื่องมือ JavaScript ประสิทธิภาพสูง</td></tr>
+          <tr><td><a href="https://github.com/Alishahryar1/free-claude-code">Alishahryar1/free-claude-code</a></td><td>Python</td><td>—</td><td>51,055</td><td>+4,657 ดาว ดูรายละเอียดคำเตือนด้านล่าง</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>tt-a1i/archify</strong> เป็นระบบสร้างไดอะแกรมด้วย Node.js ที่แปลงโค้ดหรือคำอธิบายระบบให้เป็นแผนภาพเชิงโต้ตอบโดยตรงในหน้าต่างแชท รองรับไดอะแกรมห้าประเภท (architecture, workflow, sequence, data-flow, lifecycle) ทำงานร่วมกับ Cursor, Claude Code และ Codex CLI และเน้นการตรวจสอบความเปลี่ยนแปลงทางสถาปัตยกรรมก่อน merge โค้ด</p>
+
+    <div class="note-box">
+      <strong>⚠️ ข้อควรระวัง — Alishahryar1/free-claude-code:</strong> repository นี้อธิบายตัวเองว่าให้เข้าถึง Claude Code และบริการที่คล้ายกันแบบไม่มีค่าใช้จ่ายผ่านเทอร์มินัล แอป IDE หรือโทรศัพท์ แม้จะโตเร็วในสัปดาห์นี้ (+4,657 ดาว) แต่ลักษณะการทำงานที่แน่ชัดยังยืนยันไม่ได้ครบถ้วนในรายงานนี้ ผู้ใช้ควรตรวจสอบเงื่อนไขการใช้งานของผู้ให้บริการต้นทางก่อนติดตั้งหรือใช้งานจริง
+    </div>
+  </section>
+
+  <section>
+    <h2>☁️ Cloud Native &amp; DevOps</h2>
+
+    <div class="card">
+      <div class="card-title">⚠️✅ <a href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a> v1.37.0 "Garhwal" — GA แล้ว</div>
+      <div class="card-meta">Go · Apache-2.0 · release <code>v1.37.0</code> 26 ส.ค. 2026 · ตั้งชื่อตามเทือกเขา Garhwal รัฐ Uttarakhand ประเทศอินเดีย</div>
+      <p>รุ่นนี้มีการเปลี่ยนแปลง 67 รายการ แบ่งเป็น 16 ฟีเจอร์ที่ขึ้นสถานะ Stable, 23 ฟีเจอร์ระดับ Beta, 27 ฟีเจอร์ใหม่ระดับ Alpha และ 1 การเลิกใช้งาน ไฮไลต์ฝั่ง Stable ได้แก่ <code>metrics.k8s.io</code> API ที่ขึ้น v1 หลังอยู่ Beta มาเกือบเก้าปี (ใช้งานโดย <code>kubectl top</code> และ HPA), <code>kubectl get -o kyaml</code> ที่ผ่าน conformance test ครบแล้ว, device taints/tolerations ของ Dynamic Resource Allocation และการ initialize resilient watch cache ซึ่งทีมงานระบุว่าเป็นชัยชนะด้าน operations ที่สำคัญที่สุดของรุ่นนี้ ช่วยให้ API server รับมือการกู้คืนคลัสเตอร์ขนาดใหญ่ได้ดีขึ้นด้วย backpressure แบบ HTTP 429</p>
+      <p><strong>Breaking change ที่ต้องระวังก่อนอัปเกรด:</strong> ลบ kubelet configuration flag ที่เลิกใช้แล้วออกจริงพร้อม legacy fallback — คลัสเตอร์ที่ยังส่ง flag เหล่านี้จะสตาร์ทไม่ขึ้นหลังอัปเกรด, ต้องลบ object ประเภท <code>scheduling.k8s.io/v1alpha2</code> ก่อนอัปเกรด, ค่า <code>eventRecordQPS: 0</code> เปลี่ยนความหมายจาก "ปิดการทำงาน" เป็น "ไม่จำกัด", มีการเปลี่ยนแปลงด้าน SELinux ที่อาจทำให้ workload พังได้ และ <strong>ต้องใช้ containerd 2.0 ขึ้นไป</strong> ส่วนโหมด ipvs ของ kube-proxy ยังเดินหน้าสู่การเลิกใช้ต่อเนื่อง (วางแผนถอดออกใน v1.43)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📦 Docker Desktop v4.45.0</div>
+      <div class="card-meta">ปล่อย 28 ส.ค. 2026 · เปลี่ยนมาปล่อยรุ่นทุกสองสัปดาห์</div>
+      <p>เพิ่มการรองรับ registry mirror สำหรับ Docker Model Runner พร้อมแก้ช่องโหว่ CVE-2026-8936 และปรับปรุงเสถียรภาพหลายจุด ทั้งการเริ่มต้นระบบ การปิดโปรแกรม การจัดการ volume การติดตั้งบน Windows และการจัดการแคชของ WSL2 นอกจากนี้ยังมี Docker VMM แบบรวมศูนย์อยู่ในสถานะเบต้าเพื่อให้ประสิทธิภาพสม่ำเสมอขึ้นข้าม macOS, Windows และ Linux ในอนาคต</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Project</th><th>Language</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th><th>สาระสำคัญ</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/higress-group/higress">higress-group/higress</a></td><td>Go</td><td>9,229</td><td>+69 ดาว</td><td>AI-native API gateway ยังโตต่อเนื่อง</td></tr>
+          <tr><td><a href="https://github.com/authelia/authelia">authelia/authelia</a></td><td>Go</td><td>28,726</td><td>+95 ดาว</td><td>Single Sign-On / MFA portal ที่ผ่านการรับรอง OpenID</td></tr>
+          <tr><td><a href="https://github.com/containerd/containerd">containerd/containerd</a></td><td>Go</td><td>21,212</td><td>+68 ดาว</td><td>ความสำคัญเพิ่มขึ้นจากการที่ Kubernetes v1.37 บังคับใช้ containerd 2.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔒 Security</h2>
+
+    <div class="note-box">
+      <strong>⚠️ Next.js ปล่อยแพตช์ฉุกเฉินแก้ CVE วิกฤต 2 รายการ — 25 ส.ค. 2026</strong><br>
+      แพตช์อยู่ใน <code>next@15.5.24</code> (Maintenance LTS) และ <code>next@16.3.3</code> (Active LTS) กำหนดการเดิมคือ 26 ส.ค. แต่เลื่อนมาปล่อยเร็วขึ้นหนึ่งวัน
+    </div>
+    <ul>
+      <li><strong>GHSA-2xp9-vwfh-vxw4 (CVSS 9.5):</strong> ช่องโหว่ในไลบรารี <code>libheif</code> ต้นทางที่ Image Optimization ใช้ เมื่อประมวลผลไฟล์ AVIF ที่ถูกประดิษฐ์ขึ้นอาจนำไปสู่ remote code execution แบบไม่ต้องยืนยันตัวตน</li>
+      <li><strong>CVE-2026-75604 (CVSS 9.0):</strong> Path traversal บน Windows กระทบแอปที่ใช้ทั้ง Pages Router และ App Router โดยไม่ได้เปิด Cache Components เมื่อ server รันบนไฟล์ระบบ Windows ระบบ Linux และ macOS ไม่ได้รับผลกระทบ</li>
+      <li>แอปที่โฮสต์บน Vercel ได้รับการป้องกันแล้วโดยอัตโนมัติ ไม่ต้องอัปเกรด ส่วนผู้ที่ self-host ต้องรันคำสั่ง <code>npm install next@15.5.24</code> หรือ <code>next@16.3.3</code> ทันที</li>
+    </ul>
+
+    <div class="card">
+      <div class="card-title">Anthropic ประกาศกองทุน Defender Advantage Fund (0xDAF) มูลค่า 35 ล้านดอลลาร์</div>
+      <div class="card-meta">ประกาศ 21 ส.ค. 2026</div>
+      <p>Anthropic ให้คำมั่นสนับสนุนเป็นเครดิตใช้งาน Claude มูลค่า 35 ล้านดอลลาร์เพื่อช่วยองค์กรที่ทำงานร่วมกับผู้ดูแล open source ด้านความปลอดภัยซอฟต์แวร์ เป้าหมายคือแก้ช่องโหว่ที่กำลังถูกใช้งานจริงในโครงการ open source ที่ใช้กันแพร่หลาย ทำการสแกนและแพตช์ช่องโหว่แบบอัตโนมัติ และพัฒนาวิธีป้องกันการโจมตีทั้งกลุ่ม เริ่มต้นด้วยทุนนำร่องขนาดใหญ่จำนวนน้อยรายก่อนขยายผล ต่อยอดจาก Project Glasswing ที่เคยบริจาคโดยตรง 4 ล้านดอลลาร์ให้องค์กรความปลอดภัย open source มาก่อน</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/Tencent/AI-Infra-Guard">Tencent/AI-Infra-Guard</a> 🔒</div>
+      <div class="card-meta">Python · 6,032 ★ · <strong>+1,182 ดาวสัปดาห์นี้</strong></div>
+      <p>แพลตฟอร์ม red-team สำหรับโครงสร้างพื้นฐาน AI ยังคงเติบโตต่อเนื่องจากรุ่น v4.5.2 สัปดาห์ก่อน ครอบคลุมการสแกน vector database และป้องกัน RCE ผ่าน prompt injection</p>
+    </div>
+
+    <p><strong>ความคืบหน้าเวิร์ม npm "ChainDrop / Shai-Hulud":</strong> เหตุการณ์ที่รายงานฉบับสัปดาห์ก่อนติดตามอยู่ (เริ่มตั้งแต่ 4 ส.ค. 2026) ยังไม่มีประกาศปิดเคสอย่างเป็นทางการในสัปดาห์นี้ คำแนะนำเดิมยังใช้ได้ คือหมุน credential จากเครื่องที่สะอาด อัปเดต npm CLI เป็น v11.10.0 ขึ้นไป และตรวจสอบไฟล์ config ที่ไม่ได้สร้างเองในทุก branch</p>
+  </section>
+
+  <section>
+    <h2>🗄️ Database</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/ClickHouse/ClickHouse">ClickHouse/ClickHouse</a> 📦</div>
+      <div class="card-meta">C++ · Apache-2.0 · release <code>26.3.24.4</code> 27 ส.ค. 2026</div>
+      <p>ClickHouse กำหนดรุ่น Long-Term Support (LTS) ปีละสองครั้งคือเดือนมีนาคมและสิงหาคม รุ่นนี้จึงอยู่ในช่วง cadence ของ LTS ประจำเดือนสิงหาคม นอกจากนี้ตัวเชื่อมต่อ MongoDB CDC สำหรับ ClickPipes ยังได้รับการเลื่อนสถานะเป็น Public Beta ให้ลูกค้า ClickHouse Cloud ทุกระดับใช้งานได้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/lancedb/lancedb">lancedb/lancedb</a></div>
+      <div class="card-meta">Rust · 11,301 ★ · <strong>+92 ดาวสัปดาห์นี้</strong></div>
+      <p>ไลบรารี embedded retrieval แบบโอเพนซอร์สสำหรับข้อมูล multimodal ยังคงมีกิจกรรมสม่ำเสมอในฐานะทางเลือก vector store ที่ฝังลงแอปได้โดยตรงโดยไม่ต้องรัน service แยก</p>
+    </div>
+
+    <p><strong>ข้อสังเกต:</strong> หมวดฐานข้อมูลสัปดาห์นี้ค่อนข้างเงียบเมื่อเทียบกับหมวด AI/Security ไม่มีการเปลี่ยนแปลงเชิงโครงสร้างหรือ breaking change ที่ต้องเตรียมตัวเป็นพิเศษ</p>
+  </section>
+
+  <section>
+    <h2>🌐 Web Frameworks</h2>
+
+    <div class="card">
+      <div class="card-title">⚠️🔒 <a href="https://github.com/vercel/next.js">vercel/next.js</a> — August 2026 Security Release</div>
+      <div class="card-meta">TypeScript · release <code>16.3.3</code> / <code>15.5.24</code> 25 ส.ค. 2026</div>
+      <p>รายละเอียดช่องโหว่ทั้งสองรายการอยู่ในหมวด Security ด้านบน ในมุมเฟรมเวิร์ก นี่คือการปล่อยแพตช์ความปลอดภัยที่ใหญ่ที่สุดของ Next.js ในรอบหลายเดือน และเป็นเครื่องเตือนว่าฟีเจอร์ Image Optimization ที่พึ่งไลบรารีภายนอกอย่าง libheif ยังเป็นพื้นผิวโจมตีที่ต้องเฝ้าระวัง</p>
+    </div>
+
+    <p><strong>oxc-project/oxc</strong> (Rust, 22,534 ★, +144 ดาวสัปดาห์นี้) ยังคงพัฒนาต่อเนื่องในฐานะชุดเครื่องมือ JavaScript ประสิทธิภาพสูงที่ใช้เป็นรากฐานของหลายโปรเจกต์ในระบบนิเวศ frontend</p>
+
+    <p><em>ไม่มีการปล่อย release ใหม่ที่มีนัยสำคัญจาก React, Vue หรือ Svelte ในกรอบเจ็ดวันนี้ตามข้อมูลที่ยืนยันได้</em></p>
+  </section>
+
+  <section>
+    <h2>📱 Mobile</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้ — ไม่พบ release หรือกิจกรรมที่ยืนยันวันที่ได้ชัดเจนจาก Flutter, React Native หรือโครงการมือถือโอเพนซอร์สรายใหญ่อื่นในกรอบ 21–28 ส.ค. 2026 หมวดนี้เงียบที่สุดในบรรดาหมวดหลักของสัปดาห์เช่นเดียวกับสัปดาห์ก่อนหน้า</p>
+  </section>
+
+  <section>
+    <h2>📦 New Releases</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Project</th><th>Version</th><th>Release Date</th><th>Highlights</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/kubernetes/kubernetes">Kubernetes</a></td><td>v1.37.0 "Garhwal"</td><td>26 ส.ค. 2026</td><td>GA — Metrics API v1, kubectl kyaml stable, DRA device taints/tolerations stable, resilient watch cache init; breaking change หลายรายการ</td><td>GitHub Releases + Kubernetes Blog</td></tr>
+          <tr><td><a href="https://github.com/vercel/next.js">Next.js</a></td><td>16.3.3 / 15.5.24</td><td>25 ส.ค. 2026</td><td>แก้ CVE วิกฤต 2 รายการ (AVIF RCE, Windows path traversal)</td><td>Next.js Blog</td></tr>
+          <tr><td>Docker Desktop</td><td>v4.45.0</td><td>28 ส.ค. 2026</td><td>Model Runner registry mirror, แก้ CVE-2026-8936, ปรับปรุงเสถียรภาพ</td><td>Docker Blog</td></tr>
+          <tr><td><a href="https://github.com/ClickHouse/ClickHouse">ClickHouse</a></td><td>26.3.24.4</td><td>27 ส.ค. 2026</td><td>รุ่นในรอบ LTS cadence เดือนสิงหาคม, MongoDB CDC ขึ้น Public Beta</td><td>ClickHouse Docs</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔥 Viral This Week</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars Growth</th><th>Fork Growth</th><th>เหตุผล</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/openai/codex">openai/codex</a></td><td>+12,358</td><td>ไม่ยืนยัน</td><td>ยอดดาวเพิ่มสูงสุดของสัปดาห์ในบรรดาเครื่องมือที่มีฐานผู้ใช้เดิมอยู่แล้ว</td></tr>
+          <tr><td><a href="https://github.com/freestylefly/awesome-gpt-image-2">freestylefly/awesome-gpt-image-2</a></td><td>+11,300</td><td>ไม่ยืนยัน</td><td>คลังพรอมป์ต์สำหรับ GPT-Image2 ที่แจกจ่ายง่ายและใช้ได้ทันที</td></tr>
+          <tr><td><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></td><td>+8,530</td><td>ไม่ยืนยัน</td><td>Repository ใหม่ที่โตเร็วที่สุดในหมวดเครื่องมือ ด้วยการสร้างไดอะแกรมในแชท</td></tr>
+          <tr><td><a href="https://github.com/AprilNEA/OpenLogi">AprilNEA/OpenLogi</a></td><td>+5,946</td><td>ไม่ยืนยัน</td><td>โตต่อเนื่องเป็นสัปดาห์ที่สอง จากความต้องการทางเลือกแทน Logitech Options+</td></tr>
+          <tr><td><a href="https://github.com/basecamp/omarchy">basecamp/omarchy</a></td><td>+5,593</td><td>ไม่ยืนยัน</td><td>แรงส่งต่อเนื่องจากรุ่น v4.0.0 ที่ปล่อยเมื่อสองสัปดาห์ก่อน</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Fastest Growing Projects</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars</th><th>Growth</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/anthropics/claude-plugins-community">anthropics/claude-plugins-community</a></td><td>2,496</td><td>+2,069 (≈480%)</td><td>Plugin Marketplace</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/apache/maka">apache/maka</a></td><td>3,848</td><td>+1,978 (≈106%)</td><td>Agent Workspace</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></td><td>25,848</td><td>+8,530 (≈49%)</td><td>Developer Tools</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/MadsLorentzen/ai-job-search">MadsLorentzen/ai-job-search</a></td><td>37,475</td><td>+4,706 (≈14%)</td><td>Agent Workflow</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/Tencent/AI-Infra-Guard">Tencent/AI-Infra-Guard</a></td><td>6,032</td><td>+1,182 (≈24%)</td><td>AI Security</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>💎 Hidden Gems</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/apache/maka">apache/maka</a></div>
+      <p><strong>จุดเด่น:</strong> agent workspace แบบ append-only log ที่อยู่ภายใต้ Apache Software Foundation<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> เป็นหนึ่งในโครงการ agent tooling ไม่กี่ตัวที่เข้าสถานะ incubating ของ ASF ทำให้มีธรรมาภิบาลระยะยาวต่างจากโครงการ startup ทั่วไป<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ต้องการเก็บ log การทำงานของ agent แบบตรวจสอบย้อนกลับได้เพื่อ compliance หรือ audit<br>
+      <strong>Source:</strong> GitHub Trending + GitHub Repository</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/xingkongliang/skills-manager">xingkongliang/skills-manager</a></div>
+      <p><strong>จุดเด่น:</strong> แอปเดสก์ท็อปน้ำหนักเบาสำหรับจัดการ sync และจัดระเบียบ agent skill ข้ามเครื่องมือกว่า 50 ตัว<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> แก้ปัญหาที่เกิดขึ้นจริงจากการที่ skill กระจายอยู่หลายแพลตฟอร์ม (Claude Code, Cursor, Codex ฯลฯ) และยังมีฐานผู้ใช้เล็กพอที่จะเรียกว่า hidden gem<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ใช้ agent หลายตัวพร้อมกันและเบื่อการ copy skill ไปมา<br>
+      <strong>Source:</strong> GitHub Trending (Rust)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/workweave/router">workweave/router</a></div>
+      <p><strong>จุดเด่น:</strong> Model router สำหรับระบบ agentic ที่ route คำสั่งได้ในเวลาต่ำกว่า 50 มิลลิวินาที<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ขนาดเล็ก (2,234 ★) แต่โตเร็วถึง +1,159 ดาวในสัปดาห์เดียว ชี้ว่ามีความต้องการจริงด้าน routing ระดับ latency ต่ำ<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่รัน multi-model agent pipeline และต้องการลด latency ของการเลือกโมเดล<br>
+      <strong>Source:</strong> GitHub Trending (Go)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/TencentCloud/TencentDB-Agent-Memory">TencentCloud/TencentDB-Agent-Memory</a></div>
+      <p><strong>จุดเด่น:</strong> ระบบความจำระดับทีมที่แยกความจำเป็นสี่ประเภทที่นำกลับมาใช้ซ้ำได้<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> แม้อยู่ในเครือ Tencent แต่ยังไม่เป็นที่รู้จักนอกจีนมากนัก สถาปัตยกรรมความจำแบบแยกชั้นเป็นแนวทางที่ต่างจาก vector store ทั่วไป<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ต้องการลด token cost และแชร์ความรู้ระหว่าง agent หลายตัวในองค์กร<br>
+      <strong>Source:</strong> GitHub Repository (ตัวเลขการเติบโตรายสัปดาห์ยังยืนยันไม่ได้ — ดูหมายเหตุข้อจำกัดของข้อมูล)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/asciimoo/hister">asciimoo/hister</a></div>
+      <p><strong>จุดเด่น:</strong> เครื่องมือค้นหาส่วนตัว (personal search engine) ที่โตแบบอินทรีย์โดยไม่มีองค์ประกอบ AI เด่นชัด<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ได้ดาวเพิ่ม +1,149 ในสัปดาห์เดียวจากฐานเพียง 3,174 ดาว สวนทางกระแส AI ที่ครองหน้า Trending ส่วนใหญ่<br>
+      <strong>เหมาะกับใคร:</strong> ผู้ใช้ที่ต้องการเครื่องมือค้นหาที่ควบคุมข้อมูลของตัวเองได้เต็มที่<br>
+      <strong>Source:</strong> GitHub Trending (Go)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠 Developer Recommendations</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/openai/codex">openai/codex</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> Coding agent ในเทอร์มินัลสำหรับเขียน/แก้โค้ดด้วยภาษาธรรมชาติ<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการ AI pairing แบบน้ำหนักเบาไม่ผูกกับ IDE เดียว<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> โตเร็วที่สุดในสัปดาห์นี้ มีส่วนขยาย IDE หลายตัวรองรับ<br>
+      GitHub: <a href="https://github.com/openai/codex">github.com/openai/codex</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/AprilNEA/OpenLogi">AprilNEA/OpenLogi</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ตั้งค่าเมาส์/อุปกรณ์ Logitech ผ่าน HID++ โดยไม่ต้องใช้ซอฟต์แวร์ทางการ<br>
+      <strong>เหมาะกับใคร:</strong> ผู้ใช้ Logitech ที่ไม่ต้องการบัญชีหรือ telemetry<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> local-first เต็มรูปแบบ และยังพัฒนาต่อเนื่องทุกสัปดาห์<br>
+      GitHub: <a href="https://github.com/AprilNEA/OpenLogi">github.com/AprilNEA/OpenLogi</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> สร้างไดอะแกรมสถาปัตยกรรม/workflow จากโค้ดโดยตรงในแชท agent<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ทำ architecture review หรือเอกสารระบบเป็นประจำ<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ผลลัพธ์เป็น HTML/SVG พร้อมใช้ทันที ไม่ต้อง build<br>
+      GitHub: <a href="https://github.com/tt-a1i/archify">github.com/tt-a1i/archify</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/VoltAgent/awesome-agent-skills">VoltAgent/awesome-agent-skills</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> คลังรวม agent skill กว่า 1,000 รายการจากทีมพัฒนาจริง<br>
+      <strong>เหมาะกับใคร:</strong> ทุกคนที่ใช้ coding agent และต้องการ skill สำเร็จรูปแทนการเขียนเอง<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่ายมาก (เรียกดูอย่างเดียว)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> คัดกรองคุณภาพแล้ว รองรับหลายแพลตฟอร์ม<br>
+      GitHub: <a href="https://github.com/VoltAgent/awesome-agent-skills">github.com/VoltAgent/awesome-agent-skills</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/dani-garcia/vaultwarden">dani-garcia/vaultwarden</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> เซิร์ฟเวอร์ที่เข้ากันได้กับ Bitwarden client เขียนด้วย Rust<br>
+      <strong>เหมาะกับใคร:</strong> ผู้ที่ต้องการโฮสต์ password manager เอง<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง (ต้องดูแล server เอง)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เสถียร ใช้ทรัพยากรน้อย และมีชุมชนสนับสนุนมายาวนาน<br>
+      GitHub: <a href="https://github.com/dani-garcia/vaultwarden">github.com/dani-garcia/vaultwarden</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/lancedb/lancedb">lancedb/lancedb</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ฐานข้อมูลเวกเตอร์แบบฝัง (embedded) สำหรับข้อมูล multimodal<br>
+      <strong>เหมาะกับใคร:</strong> วิศวกร AI ที่สร้างระบบ RAG และต้องการหลีกเลี่ยงการรัน service แยก<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เบา ฝังลงแอปได้ตรง และยังพัฒนาต่อเนื่อง<br>
+      GitHub: <a href="https://github.com/lancedb/lancedb">github.com/lancedb/lancedb</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/apache/maka">apache/maka</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> Agent workspace แบบ local-first พร้อม log ที่ตรวจสอบย้อนกลับได้<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ต้องการความเป็นเจ้าของข้อมูล session ของ agent อย่างเต็มที่<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ยาก (developer preview เฉพาะ Apple Silicon เท่านั้นในตอนนี้)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ธรรมาภิบาลของ Apache Software Foundation เป็นตัวรับประกันความยั่งยืนระยะยาว<br>
+      GitHub: <a href="https://github.com/apache/maka">github.com/apache/maka</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Company Adoption</h2>
+
+    <div class="card">
+      <div class="card-title">Apache Software Foundation</div>
+      <p>รับโครงการ <a href="https://github.com/apache/maka">maka</a> เข้าสถานะ incubating ให้ agent workspace มีธรรมาภิบาลระยะยาวแบบเดียวกับโครงการ ASF อื่น ๆ</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Anthropic</div>
+      <p>ประกาศกองทุน Defender Advantage Fund (0xDAF) มูลค่า 35 ล้านดอลลาร์เพื่อสนับสนุนความปลอดภัยของ open source (21 ส.ค. 2026) และดำเนินการ curated marketplace ปลั๊กอิน Claude Code/Cowork ผ่าน <code>claude-plugins-community</code> และ <code>claude-plugins-official</code> ต่อเนื่อง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tencent</div>
+      <p>มีโครงการ open source ที่ยังเคลื่อนไหวพร้อมกันหลายตัวในสัปดาห์นี้ ได้แก่ <code>TencentDB-Agent-Memory</code>, <code>AI-Infra-Guard</code> และ <code>WeKnora</code> ครอบคลุมทั้งความจำ agent, ความปลอดภัย AI และ RAG</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>⚠️ Breaking Changes</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a> v1.37.0</div>
+      <div class="card-meta">GA 26 ส.ค. 2026</div>
+      <ul>
+        <li><strong>Breaking:</strong> ถอด kubelet configuration flag ที่เลิกใช้แล้วออกจริงพร้อม legacy fallback — คลัสเตอร์ที่ยังส่ง flag เดิมจะสตาร์ทไม่ขึ้น</li>
+        <li><strong>Migration:</strong> ต้องลบ object <code>scheduling.k8s.io/v1alpha2</code> ทั้งหมดก่อนอัปเกรด</li>
+        <li><strong>API Change:</strong> <code>eventRecordQPS: 0</code> เปลี่ยนความหมายจาก "ปิด" เป็น "ไม่จำกัด"</li>
+        <li><strong>Requirement:</strong> ต้องใช้ containerd 2.0 ขึ้นไป</li>
+        <li><strong>Deprecated:</strong> <code>kubectl run --filename</code>, static pod อ้างอิง Secret/ConfigMap ไม่ได้อีกต่อไป, โหมด ipvs ของ kube-proxy (วางแผนถอดออกใน v1.43), การรองรับ cgroup v1</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Top Categories</h2>
+    <p>จัดอันดับจากจำนวนโครงการที่โดดเด่น ปริมาณ release และแรงสนใจของชุมชนในสัปดาห์นี้</p>
+    <ol>
+      <li><strong>AI Agents &amp; Skills</strong> — codex, openhuman, awesome-agent-skills, archify ครองหน้า Trending อย่างต่อเนื่อง</li>
+      <li><strong>Cloud Native &amp; Kubernetes</strong> — Kubernetes v1.37 GA เป็นเหตุการณ์เดี่ยวที่ใหญ่ที่สุดของสัปดาห์ในหมวดโครงสร้างพื้นฐาน</li>
+      <li><strong>Security</strong> — Next.js CVE วิกฤต และกองทุน 0xDAF ของ Anthropic ทำให้หมวดนี้มีน้ำหนักสูง</li>
+      <li><strong>Agent Memory &amp; Context</strong> — openhuman, TencentDB-Agent-Memory ชี้ทิศทางเดียวกันคือความจำข้ามเซสชัน</li>
+      <li><strong>Developer Tools &amp; CLI</strong> — codex, OpenLogi, skills-manager, vaultwarden</li>
+      <li><strong>MCP &amp; Plugin Ecosystem</strong> — claude-plugins-community, cursor/plugins</li>
+      <li><strong>Database</strong> — ClickHouse LTS cadence, lancedb เติบโตต่อเนื่อง</li>
+      <li><strong>Web Frameworks</strong> — Next.js security release เป็นข่าวหลักของหมวดนี้</li>
+      <li><strong>Mobile</strong> — ไม่มีกิจกรรมเด่นในกรอบเวลา</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-num">32</div><div class="stat-label">Repository ที่รายงานครอบคลุม</div></div>
+      <div class="stat-tile"><div class="stat-num">4</div><div class="stat-label">รายการ Release ในกรอบ 7 วัน</div></div>
+      <div class="stat-tile"><div class="stat-num">8</div><div class="stat-label">AI / LLM Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">4</div><div class="stat-label">MCP Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">9</div><div class="stat-label">Agent Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">6</div><div class="stat-label">CLI Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Cloud Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">4</div><div class="stat-label">Security Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Hidden Gems</div></div>
+      <div class="stat-tile"><div class="stat-num">1</div><div class="stat-label">Breaking Releases</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>เหตุผล</th><th>สิ่งที่ต้องติดตาม</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a></td><td>v1.37 เพิ่งประกาศ GA พร้อม breaking change ชุดใหญ่</td><td>รายงานปัญหาการอัปเกรดจริงจากทีมที่ยังใช้ containerd 1.x หรือ cgroup v1</td><td><a href="https://kubernetes.io/releases/">Kubernetes Releases</a></td></tr>
+          <tr><td><a href="https://github.com/vercel/next.js">vercel/next.js</a></td><td>เพิ่งปล่อยแพตช์แก้ CVE วิกฤตสองรายการ</td><td>รายงานการโจมตีจริง (in-the-wild) หลังแพตช์ และอัตราการอัปเกรดของผู้ self-host</td><td><a href="https://nextjs.org/blog/august-2026-security-release">Next.js Blog</a></td></tr>
+          <tr><td>0xDAF — Anthropic Defender Advantage Fund</td><td>เพิ่งประกาศ ยังไม่มีรายชื่อผู้รับทุนนำร่อง</td><td>องค์กรที่ได้รับทุนรอบแรกและผลลัพธ์เชิงช่องโหว่ที่แก้ได้จริง</td><td><a href="https://www.securityweek.com/anthropic-expands-mythos-5-access-to-more-defenders-unveils-35m-open-source-fund/">SecurityWeek</a></td></tr>
+          <tr><td>ระบบนิเวศ npm</td><td>เวิร์ม ChainDrop / Shai-Hulud ยังไม่มีประกาศปิดเคส</td><td>จำนวน package ที่ได้รับผลกระทบสุดท้ายและมาตรการถาวรของ npm registry</td><td><a href="https://www.elastic.co/security-labs/shai-hulud-chaindrop-npm-supply-chain">Elastic Security Labs</a></td></tr>
+          <tr><td><a href="https://github.com/apache/maka">apache/maka</a></td><td>ยังอยู่สถานะ incubating และ developer preview เฉพาะ Apple Silicon</td><td>ความคืบหน้าการรองรับ Linux/Windows และการปล่อย release อย่างเป็นทางการครั้งแรกของ Apache</td><td><a href="https://github.com/apache/maka/releases">GitHub Releases</a></td></tr>
+          <tr><td><a href="https://github.com/openai/codex">openai/codex</a></td><td>โตเร็วที่สุดของสัปดาห์ ยังไม่ทราบว่าจะรักษาแรงส่งได้นานแค่ไหน</td><td>ยอดดาวและ release ใหม่ในสัปดาห์ถัดไป</td><td><a href="https://github.com/openai/codex/releases">GitHub Releases</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+
+    <h3>GitHub</h3>
+    <ul>
+      <li><a href="https://github.com/trending?since=weekly">GitHub Trending — Weekly</a>, <a href="https://github.com/trending/rust?since=weekly">Rust</a>, <a href="https://github.com/trending/python?since=weekly">Python</a>, <a href="https://github.com/trending/go?since=weekly">Go</a></li>
+      <li>หน้า repository โดยตรงสำหรับ stars, forks, license, language และคำอธิบาย ได้แก่ <a href="https://github.com/openai/codex">openai/codex</a>, <a href="https://github.com/anthropics/claude-plugins-community">claude-plugins-community</a>, <a href="https://github.com/apache/maka">apache/maka</a>, <a href="https://github.com/tt-a1i/archify">archify</a>, <a href="https://github.com/MadsLorentzen/ai-job-search">ai-job-search</a>, <a href="https://github.com/VoltAgent/awesome-agent-skills">awesome-agent-skills</a>, <a href="https://github.com/tinyhumansai/openhuman">openhuman</a>, <a href="https://github.com/TencentCloud/TencentDB-Agent-Memory">TencentDB-Agent-Memory</a></li>
+      <li><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.37.0">Kubernetes v1.37.0 Release Notes</a></li>
+    </ul>
+
+    <h3>Official Documentation</h3>
+    <ul>
+      <li><a href="https://kubernetes.io/blog/2026/08/26/kubernetes-v1-37-release/">Kubernetes Blog — v1.37 Garhwal</a> และ <a href="https://kubernetes.io/releases/">Kubernetes Releases</a> (เข้าถึงผ่าน WebSearch เนื่องจากโดเมนถูกบล็อก — ดูหมายเหตุด้านล่าง)</li>
+      <li><a href="https://nextjs.org/blog/august-2026-security-release">Next.js Blog — August 2026 Security Release</a></li>
+      <li><a href="https://www.docker.com/blog/docker-desktop-updates-every-two-weeks/">Docker Blog — Docker Desktop Release Cadence</a></li>
+      <li><a href="https://clickhouse.com/docs/whats-new/changelog/cloud">ClickHouse Changelog</a></li>
+      <li><a href="https://blog.modelcontextprotocol.io/posts/mcp-roadmap/">MCP Blog — The New MCP Roadmap (22 ส.ค. 2026)</a></li>
+    </ul>
+
+    <h3>Community (Trend Only)</h3>
+    <ul>
+      <li><a href="https://thehackernews.com/2026/08/nextjs-patches-critical-avif-and.html">The Hacker News — Next.js Critical Patches</a> · <a href="https://securityonline.info/nextjs-rce-vulnerability/">SecurityOnline — CVE-2026-75604</a> · <a href="https://www.netlify.com/changelog/2026-08-25-nextjs-security-vulnerabilities/">Netlify Changelog</a></li>
+      <li><a href="https://www.securityweek.com/anthropic-expands-mythos-5-access-to-more-defenders-unveils-35m-open-source-fund/">SecurityWeek — Anthropic 0xDAF Fund</a> · <a href="https://www.opensourceforu.com/2026/08/anthropic-pledges-us35m-to-secure-open-source-software-with-ai/">Open Source For You</a></li>
+      <li><a href="https://www.theregister.com/devops/2026/08/26/kubernetes-cleans-house-bins-legacy-kube-dns-ipvs-and-cgroup-v1/5292717">The Register — Kubernetes v1.37 Breaking Changes</a> · <a href="https://www.perfectscale.io/blog/kubernetes-v1-37-sneak-peek">PerfectScale — Kubernetes 1.37 Overview</a></li>
+      <li><a href="https://www.elastic.co/security-labs/shai-hulud-chaindrop-npm-supply-chain">Elastic Security Labs — ChainDrop worm (บริบทต่อเนื่อง)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>⚠️ ข้อจำกัดของข้อมูล</h2>
+    <div class="note-box">
+      <p><strong>UNCERTAIN — โดเมนที่เข้าถึงไม่ได้:</strong> <code>kubernetes.io</code> ถูกบล็อกโดย network egress proxy ในเซสชันนี้แม้ลองซ้ำแล้ว จึงต้องดึงเนื้อหาผ่าน WebSearch แทนการเปิดหน้าเว็บโดยตรง ข้อมูลรายละเอียดของ Kubernetes v1.37 ในรายงานนี้จึงมาจากผลการค้นหาและบทความอ้างอิง ไม่ใช่การอ่านหน้าต้นทางของ kubernetes.io โดยตรง เช่นเดียวกัน <code>www.tommyz.blog</code> ถูกบล็อกและใช้ WebSearch ทดแทน</p>
+      <p><strong>ข้อจำกัดของ API:</strong> เครื่องมือ GitHub MCP สำหรับ commit และ release ถูกจำกัดขอบเขตไว้ที่ repository เดียวในเซสชันนี้ ทำให้ <strong>ไม่สามารถรายงานจำนวน commit หรือจำนวน contributor ใหม่ในกรอบเจ็ดวันได้โดยตรงจาก API</strong> รายงานนี้ใช้ข้อมูลจากหน้า repository และผลการค้นหาแทน</p>
+      <p><strong>ตัวเลขการเติบโตของดาว:</strong> มาจาก snapshot ของหน้า GitHub Trending ไม่ใช่ค่าที่คำนวณจาก API จึงเป็นค่าประมาณและอาจต่างจากตัวเลขที่เห็นบนหน้าเว็บในเวลาอื่น ตัวเลข fork growth ในตาราง "Viral This Week" ไม่สามารถยืนยันได้จากแหล่งที่ใช้ในรายงานนี้ จึงระบุเป็น "ไม่ยืนยัน"</p>
+      <p><strong>รายการที่ยืนยันไม่ครบ:</strong> ตัวเลขดาวเพิ่มรายสัปดาห์ที่แน่นอนของ <code>TencentCloud/TencentDB-Agent-Memory</code> และ <code>block/buzz</code> ยืนยันไม่ได้ (มีเพียงข้อมูลการเติบโตรายเดือน) จึงถูกจัดเป็นข้อมูลบริบทมากกว่าตัวเลข trending ที่แม่นยำ · ลักษณะการทำงานที่แน่ชัดของ <code>Alishahryar1/free-claude-code</code> ในแง่การปฏิบัติตามเงื่อนไขผู้ให้บริการต้นทางยืนยันไม่ได้ครบถ้วน · ไม่พบข้อมูลที่ยืนยันวันที่ชัดเจนสำหรับ release ใหม่ของ Flutter หรือ React Native ในกรอบเจ็ดวันนี้ จึงงดแสดงในหมวด Mobile</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏷 Labels</h2>
+    <div class="legend-grid">
+      <div><span>✅</span><span>Official</span></div>
+      <div><span>⭐</span><span>Trending</span></div>
+      <div><span>🚀</span><span>Fast Growing</span></div>
+      <div><span>🔥</span><span>Viral</span></div>
+      <div><span>🤖</span><span>AI</span></div>
+      <div><span>🧠</span><span>MCP / Agent</span></div>
+      <div><span>☁️</span><span>Cloud Native</span></div>
+      <div><span>🔒</span><span>Security</span></div>
+      <div><span>📦</span><span>New Release</span></div>
+      <div><span>⚠️</span><span>Breaking Change</span></div>
+      <div><span>💎</span><span>Hidden Gem</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🧭 สรุปแนวโน้ม Open Source Ecosystem</h2>
+    <p><strong>หนึ่ง — โครงสร้างพื้นฐานระดับ orchestration กำลังปิดรอบใหญ่พร้อมกัน</strong> การที่ Kubernetes v1.37 GA มาพร้อม breaking change ชุดใหญ่ที่สุดในรอบหลายรุ่น (ถอด kubelet flag เดิม, บังคับ containerd 2.0) หมายความว่าทีม platform engineering ทั่วโลกต้องวางแผนอัปเกรดอย่างระมัดระวังในไตรมาสนี้ ไม่ใช่แค่กด upgrade ตามปกติ</p>
+
+    <p><strong>สอง — ความปลอดภัยกำลังกลายเป็นเดิมพันของทั้งผู้ให้บริการรายใหญ่และ ecosystem</strong> การที่ Next.js ต้องเลื่อนแพตช์ให้เร็วขึ้นเพื่อปิดช่องโหว่ RCE ระดับ 9.5 และ Anthropic ทุ่ม 35 ล้านดอลลาร์ให้ open source security ในสัปดาห์เดียวกัน สะท้อนว่าความปลอดภัยของ supply chain ไม่ใช่ประเด็นข้างเคียงอีกต่อไป แต่เป็นเดิมพันหลักของทั้งวงการ โดยเฉพาะเมื่อเวิร์ม ChainDrop ยังไม่ปิดเคส</p>
+
+    <p><strong>สาม — "ความจำของ agent" กลายเป็นสมรภูมิใหม่แทนที่ตัว agent loop เอง</strong> openhuman, TencentDB-Agent-Memory และคลัง skill เฉพาะทางต่าง ๆ ต่างพุ่งเป้าไปที่การทำให้ agent จำและเรียนรู้ข้ามเซสชันได้ดีขึ้น ขณะที่ apache/maka เลือกแก้ปัญหาเดียวกันด้วยแนวทาง append-only log ที่ตรวจสอบย้อนกลับได้ ชี้ว่าตลาดยังไม่ตกผลึกว่าวิธีไหนจะชนะ</p>
+
+    <p><strong>สี่ — ระบบนิเวศปลั๊กอิน agent กำลังรวมศูนย์เข้าสู่ curated marketplace</strong> ทั้ง Anthropic ผ่าน claude-plugins-community/official และ Cursor ผ่าน cursor/plugins กำลังสร้างโมเดลตรวจสอบและอนุมัติปลั๊กอินแบบเดียวกับ app store ซึ่งต่างจากยุคก่อนหน้าที่ปลั๊กอินกระจัดกระจายอยู่ตาม repository ของแต่ละคน</p>
+
+    <p><strong>เทคโนโลยีที่ควรจับตาในสัปดาห์หน้า</strong> ได้แก่ ผลกระทบจากการอัปเกรด Kubernetes v1.37 ในองค์กรจริงและปัญหาที่อาจเกิดจาก containerd 2.0, อัตราการอัปเกรด Next.js หลังแพตช์ความปลอดภัยฉุกเฉิน, รายชื่อผู้รับทุนนำร่องรอบแรกของ Anthropic 0xDAF, ความคืบหน้าของ apache/maka ในการรองรับแพลตฟอร์มอื่นนอกเหนือจาก Apple Silicon และพัฒนาการต่อเนื่องของเวิร์ม ChainDrop / Shai-Hulud ในระบบนิเวศ npm</p>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly GitHub Trending Open Source Report · Week 35, 2026</p>
+    <p>ข้อมูลรวบรวมระหว่าง 21–28 ส.ค. 2026 (ICT) · <a href="index.html">กลับไปหน้ารวม</a></p>
+  </footer>
+</div>
+</body>
+</html>

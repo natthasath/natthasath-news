@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-27</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 27 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-27</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 27 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> รอบนี้ WebFetch ไปยังโดเมนทางการและสื่อหลักหลายแห่ง (openai.com, anthropic.com, arxiv.org, huggingface.co, techcrunch.com, cnbc.com, news.ycombinator.com, reddit.com/Algolia) ถูกบล็อกโดย network egress proxy ทั้งในความพยายามครั้งแรกและครั้งที่สอง จึงใช้ WebSearch พร้อม site: query แทนตามขั้นตอนที่กำหนด และยืนยันเนื้อหาผ่านผลการค้นหาที่สอดคล้องกันจากหลายแหล่ง (รวมถึงหน้าอย่างเป็นทางการที่ปรากฏใน index ผลค้นหา เช่น anthropic.com/news, salesforce.com/news, nvidianews.nvidia.com, z.ai/blog) ดีลเข้าซื้อกิจการ Hugging Face โดย NVIDIA ยังไม่มีการยืนยันการลงนามอย่างเป็นทางการจากทั้งสองบริษัท ณ เวลาที่จัดทำรายงาน จึงนำเสนอในฐานะรายงานข่าวที่มีหลายแหล่งสอดคล้องกัน ไม่ใช่ข้อเท็จจริงที่ยืนยันแล้ว reddit.com เข้าถึงไม่ได้ต่อเนื่องเป็นวันที่ 4 จึงคง <b>UNCERTAIN: reddit.com</b> ไว้ตามเกณฑ์ที่กำหนด (ดูหมายเหตุท้ายรายงาน) รายงานฉบับนี้เป็นการอัปเดตซ้ำของวันที่ 27 ส.ค. 2569 (overwrite ไฟล์เดิม) โดยขยายกรอบเวลาให้ครอบคลุมข่าวถึงช่วงเช้าของวันที่ 27 ส.ค. ตามเวลา ICT
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ข่าวใหญ่สุดของวันคือ NVIDIA เตรียมเข้าซื้อกิจการ Hugging Face มูลค่าราว 1.29 หมื่นล้านดอลลาร์ (ยังไม่ยืนยันการลงนามอย่างเป็นทางการ) ท่ามกลางผลประกอบการไตรมาส 2 ปีงบประมาณ 2027 ที่รายได้พุ่ง 9.62 หมื่นล้านดอลลาร์ (+106% YoY) ดีลขยาย GPU กับ AWS อีก 2 ล้านตัว และการเจรจาลงทุนใน Perplexity ที่มูลค่ากว่า 3 หมื่นล้านดอลลาร์ Anthropic และ Salesforce ประกาศพันธมิตร "Claudeforce" ผนวก CRM เข้ากับ Claude พร้อมเปิดตัว Model Hardware Standard มาตรฐานให้ AI agent ควบคุมอุปกรณ์ห้องแล็บและโรงงานอย่างปลอดภัยร่วมกับ HHMI Janelia Alibaba (Qwen Team) และ Z.ai เปิดตัว/ยืนยันโมเดลใหม่ Qwen3.8-Flash-Next และ GLM-5.3-Flash ตามลำดับ ขณะที่ Meta บรรลุข้อตกลงยอมความคดีความปลอดภัยเด็กมูลค่าสูงถึง 1.8 หมื่นล้านดอลลาร์กับ 52 รัฐ และ OpenAI เริ่มแสดงโฆษณาใน ChatGPT สำหรับผู้ใช้ระดับฟรีในอินเดีย</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+        <tr>
+          <td>Qwen3.8-Flash-Next</td>
+          <td>Alibaba (Qwen Team)</td>
+          <td>Multimodal MoE LLM</td>
+          <td>125B รวม / 6B active parameters, context 262K (ขยายได้ถึง 1M) พรีวิวสถาปัตยกรรม Qwen4</td>
+          <td>✅ เปิดตัว open-weight 26 ส.ค. 2569</td>
+          <td><a href="https://github.com/QwenLM/Qwen3.8-Flash-Next">GitHub</a>, <a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next">Hugging Face</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-26/alibaba-releases-smaller-cost-effective-qwen-ai-model">Bloomberg</a></td>
+        </tr>
+        <tr>
+          <td>GLM-5.3-Flash <span class="badge">อดีต Ox Alpha</span></td>
+          <td>Z.ai (Zhipu AI)</td>
+          <td>Open-weight MoE LLM (natively multimodal)</td>
+          <td>320B รวม / 18B active parameters, context 1M, hybrid sparse+linear attention, MIT license</td>
+          <td>✅ ยืนยันตัวตนอย่างเป็นทางการ 26 ส.ค. 2569</td>
+          <td><a href="https://z.ai/blog/glm-5.3-flash">z.ai (official)</a>, <a href="https://www.testingcatalog.com/z-ai-launches-glm-5-3-flash-under-mit-license/">TestingCatalog</a>, <a href="https://9to5mac.com/2026/08/26/lm-studio-adds-glm-5-3-flash-to-bionic-with-image-support-and-1m-token-context/">9to5Mac</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตรวจสอบแล้วแต่ไม่พบโมเดลใหม่ในกรอบเวลา 24 ชั่วโมงจาก OpenAI, Anthropic, Google/DeepMind, Meta, Microsoft, xAI, DeepSeek, Mistral, NVIDIA และ Amazon จึงไม่นำมาแสดง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Title</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+        <tr>
+          <td>Human–AI Collaboration at Scale: Task Criticality, Agency, and Friction Across 250,000 Conversations</td>
+          <td>Stanford SALT Lab ร่วมกับ Oxford HIP Lab และ METR (ผ่านเครื่องมือ "Anthropic Insights")</td>
+          <td>วิเคราะห์บทสนทนา Claude.ai/Claude Code จริงกว่า 250,000 รายการ พบว่ากว่า 50% เป็นงานที่มีผลกระทบสูง (consequential) และมนุษย์ยังคงเป็นผู้นำการตัดสินใจ</td>
+          <td><a href="https://www.anthropic.com/research/enabling-independent-research">Anthropic (official)</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ไม่พบเลข arXiv ID ที่เป็นมาตรฐานสำหรับเปเปอร์นี้ (พบเพียง slug บน alphaXiv) จึงละเว้นฟิลด์ดังกล่าว — <b>ต่อเนื่อง:</b> "Prime Agent: A Self-Improving RLM Harness" (Prime Intellect, arXiv 2608.23552, ยื่น 25 ส.ค.) ยังเป็นประเด็นที่ถูกพูดถึงมากบน alphaXiv/HF Papers ต่อเนื่องถึงวันนี้ — <a href="https://arxiv.org/abs/2608.23552">arXiv</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>TauricResearch/TradingAgents</td>
+          <td>~100k</td>
+          <td>Python</td>
+          <td>Framework multi-agent LLM สำหรับการเทรดหุ้น</td>
+          <td><a href="https://github.com/TauricResearch/TradingAgents">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>ComposioHQ/awesome-claude-skills</td>
+          <td>~71–72k</td>
+          <td>Python</td>
+          <td>รายการรวม Claude Skills ทรัพยากร และเครื่องมือที่คัดสรรแล้ว</td>
+          <td><a href="https://github.com/ComposioHQ/awesome-claude-skills">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>K-Dense-AI/scientific-agent-skills</td>
+          <td>~35k (+494 วันนี้)</td>
+          <td>Python</td>
+          <td>ไลบรารี agent-skills เปลี่ยน AI agent ใดๆ ให้เป็น "AI Scientist" มี 163 skills ด้านชีววิทยา/เคมี/ค้นพบยา</td>
+          <td><a href="https://github.com/K-Dense-AI/scientific-agent-skills">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>anthropics/claude-plugins-official</td>
+          <td>~34.6k</td>
+          <td>Python</td>
+          <td>Directory ปลั๊กอิน Claude Code คุณภาพสูงอย่างเป็นทางการจาก Anthropic</td>
+          <td><a href="https://github.com/anthropics/claude-plugins-official">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>PrimeIntellect-ai/prime-agent</td>
+          <td>—</td>
+          <td>—</td>
+          <td>Agent harness แบบ Recursive Language Model (RLM) ที่ปรับปรุงตัวเองได้ สำหรับงาน coding/long-horizon (คู่กับเปเปอร์ Prime Agent ด้านบน)</td>
+          <td><a href="https://github.com/PrimeIntellect-ai/prime-agent">GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ไม่นำ calesthio/OpenMontage (อ้างว่า ~52k stars) มาแสดง เนื่องจากตัวเลขดาวเพิ่มขึ้นผิดปกติในวันเดียวและยืนยันซ้ำจากแหล่งอิสระไม่ได้ครบตามเกณฑ์ cross validation</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Description</th><th>Pricing</th><th>Source</th></tr>
+        <tr>
+          <td>Salesforce in Claude</td>
+          <td>ปลั๊กอินสำหรับ Claude Cowork ที่ผนวก CRM ของ Salesforce เข้ากับ Claude พร้อม 37 sales skills สำเร็จรูป บนกรอบ "AIforce" ผ่าน MCP</td>
+          <td>Pilot กับลูกค้ากลุ่มเลือกสรร, เปิด open beta ก.ย. 2569 (ยังไม่ประกาศราคา)</td>
+          <td><a href="https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/">Salesforce (official)</a>, <a href="https://venturebeat.com/orchestration/salesforce-just-put-its-entire-crm-inside-claude-and-says-youll-never-need-its-app-again">VentureBeat</a></td>
+        </tr>
+        <tr>
+          <td>ChatGPT Ads (อินเดีย)</td>
+          <td>เริ่มแสดงโฆษณาในบทสนทนา ChatGPT สำหรับผู้ใช้ระดับ Free และ Go ในอินเดีย (18 ปีขึ้นไป) ไม่มีโฆษณาในหัวข้ออ่อนไหวหรือระดับเสียเงิน</td>
+          <td>Free/Go ไม่มีค่าใช้จ่าย (รายได้จากโฆษณา) — Ads Manager แบบ self-serve เปิด 4 ก.ย. 2569 งบเริ่มต้น ₹725/วัน</td>
+          <td><a href="https://techcrunch.com/2026/08/27/openai-to-start-showing-ads-on-chatgpts-free-and-go-tiers-in-india/">TechCrunch</a>, <a href="https://www.businesstoday.in/technology/artificial-intelligence/story/chatgpt-ads-arrive-in-india-as-openai-targets-free-go-users-in-major-revenue-push-ahead-of-ipo-551655-2026-08-27">Business Today</a></td>
+        </tr>
+      </table>
+    </div>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+        <tr>
+          <td>Google Workspace — Ask Gemini in Chat</td>
+          <td>เปิดตัวฟีเจอร์ค้นหา/สร้างงานรวมศูนย์ผ่าน Google Chat ครอบคลุม Gmail, Drive, Calendar เริ่ม 26 ส.ค. 2569 พร้อมโควตาสูงขึ้นชั่วคราวถึง 1 ต.ค.</td>
+          <td><a href="https://workspaceupdates.googleblog.com/2026/08/ask-gemini-in-chat.html">Google Workspace Updates (official)</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">พบข่าวว่า Claude Code อาจเพิ่มฟีเจอร์ร่าง feedback อัตโนมัติและคำสั่ง cost-optimize แต่แหล่งข่าวเป็นเว็บ changelog aggregator ที่ไม่ใช่ของ Anthropic โดยตรงและ WebFetch เข้าถึง changelog ทางการไม่ได้ จึงงดนำมาแสดงตามเกณฑ์ความน่าเชื่อถือ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>เริ่มแสดงโฆษณาใน ChatGPT ให้ผู้ใช้ระดับ Free และ Go ในอินเดีย ซึ่งเป็นหนึ่งในตลาดใหญ่ที่สุด (ผู้ใช้รายสัปดาห์กว่า 100 ล้านคน) โดยไม่มีโฆษณาในหัวข้ออ่อนไหว เช่น สุขภาพ สุขภาพจิต หรือการเมือง และไม่มีโฆษณาในระดับเสียเงิน Ads Manager แบบ self-serve สำหรับธุรกิจจะเปิดให้ใช้ 4 ก.ย. 2569</p>
+    <p class="note">Source: <a href="https://techcrunch.com/2026/08/27/openai-to-start-showing-ads-on-chatgpts-free-and-go-tiers-in-india/">TechCrunch</a>, <a href="https://www.businesstoday.in/technology/artificial-intelligence/story/chatgpt-ads-arrive-in-india-as-openai-targets-free-go-users-in-major-revenue-push-ahead-of-ipo-551655-2026-08-27">Business Today</a></p>
+
+    <h3>Anthropic</h3>
+    <p>ประกาศขยายพันธมิตรกับ Salesforce เป็น "Claudeforce" ผนวก CRM เข้ากับ Claude ผ่านปลั๊กอิน Salesforce in Claude พร้อมให้ Claude เป็นโมเดลหลักใน Slack (Slackbot, ฟีเจอร์ "Claude Tag") และใช้งานผ่าน Salesforce Agentforce บน Amazon Bedrock ได้ นอกจากนี้ยังเปิดตัว Model Hardware Standard (MHS) ร่วมกับ HHMI Janelia Research Campus มาตรฐานกลางบนพื้นฐาน MCP ให้ AI agent ควบคุมอุปกรณ์ห้องแล็บและโรงงาน (กล้องจุลทรรศน์ เครื่องจ่ายของเหลว แขนหุ่นยนต์ อุปกรณ์ควอนตัม) ได้อย่างปลอดภัย และเผยแพร่งานวิจัยวิเคราะห์บทสนทนา Claude.ai/Claude Code กว่า 250,000 รายการร่วมกับ Stanford SALT Lab และ Oxford HIP Lab</p>
+    <p class="note">Source: <a href="https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/">Salesforce (official)</a>, <a href="https://www.anthropic.com/news/model-hardware-standard-research-preview">Anthropic (official)</a>, <a href="https://venturebeat.com/orchestration/salesforce-just-put-its-entire-crm-inside-claude-and-says-youll-never-need-its-app-again">VentureBeat</a>, <a href="https://fortune.com/2026/08/27/anthropic-makes-first-move-into-physical-ai-with-universal-standard-for-scientists-manufacturing/">Fortune</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่พบข่าวโมเดลใหม่จาก Google DeepMind ที่ยืนยันได้ในกรอบเวลา 24 ชั่วโมงนี้ (deepmind.google เข้าถึงไม่ได้โดยตรง) — ฝั่งผลิตภัณฑ์ Google เปิดตัวฟีเจอร์ "Ask Gemini in Chat" ใน Google Workspace แทน (ดูหัวข้อ Tools &amp; Apps)</p>
+
+    <h3>Meta</h3>
+    <p>บรรลุข้อตกลงยอมความคดีฟ้องร้องเรื่องความปลอดภัยเด็ก/การเสพติดโซเชียลมีเดียจาก 52 รัฐอัยการสูงสุด มูลค่าสูงสุดถึง 1.8 หมื่นล้านดอลลาร์ในระยะ 10 ปี ผู้พิพากษา Yvonne Gonzalez Rogers อนุมัติเมื่อ 26 ส.ค. รวมถึงกำหนดขีดจำกัดการใช้งานเริ่มต้น 2 ชั่วโมง/วันสำหรับวัยรุ่นบน Instagram/Facebook (หมายเหตุ: ไม่ใช่ข่าวด้าน AI โดยตรง แต่เป็นข่าวใหญ่ของบริษัทในกรอบเวลานี้ — ไม่พบข่าว AI/Llama ใหม่จาก Meta ในรอบ 24 ชั่วโมง)</p>
+    <p class="note">Source: <a href="https://www.cnn.com/2026/08/26/tech/meta-states-settle-trial-children">CNN</a>, <a href="https://www.nbcnews.com/tech/social-media/meta-settles-social-media-addiction-suit-16-billion-rcna594492">NBC News</a></p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่พบข่าวผลิตภัณฑ์/โมเดล AI ใหม่จาก Microsoft ที่ยืนยันได้ครบตามเกณฑ์ในกรอบเวลานี้ (มีรายงานจากแหล่งเดียว — Windows Latest — ว่า Microsoft จะเปลี่ยนชื่อ "Microsoft 365 Roadmap" เป็น "AI at Work Roadmap" ตั้งแต่ ก.ย. แต่ไม่พบแหล่งที่สองยืนยัน จึงไม่นำมาแสดงเป็นรายการหลัก)</p>
+
+    <h3>Amazon</h3>
+    <p>AWS และ NVIDIA ประกาศขยายความร่วมมือครั้งใหญ่ ส่งมอบ GPU NVIDIA เพิ่มอีก 2 ล้านตัว (Blackwell Ultra, Rubin, Rubin Ultra) ในปี 2027–2028 รวมดีล AI factory ระดับรัฐบาลกลางสหรัฐฯ 100,000 GPU นอกจากนี้ Amazon ยืนยันปิดบริการ Mechanical Turk ทั้งหมดภายใน 30 ก.ย. 2569 หลังหยุดรับสมัครใหม่ไปก่อนหน้านี้ พร้อมกระทบ SageMaker Ground Truth ด้วย</p>
+    <p class="note">Source: <a href="https://nvidianews.nvidia.com/news/aws-and-nvidia-to-deliver-2-million-additional-gpus-and-next-generation-infrastructure-for-agentic-and-physical-ai">NVIDIA Newsroom (official)</a>, <a href="https://www.aboutamazon.com/news/aws/aws-nvidia-2-million-gpus-ai">About Amazon (official)</a>, <a href="https://www.cnbc.com/2026/08/25/amazon-service-that-jeff-bezos-called-artificial-ai-is-shutting-down.html">CNBC</a></p>
+
+    <h3>NVIDIA</h3>
+    <p>รายงานผลประกอบการไตรมาส 2 ปีงบประมาณ 2027 รายได้ 96.2 พันล้านดอลลาร์ เพิ่มขึ้น 106% YoY พร้อมคาดการณ์รายได้ไตรมาส 3 ราว 1.08 แสนล้านดอลลาร์ (+~89% YoY) หุ้นพุ่งขึ้นราว 9% นอกจากนี้มีรายงานจากหลายสำนักข่าวว่า NVIDIA ตกลงเข้าซื้อกิจการ Hugging Face ด้วยมูลค่าราว 1.29 หมื่นล้านดอลลาร์ (บางแหล่งระบุว่ายังไม่ลงนามอย่างเป็นทางการ) และกำลังเจรจาลงทุนใน Perplexity ที่มูลค่ากิจการกว่า 3 หมื่นล้านดอลลาร์</p>
+    <p class="note">Source: <a href="https://www.cnbc.com/2026/08/27/nvidia-hugging-face-acquisition.html">CNBC</a>, <a href="https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/">TechCrunch</a>, <a href="https://fortune.com/2026/08/27/nvidia-hugging-face-billion-dollar-deal-open-source-ai/">Fortune</a>, <a href="https://www.forbes.com/sites/siladityaray/2026/08/27/nvidia-has-reportedly-agreed-to-buy-ai-model-hosting-platform-hugging-face-for-13-billion/">Forbes</a>, <a href="https://www.bloomberg.com/news/articles/2026-08-26/nasdaq-futures-rise-on-bullish-nvidia-sales-growth-markets-wrap">Bloomberg</a></p>
+
+    <h3>Startup</h3>
+    <p>Instinct สตาร์ทอัพผู้ช่วยส่วนตัว AI ระดมทุนซีรีส์ B เพิ่ม 250 ล้านดอลลาร์ นำโดย Index Ventures และ Benchmark รวมยอดระดมทุนสะสม 350 ล้านดอลลาร์ ที่มูลค่ากิจการ 2.5 พันล้านดอลลาร์ (แหล่งข่าวยืนยันได้เพียงแหล่งเดียวในเวลาที่จัดทำรายงาน) Agentrys สตาร์ทอัพด้าน agentic design automation สำหรับผู้ผลิตชิป ระดมทุน seed round 19.1 ล้านดอลลาร์ นำโดย Etna Capital รวมยอดระดมทุน 24.5 ล้านดอลลาร์</p>
+    <p class="note">Source: <a href="https://techstartups.com/2026/08/27/startup-funding-news-today-august-27-2026-instinct-breedr-agentrys-more/">Tech Startups</a> (Instinct, แหล่งเดียว), <a href="https://www.semiconductor-digest.com/agentrys-raises-24-5-million-to-build-agentic-design-automation-for-chipmakers/">Semiconductor Digest</a>, <a href="https://ventureburn.com/agentrys-raises-24-5m-ai-chip-design/">VentureBurn</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>API:</b> OpenAI เปิด ChatGPT Ads Manager แบบ self-serve สำหรับธุรกิจในอินเดีย เริ่ม 4 ก.ย. 2569 — <a href="https://techcrunch.com/2026/08/27/openai-to-start-showing-ads-on-chatgpts-free-and-go-tiers-in-india/">TechCrunch</a></li>
+      <li><b>Infrastructure:</b> AWS–NVIDIA ขยายดีล ส่งมอบ GPU เพิ่ม 2 ล้านตัว (Blackwell Ultra, Rubin, Rubin Ultra) สำหรับ agentic และ physical AI ในปี 2027–2028 — <a href="https://nvidianews.nvidia.com/news/aws-and-nvidia-to-deliver-2-million-additional-gpus-and-next-generation-infrastructure-for-agentic-and-physical-ai">NVIDIA Newsroom</a></li>
+      <li><b>Infrastructure:</b> Google ปรับข้อกำหนด Android/Play Store ให้แอปลดการใช้หน่วยความจำและปรับโค้ดอย่างน้อย 25% เริ่ม ก.พ. 2027 ตอบสนองปัญหาขาดแคลนชิปหน่วยความจำ HBM/RAM จากดีมานด์ดาต้าเซ็นเตอร์ AI — <a href="https://techcrunch.com/2026/08/27/ais-memory-crunch-is-coming-for-android-apps/">TechCrunch</a></li>
+      <li><b>MCP / Agent:</b> Anthropic เปิดตัว Model Hardware Standard (MHS) มาตรฐานบนพื้นฐาน MCP ให้ AI agent ควบคุมอุปกรณ์ฮาร์ดแวร์ทางวิทยาศาสตร์และการผลิตได้อย่างปลอดภัย ร่วมกับ HHMI Janelia — <a href="https://www.anthropic.com/news/model-hardware-standard-research-preview">Anthropic (official)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>Acquisition (รอการยืนยัน):</b> NVIDIA ตกลงเข้าซื้อกิจการ Hugging Face มูลค่าราว 1.29 หมื่นล้านดอลลาร์ — รายงานตรงกันจากหลายสำนักข่าวแต่ยังไม่มีแถลงการณ์อย่างเป็นทางการร่วมกันจากทั้งสองบริษัท — <a href="https://www.cnbc.com/2026/08/27/nvidia-hugging-face-acquisition.html">CNBC</a>, <a href="https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/">TechCrunch</a>, <a href="https://fortune.com/2026/08/27/nvidia-hugging-face-billion-dollar-deal-open-source-ai/">Fortune</a></li>
+      <li><b>Investment:</b> NVIDIA เจรจาลงทุนใน Perplexity ที่มูลค่ากิจการกว่า 3 หมื่นล้านดอลลาร์ (รายได้ต่อปีของ Perplexity โตจากต่ำกว่า 250 ล้านดอลลาร์ในเดือน ม.ค. 2569 เป็นราว 750 ล้านดอลลาร์) — <a href="https://www.theinformation.com/articles/nvidia-discusses-perplexity-investment-30-billion-plus-valuation-considered-tech-licensing-deal">The Information</a>, <a href="https://247wallst.com/investing/2026/08/27/perplexity-wants-a-30-billion-valuation-before-its-2028-ipo-nvidia-may-help-it-get-there/">24/7 Wall St</a></li>
+      <li><b>Investment:</b> Stability AI ระดมทุนซีรีส์ B 76 ล้านดอลลาร์ จาก Universal Music, Sony Music, Warner Music และ EA — เป็นบริษัท AI รายแรกที่ได้ลงทุนจากค่ายเพลงใหญ่ทั้งสามค่าย รวมทุนสะสม 232 ล้านดอลลาร์ — <a href="https://variety.com/2026/biz/news/stability-ai-raises-76-million-funding-round-1236842351/">Variety</a>, <a href="https://www.musicbusinessworldwide.com/universal-sony-warner-join-76m-funding-round-in-stability-ai/">Music Business Worldwide</a></li>
+      <li><b>Investment:</b> Agentrys ระดมทุน seed round 19.1 ล้านดอลลาร์ สำหรับ agentic design automation ด้านชิป — <a href="https://www.semiconductor-digest.com/agentrys-raises-24-5-million-to-build-agentic-design-automation-for-chipmakers/">Semiconductor Digest</a>, <a href="https://ventureburn.com/agentrys-raises-24-5m-ai-chip-design/">VentureBurn</a></li>
+    </ul>
+    <p class="note">Regulation/Ethics: ไม่พบข่าวกำกับดูแล/นโยบาย/จริยธรรม AI ที่ยืนยันวันที่ในกรอบ 24 ชั่วโมงนี้ได้ — ข่าวใกล้เคียงที่สุด (EU AI Act, การบังคับใช้กฎหมายโอมนิบัส AI) เป็นข่าวก่อนหน้าต้นเดือน ส.ค. จึงไม่นำมาแสดงเป็นรายการใหม่</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+        <tr><td>Artificial Analysis Intelligence Index</td><td>Claude Opus 5 (Adaptive Reasoning, Max Effort)</td><td>63.0 (อันดับ 1 จาก 181 โมเดล; รองลงมา Claude Fable 5 = 62.1, Grok 4.6 = 60.9)</td><td><a href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis</a></td></tr>
+        <tr><td>SWE-bench Verified</td><td>Claude Opus 5</td><td>96% (นำหน้า Claude Mythos 5 = 95.5%, Claude Fable 5 = 95%)</td><td><a href="https://benchlm.ai/benchmarks/swe-bench-verified">BenchLM</a></td></tr>
+      </table>
+    </div>
+    <p class="note">ทั้งสองรายการเป็นหน้า leaderboard ที่อัปเดตต่อเนื่อง (ข้อมูล ณ 26–27 ส.ค. 2569) ไม่ใช่ผลประกาศใหม่ครั้งเดียว และไม่สามารถ WebFetch หน้าเว็บโดยตรงเพื่อยืนยันตัวเลขซ้ำได้ (ถูกบล็อกโดย network egress) จึงอ้างอิงจากผลค้นหาที่สรุปข้อมูลหน้าดังกล่าว</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>🔥 Trending (GitHub):</b> TauricResearch/TradingAgents, ComposioHQ/awesome-claude-skills, K-Dense-AI/scientific-agent-skills, anthropics/claude-plugins-official, PrimeIntellect-ai/prime-agent — <a href="https://github.com/trending">GitHub Trending</a></li>
+      <li><b>🔥 กระแสถกเถียง:</b> ดีล NVIDIA–Hugging Face เป็นประเด็นที่พูดถึงมากที่สุดในสื่อเทคโนโลยีและความคิดเห็นสาธารณะวันนี้ รวมถึง CEO ของ Hugging Face อย่าง Clément Delangue ที่ออกมาให้ความเห็นต่อสาธารณะ (ไม่สามารถระบุ thread ID เจาะจงบน Hacker News/Reddit ได้เนื่องจากโดเมนถูกบล็อก จึงนำเสนอในฐานะกระแสที่อนุมานจากรายงานข่าว ไม่ใช่โพสต์ที่ยืนยันตัวตนได้โดยตรง) — <a href="https://www.cnbc.com/2026/08/27/nvidia-hugging-face-acquisition.html">CNBC</a></li>
+      <li><b>Event:</b> Six Five Summit "AI Unleashed" 2026 (25–27 ส.ค.) งานประชุมเสมือนจริงด้าน enterprise AI วันสุดท้ายวันนี้ นำโดย CEO ของ Salesforce (Marc Benioff) และ Applied Materials (Gary Dickerson) — <a href="https://www.sixfivemedia.com/summit">Six Five Media</a></li>
+      <li><b>❓ Hacker News / Reddit:</b> news.ycombinator.com และ reddit.com (r/LocalLLaMA, r/MachineLearning, r/artificial) เข้าถึงไม่ได้ต่อเนื่องเป็นวันที่ 4 — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+
+    <div class="usecase">
+      <h4>1. Salesforce in Claude — ขายตรงจากแชท ไม่ต้องสลับแอป</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมขายต้องสลับไปมาระหว่าง CRM กับเครื่องมือ AI แยกกัน ทำให้ข้อมูลไม่ต่อเนื่องและเสียเวลา</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้งปลั๊กอิน Salesforce in Claude ที่มี 37 sales skills ให้ Claude อ่านข้อมูลรายได้แบบเรียลไทม์ เตรียมข้อมูลก่อนประชุม วิเคราะห์สุขภาพดีล และอัปเดต pipeline ได้ตรงจากหน้าต่างแชท</dd>
+        <dt>ประโยชน์</dt><dd>ลดการสลับแอป เร่งความเร็วงานขาย พร้อมคง governance ของข้อมูลองค์กร</dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>2. Model Hardware Standard — ให้ AI agent ควบคุมอุปกรณ์ห้องแล็บอย่างปลอดภัย</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การให้ AI agent เข้าไปควบคุมอุปกรณ์ทางวิทยาศาสตร์และการผลิตจริง (กล้องจุลทรรศน์ แขนหุ่นยนต์ เครื่องจ่ายของเหลว) มีความเสี่ยงด้านความปลอดภัยและขาดมาตรฐานร่วมระหว่างผู้ผลิตอุปกรณ์</dd>
+        <dt>วิธีใช้</dt><dd>Anthropic ร่วมกับ HHMI Janelia Research Campus พัฒนา MHS สเปกกลางที่ไม่ผูกกับโมเดลใดโมเดลหนึ่ง สร้างบนพื้นฐาน MCP ให้ agent สื่อสารกับฮาร์ดแวร์ทางวิทยาศาสตร์ได้อย่างเป็นมาตรฐาน</dd>
+        <dt>ประโยชน์</dt><dd>เร่งการนำ agentic AI ไปใช้ในงานวิจัยและการผลิตจริงโดยไม่ต้องพัฒนา integration เฉพาะอุปกรณ์แต่ละยี่ห้อ</dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>3. AWS–NVIDIA ขยาย GPU 2 ล้านตัว — โครงสร้างพื้นฐานรองรับ agentic และ physical AI</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ความต้องการประมวลผลสำหรับ AI agent และหุ่นยนต์ physical AI เติบโตเร็วกว่ากำลังการผลิตชิปที่มีอยู่</dd>
+        <dt>วิธีใช้</dt><dd>AWS ติดตั้ง NVIDIA GPU รุ่น Blackwell Ultra, Rubin และ Rubin Ultra เพิ่มอีก 2 ล้านตัวในปี 2027–2028 ครอบคลุมทั้งงาน AI factory เชิงพาณิชย์และภาครัฐ</dd>
+        <dt>ประโยชน์</dt><dd>รองรับการขยายตัวของ agentic AI workloads และ physical AI/หุ่นยนต์ในระดับองค์กรและภาครัฐ</dd>
+      </dl>
+    </div>
+
+    <div class="usecase">
+      <h4>4. Ask Gemini in Chat — ผู้ช่วยงานเอกสารรวมศูนย์ใน Google Workspace</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>พนักงานต้องสลับไปมาระหว่าง Gmail, Drive และ Calendar เพื่อค้นหาและสร้างเนื้อหา ทำให้เสียเวลาและขาดบริบทที่ต่อเนื่อง</dd>
+        <dt>วิธีใช้</dt><dd>พิมพ์คำสั่งผ่าน Google Chat เพื่อค้นหาหรือสร้างงานข้ามแอปทั้งหมดของ Workspace ได้จากจุดเดียว</dd>
+        <dt>ประโยชน์</dt><dd>ลดการสลับแอป เพิ่มความเร็วในการค้นหาและสร้างเนื้อหาในงานประจำวัน</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">2</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Research Papers (ยืนยันได้)</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>ดีล NVIDIA เข้าซื้อกิจการ Hugging Face มูลค่าราว 1.29 หมื่นล้านดอลลาร์ ยังไม่มีการยืนยันการลงนามอย่างเป็นทางการ</dd>
+      <dt>เหตุผล</dt><dd>หากเกิดขึ้นจริงจะเป็นการควบรวมครั้งใหญ่ที่สุดครั้งหนึ่งในวงการ AI เชื่อมฮาร์ดแวร์เข้ากับแพลตฟอร์มโมเดลเปิดที่ใหญ่ที่สุด อาจกระทบความเป็นกลางของ Hugging Face ในฐานะ hub โอเพนซอร์ส</dd>
+      <dt>Source</dt><dd><a href="https://www.cnbc.com/2026/08/27/nvidia-hugging-face-acquisition.html">CNBC</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>Salesforce in Claude เตรียมเปิด open beta ในเดือนกันยายน 2569</dd>
+      <dt>เหตุผล</dt><dd>อาจเป็นจุดเปลี่ยนของตลาด CRM ที่ผสาน agentic AI เข้ากับซอฟต์แวร์องค์กรโดยตรง</dd>
+      <dt>Source</dt><dd><a href="https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/">Salesforce</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>Amazon Mechanical Turk จะปิดให้บริการทั้งหมดภายใน 30 ก.ย. 2569</dd>
+      <dt>เหตุผล</dt><dd>อาจกระทบ pipeline การเก็บข้อมูล/RLHF ของทีมวิจัย AI จำนวนมากที่พึ่งพาแพลตฟอร์มนี้มานานกว่า 21 ปี</dd>
+      <dt>Source</dt><dd><a href="https://www.cnbc.com/2026/08/25/amazon-service-that-jeff-bezos-called-artificial-ai-is-shutting-down.html">CNBC</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>Hacker News (news.ycombinator.com) และ Reddit (r/LocalLLaMA, r/MachineLearning, r/artificial) เข้าถึงไม่ได้ต่อเนื่อง 4 วันทำการ</dd>
+      <dt>เหตุผล</dt><dd>ตามเกณฑ์ Network Access Resilience ต้องคง UNCERTAIN และแจ้งให้ตรวจสอบการตั้งค่า network egress สำหรับสองโดเมนนี้</dd>
+      <dt>Source</dt><dd>ผลการทดสอบ WebFetch/WebSearch ภายในรายงานฉบับนี้</dd>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news/model-hardware-standard-research-preview">anthropic.com/news</a></li>
+          <li><a href="https://www.anthropic.com/research/enabling-independent-research">anthropic.com/research</a></li>
+          <li><a href="https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/">salesforce.com/news</a></li>
+          <li><a href="https://z.ai/blog/glm-5.3-flash">z.ai/blog</a></li>
+          <li><a href="https://github.com/QwenLM/Qwen3.8-Flash-Next">github.com/QwenLM</a></li>
+          <li><a href="https://nvidianews.nvidia.com/news/aws-and-nvidia-to-deliver-2-million-additional-gpus-and-next-generation-infrastructure-for-agentic-and-physical-ai">nvidianews.nvidia.com</a></li>
+          <li><a href="https://www.aboutamazon.com/news/aws/aws-nvidia-2-million-gpus-ai">aboutamazon.com</a></li>
+          <li><a href="https://workspaceupdates.googleblog.com/2026/08/ask-gemini-in-chat.html">workspaceupdates.googleblog.com</a></li>
+          <li><a href="https://github.com/trending">github.com/trending</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/research/enabling-independent-research">Anthropic — Human–AI Collaboration at Scale</a></li>
+          <li><a href="https://arxiv.org/abs/2608.23552">arXiv 2608.23552 (Prime Agent, ต่อเนื่อง)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.cnbc.com/2026/08/27/nvidia-hugging-face-acquisition.html">CNBC</a></li>
+          <li><a href="https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/">TechCrunch</a></li>
+          <li><a href="https://fortune.com/2026/08/27/nvidia-hugging-face-billion-dollar-deal-open-source-ai/">Fortune</a></li>
+          <li><a href="https://www.forbes.com/sites/siladityaray/2026/08/27/nvidia-has-reportedly-agreed-to-buy-ai-model-hosting-platform-hugging-face-for-13-billion/">Forbes</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-08-26/nasdaq-futures-rise-on-bullish-nvidia-sales-growth-markets-wrap">Bloomberg</a></li>
+          <li><a href="https://venturebeat.com/orchestration/salesforce-just-put-its-entire-crm-inside-claude-and-says-youll-never-need-its-app-again">VentureBeat</a></li>
+          <li><a href="https://www.theinformation.com/articles/nvidia-discusses-perplexity-investment-30-billion-plus-valuation-considered-tech-licensing-deal">The Information</a></li>
+          <li><a href="https://www.cnn.com/2026/08/26/tech/meta-states-settle-trial-children">CNN</a></li>
+          <li><a href="https://www.nbcnews.com/tech/social-media/meta-settles-social-media-addiction-suit-16-billion-rcna594492">NBC News</a></li>
+          <li><a href="https://variety.com/2026/biz/news/stability-ai-raises-76-million-funding-round-1236842351/">Variety</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li>Hacker News — เข้าถึงไม่ได้ (UNCERTAIN)</li>
+          <li>Reddit — เข้าถึงไม่ได้ (UNCERTAIN)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+  <p class="note"><b>Labels:</b> ✅ Official · 📰 Trusted Media · 🔥 Community Trend · ⚠️ Rumor · ❓ Unverified</p>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 27 ส.ค. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปยังดัชนีรายงาน AI ทั้งหมด</a></p>
+  </footer>
+</div>
+</body>
+</html>
