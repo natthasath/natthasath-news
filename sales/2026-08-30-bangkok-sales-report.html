@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Bangkok Sales & Events Report — 30 Aug 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{ --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3; --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F; --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28); --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12); --warn:#B4590E; }
+@media (prefers-color-scheme: dark){ :root{ --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B; --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D; --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26); --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14); --warn:#E0A458; } }
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:1080px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:8px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+h2{ font-size:22px; font-weight:700; margin:36px 0 14px; padding-top:8px; }
+h3{ font-size:17px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:20px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 14px; max-width:78ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:74ch; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 18px; border:1px solid var(--line); border-radius:8px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; background:var(--surface); font-size:14.5px; }
+caption{ caption-side:top; text-align:left; padding:8px 12px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+th{ background:var(--surface-2); font-weight:600; font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.02em; white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+td a{ word-break:break-word; }
+
+.badge{ display:inline-block; font-size:12px; padding:1px 7px; border-radius:20px; background:var(--accent-soft); color:var(--accent); font-weight:600; margin-right:4px; }
+.note{ background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:6px; padding:12px 16px; font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; }
+.limit{ border-left-color:var(--warn); }
+.empty{ font-style:italic; color:var(--ink-faint); }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin:0 0 18px; }
+.stat{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+.deal{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin-bottom:12px; }
+.deal h4{ margin:0 0 6px; font-size:15.5px; }
+.deal .meta{ font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-faint); margin-top:6px; }
+
+.legend{ display:flex; flex-wrap:wrap; gap:10px 18px; font-size:13.5px; color:var(--ink-soft); }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 35, 2026</p>
+    <h1>🛍 Weekly Bangkok Sales & Events Report</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 30 Aug 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 23 ส.ค.–13 ก.ย. 2569</span>
+      <span><b>Region:</b> กรุงเทพฯ และปริมณฑล</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>สัปดาห์นี้ (สัปดาห์ที่ 35) เป็นวันปิดฉากของคลัสเตอร์งานแฟร์ใหญ่ที่ BITEC/QSNCC ซึ่งจัดต่อเนื่องมาตั้งแต่ปลายสัปดาห์ก่อน — Big Motor Sale 2026 และ Bangkok Auto Salon 2026 ที่ BITEC บางนา รวมถึง BICT Fest 2026 (เทศกาลละครเด็กนานาชาติครบรอบ 10 ปี) และ NIPPON HAKU BANGKOK 2026 (งานญี่ปุ่นครบวงจร เข้าฟรี) ต่างปิดม่านวันนี้ทั้งหมด ขณะที่ ICONSIAM INFINITE WONDERS และ Makro ครบรอบ 37 ปียังคงจัดต่อเนื่องข้ามเดือน สัปดาห์หน้าเตรียมรับคลัสเตอร์งาน B2B ขนาดใหญ่ช่วง 8–12 กันยายนที่ QSNCC (74th Bangkok Gems & Jewelry Fair และ Vitafoods Asia 2026) คู่ขนานกับ ASEAN SHOP 2026 ที่อิมแพ็ค เมืองทองธานี และฝั่งอีคอมเมิร์ซเริ่มปูทางแคมเปญ Shopee 9.9 Super Shopping Day ทั้งนี้ WebFetch ยังคงเข้าถึงโดเมนหลักส่วนใหญ่ไม่ได้ในรอบเก็บข้อมูลนี้ ทำให้หลายรายการอ้างอิงจากผลค้นหาแทนหน้าเว็บทางการโดยตรง (ดูหมายเหตุท้ายรายงาน)</p>
+  </section>
+
+  <section>
+    <h2>🎪 งานที่กำลังจัด</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>เวลา</th><th>ไฮไลท์</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">🎌</span>NIPPON HAKU BANGKOK 2026</td>
+          <td>Hall LG 5–6, QSNCC</td>
+          <td>28–30 ส.ค. 2569 (วันสุดท้ายวันนี้)</td>
+          <td>10:00–20:00</td>
+          <td>งานญี่ปุ่นครบวงจรที่ใหญ่ที่สุดในไทย ธีม "Japanese Way for Better Day" 390+ บูธ ครอบคลุมการศึกษา ท่องเที่ยว อาหาร สินค้า วัฒนธรรม และ Japan Job Fair เข้าชมฟรี</td>
+          <td><a href="https://www.qsncc.com/en/whats-on/event-calendar/nippon-haku-bangkok-2026/" target="_blank" rel="noopener">QSNCC</a>, <a href="https://nipponhaku.com/" target="_blank" rel="noopener">nipponhaku.com</a>, <a href="https://www.timeout.com/bangkok/news/nippon-haku-bangkok-2026-072526" target="_blank" rel="noopener">Time Out Bangkok</a> ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🎭</span>BICT Fest 2026 (Bangkok International Children's Theatre Festival)</td>
+          <td>One Bangkok, Goethe-Institut Thailand, Sodsai Pantoomkomol Centre (จุฬาฯ)</td>
+          <td>21–30 ส.ค. 2569 (วันสุดท้ายวันนี้)</td>
+          <td>ตามผังการแสดงแต่ละรอบ</td>
+          <td>ครบรอบ 10 ปีเทศกาล ธีม "Play Attention: Look Who's Growing Up!" 11 การแสดงจาก 9 ประเทศ (ไทย ญี่ปุ่น เกาหลีใต้ ไต้หวัน สิงคโปร์ อินโดนีเซีย เบลเยียม ฝรั่งเศส สหราชอาณาจักร) — 5 รอบเสียค่าบัตร / 6 รอบเข้าฟรี</td>
+          <td><a href="https://www.onebangkok.com/en/whats-happening/bict-fest-2026/" target="_blank" rel="noopener">One Bangkok</a>, <a href="https://bictfest.com/2026/" target="_blank" rel="noopener">bictfest.com</a>, <a href="https://www.eventpop.me/c/bictfest2026" target="_blank" rel="noopener">Eventpop</a> ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🎪</span>Big Motor Sale 2026 (ครั้งที่ 13)</td>
+          <td>Hall EH101–104, BITEC บางนา</td>
+          <td>21–30 ส.ค. 2569 (วันสุดท้ายวันนี้)</td>
+          <td>ปิดงาน 21:00</td>
+          <td>งานมอเตอร์โชว์ครึ่งปีหลัง 30+ แบรนด์ ยอดจอง 10 อันดับแรกนำโดย OMODA & JAECOO (5,028 คัน), CHERY (2,289 คัน), GAC (1,173 คัน)</td>
+          <td><a href="https://www.thairath.co.th/news/auto/news/2955675" target="_blank" rel="noopener">ไทยรัฐ</a>, <a href="https://www.evcarsthailand.com/post/%E0%B8%AA%E0%B8%A3%E0%B8%B8%E0%B8%9B%E0%B8%A2%E0%B8%AD%E0%B8%94%E0%B8%88%E0%B8%AD%E0%B8%87%E0%B8%A3%E0%B8%96%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B9%8C-10-%E0%B8%AD%E0%B8%B1%E0%B8%99%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B9%81%E0%B8%A3%E0%B8%81%E0%B9%83%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99-big-motor-sale-2026-%E0%B8%95%E0%B8%A5%E0%B8%AD%E0%B8%94-10-%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%95%E0%B9%87%E0%B8%A1" target="_blank" rel="noopener">EV Cars Thailand</a> ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🎪</span>Bangkok Auto Salon 2026 (ครั้งที่ 12)</td>
+          <td>Hall 100, BITEC บางนา</td>
+          <td>26–30 ส.ค. 2569 (วันสุดท้ายวันนี้)</td>
+          <td>ตามเวลางาน</td>
+          <td>งานแสดงยานยนต์แต่งและอุปกรณ์ตกแต่งรถ</td>
+          <td><a href="https://www.bitec.co.th/event/bangkok-auto-salon-2026" target="_blank" rel="noopener">BITEC</a>, <a href="https://www.allthaievent.com/event/30141/" target="_blank" rel="noopener">AllThaiEvent</a> ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🏬</span>ICONSIAM 8th Anniversary "INFINITE WONDERS" <span class="badge">🔄</span></td>
+          <td>ICONSIAM และสยามทาคาชิมายะ</td>
+          <td>18 ส.ค.–18 ก.ย. 2569</td>
+          <td>ตามเวลาห้าง</td>
+          <td>ช้อปครบ ฿800 รับ E-Gift Card ฟรี ฿800</td>
+          <td><a href="https://www.brandbuffet.in.th/2026/08/the-8th-anniversary-iconsiam/" target="_blank" rel="noopener">Brand Buffet</a>, Bangkok Variety ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🎪</span>DITP x Gourmet Market "Capture The New Thai Wave" <span class="badge">🔄</span></td>
+          <td>Gourmet Market ถ.พระราม 1, สยามพารากอน</td>
+          <td>21 ส.ค.–4 ก.ย. 2569</td>
+          <td>10:00–22:00</td>
+          <td>งานรวมแบรนด์ไทยดีไซน์/ไลฟ์สไตล์ (BALC, CLAMP IT ฯลฯ)</td>
+          <td><a href="https://www.bangkokpost.com/life/social-and-lifestyle/3304214/siam-paragon-hosts-local-brands-at-capture-the-new-thai-wave" target="_blank" rel="noopener">Bangkok Post</a>, Siam Outlook ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🛍</span>Drôle de Monsieur Pop-up Store <span class="badge">🔄</span></td>
+          <td>Central Embassy ชั้น 2</td>
+          <td>3 ก.ค.–28 ก.ย. 2569</td>
+          <td>ตามเวลาห้าง</td>
+          <td>ป็อปอัพสโตร์แรกในไทยของแบรนด์แฟชั่นฝรั่งเศส วางจำหน่ายคอลเลกชัน Pre-Fall 2026</td>
+          <td>Official Facebook (แบรนด์) ❓</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🏬</span>Makro 37th Anniversary "รักมาก แม็คโคร" <span class="badge">🔄</span></td>
+          <td>170+ สาขา + Makro PRO</td>
+          <td>22 ก.ค.–29 ก.ย. 2569</td>
+          <td>ตามเวลาสาขา</td>
+          <td>ของแถมและส่วนลดหมุนเวียนรายสัปดาห์สูงสุด 50%</td>
+          <td><a href="https://www.cpaxtra.com/th/newsroom/news/776/" target="_blank" rel="noopener">CP Axtra</a>, Brand Buffet ✅</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">งานที่จบไปแล้วก่อนวันนี้และตัดออกจากรายงาน: ไทยเที่ยวไทย ครั้งที่ 79 (20–23 ส.ค., QSNCC), Siam Paragon THE WONDROUS JAPAN HERITAGE 2026 (20–30 ส.ค. — สิ้นสุดพร้อมกันวันนี้ แต่ไม่พบโปรโมชันเชิงพาณิชย์ที่ยังมีผลต่อเนื่องหลังจบงาน), Techsauce Global Summit 2026 (26–28 ส.ค., QSNCC), THECA 2026 (26–28 ส.ค., BITEC), HUNTER×HUNTER Pop-up Store (7 ส.ค.–18 ต.ค. — ยังจัดอยู่จริงแต่ไม่พบโปรโมชันใหม่เพิ่มเติมจากสัปดาห์ก่อน จึงไม่นำมาแสดงซ้ำ)</div>
+  </section>
+
+  <section>
+    <h2>📅 งานที่กำลังจะมาถึง (7–14 วัน)</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>ประเภท</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>ASEAN International Machinery, Equipment & Technology Exhibition 2026</td>
+          <td>BITEC บางนา</td>
+          <td>2–4 ก.ย. 2569</td>
+          <td>Trade Fair (เครื่องจักร/อุตสาหกรรม)</td>
+          <td><a href="https://www.tradeindia.com/tradeshows/venue/bitec-bangkok-international-trade-exhibition-centre/1007/" target="_blank" rel="noopener">TradeIndia</a> ❓</td>
+        </tr>
+        <tr>
+          <td>Shopee 9.9 Super Shopping Day</td>
+          <td>ออนไลน์ (แอป Shopee)</td>
+          <td>เริ่มแคมเปญ 6 ก.ย. / ช่วงหลัก 8–11 ก.ย. 2569</td>
+          <td>E-Commerce Campaign</td>
+          <td>Shopee TH (Official App Store listing) ❓</td>
+        </tr>
+        <tr>
+          <td>74th Bangkok Gems & Jewelry Fair</td>
+          <td>ฮอลล์ 1–8 และ Plenary Halls 1–4, QSNCC</td>
+          <td>8–12 ก.ย. 2569</td>
+          <td>Trade Fair (อัญมณี/เครื่องประดับ)</td>
+          <td><a href="https://www.businesseventsthailand.com/tceb-event-preview/bangkok-gems-jewelry-fair-74th/" target="_blank" rel="noopener">TCEB</a>, <a href="https://event.moc.go.th/en/event/detail/4574" target="_blank" rel="noopener">กระทรวงพาณิชย์</a> ✅</td>
+        </tr>
+        <tr>
+          <td>Vitafoods Asia 2026</td>
+          <td>QSNCC</td>
+          <td>8–12 ก.ย. 2569</td>
+          <td>Trade Fair (ผลิตภัณฑ์เสริมอาหาร/สุขภาพ)</td>
+          <td>TCEB event calendar (พบร่วมกับ Bangkok Gems & Jewelry Fair) ❓</td>
+        </tr>
+        <tr>
+          <td>ASEAN SHOP 2026</td>
+          <td>IMPACT Exhibition Centre, เมืองทองธานี</td>
+          <td>10–12 ก.ย. 2569</td>
+          <td>Trade Fair (ค้าปลีก/ฟู้ดเซอร์วิส/POS)</td>
+          <td><a href="https://www.tradeindia.com/tradeshows/153168/asean-shop-2026.html" target="_blank" rel="noopener">TradeIndia</a> ❓</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">คลัสเตอร์งาน B2B ขนาดใหญ่ที่ QSNCC ช่วง 8–12 กันยายน (Bangkok Gems & Jewelry Fair + Vitafoods Asia) เป็นงานที่ควรจับตามากที่สุดของสัปดาห์หน้า Gastech Bangkok (15–18 ก.ย., BITEC) และ Siam Paragon Bangkok Watch Week 2026 (22–27 ก.ย.) อยู่นอกกรอบ 14 วัน ดู Watch List</div>
+  </section>
+
+  <section>
+    <h2>💸 โปรโมชันตามหมวด</h2>
+
+    <h3>💻 Electronics & IT</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ที่ยืนยันแหล่งที่มาได้ครบถ้วน (แคมเปญ Xiaomi 8.8 ของสัปดาห์ก่อนสิ้นสุดไปแล้วเมื่อ 31 ส.ค.)</p>
+
+    <h3>👕 Fashion</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>แบรนด์</th><th>รายละเอียด</th><th>ส่วนลด/ราคา</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Drôle de Monsieur <span class="badge">🔄</span></td><td>ป็อปอัพสโตร์แรกในไทย ที่ Central Embassy ชั้น 2 — คอลเลกชัน Pre-Fall 2026</td><td>ไม่ระบุส่วนลดในแหล่งข้อมูล (เปิดตัวสินค้าใหม่)</td><td>3 ก.ค.–28 ก.ย. 2569</td><td>Official Facebook (แบรนด์) ❓</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>🛋 Home & Furniture</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>🍜 Food & Beverage</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ที่ยืนยันแหล่งที่มาได้ครบถ้วน (DITP x Gourmet Market ระบุไว้ในหมวดงานที่กำลังจัดแล้ว)</p>
+
+    <h3>💄 Health & Beauty</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ (แคมเปญ Boots flash sale ของสัปดาห์ก่อนสิ้นสุดแล้วเมื่อ 26 ส.ค.)</p>
+
+    <h3>🎁 Other</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>🏬 โปรโมชันศูนย์การค้า</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>ศูนย์การค้า</th><th>สาขา</th><th>โปรโมชัน</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>ICONSIAM</td><td>ทุกโซน + สยามทาคาชิมายะ</td><td>INFINITE WONDERS ครบรอบ 8 ปี — ช้อปครบ ฿800 รับ E-Gift Card ฟรี ฿800</td><td>18 ส.ค.–18 ก.ย. 2569</td><td><a href="https://www.brandbuffet.in.th/2026/08/the-8th-anniversary-iconsiam/" target="_blank" rel="noopener">Brand Buffet</a>, Bangkok Variety ✅</td></tr>
+        <tr><td>Siam Paragon</td><td>Gourmet Market</td><td>DITP x Gourmet Market "Capture The New Thai Wave" — รวมแบรนด์ไทยดีไซน์</td><td>21 ส.ค.–4 ก.ย. 2569</td><td>Bangkok Post, Siam Outlook ✅</td></tr>
+        <tr><td>Central Embassy</td><td>ชั้น 2</td><td>Drôle de Monsieur Pop-up Store — คอลเลกชัน Pre-Fall 2026</td><td>3 ก.ค.–28 ก.ย. 2569</td><td>Official Facebook (แบรนด์) ❓</td></tr>
+        <tr><td>Makro <span class="badge">🔄</span></td><td>170+ สาขา + Makro PRO</td><td>ครบรอบ 37 ปี "รักมาก แม็คโคร" — ของแถมและส่วนลดหมุนเวียนรายสัปดาห์</td><td>22 ก.ค.–29 ก.ย. 2569</td><td><a href="https://www.cpaxtra.com/th/newsroom/news/776/" target="_blank" rel="noopener">CP Axtra</a>, Brand Buffet ✅</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty">CentralWorld, Siam Center/Discovery, EmQuartier/EmSphere/Emporium, MBK Center, Terminal 21, The Mall, Central, Robinson, Big C, Lotus's: ไม่พบโปรโมชันใหม่ที่ยังมีผลอยู่จริงในสัปดาห์นี้จากการตรวจสอบ (โปรโมชัน Central MOM MOMENTS, EM District คูปอง/ผ่อน 0%, The Mall FLAVORS OF HAPPINESS, HomePro Value Pack/Brand Day, Robinson Mom Moments ของสัปดาห์ก่อนสิ้นสุดไปแล้วก่อนหรือในช่วง 24–31 ส.ค.)</p>
+  </section>
+
+  <section>
+    <h2>🛒 E-Commerce Campaigns</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Platform</th><th>Campaign</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Shopee Thailand</td><td>9.9 Super Shopping Day — คูปอง "ซื้อ 3 ลด 33%", ดีลราคา ฿99, ส่งฟรีทั่วประเทศ</td><td>เริ่มแคมเปญ 6 ก.ย. / ช่วงหลัก 8–11 ก.ย. 2569</td><td>Shopee TH (Official App) ❓</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note limit">ไม่พบประกาศทางการของ Lazada 9.9 Mega Brands Sale และ TikTok Shop Payday รอบเดือนกันยายนที่ยืนยันวันที่ชัดเจนสำหรับปี 2569 ในรอบเก็บข้อมูลนี้ ควรตรวจสอบซ้ำสัปดาห์หน้า</div>
+  </section>
+
+  <section>
+    <h2>📰 Brand News</h2>
+
+    <h3>New Store</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>Campaign</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>Seasonal Promotion</h3>
+    <p>ดูรายละเอียด DITP x Gourmet Market "Capture The New Thai Wave" (21 ส.ค.–4 ก.ย. 2569) และ ICONSIAM 8th Anniversary INFINITE WONDERS ในหมวดโปรโมชันศูนย์การค้า</p>
+
+    <h3>Limited-Time Sale</h3>
+    <ul>
+      <li><b>Big Motor Sale 2026</b> — ปิดฉากวันนี้หลังจัดต่อเนื่อง 10 วัน ยอดจองรถยนต์นำโดย OMODA & JAECOO 5,028 คัน — <a href="https://www.thairath.co.th/news/auto/news/2955675" target="_blank" rel="noopener">ไทยรัฐ</a>, EV Cars Thailand ✅</li>
+    </ul>
+
+    <h3>Product Launch</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>📍 แนะนำตามพื้นที่</h2>
+    <ul>
+      <li><b>กรุงเทพฯ ชั้นใน:</b> NIPPON HAKU BANGKOK 2026 / DITP Thai Wave ที่ QSNCC/Siam Paragon, BICT Fest 2026 ที่ One Bangkok/Goethe-Institut/จุฬาฯ, ICONSIAM INFINITE WONDERS, Drôle de Monsieur pop-up ที่ Central Embassy</li>
+      <li><b>กรุงเทพฯ เหนือ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>กรุงเทพฯ ตะวันออก:</b> Big Motor Sale 2026 / Bangkok Auto Salon 2026 ที่ BITEC บางนา (ปิดงานวันนี้)</li>
+      <li><b>กรุงเทพฯ ตะวันตก:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นนทบุรี:</b> ASEAN SHOP 2026 ที่ IMPACT เมืองทองธานี (10–12 ก.ย., สัปดาห์หน้า)</li>
+      <li><b>ปทุมธานี:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรปราการ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรสาคร:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นครปฐม:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💡 Best Deals</h2>
+    <div class="deal">
+      <h4>🔥 NIPPON HAKU BANGKOK 2026 — เข้าฟรี วันสุดท้ายวันนี้</h4>
+      <p style="margin:0;">งานญี่ปุ่นครบวงจรที่ใหญ่ที่สุดในไทย รวมการศึกษา ท่องเที่ยว อาหาร สินค้า วัฒนธรรม และงานหางานภาคธุรกิจญี่ปุ่นในตัว ไม่มีค่าเข้าชม</p>
+      <div class="meta">ระยะเวลา: 28–30 ส.ค. 2569 · Source: QSNCC, nipponhaku.com</div>
+    </div>
+    <div class="deal">
+      <h4>🎭 BICT Fest 2026 — การแสดงฟรี 6 รอบ วันสุดท้ายวันนี้</h4>
+      <p style="margin:0;">เทศกาลละครเด็กนานาชาติครบรอบ 10 ปี มีทั้งการแสดงแบบเสียค่าบัตรและเข้าฟรีจากศิลปิน 9 ประเทศ เหมาะสำหรับครอบครัว</p>
+      <div class="meta">ระยะเวลา: 21–30 ส.ค. 2569 · Source: One Bangkok, bictfest.com</div>
+    </div>
+    <div class="deal">
+      <h4>ICONSIAM 8th Anniversary "INFINITE WONDERS" — ช้อปครบ ฿800 รับ E-Gift Card ฟรี ฿800 🔄</h4>
+      <p style="margin:0;">แคมเปญฉลองครบรอบ 8 ปีของ ICONSIAM ครอบคลุมทุกโซนและสยามทาคาชิมายะ คุ้มค่าสำหรับนักช้อปที่มีแผนใช้จ่ายในห้างอยู่แล้ว</p>
+      <div class="meta">ระยะเวลา: 18 ส.ค.–18 ก.ย. 2569 · Source: Brand Buffet, Bangkok Variety</div>
+    </div>
+    <div class="deal">
+      <h4>Makro 37th Anniversary "รักมาก แม็คโคร" 🔄</h4>
+      <p style="margin:0;">ของแถมและส่วนลดหมุนเวียนรายสัปดาห์สูงสุด 50% ที่สาขา Makro 170+ แห่งทั่วประเทศ รวมถึงผ่านแอป Makro PRO</p>
+      <div class="meta">ระยะเวลา: 22 ก.ค.–29 ก.ย. 2569 · Source: CP Axtra, Brand Buffet</div>
+    </div>
+    <div class="deal">
+      <h4>🛒 Shopee 9.9 Super Shopping Day — เตรียมตัวล่วงหน้า</h4>
+      <p style="margin:0;">แคมเปญใหญ่ประจำเดือนกันยายน พร้อมคูปองซื้อ 3 ลด 33% ดีลราคา ฿99 และส่งฟรีทั่วประเทศ</p>
+      <div class="meta">ระยะเวลา: เริ่ม 6 ก.ย. / ช่วงหลัก 8–11 ก.ย. 2569 · Source: Shopee TH Official App</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📅 Event Calendar</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>วันที่</th><th>งาน</th><th>สถานที่</th><th>ประเภท</th></tr></thead>
+      <tbody>
+        <tr><td>ถึง 30 ส.ค. (วันนี้)</td><td>NIPPON HAKU BANGKOK 2026</td><td>QSNCC</td><td>Consumer Expo</td></tr>
+        <tr><td>ถึง 30 ส.ค. (วันนี้)</td><td>BICT Fest 2026</td><td>One Bangkok / Goethe-Institut / จุฬาฯ</td><td>Lifestyle/Family Event</td></tr>
+        <tr><td>ถึง 30 ส.ค. (วันนี้)</td><td>Big Motor Sale 2026 / Bangkok Auto Salon 2026</td><td>BITEC บางนา</td><td>Trade Fair</td></tr>
+        <tr><td>18 ส.ค.–18 ก.ย.</td><td>ICONSIAM 8th Anniversary INFINITE WONDERS</td><td>ICONSIAM</td><td>Mall Promotion</td></tr>
+        <tr><td>21 ส.ค.–4 ก.ย.</td><td>DITP x Gourmet Market "Capture The New Thai Wave"</td><td>Siam Paragon</td><td>Exhibition/Lifestyle</td></tr>
+        <tr><td>2–4 ก.ย.</td><td>ASEAN International Machinery Equipment & Technology Exhibition</td><td>BITEC บางนา</td><td>Trade Fair</td></tr>
+        <tr><td>เริ่ม 6 ก.ย.</td><td>Shopee 9.9 Super Shopping Day</td><td>ออนไลน์</td><td>E-Commerce Campaign</td></tr>
+        <tr><td>8–12 ก.ย.</td><td>74th Bangkok Gems & Jewelry Fair</td><td>QSNCC</td><td>Trade Fair</td></tr>
+        <tr><td>8–12 ก.ย.</td><td>Vitafoods Asia 2026</td><td>QSNCC</td><td>Trade Fair</td></tr>
+        <tr><td>10–12 ก.ย.</td><td>ASEAN SHOP 2026</td><td>IMPACT เมืองทองธานี</td><td>Trade Fair</td></tr>
+        <tr><td>ถึง 28 ก.ย.</td><td>Drôle de Monsieur Pop-up 🔄</td><td>Central Embassy</td><td>Pop-up Store</td></tr>
+        <tr><td>ถึง 29 ก.ย.</td><td>สิ้นสุด Makro 37th Anniversary</td><td>Makro ทุกสาขา</td><td>Mall Promotion</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">8</div><div class="lbl">Events</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Exhibitions</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Trade Fairs</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Promotions</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Mall Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Brand Campaigns</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">E-Commerce Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New Store Openings</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <ul>
+      <li><b>74th Bangkok Gems & Jewelry Fair</b> (8–12 ก.ย. 2569) — ครั้งนี้ใช้พื้นที่เต็มศูนย์สิริกิติ์เป็นครั้งแรก (ฮอลล์ 1–8 + Plenary Halls 1–4) ครั้งที่ 73 ทำมูลค่าการค้ากว่า 4.75 พันล้านบาท ผู้เข้าชม 40,000+ คนจาก 118 ประเทศ — Source: TCEB, กระทรวงพาณิชย์</li>
+      <li><b>Siam Paragon Bangkok Watch Week 2026</b> (22–27 ก.ย. 2569) — งานฉลองวัฒนธรรมนาฬิกาหรูครั้งที่ 2 มีแบรนด์เข้าร่วมกว่า 45 แบรนด์ เพิ่มขึ้น 50% จากปีแรก รวมแบรนด์ใหม่ Blancpain, Breguet, Omega, Tudor คาดผู้เข้าชม 40,000 คน อยู่นอกกรอบ 14 วันของรายงานนี้ — Source: Siam Paragon (Official), Manila Times</li>
+      <li><b>Gastech Bangkok 2026</b> (15–18 ก.ย. 2569, BITEC) — อยู่นอกกรอบ 14 วันเล็กน้อย ควรติดตามในรายงานสัปดาห์หน้า</li>
+      <li><b>Lazada 9.9 Mega Brands Sale และ TikTok Shop Payday รอบเดือน ก.ย.</b> — ยังไม่พบประกาศทางการที่ยืนยันวันที่ชัดเจนสำหรับปี 2569 ในรอบเก็บข้อมูลนี้ ควรตรวจสอบซ้ำสัปดาห์หน้า</li>
+      <li><b>Pokémon Center Bangkok ที่ CentralWorld</b> — ยืนยันแผนเปิดร้านในปี 2569 ภายใต้ความร่วมมือ The Pokémon Company และ Central Pattana แต่ยังไม่มีวันที่เปิดอย่างเป็นทางการ ควรติดตามประกาศ</li>
+      <li><b>Thailand Creative & Design Pop-up Showcase</b> (25–29 ก.ย. 2569, The Storeys, One Bangkok) — อยู่นอกกรอบ 14 วัน ระบุไว้เพื่อการติดตาม — Source: Time Out Bangkok</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <p>qsncc.com, onebangkok.com, bitec.co.th, siamparagon.co.th, cpaxtra.com (Makro), event.moc.go.th (กระทรวงพาณิชย์)</p>
+    <h3>Event Platforms</h3>
+    <p>bictfest.com, eventpop.me, tradeindia.com, allthaievent.com, businesseventsthailand.com (TCEB)</p>
+    <h3>Trusted Sources</h3>
+    <p>Time Out Bangkok, Bangkok Post, Brand Buffet, Bangkok Variety, Siam Outlook, ไทยรัฐ, EV Cars Thailand, Manila Times</p>
+    <h3>Community (Verification Only)</h3>
+    <p>Official Facebook (Drôle de Monsieur) — ใช้ยืนยันรายละเอียดป็อปอัพสโตร์เพียงแหล่งเดียว เนื่องจากไม่พบหน้าโปรโมชันทางการของ Central Embassy โดยตรง</p>
+    <div class="note limit">
+      <b>ข้อจำกัดของข้อมูล:</b> ในรอบเก็บข้อมูลนี้ WebFetch ไม่สามารถเข้าถึงโดเมนหลักส่วนใหญ่ได้โดยตรง (bitec.co.th, impact.co.th, tatnews.org, timeout.com ยืนยันเป็น EGRESS_BLOCKED) ข้อมูลเกือบทั้งหมดในรายงานนี้จึงมาจากผลสรุปของ WebSearch แทนการอ่านหน้าเว็บทางการโดยตรง รายการที่มีเครื่องหมาย ❓ คือยืนยันแหล่งทางการหรือช่วงเวลาที่แน่นอนได้จากแหล่งเดียว ส่วนรายการที่มี ✅ ยืนยันข้ามหลายแหล่งข้อมูลแล้ว โปรโมชันของศูนย์การค้าหลักที่หมดอายุก่อนหรือในช่วงสัปดาห์นี้ถูกตัดออกทั้งหมด (Central MOM MOMENTS, EM District คูปอง/ผ่อน 0%, The Mall FLAVORS OF HAPPINESS, HomePro Value Pack/Brand Day, Robinson Mom Moments, Boots flash sale, Xiaomi 8.8, Siam Paragon Japan Heritage 2026)<br><br>
+      <b>UNCERTAIN:</b> โดเมนที่ล้มเหลวซ้ำหลายรอบและควรตรวจสอบด้วยตนเอง ได้แก่ bitec.co.th, impact.co.th, tatnews.org, timeout.com
+    </div>
+  </section>
+
+  <section>
+    <h2>🔎 แนวโน้มสัปดาห์นี้</h2>
+    <p>สัปดาห์นี้เป็นจุดเปลี่ยนผ่านจากคลัสเตอร์งานแฟร์ B2C/ไลฟ์สไตล์ขนาดใหญ่ (ยานยนต์, วัฒนธรรมญี่ปุ่น, ละครเด็กนานาชาติ) ที่ปิดฉากพร้อมกันในวันเดียว ไปสู่คลัสเตอร์งาน B2B/การค้าระหว่างประเทศในสัปดาห์ถัดไป (อัญมณี, อาหารเสริมสุขภาพ, ค้าปลีกอาเซียน) สะท้อนจังหวะปฏิทินอีเวนต์ของ QSNCC และ BITEC ที่สลับกลุ่มเป้าหมายระหว่างผู้บริโภคทั่วไปกับนักธุรกิจนานาชาติอย่างชัดเจน ด้านศูนย์การค้าเรือธงอย่าง ICONSIAM ยังคงเดินหน้าแคมเปญฉลองครบรอบข้ามเดือนเพื่อรักษาฐานลูกค้าระหว่างช่วงที่ไม่มีงานอีเวนต์ใหญ่ ขณะที่ค้าปลีกแมสอย่าง Makro ใช้แคมเปญระยะยาวเช่นเดียวกัน ฝั่งพฤติกรรมผู้บริโภคเริ่มเคลื่อนไปทางแคมเปญอีคอมเมิร์ซประจำเดือน (Shopee 9.9) มากกว่าโปรโมชันหน้าร้านศูนย์การค้าแบบดั้งเดิม ซึ่งในสัปดาห์นี้แทบไม่พบแคมเปญลดราคาใหม่จากศูนย์การค้าหลักนอกเหนือจากรายการที่จัดต่อเนื่องมาจากสัปดาห์ก่อน แม้ข้อจำกัดด้านการเข้าถึงแหล่งข้อมูลปฐมภูมิโดยตรงยังคงเป็นอุปสรรคสำคัญของรอบเก็บข้อมูลนี้เช่นเดิม</p>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="legend">
+      <span>✅ Official</span>
+      <span>🎪 Event</span>
+      <span>🛍 Promotion</span>
+      <span>🏬 Shopping Mall</span>
+      <span>🛒 E-Commerce</span>
+      <span>🔄 Continuing Event</span>
+      <span>🔥 Popular Event</span>
+      <span>❓ Information Incomplete</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Bangkok Sales & Events Report · 30 Aug 2026 (Week 35)</p>
+    <p><a href="/">Back to Home</a> · <a href="./">Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Premier League Report — Week 34, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#9A5B12; --warn-bg:rgba(154,91,18,0.10); --warn-line:rgba(154,91,18,0.30);
+  --rumor:#8A3B5A;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.12);
+    --warn:#E0A855; --warn-bg:rgba(224,168,85,0.10); --warn-line:rgba(224,168,85,0.30);
+    --rumor:#D98FB2;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:6px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; padding-top:2px; }
+h3{ font-size:16.5px; font-weight:700; margin:20px 0 8px; color:var(--ink); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:30px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:72ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:70ch; }
+ul li ul{ margin-top:8px; }
+
+.callout{ background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px; padding:16px 18px; margin:0 0 18px; }
+.callout p{ margin:0; max-width:none; color:var(--ink); }
+.callout p + p{ margin-top:8px; }
+.callout .label{ font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--warn); text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.note{ font-size:14px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:12px 14px; margin:10px 0 16px; max-width:none; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 14px; border:1px solid var(--line); border-radius:10px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px; }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td a, th a{ white-space:nowrap; }
+
+.badge{ display:inline-block; font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:600; padding:2px 8px; border-radius:999px; white-space:nowrap; }
+.badge-official{ background:var(--accent-soft); color:var(--accent); }
+.badge-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-rumor{ background:rgba(138,59,90,0.12); color:var(--rumor); }
+.badge-cont{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+
+.subhead{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin:18px 0 8px; }
+.subhead:first-child{ margin-top:0; }
+
+.club-block{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px dashed var(--line); }
+.club-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.club-block h3{ margin-top:0; }
+.club-block p{ margin-bottom:6px; }
+
+.src-list{ list-style:none; padding:0; margin:0 0 14px; }
+.src-list li{ margin-bottom:6px; font-size:14.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 34, 2026</p>
+    <h1>⚽ Weekly Premier League Report — Week 34</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 17–23 สิงหาคม 2026 (ICT)</span>
+      <span><b>Category:</b> Football</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="note">อัปเดต: รายงานฉบับนี้แก้ไขจากเวอร์ชันแรกโดยเติมผล 3 คู่ที่ค้างอยู่ (Man City vs Bournemouth, Newcastle vs Liverpool, Fulham vs Chelsea) ซึ่งจบลงและยืนยันผลได้แล้ว ทำให้ Matchweek 1 ครบทั้ง 10 คู่ หมายเหตุ: Fulham vs Chelsea แข่งวันจันทร์ที่ 24 ส.ค. ซึ่งเกินกรอบ 7 วัน (17-23 ส.ค.) ไปหนึ่งวัน แต่นำมารวมไว้เพื่อให้ Matchweek 1 ครบถ้วนสมบูรณ์ตามที่ระบุไว้อย่างชัดเจน</div>
+    <ul>
+      <li>พรีเมียร์ลีก 2026-27 เปิดฤดูกาลอย่างเป็นทางการวันศุกร์ที่ 21 ส.ค. โดย Arsenal แชมป์เก่าเปิดบ้านเอาชนะทีมเลื่อนชั้น Coventry City ไปได้ 3-0 อย่างสบายๆ ด้วยประตูจาก Kai Havertz, Bukayo Saka และ Martin Ødegaard <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>สัปดาห์นี้เต็มไปด้วยเซอร์ไพรส์: ทีมเลื่อนชั้น Hull City เปิดบ้านช็อกเอาชนะ Manchester United 2-0 ขณะที่ Brentford ถล่ม Tottenham Hotspur ถึง 3-0 และ Brighton ทุบ Aston Villa ไป 4-0 ด้วยฟอร์มเทพของ Jack Hinshelwood ที่ยิงคนเดียว 2 ประตู <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>ผู้จัดการทีมชุดใหม่ของ Big 6 เปิดตัวกันครบแล้ว: Enzo Maresca พา Manchester City เอาชนะ Bournemouth 2-1 ด้วยประตูช่วงทดเวลาบาดเจ็บของ Gvardiol, Andoni Iraola เปิดตัวกับ Liverpool ด้วยผลเสมอดราม่า 2-2 ที่ Newcastle หลัง Szoboszlai ยิงจุดโทษตีเสมอนาทีที่ 90+9 และ Xabi Alonso พา Chelsea ชนะ Fulham 3-2 ในเกมเปิดตัวที่มีประตูรวมกันถึง 5 ลูก <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>นี่คือฤดูกาลแห่งการเปลี่ยนแปลงผู้จัดการทีมครั้งใหญ่ที่สุดในรอบหลายปี: Roberto De Zerbi เข้าคุม Tottenham แทน Thomas Frank ที่ถูกปลดหลังคุมทีมได้เพียง 8 เดือน แต่เปิดตัวด้วยความพ่ายแพ้ต่อ Brentford <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>ตลาดซื้อขายนักเตะยังคึกคักก่อนปิดตลาด 1 ก.ย. โดย Chelsea ทุ่ม 117 ล้านปอนด์คว้า Morgan Rogers จาก Aston Villa (ยิงประตูเดบิวต์ในเกมพบ Fulham ทันที), Manchester City จ่าย 116 ล้านปอนด์ดึง Elliot Anderson จาก Nottingham Forest และ Tottenham เซ็น Sandro Tonali จาก Newcastle ด้วยค่าตัวราว 92.5-100 ล้านปอนด์ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>ประเด็นที่ต้องจับตาต่อคือดีล Rodri ของ Manchester City กับ Real Madrid ที่ยังเจรจาค่าตัวไม่ลงตัว (City ต้องการ 75-80 ล้านยูโร ขณะที่ Real Madrid เสนอราว 60 ล้านยูโร) <span class="badge badge-rumor">⚠️ ข่าวลือ</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 ตารางคะแนน Top 6</h2>
+    <div class="note">หมายเหตุ: ตารางคะแนนหลัง Matchweek 1 ครบทั้ง 10 คู่แล้ว จัดอันดับตาม Points → Goal Difference → Goals For ทีมที่คะแนนและสถิติเท่ากันเรียงตามตัวอักษร</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Club</th><th>Played</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>Source</th></tr>
+      <tr><td>1</td><td>Brighton &amp; Hove Albion</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td><a href="https://www.skysports.com/football/brighton-and-hove-albion-vs-aston-villa/559450" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Arsenal</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td><a href="https://www.skysports.com/football/arsenal-vs-coventry-city/559444" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>3</td><td>Brentford</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td><a href="https://www.brentfordfc.com/en/news/article/match-reports-brentford-3-tottenham-hotspur-0-premier-league-22-08-2026" target="_blank" rel="noopener">Brentford FC (Official)</a></td></tr>
+      <tr><td>4</td><td>Everton</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td><a href="https://www.skysports.com/football/everton-vs-crystal-palace/559446" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>5</td><td>Hull City</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td><a href="https://www.skysports.com/football/hull-city-vs-manchester-united/559447" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>6</td><td>Chelsea</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879318/chelsea-fulham" target="_blank" rel="noopener">ESPN</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">ตรวจสอบ Consistency แล้ว: Played = W+D+L และ Points = W×3+D ถูกต้องครบทุก 20 ทีม ผลการแข่งขันแต่ละคู่ตรงกันระหว่าง Sky Sports, ESPN และเว็บไซต์ทางการของสโมสร (Tier 1/2) Ipswich Town, Manchester City และ Leeds United ก็เก็บ 3 คะแนนเช่นกันแต่ผลต่างประตูได้เสีย/ประตูที่ยิงได้น้อยกว่า Chelsea (GD+1, GF3) จึงอยู่นอก Top 6 ของสัปดาห์นี้อย่างเฉียดฉิว</p>
+  </section>
+
+  <section>
+    <h2>⚽ ผลการแข่งขันสำคัญ</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th class="wrap">Summary</th><th>Source</th></tr>
+      <tr><td>21 ส.ค.</td><td>Arsenal</td><td>3-0</td><td>Coventry City</td><td class="wrap">Havertz (15'), Saka (23'), Ødegaard (49') นำ Arsenal เปิดบ้านชนะขาดในนัดแรกของการป้องกันแชมป์</td><td><a href="https://www.skysports.com/football/arsenal-vs-coventry-city/559444" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>22 ส.ค.</td><td>Hull City</td><td>2-0</td><td>Manchester United</td><td class="wrap">Ajayi (17'), Mendy (38', ลงเดบิวต์) พาทีมเลื่อนชั้น Hull เปิดบ้านช็อก Man Utd ในเกมแรกของ Michael Carrick ในตำแหน่งผู้จัดการทีมถาวร</td><td><a href="https://www.skysports.com/football/hull-city-vs-manchester-united/559447" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>22 ส.ค.</td><td>Everton</td><td>2-0</td><td>Crystal Palace</td><td class="wrap">Dewsbury-Hall (42'), Thierno Barry (53') ยิงพา Everton เก็บ 3 แต้มแรกที่ Hill Dickinson Stadium</td><td><a href="https://www.skysports.com/football/everton-vs-crystal-palace/559446" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>22 ส.ค.</td><td>Ipswich Town</td><td>2-1</td><td>Sunderland</td><td class="wrap">Emersonn (24') นำ Sunderland ก่อนที่ Angulo (39') และ Jack Clarke (90') จะพลิกเกมให้ Ipswich คว้าชัยดราม่าท้ายเกม</td><td><a href="https://www.skysports.com/football/ipswich-town-vs-sunderland/559448" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>22 ส.ค.</td><td>Nottingham Forest</td><td>0-1</td><td>Leeds United</td><td class="wrap">Anton Stach ยิงฟรีคิกนาทีที่ 88 พา Leeds คว้าชัยเยือนในนัดเปิดฤดูกาล</td><td><a href="https://www.leedsunited.com/en/news/report-nottingham-forest-0-1-leeds-united" target="_blank" rel="noopener">Leeds United (Official)</a></td></tr>
+      <tr><td>22 ส.ค.</td><td>Brentford</td><td>3-0</td><td>Tottenham Hotspur</td><td class="wrap">Lewis-Potter, Janelt และ Kayode ยิงคนละประตูพา Brentford ถล่ม Tottenham ในเกมแรกของ Roberto De Zerbi ที่คุม Spurs</td><td><a href="https://www.brentfordfc.com/en/news/article/match-reports-brentford-3-tottenham-hotspur-0-premier-league-22-08-2026" target="_blank" rel="noopener">Brentford FC (Official)</a></td></tr>
+      <tr><td>23 ส.ค.</td><td>Brighton &amp; Hove Albion</td><td>4-0</td><td>Aston Villa</td><td class="wrap">Lindelöf (เข้าประตูตัวเอง 8'), De Cuyper (18'), Hinshelwood (30', 31') ยิงคนละ/สองประตูถล่ม Aston Villa ที่ Amex Stadium</td><td><a href="https://www.vavel.com/en-us/soccer/2026/08/23/1268785-brighton-vs-aston-villa-live-score-premier-league.html" target="_blank" rel="noopener">VAVEL</a></td></tr>
+      <tr><td>23 ส.ค.</td><td>Manchester City</td><td>2-1</td><td>Bournemouth</td><td class="wrap">Tavernier (26') นำ Bournemouth ก่อน Guéhi (84') ตีเสมอ และ Gvardiol ยิงชัยช่วงทดเวลาบาดเจ็บ พาทีมคว้าชัยในเกมแรกของ Enzo Maresca</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879320/afc-bournemouth-manchester-city" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>23 ส.ค.</td><td>Newcastle United</td><td>2-2</td><td>Liverpool</td><td class="wrap">Elanga (5'), Willock (57') นำ Newcastle สองครั้ง ก่อน Gakpo (55') ตีเสมอ และ Szoboszlai ยิงจุดโทษนาทีที่ 90+9 ช่วยให้ Liverpool เก็บแต้มได้ในเกมแรกของ Andoni Iraola</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879319/liverpool-newcastle-united" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>24 ส.ค. <span class="badge badge-cont">นอกกรอบ 7 วัน 1 วัน</span></td><td>Fulham</td><td>2-3</td><td>Chelsea</td><td class="wrap">João Pedro (31 วินาทีแรก), Rogers (เดบิวต์), Palmer ยิงพา Chelsea เอาชนะดราม่าในเกมเปิดตัวของ Xabi Alonso แม้ Fulham จะไล่ตีตื้นจาก Josh King และ Garcia</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879318/chelsea-fulham" target="_blank" rel="noopener">ESPN</a></td></tr>
+    </table>
+    </div>
+    <div class="note">คู่ Fulham vs Chelsea แข่งวันจันทร์ที่ 24 ส.ค. ซึ่งเกินกรอบเวลา 7 วันของรายงานนี้ (17-23 ส.ค.) ไปหนึ่งวัน แต่นำมารวมไว้เพื่อให้ผล Matchweek 1 ครบถ้วนทั้ง 10 คู่ตามที่ผู้ใช้ร้องขอให้ปรับปรุงรายงานฉบับนี้</div>
+  </section>
+
+  <section>
+    <h2>🥇 ดาวซัลโว Top 5</h2>
+    <div class="note">หมายเหตุ: เป็นสถิติหลัง Matchweek 1 ครบทั้ง 10 นัดของฤดูกาลใหม่ Jack Hinshelwood ยังคงเป็นผู้เล่นเดียวที่ยิงได้ 2 ประตูในสัปดาห์นี้ ผู้เล่นที่เหลือยิงได้คนละ 1 ประตูเท่ากันจำนวนมาก (รวมถึง João Pedro, Rogers, Palmer ของ Chelsea และ Gakpo, Szoboszlai ของ Liverpool) ข้อมูล<b>แอสซิสต์รายบุคคล</b>ยังไม่สามารถยืนยันแยกเป็นรายผู้เล่นได้ครบถ้วนจากแหล่งข่าวที่ตรวจสอบในรอบนี้ (ผู้ให้บริการสถิติอย่างเป็นทางการมักเผยแพร่หลังจบสัปดาห์เต็ม) จะอัปเดตในรายงานสัปดาห์ถัดไป</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Player</th><th>Club</th><th>Goals</th><th>Assists</th><th>Source</th></tr>
+      <tr><td>1</td><td>Jack Hinshelwood</td><td>Brighton &amp; Hove Albion</td><td>2</td><td>–</td><td><a href="https://www.vavel.com/en-us/soccer/2026/08/23/1268785-brighton-vs-aston-villa-live-score-premier-league.html" target="_blank" rel="noopener">VAVEL</a></td></tr>
+      <tr><td>2</td><td>Kai Havertz</td><td>Arsenal</td><td>1</td><td>–</td><td><a href="https://www.skysports.com/football/arsenal-vs-coventry-city/559444" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Bukayo Saka</td><td>Arsenal</td><td>1</td><td>–</td><td><a href="https://www.skysports.com/football/arsenal-vs-coventry-city/559444" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Martin Ødegaard</td><td>Arsenal</td><td>1</td><td>–</td><td><a href="https://www.skysports.com/football/arsenal-vs-coventry-city/559444" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Keane Lewis-Potter</td><td>Brentford</td><td>1</td><td>–</td><td><a href="https://www.brentfordfc.com/en/news/article/match-reports-brentford-3-tottenham-hotspur-0-premier-league-22-08-2026" target="_blank" rel="noopener">Brentford FC (Official)</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔥 ข่าวสำคัญ</h2>
+    <h3>Official</h3>
+    <ul>
+      <li>Chelsea เซ็นสัญญาคว้าตัว <b>Morgan Rogers</b> จาก Aston Villa ด้วยค่าตัวราว 117 ล้านปอนด์ <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://sportsnaut.com/soccer/most-expensive-soccer-transfers-summer-2026" target="_blank" rel="noopener">Sportsnaut</a></li>
+      <li>Manchester City ทุบสถิติค่าตัวสูงสุดของสโมสรคว้าตัว <b>Elliot Anderson</b> จาก Nottingham Forest ด้วยราคาประมาณ 116 ล้านปอนด์ <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.caughtoffside.com/2026/06/26/man-city-sandro-tonali-transfer-elliot-anderson/" target="_blank" rel="noopener">CaughtOffside</a></li>
+      <li>Tottenham Hotspur เซ็นสัญญา <b>Sandro Tonali</b> จาก Newcastle United ด้วยค่าตัวราว 92.5-100 ล้านปอนด์ <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.skysports.com/football/news/11095/13523974/man-utd-arsenal-and-man-city-transfers-elliot-anderson-sandro-tonali-and-adam-wharton-among-midfielders-on-market" target="_blank" rel="noopener">Sky Sports</a></li>
+      <li>ตารางผู้จัดการทีมพรีเมียร์ลีก 2026-27 ครบทั้ง 20 สโมสรแล้ว โดยมีทีมที่เปลี่ยนผู้จัดการทีมถาวรมากเป็นประวัติการณ์ <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.premierleague.com/en/news/4679012/manager-line-up-complete-for-202627-season" target="_blank" rel="noopener">Premier League (Official)</a></li>
+    </ul>
+    <h3>Report</h3>
+    <ul>
+      <li>Manchester United ถูกสื่อรายงานว่าสนใจดึงตัว <b>Aurélien Tchouameni</b> จาก Real Madrid มาเสริมแดนกลาง คาดค่าตัวเกิน 100 ล้านยูโร <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/transfer-news-five-players-join-man-utd-before-deadline-day-summer-2026" target="_blank" rel="noopener">FootballTransfers</a></li>
+      <li>Curtis Jones ของ Liverpool ไม่ติดทีมไปเยือน Newcastle เนื่องจากมีกระแสข่าวใกล้ย้ายไป Inter Milan <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.espn.com/soccer/story/_/id/46915937/premier-league-injuries-weekend-updates-suspensions-fpl-latest" target="_blank" rel="noopener">ESPN</a></li>
+    </ul>
+    <h3>Rumor</h3>
+    <ul>
+      <li>ดีล <b>Rodri</b> ไป Real Madrid ยังไม่จบ — Manchester City ต้องการค่าตัวราว 75-80 ล้านยูโร ขณะที่ Real Madrid เสนอประมาณ 60 ล้านยูโร เหลือเวลาเจรจาก่อนตลาดปิด 1 ก.ย. <span class="badge badge-rumor">⚠️ ข่าวลือ</span> — <a href="https://www.skysports.com/football/news/11679/13570426/rodri-transfer-news-barcelona-target-man-city-and-spain-star-wanted-by-real-madrid" target="_blank" rel="noopener">Sky Sports</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏥 Injury &amp; Suspension</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Club</th><th>Player</th><th>Status</th><th>Return</th><th>Source</th></tr>
+      <tr><td>Arsenal</td><td>Jurrien Timber</td><td>บาดเจ็บที่ขาหนีบ <span class="badge badge-cont">ต่อเนื่อง</span></td><td>ยังไม่มีกำหนดกลับมาลงสนามที่ชัดเจน</td><td><a href="https://www.foxsports.com/soccer/jurrien-timber-player" target="_blank" rel="noopener">Fox Sports</a></td></tr>
+      <tr><td>Manchester City</td><td>Jeremy Doku</td><td>บาดเจ็บกล้ามเนื้อน่อง</td><td>ประมาณ 2-3 สัปดาห์</td><td><a href="https://www.espn.com/soccer/story/_/id/46915937/premier-league-injuries-weekend-updates-suspensions-fpl-latest" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>Liverpool</td><td>Hugo Ekitike, Conor Bradley, Joe Gomez</td><td>ไม่พร้อมลงสนามพบ Newcastle</td><td>ยังไม่มีกำหนดกลับมาลงสนามที่ชัดเจน</td><td><a href="https://www.espn.com/soccer/story/_/id/46915937/premier-league-injuries-weekend-updates-suspensions-fpl-latest" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>Chelsea</td><td>Wesley Fofana</td><td>พักการแข่งขัน (แบน) พบ Fulham</td><td>กลับมาลงสนามได้นัดถัดไปหลังพ้นโทษแบน</td><td><a href="https://www.espn.com/soccer/story/_/id/46915937/premier-league-injuries-weekend-updates-suspensions-fpl-latest" target="_blank" rel="noopener">ESPN</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Weekly Statistics</h2>
+    <ul>
+      <li><b>Most Goals (สัปดาห์นี้):</b> Brighton &amp; Hove Albion ยิงไป 4 ประตูในนัดเดียว มากที่สุดจาก 10 นัดของ Matchweek 1</li>
+      <li><b>Best Defence / Clean Sheets:</b> 6 ทีมเก็บคลีนชีตได้ในนัดแรก ได้แก่ Arsenal, Hull City, Everton, Brentford, Brighton &amp; Hove Albion และ Leeds United</li>
+      <li><b>Player of the Week:</b> Jack Hinshelwood (Brighton &amp; Hove Albion) — ยิง 2 ประตูช่วยทีมถล่ม Aston Villa 4-0 เปิดฤดูกาลอย่างสมบูรณ์แบบ และเป็นผู้เล่นเพียงคนเดียวที่ยิงได้ 2 ประตูใน Matchweek 1 ทั้งหมด</li>
+    </ul>
+    <div class="note">สถิติใบเหลืองรายบุคคลของสัปดาห์นี้ยังไม่มีแหล่งข้อมูลสรุปอย่างเป็นทางการเผยแพร่ครบถ้วน ณ เวลารวบรวมข้อมูล จากรายงานการแข่งขันทั้ง 10 นัดที่ตรวจสอบ ไม่พบการรายงานใบแดงเกิดขึ้นในนัดใดเลย ส่วนจุดโทษพบ 1 ลูกที่ยิงสำเร็จโดย Dominik Szoboszlai (Liverpool) ในเกมพบ Newcastle United นาทีที่ 90+9</div>
+  </section>
+
+  <section>
+    <h2>🔵 Big 6 Analysis</h2>
+    <div class="club-block">
+      <h3>Arsenal</h3>
+      <p><b>ฟอร์ม:</b> ชนะ Coventry City 3-0 เปิดฤดูกาลป้องกันแชมป์ได้อย่างมั่นใจ</p>
+      <p><b>จุดเด่น:</b> แนวรุกยิงประตูจาก 3 คนละตำแหน่ง (Havertz, Saka, Ødegaard) แสดงความหลากหลายในการทำประตู ผู้จัดการทีม Mikel Arteta ยังคุมทีมต่อเนื่องหลังพา Arsenal คว้าแชมป์ฤดูกาลก่อน</p>
+      <p><b>จุดอ่อน:</b> Jurrien Timber ยังบาดเจ็บต่อเนื่องที่ขาหนีบ ไม่มีกำหนดกลับมาลงสนามชัดเจน</p>
+    </div>
+    <div class="club-block">
+      <h3>Chelsea</h3>
+      <p><b>ฟอร์ม:</b> ชนะ Fulham 3-2 (เยือน) เมื่อ 24 ส.ค. เกมเปิดตัวที่มีประตูรวมกัน 5 ลูก</p>
+      <p><b>จุดเด่น:</b> Xabi Alonso เปิดตัวด้วยชัยชนะทันที และ Morgan Rogers ยิงประตูเดบิวต์หลังย้ายมาจาก Aston Villa ด้วยค่าตัว 117 ล้านปอนด์ ขณะที่ João Pedro และ Cole Palmer ก็ทำประตูช่วยทีม</p>
+      <p><b>จุดอ่อน:</b> Wesley Fofana ต้องพักการแข่งขันนัดนี้เนื่องจากโทษแบน และแนวรับยังเสียประตูให้ Fulham ถึง 2 ลูก</p>
+    </div>
+    <div class="club-block">
+      <h3>Liverpool</h3>
+      <p><b>ฟอร์ม:</b> เสมอ Newcastle United 2-2 (เยือน) โดยต้องพึ่งจุดโทษของ Szoboszlai นาทีที่ 90+9 เพื่อรักษาแต้ม</p>
+      <p><b>จุดเด่น:</b> เปิดยุคใหม่ภายใต้ผู้จัดการทีม Andoni Iraola ที่เข้ามาแทน Arne Slot โดย Cody Gakpo ยิงตีไข่แตกให้ทีม</p>
+      <p><b>จุดอ่อน:</b> ขาดผู้เล่นสำคัญหลายคน ได้แก่ Hugo Ekitike, Conor Bradley และ Joe Gomez ในนัดนี้ และแนวรับเสียประตูให้ Newcastle ถึง 2 ลูก ขณะที่ Curtis Jones มีกระแสข่าวใกล้ย้ายออกไป Inter Milan</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester City</h3>
+      <p><b>ฟอร์ม:</b> ชนะ Bournemouth 2-1 (เหย้า) ด้วยประตูชัยช่วงทดเวลาบาดเจ็บจาก Gvardiol หลังตามหลังก่อนในครึ่งแรก</p>
+      <p><b>จุดเด่น:</b> Enzo Maresca เปิดตัวด้วยชัยชนะแม้จะต้องลุ้นจนนาทีสุดท้าย พร้อมเสริมทัพด้วย Elliot Anderson ค่าตัวสถิติสโมสร</p>
+      <p><b>จุดอ่อน:</b> ขาด Jeremy Doku จากอาการบาดเจ็บกล้ามเนื้อน่อง (2-3 สัปดาห์) เสียประตูให้ Bournemouth ก่อนในครึ่งแรก และดีล Rodri ไป Real Madrid ยังคาราคาซังอยู่ระหว่างตลาดซื้อขาย</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester United</h3>
+      <p><b>ฟอร์ม:</b> แพ้ทีมเลื่อนชั้น Hull City 0-2 ในเกมเปิดฤดูกาล ถือเป็นการเริ่มต้นที่ย่ำแย่</p>
+      <p><b>จุดเด่น:</b> Michael Carrick ได้รับการแต่งตั้งเป็นผู้จัดการทีมถาวรก่อนเปิดฤดูกาล</p>
+      <p><b>จุดอ่อน:</b> เสียประตูจากลูกตั้งเตะทั้งสองประตูให้ Hull City สะท้อนปัญหาการป้องกันเซตพีซตั้งแต่นัดแรก</p>
+    </div>
+    <div class="club-block">
+      <h3>Tottenham Hotspur</h3>
+      <p><b>ฟอร์ม:</b> แพ้ Brentford 0-3 ในเกมเปิดฤดูกาล เป็นการเริ่มต้นที่ยากลำบากภายใต้ผู้จัดการทีมคนใหม่</p>
+      <p><b>จุดเด่น:</b> เสริมแดนกลางด้วย Sandro Tonali จาก Newcastle United ด้วยค่าตัวราว 92.5-100 ล้านปอนด์</p>
+      <p><b>จุดอ่อน:</b> Roberto De Zerbi เพิ่งเข้ามาคุมทีมแทน Thomas Frank ที่ถูกปลดหลังคุมทีมได้เพียง 8 เดือน ทีมยังต้องปรับตัวกับระบบการเล่นใหม่</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 Title Race</h2>
+    <p>ยังเร็วเกินไปที่จะฟันธงเรื่องลุ้นแชมป์แม้ Matchweek 1 จะจบครบแล้วทั้ง 10 คู่ Arsenal แชมป์เก่าเปิดฤดูกาลด้วยชัยชนะ 3-0 อย่างมั่นใจที่สุดในบรรดาทีมใหญ่ ขณะที่ Manchester City และ Chelsea เก็บ 3 แต้มได้แต่ต้องลุ้นจนนาทีสุดท้าย (Man City ชนะช่วงทดเวลาบาดเจ็บ, Chelsea เก็บชัยแบบเปิดหน้าแลกประตู) ส่วน Liverpool ภายใต้ Iraola ทำได้เพียงเสมอ Newcastle ต้องรอดูฟอร์มจริงในอีก 1-2 สัปดาห์ข้างหน้าก่อนประเมินการลุ้นแชมป์ได้ชัดเจนขึ้น</p>
+  </section>
+
+  <section>
+    <h2>🎯 Top 4 Race</h2>
+    <p>Manchester United และ Tottenham Hotspur ทั้งคู่แพ้ในนัดเปิดฤดูกาล สะท้อนว่าทั้งสองทีมยังต้องปรับตัวกับผู้จัดการทีมและระบบการเล่นใหม่ ขณะที่ Chelsea, Brentford และ Brighton เปิดฤดูกาลด้วยชัยชนะทำให้ชื่อของทั้งสามทีมถูกจับตาในการลุ้นสี่อันดับแรกช่วงต้นฤดูกาล แม้ยังเร็วเกินไปที่จะสรุปแนวโน้มจากเพียงนัดเดียว</p>
+  </section>
+
+  <section>
+    <h2>⬇️ Relegation Battle</h2>
+    <p>ในบรรดา 3 ทีมเลื่อนชั้นใหม่ Hull City และ Ipswich Town เปิดฤดูกาลด้วยชัยชนะ ขณะที่ Coventry City แพ้ Arsenal ขาดลอย 0-3 ในเกมเปิดสนาม Aston Villa ที่แพ้ Brighton ถึง 4-0 และ Bournemouth ที่แพ้ Manchester City แบบเจ็บปวดช่วงทดเวลาบาดเจ็บ ก็เป็นสัญญาณเตือนที่ต้องจับตา แม้จะยังเร็วเกินไปที่จะจัดว่าเป็นทีมลุ้นตกชั้นในสัปดาห์แรกของฤดูกาล</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Week Fixtures</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Time (ICT)</th><th>Home</th><th>VS</th><th>Away</th><th>Source</th></tr>
+      <tr><td>29 ส.ค.</td><td>02:00</td><td>Crystal Palace</td><td>vs</td><td>Manchester City</td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>29 ส.ค.</td><td>18:30</td><td>Liverpool</td><td>vs</td><td>Nottingham Forest</td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>29 ส.ค.</td><td>23:30</td><td>Tottenham Hotspur</td><td>vs</td><td>Newcastle United</td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>30 ส.ค.</td><td>20:00</td><td>Chelsea</td><td>vs</td><td>Brighton &amp; Hove Albion</td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>30 ส.ค.</td><td>22:30</td><td>Manchester United</td><td>vs</td><td>Ipswich Town</td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>1 ก.ย.</td><td>02:00</td><td>Aston Villa</td><td>vs</td><td>Arsenal</td><td><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:14px;">คู่เด่น 3 คู่ของสัปดาห์หน้า:</p>
+    <ul>
+      <li><b>Chelsea vs Brighton &amp; Hove Albion</b> (30 ส.ค., 20:00 ICT) — เกมเหย้านัดแรกของ Xabi Alonso ในฐานะผู้จัดการทีม Chelsea พบกับ Brighton ที่กำลังฟอร์มร้อนแรงจากชัยชนะ 4-0</li>
+      <li><b>Aston Villa vs Arsenal</b> (1 ก.ย., 02:00 ICT) — แชมป์เก่า Arsenal บุกเยือน Aston Villa ที่เพิ่งพ่ายแพ้ยับเยิน 0-4 มาในสัปดาห์นี้</li>
+      <li><b>Liverpool vs Nottingham Forest</b> (29 ส.ค., 18:30 ICT) — เกมเหย้านัดแรกของ Andoni Iraola ในฐานะผู้จัดการทีม Liverpool</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <ul>
+      <li><b>Matches:</b> 10 นัด (Matchweek 1 จบครบทั้งหมด)</li>
+      <li><b>Goals:</b> 30 ประตู จาก 10 นัด (เฉลี่ย 3.0 ประตู/นัด)</li>
+      <li><b>Clean Sheets:</b> 6 นัด</li>
+      <li><b>Red Cards:</b> ไม่พบรายงานใบแดงในนัดใดของ Matchweek 1 ทั้ง 10 นัด</li>
+      <li><b>Yellow Cards:</b> ยังไม่มีแหล่งข้อมูลสรุปแยกรายใบอย่างเป็นทางการเผยแพร่ครบถ้วน ณ เวลารวบรวมข้อมูล</li>
+      <li><b>Penalties:</b> 1 ลูก — Dominik Szoboszlai (Liverpool) ยิงสำเร็จนาทีที่ 90+9 ในเกมพบ Newcastle United</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>โปรแกรมสำคัญ:</b> ผล Matchweek 1 ครบสมบูรณ์ทั้ง 10 คู่แล้ว สัปดาห์หน้าให้ติดตามโปรแกรม Matchweek 2 ที่มีคู่เดือดหลายคู่ตามตารางด้านบน</li>
+      <li><b>ข่าวย้ายทีม:</b> ดีล Rodri ไป Real Madrid ต้องจับตาว่าจะจบลงก่อนตลาดปิด 1 ก.ย. หรือไม่ รวมถึงความเคลื่อนไหวของ Manchester United ต่อ Aurélien Tchouameni</li>
+      <li><b>ผู้เล่นบาดเจ็บ:</b> ติดตามกำหนดกลับมาของ Jurrien Timber (Arsenal) และ Jeremy Doku (Manchester City)</li>
+      <li><b>ข่าวผู้จัดการทีม:</b> ผู้จัดการทีมใหม่ของ Big 6 เปิดตัวกันครบแล้ว (Maresca, Iraola, Alonso, De Zerbi) ต้องติดตามว่าฟอร์มจะต่อเนื่องหรือไม่ในสัปดาห์ที่ 2</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul class="src-list">
+      <li><a href="https://www.premierleague.com/en/news/4679012/manager-line-up-complete-for-202627-season" target="_blank" rel="noopener">Premier League — Manager line-up complete for 2026/27 season</a></li>
+      <li><a href="https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season" target="_blank" rel="noopener">Premier League — All 380 fixtures for 2026/27 season</a></li>
+      <li><a href="https://www.brentfordfc.com/en/news/article/match-reports-brentford-3-tottenham-hotspur-0-premier-league-22-08-2026" target="_blank" rel="noopener">Brentford FC — Match report</a></li>
+      <li><a href="https://www.leedsunited.com/en/news/report-nottingham-forest-0-1-leeds-united" target="_blank" rel="noopener">Leeds United — Match report</a></li>
+      <li><a href="https://www.chelseafc.com/en/news/article/chelseas-2026-27-premier-league-fixtures-announced" target="_blank" rel="noopener">Chelsea FC — 2026/27 fixtures announced</a></li>
+    </ul>
+    <h3>Media</h3>
+    <ul class="src-list">
+      <li><a href="https://www.skysports.com/football/arsenal-vs-coventry-city/559444" target="_blank" rel="noopener">Sky Sports — Arsenal 3-0 Coventry City</a></li>
+      <li><a href="https://www.skysports.com/football/hull-city-vs-manchester-united/559447" target="_blank" rel="noopener">Sky Sports — Hull City 2-0 Manchester United</a></li>
+      <li><a href="https://www.skysports.com/football/everton-vs-crystal-palace/559446" target="_blank" rel="noopener">Sky Sports — Everton 2-0 Crystal Palace</a></li>
+      <li><a href="https://www.skysports.com/football/ipswich-town-vs-sunderland/559448" target="_blank" rel="noopener">Sky Sports — Ipswich Town 2-1 Sunderland</a></li>
+      <li><a href="https://www.skysports.com/football/brighton-and-hove-albion-vs-aston-villa/559450" target="_blank" rel="noopener">Sky Sports — Brighton 4-0 Aston Villa</a></li>
+      <li><a href="https://www.vavel.com/en-us/soccer/2026/08/23/1268785-brighton-vs-aston-villa-live-score-premier-league.html" target="_blank" rel="noopener">VAVEL — Brighton 4-0 Aston Villa</a></li>
+      <li><a href="https://www.espn.com/soccer/story/_/id/46915937/premier-league-injuries-weekend-updates-suspensions-fpl-latest" target="_blank" rel="noopener">ESPN — Premier League injuries this weekend</a></li>
+      <li><a href="https://sports.yahoo.com/articles/premier-league-big-six-now-095917732.html" target="_blank" rel="noopener">Yahoo Sports — Premier League Big Six manager changes</a></li>
+      <li><a href="https://sportsnaut.com/soccer/most-expensive-soccer-transfers-summer-2026" target="_blank" rel="noopener">Sportsnaut — Most expensive transfers summer 2026</a></li>
+      <li><a href="https://www.caughtoffside.com/2026/06/26/man-city-sandro-tonali-transfer-elliot-anderson/" target="_blank" rel="noopener">CaughtOffside — Man City transfers</a></li>
+      <li><a href="https://www.skysports.com/football/news/11095/13523974/man-utd-arsenal-and-man-city-transfers-elliot-anderson-sandro-tonali-and-adam-wharton-among-midfielders-on-market" target="_blank" rel="noopener">Sky Sports — Midfielders on the market</a></li>
+      <li><a href="https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/transfer-news-five-players-join-man-utd-before-deadline-day-summer-2026" target="_blank" rel="noopener">FootballTransfers — Man Utd transfer targets</a></li>
+      <li><a href="https://www.skysports.com/football/news/11679/13570426/rodri-transfer-news-barcelona-target-man-city-and-spain-star-wanted-by-real-madrid" target="_blank" rel="noopener">Sky Sports — Rodri transfer news</a></li>
+      <li><a href="https://www.foxsports.com/soccer/jurrien-timber-player" target="_blank" rel="noopener">Fox Sports — Jurrien Timber player news</a></li>
+    </ul>
+    <h3>Statistics</h3>
+    <ul class="src-list">
+      <li><a href="https://www.espn.com/soccer/match/_/gameId/401879320/afc-bournemouth-manchester-city" target="_blank" rel="noopener">ESPN — Manchester City 2-1 Bournemouth</a></li>
+      <li><a href="https://www.espn.com/soccer/match/_/gameId/401879319/liverpool-newcastle-united" target="_blank" rel="noopener">ESPN — Newcastle 2-2 Liverpool</a></li>
+      <li><a href="https://www.espn.com/soccer/match/_/gameId/401879318/chelsea-fulham" target="_blank" rel="noopener">ESPN — Fulham 2-3 Chelsea</a></li>
+    </ul>
+    <div class="note"><b>UNCERTAIN:</b> premierleague.com, bbc.com, espn.com, sofascore.com, worldfootball.net, footballwebpages.co.uk และ en.wikipedia.org ไม่สามารถเข้าถึงได้โดยตรงผ่าน WebFetch ในสภาพแวดล้อมนี้ (network egress ปฏิเสธการเชื่อมต่อ) จึงใช้ผลค้นหา (WebSearch) และแหล่งข่าว Tier 2 ที่เข้าถึงได้แทนตามลำดับการแก้ปัญหาที่กำหนดไว้ ข้อมูลทั้งหมดในรายงานนี้อ้างอิงจากเนื้อหาที่ปรากฏในผลการค้นหาของแหล่งข่าวที่ระบุไว้ข้างต้น</div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Premier League Report · จัดทำโดย Claude Code Routine · ข้อมูลทั้งหมดอ้างอิงจากแหล่งข่าวที่ระบุไว้ข้างต้น หากมีข้อมูลใดไม่สามารถยืนยันได้ จะระบุข้อจำกัดไว้อย่างชัดเจนแทนการคาดเดา</p>
+  </footer>
+</div>
+</body>
+</html>

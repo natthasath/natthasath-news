@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Software Releases — 23 Aug 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73;
+  --crit:#B3261E; --high:#C05621; --med:#B7860B; --low:#5A6B57;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF;
+    --crit:#FF6B5E; --high:#FFA05C; --med:#F0C34D; --low:#9BB396;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:1100px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); word-break:break-word; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+h2{ font-size:22px; font-weight:700; margin:0 0 14px; }
+h3{ font-size:16px; font-weight:700; margin:20px 0 8px; color:var(--ink-soft); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:28px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:80ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:78ch; }
+
+.dashboard{ display:flex; flex-wrap:wrap; gap:12px; }
+.stat{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 18px; min-width:140px; flex:1; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+.table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:var(--surface); }
+table{ border-collapse:collapse; width:100%; min-width:640px; font-size:14.5px; }
+thead th{ text-align:left; background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.02em; text-transform:uppercase; color:var(--ink-soft); padding:10px 12px; border-bottom:1px solid var(--line-strong); white-space:nowrap; }
+tbody td{ padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ font-weight:600; white-space:nowrap; }
+.empty-note{ padding:14px 16px; color:var(--ink-faint); font-size:14px; font-style:italic; }
+
+.badge{ display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--line-strong); white-space:nowrap; }
+.badge.crit{ color:var(--crit); border-color:var(--crit); }
+.badge.high{ color:var(--high); border-color:var(--high); }
+.badge.med{ color:var(--med); border-color:var(--med); }
+.badge.low{ color:var(--low); border-color:var(--low); }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 34, 2026</p>
+    <h1>💻 Weekly Software Releases Report — Week 34</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 23 Aug 2026</span>
+      <span><b>ช่วงเวลา:</b> 16–23 Aug 2026 (ICT)</span>
+      <span><b>Category:</b> Software</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>สัปดาห์นี้เป็นสัปดาห์ที่หนักด้าน Security มากกว่าฝั่ง Feature Release — ประเด็นใหญ่ที่สุดคือ Cisco ออก Security Hardening Release สำหรับ Crosswork และ Secure Workload พร้อมกัน รวม 9 CVE โดย 5 รายการได้คะแนน CVSS เต็ม 10.0 (Critical) เมื่อ 19 Aug 2026 ตามมาด้วยช่องโหว่ Critical ใน Traefik digestAuth middleware (GHSA-5w68-77r2-r64c) ที่ผู้โจมตีไม่ต้องยืนยันตัวตนก็สามารถ Bypass การ Authentication ได้ แก้ไขแล้วใน v2.11.55/v3.7.11</p>
+    <p>ด้าน VMware มีความเคลื่อนไหวสำคัญคือ CISA เพิ่ม CVE-2026-59310 (Directory Traversal ใน vCenter Syslog ที่นำไปสู่ Remote Code Execution) เข้าสู่ Known Exploited Vulnerabilities (KEV) Catalog เมื่อ 18 Aug 2026 ยืนยันว่าช่องโหว่นี้ถูกโจมตีจริงในวงกว้าง (แม้ VMSA-2026-0006 ต้นทางจะประกาศไปตั้งแต่ 29 Jul 2026) องค์กรที่ยังไม่แพตช์ vCenter ควรดำเนินการโดยด่วน</p>
+    <p>Ubuntu และ Debian ออก Security Patch ต่อเนื่องตลอดสัปดาห์ — Ubuntu Kernel (USN-8643-1) สำหรับ 24.04/22.04 LTS เมื่อ 18 Aug และ Debian ออก DSA รวม 5 ฉบับ ครอบคลุม gst-plugins-bad1.0, libnet-dns-perl, OpenJDK 25, Thunderbird และ zfs-linux ระหว่าง 21–23 Aug 2026 ส่วน Redis ออก Security Release (8.10.1 / 7.4.11) เมื่อ 17 Aug 2026 แก้ไข CVE-2026-62356 (Heap Out-of-Bounds Write ใน CMSketch) และช่องโหว่ Memory-Safety อื่นที่บางรายการได้คะแนน CVSS สูงถึง 7.7</p>
+    <p>ฝั่ง Feature Release มี Go 1.27 GA (19 Aug) พร้อม Generic Methods และ encoding/json v2 เป็นค่าเริ่มต้น, Spring Boot ออกพร้อมกันสามสาย (4.0.8 / 4.1.1 / 4.2.0-M1), GitLab 19.3, Elasticsearch 9.5.2 และ Pulumi AWS Provider v7.43.0 — ทั้งหมดออกในวันเดียวกันคือ 20 Aug 2026</p>
+    <p>ไม่พบประกาศ End of Life ใหม่ที่ยืนยันได้จากแหล่งข้อมูลทางการในช่วงสัปดาห์นี้ สิ่งที่ต้องจับตาต่อคือ Kubernetes v1.37 "Garhwal" ที่ยังอยู่ระหว่าง Release Candidate และคาดว่าจะ GA ในวันที่ 26 Aug 2026 (นอกช่วงรายงานนี้)</p>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="stat"><div class="num">15</div><div class="lbl">Software Releases / Advisories</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Major Releases</div></div>
+      <div class="stat"><div class="num">10</div><div class="lbl">Security Releases</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Patch Releases</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">EOL Announcements</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Go</td>
+          <td>1.27</td>
+          <td>เพิ่ม Generic Methods, encoding/json/v2 กลายเป็นค่าเริ่มต้น (เข้มงวดขึ้น — ปฏิเสธ invalid UTF-8 และชื่อ key ซ้ำ), Size-specialized memory allocation ลดต้นทุนการจอง memory สำหรับ object เล็กกว่า 80 bytes ได้ถึง 30%, goroutineleak profile เข้าสู่ GA</td>
+          <td>19 Aug 2026</td>
+          <td><span class="badge low">🔹 Minor Release</span></td>
+          <td><a href="https://go.dev/blog/go1.27" target="_blank" rel="noopener">go.dev — The Go Blog</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Python, Node.js, Java, .NET, PHP, Rust: ไม่มี Release ใหม่ในช่วง 16–23 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ</p>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Framework</th><th>Version</th><th>Highlights</th><th>Migration</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Spring Boot</td>
+          <td>4.1.1 (stable) / 4.0.8 (patch) / 4.2.0-M1 (milestone)</td>
+          <td>ออกพร้อมกันสามสาย — 4.2.0-M1 เพิ่ม Enhancement 113 รายการ รวมรองรับ AMQP 1.0 (RabbitMQ-specific features), 4.1.1 และ 4.0.8 เป็น Maintenance Release แก้บั๊กและปรับ Dependency</td>
+          <td>ไม่มี Breaking Change ที่ระบุใน Release Notes ของรอบนี้</td>
+          <td><a href="https://spring.io/blog/2026/08/20/spring-boot-4-1-1-available-now/" target="_blank" rel="noopener">spring.io — Spring Boot 4.1.1</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">React, Vue, Angular, Django, Laravel, FastAPI: ไม่มี Release ใหม่ในช่วง 16–23 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ</p>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps &amp; CI/CD</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>GitLab</td>
+          <td>19.3</td>
+          <td>Flow Creator ใน AI Catalog สร้าง Flow ด้วยภาษาพูดปกติ, GitLab Secrets Manager เข้าสู่ Limited Availability สำหรับ GitLab.com, Dedicated AI Gateway พร้อมใช้งานจริงสำหรับ GitLab Dedicated, GitLab Credits usage cap พร้อมใช้งานจริง</td>
+          <td><span class="badge low">🔹 Minor Release</span></td>
+          <td><a href="https://docs.gitlab.com/releases/19/gitlab-19-3-released/" target="_blank" rel="noopener">docs.gitlab.com</a></td>
+        </tr>
+        <tr>
+          <td>Pulumi (AWS Provider)</td>
+          <td>v7.43.0</td>
+          <td>อัปเดต Resource/Property รองรับบริการ AWS ล่าสุดสำหรับ Infrastructure-as-Code ผ่าน Pulumi</td>
+          <td><span class="badge low">🔹 Minor Release</span></td>
+          <td><a href="https://github.com/pulumi/pulumi-aws/releases" target="_blank" rel="noopener">GitHub Releases — pulumi/pulumi-aws</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Docker, Kubernetes, Jenkins, GitHub Actions, ArgoCD, Terraform, Ansible: ไม่มี Release ใหม่ในช่วง 16–23 Aug 2026 — Kubernetes v1.37 ยังอยู่ระหว่าง Release Candidate คาดว่าจะ GA วันที่ 26 Aug 2026 (ดูหัวข้อ "สิ่งที่ต้องติดตาม")</p>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Database</th><th>Version</th><th>Features</th><th>Type</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Elasticsearch</td>
+          <td>9.5.2</td>
+          <td>อัปเดตด้าน Reliability และ Security ครอบคลุม Search, ES|QL, Vector Search, Inference, Snapshot Restore, Transforms และ ML พร้อมอัปเกรด bundled JDK, Lucene และไลบรารีที่เกี่ยวข้อง</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://www.elastic.co/blog/elastic-stack-9-5-2-released" target="_blank" rel="noopener">elastic.co — Elastic Blog</a></td>
+        </tr>
+        <tr>
+          <td>Redis</td>
+          <td>8.10.1 / 7.4.11 (พร้อมสายอื่น: 6.2.24, 7.2.16, 8.2.9, 8.4.6, 8.6.6, 8.8.2)</td>
+          <td>Security Release แก้ไข CVE-2026-62356 (Heap Out-of-Bounds Write ใน CMSketch) พร้อมช่องโหว่ Memory-Safety อื่น ได้แก่ TLS pending-data-list use-after-free, ACL key-permission bypass, crafted-RDB SLOT_INFO memory corruption และ Vector Sets memory-safety fixes</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td><a href="https://www.stingrai.io/blog/redis-rce-2026-cves-ai-27-minute-discovery" target="_blank" rel="noopener">Redis Security Fixes — รายละเอียดเพิ่มเติม</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">PostgreSQL, MySQL (Oracle), MariaDB, SQL Server, MongoDB, Cassandra, AWS RDS/Aurora, Azure SQL, Google Cloud SQL: ไม่มี Release ใหม่ในช่วง 16–23 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ (PostgreSQL ออกรอบล่าสุดไปแล้วเมื่อ 13 Aug 2026, MariaDB 10.6.28 เมื่อ 13 Aug 2026 — ทั้งสองอยู่นอกช่วงรายงานนี้)</p>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>OS</th><th>Version</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Ubuntu</td>
+          <td>24.04 / 22.04 LTS (Kernel) — USN-8643-1</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td>แก้ไขช่องโหว่ Linux Kernel หลายรายการ ผู้ใช้ต้อง Reboot และอาจต้อง Recompile Third-party Kernel Module หลังอัปเดต</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8643-1" target="_blank" rel="noopener">ubuntu.com/security</a></td>
+        </tr>
+        <tr>
+          <td>Debian</td>
+          <td>DSA-6458-1 (gst-plugins-bad1.0)</td>
+          <td><span class="badge med">🔒 Security Release</span></td>
+          <td>Security Update สำหรับ GStreamer Plugin ชุด bad1.0</td>
+          <td><a href="https://lists.debian.org/debian-security-announce/2026/" target="_blank" rel="noopener">Debian Security Advisory — DSA-6458-1</a></td>
+        </tr>
+        <tr>
+          <td>Debian</td>
+          <td>DSA-6459-1 (libnet-dns-perl)</td>
+          <td><span class="badge med">🔒 Security Release</span></td>
+          <td>Security Update สำหรับไลบรารี libnet-dns-perl</td>
+          <td><a href="https://lists.debian.org/debian-security-announce/2026/" target="_blank" rel="noopener">Debian Security Advisory — DSA-6459-1</a></td>
+        </tr>
+        <tr>
+          <td>Debian</td>
+          <td>DSA-6460-1 (OpenJDK 25)</td>
+          <td><span class="badge med">🔒 Security Release</span></td>
+          <td>Security Update สำหรับ OpenJDK 25 Java Runtime — ช่องโหว่อาจนำไปสู่ Denial of Service หรือ Information Disclosure</td>
+          <td><a href="https://lists.debian.org/debian-security-announce/2026/" target="_blank" rel="noopener">Debian Security Advisory — DSA-6460-1</a></td>
+        </tr>
+        <tr>
+          <td>Debian</td>
+          <td>DSA-6461-1 (Thunderbird)</td>
+          <td><span class="badge med">🔒 Security Release</span></td>
+          <td>Security Update สำหรับ Mozilla Thunderbird</td>
+          <td><a href="https://lists.debian.org/debian-security-announce/2026/" target="_blank" rel="noopener">Debian Security Advisory — DSA-6461-1</a></td>
+        </tr>
+        <tr>
+          <td>Debian</td>
+          <td>DSA-6462-1 (zfs-linux)</td>
+          <td><span class="badge med">🔒 Security Release</span></td>
+          <td>Security Update สำหรับ ZFS on Linux Kernel Module</td>
+          <td><a href="https://lists.debian.org/debian-security-announce/2026/" target="_blank" rel="noopener">Debian Security Advisory — DSA-6462-1</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">RHEL, Rocky Linux, AlmaLinux, Windows Server: ไม่พบ Release/Errata ที่ระบุวันที่แน่ชัดอยู่ในช่วง 16–23 Aug 2026 จากการตรวจสอบ — Windows Server Cumulative Update ล่าสุดออกไปแล้วเมื่อ 11 Aug 2026 (Patch Tuesday, นอกช่วงรายงานนี้) แนะนำตรวจสอบ Errata Portal ของแต่ละ Distro โดยตรงสำหรับข้อมูลล่าสุด</p>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <p class="empty-note">Proxmox, Hyper-V, KVM: ไม่มี Release ใหม่ในช่วง 16–23 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ (Proxmox VE 9.2.4 รองรับ Arm64 ออกไปแล้วเมื่อ 4–5 Aug 2026, นอกช่วงรายงานนี้) — สำหรับ VMware ดูรายละเอียดความเคลื่อนไหวด้าน Security ในตาราง Security &amp; CVE ด้านล่าง (CISA เพิ่ม CVE-2026-59310 เข้า KEV Catalog เมื่อ 18 Aug 2026)</p>
+  </section>
+
+  <section>
+    <h2>🌐 Network &amp; Security</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Traefik</td>
+          <td>v3.7.11 / v2.11.55</td>
+          <td>แก้ไขช่องโหว่ Critical Authentication Bypass ใน digestAuth Middleware (GHSA-5w68-77r2-r64c) — รายละเอียดเต็มดูในตาราง Security &amp; CVE</td>
+          <td><span class="badge crit">🔒 Security Release</span></td>
+          <td><a href="https://github.com/traefik/traefik/security/advisories/GHSA-5w68-77r2-r64c" target="_blank" rel="noopener">GitHub Security Advisory — traefik/traefik</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Nginx, Apache, HAProxy, Caddy, WireGuard, pfSense, OPNsense, Nmap, Wireshark, Nessus, OpenVAS, Metasploit: ไม่มี Release ใหม่ในช่วง 16–23 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ</p>
+  </section>
+
+  <section>
+    <h2>☁ Cloud &amp; Infrastructure</h2>
+    <p class="empty-note">ไม่พบประกาศจาก AWS What's New, Azure Updates หรือ Google Cloud Release Notes ที่ระบุวันที่ประกาศอย่างชัดเจนอยู่ในช่วง 16–23 Aug 2026 จากการตรวจสอบรอบนี้ — สำหรับ Infrastructure-as-Code ดู Pulumi AWS Provider v7.43.0 ในหัวข้อ DevOps &amp; CI/CD ด้านบน</p>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools &amp; IDE</h2>
+    <p class="empty-note">VS Code, JetBrains IDEs, Eclipse, Git, GitHub, GitLab (core tooling), npm, pip, Composer, Maven, Gradle: ไม่มี Release ใหม่ในช่วง 16–23 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ (PyCharm 2026.2.1/2026.1.5 ออกไปแล้วเมื่อ 12–13 Aug 2026, นอกช่วงรายงานนี้)</p>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <p class="empty-note">Nginx, Apache, Caddy, IIS: ไม่มี Release ใหม่ในช่วง 16–23 Aug 2026 จากแหล่งข้อมูลทางการที่ตรวจสอบ</p>
+  </section>
+
+  <section>
+    <h2>🔒 Security &amp; CVE</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Cisco Crosswork</td>
+          <td>CVE-2026-20030, CVE-2026-20357, CVE-2026-20358, CVE-2026-20359</td>
+          <td><span class="badge crit">Critical — CVSS 10.0 (ทุกรายการ)</span></td>
+          <td>Security Hardening Release, Aug 2026</td>
+          <td><a href="https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-hardening-crosswork-UzDTU9Vh" target="_blank" rel="noopener">Cisco Security Advisory — Crosswork</a></td>
+        </tr>
+        <tr>
+          <td>Cisco Secure Workload</td>
+          <td>CVE-2026-20231, CVE-2026-20315, CVE-2026-20317, CVE-2026-20318, CVE-2026-20319</td>
+          <td><span class="badge crit">Critical — CVSS 10.0 (หลายรายการ)</span></td>
+          <td>Security Hardening Release, Aug 2026</td>
+          <td><a href="https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-hardening-csw1-shSvndWP" target="_blank" rel="noopener">Cisco Security Advisory — Secure Workload</a></td>
+        </tr>
+        <tr>
+          <td>Traefik (digestAuth)</td>
+          <td>GHSA-5w68-77r2-r64c</td>
+          <td><span class="badge crit">Critical — Unauthenticated Auth Bypass</span></td>
+          <td>v2.11.55 / v3.7.11</td>
+          <td><a href="https://github.com/traefik/traefik/security/advisories/GHSA-5w68-77r2-r64c" target="_blank" rel="noopener">GitHub Security Advisory</a></td>
+        </tr>
+        <tr>
+          <td>VMware vCenter (Syslog)</td>
+          <td>CVE-2026-59310</td>
+          <td><span class="badge crit">Critical — CVSS 9.8, เพิ่มเข้า CISA KEV 18 Aug 2026 (ยืนยันถูกโจมตีจริง)</span></td>
+          <td>vSphere 8.0 Update 2 ขึ้นไป (ตาม VMSA-2026-0006.1)</td>
+          <td><a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/38017" target="_blank" rel="noopener">Broadcom VMSA-2026-0006</a></td>
+        </tr>
+        <tr>
+          <td>Ubuntu Kernel</td>
+          <td>USN-8643-1 (หลาย CVE)</td>
+          <td><span class="badge high">High — รายละเอียดครบถ้วนใน Advisory ต้นทาง</span></td>
+          <td>24.04 / 22.04 LTS</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8643-1" target="_blank" rel="noopener">Ubuntu Security Notices</a></td>
+        </tr>
+        <tr>
+          <td>Redis</td>
+          <td>CVE-2026-62356 (และช่องโหว่ Memory-Safety อื่นในชุดเดียวกัน)</td>
+          <td><span class="badge high">High — บางรายการ CVSS ~7.7</span></td>
+          <td>8.10.1 / 7.4.11 / 6.2.24 / 7.2.16 / 8.2.9 / 8.4.6 / 8.6.6 / 8.8.2</td>
+          <td><a href="https://www.stingrai.io/blog/redis-rce-2026-cves-ai-27-minute-discovery" target="_blank" rel="noopener">Redis Security Fixes — รายละเอียดเพิ่มเติม</a></td>
+        </tr>
+        <tr>
+          <td>Debian (OpenJDK 25 / Thunderbird / zfs-linux / gst-plugins-bad1.0 / libnet-dns-perl)</td>
+          <td>DSA-6458-1 ถึง DSA-6462-1 (รายละเอียด CVE ครบถ้วนดูในแต่ละ Advisory)</td>
+          <td><span class="badge med">Mixed — Medium ถึง High</span></td>
+          <td>ดูเวอร์ชันแพตช์ในแต่ละ DSA</td>
+          <td><a href="https://www.debian.org/security/" target="_blank" rel="noopener">Debian Security Advisories</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">หมายเหตุ: VMSA-2026-0006 ต้นฉบับของ VMware ประกาศครั้งแรกเมื่อ 29 Jul 2026 (นอกช่วงรายงานนี้) แต่การเพิ่มเข้า CISA KEV Catalog เมื่อ 18 Aug 2026 ถือเป็นเหตุการณ์สำคัญที่เกิดขึ้นภายในสัปดาห์นี้ จึงนำมาแสดงในตารางนี้</p>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>Version</th><th>Breaking Change</th><th>Migration Guide</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Go</td>
+          <td>1.27</td>
+          <td>ถอด GODEBUG flag เก่าออกถาวร (ไม่ใช่แค่ Deprecate): asynctimerchan, tlsunsafeekm, tlsrsakex, tls3des, tls10server, x509keypairleaf — Channel จาก time.NewTimer/time.NewTicker เปลี่ยนเป็น Unbuffered เสมอโดยไม่มีทางย้อนกลับ, encoding/json v2 เข้มงวดขึ้น (ปฏิเสธ Invalid UTF-8 และ Duplicate Key ใน JSON Object)</td>
+          <td>สามารถปิดใช้งาน JSON v2 ชั่วคราวด้วย GOEXPERIMENT=nojsonv2 (จะถูกถอดออกในอนาคต) — มี Official Release Notes ครบถ้วน</td>
+          <td><a href="https://go.dev/doc/go1.27" target="_blank" rel="noopener">go.dev — Go 1.27 Release Notes</a></td>
+        </tr>
+        <tr>
+          <td>Traefik</td>
+          <td>v2.11.55 / v3.7.11</td>
+          <td>พฤติกรรมของ digestAuth Middleware เปลี่ยนแปลงเพื่อปิดช่องโหว่ Authentication Bypass — ระบบที่พึ่งพา secret provider คืนค่า Empty String สำหรับ Username ที่ไม่รู้จักต้องตรวจสอบ Configuration ใหม่</td>
+          <td>มี Official Security Advisory พร้อมคำแนะนำการอัปเกรด</td>
+          <td><a href="https://github.com/traefik/traefik/security/advisories/GHSA-5w68-77r2-r64c" target="_blank" rel="noopener">GitHub Security Advisory</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <p class="empty-note">ไม่พบประกาศ End of Life ที่ยืนยันได้จากแหล่งข้อมูลทางการในช่วง 16–23 Aug 2026 จากการตรวจสอบรอบนี้ (Database, Operating System, Virtualization)</p>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>Kubernetes v1.37 "Garhwal" GA</b> — คาดว่าจะออก 26 Aug 2026 หลังผ่าน Release Candidate ในสัปดาห์นี้ — มาพร้อมข้อกำหนด containerd 2.0 ขึ้นไปและการ Deprecate หลายรายการ ควรวางแผนอัปเกรดล่วงหน้า</li>
+      <li><b>VMware vCenter CVE-2026-59310</b> — อยู่ใน CISA KEV Catalog แล้ว มีรายงานการโจมตีต่อเนื่องเป็นวงกว้าง องค์กรที่ยังไม่แพตช์ควรดำเนินการโดยด่วนที่สุด</li>
+      <li><b>Cisco Crosswork / Secure Workload</b> — ควรตรวจสอบว่าอุปกรณ์ในองค์กรได้รับผลกระทบจากช่องโหว่ CVSS 10.0 ทั้ง 9 รายการหรือไม่ และวางแผนแพตช์ทันที</li>
+      <li><b>Debian DSA เพิ่มเติม</b> — คาดว่าจะมี DSA ต่อเนื่องสำหรับ erlang และ webkit2gtk ในช่วงปลายเดือนสิงหาคม (นอกช่วงรายงานนี้)</li>
+      <li><b>Terraform v1.16 และ Node.js Release รอบถัดไป</b> — อยู่ระหว่างเตรียมออกในช่วงปลายเดือนสิงหาคม 2026</li>
+      <li><b>PostgreSQL 14</b> — จะหยุดรับการแก้ไขตั้งแต่ 12 Nov 2026 ควรวางแผนอัปเกรดล่วงหน้าสำหรับผู้ที่ยังใช้เวอร์ชันนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <ul>
+      <li><b>Total Releases/Advisories:</b> 15 รายการ</li>
+      <li><b>Major Releases:</b> 0</li>
+      <li><b>Security Releases:</b> 10 (Cisco ×2, Traefik ×1, VMware ×1, Ubuntu ×1, Redis ×1, Debian ×5 — รวม Cisco/Traefik/VMware/Ubuntu/Redis/Debian ตามที่นับในตาราง Security &amp; CVE)</li>
+      <li><b>Patch Releases:</b> 4 (Elasticsearch, Spring Boot 4.0.8, Redis สายอื่นที่ไม่ใช่ Security-only)</li>
+      <li><b>New CVEs:</b> อย่างน้อย 16 หมายเลขที่ระบุชัดเจน (Cisco 9, Redis 1, VMware 1, Debian DSA มีเพิ่มเติมที่ไม่ได้แจกแจงครบในแหล่งข้อมูลที่เข้าถึงได้รอบนี้) และ 1 Advisory แบบ GHSA (Traefik) ที่ยังไม่มีหมายเลข CVE เผยแพร่แยกในแหล่งที่ตรวจสอบ</li>
+      <li><b>EOL Announcements:</b> 0</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul>
+      <li><a href="https://go.dev/blog/go1.27" target="_blank" rel="noopener">go.dev — The Go Blog</a></li>
+      <li><a href="https://go.dev/doc/go1.27" target="_blank" rel="noopener">go.dev — Go 1.27 Release Notes</a></li>
+      <li><a href="https://spring.io/blog/2026/08/20/spring-boot-4-1-1-available-now/" target="_blank" rel="noopener">Spring.io Blog</a></li>
+      <li><a href="https://docs.gitlab.com/releases/19/gitlab-19-3-released/" target="_blank" rel="noopener">GitLab Docs — 19.3 Release Notes</a></li>
+      <li><a href="https://github.com/pulumi/pulumi-aws/releases" target="_blank" rel="noopener">Pulumi AWS Provider — GitHub Releases</a></li>
+      <li><a href="https://www.elastic.co/blog/elastic-stack-9-5-2-released" target="_blank" rel="noopener">Elastic Blog</a></li>
+      <li><a href="https://ubuntu.com/security/notices/USN-8643-1" target="_blank" rel="noopener">Ubuntu Security Notices — USN-8643-1</a></li>
+      <li><a href="https://github.com/traefik/traefik/security/advisories/GHSA-5w68-77r2-r64c" target="_blank" rel="noopener">GitHub Security Advisory — Traefik</a></li>
+      <li><a href="https://github.com/traefik/traefik/releases/tag/v3.7.11" target="_blank" rel="noopener">Traefik v3.7.11 — GitHub Releases</a></li>
+    </ul>
+    <h3>Security Advisory</h3>
+    <ul>
+      <li><a href="https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-hardening-crosswork-UzDTU9Vh" target="_blank" rel="noopener">Cisco Security Advisory — Crosswork Hardening</a></li>
+      <li><a href="https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-hardening-csw1-shSvndWP" target="_blank" rel="noopener">Cisco Security Advisory — Secure Workload Hardening</a></li>
+      <li><a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/38017" target="_blank" rel="noopener">Broadcom VMSA-2026-0006</a></li>
+      <li><a href="https://www.debian.org/security/" target="_blank" rel="noopener">Debian Security Advisories</a></li>
+    </ul>
+    <h3>Trusted Media</h3>
+    <ul>
+      <li><a href="https://thehackernews.com/2026/08/cisco-patches-nine-crosswork-and-secure.html" target="_blank" rel="noopener">The Hacker News — Cisco Crosswork/Secure Workload</a></li>
+      <li><a href="https://www.rapid7.com/blog/post/etr-critical-vmware-vcenter-vulnerabilities-allow-authentication-bypass-and-remote-code-execution-cve-2026-59309-cve-2026-59310/" target="_blank" rel="noopener">Rapid7 — VMware vCenter Vulnerabilities</a></li>
+      <li><a href="https://www.stingrai.io/blog/redis-rce-2026-cves-ai-27-minute-discovery" target="_blank" rel="noopener">Stingrai — Redis CVE Analysis</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Software Releases · 23 Aug 2026</p>
+    <p><a href="/">Back to Home</a></p>
+  </footer>
+</div>
+</body>
+</html>

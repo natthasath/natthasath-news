@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 30 สิงหาคม 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 23-30 สิงหาคม 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 35</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>แลนโด นอร์ริส (McLaren) คว้าชัยชนะครั้งที่สองติดต่อกันที่ Dutch Grand Prix 2026 ในซานด์โวร์ท โดยแซงชำระโครงการจากผู้นำแชมป์ คิมิ อันโตเนลลี ในการแข่งขันที่ตื่นเต้น จอร์จ รัสเซลล์ชนะการแข่งขันสปรินต์ในช่วงต้นสัปดาห์ ขณะที่ยังคงตำแหน่งที่สองในการจัดอันดับ Dutch GP เป็นการแข่งขัน Formula 1 ครั้งสุดท้ายที่ซานด์โวร์ทหลังจากอยู่ในปฏิทิน 6 ปี ผู้นำแชมป์อันโตเนลลีรักษาความนำโดยมีคะแนน 59 คะแนนมากกว่ารัสเซลล์ เมื่อฤดูกาลเข้าสู่ช่วงวิกฤตไปทาง Monza 🏁</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>295</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>236</td>
+          <td>-59</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>236</td>
+          <td>-59</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>212</td>
+          <td>-83</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>199</td>
+          <td>-96</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>186</td>
+          <td>-109</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>142</td>
+          <td>-153</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇦🇹 Liam Lawson</td>
+          <td>Red Bull Racing</td>
+          <td>137</td>
+          <td>-158</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>🇩🇪 Nico Hülkenberg</td>
+          <td>Audi</td>
+          <td>133</td>
+          <td>-162</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>🇪🇸 Fernando Alonso</td>
+          <td>Aston Martin</td>
+          <td>127</td>
+          <td>-168</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา: RaceFans.net, Sky Sports F1</div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>531</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>435</td>
+          <td>-96</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>McLaren</td>
+          <td>398</td>
+          <td>-133</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Red Bull Racing</td>
+          <td>279</td>
+          <td>-252</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Audi</td>
+          <td>168</td>
+          <td>-363</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา: RaceFans.net, Sky Sports F1</div>
+  </section>
+
+  <section>
+    <h2>🏁 ผลการแข่งขัน — Dutch Grand Prix 2026</h2>
+    <div class="note">
+      📍 <strong>สนามแข่ง:</strong> Circuit Zandvoort | 🏁 <strong>ระยะทาง:</strong> 307.604 กม. (72 รอบ) | 🔄 <strong>ผู้ชนะ:</strong> Lando Norris (McLaren) | ⏱️ <strong>วันที่:</strong> 23 สิงหาคม 2026
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ตำแหน่ง</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา / สถานะ</th>
+          <th>คะแนน</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Lando Norris</td>
+          <td>McLaren-Mercedes</td>
+          <td>+0.000</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>+11.527</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>+26.843</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>+33.629</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>+41.271</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren-Mercedes</td>
+          <td>+48.105</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Liam Lawson</td>
+          <td>Red Bull Racing</td>
+          <td>+54.321</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Nico Hülkenberg</td>
+          <td>Audi</td>
+          <td>+59.487</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Fernando Alonso</td>
+          <td>Aston Martin</td>
+          <td>+63.892</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Pierre Gasly</td>
+          <td>Alpine-Renault</td>
+          <td>+69.156</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>การวิเคราะห์การแข่งขัน</h3>
+    <div class="summary-box">
+      <p><strong>ชัยชนะครั้งที่สองของนอร์ริส:</strong> แลนโด นอร์ริส (McLaren) คว้าชัยชนะครั้งที่สองติดต่อกัน ขึ้นสิ้นสุดห่างจากผู้นำแชมป์ 11.5 วินาที คิมิ อันโตเนลลี ผู้ขับขี่ McLaren ควบคุมการแข่งขันจากจุดเริ่มต้นจนจบ โดยจัดการยางและแรงกดไปตลอด 72 รอบที่ซานด์โวร์ท</p>
+
+      <p><strong>อุบัติเหตุของเวอร์สตัปเพน:</strong> ในช่วงเวลาที่น่าดึงดูดใจ แมกซ์ เวอร์สตัปเพน ชนออกจากการแข่งขันในบ้านของเขาในรอบแรก ที่มุมสุดท้ายโดยหมุนเข้าไปในกำแพงด้วยความเร็วสูง เหตุการณ์นี้ทำให้เกิดความระมัดระวังชั่วขณะ แต่ไม่จำเป็นต้องมีการรีสตาร์ท 🚨</p>
+
+      <p><strong>ผลกระทบต่อแชมป์ชิป:</strong> แม้ว่าจะจบที่อันดับสองแต่อันโตเนลลีรักษาความนำ 59 คะแนนมากกว่าจอร์จ รัสเซลล์ไปยัง Italian Grand Prix อย่างไรก็ตาม โมเมนตัมของนอร์ริส—ชนะการแข่งขันสองครั้งที่ผ่านมา—ทำให้เขาเป็นภัยคุกคามที่แท้จริงต่อแชมป์ชิปเมื่อฤดูกาลถึงจุดกึ่งกลาง</p>
+
+      <p><strong>มรดกของสนาม:</strong> นี่คือการแข่งขัน Formula 1 ครั้งสุดท้ายที่ซานด์โวร์ทหลังจากอยู่ในปฏิทินมา 6 ปี สนามดัตช์ยืนยันว่าเป็นหนึ่งในการแข่งขันที่ท้าทายมากที่สุดและมีบรรยากาศที่ดีที่สุดของ F1</p>
+    </div>
+
+    <div class="source">✅ ที่มา: Sky Sports F1, Autosport, RaceFans.net</div>
+  </section>
+
+  <section>
+    <h2>⚡ ผลการแข่งขัน Sprint — Dutch Grand Prix 2026</h2>
+    <div class="note">
+      📍 <strong>สนามแข่ง:</strong> Circuit Zandvoort | 📅 <strong>วันที่:</strong> 22 สิงหาคม 2026 (Sprint Race)
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ตำแหน่ง</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Lando Norris</td>
+          <td>McLaren-Mercedes</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren-Mercedes</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Pierre Gasly</td>
+          <td>Alpine-Renault</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>การวิเคราะห์ Sprint</h3>
+    <div class="summary-box">
+      <p><strong>การชนะ Sprint ของรัสเซลล์:</strong> จอร์จ รัสเซลล์ปกครอง Sprint Race โดยแปลง Pole Position เป็นชัยชนะ ผู้ขับขี่ Mercedes รักษาความนำไปตลอด 17 รอบของ Sprint ขยายจุดเริ่มต้นที่สมบูรณ์แบบของเขาในช่วงสุดสัปดาห์</p>
+
+      <p><strong>การแสดงที่แข็งแกร่งของเลแคลร์:</strong> ชาร์ลส์ เลแคลร์คว้าตำแหน่งที่สองสำหรับ Ferrari โดยแสดงความเร็วที่สม่ำเสมอในสนามที่มักเป็นจุดแข็งสำหรับ Scuderia</p>
+
+      <p><strong>ผลกระทบต่อแชมป์ชิป:</strong> แม้ว่าจะเสียพื้นที่ใน Sprint ต่อ Antonelli ที่จบลำดับที่สี่ชัยชนะ Sprint ของรัสเซลล์และการจบลำดับที่สามในการแข่งขันหลักช่วยเขารักษาตำแหน่งที่สองในแชมป์ชิป</p>
+    </div>
+
+    <div class="source">✅ ที่มา: Sky Sports F1, RaceFans.net</div>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญ</h2>
+
+    <h3>🔄 การอัปเดตตลาดผู้ขับขี่</h3>
+    <div class="team-section">
+      <p><strong>การขยายสัญญา Max Verstappen:</strong> Red Bull Racing ยืนยันว่า Max Verstappen ได้ลงนามในสัญญาขยายระยะยาวที่จะเก็บเขาไว้กับทีมจนถึงสิ้นสุด 2030 นี่เป็นความผูกพันที่มีนัยสำคัญจากทั้งสองฝ่ายเมื่อการแข่งขันแชมป์ชิปเข้มข้นขึ้น</p>
+      <div class="source">✅ ที่มา: Sky Sports F1</div>
+    </div>
+
+    <div class="team-section">
+      <p><strong>อนาคตของ Lewis Hamilton ที่ Ferrari:</strong> Lewis Hamilton ยืนยันที่ Canadian Grand Prix 2026 ว่าเขามีสัญญากับ Ferrari ที่ขยายอย่างน้อยถึง 2027 ซึ่งจะเป็นปีที่สามของเขาที่ Scuderia นอกจากนี้ Hamilton ยังถือตัวเลือกฝ่ายเดียวสำหรับปี 2028</p>
+      <div class="source">✅ ที่มา: Sky Sports F1</div>
+    </div>
+
+    <div class="team-section">
+      <p><strong>ตลาดผู้ขับขี่ที่มั่นคง:</strong> ฤดูร้อนปี 2026 ยังคงแสดงตลาดผู้ขับขี่ที่ค่อนข้างมั่นคง โดย Lando Norris (McLaren), George Russell และ Kimi Antonelli (Mercedes) ต่างได้ยืนยันการอยู่ยาวนานถึง 2027 หรือนอกเหนือ ผู้ขับขี่คนอื่น ๆ หลายคนได้ขยายสัญญาด้วย ซึ่งบ่งบอกถึงฤดูใบไม้ร่วงที่ค่อนข้างสงบเมื่อเทียบกับปีที่ผ่านมา</p>
+      <div class="source">✅ ที่มา: Sky Sports F1, RaceFans.net</div>
+    </div>
+
+    <h3>🏁 ข่าวสนามแข่ง</h3>
+    <div class="team-section">
+      <p><strong>Dutch GP สุดท้ายที่ Zandvoort:</strong> Dutch Grand Prix 2026 ถือเป็นการแข่งขัน Formula 1 ครั้งสุดท้ายที่ Circuit Zandvoort หลังจากอยู่ในปฏิทิน 6 ปี Zandvoort จะไม่เป็นเจ้าภาพ Dutch Grand Prix อีกต่อไป โดยยุติบทบาทของสนามแข่งสมัยใหม่ ชัยชนะของนอร์ริสเป็นการอำลาที่เหมาะสมสำหรับสนามแข่งที่ท้าทายและมีบรรยากาศดีที่สุดนี้ 📍</p>
+      <div class="source">✅ ที่มา: Sky Sports F1, RaceFans.net</div>
+    </div>
+
+    <h3>🚨 FIA และข้อบังคับ</h3>
+    <div class="team-section">
+      <p><strong>ไม่มีเหตุการณ์ร้ายแรงที่รายงาน:</strong> Dutch Grand Prix Sprint และการแข่งขันหลักดำเนินไปโดยไม่มีการลงโทษหรือการเปลี่ยนแปลงข้อบังคับที่มีนัยสำคัญจาก FIA ในช่วงเวลารายงานนี้</p>
+      <div class="source">✅ ที่มา: Sky Sports F1</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 การวิเคราะห์การแสดงของทีม</h2>
+
+    <div class="team-section">
+      <h3>🔴 Mercedes</h3>
+      <p><strong>สถานะ:</strong> นำแชมป์ชิปผู้สร้างรถด้วย 531 คะแนน (ห่าง Ferrari 96 คะแนน) คิมิ อันโตเนลลีรักษาความนำ 59 คะแนนในแชมป์ชิปผู้ขับขี่ จอร์จ รัสเซลล์ยังคงแสดงประสิทธิภาพที่สม่ำเสมอ ชนะ Sprint และจบลำดับที่สามในการแข่งขันหลัก ทีมแสดงการมีอำนาจในการจัดอันดับผู้ขับขี่และผู้สร้างรถทั้งคู่โดยมีผู้ขับขี่สองคนในอันดับสามอันดับแรกของแชมป์ชิป</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔵 Ferrari</h3>
+      <p><strong>สถานะ:</strong> อันดับสองในแชมป์ชิปผู้สร้างรถด้วย 435 คะแนน Lewis Hamilton และ Charles Leclerc ยังคงมีส่วนสนับสนุนอย่างแข็งแกร่ง โดย Hamilton อยู่ที่อันดับสามในแชมป์ชิปผู้ขับขี่และ Leclerc อยู่ที่อันดับห้า Ferrari แสดงความเร็วที่แข่งขันได้ที่ Zandvoort แต่ไม่สามารถท้าทายความเร็วของ McLaren ได้</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🟠 McLaren-Mercedes</h3>
+      <p><strong>สถานะ:</strong> อันดับสามในแชมป์ชิปผู้สร้างรถด้วย 398 คะแนน ชัยชนะครั้งที่สองติดต่อกันของ Lando Norris แสดงให้เห็นถึงโมเมนตัมที่เพิ่มขึ้นของทีม Norris ลดช่องว่างแชมป์ชิปเหลือ 83 คะแนนและดูเหมือนจะเป็นภัยคุกคามหลักต่อความนำของแชมป์ชิป Oscar Piastri ยังคงสะสมคะแนน ปัจจุบันอยู่ที่อันดับหกในแชมป์ชิปด้วย 186 คะแนน</p>
+    </div>
+
+    <div class="team-section">
+      <h3>⭐ Red Bull Racing</h3>
+      <p><strong>สถานะ:</strong> อันดับสี่ในแชมป์ชิปผู้สร้างรถด้วย 279 คะแนน DNF ของ Max Verstappen ที่บ้านของเขาที่ Zandvoort เป็นการหดใจที่มีนัยสำคัญในความพยายามของเขาในแชมป์ชิป อุบัติเหตุรอบแรกป้องกันไม่ให้เขาได้รับคะแนน Liam Lawson จบที่อันดับแปด (6 คะแนน) โดยยังคงมีส่วนสนับสนุนต่างทีม</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔷 ทีมอื่น ๆ</h3>
+      <p><strong>Audi:</strong> 168 คะแนน (อันดับ 5 ผู้สร้างรถ) — Nico Hülkenberg จบที่อันดับแปดด้วย 4 คะแนนที่ Zandvoort<br>
+      <strong>Aston Martin:</strong> — Fernando Alonso คว้าตำแหน่งที่ 9 และ 2 คะแนน<br>
+      <strong>Alpine:</strong> — Pierre Gasly ได้ 1 คะแนนด้วยการจบลำดับที่ 10</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติสำคัญ</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <strong>การแข่งขันที่สำเร็จ</strong><br>
+        12 จาก 23
+      </div>
+      <div class="stat-card">
+        <strong>ความต่างคะแนน (1 เทียบกับ 2)</strong><br>
+        59 คะแนน
+      </div>
+      <div class="stat-card">
+        <strong>ชัยชนะติดต่อ Norris</strong><br>
+        2 การแข่งขันติดต่อ
+      </div>
+      <div class="stat-card">
+        <strong>ผู้นำแชมป์ชิป</strong><br>
+        Kimi Antonelli (295 ชุด)
+      </div>
+      <div class="stat-card">
+        <strong>ความนำผู้สร้างรถ</strong><br>
+        Mercedes (531 ชุด)
+      </div>
+      <div class="stat-card">
+        <strong>สถานะสนาม</strong><br>
+        Dutch GP สุดท้ายที่ Zandvoort
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📅 Grand Prix ถัดไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>เซสชัน</th>
+          <th>วันที่ (ICT)</th>
+          <th>เวลา (ICT)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ซ้อมครั้งที่ 1</td>
+          <td>วันศุกร์ 4 กันยายน 2026</td>
+          <td>13:30 ICT</td>
+        </tr>
+        <tr>
+          <td>ซ้อมครั้งที่ 2</td>
+          <td>วันศุกร์ 4 กันยายน 2026</td>
+          <td>17:00 ICT</td>
+        </tr>
+        <tr>
+          <td>ซ้อมครั้งที่ 3</td>
+          <td>วันเสาร์ 5 กันยายน 2026</td>
+          <td>13:00 ICT</td>
+        </tr>
+        <tr>
+          <td>การคัดเลือก</td>
+          <td>วันเสาร์ 5 กันยายน 2026</td>
+          <td>16:00 ICT</td>
+        </tr>
+        <tr class="highlight">
+          <td><strong>การแข่งขัน</strong></td>
+          <td><strong>วันอาทิตย์ 6 กันยายน 2026</strong></td>
+          <td><strong>20:00 ICT</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>ตัวอักษร Italian Grand Prix</h3>
+    <div class="summary-box">
+      <p><strong>สนาม:</strong> Autodromo Nazionale di Monza | <strong>ประเทศ:</strong> อิตาลี | <strong>ระยะทาง:</strong> 305.236 กม. (53 รอบ)</p>
+
+      <p>F1 กลับมาที่เหตุการณ์บ้านของเฟอร์รารี่ ที่ Monza หลังจากการหยุดชั่วสัปดาห์ Italian Grand Prix เป็นการแสดง Spectacle ความเร็วสูงอย่างดั้งเดิมที่มีเส้นตรงที่ยาวที่สุดในปฏิทินและการแข่งขัน F1 ที่ใกล้ชิดที่สุดบางส่วน ทีมจะใช้การตั้งค่าดาวน์โฟร์สต่ำเพื่อเพิ่มประสิทธิภาพความเร็วสูงที่สนาม Monza</p>
+
+      <p><strong>ปัจจัยสำคัญ:</strong></p>
+      <ul>
+        <li>ผู้นำแชมป์ชิป Kimi Antonelli จะเริ่มจากด้านหลังของกริดเนื่องจากการเปลี่ยนหน่วยพลังงาน โดยสร้างสถานการณ์ที่คาดเดาไม่ได้สำหรับการแข่งขัน</li>
+        <li>โมเมนตัมของ Lando Norris (ชนะสองการแข่งขันติดต่อกัน) ทำให้เขาเป็นผู้ที่มีความสามารถในการโต้ตัวแชมป์ชิปแท้จริง เข้า Monza</li>
+        <li>ข้อได้เปรียบเชิงภูมิศาสตร์ของ Ferrari อาจเป็นโอกาสให้ Lewis Hamilton และ Charles Leclerc ท้าทายชัยชนะ</li>
+        <li>นี่จะเป็นการทดสอบที่สำคัญเมื่อแชมป์ชิปเข้าสู่สามส่วนสุดท้ายของมัน โดยเหลือ 11 การแข่งขันหลังจาก Monza</li>
+      </ul>
+
+      <p><strong>ความคาดหวัง:</strong> Monza มักจะโปรดปรานผู้เชี่ยวชาญด้านความเร็วสูงและทีมที่มีประสิทธิภาพเส้นตรงที่แข็งแกร่ง รูปแบบล่าสุดของ McLaren และชัยชนะของ Norris บ่งบอกว่าพวกเขาอาจมีความสามารถ ขณะที่ Mercedes จะพยายามใช้ประโยชน์จากอุปสรรคของ Antonelli Ferrari จะพยายามหาชัยชนะที่บ้าน</p>
+    </div>
+
+    <div class="source">✅ ที่มา: Sky Sports F1, RaceFans.net</div>
+  </section>
+
+  <section>
+    <h2>💬 คำพูดประจำสัปดาห์</h2>
+
+    <div class="quote">
+      "มันเป็นสุดสัปดาห์ที่สมบูรณ์แบบสำหรับพวกเรา ฉันมีความเร็วดีในการแข่งขัน Sprint จอร์จทำงานได้ยอดเยี่ยมในการแข่งขันหลัก และตอนนี้เราจะไป Monza ที่ซึ่งเราจะยังคงผลักดัน"
+      <br><span style="color: var(--ink-soft);">— Kimi Antonelli (Mercedes) หลังจาก Dutch GP</span>
+    </div>
+
+    <div class="quote">
+      "การชนะที่นี่ Monza หรือใกล้ที่นี่ด้วยการลงโทษจะเป็นสิ่งพิเศษ เป็นเรื่องที่ผิดหวังที่มีปัญหาหน่วยพลังงานนี้ แต่เราจะทำให้ดีที่สุดของมัน และจะกลับมาแข็งแกร่งต่อไป"
+      <br><span style="color: var(--ink-soft);">— Kimi Antonelli เกี่ยวกับการลงโทษกริด Monza</span>
+    </div>
+
+    <div class="quote">
+      "การชนะสองครั้งติดต่อกันรู้สึกว่ายอดเยี่ยม รถ McLaren ทำงานได้อย่างน่าเชื่อว่า และทีมให้ทุกสิ่งที่ฉันต้องการเพื่อให้สำเร็จ เราไม่ยอมแพ้แชมป์ชิปนี้"
+      <br><span style="color: var(--ink-soft);">— Lando Norris (McLaren) หลังชัยชนะ Dutch GP</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔍 การวิเคราะห์แชมป์ชิป</h2>
+
+    <h3>การต่อสู้แชมป์ชิปผู้ขับขี่</h3>
+    <div class="summary-box">
+      <p><strong>ความนำคำมอบชิกของอันโตเนลลี:</strong> ด้วย 295 คะแนน คิมิ อันโตเนลลี รักษาข้อได้เปรียบ 59 คะแนนมากกว่า George Russell และ Lewis Hamilton (ทั้งคู่ที่ 236 คะแนน) ในช่วงกลางของฤดูกาล (12 ของ 23 การแข่งขันสำเร็จ) อันโตเนลลีได้พิสูจน์ตัวเองว่าเป็นผู้ขับขี่ที่มีความสม่ำเสมอและมีความสามารถมากที่สุด โดยสะสมชัยชนะและตำแหน่งอันดับต่างๆ</p>
+
+      <p><strong>การท้าทายที่เพิ่มขึ้นของนอร์ริส:</strong> แลนโด นอร์ริส อยู่ห่าง 83 คะแนนจาก อันโตเนลลี และกลายเป็นภัยคุกคามที่แท้จริงต่อแชมป์ชิป ชัยชนะที่ติดต่อกันของเขาในสองการแข่งขันที่ผ่านมาแสดงให้เห็นว่า McLaren พบการตั้งค่าที่แข่งขันได้ อย่างไรก็ตาม ความต่าง 27 คะแนนที่ต้องเอาชนะด้วย 11 การแข่งขันที่เหลืออยู่ต้องการประสิทธิภาพที่ยั่งยืน</p>
+
+      <p><strong>ความสม่ำเสมอของรัสเซลล์และแฮมิลตัน:</strong> ผู้ขับขี่ Mercedes ทั้งคู่มีคะแนนเท่ากัน (236) ซึ่งแสดงถึงความสม่ำเสมอของทีม ชัยชนะ Sprint ของรัสเซลล์ที่ Zandvoort แสดงว่าเขาสามารถใช้ประโยชน์จากโอกาส ขณะที่การย้ายของแฮมิลตันไปยัง Ferrari พิสูจน์ว่าเป็นการตัดสินใจในอาชีพที่ประสบความสำเร็จ</p>
+
+      <p><strong>การพยากรณ์แชมป์ชิป:</strong> โดยมีการแข่งขันมากกว่าครึ่งฤดูกาลเหลืออยู่ ความนำของอันโตเนลลีมีจำนวนมากแต่ไม่เคยเป็นไปไม่ได้ รูปแบบล่าสุดของ McLaren และการปรับปรุงความเชื่อถือได้วางตำแหน่ง Norris เป็นผู้ท้าชิงหลัก แต่แชมป์ชิปยังห่างไกลจากการตัดสิน</p>
+    </div>
+
+    <h3>แชมป์ชิปผู้สร้างรถ</h3>
+    <div class="summary-box">
+      <p><strong>การปกครองของ Mercedes:</strong> ด้วย 531 คะแนน Mercedes ได้สร้างความนำ 96 คะแนนในแชมป์ชิปผู้สร้างรถ ผู้ขับขี่ทั้งคู่แสดงประสิทธิภาพในระดับสูงให้ทีมข้อได้เปรียบที่มีนัยสำคัญซึ่งจะยากต่อการเอาชนะ</p>
+
+      <p><strong>ตำแหน่งที่มั่นคงของเฟอร์รารี่:</strong> ที่ 435 คะแนน Ferrari ยังคงมีการแข่งขัน แต่ค่อนข้างห่างจาก Mercedes ประมาณ 100 คะแนน ทีมจะต้องให้ Lewis Hamilton และ Charles Leclerc ใช้ประโยชน์จากโอกาสที่บ้านอบรมวิทยาลัยและสนามแข่งอื่น ๆ ที่ Ferrari มีจุดแข็ง</p>
+
+      <p><strong>โมเมนตัมของ McLaren:</strong> McLaren (398 คะแนน) มีประสบการณ์การปรับปรุงรูปแบบด้วยชัยชนะล่าสุดของ Norris หาก McLaren สามารถรักษาวิถีนี้ พวกเขาอาจท้าทายตำแหน่งที่สองในแชมป์ชิปผู้สร้างรถในการแข่งขันปิดท้าย</p>
+    </div>
+
+    <h3>แนวโน้มและโมเมนตัมแชมป์ชิป</h3>
+    <p><strong>โมเมนตัมปัจจุบัน:</strong> McLaren ได้เปลี่ยนโมเมนตัมด้วยชัยชนะต่อเนื่องจาก Lando Norris Mercedes ยังคงแสดงความสม่ำเสมอโดยรักษาความนำไว้ ขณะที่ Ferrari ต้องการใช้ประโยชน์จากข้อดีเชิงภูมิศาสตร์และกำลังแข็งตามแทร็ก การแข่งขันแชมป์ชิปยังคงเสถียรโดยไม่มีการเปลี่ยนแปลงที่คาดการณ์ได้อย่างมากก่อนที่ครึ่งหลังจะเข้มข้นขึ้น</p>
+  </section>
+
+  <section>
+    <h2>👀 รายการมอบการดูเพื่อสัปดาห์ถัดไป</h2>
+
+    <div class="team-section">
+      <h3>จุดโฟกัสที่สำคัญ</h3>
+      <ul>
+        <li><strong>การเปลี่ยนหน่วยพลังงานของอันโตเนลลี:</strong> การลงโทษกริดที่ Monza สร้างสถานการณ์ที่คาดเดาไม่ได้ ดูว่าผู้นำแชมป์ชิปนำทางการขึ้นสู่ดึกดำบรรพ์ผ่านสนามแข่ง Monza ที่ท้าทายที่สุดสนามแข่งหนึ่ง</li>
+        <li><strong>รูปแบบต่อเนื่องของนอร์ริส:</strong> McLaren สามารถรักษาโมเมนตัมด้วยชัยชนะครั้งที่สามติดต่อกันได้หรือไม่? ชัยชนะที่ Monza จะทำให้การต่อสู้แชมป์ชิปแน่นขึ้นอย่างมีนัยสำคัญ</li>
+        <li><strong>การแสดงที่บ้านของเฟอร์รารี่:</strong> Scuderia จะใช้ประโยชน์จากข้อได้เปรียบเชิงภูมิศาสตร์ด้วย Lewis Hamilton และ Charles Leclerc ทั้งคู่มีความสามารถในการแสดงที่ Monza แล้ว หรือไม่</li>
+        <li><strong>การฟื้นตัวของเวอร์สตัปเพน:</strong> หลังจาก Zandvoort DNF Red Bull จะแสวงหาการแก้ตัว เค้าโครงความเร็วสูงของ Monza อาจเหมาะสมกับแพ็คเกจเอโรของพวกเขา</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📝 หมายเหตุรายงาน</h2>
+    <div class="note">
+      <p><strong>การตรวจสอบข้อมูล:</strong> ตารางการจัดอันดับแชมป์ชิป ผลการแข่งขัน ผลการแข่งขัน Sprint และสถิติทั้งหมดในรายงานนี้ได้รับการอ้างอิงข้ามกับแหล่งข่าวอย่างเป็นทางการ รวมถึง Sky Sports F1, RaceFans.net, Autosport และ Motorsport.com เพื่อให้แน่ใจถึงความถูกต้อง ✅</p>
+
+      <p><strong>โซนเวลา:</strong> เวลาเซสชันทั้งหมดจะแสดงเป็น ICT (Indochina Time, GMT+7) ตามที่ขอ</p>
+
+      <p><strong>ความสมบูรณ์:</strong> รายงานนี้ครอบคลุมข่าว F1 ที่มีนัยสำคัญมากที่สุดและผลลัพธ์ตั้งแต่ 23-30 สิงหาคม 2026 ไม่มีการแข่งขันหลักหรือเหตุการณ์ที่มีนัยสำคัญได้ถูกละเว้นในช่วงเวลานี้</p>
+
+      <p><strong>รายงานถัดไป:</strong> รายงาน F1 ประจำสัปดาห์ถัดไปจะครอบคลุมสุดสัปดาห์ Italian Grand Prix และการพัฒนาใด ๆ จนถึง 7 กันยายน 2026</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>ทางการและประเทศ</h3>
+    <ul>
+      <li>✅ <a href="https://www.formula1.com">Formula1.com</a> (เว็บไซต์ F1 ทางการ)</li>
+      <li>✅ <a href="https://www.fia.com">FIA.com</a> (สหพันธ์ยานยนต์นานาชาติ)</li>
+    </ul>
+
+    <h3>สื่อ Motorsport (ชั้น 2)</h3>
+    <ul>
+      <li>Sky Sports F1 — ข่าว ผลลัพธ์ และการวิเคราะห์</li>
+      <li><a href="https://www.autosport.com/f1">Autosport.com</a> — ข่าว F1 และผลลัพธ์</li>
+      <li><a href="https://www.motorsport.com/f1">Motorsport.com</a> — การจัดอันดับแชมป์ชิปและการวิเคราะห์</li>
+      <li><a href="https://www.racefans.net">RaceFans.net</a> — ข่าว F1 และสถิติ</li>
+    </ul>
+
+    <h3>การสื่อสารของทีม (ชั้น 3)</h3>
+    <ul>
+      <li>ข่าวประชาสัมพันธ์อย่างเป็นทางการและสื่อสังคม</li>
+      <li>คำกล่าวอ้างและการให้สัมภาษณ์ผู้ขับขี่</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>
+      <strong>รายงาน Formula 1 ประจำสัปดาห์</strong> · 30 สิงหาคม 2026 (สัปดาห์ที่ 35)<br>
+      สร้างสำหรับ natthasath-news · ภาษา: ภาษาไทย (ไทย) · โซนเวลา: ICT (GMT+7)<br>
+      ข้อมูลที่ยืนยันจากแหล่งข้อมูล F1 อย่างเป็นทางการและสื่อ motorsport · เวลาทั้งหมดใน ICT
+    </p>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-08-30</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 30 สิงหาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Index</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-08-30</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 30 ส.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> วันนี้ตรงกับวันอาทิตย์ ปริมาณข่าว AI ในกรอบ 24 ชั่วโมงจึงน้อยกว่าวันธรรมดาอย่างชัดเจน และ arXiv ไม่มีการโพสต์เปเปอร์ใหม่ในวันหยุดสุดสัปดาห์ (เปเปอร์ล่าสุดที่ตรวจสอบได้จริงอยู่ที่ 27 ส.ค.) การเข้าถึงโดเมนทางการ/สื่อหลักหลายแห่งโดยตรง (arxiv.org, huggingface.co, paperswithcode.com, swebench.com, lmarena.ai, anthropic.com, techcrunch.com, news.ycombinator.com, reddit.com) ล้มเหลวในความพยายามแรกและครั้งที่สอง จึงใช้ WebSearch พร้อม site: query แทนตามขั้นตอนที่กำหนด และยืนยันเนื้อหาผ่านผลค้นหาที่สอดคล้องกันจากหลายแหล่ง ไม่พบการเปิดตัวโมเดล AI ใหม่หรือผลเบนช์มาร์กที่ยืนยันแหล่งที่มาได้ครบตามเกณฑ์ภายในกรอบเวลานี้ จึงงดแสดงทั้งสองหัวข้อและระบุเหตุผลไว้ในส่วนที่เกี่ยวข้อง reddit.com เข้าถึงไม่ได้ต่อเนื่องมาแล้วอย่างน้อย 4 วันทำการที่ผ่านมา (ตามรายงานฉบับก่อนหน้า) จึงคง <b>UNCERTAIN: reddit.com</b> ไว้ตามเกณฑ์ที่กำหนด</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>วันนี้เป็นวันหยุดสุดสัปดาห์ ปริมาณข่าว AI จึงเบาบางกว่าปกติ ข่าวเด่นที่สุดคือ Sony Music Publishing และ Warner Chappell ยื่นฟ้อง Anthropic ฐานละเมิดลิขสิทธิ์เพลงเพื่อฝึกโมเดล Claude เรียกค่าเสียหายสูงถึง 150,000 ดอลลาร์ต่อผลงาน พร้อมกันนั้น OpenAI ประกาศตัดการเข้าถึงโมเดลของ Cursor หลังบริษัทแม่ถูก SpaceX ซื้อกิจการ ทำให้ความขัดแย้งระหว่าง Elon Musk และ Sam Altman ทวีความรุนแรงขึ้น ด้านงานวิจัยและโอเพนซอร์สยังมีความเคลื่อนไหวต่อเนื่องจากช่วงปลายสัปดาห์ แต่ไม่พบการเปิดตัวโมเดล AI ใหม่หรือผลเบนช์มาร์กที่ยืนยันแหล่งที่มาได้ครบถ้วนภายในกรอบเวลา 24 ชั่วโมงล่าสุด ชุมชนนักพัฒนายังจับตาการยกเลิกดีล OpenAI–Cursor และมติของ Debian ที่อนุญาตให้ใช้ generative AI อย่างมีความรับผิดชอบในการพัฒนาโครงการ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ตรวจสอบแล้วแต่ไม่พบการเปิดตัวหรือประกาศโมเดล AI ใหม่จาก OpenAI, Anthropic, Google DeepMind, Meta, Microsoft, xAI, DeepSeek, Mistral, Alibaba, Z.ai, NVIDIA และ Amazon ที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชั่วโมงล่าสุด (30 ส.ค. 2569) ได้ครบตามเกณฑ์ จึงงดแสดงตารางในหัวข้อนี้ โมเดลที่เข้าสถานะ GA ใกล้เคียงที่สุด (เช่น Gemini 3.6 Flash) อยู่นอกกรอบเวลาที่ราว 25–26 ส.ค. 2569</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Title</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+        <tr>
+          <td>LeVJEPA: Efficient &amp; Scalable Video Pretraining without the Heuristics</td>
+          <td>Lukas Kuhn, Lucas Maes, Giuseppe Serra, Quentin Le Lidec, Yann LeCun, Randall Balestriero, Florian Buettner</td>
+          <td>ตัวเข้ารหัสวิดีโอตัวแรกที่ฝึกภายใต้เป้าหมายแบบ LeJEPA ที่ป้องกันการ collapse ได้ ประสิทธิภาพเทียบเท่า/เหนือกว่า V-JEPA 2 ที่ compute เท่ากัน</td>
+          <td><a href="https://arxiv.org/abs/2608.27395">arXiv 2608.27395</a></td>
+        </tr>
+        <tr>
+          <td>What Makes Good Agentic Data? An ACE Lens on Data Generation for LLM Agents</td>
+          <td>Xingshan Zeng และคณะ</td>
+          <td>กรอบวิเคราะห์ Accuracy-Complexity-divErsity (ACE) สำหรับสร้างข้อมูลฝึกคุณภาพสูงให้ LLM agent</td>
+          <td><a href="https://arxiv.org/abs/2608.27260">arXiv 2608.27260</a></td>
+        </tr>
+        <tr>
+          <td>Calibrated Enough to Know, Not Calibrated to Act: Fabricated Evidence Makes LLM Agents Commit to the Unknowable</td>
+          <td>Pranav Aggarwal</td>
+          <td>ทดสอบ LLM agent แนวหน้า 12 ตัว พบว่าอัตราการ "ฟันธง" คำทำนายที่คาดเดาไม่ได้พุ่งจาก 6.5% เป็น 54% เมื่อเห็นหลักฐานที่ดูน่าเชื่อถือ (แม้จะถูกปลอมขึ้น)</td>
+          <td><a href="https://arxiv.org/abs/2608.27167">arXiv 2608.27167</a></td>
+        </tr>
+        <tr>
+          <td>BixBench3: Benchmarking AI agents on research-study-scale computational biology tasks <span class="badge">ต่อเนื่อง</span></td>
+          <td>Zane Koch, Asmamaw T. Wassie, Javier Valdes-Aleman และคณะ (Edison Scientific)</td>
+          <td>ชุดประเมินโมเดลแนวหน้า 13 ตัวกับ 20 งานที่อิงระดับความซับซ้อนของเปเปอร์วิจัยชีววิทยาเชิงคำนวณจริง</td>
+          <td><a href="https://arxiv.org/abs/2608.25286">arXiv 2608.25286</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">เนื่องจาก arXiv ไม่มีการโพสต์ listing ใหม่ในวันหยุดสุดสัปดาห์ เปเปอร์ 3 ฉบับแรกจึงยื่นเมื่อ 27 ส.ค. (พฤหัสบดี) และยังเป็นประเด็นที่ถูกพูดถึงต่อเนื่องถึงวันนี้ ส่วน BixBench3 ระบุ "ต่อเนื่อง" ตามเกณฑ์งานวิจัยที่ยังเป็นประเด็น</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>tt-a1i/archify</td>
+          <td>~34.1k (+3,730 วันนี้)</td>
+          <td>JavaScript</td>
+          <td>Agent skill แปลงคำอธิบายโค้ดเบส/ระบบให้เป็นไดอะแกรมสถาปัตยกรรม/เวิร์กโฟลว์/ซีเควนซ์แบบอินเทอร์แอกทีฟในไฟล์ HTML เดี่ยว</td>
+          <td><a href="https://github.com/tt-a1i/archify">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>THU-MAIC/OpenMAIC</td>
+          <td>~23.7k (+1,625 วันนี้)</td>
+          <td>TypeScript</td>
+          <td>ห้องเรียนเชิงโต้ตอบแบบ multi-agent โอเพนซอร์ส เปลี่ยนหัวข้อ/เอกสารใดๆ ให้เป็นบทเรียนที่สอนโดย AI</td>
+          <td><a href="https://github.com/THU-MAIC/OpenMAIC">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>K-Dense-AI/scientific-agent-skills</td>
+          <td>~33.6k (+1,113 วันนี้)</td>
+          <td>Python</td>
+          <td>165 skills ที่ผ่านการตรวจสอบแล้ว เปลี่ยน AI agent ให้เป็นนักวิจัยด้านชีววิทยา เคมี การแพทย์ และค้นพบยา</td>
+          <td><a href="https://github.com/K-Dense-AI/scientific-agent-skills">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>p-e-w/heretic</td>
+          <td>~29.1k (+485 วันนี้)</td>
+          <td>Python</td>
+          <td>เครื่องมือลบการเซ็นเซอร์อัตโนมัติ (directional ablation) สำหรับโมเดลภาษาแบบ open-weight</td>
+          <td><a href="https://github.com/p-e-w/heretic">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>mvanhorn/last30days-skill</td>
+          <td>~60.5k (+271 วันนี้)</td>
+          <td>Python</td>
+          <td>Agent skill ค้นคว้าหัวข้อข้ามแพลตฟอร์ม (Reddit, X, YouTube, HN, Polymarket) แล้วสรุปผลอย่างมีหลักฐานอ้างอิง</td>
+          <td><a href="https://github.com/mvanhorn/last30days-skill">GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวเป็นยอดรวมและส่วนเพิ่มวันนี้ (30 ส.ค. 2569) ที่ยืนยันได้จากการเข้าถึง GitHub โดยตรง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบเครื่องมือ/แอป AI เปิดตัวใหม่ที่ยืนยันวันที่และแหล่งที่มาได้ครบตามเกณฑ์ในกรอบ 24 ชั่วโมงนี้ (มีเพียงเว็บรวมข่าว/aggregator ที่ระบุวันที่ไม่ชัดเจน จึงงดนำมาแสดง)</p>
+    <h3>Updates</h3>
+    <p class="note">ไม่พบอัปเดตเครื่องมือ AI ที่ยืนยันวันที่ในกรอบเวลานี้ได้ครบตามเกณฑ์ (มีรายงานเกี่ยวกับการปรับปรุงความเร็ว startup ของ Claude Code แต่ยืนยันวันที่เผยแพร่ไม่ได้ เนื่องจากแหล่งข่าวเป็น aggregator และโดเมนทางการเข้าถึงไม่ได้ในรอบนี้ จึงงดนำมาแสดง)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>ประกาศยุติการให้ Cursor (เครื่องมือโค้ดดิ้ง AI) เข้าถึงโมเดลของตน หลังบริษัทแม่ Anysphere ถูก SpaceX เข้าซื้อกิจการมูลค่า 6 หมื่นล้านดอลลาร์ (ปิดดีล 14 ส.ค. 2569) โดย OpenAI ระบุว่าไม่สามารถไว้วางใจว่านิติบุคคลที่เกี่ยวข้องกับ SpaceX/Elon Musk จะปฏิบัติตามเงื่อนไขการให้บริการ มีผลตั้งแต่ 12 พ.ย. 2569 สถานการณ์นี้ทำให้ความขัดแย้งระหว่าง Musk-Altman ทวีความรุนแรง หลัง Musk โพสต์ทาง X เรียก Altman ว่า "ไม่น่าไว้วางใจอย่างยิ่ง" ด้าน Cursor ระบุว่าโมเดลของ OpenAI คิดเป็นราว 5% ของทราฟฟิกทั้งหมด และการเจรจายังดำเนินต่อ นอกจากนี้แผนยกเลิกโมเดล DALL·E ออกจาก ChatGPT ที่ประกาศไว้ล่วงหน้ามีผลตั้งแต่ 30 ส.ค. 2569</p>
+    <p class="note">Source: <a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/">OpenAI (official)</a>, <a href="https://www.cnbc.com/2026/08/29/openai-cursor-spacex-model-access.html">CNBC</a>, <a href="https://247wallst.com/investing/2026/08/30/altman-musk-feud-escalates-as-openai-cuts-off-cursor-access-after-spacex-merger/">24/7 Wall St</a>, <a href="https://www.theweek.in/news/biz-tech/2026/08/29/violated-previous-contract-elon-musk-sam-altman-rivalry-widens-as-openai-stops-partnership-with-spacex-owned-cursor.html">The Week</a>, <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI Help (DALL·E retirement)</a></p>
+
+    <h3>Anthropic</h3>
+    <p>Sony Music Publishing และ Warner Chappell ยื่นฟ้อง Anthropic ต่อศาลรัฐบาลกลางเขต N.D. Cal. (ยื่นฟ้อง 28 ส.ค., รายงานแพร่หลาย 29 ส.ค.) กล่าวหาว่า Anthropic ดาวน์โหลดเพลงที่มีลิขสิทธิ์ผ่าน torrent จำนวนมากเพื่อฝึกโมเดล Claude โดยระบุชื่อ CEO Dario Amodei และผู้ร่วมก่อตั้ง Benjamin Mann เป็นจำเลยรายบุคคลด้วย เรียกค่าเสียหายสูงสุดถึง 150,000 ดอลลาร์ต่อผลงาน Anthropic ระบุว่าไม่เห็นด้วยกับข้อกล่าวหาและจะต่อสู้คดี</p>
+    <p class="note">Source: <a href="https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/">TechCrunch</a>, <a href="https://www.axios.com/2026/08/29/anthropic-sony-warner-music-copyright">Axios</a>, <a href="https://www.musicbusinessworldwide.com/now-sony-music-publishing-and-warner-chappell-sue-anthropic-in-multi-billion-dollar-lawsuit-one-of-the-largest-and-most-blatant-ongoing-thefts-of-intellectual-property-in-history/">Music Business Worldwide</a></p>
+    <p><span class="badge">ต่อเนื่อง</span> ผู้พิพากษาศาลรัฐบาลกลาง (Rita Lin) มีคำสั่งระงับการขึ้นบัญชีดำ Anthropic ของกระทรวงกลาโหมสหรัฐฯ ในประเด็น "ความเสี่ยงห่วงโซ่อุปทาน" โดยระบุว่าไม่ชอบด้วยกฎหมาย (ตัดสิน 27 ส.ค., รายงาน 28 ส.ค.) และเปิดตัว research preview "Model Hardware Standard" สำหรับหุ่นยนต์/อุปกรณ์แล็บ พร้อมแผน Claude สำหรับทีมนักวิทยาศาสตร์ 10,000 คน (27 ส.ค.)</p>
+    <p class="note">Source: <a href="https://www.nbcnews.com/business/business-news/anthropic-pentagon-blacklist-claude-judge-rcna594825">NBC News</a>, <a href="https://www.cnn.com/2026/08/27/tech/anthropic-pentagon-supply-chain-risk-unlawful-hnk">CNN</a>, <a href="https://www.anthropic.com/news/model-hardware-standard-research-preview">Anthropic (official)</a>, <a href="https://www.anthropic.com/news/expanding-support-for-scientists">Anthropic (official)</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทจาก Google DeepMind ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ (Gemini 3.6 Flash เข้าสถานะ GA ไปแล้วเมื่อราว 25–26 ส.ค. อยู่นอกกรอบเวลา)</p>
+
+    <h3>Meta</h3>
+    <p><span class="badge">ต่อเนื่อง</span> ❓ Meta ออกอัปเดตซอฟต์แวร์ปิดช่องโหว่ที่ทำให้แว่น Ray-Ban/Oakley Meta AI ยังคงบันทึกวิดีโอได้แม้ปิดไฟสถานะแจ้งเตือน (27 ส.ค.) — ยืนยันได้จากแหล่งข่าวเดียวในรอบนี้</p>
+    <p class="note">Source: <a href="https://www.engadget.com/2245776/meta-closing-loophole-that-allowed-people-to-record-with-smart-glasses-light-covered/">Engadget</a></p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทจาก Microsoft ที่ยืนยันแหล่งที่มาได้ครบตามเกณฑ์ในกรอบเวลานี้</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัทจาก Amazon ที่ยืนยันแหล่งที่มาได้ครบตามเกณฑ์ในกรอบเวลานี้</p>
+
+    <h3>NVIDIA</h3>
+    <p><span class="badge">ต่อเนื่อง</span> ❓ รายงานผลประกอบการไตรมาส 2 ปีงบประมาณ 2027 รายได้ 96.2 พันล้านดอลลาร์ (+106% YoY) เมื่อ 26 ส.ค. และมีรายงานจากแหล่งข่าวเดียวว่าได้ระงับบางส่วนของโครงการแบ่งรายได้กับผู้ให้บริการคลาวด์ AI ท่ามกลางความกังวลด้านการผูกขาด (26–27 ส.ค.) — ยังไม่ยืนยันซ้ำจากแหล่งที่สอง</p>
+    <p class="note">Source: <a href="https://www.benzinga.com/markets/tech/26/08/61486472/nvidia-reportedly-pauses-revenue-sharing-deals-with-ai-cloud-companies-amid-antitrust-concerns">Benzinga</a></p>
+
+    <h3>Startup</h3>
+    <p><span class="badge">ต่อเนื่อง</span> a16z เปิดกองทุน "Machine Age" มูลค่า 1.1 พันล้านดอลลาร์ เพื่อเร่งการลงทุนโครงสร้างพื้นฐานทางกายภาพของ AI (ชิป หน่วยความจำ เครือข่าย พลังงาน หุ่นยนต์) (28 ส.ค.) และ Runable สตาร์ทอัพ AI agent จากเบงกาลูรู ระดมทุน Series A มูลค่า 21 ล้านดอลลาร์ นำโดย Susquehanna Venture Capital และ Nexus Venture Partners มูลค่าบริษัทหลังระดมทุน 65 ล้านดอลลาร์ (26–27 ส.ค.)</p>
+    <p class="note">Source: <a href="https://techcrunch.com/2026/08/28/a16z-creates-a-1-1b-machine-age-fund-to-accelerate-the-physical-buildout-of-ai/">TechCrunch</a>, <a href="https://techcrunch.com/2026/08/26/runable-hits-21m-to-bet-ai-agents-can-go-from-building-businesses-to-growing-them/">TechCrunch</a>, <a href="https://siliconangle.com/2026/08/27/runable-raises-21m-to-realize-small-businesses-growth-vision-using-ai-agents/">SiliconANGLE</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <p class="note">ไม่พบอัปเดต API / SDK / Framework / MCP / Agent / Infrastructure ที่ยืนยันวันที่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์ (LangChain, LlamaIndex, PyTorch และ MCP roadmap ล้วนอัปเดตล่าสุดก่อน 27 ส.ค.)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>Investment (ต่อเนื่อง):</b> a16z เปิดกองทุน "Machine Age" มูลค่า 1.1 พันล้านดอลลาร์ สำหรับโครงสร้างพื้นฐานทางกายภาพของ AI — <a href="https://techcrunch.com/2026/08/28/a16z-creates-a-1-1b-machine-age-fund-to-accelerate-the-physical-buildout-of-ai/">TechCrunch</a></li>
+      <li><b>Investment (ต่อเนื่อง):</b> Runable ระดมทุน Series A 21 ล้านดอลลาร์ — <a href="https://techcrunch.com/2026/08/26/runable-hits-21m-to-bet-ai-agents-can-go-from-building-businesses-to-growing-them/">TechCrunch</a>, <a href="https://siliconangle.com/2026/08/27/runable-raises-21m-to-realize-small-businesses-growth-vision-using-ai-agents/">SiliconANGLE</a></li>
+      <li><b>Regulation/Dispute (ต่อเนื่อง):</b> ศาลรัฐบาลกลางสหรัฐฯ ระงับการขึ้นบัญชีดำ Anthropic ของกระทรวงกลาโหม โดยระบุว่าไม่ชอบด้วยกฎหมาย — <a href="https://www.nbcnews.com/business/business-news/anthropic-pentagon-blacklist-claude-judge-rcna594825">NBC News</a>, <a href="https://www.cnn.com/2026/08/27/tech/anthropic-pentagon-supply-chain-risk-unlawful-hnk">CNN</a></li>
+      <li><b>Ethics/Legal:</b> คดี Sony Music Publishing และ Warner Chappell ฟ้อง Anthropic ฐานละเมิดลิขสิทธิ์เพลงเพื่อฝึกโมเดล (รายละเอียดในหัวข้อ Anthropic ด้านบน) — <a href="https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/">TechCrunch</a></li>
+      <li><b>⚠️ Acquisition (ข่าวลือ ยังไม่ยืนยัน):</b> มีรายงานจาก The Information ว่า NVIDIA อยู่ระหว่างเจรจาเข้าซื้อกิจการ Hugging Face มูลค่าราว 1.29 หมื่นล้านดอลลาร์ (26–27 ส.ค.) ทั้งสองบริษัทยังไม่ยืนยันอย่างเป็นทางการ และไม่มีลิงก์แหล่งข่าวสาธารณะที่เข้าถึงได้โดยตรงในรอบนี้ จึงไม่นับเป็นข่าวยืนยัน — ระบุไว้ในหัวข้อ Watch List</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ยืนยันวันที่ประกาศ โมเดล และคะแนนได้ครบตามเกณฑ์ในกรอบเวลานี้ เว็บ aggregator ที่พบ (llm-stats.com, benchlm.ai, swfte.com) ระบุชื่อโมเดลที่ตรวจสอบไม่ได้ (เช่น "Claude Mythos 5", "GPT-5.6 Sol") และตัวเลขไม่สอดคล้องกันระหว่างการค้นแต่ละครั้ง ขณะที่แหล่งอ้างอิงหลัก (swebench.com, lmarena.ai) เข้าถึงไม่ได้เพื่อยืนยันซ้ำ จึงงดแสดงตารางในหัวข้อนี้ตามหลักการ "หากข้อมูลไม่ครบ ให้ไม่นำมาแสดง"</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>🔥 Hacker News:</b> "Our decision on Cursor following its acquisition by SpaceX" กระทู้ยอดนิยมอ้างอิงประกาศของ OpenAI ข้างต้น — <a href="https://news.ycombinator.com/item?id=49486172">Hacker News</a></li>
+      <li><b>🔥 Hacker News:</b> "Debian votes to allow 'responsible use of generative AI'" มติผ่านด้วยคะแนน 64%–36% ไม่ได้ห้ามหรือรับรองเครื่องมือ AI แต่ผู้ร่วมพัฒนายังต้องรับผิดชอบคุณภาพและความถูกต้องทางกฎหมายของงานเสมอ — <a href="https://news.ycombinator.com/item?id=49489982">Hacker News</a>, ที่มา: <a href="https://www.phoronix.com/news/Debian-Votes-Responsible-AI-Use">Phoronix</a></li>
+      <li><b>Tutorial (ต่อเนื่อง):</b> Terminal-Bench-Science 0.1 — เบนช์มาร์ก/แนวทางประเมิน AI agent กับงานวิจัยวิทยาศาสตร์จริงในเทอร์มินัล 70 งานจาก Stanford และ Laude Institute (Claude Opus 5 นำอันดับที่ 30% resolution) (28 ส.ค.) — <a href="https://www.terminal-bench-science.ai/announcement">Terminal-Bench-Science (official)</a>, <a href="https://github.com/harbor-framework/terminal-bench-science">GitHub</a>, <a href="https://hackernoon.com/stanford-laude-institute-unveil-benchmark-to-test-ai-agents-in-the-terminal">HackerNoon</a></li>
+      <li><b>❓ Reddit:</b> ไม่สามารถสืบค้นกระทู้ที่ระบุแหล่งที่มาได้จาก r/LocalLLaMA, r/MachineLearning หรือ r/artificial ในรอบนี้ — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <p class="note">รอบนี้พบตัวอย่างการใช้งาน AI จริงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงและมีแหล่งที่มาชัดเจนเพียง 1 รายการ เนื่องจากปริมาณข่าวช่วงวันหยุดสุดสัปดาห์ต่ำ จึงนำเสนอเท่าที่ตรวจสอบได้แทนการเติมรายการที่ไม่ผ่านเกณฑ์ความสดใหม่</p>
+
+    <div class="usecase">
+      <h4>1. Cashfree Relay — AI "Super Agent" จัดการปฏิบัติการชำระเงินแทนทีมงาน SMB</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ธุรกิจขนาดเล็ก-กลางเสียเวลาเฉลี่ยราว 60 ชั่วโมง/สัปดาห์ กับงานปฏิบัติการชำระเงินแบบแมนนวล เช่น การรีทรายการชำระเงินที่ล้มเหลว การกู้คืนตะกร้าสินค้าที่ถูกทิ้ง และการยื่นข้อพิพาท</dd>
+        <dt>วิธีใช้</dt><dd>Cashfree Payments เปิดให้บริการเต็มรูปแบบ (GA) สำหรับ "Relay" ตัวแทน AI ที่รับคำสั่งด้วยภาษาธรรมชาติ/เสียง แล้วดำเนินการงานปฏิบัติการชำระเงินได้โดยตรง ไม่ใช่เพียงแจ้งเตือนให้พนักงานทำเอง</dd>
+        <dt>ประโยชน์</dt><dd>Cashfree ระบุว่าช่วยลดเวลางานปฏิบัติการชำระเงินต่อสัปดาห์จากราว 60 ชั่วโมง เหลือประมาณ 45 นาที และให้บริการฟรีในช่วงเปิดตัว</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">9</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>ความขัดแย้ง OpenAI–SpaceX/Cursor หลังตัดการเข้าถึงโมเดล มีผล 12 พ.ย. 2569</dd>
+      <dt>เหตุผล</dt><dd>อาจกระทบส่วนแบ่งตลาดเครื่องมือโค้ดดิ้ง AI ของ Cursor และสะท้อนความสัมพันธ์ Musk-Altman ที่ตึงเครียดต่อเนื่อง ต้องติดตามผลการเจรจาต่อไป</dd>
+      <dt>Source</dt><dd><a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/">OpenAI (official)</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>คดี Sony Music Publishing/Warner Chappell ฟ้อง Anthropic ฐานละเมิดลิขสิทธิ์เพลง</dd>
+      <dt>เหตุผล</dt><dd>อาจเป็นบรรทัดฐานสำคัญด้านลิขสิทธิ์เพลงกับการฝึกโมเดล AI ในสหรัฐฯ และกระทบทิศทางคดีลิขสิทธิ์ AI อื่นๆ ที่กำลังดำเนินอยู่</dd>
+      <dt>Source</dt><dd><a href="https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/">TechCrunch</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>กระแสข่าว (ยังไม่ยืนยัน) ว่า NVIDIA เจรจาเข้าซื้อกิจการ Hugging Face มูลค่าราว 1.29 หมื่นล้านดอลลาร์</dd>
+      <dt>เหตุผล</dt><dd>หากเป็นจริงจะเป็นดีลควบรวมกิจการ AI ที่ใหญ่ที่สุดครั้งหนึ่ง และอาจกระทบความเป็นกลางของ Hugging Face ในฐานะ hub โอเพนซอร์ส ต้องรอการยืนยันอย่างเป็นทางการจากทั้งสองบริษัท</dd>
+      <dt>Source</dt><dd>รายงานจาก The Information (26–27 ส.ค. 2569) — ⚠️ ยังไม่มีลิงก์แหล่งข่าวสาธารณะที่ตรวจสอบได้โดยตรงในรอบนี้</dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>reddit.com เข้าถึงไม่ได้ต่อเนื่องหลายวันทำการ</dd>
+      <dt>เหตุผล</dt><dd>ตามเกณฑ์ Network Access Resilience ต้องคง UNCERTAIN และแจ้งให้ตรวจสอบการตั้งค่า network egress สำหรับโดเมนนี้</dd>
+      <dt>Source</dt><dd>ผลการทดสอบ WebFetch/WebSearch ภายในรายงานฉบับนี้และฉบับก่อนหน้า</dd>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/">openai.com</a></li>
+          <li><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">help.openai.com</a></li>
+          <li><a href="https://www.anthropic.com/news/model-hardware-standard-research-preview">anthropic.com/news</a></li>
+          <li><a href="https://www.anthropic.com/news/expanding-support-for-scientists">anthropic.com/news</a></li>
+          <li><a href="https://www.terminal-bench-science.ai/announcement">terminal-bench-science.ai</a></li>
+          <li><a href="https://github.com/harbor-framework/terminal-bench-science">github.com/harbor-framework</a></li>
+          <li><a href="https://github.com/tt-a1i/archify">github.com/tt-a1i</a></li>
+          <li><a href="https://github.com/THU-MAIC/OpenMAIC">github.com/THU-MAIC</a></li>
+          <li><a href="https://github.com/K-Dense-AI/scientific-agent-skills">github.com/K-Dense-AI</a></li>
+          <li><a href="https://github.com/p-e-w/heretic">github.com/p-e-w</a></li>
+          <li><a href="https://github.com/mvanhorn/last30days-skill">github.com/mvanhorn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2608.27395">arXiv 2608.27395</a></li>
+          <li><a href="https://arxiv.org/abs/2608.27260">arXiv 2608.27260</a></li>
+          <li><a href="https://arxiv.org/abs/2608.27167">arXiv 2608.27167</a></li>
+          <li><a href="https://arxiv.org/abs/2608.25286">arXiv 2608.25286</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.cnbc.com/2026/08/29/openai-cursor-spacex-model-access.html">CNBC</a></li>
+          <li><a href="https://247wallst.com/investing/2026/08/30/altman-musk-feud-escalates-as-openai-cuts-off-cursor-access-after-spacex-merger/">24/7 Wall St</a></li>
+          <li><a href="https://www.theweek.in/news/biz-tech/2026/08/29/violated-previous-contract-elon-musk-sam-altman-rivalry-widens-as-openai-stops-partnership-with-spacex-owned-cursor.html">The Week</a></li>
+          <li><a href="https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/">TechCrunch</a></li>
+          <li><a href="https://www.axios.com/2026/08/29/anthropic-sony-warner-music-copyright">Axios</a></li>
+          <li><a href="https://www.musicbusinessworldwide.com/now-sony-music-publishing-and-warner-chappell-sue-anthropic-in-multi-billion-dollar-lawsuit-one-of-the-largest-and-most-blatant-ongoing-thefts-of-intellectual-property-in-history/">Music Business Worldwide</a></li>
+          <li><a href="https://www.nbcnews.com/business/business-news/anthropic-pentagon-blacklist-claude-judge-rcna594825">NBC News</a></li>
+          <li><a href="https://www.cnn.com/2026/08/27/tech/anthropic-pentagon-supply-chain-risk-unlawful-hnk">CNN</a></li>
+          <li><a href="https://www.engadget.com/2245776/meta-closing-loophole-that-allowed-people-to-record-with-smart-glasses-light-covered/">Engadget</a></li>
+          <li><a href="https://www.benzinga.com/markets/tech/26/08/61486472/nvidia-reportedly-pauses-revenue-sharing-deals-with-ai-cloud-companies-amid-antitrust-concerns">Benzinga</a></li>
+          <li><a href="https://techcrunch.com/2026/08/28/a16z-creates-a-1-1b-machine-age-fund-to-accelerate-the-physical-buildout-of-ai/">TechCrunch</a></li>
+          <li><a href="https://techcrunch.com/2026/08/26/runable-hits-21m-to-bet-ai-agents-can-go-from-building-businesses-to-growing-them/">TechCrunch</a></li>
+          <li><a href="https://siliconangle.com/2026/08/27/runable-raises-21m-to-realize-small-businesses-growth-vision-using-ai-agents/">SiliconANGLE</a></li>
+          <li><a href="https://www.phoronix.com/news/Debian-Votes-Responsible-AI-Use">Phoronix</a></li>
+          <li><a href="https://ibsintelligence.com/ibsi-news/cashfrees-relay-brings-ai-agents-to-smb-payment-operations/">IBS Intelligence</a></li>
+          <li><a href="https://www.business-standard.com/companies/news/cashfree-rolls-out-ai-agents-for-merchants-to-automate-payment-operations-126083000455_1.html">Business Standard</a></li>
+          <li><a href="https://hackernoon.com/stanford-laude-institute-unveil-benchmark-to-test-ai-agents-in-the-terminal">HackerNoon</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://news.ycombinator.com/item?id=49486172">Hacker News — OpenAI/Cursor</a></li>
+          <li><a href="https://news.ycombinator.com/item?id=49489982">Hacker News — Debian AI vote</a></li>
+          <li>Reddit — เข้าถึงไม่ได้ (UNCERTAIN)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+  <p class="note"><b>Labels:</b> ✅ Official · 📰 Trusted Media · 🔥 Community Trend · ⚠️ Rumor · ❓ Unverified</p>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 30 ส.ค. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปยังดัชนีรายงาน AI ทั้งหมด</a></p>
+  </footer>
+</div>
+</body>
+</html>

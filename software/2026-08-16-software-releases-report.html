@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Software Releases — 16 Aug 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73;
+  --crit:#B3261E; --high:#C05621; --med:#B7860B; --low:#5A6B57;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF;
+    --crit:#FF6B5E; --high:#FFA05C; --med:#F0C34D; --low:#9BB396;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:1100px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); word-break:break-word; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+h2{ font-size:22px; font-weight:700; margin:0 0 14px; }
+h3{ font-size:16px; font-weight:700; margin:20px 0 8px; color:var(--ink-soft); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:28px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:80ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:78ch; }
+
+.dashboard{ display:flex; flex-wrap:wrap; gap:12px; }
+.stat{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 18px; min-width:140px; flex:1; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+.table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:var(--surface); }
+table{ border-collapse:collapse; width:100%; min-width:640px; font-size:14.5px; }
+thead th{ text-align:left; background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.02em; text-transform:uppercase; color:var(--ink-soft); padding:10px 12px; border-bottom:1px solid var(--line-strong); white-space:nowrap; }
+tbody td{ padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ font-weight:600; white-space:nowrap; }
+.empty-note{ padding:14px 16px; color:var(--ink-faint); font-size:14px; font-style:italic; }
+
+.badge{ display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--line-strong); white-space:nowrap; }
+.badge.crit{ color:var(--crit); border-color:var(--crit); }
+.badge.high{ color:var(--high); border-color:var(--high); }
+.badge.med{ color:var(--med); border-color:var(--med); }
+.badge.low{ color:var(--low); border-color:var(--low); }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 33, 2026</p>
+    <h1>💻 Weekly Software Releases Report — Week 33</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 16 Aug 2026</span>
+      <span><b>ช่วงเวลา:</b> 09–16 Aug 2026 (ICT)</span>
+      <span><b>Category:</b> Software</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>สัปดาห์นี้เป็นสัปดาห์ Patch Tuesday ที่มีความหนาแน่นสูงเป็นพิเศษ ทั้ง Microsoft, SAP, Adobe Commerce, Fortinet และ Cisco ต่างออกแพตช์ความปลอดภัยระดับ Critical พร้อมกันในช่วงวันที่ 11–13 Aug 2026</p>
+    <p>จุดที่ต้องระวังสูงสุดคือช่องโหว่ Zero-day CVE-2026-68820 ใน Windows Ancillary Function Driver ที่ถูกโจมตีจริงแล้ว และ CVE-2026-71362 ใน Adobe Commerce/Magento ที่ถูกใช้โจมตีทันทีหลังประกาศ รวมถึง CVE-2026-20349 ใน Cisco Secure Firewall SSL VPN ที่ถูกโจมตีในโลกจริงเช่นกัน</p>
+    <p>ฝั่ง Database มี PostgreSQL ออก Security Release พร้อมกัน 5 สาย (18.6 ถึง 14.24) แก้ 2 CVE ระดับ High ขณะที่ระบบปฏิบัติการสายหลักทั้ง Ubuntu, Debian, RHEL และ AlmaLinux ต่างออก Security Advisory ชุดใหญ่ครอบคลุม Linux Kernel และแพ็กเกจอื่นๆ อีกหลายตัวในสัปดาห์เดียวกัน</p>
+    <p>ไม่มี Major Release ขนาดใหญ่จากภาษาโปรแกรมมิ่งหรือเฟรมเวิร์กหลักในสัปดาห์นี้ แต่มี Vue 3.6 เข้าสู่ Release Candidate รอบที่ 3–4 และ PHP 8.6 เข้าสู่ Beta 1 พร้อมการเปลี่ยนแปลงด้าน Error Handling ที่นักพัฒนาควรทราบก่อนอัปเกรด</p>
+    <p>สิ่งที่ต้องติดตามต่อคือ Kubernetes v1.37 GA, Terraform v1.16 GA และ Rust 1.98 ที่คาดว่าจะออกในช่วงปลายเดือนสิงหาคม รวมถึงการยืนยันว่าระบบทั้งหมดได้แพตช์ Zero-day ที่กำลังถูกโจมตีจริงครบถ้วนแล้ว</p>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="stat"><div class="num">54</div><div class="lbl">Software Releases / Advisories</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Major Releases</div></div>
+      <div class="stat"><div class="num">11</div><div class="lbl">Security Releases</div></div>
+      <div class="stat"><div class="num">13</div><div class="lbl">Patch Releases</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">EOL Announcements</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Python</td>
+          <td>3.12.14 / 3.11.16 / 3.10.21</td>
+          <td>Maintenance release สามสายพร้อมกัน แก้ปัญหา path-traversal ใน tarfile/ZIP และปัญหา DoS ในโมดูล csv/HTML/XML parsing ไม่มีฟีเจอร์ภาษาใหม่</td>
+          <td>12 Aug 2026</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://blog.python.org/2026/08/python-31214-31116-31021/" target="_blank" rel="noopener">Python Insider</a></td>
+        </tr>
+        <tr>
+          <td>.NET</td>
+          <td>8.0.30 / 9.0.19 / 10.0.11</td>
+          <td>August 2026 Servicing Release แก้ CVE-2026-62900 (information disclosure) และอีกราว 9 CVE รวม RCE, elevation-of-privilege, DoS และ security-feature-bypass ในสามสายที่รองรับ</td>
+          <td>11 Aug 2026</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td><a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-august-2026-servicing-updates/" target="_blank" rel="noopener">.NET Blog</a></td>
+        </tr>
+        <tr>
+          <td>PHP</td>
+          <td>8.6.0 Beta 1</td>
+          <td>เบต้ารอบแรกของ PHP 8.6: Partial Function Application, API `Io\Poll` สำหรับ multiplexing, class `Time\Duration`, และ error handling ที่เข้มงวดขึ้น (ดู Breaking Changes ด้านล่าง)</td>
+          <td>13 Aug 2026</td>
+          <td><span class="badge med">⚙ Beta</span></td>
+          <td><a href="https://github.com/php/php-src/blob/php-8.6.0beta1/NEWS" target="_blank" rel="noopener">php-src NEWS (GitHub)</a></td>
+        </tr>
+        <tr>
+          <td>Go</td>
+          <td>go1.26.6 / go1.25.13</td>
+          <td>Minor point release แก้ปัญหาด้านความปลอดภัยรวม 10 รายการในคำสั่ง go และแพ็กเกจ crypto/tls, encoding/asn1, encoding/xml, html/template, net, net/http, net/url</td>
+          <td>13 Aug 2026</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://github.com/golang/go/releases/tag/go1.26.6" target="_blank" rel="noopener">Go Releases (GitHub)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Node.js, Java (OpenJDK), Rust: ไม่มี Release ใหม่ในช่วง 9–16 Aug 2026 — Java Critical Patch Update รอบถัดไปกำหนด 18/28 Aug 2026, Rust 1.98.0 กำหนดออกเสถียร 20 Aug 2026 (ทั้งคู่นอกช่วงรายงาน)</p>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Framework</th><th>Version</th><th>Highlights</th><th>Migration</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Vue</td>
+          <td>3.6.0-rc.3 / 3.6.0-rc.4</td>
+          <td>Release Candidate ของ Vue 3.6: Vapor Mode feature-complete และระบบ Reactivity เขียนใหม่บนไลบรารี alien-signals เพื่อประสิทธิภาพและหน่วยความจำที่ดีขึ้น</td>
+          <td>ยังไม่มี Migration Guide อย่างเป็นทางการ เนื่องจากยังไม่ GA — ควรทดสอบกับโปรเจกต์จริงก่อนใช้งาน production</td>
+          <td><a href="https://github.com/vuejs/core/releases/tag/v3.6.0-rc.4" target="_blank" rel="noopener">Vue Core Releases (GitHub)</a></td>
+        </tr>
+        <tr>
+          <td>Angular</td>
+          <td>22.1.2 (+ 21.2.20 / 20.3.28) / 22.2.0-next.2</td>
+          <td>Patch แก้บั๊กใน compiler, forms, http, router (เช่น optional-chaining expression, radio input sync, JSON response decode เป็น UTF-8 เสมอ) พร้อม pre-release build 22.2 รุ่นถัดไป</td>
+          <td>ไม่มี Breaking Change (Bug-fix only)</td>
+          <td><a href="https://github.com/angular/angular/releases/tag/v22.1.2" target="_blank" rel="noopener">Angular Releases (GitHub)</a></td>
+        </tr>
+        <tr>
+          <td>Laravel</td>
+          <td>13.25.0</td>
+          <td>เพิ่ม global queue pause switch (`queue:pause --all`), แทนที่ตัวรัน process ของ `artisan dev` ด้วย tabbed terminal UI (@laravel/multiplex) และคืนค่า Image instance จาก route ได้โดยตรง</td>
+          <td>ไม่มี Breaking Change</td>
+          <td><a href="https://github.com/laravel/framework/releases/tag/v13.25.0" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">React, Django, FastAPI, Spring Boot: ไม่มี Release ใหม่ในช่วง 9–16 Aug 2026</p>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps &amp; CI/CD</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Docker Engine</td>
+          <td>v25.0.17</td>
+          <td>Maintenance release สำหรับสาย v25 แก้ 3 ช่องโหว่เกี่ยวกับ symlink escape และปัญหาการแตกไฟล์ archive ระหว่างการทำงานของ container</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://github.com/moby/moby/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+        <tr>
+          <td>Jenkins</td>
+          <td>Weekly 2.577</td>
+          <td>ปรับหน้า experimental ให้มี side panel เลื่อนแยกอิสระ, ลบการรวม detached-plugin ที่เหลือออกจาก jenkins.war</td>
+          <td><span class="badge low">🔹 Minor Release</span></td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases" target="_blank" rel="noopener">jenkinsci/jenkins Releases (GitHub)</a></td>
+        </tr>
+        <tr>
+          <td>GitLab (self-managed)</td>
+          <td>19.2.2 / 19.1.4 / 19.0.6</td>
+          <td>Patch Release อย่างเป็นทางการด้านความปลอดภัย แก้ 13 ช่องโหว่ (High 6 / Medium 6 / Low 1) รวม XSS 3 รายการและจุดอ่อนด้าน authorization ใน CI/CD</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-2-2-released/" target="_blank" rel="noopener">GitLab Patch Release Notes</a></td>
+        </tr>
+        <tr>
+          <td>Argo CD</td>
+          <td>v3.5.1 / v3.4.7 / v3.3.14</td>
+          <td>แก้ปัญหา progressive sync วนลูปถี่เกินไป, ยืนยัน ApplicationSet termination ให้ถูกต้อง และปิดบัง secret ใน diff/annotation ไม่ให้รั่วไหล (SSD CLI secret mask spoofing)</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://github.com/argoproj/argo-cd/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+        <tr>
+          <td>Terraform</td>
+          <td>v1.16.0-rc1 / v1.17.0-alpha20260812</td>
+          <td>RC1 ของสาย v1.16: import block ทำงานภายใน module ได้, `lifecycle { destroy = false }`, บล็อก `store` ใหม่ใน terraform_data; alpha ของ v1.17 ปรับปรุง logging และแก้ panic ของฟังก์ชัน pow/log</td>
+          <td><span class="badge med">🧪 Release Candidate</span></td>
+          <td><a href="https://github.com/hashicorp/terraform/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+        <tr>
+          <td>Ansible</td>
+          <td>ansible-core 2.21.3 / 2.20.8 / 2.19.12 / 2.18.19</td>
+          <td>Stable Maintenance Release พร้อมกัน 4 สายที่รองรับ (2.18–2.21) หลังจากสัปดาห์ก่อนอยู่ที่ Release Candidate</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://github.com/ansible/ansible/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Kubernetes, GitHub Actions (runner): ไม่มี Release ใหม่ในช่วง 9–16 Aug 2026 — Kubernetes v1.37.0-rc.0 ออกก่อนหน้าช่วงนี้เมื่อ 6 Aug 2026 ยังรอ RC ถัดไปหรือ GA</p>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Database</th><th>Version</th><th>Features</th><th>Type</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>PostgreSQL</td>
+          <td>18.6 / 17.11 / 16.15 / 15.19 / 14.24 (+ 19 Beta 3)</td>
+          <td>Security Release พร้อมกัน 5 สาย แก้ CVE-2026-14662 (tsvector/tsquery integer-wraparound, CVSS 8.8) และ CVE-2026-6464 (psql COPY FROM STDIN command injection, CVSS 8.1) รวมกว่า 26 ช่องโหว่และบั๊กอื่นๆ กว่า 100 รายการ พร้อมรองรับ OpenSSL 4</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td><a href="https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/" target="_blank" rel="noopener">postgresql.org</a></td>
+        </tr>
+        <tr>
+          <td>MariaDB</td>
+          <td>10.6.28 (Community Server)</td>
+          <td>Bug-fix release รวมการควบคุม recursion depth ของ ExtractValue และแก้ memory corruption ใน compressed columns</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://mariadb.com/docs/release-notes/community-server/changelogs/10.6/10.6.28" target="_blank" rel="noopener">mariadb.com Release Notes</a></td>
+        </tr>
+        <tr>
+          <td>SQL Server</td>
+          <td>2025 Cumulative Update 8 (KB5104822, build 17.0.4075.5)</td>
+          <td>12 การแก้ไข รวมปรับปรุง backup/restore, รองรับ PolyBase encryption บน Linux, พารามิเตอร์ sp_adddistributor ใหม่</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://support.microsoft.com/en-us/servicing/sql/sql-server-2025/cumulative-update/kb5104822-cu8" target="_blank" rel="noopener">Microsoft Support</a></td>
+        </tr>
+        <tr>
+          <td>Elasticsearch</td>
+          <td>9.5.1</td>
+          <td>Patch ต่อจากสาย 9.5 GA เพิ่มการตรวจสอบ repository overwrite-protection และรองรับ frozen-tier data-stream lifecycle พร้อมแก้บั๊กทั่วไป</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://www.elastic.co/docs/release-notes/elasticsearch" target="_blank" rel="noopener">elastic.co Release Notes</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">MySQL, MongoDB, Redis, Cassandra, AWS RDS/Aurora (engine), Azure SQL, Google Cloud SQL: ไม่พบ Release ที่ยืนยันวันที่ในช่วง 9–16 Aug 2026 ได้ (Apache Cassandra 5.0.9 ออก 7 Aug 2026 ก่อนช่วงรายงาน 2 วัน)</p>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>OS</th><th>Version</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Ubuntu</td>
+          <td>USN-8627-1 ถึง USN-8638-1 (ชุดกว่า 12 ประกาศ)</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td>Security Notice ต่อเนื่องครอบคลุม Linux kernel หลายสาย (14.04, 24.04 HWE/Azure/GCP/Realtime) รวมถึง yelp, libgit2, follow-redirects</td>
+          <td><a href="https://ubuntu.com/security/notices" target="_blank" rel="noopener">ubuntu.com/security/notices</a></td>
+        </tr>
+        <tr>
+          <td>Debian</td>
+          <td>DSA-6430-1 ถึง DSA-6442-1 (13 ประกาศ)</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td>ครอบคลุม postfix, openjdk-25, flatpak (sandbox escape), xdg-dbus-proxy, lemonldap-ng, spip, chromium, apr-util, postgresql-17, zip/unzip (command injection), python-httplib2 (DoS), util-linux (privilege escalation)</td>
+          <td><a href="https://www.debian.org/security/" target="_blank" rel="noopener">debian.org/security</a></td>
+        </tr>
+        <tr>
+          <td>RHEL</td>
+          <td>RHSA-2026:54246 (RHEL 8 kernel) / RHSA-2026:52761 (kernel-rt)</td>
+          <td><span class="badge med">🔒 Security Release (Moderate)</span></td>
+          <td>แก้ CVE-2026-45991 (UDF partition descriptor bookkeeping) และ CVE-2026-53009 (ice driver double-free) ใน RHEL 8; kernel-rt แก้ CVE-2026-64496 (iio event FIFO reset race)</td>
+          <td><a href="https://access.redhat.com/errata/RHSA-2026:54246" target="_blank" rel="noopener">access.redhat.com Errata</a></td>
+        </tr>
+        <tr>
+          <td>AlmaLinux</td>
+          <td>ALSA errata ชุดใหญ่สำหรับ AlmaLinux 8/9/10</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td>ครอบคลุม .NET 8.0–10.0, BIND, FreeRDP, Linux kernel, dracut, nghttp2, gnome-remote-desktop</td>
+          <td><a href="https://errata.almalinux.org/" target="_blank" rel="noopener">errata.almalinux.org</a></td>
+        </tr>
+        <tr>
+          <td>Rocky Linux</td>
+          <td>RLSA errata สำหรับ .NET 8.0/9.0/10.0, BIND, dracut + kernel</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td>ประกาศแพตช์ต่อเนื่องจากอัปสตรีม RHEL ลักษณะเดียวกับ AlmaLinux — <b>วันที่ประกาศยืนยันได้เพียงบางส่วน อยู่ที่ขอบของช่วงเวลารายงาน (ใกล้ 16 Aug 2026)</b></td>
+          <td><a href="https://wiki.rockylinux.org/rocky/errata/" target="_blank" rel="noopener">wiki.rockylinux.org/errata</a></td>
+        </tr>
+        <tr>
+          <td>Windows Server</td>
+          <td>2022: KB5120242 (Build 20348.5499) / 2025: KB5120233 (Build 26100.33296) / 2025 Hotpatch: KB5120228</td>
+          <td><span class="badge crit">🔒 Security Release (Patch Tuesday)</span></td>
+          <td>แพตช์ประจำเดือนสิงหาคม 2026 รวมการแก้ไข Zero-day ที่ถูกโจมตีจริง CVE-2026-68820 (Windows Ancillary Function Driver) — <b>จำนวน CVE รวมที่รายงานขัดแย้งกันระหว่างแหล่งข้อมูล</b>: SecurityWeek/ntcompatible ระบุ 421, Tenable/BleepingComputer ระบุ 398–400, Petri ระบุ 394 (ตัวเลขรวมของบุคคลที่สามอาจต่างกันตามเกณฑ์นับ) แต่หมายเลข KB และวันที่ปล่อยแพตช์ตรงกันทุกแหล่ง</td>
+          <td><a href="https://support.microsoft.com/en-us/servicing/os/windows-server/2026/08/kb5120242-windows-server-2022-security-update" target="_blank" rel="noopener">Microsoft Support — KB5120242</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <p class="empty-note">VMware vSphere/ESXi, Proxmox VE, Hyper-V, KVM: ไม่พบ Release เวอร์ชันใหม่ในช่วง 9–16 Aug 2026 จากแหล่งข้อมูลทางการ (Proxmox VE Arm64 GA ออกก่อนหน้าช่วงนี้เมื่อ 5 Aug 2026, VMSA-2026-0006 vCenter/ESX ออกก่อนหน้าช่วงนี้เมื่อ 29 Jul 2026)</p>
+  </section>
+
+  <section>
+    <h2>🌐 Network &amp; Security</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>OPNsense</td>
+          <td>26.7.2 (+ Hotfix 26.7.2_2)</td>
+          <td>แก้ปัญหา WireGuard MAC authentication, ออก Security Advisory 4 รายการ, ย้ายไปใช้ DTLSv1.2/OpenSSL 3.5, ปรับการจัดการ CRL serial number — <b>วันที่ปล่อยแน่นอนยืนยันไม่ได้</b> เนื่องจาก opnsense.org เข้าถึงโดยตรงไม่ได้ ยืนยันได้เพียงว่าอยู่ในเดือนสิงหาคม 2026 จากแหล่งข้อมูลรอง (ดูหมายเหตุ UNCERTAIN ท้ายรายงาน)</td>
+          <td><span class="badge high">🔒 Security Release</span></td>
+          <td><a href="https://docs.opnsense.org/releases/CE_26.7.html" target="_blank" rel="noopener">docs.opnsense.org</a></td>
+        </tr>
+        <tr>
+          <td>Greenbone OpenVAS-scanner</td>
+          <td>v23.50.15 / v23.50.16</td>
+          <td>ปรับปรุงการจัดการ option table_driven_lsc (15) และแก้การตั้งค่า promiscuous mode ที่บังคับใช้ any interface เสมอ (16)</td>
+          <td><span class="badge low">🩹 Patch</span></td>
+          <td><a href="https://github.com/greenbone/openvas-scanner/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+        <tr>
+          <td>Metasploit Framework</td>
+          <td>Weekly Wrap-Up (14 Aug 2026)</td>
+          <td>เพิ่ม 13 โมดูลใหม่ รวม RCE สำหรับ WordPress WP2Shell, Ghost CMS, Joomla JCE, Langflow, OpenCATS, Pterodactyl Panel, SonicWall SMA1000, Ray Dashboard และ payload ใหม่สำหรับ AArch64 (Windows on ARM)</td>
+          <td><span class="badge low">📰 รายงาน</span></td>
+          <td><a href="https://www.rapid7.com/blog/tag/metasploit-weekly-wrapup/" target="_blank" rel="noopener">Rapid7 Metasploit Weekly Wrap-Up</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Nginx, Apache, HAProxy, Traefik, Caddy, WireGuard (core), pfSense, Nmap, Wireshark, Nessus: ไม่พบ Release เวอร์ชันใหม่ในช่วง 9–16 Aug 2026 (Nmap 7.991 ออก 6 Aug, Nessus 10.12.3 ออก 4 Aug — ทั้งคู่ก่อนช่วงรายงาน)</p>
+  </section>
+
+  <section>
+    <h2>☁ Cloud &amp; Infrastructure</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Platform</th><th>Update</th><th>Impact</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>AWS</td>
+          <td>OpenAI "Daybreak Red" และ "Daybreak Blue" (GPT-5.6 Cyber / GPT-5.6 Sol) พร้อมใช้งานบน Amazon Bedrock</td>
+          <td>โมเดล AI เฉพาะทางด้าน Cyber Defense (vulnerability research, exploit reproduction, detection engineering) สำหรับลูกค้าที่ลงทะเบียน OpenAI Trusted Access for Cyber เปิดให้บริการเฉพาะภูมิภาค US East (N. Virginia)</td>
+          <td><a href="https://aws.amazon.com/about-aws/whats-new/2026/08/openai-daybreak-red-and-blue-on-amazon-bedrock/" target="_blank" rel="noopener">AWS What's New</a></td>
+        </tr>
+        <tr>
+          <td>Azure</td>
+          <td>Firewall Premium throughput เพิ่มเป็น 22 Gbps (GA), AKS control-plane metrics ผ่าน Prometheus (GA), Front Door atomic batch rule updates (GA), Terraform AzureRM Provider 5.0 (GA)</td>
+          <td>อัปเดตหลายรายการที่รวบรวมจากสรุปสัปดาห์ของ 14 Aug 2026 — <b>ยืนยันวันที่แน่นอนของแต่ละรายการได้เพียงบางส่วน</b> เนื่องจาก azure.microsoft.com/updates เข้าถึงโดยตรงไม่ได้ ข้อมูลอ้างอิงจากแหล่งข้อมูลรอง (ดูหมายเหตุ UNCERTAIN ท้ายรายงาน)</td>
+          <td><a href="https://azurecharts.com/updates?monthback=0" target="_blank" rel="noopener">azurecharts.com — Azure Updates</a></td>
+        </tr>
+        <tr>
+          <td>Pulumi</td>
+          <td>CLI v3.257.0</td>
+          <td>เพิ่มพร้อมท์สร้างโปรเจกต์แรกหลัง login เมื่อยังไม่มี stack และการกำหนด identifier อัตโนมัติให้ resource เดิมใน `pulumi do`</td>
+          <td><a href="https://github.com/pulumi/pulumi/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Google Cloud Platform, AWS CloudFormation: ไม่พบ Release/Update ที่ยืนยันวันที่ในช่วง 9–16 Aug 2026 ได้อย่างชัดเจนจากแหล่งข้อมูลทางการ</p>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools &amp; IDE</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool</th><th>Version</th><th>Highlights</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>VS Code</td>
+          <td>1.133.0</td>
+          <td>เปลี่ยน Model Provider สำหรับ Claude session ได้โดยไม่ต้อง reconfigure agent host, เปิด Agents window โดยไม่ต้อง sign-in GitHub ผ่าน API key, auto-reload HTML preview</td>
+          <td><a href="https://code.visualstudio.com/updates/v1_133" target="_blank" rel="noopener">code.visualstudio.com</a></td>
+        </tr>
+        <tr>
+          <td>JetBrains IntelliJ IDEA</td>
+          <td>2026.2.1 / 2026.1.5</td>
+          <td>Bug-fix release ต่อจาก major release 2026.2 (รองรับ Java 27 วันแรก, Kotlin 2.4, async editor saves)</td>
+          <td><a href="https://github.com/JetBrains/intellij-community/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+        <tr>
+          <td>JetBrains PyCharm</td>
+          <td>2026.2.1 / 2026.1.5</td>
+          <td>AI agent ทำงานภายใน Jupyter notebook ผ่าน live kernel ได้ และเพิ่มการรองรับ marimo notebook</td>
+          <td><a href="https://github.com/JetBrains/intellij-community/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+        <tr>
+          <td>Git for Windows</td>
+          <td>2.55.0(4) / MinGit 2.53.0(4)</td>
+          <td>Security Release แก้ CVE-2026-62960 — bundle URI ที่ชี้ไป network share อาจกระตุ้นการยืนยันตัวตนแบบ NTLM โดยไม่รู้ตัวบน Windows โดยจำกัดการใช้ protocol allow-list ของ bundle URI (ตัด file:// ออกเป็นค่าเริ่มต้น)</td>
+          <td><a href="https://github.com/git-for-windows/git/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">Eclipse, Git (upstream core), GitLab (platform features), npm, pip, Composer, Maven, Gradle: ไม่มี Release ใหม่ในช่วง 9–16 Aug 2026 — Eclipse 2026-09 Simultaneous Release กำหนด 9 Sep 2026</p>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <p class="empty-note">Nginx, Apache, Caddy, IIS: ไม่พบ Release เวอร์ชันใหม่ในช่วง 9–16 Aug 2026 จากแหล่งข้อมูลทางการ</p>
+  </section>
+
+  <section>
+    <h2>🔒 Security &amp; CVE</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>SAP Commerce Cloud (Data Hub Adapter)</td>
+          <td>CVE-2026-58231</td>
+          <td><span class="badge crit">Critical — CVSS 10.0</span></td>
+          <td>SAP Patch Day 11 Aug 2026 — แพตช์ตามคำแนะนำ SAP Security Note</td>
+          <td><a href="https://securitybridge.com/blog/sap-security-patch-day-august-2026/" target="_blank" rel="noopener">SecurityBridge — SAP Patch Day</a></td>
+        </tr>
+        <tr>
+          <td>Azure SQL Database</td>
+          <td>CVE-2026-56162</td>
+          <td><span class="badge crit">Critical — CVSS 10.0</span></td>
+          <td>แพตช์ฝั่ง Microsoft (cloud service — ไม่ต้องดำเนินการฝั่งลูกค้า)</td>
+          <td><a href="https://www.securityweek.com/august-2026-patch-tuesday-microsoft-fixes-421-cves-one-exploited-zero-day/" target="_blank" rel="noopener">SecurityWeek — Patch Tuesday Aug 2026</a></td>
+        </tr>
+        <tr>
+          <td>SAP Manufacturing Integration and Intelligence (MII)</td>
+          <td>CVE-2026-44772</td>
+          <td><span class="badge crit">Critical — CVSS 9.9</span></td>
+          <td>SAP Patch Day 11 Aug 2026 — แพตช์ตามคำแนะนำ SAP Security Note</td>
+          <td><a href="https://securitybridge.com/blog/sap-security-patch-day-august-2026/" target="_blank" rel="noopener">SecurityBridge — SAP Patch Day</a></td>
+        </tr>
+        <tr>
+          <td>Microsoft QUIC (msquic)</td>
+          <td>CVE-2026-62815</td>
+          <td><span class="badge crit">Critical — CVSS 9.8</span></td>
+          <td>Windows Cumulative Update — 11 Aug 2026</td>
+          <td><a href="https://www.securityweek.com/august-2026-patch-tuesday-microsoft-fixes-421-cves-one-exploited-zero-day/" target="_blank" rel="noopener">SecurityWeek — Patch Tuesday Aug 2026</a></td>
+        </tr>
+        <tr>
+          <td>Windows Deployment Services</td>
+          <td>CVE-2026-62893</td>
+          <td><span class="badge crit">Critical — CVSS 9.8</span></td>
+          <td>Windows Cumulative Update — 11 Aug 2026</td>
+          <td><a href="https://www.tenable.com/blog/microsofts-august-2026-patch-tuesday-addresses-398-cves-cve-2026-68820" target="_blank" rel="noopener">Tenable — Patch Tuesday Analysis</a></td>
+        </tr>
+        <tr>
+          <td>SAP NetWeaver Application Server ABAP</td>
+          <td>CVE-2026-34265</td>
+          <td><span class="badge crit">Critical — CVSS 9.8</span></td>
+          <td>SAP Patch Day 11 Aug 2026 — แพตช์ตามคำแนะนำ SAP Security Note</td>
+          <td><a href="https://securitybridge.com/blog/sap-security-patch-day-august-2026/" target="_blank" rel="noopener">SecurityBridge — SAP Patch Day</a></td>
+        </tr>
+        <tr>
+          <td>Fortinet FortiWeb</td>
+          <td>CVE-2026-26035 (FG-IR-26-158)</td>
+          <td><span class="badge crit">Critical — CVSS 9.8 (แหล่งข้อมูลขัดแย้งกัน)</span></td>
+          <td>อัปเดตตาม FortiWeb firmware ที่ได้รับผลกระทบ — <b>ข้อมูลขัดแย้ง</b>: CyCognito รายงาน CVSS 9.8 ขณะที่ SecurityWeek รายงาน 8.8 — ควรตรวจสอบ FG-IR-26-158 อย่างเป็นทางการจาก Fortinet PSIRT เพื่อยืนยันคะแนนที่ถูกต้อง</td>
+          <td><a href="https://www.cycognito.com/blog/2817-2/" target="_blank" rel="noopener">CyCognito</a> / <a href="https://www.securityweek.com/fortinet-patches-authentication-flaws-in-fortiweb-and-fortimanager/" target="_blank" rel="noopener">SecurityWeek</a></td>
+        </tr>
+        <tr>
+          <td>Azure Logic Apps</td>
+          <td>CVE-2026-56161</td>
+          <td><span class="badge crit">Critical — CVSS 9.6</span></td>
+          <td>แพตช์ฝั่ง Microsoft (cloud service — ไม่ต้องดำเนินการฝั่งลูกค้า)</td>
+          <td><a href="https://www.securityweek.com/august-2026-patch-tuesday-microsoft-fixes-421-cves-one-exploited-zero-day/" target="_blank" rel="noopener">SecurityWeek — Patch Tuesday Aug 2026</a></td>
+        </tr>
+        <tr>
+          <td>Adobe Commerce / Magento (APSB26-92)</td>
+          <td>CVE-2026-71362</td>
+          <td><span class="badge crit">Critical — CVSS 9.1 (ถูกโจมตีจริง)</span></td>
+          <td>Adobe Commerce/Magento security patch — 11 Aug 2026</td>
+          <td><a href="https://sansec.io/research/adobe-commerce-account-takeover-apsb26-92" target="_blank" rel="noopener">Sansec Research</a></td>
+        </tr>
+        <tr>
+          <td>Windows Ancillary Function Driver for WinSock (afd.sys)</td>
+          <td>CVE-2026-68820</td>
+          <td><span class="badge high">High — Zero-day ถูกโจมตีจริง (ไม่มี CVSS เผยแพร่อย่างเป็นทางการในแหล่งที่ตรวจสอบได้)</span></td>
+          <td>Windows Cumulative Update — 11 Aug 2026</td>
+          <td><a href="https://www.tenable.com/blog/microsofts-august-2026-patch-tuesday-addresses-398-cves-cve-2026-68820" target="_blank" rel="noopener">Tenable — Patch Tuesday Analysis</a></td>
+        </tr>
+        <tr>
+          <td>Cisco Secure Firewall (ASA/FTD) — SSL VPN</td>
+          <td>CVE-2026-20349</td>
+          <td><span class="badge high">High — CVSS 8.6 (ถูกโจมตีจริง)</span></td>
+          <td>ไม่มี Workaround — ต้องอัปเกรดเท่านั้น (12 Aug 2026)</td>
+          <td><a href="https://www.hkcert.org/security-bulletin/cisco-products-multiple-vulnerabilities_20260812" target="_blank" rel="noopener">HKCERT Security Bulletin</a></td>
+        </tr>
+        <tr>
+          <td>PostgreSQL</td>
+          <td>CVE-2026-14662</td>
+          <td><span class="badge high">High — CVSS 8.8</span></td>
+          <td>18.6 / 17.11 / 16.15 / 15.19 / 14.24</td>
+          <td><a href="https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/" target="_blank" rel="noopener">postgresql.org</a></td>
+        </tr>
+        <tr>
+          <td>PostgreSQL (psql)</td>
+          <td>CVE-2026-6464</td>
+          <td><span class="badge high">High — CVSS 8.1</span></td>
+          <td>18.6 / 17.11 / 16.15 / 15.19 / 14.24</td>
+          <td><a href="https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/" target="_blank" rel="noopener">postgresql.org</a></td>
+        </tr>
+        <tr>
+          <td>Fortinet FortiManager</td>
+          <td>CVE-2026-70468</td>
+          <td><span class="badge high">High — CVSS 8.1</span></td>
+          <td>อัปเดตตาม FortiManager firmware ที่ได้รับผลกระทบ (13 Aug 2026)</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-70468" target="_blank" rel="noopener">Strix CVE Database</a></td>
+        </tr>
+        <tr>
+          <td>Fortinet FortiClient for Windows</td>
+          <td>CVE-2026-70465</td>
+          <td><span class="badge high">High (ไม่มี CVSS เผยแพร่ในแหล่งที่ตรวจสอบได้)</span></td>
+          <td>อัปเดตตาม FortiClient เวอร์ชันที่ได้รับผลกระทบ (13 Aug 2026)</td>
+          <td><a href="https://www.securityweek.com/fortinet-patches-authentication-flaws-in-fortiweb-and-fortimanager/" target="_blank" rel="noopener">SecurityWeek</a></td>
+        </tr>
+        <tr>
+          <td>GitLab CE/EE</td>
+          <td>13 ช่องโหว่ (ไม่ได้แจกแจงหมายเลข CVE รายตัวในแหล่งข้อมูลที่ตรวจสอบได้)</td>
+          <td><span class="badge high">Mixed — High 6 / Medium 6 / Low 1</span></td>
+          <td>19.2.2 / 19.1.4 / 19.0.6</td>
+          <td><a href="https://cybersecuritynews.com/gitlab-patches-13-security-flaws/" target="_blank" rel="noopener">Cyber Security News</a></td>
+        </tr>
+        <tr>
+          <td>AlmaLinux 8/9/10 (ชุด errata)</td>
+          <td>ครอบคลุม .NET, BIND, FreeRDP, kernel, dracut, nghttp2, gnome-remote-desktop (หลายหมายเลข ไม่ได้แจกแจงครบในแหล่งข้อมูลที่ตรวจสอบได้)</td>
+          <td><span class="badge high">Mixed — ส่วนใหญ่ Important</span></td>
+          <td>ตาม ALSA errata แต่ละฉบับ</td>
+          <td><a href="https://errata.almalinux.org/" target="_blank" rel="noopener">errata.almalinux.org</a></td>
+        </tr>
+        <tr>
+          <td>Debian (ชุด DSA)</td>
+          <td>DSA-6430-1 ถึง DSA-6442-1 — postfix, openjdk-25, flatpak, xdg-dbus-proxy, lemonldap-ng, spip, chromium, apr-util, postgresql-17, zip, unzip, python-httplib2, util-linux</td>
+          <td><span class="badge med">Mixed — หลายรายการ High ถึง Moderate</span></td>
+          <td>ตาม DSA แต่ละฉบับ</td>
+          <td><a href="https://www.debian.org/security/" target="_blank" rel="noopener">debian.org/security</a></td>
+        </tr>
+        <tr>
+          <td>Ubuntu (ชุด USN)</td>
+          <td>USN-8627-1 ถึง USN-8638-1 — Linux kernel หลายสาย, follow-redirects, Axios</td>
+          <td><span class="badge med">Mixed — หลายรายการ Medium ถึง High</span></td>
+          <td>ตาม USN แต่ละฉบับ</td>
+          <td><a href="https://ubuntu.com/security/notices" target="_blank" rel="noopener">ubuntu.com/security/notices</a></td>
+        </tr>
+        <tr>
+          <td>Linux kernel (RHEL 8) / kernel-rt</td>
+          <td>CVE-2026-45991, CVE-2026-53009, CVE-2026-64496</td>
+          <td><span class="badge med">Moderate</span></td>
+          <td>RHSA-2026:54246 / RHSA-2026:52761</td>
+          <td><a href="https://access.redhat.com/errata/RHSA-2026:54246" target="_blank" rel="noopener">access.redhat.com Errata</a></td>
+        </tr>
+        <tr>
+          <td>Git for Windows</td>
+          <td>CVE-2026-62960</td>
+          <td><span class="badge med">Moderate (bundle URI NTLM credential leak — ไม่มี CVSS เผยแพร่อย่างเป็นทางการ)</span></td>
+          <td>Git for Windows 2.55.0(4) / MinGit 2.53.0(4)</td>
+          <td><a href="https://github.com/git-for-windows/git/releases" target="_blank" rel="noopener">GitHub Releases</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty-note">หมายเหตุ: Palo Alto Networks ออก Security Bulletin 12 Aug 2026 รวม 11 CVE แต่ทุกรายการมีระดับความรุนแรง Low/Medium (CVSS สูงสุด 6.0) จึงไม่รวมอยู่ในตารางนี้ตามเกณฑ์ Critical/High</p>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>Version</th><th>Breaking Change</th><th>Migration Guide</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>PHP</td>
+          <td>8.6.0 Beta 1</td>
+          <td>เปลี่ยนพฤติกรรม Error Handling: กรณีที่เคย silent-truncate ค่าจะโยน ValueError/TypeError แทนแบบเงียบๆ, เปิด `session.use_strict_mode` และ `session.cookie_httponly` เป็นค่าเริ่มต้น</td>
+          <td>ยังอยู่ระหว่าง Beta — ควรทดสอบกับโค้ดที่พึ่งพา error suppression ก่อน Beta 2 ที่กำหนดออก 27 Aug 2026</td>
+          <td><a href="https://github.com/php/php-src/blob/php-8.6.0beta1/NEWS" target="_blank" rel="noopener">php-src NEWS (GitHub)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>EOL Date</th><th>Replacement</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Amazon MQ for RabbitMQ / Amazon MQ for ActiveMQ (เวอร์ชันที่ไม่รองรับแล้ว)</td>
+          <td>12 Aug 2026</td>
+          <td>AWS จะ auto-upgrade broker ที่ยังไม่รองรับไปเป็นเวอร์ชันที่รองรับถัดไปโดยอัตโนมัติภายใน 45 วันหลัง EOL ผ่าน maintenance window — แนะนำให้อัปเกรดเองล่วงหน้าเพื่อควบคุม downtime</td>
+          <td><a href="https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/rabbitmq-version-support.html" target="_blank" rel="noopener">AWS Amazon MQ — Version Support</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>Kubernetes v1.37 GA</b> — คาดการณ์ปลาย Aug 2026 หลังผ่าน RC0 เมื่อ 6 Aug 2026 (ยังไม่มี RC ใหม่ในสัปดาห์นี้)</li>
+      <li><b>Terraform v1.16.0 GA</b> — อยู่ระหว่าง RC1 (12 Aug 2026) รอเข้า Stable</li>
+      <li><b>Vue 3.6.0 GA</b> — อยู่ระหว่าง RC4 (14 Aug 2026) ใกล้เข้าสู่ GA</li>
+      <li><b>PHP 8.6.0 Beta 2</b> — กำหนดออก 27 Aug 2026</li>
+      <li><b>Rust 1.98.0</b> — กำหนดออกเวอร์ชันเสถียร 20 Aug 2026</li>
+      <li><b>Java Critical Patch Update (CPU)</b> — JDK 8u504 (18 Aug 2026), JDK 11.0.33+5 (28 Aug 2026)</li>
+      <li><b>CVE-2026-68820 (Windows AFD Zero-day)</b> — มีการโจมตีจริงต่อเนื่อง ควรยืนยันว่าทุกเครื่อง Windows Server/Client แพตช์ครบทุกเครื่องแล้ว</li>
+      <li><b>CVE-2026-71362 (Adobe Commerce)</b> — ถูกใช้โจมตีทันทีหลังประกาศ ควรตรวจสอบ log การโจมตีย้อนหลังหลังแพตช์</li>
+      <li><b>CVE-2026-20349 (Cisco Secure Firewall)</b> — ไม่มี Workaround ต้องอัปเกรดทันที มีการโจมตีจริงแล้ว</li>
+      <li><b>Debian 11 "Bullseye" LTS EOL และ Proxmox VE 8 EOL</b> — ทั้งคู่กำหนด 31 Aug 2026 (นอกช่วงรายงานนี้แต่ใกล้เข้ามา)</li>
+      <li><b>Eclipse 2026-09 Simultaneous Release</b> — กำหนด 9 Sep 2026</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <ul>
+      <li><b>Total Releases/Advisories:</b> 54 รายการ (33 Release/Update + 21 รายการในตาราง Security &amp; CVE)</li>
+      <li><b>Major Releases:</b> 0</li>
+      <li><b>Security Releases:</b> 11 (.NET, GitLab, PostgreSQL, Ubuntu, Debian, RHEL, AlmaLinux, Rocky Linux, Windows Server, Git for Windows, OPNsense)</li>
+      <li><b>Patch Releases:</b> 13</li>
+      <li><b>New CVEs:</b> อย่างน้อย 22 หมายเลขที่ระบุชัดเจนในรายงานนี้ (มีบางประกาศ เช่น .NET, GitLab, Ubuntu USN, Debian DSA และ AlmaLinux ALSA ที่ครอบคลุม CVE เพิ่มเติมอีกจำนวนมากเป็นชุดโดยไม่ได้แจกแจงครบทุกหมายเลขในแหล่งข้อมูลที่ตรวจสอบได้)</li>
+      <li><b>EOL Announcements:</b> 1 (Amazon MQ for RabbitMQ/ActiveMQ)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul>
+      <li><a href="https://blog.python.org/2026/08/python-31214-31116-31021/" target="_blank" rel="noopener">Python Insider Blog</a></li>
+      <li><a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-august-2026-servicing-updates/" target="_blank" rel="noopener">.NET Blog — Servicing Updates</a></li>
+      <li><a href="https://github.com/php/php-src/blob/php-8.6.0beta1/NEWS" target="_blank" rel="noopener">PHP Source — NEWS (8.6.0 Beta 1)</a></li>
+      <li><a href="https://github.com/golang/go/releases/tag/go1.26.6" target="_blank" rel="noopener">Go Releases</a></li>
+      <li><a href="https://github.com/vuejs/core/releases" target="_blank" rel="noopener">Vue Core Releases</a></li>
+      <li><a href="https://github.com/angular/angular/releases" target="_blank" rel="noopener">Angular Releases</a></li>
+      <li><a href="https://github.com/laravel/framework/releases" target="_blank" rel="noopener">Laravel Framework Releases</a></li>
+      <li><a href="https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/" target="_blank" rel="noopener">PostgreSQL News</a></li>
+      <li><a href="https://mariadb.com/docs/release-notes/community-server/changelogs/10.6/10.6.28" target="_blank" rel="noopener">MariaDB Release Notes</a></li>
+      <li><a href="https://support.microsoft.com/en-us/servicing/sql/sql-server-2025/cumulative-update/kb5104822-cu8" target="_blank" rel="noopener">SQL Server 2025 CU8</a></li>
+      <li><a href="https://www.elastic.co/docs/release-notes/elasticsearch" target="_blank" rel="noopener">Elasticsearch Release Notes</a></li>
+      <li><a href="https://support.microsoft.com/en-us/servicing/os/windows-server/2026/08/kb5120242-windows-server-2022-security-update" target="_blank" rel="noopener">Windows Server 2022 — KB5120242</a></li>
+      <li><a href="https://code.visualstudio.com/updates/v1_133" target="_blank" rel="noopener">VS Code Release Notes</a></li>
+      <li><a href="https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/rabbitmq-version-support.html" target="_blank" rel="noopener">AWS Amazon MQ — Version Support (EOL)</a></li>
+      <li><a href="https://aws.amazon.com/about-aws/whats-new/2026/08/openai-daybreak-red-and-blue-on-amazon-bedrock/" target="_blank" rel="noopener">AWS What's New</a></li>
+    </ul>
+    <h3>Release Notes / GitHub</h3>
+    <ul>
+      <li><a href="https://github.com/moby/moby/releases" target="_blank" rel="noopener">Docker (moby) Releases</a></li>
+      <li><a href="https://github.com/jenkinsci/jenkins/releases" target="_blank" rel="noopener">Jenkins Releases</a></li>
+      <li><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-2-2-released/" target="_blank" rel="noopener">GitLab Patch Release Notes</a></li>
+      <li><a href="https://github.com/argoproj/argo-cd/releases" target="_blank" rel="noopener">Argo CD Releases</a></li>
+      <li><a href="https://github.com/hashicorp/terraform/releases" target="_blank" rel="noopener">Terraform Releases</a></li>
+      <li><a href="https://github.com/ansible/ansible/releases" target="_blank" rel="noopener">Ansible Releases</a></li>
+      <li><a href="https://github.com/pulumi/pulumi/releases" target="_blank" rel="noopener">Pulumi Releases</a></li>
+      <li><a href="https://github.com/greenbone/openvas-scanner/releases" target="_blank" rel="noopener">Greenbone OpenVAS-scanner Releases</a></li>
+      <li><a href="https://github.com/git-for-windows/git/releases" target="_blank" rel="noopener">Git for Windows Releases</a></li>
+      <li><a href="https://github.com/JetBrains/intellij-community/releases" target="_blank" rel="noopener">JetBrains IntelliJ Community Releases</a></li>
+    </ul>
+    <h3>Security Advisory</h3>
+    <ul>
+      <li><a href="https://ubuntu.com/security/notices" target="_blank" rel="noopener">Ubuntu Security Notices</a></li>
+      <li><a href="https://www.debian.org/security/" target="_blank" rel="noopener">Debian Security Advisories</a></li>
+      <li><a href="https://access.redhat.com/errata/RHSA-2026:54246" target="_blank" rel="noopener">Red Hat Errata — RHSA-2026:54246</a></li>
+      <li><a href="https://errata.almalinux.org/" target="_blank" rel="noopener">AlmaLinux Errata</a></li>
+      <li><a href="https://wiki.rockylinux.org/rocky/errata/" target="_blank" rel="noopener">Rocky Linux Errata</a></li>
+      <li><a href="https://securitybridge.com/blog/sap-security-patch-day-august-2026/" target="_blank" rel="noopener">SecurityBridge — SAP Security Patch Day</a></li>
+      <li><a href="https://sansec.io/research/adobe-commerce-account-takeover-apsb26-92" target="_blank" rel="noopener">Sansec Research — Adobe Commerce</a></li>
+      <li><a href="https://www.strix.ai/cve/CVE-2026-70468" target="_blank" rel="noopener">Strix CVE Database — FortiManager</a></li>
+      <li><a href="https://www.hkcert.org/security-bulletin/cisco-products-multiple-vulnerabilities_20260812" target="_blank" rel="noopener">HKCERT Security Bulletin — Cisco</a></li>
+    </ul>
+    <h3>Trusted Media</h3>
+    <ul>
+      <li><a href="https://www.securityweek.com/august-2026-patch-tuesday-microsoft-fixes-421-cves-one-exploited-zero-day/" target="_blank" rel="noopener">SecurityWeek — Patch Tuesday August 2026</a></li>
+      <li><a href="https://www.tenable.com/blog/microsofts-august-2026-patch-tuesday-addresses-398-cves-cve-2026-68820" target="_blank" rel="noopener">Tenable — Patch Tuesday Analysis</a></li>
+      <li><a href="https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-august-2026/" target="_blank" rel="noopener">CrowdStrike — Patch Tuesday Analysis</a></li>
+      <li><a href="https://securityaffairs.com/197149/hacking/adobe-commerce-cve-2026-71362-comes-under-attack-shortly-after-public-disclosure.html" target="_blank" rel="noopener">Security Affairs — Adobe Commerce Exploitation</a></li>
+      <li><a href="https://cybersecuritynews.com/gitlab-patches-13-security-flaws/" target="_blank" rel="noopener">Cyber Security News — GitLab Patches</a></li>
+      <li><a href="https://www.cycognito.com/blog/2817-2/" target="_blank" rel="noopener">CyCognito — FortiWeb Vulnerability</a></li>
+      <li><a href="https://laravel-news.com/laravel-13-25-0" target="_blank" rel="noopener">Laravel News</a></li>
+      <li><a href="https://azurecharts.com/updates?monthback=0" target="_blank" rel="noopener">azurecharts.com — Azure Updates</a></li>
+      <li><a href="https://www.rapid7.com/blog/tag/metasploit-weekly-wrapup/" target="_blank" rel="noopener">Rapid7 — Metasploit Weekly Wrap-Up</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>หมายเหตุด้านความน่าเชื่อถือของข้อมูล</h2>
+    <p class="empty-note">ระหว่างการเก็บข้อมูล มีหลายโดเมนที่ไม่สามารถเข้าถึงได้โดยตรงผ่าน WebFetch ซ้ำหลายรอบ (nmap.org, wireshark.org, docs.tenable.com, opnsense.org, pve.proxmox.com, azure.microsoft.com/updates, docs.cloud.google.com, php.net, go.dev, blog.rust-lang.org, code.visualstudio.com, blog.jetbrains.com, github.blog, docs.github.com, www.jenkins.io, getcomposer.org) ทีมวิจัยได้สลับไปใช้ WebSearch และแหล่งข้อมูลรอง (secondary aggregators, GitHub mirrors) ตามขั้นตอน Fallback ที่กำหนดไว้ ข้อมูลที่ได้จากแหล่งรองเหล่านี้ถูกทำเครื่องหมาย UNCERTAIN ไว้ในตารางที่เกี่ยวข้องแล้ว ได้แก่ วันที่แน่นอนของ OPNsense 26.7.2, รายการอัปเดต Azure 4 รายการ, วันที่ประกาศ errata ของ Rocky Linux, และรายการ Google Cloud/Wireshark/Maven ซึ่งไม่มีรายการใดยืนยันวันที่อยู่ในช่วง 9–16 Aug 2026 ได้ครบถ้วน จึงไม่รวมไว้ในรายงานฉบับนี้</p>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Software Releases · 16 Aug 2026</p>
+    <p><a href="/">Back to Home</a></p>
+  </footer>
+</div>
+</body>
+</html>
