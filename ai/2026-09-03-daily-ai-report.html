@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-09-03</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 3 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-09-03</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 3 ก.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> การเข้าถึงโดเมนทางการหลายแห่งผ่าน WebFetch โดยตรงล้มเหลว (openai.com, anthropic.com, deepmind.google — ขึ้น EGRESS_BLOCKED) จึงลอง retry ตามขั้นตอนที่กำหนดแล้วยังไม่สำเร็จ จึงใช้ WebSearch พร้อม site: query แทนและยืนยันเนื้อหาผ่านผลค้นหาที่สอดคล้องกันจากหลายแหล่ง (รวมถึงลิงก์หน้าทางการที่ปรากฏในผลค้นหา เช่น openai.com/index/..., anthropic.com/news/..., blogs.nvidia.com) ส่วน GitHub เข้าถึงได้โดยตรงจึงดึงข้อมูล GitHub Trending จริง ณ เวลาที่ดึงข้อมูล ไม่พบข่าวเฉพาะบริษัทของ Google DeepMind, Microsoft, Amazon หรืองานวิจัย arXiv ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์ จึงงดแสดงหรือระบุว่าไม่พบในหัวข้อที่เกี่ยวข้อง รายการที่มีอายุเกิน 24 ชั่วโมงเล็กน้อย (เช่น Claude Fable 5.1/Mythos 5.1, Anthropic Enterprise Frontier Safeguards, Palo Alto Networks–Console) ถูกนำมาแสดงเพราะยังเป็นประเด็นต่อเนื่องที่สื่อยังพูดถึงในรอบ 24 ชั่วโมงนี้ และมีการระบุ <span class="badge">ต่อเนื่อง</span> กำกับไว้ชัดเจน</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ข่าวใหญ่ที่สุดวันนี้คือ NVIDIA ประกาศเข้าซื้อกิจการ Hugging Face มูลค่า 12.93 พันล้านดอลลาร์ พร้อมยืนยันจะไม่บังคับให้ผู้ใช้ต้องพึ่ง compute ของ NVIDIA และจะเปิดกว้างรองรับหลายค่ายต่อไป ด้าน OpenAI เปิดตัว GPT-6 Astra ให้กลุ่มผู้ใช้ธุรกิจในโปรแกรม Daybreak เป็นโมเดลแรกของบริษัทที่ผ่านเกณฑ์ความสามารถไซเบอร์ระดับ "Critical" ตาม Preparedness Framework วุฒิสมาชิก Bernie Sanders และ ส.ส. Greg Casar เสนอร่างกฎหมาย Ban Artificial Superintelligence Act ห้ามพัฒนา AI ระดับ superintelligence และพักงานวิจัย AI ขั้นสูงชั่วคราว ขณะที่นักวิจัยด้านความปลอดภัยเปิดเผยช่องโหว่ตระกูล GitSpawn ที่กระทบ AI coding agent หลายตัว เช่น Claude Code, Cursor, goose, Hermes Agent โดยบางส่วนยังไม่ได้รับการแก้ไข ด้าน Meta เดินหน้าเก็บข้อมูลการใช้งานโมเดล Muse Spark จากผู้ใช้เพื่อพัฒนาโมเดลรุ่นถัดไป พร้อมเตรียมเปิดตัว AI agent สำหรับผู้บริโภคชื่อ "Hatch" บน Instagram และ WhatsApp เร็วๆ นี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Model</th><th>Company</th><th>Category</th><th>Status</th><th>Source</th></tr>
+        <tr>
+          <td>GPT-6 Astra</td>
+          <td>OpenAI</td>
+          <td>Frontier LLM — ความสามารถควบคุมคอมพิวเตอร์อัตโนมัติและไซเบอร์ซีเคียวริตี้ขั้นสูง</td>
+          <td>เริ่มปล่อยให้กลุ่มผู้ใช้ธุรกิจในโปรแกรม Daybreak เมื่อ 3 ก.ย. 2569 เป็นโมเดลแรกของบริษัทที่ผ่านเกณฑ์ "Critical" ด้านไซเบอร์ตาม Preparedness Framework — ค้นพบและเชื่อมโยงช่องโหว่ zero-day ได้เองโดยไม่ต้องมีคำแนะนำทีละขั้นตอนจากมนุษย์ วางแผนเพิ่มการ์ดความปลอดภัยแล้วปล่อยสู่ผู้ใช้ ChatGPT แบบเสียเงินต่อไป</td>
+          <td>✅ <a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/">OpenAI (official)</a></td>
+        </tr>
+        <tr>
+          <td>Claude Fable 5.1 / Claude Mythos 5.1 <span class="badge">ต่อเนื่อง</span></td>
+          <td>Anthropic</td>
+          <td>Frontier LLM — โค้ดดิ้งและงานความรู้ (knowledge work)</td>
+          <td>เปิดตัว 1 ก.ย. 2569 เป็นโมเดลรุ่นเดียวกันแต่ระดับการ์ดความปลอดภัยต่างกัน — Fable 5.1 เปิดใช้งานทั่วไป (GA) ผ่าน Claude API, Amazon Bedrock, Google Cloud, Microsoft Foundry ส่วน Mythos 5.1 จำกัดเฉพาะองค์กรที่ผ่านการตรวจสอบภายใต้ Project Glasswing เพื่องานไซเบอร์ซีเคียวริตี้และวิทยาศาสตร์ชีวภาพ ยังคงเป็นประเด็นเปรียบเทียบกับ Astra ในสื่อต่อเนื่องถึงวันนี้</td>
+          <td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic (official)</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">Cross-validated: GPT-6 Astra ยืนยันผ่านแหล่งทางการ OpenAI + สื่อ Tier 2 หลายแหล่งที่รายงานตรงกัน (CNBC, Bloomberg, NBC News, TechCrunch) — Claude Fable 5.1/Mythos 5.1 ยืนยันผ่าน Anthropic (official) + VentureBeat, MacRumors, MarkTechPost</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">ไม่พบงานวิจัยใหม่ที่ยืนยันชื่อเรื่อง รายชื่อผู้เขียน และหมายเลข arXiv/DOI ได้ครบตามเกณฑ์ภายในกรอบ 24 ชั่วโมงนี้ (ตรวจสอบรายการ arXiv หมวด cs.AI/cs.MA ที่ยื่นวันที่ 2–3 ก.ย. 2569 แล้วพบเฉพาะงานด้านฟิสิกส์ดาราศาสตร์เป็นส่วนใหญ่) จึงงดแสดงตามหลักการ "หากข้อมูลไม่ครบ ให้ไม่นำมาแสดง"</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>anthropics/skills</td>
+          <td>~173.6k (+277 วันนี้)</td>
+          <td>Python</td>
+          <td>รีโพสิทอรีสาธารณะรวมความสามารถ (skills) สำหรับ agent ของ Anthropic</td>
+          <td><a href="https://github.com/anthropics/skills">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>NousResearch/hermes-agent <span class="badge">ต่อเนื่อง</span></td>
+          <td>~240.7k (+778 วันนี้)</td>
+          <td>Python</td>
+          <td>เฟรมเวิร์ก agent ที่ออกแบบให้พัฒนาต่อยอดและปรับตัวตามความต้องการของผู้ใช้ — ปรากฏในรายการ GitHub Trending ต่อเนื่องจากรายงานฉบับก่อนหน้า</td>
+          <td><a href="https://github.com/NousResearch/hermes-agent">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>DietrichGebert/ponytail</td>
+          <td>~123.2k (+2,138 วันนี้)</td>
+          <td>JavaScript</td>
+          <td>เครื่องมือปรับพฤติกรรม AI coding agent ให้ "คิดแบบ senior dev ที่ขี้เกียจ" เน้นลดการแก้โค้ดเกินความจำเป็น</td>
+          <td><a href="https://github.com/DietrichGebert/ponytail">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>addyosmani/agent-skills</td>
+          <td>~92.0k (+260 วันนี้)</td>
+          <td>JavaScript</td>
+          <td>ชุดความสามารถ (skills) เสริมสำหรับ AI coding agent</td>
+          <td><a href="https://github.com/addyosmani/agent-skills">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>Gitlawb/openclaude</td>
+          <td>~32.3k (+453 วันนี้)</td>
+          <td>TypeScript</td>
+          <td>เฟรมเวิร์ก agent แบบ multi-platform</td>
+          <td><a href="https://github.com/Gitlawb/openclaude">GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวยืนยันจากการเข้าถึงหน้า GitHub Trending โดยตรง ณ วันที่ 3 ก.ย. 2569 (เป็นตัวเลขสะสม ส่วน "+วันนี้" คือส่วนเพิ่มของวันนี้ตามที่หน้า Trending แสดง) รายการที่ทำเครื่องหมาย "ต่อเนื่อง" เคยปรากฏในรายงานฉบับก่อนหน้าและยังคงติดอันดับ Trending ต่อเนื่อง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบเครื่องมือ/แอปใหม่ที่ยืนยันวันที่เปิดตัวอยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์ (ราคา คำอธิบาย และแหล่งอ้างอิง)</p>
+    <h3>Updates</h3>
+    <ul>
+      <li><b>AI Coding Agents (หลายค่าย):</b> ทีมวิจัย Manifold Security เปิดเผยช่องโหว่ตระกูล "GitSpawn" ที่ repository ซึ่งมีไฟล์ .git config ที่ถูกดัดแปลง สามารถสั่งให้ AI coding agent รันคำสั่งอันตรายได้ทันทีที่เปิดโปรเจกต์ โดยไม่ต้องพิมพ์ prompt หรือกดอนุมัติ — มีการแก้ไขแล้วสำหรับ goose, Claude Code (บางส่วน) และ Cursor แต่ Hermes Agent, Qwen Code, Grok Build และอีกช่องทางหนึ่งใน Claude Code ยังคงมีช่องโหว่อยู่เมื่อทดสอบซ้ำวันที่ 1 ก.ย. 2569 — 📰 <a href="https://thehackernews.com/2026/09/malicious-git-configs-can-make-claude.html">The Hacker News</a>, <a href="https://www.manifold.security/blog/ai-coding-agents-git-hijack">Manifold Security (ต้นทางงานวิจัย)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>เริ่มปล่อย GPT-6 Astra ให้กลุ่มผู้ใช้ธุรกิจในโปรแกรม Daybreak เมื่อ 3 ก.ย. 2569 เป็นโมเดลแรกของบริษัทที่ผ่านเกณฑ์ความสามารถไซเบอร์ระดับ "Critical" ตาม Preparedness Framework — รายละเอียดเต็มในหัวข้อ AI Models ด้านบน</p>
+    <p class="note">Source: ✅ <a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/">OpenAI (official)</a>, 📰 <a href="https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html">CNBC</a>, <a href="https://www.bloomberg.com/news/articles/2026-09-03/openai-rolls-out-gpt-6-astra-model-with-added-cyber-guardrails">Bloomberg</a>, <a href="https://www.nbcnews.com/tech/tech-news/openai-debuts-gpt-6-astra-security-measures-rcna595940">NBC News</a></p>
+
+    <h3>Anthropic</h3>
+    <p><span class="badge">ต่อเนื่อง</span> เปิดตัว Claude Fable 5.1 และ Claude Mythos 5.1 เมื่อ 1 ก.ย. 2569 — รายละเอียดในหัวข้อ AI Models และ Benchmark ด้านล่าง นอกจากนี้ยังประกาศ Enterprise Frontier Safeguards (EFS) ฟีเจอร์ที่รวม zero data retention (ZDR) เข้ากับระบบตรวจจับการใช้งานผิดวัตถุประสงค์ข้ามเซสชัน สำหรับลูกค้าองค์กรในอุตสาหกรรมกำกับดูแลเข้ม เช่น ธนาคาร โดยจะทยอยเปิดให้ใช้งานตั้งแต่ช่วงปลายปีนี้เป็นต้นไป</p>
+    <p class="note">Source: ✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic — Fable/Mythos 5.1 (official)</a>, <a href="https://www.anthropic.com/news/enterprise-frontier-safeguards">Anthropic — EFS (official)</a>, 📰 <a href="https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads">VentureBeat</a>, <a href="https://www.marktechpost.com/2026/09/02/anthropic-enterprise-frontier-safeguards-efs/">MarkTechPost</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัท DeepMind ที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+
+    <h3>Meta</h3>
+    <p>เปิดโปรแกรมจูงใจให้ผู้ใช้โมเดล Muse Spark "แชร์" prompt และผลลัพธ์ของตนเพื่อนำไปพัฒนาโมเดลรุ่นถัดไป โดยให้ส่วนลดค่าใช้งานเฉลี่ยราว 95% แก่ผู้เข้าร่วม นอกจากนี้ยังเตรียมเปิดตัว AI agent สำหรับผู้บริโภคชื่อ "Hatch" บน Instagram และ WhatsApp ที่สามารถทำธุรกรรมอัตโนมัติ เช่น สั่งซื้อของและจองร้านอาหาร คาดเปิดตัวช่วงต้นเดือน ก.ย. 2569 พร้อมแผนเก็บค่าสมาชิกพรีเมียมสูงสุดถึง 199.99 ดอลลาร์/เดือน</p>
+    <p class="note">Source: 📰 <a href="https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model/">TechCrunch</a> (โปรแกรมจูงใจ), <a href="https://www.pymnts.com/news/artificial-intelligence/2026/metas-consumer-focused-ai-agent-could-be-weeks-from-launch/">PYMNTS</a>, <a href="https://finance.biggo.com/news/d500f63f-cc96-4ecd-b54a-bd9a4b253e0c">BigGo Finance</a> — <span class="badge">⚠️ Rumor</span> วันเปิดตัว Hatch ยังไม่มีประกาศทางการจาก Meta ยืนยันวันที่แน่นอน</p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัท Microsoft ที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่พบข่าวเฉพาะบริษัท Amazon ที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์ (อัปเดต Bedrock AgentCore ที่พบไม่มีวันที่ประกาศชัดเจนในรอบนี้)</p>
+
+    <h3>NVIDIA</h3>
+    <p>ประกาศเข้าซื้อกิจการ Hugging Face มูลค่า 12,930,300,000 ดอลลาร์ เมื่อ 3 ก.ย. 2569 พร้อมยืนยันว่าจะไม่บังคับให้ผู้ใช้ Hugging Face ต้องใช้ compute ของ NVIDIA และจะยังคงรองรับโมเดลโอเพนซอร์ส/โอเพนเวทจากทั้งระบบนิเวศ รวมถึงรองรับ multi-cloud และ multi-accelerator ต่อไป — Hugging Face มีผู้ใช้กว่า 18 ล้านคน โมเดลกว่า 3 ล้านรายการ และบริษัทที่ใช้งานกว่า 200,000 แห่ง ดีลคาดปิดในช่วงครึ่งแรกปี 2570 โดย NVIDIA จะจ่ายโบนัสรักษาพนักงานเพิ่มอีกสูงสุด 1 พันล้านดอลลาร์</p>
+    <p class="note">Source: ✅ <a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/">NVIDIA (official)</a>, 📰 <a href="https://www.axios.com/2026/09/03/nvidia-hugging-face-13b">Axios</a>, <a href="https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion/">TechCrunch</a>, <a href="https://www.foxbusiness.com/technology/nvidia-buy-ai-platform-hugging-face-nearly-13b">Fox Business</a>, <a href="https://thehill.com/policy/technology/6068386-nvidia-acquires-hugging-face/">The Hill</a></p>
+
+    <h3>Startup</h3>
+    <p><span class="badge">ต่อเนื่อง</span> Palo Alto Networks ประกาศเข้าซื้อกิจการ Console สตาร์ทอัพ AI agent ด้าน IT/security operations เมื่อ 1 ก.ย. 2569 (ไม่เปิดเผยมูลค่าอย่างเป็นทางการ แต่สื่อรายงานตัวเลขราว 500 ล้านดอลลาร์) เพื่อเสริมความสามารถ agentic ให้แพลตฟอร์ม Cortex — Console ก่อตั้งปี 2024 ระดมทุนรวม 29 ล้านดอลลาร์ ลูกค้าเดิมรวมถึง Ramp, Flock Safety และ Scale AI</p>
+    <p class="note">Source: ✅ <a href="https://investors.paloaltonetworks.com/news-releases/news-release-details/palo-alto-networks-acquires-console-agentify-security">Palo Alto Networks (official)</a>, 📰 <a href="https://techcrunch.com/2026/09/02/palo-alto-networks-paid-500m-for-thrive-backed-console-sources-say/">TechCrunch</a>, <a href="https://www.securityweek.com/palo-alto-networks-acquires-ai-agent-platform-console/">SecurityWeek</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>Model Safety Framework (OpenAI):</b> GPT-6 Astra ผ่านเกณฑ์ "Critical" ตาม Preparedness Framework เป็นรายแรก จำกัดสิทธิ์เข้าถึงความสามารถไซเบอร์ขั้นสูงเฉพาะกลุ่มผู้ใช้ที่ผ่านการตรวจสอบ — <a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/">OpenAI (official)</a></li>
+      <li><b>Security / Agent Tooling (หลายค่าย):</b> ช่องโหว่ตระกูล GitSpawn กระทบ AI coding agent อย่างน้อย 7 ตัว มีแพตช์บางส่วนแล้ว — รายละเอียดในหัวข้อ Tools &amp; Apps ด้านบน — <a href="https://www.manifold.security/blog/ai-coding-agents-git-hijack">Manifold Security</a></li>
+      <li><b>Enterprise Security (Anthropic):</b> Enterprise Frontier Safeguards (EFS) รวม zero data retention กับระบบตรวจจับการใช้งานผิดวัตถุประสงค์ข้ามเซสชัน — <a href="https://www.anthropic.com/news/enterprise-frontier-safeguards">Anthropic (official)</a></li>
+      <li><b>Infrastructure (NVIDIA):</b> ตกลงเข้าซื้อ Hugging Face เพื่อขยายแพลตฟอร์มโอเพนซอร์ส AI — รายละเอียดในหัวข้อ Company News ด้านบน — <a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/">NVIDIA (official)</a></li>
+    </ul>
+    <p class="note">ไม่พบอัปเดต MCP เฉพาะเจาะจงในกรอบ 24 ชั่วโมงนี้ (สเปกล่าสุด 2026-07-28 และแผนงาน roadmap เผยแพร่ 22 ส.ค. 2569 ซึ่งอยู่นอกกรอบเวลา) และไม่พบอัปเดต API/SDK ของ AWS Bedrock ที่ยืนยันวันที่ประกาศชัดเจนในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>Acquisition:</b> NVIDIA เข้าซื้อ Hugging Face มูลค่า 12.93 พันล้านดอลลาร์ (ประกาศ 3 ก.ย. 2569) — รายละเอียดในหัวข้อ Company News ด้านบน — ✅ <a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/">NVIDIA (official)</a>, 📰 <a href="https://www.axios.com/2026/09/03/nvidia-hugging-face-13b">Axios</a></li>
+      <li><b>Acquisition <span class="badge">ต่อเนื่อง</span>:</b> Palo Alto Networks เข้าซื้อ Console สตาร์ทอัพ AI agent ด้านความปลอดภัย (ประกาศ 1 ก.ย. 2569) — รายละเอียดในหัวข้อ Company News ด้านบน — ✅ <a href="https://investors.paloaltonetworks.com/news-releases/news-release-details/palo-alto-networks-acquires-console-agentify-security">Palo Alto Networks (official)</a></li>
+      <li><b>Regulation:</b> วุฒิสมาชิก Bernie Sanders และ ส.ส. Greg Casar เสนอร่างกฎหมาย "Ban Artificial Superintelligence Act" เมื่อ 3 ก.ย. 2569 ห้ามพัฒนาและใช้งาน AI ระดับ superintelligence แบบถาวร พักงานวิจัย AI ขั้นสูงจนกว่าจะมีหน่วยงานกำกับดูแลกลางระดับ Cabinet กำหนดกฎความปลอดภัย พร้อมโทษจำคุกสูงสุด 20 ปีสำหรับบุคคลและยุบนิติบุคคลผู้ฝ่าฝืน (corporate death penalty) โดยอ้างถึงกรณีไวรัสสังเคราะห์ที่สร้างโดย AI เมื่อเดือนก่อนและการแฮ็กระบบอัตโนมัติที่ OpenAI, Anthropic และ Meta เผชิญ</li>
+    </ul>
+    <p class="note">Source (Regulation): ✅ <a href="https://www.sanders.senate.gov/press-releases/news-sanders-casar-introduce-legislation-to-ban-artificial-superintelligence-and-temporarily-pause-advanced-ai-development/">สำนักงานวุฒิสมาชิก Bernie Sanders (official)</a>, 📰 <a href="https://www.washingtonpost.com/technology/2026/09/03/sanders-proposes-artificial-superintelligence-ban-after-rogue-ai-incidents/">Washington Post</a>, <a href="https://thehill.com/policy/technology/6069131-sanders-casar-ai-superintelligence-ban/">The Hill</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+        <tr>
+          <td>Terminal-Bench-Science 0.1 <span class="badge">ต่อเนื่อง</span></td>
+          <td>Claude Fable 5.1 (Anthropic)</td>
+          <td>52.6% (เทียบกับ Fable 5 24.7%, Opus 5 29.0%, GPT-5.6 Sol 22.4%)</td>
+          <td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic (official)</a>, 📰 <a href="https://www.marktechpost.com/2026/09/01/anthropic-releases-claude-fable-5-1-and-claude-mythos-5-1-52-6-on-terminal-bench-science-and-75-cheaper-cache-reads/">MarkTechPost</a></td>
+        </tr>
+        <tr>
+          <td>Terminal-Bench 4.0 <span class="badge">ต่อเนื่อง</span></td>
+          <td>Claude Fable 5.1 / Claude Mythos 5.1 (Anthropic)</td>
+          <td>55.8% / 60.9% (เทียบกับ Fable 5 42.0%)</td>
+          <td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic (official)</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ผลเบนช์มาร์กมาจากการเปิดตัวเมื่อ 1 ก.ย. 2569 ยังคงเป็นตัวเลขอ้างอิงหลักที่สื่อและผู้ใช้นำไปเปรียบเทียบกับ GPT-6 Astra ต่อเนื่องในรอบ 24 ชั่วโมงนี้ ไม่พบผลเบนช์มาร์กของ GPT-6 Astra ที่ยืนยันคะแนนตัวเลขและแหล่งอ้างอิงได้ครบตามเกณฑ์ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <p class="note">🔥 กระแสหลักบน GitHub Trending วันนี้คือเฟรมเวิร์กและชุดความสามารถสำหรับ AI coding agent (anthropics/skills, hermes-agent, agent-skills, openclaude) และดีล NVIDIA–Hugging Face เป็นประเด็นที่ถูกพูดถึงกว้างขวางบนแพลตฟอร์มข่าว/โซเชียลตามผลค้นหา แต่ตรวจสอบผ่าน WebSearch แล้วไม่พบกระทู้ Hacker News หรือ Reddit เฉพาะเจาะจงที่ยืนยันลิงก์และวันที่ในกรอบ 24 ชั่วโมงนี้ได้ครบตามเกณฑ์</p>
+    <h3>Events</h3>
+    <ul>
+      <li>MCP Dev Summit — โตเกียว, 10–11 ก.ย. 2569</li>
+      <li>AGNTCon + MCPCon Europe — อัมสเตอร์ดัม, 17–18 ก.ย. 2569</li>
+      <li>AI Infra Summit — ซานตาคลารา, 15–17 ก.ย. 2569 — คีย์โน้ตโดย Ian Buck (NVIDIA) — <a href="https://www.nvidia.com/en-us/events/ai-infra-summit/">เว็บไซต์ทางการ</a></li>
+      <li>Meta Connect 2026 — ถ่ายทอดสดออนไลน์, 23–24 ก.ย. 2569 — <a href="https://www.meta.com/connect/">เว็บไซต์ทางการ</a></li>
+    </ul>
+    <p class="note">แนะนำให้ตรวจสอบวันที่กับเว็บไซต์ทางการของแต่ละงานอีกครั้งก่อนวางแผนเข้าร่วม</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>NVIDIA + Hugging Face — เปิดทางให้ระบบนิเวศ AI โอเพนซอร์สเข้าถึงโครงสร้างพื้นฐานระดับองค์กร</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>นักพัฒนาและองค์กรที่ใช้โมเดลโอเพนซอร์ส/โอเพนเวทจาก Hugging Face มักขาดโครงสร้างพื้นฐานระดับ enterprise สำหรับ deploy และปรับสเกลโมเดลจำนวนมาก</dd>
+        <dt>วิธีใช้</dt><dd>NVIDIA เข้าซื้อ Hugging Face และประกาศจะเสริมความแข็งแกร่งด้านโครงสร้างพื้นฐานให้แพลตฟอร์ม พร้อมยืนยันว่าจะไม่บังคับให้ต้องใช้ compute ของ NVIDIA เท่านั้น ยังรองรับ multi-cloud และ multi-accelerator ต่อไป</dd>
+        <dt>ประโยชน์</dt><dd>นักพัฒนากว่า 18 ล้านคนและองค์กรกว่า 200,000 แห่งที่ใช้ Hugging Face ได้ประโยชน์จากการลงทุนโครงสร้างพื้นฐานเพิ่มเติม โดยยังคงความเปิดกว้างของแพลตฟอร์มไว้</dd>
+      </dl>
+      <p class="note">Source: ✅ <a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/">NVIDIA (official)</a></p>
+    </div>
+    <div class="usecase">
+      <h4>Console (Palo Alto Networks) — agentic IT helpdesk ที่แก้ปัญหาความปลอดภัยแบบอัตโนมัติ</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีม IT และความปลอดภัยขององค์กรต้องจัดการคำขอซ้ำๆ จำนวนมาก เช่น รีเซ็ตรหัสผ่านและให้สิทธิ์เข้าถึงแอป ซึ่งใช้เวลาและทรัพยากรบุคคลมาก</dd>
+        <dt>วิธีใช้</dt><dd>ผู้ใช้บรรยายเป้าหมายเชิงปฏิบัติการเป็นภาษาธรรมชาติ แล้ว AI agent ของ Console วิเคราะห์และลงมือทำ เช่น รีเซ็ตรหัสผ่าน ให้สิทธิ์เข้าถึงแอปอย่าง Figma และ Miro โดยจะถูกผนวกเข้ากับแพลตฟอร์ม Cortex ของ Palo Alto Networks</dd>
+        <dt>ประโยชน์</dt><dd>ทีมความปลอดภัยตรวจจับ จัดลำดับความสำคัญ และแก้ไขปัญหาได้เร็วขึ้นในระดับความเร็วเครื่องจักร ลดภาระงานซ้ำซากของทีมที่มีจำกัด</dd>
+      </dl>
+      <p class="note">Source: ✅ <a href="https://investors.paloaltonetworks.com/news-releases/news-release-details/palo-alto-networks-acquires-console-agentify-security">Palo Alto Networks (official)</a></p>
+    </div>
+    <div class="usecase">
+      <h4>GPT-6 Astra ในโปรแกรม Daybreak — ควบคุมงานคอมพิวเตอร์ให้ธุรกิจแบบอัตโนมัติ</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งานที่ต้องใช้แรงงานซ้ำๆ บนคอมพิวเตอร์ เช่น กรอกสเปรดชีตหรือสร้างเว็บไซต์ตั้งแต่ต้น ยังต้องพึ่งพาแรงงานคนเป็นหลัก</dd>
+        <dt>วิธีใช้</dt><dd>OpenAI ปล่อย GPT-6 Astra ให้ผู้ใช้ธุรกิจที่ผ่านการอนุมัติในโปรแกรม Daybreak ใช้ควบคุมระบบคอมพิวเตอร์และทำงานแทนผู้ใช้ได้ในระดับความสามารถสูงสุดของบริษัทจนถึงปัจจุบัน</dd>
+        <dt>ประโยชน์</dt><dd>ธุรกิจที่ได้รับสิทธิ์เข้าถึงสามารถมอบหมายงานที่ใช้แรงงานซ้ำซากบนคอมพิวเตอร์ให้ AI ทำแทนได้ ลดเวลาทำงานที่ไม่ต้องใช้การตัดสินใจเชิงลึก</dd>
+      </dl>
+      <p class="note">Source: ✅ <a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/">OpenAI (official)</a>, 📰 <a href="https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html">CNBC</a></p>
+    </div>
+    <div class="usecase">
+      <h4>Anthropic Enterprise Frontier Safeguards — ให้ธนาคารใช้ Claude ได้โดยไม่เสียความเป็นส่วนตัวของข้อมูล</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>องค์กรในอุตสาหกรรมกำกับดูแลเข้ม เช่น ธนาคาร ต้องการใช้ AI แต่กังวลเรื่องการเก็บข้อมูลบทสนทนาที่ละเอียดอ่อนและการตรวจจับการใช้งานผิดวัตถุประสงค์</dd>
+        <dt>วิธีใช้</dt><dd>EFS รวมโหมด zero data retention (ไม่เก็บข้อมูลบทสนทนาไว้ที่ Anthropic) เข้ากับระบบตรวจจับการใช้งานผิดวัตถุประสงค์ข้ามเซสชันที่ทำงานได้แม้ไม่มีข้อมูลบทสนทนาเก็บไว้</dd>
+        <dt>ประโยชน์</dt><dd>องค์กรได้ทั้งความเป็นส่วนตัวของข้อมูลระดับสูงสุดและยังคงมีมาตรการความปลอดภัยตรวจจับการใช้งานผิดวัตถุประสงค์ ทำให้ใช้ Claude ในงานที่มีข้อมูลอ่อนไหวได้มั่นใจขึ้น</dd>
+      </dl>
+      <p class="note">Source: ✅ <a href="https://www.anthropic.com/news/enterprise-frontier-safeguards">Anthropic (official)</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">2</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>ความคืบหน้าและปฏิกิริยาของชุมชนโอเพนซอร์สต่อดีล NVIDIA เข้าซื้อ Hugging Face รวมถึงว่าคำมั่นเรื่องความเป็นกลาง (ไม่บังคับใช้ compute ของ NVIDIA) จะถูกรักษาไว้จริงหรือไม่หลังดีลปิด</dd>
+      <dt>เหตุผล</dt><dd>Hugging Face เป็นโครงสร้างพื้นฐานสำคัญของระบบนิเวศ AI โอเพนซอร์สทั่วโลก การเปลี่ยนเจ้าของอาจกระทบทิศทางของแพลตฟอร์มในระยะยาว</dd>
+      <dt>Source</dt><dd><a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/">NVIDIA (official)</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>ขอบเขตการเปิดใช้งานจริงของ GPT-6 Astra นอกโปรแกรม Daybreak และมาตรการจำกัดความสามารถไซเบอร์ขั้นสูงเมื่อปล่อยสู่ผู้ใช้ ChatGPT วงกว้าง</dd>
+      <dt>เหตุผล</dt><dd>เป็นโมเดลแรกที่ผ่านเกณฑ์ "Critical" ด้านไซเบอร์ จะเป็นบรรทัดฐานสำคัญสำหรับการกำกับดูแลโมเดล AI ที่มีความเสี่ยงสูงในอนาคต</dd>
+      <dt>Source</dt><dd><a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/">OpenAI (official)</a></dd>
+    </div>
+    <div class="watch">
+      <dt>ประเด็น</dt><dd>ความคืบหน้าของร่างกฎหมาย Ban Artificial Superintelligence Act ในสภาคองเกรสสหรัฐฯ</dd>
+      <dt>เหตุผล</dt><dd>หากผ่าน จะเป็นการควบคุมทางกฎหมายที่เข้มงวดที่สุดต่ออุตสาหกรรม AI สหรัฐฯ เท่าที่เคยมีมา กระทบทิศทางการวิจัยและพัฒนาของ OpenAI, Anthropic, Google DeepMind และ Meta โดยตรง</dd>
+      <dt>Source</dt><dd><a href="https://www.sanders.senate.gov/press-releases/news-sanders-casar-introduce-legislation-to-ban-artificial-superintelligence-and-temporarily-pause-advanced-ai-development/">สำนักงานวุฒิสมาชิก Bernie Sanders (official)</a></dd>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/">openai.com</a></li>
+          <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">anthropic.com</a></li>
+          <li><a href="https://www.anthropic.com/news/enterprise-frontier-safeguards">anthropic.com</a></li>
+          <li><a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/">blogs.nvidia.com</a></li>
+          <li><a href="https://investors.paloaltonetworks.com/news-releases/news-release-details/palo-alto-networks-acquires-console-agentify-security">investors.paloaltonetworks.com</a></li>
+          <li><a href="https://www.sanders.senate.gov/press-releases/news-sanders-casar-introduce-legislation-to-ban-artificial-superintelligence-and-temporarily-pause-advanced-ai-development/">sanders.senate.gov</a></li>
+          <li><a href="https://www.nvidia.com/en-us/events/ai-infra-summit/">nvidia.com</a></li>
+          <li><a href="https://www.meta.com/connect/">meta.com</a></li>
+          <li><a href="https://github.com/anthropics/skills">github.com/anthropics</a></li>
+          <li><a href="https://github.com/NousResearch/hermes-agent">github.com/NousResearch</a></li>
+          <li><a href="https://github.com/DietrichGebert/ponytail">github.com/DietrichGebert</a></li>
+          <li><a href="https://github.com/addyosmani/agent-skills">github.com/addyosmani</a></li>
+          <li><a href="https://github.com/Gitlawb/openclaude">github.com/Gitlawb</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li>ไม่พบงานวิจัยที่ยืนยันได้ครบตามเกณฑ์ในกรอบเวลานี้</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html">CNBC</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-09-03/openai-rolls-out-gpt-6-astra-model-with-added-cyber-guardrails">Bloomberg</a></li>
+          <li><a href="https://www.nbcnews.com/tech/tech-news/openai-debuts-gpt-6-astra-security-measures-rcna595940">NBC News</a></li>
+          <li><a href="https://www.axios.com/2026/09/03/nvidia-hugging-face-13b">Axios</a></li>
+          <li><a href="https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion/">TechCrunch (NVIDIA)</a></li>
+          <li><a href="https://www.foxbusiness.com/technology/nvidia-buy-ai-platform-hugging-face-nearly-13b">Fox Business</a></li>
+          <li><a href="https://thehill.com/policy/technology/6068386-nvidia-acquires-hugging-face/">The Hill (NVIDIA)</a></li>
+          <li><a href="https://techcrunch.com/2026/09/02/palo-alto-networks-paid-500m-for-thrive-backed-console-sources-say/">TechCrunch (Console)</a></li>
+          <li><a href="https://www.securityweek.com/palo-alto-networks-acquires-ai-agent-platform-console/">SecurityWeek</a></li>
+          <li><a href="https://www.washingtonpost.com/technology/2026/09/03/sanders-proposes-artificial-superintelligence-ban-after-rogue-ai-incidents/">Washington Post</a></li>
+          <li><a href="https://thehill.com/policy/technology/6069131-sanders-casar-ai-superintelligence-ban/">The Hill (AI ban bill)</a></li>
+          <li><a href="https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model/">TechCrunch (Meta)</a></li>
+          <li><a href="https://www.pymnts.com/news/artificial-intelligence/2026/metas-consumer-focused-ai-agent-could-be-weeks-from-launch/">PYMNTS</a></li>
+          <li><a href="https://thehackernews.com/2026/09/malicious-git-configs-can-make-claude.html">The Hacker News</a></li>
+          <li><a href="https://www.manifold.security/blog/ai-coding-agents-git-hijack">Manifold Security</a></li>
+          <li><a href="https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads">VentureBeat</a></li>
+          <li><a href="https://www.macrumors.com/2026/09/01/anthropic-claude-fable-5-1/">MacRumors</a></li>
+          <li><a href="https://www.marktechpost.com/2026/09/01/anthropic-releases-claude-fable-5-1-and-claude-mythos-5-1-52-6-on-terminal-bench-science-and-75-cheaper-cache-reads/">MarkTechPost</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li>GitHub Trending — ดึงข้อมูลโดยตรง ณ วันที่ 3 ก.ย. 2569</li>
+          <li>Hacker News / Reddit — ไม่พบกระทู้ที่ยืนยันได้ในกรอบเวลานี้</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+  <p class="note"><b>Labels:</b> ✅ Official · 📰 Trusted Media · 🔥 Community Trend · ⚠️ Rumor · ❓ Unverified</p>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 3 ก.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>
