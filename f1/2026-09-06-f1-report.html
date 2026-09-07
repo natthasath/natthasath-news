@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 6 กันยายน 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 30 สิงหาคม – 6 กันยายน 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 36</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้คือสุดสัปดาห์ Italian Grand Prix 2026 ที่ Monza โดย Pierre Gasly (Alpine) คว้า Pole Position ครั้งแรกในอาชีพ ณ สนามเดียวกับที่นักแข่งฝรั่งเศสคนสุดท้ายทำได้ตั้งแต่ปี 1997 ส่วนการแข่งขันหลักถูกชักธงแดง (Red Flag) หลังจาก Charles Leclerc ประสบอุบัติเหตุรุนแรงที่โค้ง Parabolica ในรอบที่ 2-3 แต่ปลอดภัยดี ⚠️ <strong>ผลการแข่งขันสุดท้ายของ Italian GP ยังไม่สามารถยืนยันได้จากแหล่งข้อมูลที่ตรวจสอบได้ ณ เวลาจัดทำรายงานนี้</strong> จึงไม่แสดงตารางผลการแข่งขันในสัปดาห์นี้ นอกสนาม ตลาดผู้ขับขี่คึกคักด้วยการต่อสัญญาของ Max Verstappen, Lando Norris, Franco Colapinto, Carlos Sainz และ Alex Albon ขณะที่สัปดาห์หน้า F1 จะเปิดสนามใหม่ครั้งแรกที่ MADRING ในกรุงมาดริดสำหรับ Spanish Grand Prix</p>
+    </div>
+    <div class="warn-box">
+      <p>❓ <strong>ข้อจำกัดของข้อมูล:</strong> ผลการแข่งขัน Italian Grand Prix (ตำแหน่ง คะแนน Fastest Lap และ Driver of the Day) ยังไม่ปรากฏในแหล่งข่าวที่ตรวจสอบได้ ณ เวลาที่จัดทำรายงานนี้ เนื่องจากการแข่งขันเพิ่งชักธงแดงและกลับมาแข่งต่อในช่วงเวลาใกล้เคียงกับการรวบรวมข้อมูล คาดว่าผลสุดท้ายจะได้รับการยืนยันและนำเสนอในรายงานสัปดาห์ถัดไป</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">
+      ❓ ตารางนี้เป็นข้อมูลอันดับคะแนนล่าสุดที่ยืนยันได้ ณ หลัง Dutch Grand Prix (23 สิงหาคม 2026) <strong>ยังไม่รวมคะแนนจาก Italian Grand Prix</strong> เนื่องจากผลการแข่งขันยังไม่ได้รับการยืนยัน
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>242</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>183</td>
+          <td>-59</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>183</td>
+          <td>-59 (ตามหลังด้วยจำนวนชัยชนะ)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>159</td>
+          <td>-83</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>155</td>
+          <td>-87</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>112</td>
+          <td>-130</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇳🇿 Liam Lawson<sup>*</sup></td>
+          <td>Red Bull Racing</td>
+          <td>49</td>
+          <td>-193</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇩🇪 Nico Hülkenberg</td>
+          <td>Audi</td>
+          <td>❓ ไม่ยืนยัน</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>🇪🇸 Fernando Alonso</td>
+          <td>Aston Martin</td>
+          <td>❓ ไม่ยืนยัน</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>🇫🇷 Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>44</td>
+          <td>-198</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">* Lawson ลงแข่งแทน Isack Hadjar ที่ได้รับบาดเจ็บใน Dutch GP — สถานะความพร้อมของ Hadjar สำหรับ Monza ยังไม่ยืนยัน</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.crash.net/f1/results/1102951/1/2026-formula-1-world-championship-standings-after-dutch-grand-prix">Crash.net</a>, <a href="https://sports.yahoo.com/articles/f1-standings-2026-dutch-grand-113338201.html">Yahoo Sports</a>, <a href="https://www.forbes.com/sites/yaraelshebiny/2026/08/24/f1-standings-2026-after-the-dutch-grand-prix/">Forbes</a> — หมายเหตุ: ไม่พบการอ้างอิงตรงจาก Formula1.com/FIA ในรอบการค้นหานี้</div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">
+      ❓ <strong>ข้อมูลจากแหล่งเดียว ยังไม่ผ่านการตรวจสอบข้ามแหล่ง (single-source, low confidence):</strong> ตารางนี้อ้างอิงจากแหล่งข้อมูลรอง (secondary aggregator) เพียงแหล่งเดียว และไม่ปรากฏทีม Cadillac ซึ่งลงแข่งในฤดูกาล 2026 จริง จึงอาจไม่ครบถ้วน ควรตรวจสอบอีกครั้งกับ Formula1.com/FIA ในรายงานถัดไป
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>425</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>338</td>
+          <td>-87</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>McLaren</td>
+          <td>263</td>
+          <td>-162</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Red Bull Racing</td>
+          <td>186</td>
+          <td>-239</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Racing Bulls</td>
+          <td>66</td>
+          <td>-359</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Alpine</td>
+          <td>63</td>
+          <td>-362</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Haas</td>
+          <td>21</td>
+          <td>-404</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Audi</td>
+          <td>16</td>
+          <td>-409</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Williams</td>
+          <td>11</td>
+          <td>-414</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Aston Martin</td>
+          <td>3</td>
+          <td>-422</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">❓ ที่มา (single source, unverified): <a href="https://www.f1-fansite.com/f1-results/f1-standings-2026-championship/">F1-Fansite</a></div>
+  </section>
+
+  <section>
+    <h2>🏁 Italian Grand Prix 2026 — สุดสัปดาห์ที่ Monza</h2>
+    <div class="note">
+      📍 <strong>สนามแข่ง:</strong> Autodromo Nazionale di Monza | 🏁 <strong>รายการที่ 77</strong> ของ Italian GP ที่จัดในสนามนี้ | ⏱️ <strong>วันแข่งขัน:</strong> 6 กันยายน 2026 เริ่ม 20:00 ICT
+    </div>
+
+    <h3>⏱ ผลการคัดเลือก (Qualifying) — วันเสาร์ที่ 5 กันยายน</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา / หมายเหตุ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>1:21.786 (Pole แรกในอาชีพ)</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>+0.060s</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>ถูกปรับ 3 ตำแหน่งจากกริด (ดูหัวข้อ FIA)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Franco Colapinto</td>
+          <td>Alpine</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>—</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>ผ่านเข้ารอบราวอันดับ 7 แต่ปรับไปสตาร์ทท้ายกริด (P20) จากการเปลี่ยนหน่วยพลังงาน</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">รายละเอียดเวลาต่อรอบทั้งหมดของ Q1–Q3 และตำแหน่ง 8-10 ยังไม่ได้รับการยืนยันครบถ้วนจากทุกแหล่งในรอบการค้นหานี้</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://racingnews365.com/2026-f1-italian-grand-prix-monza-qualifying-results">RacingNews365</a>, <a href="https://www.the-race.com/formula-1/f1-2026-italian-grand-prix-practice-results-2/">The Race</a>, <a href="https://athlonsports.com/racing/f1/f1-qualifying-results-full-starting-grid-for-the-italian-grand-prix-monza-2026">Athlon Sports</a></div>
+
+    <h3>🏁 การแข่งขันหลัก — สถานะ ❓ ยังไม่มีผลสรุปยืนยัน</h3>
+    <div class="warn-box">
+      <p><strong>สรุปเหตุการณ์ที่ยืนยันได้:</strong></p>
+      <ul>
+        <li>รอบที่ 1: Lewis Hamilton ปะทะกับ Charles Leclerc ที่ชิเคนแรก หลุดออกไปในกรวดหิน ร่วงไปราวอันดับ 10</li>
+        <li>รอบที่ 2-3: George Russell แซง Pierre Gasly ขึ้นเป็นผู้นำ ก่อนที่ Charles Leclerc จะเสียท้ายรถและพุ่งชนยางกันชนอย่างรุนแรงที่โค้ง Parabolica ขณะป้องกันตำแหน่งที่ 4 จาก Oscar Piastri — Leclerc ปลอดภัยดีและออกจากศูนย์พยาบาลก่อนการแข่งขันจะกลับมาเริ่มใหม่ 🚨</li>
+        <li>การแข่งขันถูกชักธงแดง (Red Flag) เพื่อซ่อมแซมแบริเออร์</li>
+        <li>ก่อนการปล่อยตัวใหม่ ลำดับที่รายงานคือ Russell นำ, Verstappen อันดับ 3, Franco Colapinto อันดับ 4</li>
+      </ul>
+      <p>❓ <strong>ไม่พบข้อมูลยืนยัน:</strong> ผู้ชนะ อันดับสุดท้าย คะแนนที่มอบให้ Fastest Lap และ Driver of the Day — แหล่งข่าวที่ตรวจสอบได้ทั้งหมดยังระบุว่าการแข่งขัน "อยู่ระหว่างดำเนินการ/เพิ่งกลับมาแข่งต่อ" ณ เวลาที่รวบรวมข้อมูล จึงงดแสดงตารางผลการแข่งขันตามหลักเกณฑ์ของรายงาน</p>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.crash.net/f1/news/1103882/1/f1-italian-grand-prix-red-flagged-after-huge-charles-leclerc-crash">Crash.net</a>, <a href="https://www.espn.com/f1/story/_/id/49813283/charles-leclerc-suffers-huge-crash-italian-grand-prix-major-blow-ferrari-home-race-italian-grand-prix-formula-1-monza">ESPN</a>, <a href="https://www.the-race.com/formula-1/f1-2026-italian-gp-red-flag-charles-leclerc-crash-ferrari/">The Race</a>, <a href="https://www.formula1.com/en/latest/article.watch-italian-gp-red-flagged-as-leclerc-walks-away-from-huge-crash.6GqXitdCU6zq35K6x7vzyf.html">Formula1.com</a>, <a href="https://www.motorsportweek.com/2026/09/06/charles-leclerc-out-of-f1-italian-gp/">Motorsport Week</a></div>
+
+    <h3>⚡ Sprint</h3>
+    <p>ไม่มีการแข่งขัน Sprint ในสุดสัปดาห์นี้ — Monza ใช้รูปแบบสุดสัปดาห์มาตรฐาน (ซ้อม 3 ครั้ง + คัดเลือก + แข่งขันหลัก) ✅ ที่มา: <a href="https://www.skysports.com/f1/news/12433/13577758/italian-gp-2026-dates-schedule-weather-uk-start-time-and-how-to-watch-or-stream-f1-race-at-monza-live-on-sky-sports">Sky Sports F1</a></p>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญ</h2>
+
+    <h3>🔄 การอัปเดตตลาดผู้ขับขี่ (ยืนยันแล้วทั้งหมด ไม่ใช่ข่าวลือ)</h3>
+    <div class="team-section">
+      <p><strong>Max Verstappen ต่อสัญญากับ Red Bull ถึงสิ้นปี 2030:</strong> ประกาศราวปลายเดือนสิงหาคม ก่อนหน้า Dutch Grand Prix</p>
+      <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/verstappen-signs-contract-extension-with-red-bull-until-the-end-of-2030.4gUd8JEkYnKmD6bNMS5syw">Formula1.com</a>, <a href="https://www.skysports.com/f1/news/12433/13574907/max-verstappen-red-bull-driver-signs-new-contract-extension-until-2030-formula-1-season-ahead-of-dutch-grand-prix">Sky Sports F1</a>, Red Bull (ทางการทีม)</div>
+    </div>
+    <div class="team-section">
+      <p><strong>Lando Norris ต่อสัญญากับ McLaren ถึงอย่างน้อยสิ้นปี 2030:</strong> ประกาศเมื่อ 28-29 สิงหาคม 2026</p>
+      <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/lando-norris-commits-future-to-mclaren-as-he-signs-new-deal-until-the-end-of-2030.7ErHTktjoW2mAo5zEEtuA0">Formula1.com</a>, <a href="https://www.racefans.net/2026/08/29/norris-extends-mclaren-contract-until-2030/">RaceFans</a>, McLaren (ทางการทีม)</div>
+    </div>
+    <div class="team-section">
+      <p><strong>Franco Colapinto อยู่กับ Alpine ต่อในปี 2027</strong> เคียงข้าง Pierre Gasly — ทำให้ไลน์อัพ Alpine ไม่เปลี่ยนแปลงเป็นปีที่สามติดต่อกัน</p>
+      <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/alpine-announce-colapinto-contract-extension-as-team-confirms-unchanged-2027-line-up.DL3dVyZLJm5cHryWcHyPq">Formula1.com</a>, <a href="https://www.racefans.net/2026/08/29/alpine-confirm-colapinto-will-remain-alongside-gasly-in-2027-line-up/">RaceFans</a>, ESPN</div>
+    </div>
+    <div class="team-section">
+      <p><strong>Williams ยืนยันไลน์อัพนักแข่งปี 2027:</strong> Carlos Sainz เซ็นสัญญาหลายปีฉบับใหม่ และ Alex Albon ต่อสัญญาถึงปี 2027</p>
+      <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/sainz-agrees-new-multi-year-contract-with-williams-as-team-complete-2027-driver-line-up.66fBQTFaXXt7oIUfzi8NiO">Formula1.com</a>, <a href="https://www.skysports.com/f1/news/12433/13574716/carlos-sainz-williams-driver-signs-multi-year-contract-extension-to-remain-with-team-in-2027-and-beyond">Sky Sports F1</a>, <a href="https://www.autosport.com/f1/news/carlos-sainz-extends-williams-contract/10847353/">Autosport</a></div>
+    </div>
+    <div class="team-section">
+      <p>Formula1.com ตั้งข้อสังเกตว่าตลาดผู้ขับขี่สำหรับปี 2027 "เหลือที่ว่างจริง ๆ น้อยลงเรื่อย ๆ" หลังการต่อสัญญาชุดใหญ่ในสัปดาห์นี้</p>
+      <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/driver-market-whats-happening-so-far-in-2026-and-who-holds-the-key.2axbyCnac9zmUzOLAi1uM2">Formula1.com</a></div>
+    </div>
+
+    <h3>🔧 การอัปเดตทางเทคนิค</h3>
+    <div class="team-section">
+      <p><strong>Ferrari:</strong> นำอัปเกรดแอโรพร้อมอัปเดตเครื่องยนต์รอบสองมาใช้ในสนามเหย้าที่ Monza — Leclerc ชื่นชมกลยุทธ์อัปเกรด "aggressive" ของทีม</p>
+      <div class="source">✅ ที่มา: <a href="https://www.motorsportweek.com/2026/09/04/italian-gp-technical-preview-monza/">Motorsport Week</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Haas:</strong> นำอัปเกรดชุดใหญ่มาที่ Monza เพื่อหยุดฟอร์มตก — ทีมหัวหน้า Ayao Komatsu ระบุว่าทีมต้องประเมินแอโรไดนามิกที่ปรับปรุงของ VF-26 ให้เร็ว</p>
+      <div class="source">✅ ที่มา: <a href="https://www.motorsportweek.com/2026/09/02/haas-major-upgrades-italian-gp/">Motorsport Week</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>ภาพรวม:</strong> รายงานระบุว่าแทบทุกทีมยกเว้น Audi นำอัปเดตบางรูปแบบมาที่ Monza; McLaren และ Aston Martin นำอัปเดตจาก Zandvoort มาต่อเนื่อง ส่วน Williams เก็บอัปเกรดใหญ่ไว้รอสนาม Azerbaijan</p>
+      <div class="source">✅ ที่มา: <a href="https://racer.com/2026/09/04/technical-updates-2026-italian-grand-prix">RACER</a></div>
+    </div>
+
+    <h3>🚨 FIA และข้อบังคับ / บทลงโทษ</h3>
+    <div class="team-section">
+      <p><strong>Oscar Piastri (McLaren):</strong> โดนปรับ 3 ตำแหน่งจากกริดสตาร์ท จากการกีดขวาง Liam Lawson ในช่วง Q2 — ทำให้เขาสตาร์ทที่อันดับ 6 แทนที่จะเป็นอันดับ 3</p>
+      <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/piastri-hit-with-three-place-grid-penalty-for-impeding-lawson-in-monza-qualifying.5bmDgovuCPwygEbOIzDKRm">Formula1.com</a>, <a href="https://www.planetf1.com/news/fia-oscar-piastri-liam-lawson-italian-grand-prix-2026-penalty">PlanetF1</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Colton Herta (Cadillac):</strong> ถูกเรียกสอบสวนเรื่องระบบ Clutch Disengagement System (CDS) ไม่เป็นไปตามข้อกำหนดทางเทคนิค ถูกปรับเงิน 30,000 ยูโร โดย 25,000 ยูโรรอลงอาญา 12 เดือน</p>
+      <div class="source">❓ ที่มา (แหล่งเดียว): <a href="https://www.planetf1.com/news/fia-colton-herta-italian-grand-prix-2026-investigation">PlanetF1</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Williams (Carlos Sainz / Alex Albon):</strong> ถูกสอบสวนกรณีต้องสงสัยไม่ชะลอความเร็วภายใต้ธงเหลืองคู่ในรอบซ้อมสุดท้าย — Sainz รอดพ้นบทลงโทษ ส่วน Albon ได้รับการตักเตือน (reprimand)</p>
+      <div class="source">❓ ที่มา (แหล่งเดียว): <a href="https://www.planetf1.com/news/fia-decision-double-williams-investigation-italian-grand-prix">PlanetF1</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Lewis Hamilton / Max Verstappen:</strong> FIA ยืนยันไม่มีการดำเนินการเพิ่มเติมเกี่ยวกับประเด็นวิทยุสื่อสารทีมที่เกิดขึ้นในสุดสัปดาห์นี้</p>
+      <div class="source">❓ ที่มา (แหล่งเดียว): <a href="https://www.planetf1.com/news/fia-lewis-hamilton-max-verstappen-italian-grand-prix-2026-decision">PlanetF1</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Kimi Antonelli:</strong> Mercedes ตัดสินใจเปลี่ยนหน่วยพลังงานใหม่ทั้งชุด ทำให้ผู้นำแชมป์ชิปต้องสตาร์ทท้ายกริด (P20) ที่ Monza — เป็นการตัดสินใจเชิงกลยุทธ์เพราะสนามมีทางตรงยาวเอื้อต่อการไล่แซง</p>
+      <div class="source">✅ ที่มา: <a href="https://www.skysports.com/f1/news/12433/13575701/kimi-antonelli-to-take-grid-penalty-at-italian-gp-in-monza-for-engine-change-mercedes-boss-toto-wolff-confirms">Sky Sports F1</a>, <a href="https://www.grandprix.com/news/antonelli-confirms-monza-engine-penalty.html">Grandprix.com</a></div>
+    </div>
+    <p class="note">❓ บทลงโทษหรือคำตัดสินของสจ๊วตในระหว่าง/หลังการแข่งขันหลัก (หลังชักธงแดง) ยังไม่มีข้อมูลยืนยัน</p>
+  </section>
+
+  <section>
+    <h2>📈 การวิเคราะห์การแสดงของทีม</h2>
+
+    <div class="team-section">
+      <h3>🔴 Mercedes</h3>
+      <p><strong>สถานะ:</strong> นำทั้งแชมป์ชิปผู้ขับขี่ (Antonelli 242 คะแนน) และผู้สร้างรถ (425 คะแนน ตามแหล่งข้อมูลเดียวที่ยังไม่ยืนยันข้าม) ก่อนเข้าสู่ Monza แต่ Antonelli ต้องสตาร์ทท้ายกริดจากการเปลี่ยนหน่วยพลังงาน ส่วน Russell ผ่านเข้ารอบอันดับ 2 และขึ้นนำในช่วงต้นการแข่งขันก่อนธงแดง</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔵 Ferrari</h3>
+      <p><strong>สถานะ:</strong> Hamilton และ Leclerc ผ่านเข้ารอบอันดับ 4-5 ในสนามเหย้า แต่สุดสัปดาห์เต็มไปด้วยอุปสรรค — Hamilton ปะทะกับ Leclerc ในรอบแรก ก่อนที่ Leclerc จะประสบอุบัติเหตุรุนแรงจนต้องออกจากการแข่งขันในรอบที่ 2-3 ทีมนำอัปเดตแอโรและเครื่องยนต์มาใช้ในสนามเหย้าแต่ยังไม่เห็นผลเป็นรูปธรรมก่อนธงแดง</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🟠 McLaren</h3>
+      <p><strong>สถานะ:</strong> Lando Norris ต่อสัญญาระยะยาวกับทีมถึงปี 2030 เป็นข่าวใหญ่ของสัปดาห์ ส่วน Oscar Piastri ผ่านเข้ารอบอันดับ 3 แต่โดนปรับกริด 3 ตำแหน่งจากการกีดขวางในรอบคัดเลือก Andrea Stella หัวหน้าทีมระบุว่า Monza เป็นสนามที่ท้าทายสำหรับรถที่เน้นความเร็วสูงเช่นของ McLaren</p>
+    </div>
+
+    <div class="team-section">
+      <h3>⭐ Red Bull Racing</h3>
+      <p><strong>สถานะ:</strong> Verstappen ต่อสัญญาถึงปี 2030 เป็นข่าวสำคัญ ผ่านเข้ารอบคัดเลือกอันดับ 6 และอยู่อันดับ 3 หลังการชักธงแดง Liam Lawson ยังคงลงแข่งแทน Isack Hadjar ที่บาดเจ็บ</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔷 Alpine</h3>
+      <p><strong>สถานะ:</strong> สัปดาห์ที่โดดเด่นที่สุด — Pierre Gasly คว้า Pole Position แรกในอาชีพหลังลงแข่งมา 190 สนาม และต่อสัญญากับ Franco Colapinto ไว้ถึงปี 2027 ทำให้ไลน์อัพทีมมั่นคง Colapinto ผ่านเข้ารอบคัดเลือกอันดับ 7</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔶 Williams</h3>
+      <p><strong>สถานะ:</strong> ยืนยันไลน์อัพนักแข่งปี 2027 ครบทั้งคู่ (Sainz + Albon) ระหว่างสุดสัปดาห์ยังถูกสอบสวนกรณีธงเหลืองคู่ในรอบซ้อม โดย Albon ได้รับใบเตือน ทีมเก็บอัปเกรดใหญ่ไว้รอสนาม Azerbaijan</p>
+    </div>
+
+    <div class="team-section">
+      <h3>⚙️ Haas</h3>
+      <p><strong>สถานะ:</strong> นำอัปเกรดชุดใหญ่มาที่ Monza เพื่อพยายามหยุดฟอร์มตก ยังไม่มีข้อมูลผลลัพธ์จากสนามในการแข่งขันจริงที่ยืนยันได้</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔹 ทีมอื่น ๆ</h3>
+      <p><strong>Audi:</strong> Nico Hülkenberg ยังอยู่ในกลุ่มท็อป 10 ของแชมป์ชิปผู้ขับขี่ (อันดับ 8) — เป็นเพียงทีมเดียวที่รายงานว่าไม่นำอัปเดตมาที่ Monza<br>
+      <strong>Aston Martin:</strong> Fernando Alonso อยู่อันดับ 9 ของแชมป์ชิปผู้ขับขี่ ทีมใช้เครื่องยนต์ Honda รุ่นอัปเกรดต่อเนื่องจาก Dutch GP<br>
+      <strong>Cadillac:</strong> Colton Herta ถูกสอบสวนและปรับเงินกรณีระบบ CDS ไม่เป็นไปตามข้อกำหนด</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติสำคัญ</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <strong>Pole Position แรกในอาชีพของ Gasly</strong><br>
+        ครั้งที่ 190 ในอาชีพ — Pole แรกของนักแข่งฝรั่งเศสที่ Monza นับตั้งแต่ Jean Alesi ปี 1997
+      </div>
+      <div class="stat-card">
+        <strong>Monza — สนามที่จัด F1 มากที่สุด</strong><br>
+        นี่คือครั้งที่ 77 ของ Italian GP ที่สนามนี้ (พลาดเพียงปี 1980)
+      </div>
+      <div class="stat-card">
+        <strong>สถิติชนะสูงสุดที่ Monza</strong><br>
+        Michael Schumacher และ Lewis Hamilton คนละ 5 ชัยชนะ
+      </div>
+      <div class="stat-card">
+        <strong>สถิติรอบเร็วที่สุด (ก่อนสุดสัปดาห์นี้)</strong><br>
+        1:20.901 — Lando Norris, McLaren, Italian GP 2025
+      </div>
+      <div class="stat-card">
+        <strong>ความนำแชมป์ชิปผู้ขับขี่ (ก่อน Monza)</strong><br>
+        Kimi Antonelli นำ 59 คะแนน
+      </div>
+      <div class="stat-card">
+        <strong>คำเตือนสถิติ</strong><br>
+        ❓ มีรายงานไม่ยืนยันว่า Verstappen อาจทำลายสถิติรอบเร็วที่สุดในรอบคัดเลือกปี 2025 (1:18.792) แต่ไม่สามารถยืนยันได้อิสระ
+      </div>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/need-to-know-the-most-important-facts-stats-and-trivia-ahead-of-the-2026-italian-grand-prix.3R2slU8oSHdeOc5lidJDGy">Formula1.com</a>, <a href="https://www.total-motorsport.com/monza-f1-records-most-wins-poles-fastest-laps/">Total Motorsport</a></div>
+  </section>
+
+  <section>
+    <h2>📅 Grand Prix ถัดไป — Spanish Grand Prix (MADRING)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="4">❓ ตารางเวลาเซสชันโดยละเอียด (FP1-FP3 / Qualifying / Race) ยังไม่ได้รับการยืนยันจากแหล่งข้อมูลในรอบการค้นหานี้ ทราบเพียงว่าสุดสัปดาห์การแข่งขันคือ 11-13 กันยายน 2026 โดยวันแข่งขันหลักคือวันอาทิตย์ที่ 13 กันยายน 2026</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>ตัวอักษร Spanish Grand Prix — ประวัติศาสตร์หน้าใหม่ของ F1</h3>
+    <div class="summary-box">
+      <p><strong>สนาม:</strong> MADRING (สนามใหม่ รูปแบบผสมถนน-สนามถาวร) | <strong>ประเทศ:</strong> สเปน (กรุงมาดริด) | <strong>ระยะทาง:</strong> ประมาณ 5.4 กม. 22 โค้ง</p>
+
+      <p>นี่คือการแข่งขัน F1 ชิงแชมป์โลกครั้งแรกที่กรุงมาดริด และเป็นครั้งแรกที่สเปนจัด Grand Prix นับตั้งแต่สนาม Jarama ในปี 1981 สนาม MADRING สร้างขึ้นรอบพื้นที่ IFEMA Madrid ในเขต Valdebébas/Hortaleza ใกล้สนามบิน Adolfo Suárez Madrid–Barajas นับเป็นสนามลำดับที่ 81 ที่เคยจัดการแข่งขัน F1 ชิงแชมป์โลก ภายใต้สัญญาที่รายงานว่าครอบคลุมปี 2026-2035 พร้อมรายการสนับสนุนอย่าง F2 และ F3</p>
+    </div>
+
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/racing/2026/spain">Formula1.com</a>, MADRING (ทางการ), <a href="https://www.mercedesamgf1.com/races/spanish-grand-prix-2026">Mercedes F1 (ทางการทีม)</a></div>
+  </section>
+
+  <section>
+    <h2>💬 คำพูดประจำสัปดาห์</h2>
+
+    <div class="quote">
+      "Let's go! Been waiting for that one! ... มันเป็นเวลาเก้าปีที่พยายามไล่ตามและได้โอกาสคว้า Pole Position ... การได้ Pole ครั้งแรกที่สนามนี้ ผมคิดว่ามันพิเศษมากที่นี่"
+      <br><span style="color: var(--ink-soft);">— Pierre Gasly (Alpine) หลังคว้า Pole Position แรกในอาชีพที่ Monza</span>
+    </div>
+
+    <div class="quote">
+      "มันคือความรู้สึกที่ดีที่สุดที่ได้เป็นนักแข่ง Ferrari มันเป็นเกียรติและสิทธิพิเศษอย่างยิ่งที่ได้มาถึงรายการสัญลักษณ์นี้ในอิตาลี กับทีมที่เป็นสัญลักษณ์และดีที่สุดในโลก"
+      <br><span style="color: var(--ink-soft);">— Lewis Hamilton (Ferrari) ในการแถลงข่าววันพฤหัสบดี</span>
+    </div>
+
+    <div class="quote">
+      "สำหรับเรามันน่าสนใจมากที่จะดูว่าเราจะแข่งขันได้อย่างไรในสนามที่ต้องการความเร็วสูงบนทางตรง เพราะเรารู้ว่านั่นไม่ใช่จุดแข็งของรถเรา ... ถ้าเราสามารถแข่งขันเพื่อโพเดียมที่นี่ได้ ใครจะรู้"
+      <br><span style="color: var(--ink-soft);">— Andrea Stella หัวหน้าทีม McLaren</span>
+    </div>
+
+    <div class="quote">
+      "นี่มันไม่ยุติธรรมเลย"
+      <br><span style="color: var(--ink-soft);">— Flavio Briatore (ที่ปรึกษาบริหาร Alpine) เกี่ยวกับการเสียโพเดียมของ Gasly ที่ Monaco (อ้างอิงย้อนหลัง)</span>
+    </div>
+
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/its-been-nine-years-chasing-it-gasly-reacts-to-shock-pole-position-for-italian-grand-prix.1FAPJfIGhtgTCJ9U3FBPQE">Formula1.com</a>, <a href="https://www.fia.com/news/f1-2026-italian-grand-prix-thursday-press-conference-transcript">FIA.com (บันทึกแถลงข่าว)</a></div>
+  </section>
+
+  <section>
+    <h2>🔍 การวิเคราะห์แชมป์ชิป</h2>
+
+    <h3>การต่อสู้แชมป์ชิปผู้ขับขี่</h3>
+    <div class="summary-box">
+      <p><strong>ความนำของ Antonelli ก่อน Monza:</strong> ด้วย 242 คะแนน Kimi Antonelli นำ George Russell และ Lewis Hamilton (ทั้งคู่ 183 คะแนน) อยู่ 59 คะแนน แต่การต้องสตาร์ทท้ายกริดที่ Monza จากการเปลี่ยนหน่วยพลังงานเป็นความเสี่ยงเชิงกลยุทธ์ที่อาจทำให้คู่แข่งไล่ตามคะแนนขึ้นมาได้ในสัปดาห์นี้</p>
+
+      <p><strong>Norris ยังคงเป็นตัวเต็ง:</strong> Lando Norris (159 คะแนน) เพิ่งประกาศต่อสัญญาระยะยาวกับ McLaren ท่ามกลางการไล่ล่าแชมป์ชิป แม้ Monza จะไม่ใช่สนามที่เอื้อต่อจุดแข็งของรถ McLaren ตามที่หัวหน้าทีม Andrea Stella ยอมรับ</p>
+
+      <p><strong>ผลกระทบจากอุบัติเหตุของ Leclerc:</strong> การที่ Charles Leclerc ต้องออกจากการแข่งขันตั้งแต่รอบต้น ๆ ที่สนามเหย้า เป็นการเสียโอกาสสำคัญในการไล่ตามผู้นำแชมป์ชิป โดยเฉพาะเมื่อ Ferrari นำอัปเดตชุดใหญ่มาใช้ในสนามนี้</p>
+
+      <p>❓ เนื่องจากผลการแข่งขันหลักยังไม่ยืนยัน จึงไม่สามารถวิเคราะห์ผลกระทบต่อคะแนนสะสมได้อย่างสมบูรณ์ในรายงานนี้</p>
+    </div>
+
+    <h3>แชมป์ชิปผู้สร้างรถ</h3>
+    <div class="summary-box">
+      <p><strong>Mercedes ยังคงได้เปรียบ:</strong> จากข้อมูลเท่าที่ตรวจสอบได้ (แหล่งเดียว ไม่ยืนยันข้าม) Mercedes ยังคงนำห่าง Ferrari และ McLaren อย่างชัดเจน สอดคล้องกับอันดับผู้ขับขี่ทั้งสองคนของทีมที่อยู่ในกลุ่มนำ</p>
+
+      <p><strong>Alpine กลับมาเป็นที่จับตา:</strong> แม้อันดับคะแนนผู้สร้างรถของ Alpine ยังตามหลัง แต่ Pole Position แรกของ Gasly ที่ Monza และการยืนยันไลน์อัพนักแข่งที่มั่นคง ทำให้ทีมเป็นประเด็นที่น่าติดตามในช่วงครึ่งหลังของฤดูกาล</p>
+    </div>
+
+    <h3>ศึกกลางตาราง (Midfield Battle)</h3>
+    <p>Williams ยืนยันไลน์อัพนักแข่งปี 2027 ครบ ขณะที่ Haas นำอัปเกรดชุดใหญ่มาพยายามไล่ตามฟอร์ม การสอบสวน FIA หลายกรณีในสุดสัปดาห์นี้ (Williams, Cadillac) สะท้อนว่าการแข่งขันในกลุ่มกลางตารางยังคงเข้มข้นและมีรายละเอียดทางเทคนิค/กติกาที่ต้องจับตา</p>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix</strong><br>Italian GP — Monza (ผลยังไม่ยืนยัน)</div>
+      <div class="stat-card"><strong>Sprint</strong><br>ไม่มีในสุดสัปดาห์นี้</div>
+      <div class="stat-card"><strong>Pole Position</strong><br>Pierre Gasly (Alpine) — 1:21.786</div>
+      <div class="stat-card"><strong>Fastest Lap</strong><br>❓ ไม่ยืนยัน</div>
+      <div class="stat-card"><strong>FIA Decisions</strong><br>4 กรณีในสุดสัปดาห์นี้ (Piastri, Herta, Williams, Hamilton/Verstappen)</div>
+      <div class="stat-card"><strong>Penalties</strong><br>Piastri (กริด 3 ตำแหน่ง), Herta (ปรับเงิน), Albon (ตักเตือน)</div>
+      <div class="stat-card"><strong>Driver Transfers</strong><br>5 การต่อสัญญา (Verstappen, Norris, Colapinto, Sainz, Albon)</div>
+      <div class="stat-card"><strong>Technical Updates</strong><br>Ferrari, Haas และเกือบทุกทีมยกเว้น Audi</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 รายการที่ควรจับตาในสัปดาห์ถัดไป</h2>
+
+    <div class="team-section">
+      <h3>จุดโฟกัสที่สำคัญ</h3>
+      <ul>
+        <li><strong>ผลสรุป Italian GP:</strong> ต้องติดตามผลการแข่งขันหลังธงแดง ตำแหน่งสุดท้าย และผลกระทบต่อคะแนนสะสมของ Antonelli หลังต้องสตาร์ทท้ายกริด — ที่มา: จะยืนยันในรายงานสัปดาห์ถัดไป</li>
+        <li><strong>ปฐมบทมาดริด:</strong> การแข่งขัน F1 ครั้งแรกที่สนาม MADRING ในกรุงมาดริด สเปนกลับมาสู่ปฏิทิน F1 ครั้งแรกนับตั้งแต่ 1981 — ที่มา: <a href="https://www.formula1.com/en/racing/2026/spain">Formula1.com</a></li>
+        <li><strong>อาการบาดเจ็บของ Charles Leclerc:</strong> แม้ยืนยันว่าปลอดภัยและออกจากศูนย์พยาบาลแล้ว ควรติดตามสถานะความพร้อมสำหรับสนามถัดไป — ที่มา: <a href="https://www.crash.net/f1/news/1103882/1/f1-italian-grand-prix-red-flagged-after-huge-charles-leclerc-crash">Crash.net</a></li>
+        <li><strong>ฟอร์มของ Alpine:</strong> หลัง Pole แรกของ Gasly จะสามารถแปลงเป็นผลงานที่ดีในสนามถัดไปได้หรือไม่ — ที่มา: <a href="https://www.formula1.com/en/latest/article/its-been-nine-years-chasing-it-gasly-reacts-to-shock-pole-position-for-italian-grand-prix.1FAPJfIGhtgTCJ9U3FBPQE">Formula1.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📝 หมายเหตุรายงาน</h2>
+    <div class="note">
+      <p><strong>ข้อจำกัดหลักของรายงานนี้:</strong> ผลการแข่งขัน Italian Grand Prix (ตำแหน่งสุดท้าย คะแนน Fastest Lap และ Driver of the Day) ไม่สามารถยืนยันได้จากแหล่งข่าวที่ตรวจสอบได้ ณ เวลาที่จัดทำรายงาน เนื่องจากการแข่งขันถูกชักธงแดงและเพิ่งกลับมาแข่งต่อในช่วงเวลาใกล้เคียงกับการรวบรวมข้อมูล ตามหลักเกณฑ์ของรายงานนี้ จึงงดแสดงตารางผลการแข่งขันที่ไม่ครบถ้วน</p>
+
+      <p><strong>ระดับความเชื่อมั่นของข้อมูล:</strong> ตารางคะแนนแชมป์ชิปผู้ขับขี่อ้างอิงจากหลายแหล่งที่สอดคล้องกัน (Crash.net, Yahoo Sports, Forbes) แต่ไม่มีการอ้างอิงตรงจาก Formula1.com/FIA ในรอบการค้นหานี้ ส่วนตารางคะแนนผู้สร้างรถและบทลงโทษ FIA บางรายการ (Herta, Williams, Hamilton/Verstappen) มาจากแหล่งข้อมูลเดียว (PlanetF1 หรือ f1-fansite) จึงมีความเชื่อมั่นต่ำกว่าและควรตรวจสอบซ้ำ</p>
+
+      <p><strong>โซนเวลา:</strong> เวลาเซสชันทั้งหมดแสดงเป็น ICT (Indochina Time, GMT+7) ตามที่ขอ</p>
+
+      <p><strong>ช่วงเวลาที่ครอบคลุม:</strong> รายงานนี้ครอบคลุมข่าว F1 ตั้งแต่ 30 สิงหาคม – 6 กันยายน 2026 ยกเว้นข่าวต่อเนื่อง 🔄 (เช่น ตลาดผู้ขับขี่ที่ยังดำเนินอยู่) ซึ่งรวมไว้แม้จะเริ่มก่อนช่วงเวลานี้</p>
+
+      <p><strong>รายงานถัดไป:</strong> รายงาน F1 ประจำสัปดาห์ถัดไปจะยืนยันผลการแข่งขัน Italian Grand Prix ที่ค้างอยู่ และครอบคลุมสุดสัปดาห์ Spanish Grand Prix ที่ MADRING (11-13 กันยายน 2026)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>ทางการ (Official)</h3>
+    <ul>
+      <li>✅ <a href="https://www.formula1.com">Formula1.com</a> (เว็บไซต์ F1 ทางการ)</li>
+      <li>✅ <a href="https://www.fia.com">FIA.com</a> (สหพันธ์ยานยนต์นานาชาติ)</li>
+    </ul>
+
+    <h3>สื่อ Motorsport</h3>
+    <ul>
+      <li><a href="https://www.autosport.com/f1">Autosport.com</a></li>
+      <li><a href="https://www.the-race.com/formula-1/">The Race</a></li>
+      <li><a href="https://www.racefans.net">RaceFans.net</a></li>
+      <li><a href="https://www.skysports.com/f1">Sky Sports F1</a></li>
+      <li><a href="https://www.crash.net/f1">Crash.net</a></li>
+      <li><a href="https://www.planetf1.com">PlanetF1</a></li>
+      <li><a href="https://www.motorsportweek.com">Motorsport Week</a></li>
+      <li><a href="https://racingnews365.com">RacingNews365</a></li>
+      <li><a href="https://www.espn.com/f1/">ESPN F1</a></li>
+      <li><a href="https://racer.com">RACER</a></li>
+      <li><a href="https://www.forbes.com">Forbes</a>, <a href="https://sports.yahoo.com">Yahoo Sports</a> (บทวิเคราะห์อันดับคะแนน)</li>
+    </ul>
+
+    <h3>การสื่อสารของทีม / อื่น ๆ</h3>
+    <ul>
+      <li>Red Bull, McLaren, Mercedes, Alpine (ประกาศทางการทีม)</li>
+      <li>❓ <a href="https://www.f1-fansite.com">F1-Fansite</a> — ใช้เฉพาะตารางคะแนนผู้สร้างรถ (แหล่งเดียว ยังไม่ยืนยันข้าม)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>
+      <strong>รายงาน Formula 1 ประจำสัปดาห์</strong> · 6 กันยายน 2026 (สัปดาห์ที่ 36)<br>
+      สร้างสำหรับ natthasath-news · ภาษา: ภาษาไทย (ไทย) · โซนเวลา: ICT (GMT+7)<br>
+      ข้อมูลที่ยืนยันจากแหล่งข้อมูล F1 อย่างเป็นทางการและสื่อ motorsport เท่าที่ตรวจสอบได้ · เวลาทั้งหมดใน ICT
+    </p>
+  </footer>
+</div>
+</body>
+</html>
