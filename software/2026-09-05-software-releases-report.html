@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 Weekly Software Releases Report - Week 36</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27, 32, 39, 0.14);
+  --line-strong: rgba(27, 32, 39, 0.28);
+  --accent: #0F7A73;
+  --critical: #D92B2B;
+  --high: #FF6B35;
+  --medium: #FFA500;
+  --low: #4CAF50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231, 230, 224, 0.14);
+    --line-strong: rgba(231, 230, 224, 0.26);
+    --accent: #3FBDAF;
+    --critical: #FF6B6B;
+    --high: #FF8C42;
+    --medium: #FFB84D;
+    --low: #81C784;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.page { max-width: 1200px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topstrip {
+  display: flex; justify-content: space-between; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-faint);
+}
+
+.masthead { padding: 44px 0 30px; border-bottom: 1px solid var(--line-strong); }
+.kicker {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+  font-size: 15px; color: var(--accent); margin: 0 0 14px;
+}
+.kicker::before { content: "◆ "; font-size: 11px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 800; margin: 0 0 16px; }
+h2 {
+  font-size: 24px; font-weight: 700; margin: 36px 0 20px; color: var(--ink);
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; color: var(--ink-soft); }
+
+.meta-row { display: flex; gap: 20px; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+
+.executive-summary {
+  background: var(--surface); border-left: 4px solid var(--accent);
+  padding: 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8;
+}
+
+.dashboard {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.dashboard-item {
+  background: var(--surface); padding: 16px; border-radius: 4px;
+  border-top: 3px solid var(--accent); text-align: center;
+}
+.dashboard-item-value { font-size: 32px; font-weight: 700; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.dashboard-item-label {
+  font-size: 12px; color: var(--ink-faint); margin-top: 8px;
+  text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--surface); }
+th {
+  background: var(--surface-2); color: var(--ink); padding: 12px; text-align: left;
+  font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--line-strong);
+}
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.label {
+  display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 11px;
+  font-weight: 600; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-major { background: rgba(15, 122, 115, 0.2); color: var(--accent); }
+.label-minor { background: rgba(15, 122, 115, 0.1); color: var(--ink-soft); }
+.label-patch { background: rgba(217, 43, 43, 0.1); color: var(--ink-soft); }
+.label-security { background: rgba(217, 43, 43, 0.2); color: var(--critical); }
+.label-lts { background: rgba(255, 165, 0, 0.15); color: var(--medium); }
+.label-rc { background: rgba(156, 39, 176, 0.15); color: var(--ink-soft); }
+.label-eol { background: rgba(217, 43, 43, 0.15); color: var(--critical); }
+
+.severity-critical { color: var(--critical); font-weight: 600; }
+.severity-high { color: var(--high); font-weight: 600; }
+.severity-medium { color: var(--medium); font-weight: 600; }
+.severity-low { color: var(--low); font-weight: 600; }
+
+.source-badge {
+  display: inline-block; padding: 3px 6px; background: var(--surface-2);
+  border-radius: 2px; font-size: 10px; font-family: "JetBrains Mono", monospace; color: var(--ink-faint);
+}
+
+.note {
+  background: var(--surface); border-left: 4px solid var(--medium); padding: 12px;
+  margin: 12px 0; border-radius: 2px; font-size: 13px; color: var(--ink-soft);
+}
+.empty-note {
+  background: var(--surface); border: 1px dashed var(--line-strong); padding: 12px 16px;
+  margin: 12px 0; border-radius: 4px; font-size: 13.5px; color: var(--ink-soft); font-style: italic;
+}
+.highlight-box { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; margin: 12px 0; border-radius: 4px; }
+
+footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-strong); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+.two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest</p>
+    <h1>💻 Weekly Software Releases Report</h1>
+    <div class="meta-row">
+      <span><b>Week:</b> 36</span>
+      <span><b>Period:</b> August 29 – September 5, 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="executive-summary">
+      <p>สัปดาห์นี้ (29 ส.ค. – 5 ก.ย. 2569) ประเด็นเด่นด้านความปลอดภัยคือช่องโหว่ Zero-day ระดับ V8 ใน Google Chrome (CVE-2026-85046) ที่ถูกใช้โจมตีจริงและถูกเพิ่มเข้า CISA Known Exploited Vulnerabilities Catalog เมื่อ 4 ก.ย. รวมถึงช่องโหว่ระดับวิกฤติ 2 รายการใน VMware Workstation/Fusion (VMSA-2026-0007) ที่เปิดทางให้ผู้โจมตีหลบหนีออกจาก Virtual Machine ไปยัง Host ได้โดยไม่มี Workaround</p>
+      <p>นอกจากนี้ยังมีแพตช์ความปลอดภัยจาก Mozilla Firefox ESR, Ubuntu (เคอร์เนลและแพ็กเกจอื่น ๆ), Debian และ Elasticsearch ฝั่ง DevOps/Developer Tools มีการอัปเดตตามรอบปกติของ Docker Engine, Go, Terraform, GitHub Actions และ Visual Studio Code สัปดาห์นี้ไม่พบการเปิดตัว Major Release หรือ Framework Release ใหม่ที่ตรวจสอบแหล่งที่มาได้ตามเกณฑ์ที่กำหนด</p>
+      <p><strong>ประเด็นสำคัญ:</strong> ทีมงานควรเร่งอัปเดต Google Chrome และ VMware Workstation/Fusion โดยด่วนเนื่องจากมีความเสี่ยงถูกโจมตีจริงและ/หรือความรุนแรงระดับ Critical</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">18</div>
+        <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">13</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">2</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Go</strong></td>
+          <td>1.27.1</td>
+          <td>แพตช์แก้ไข cgo, compiler, runtime, คำสั่ง go fix และแพ็กเกจ database/sql, debug/elf, encoding/json, net/http, os, simd</td>
+          <td>Sep 1, 2026</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td><a href="https://go.dev/doc/devel/release" class="source-badge">go.dev</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบการเปิดตัวเวอร์ชันใหม่ของ Python, Node.js, Java, .NET, PHP หรือ Rust ที่ตรวจสอบแหล่งที่มาอย่างเป็นทางการได้ในช่วง 7 วันนี้ (29 ส.ค. – 5 ก.ย. 2569)</div>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ React, Vue, Angular, Django, Laravel, FastAPI หรือ Spring Boot ที่มีวันที่ประกาศอยู่ในช่วง 29 ส.ค. – 5 ก.ย. 2569 จากแหล่งข้อมูลทางการที่ตรวจสอบได้ (รีลีสล่าสุดของแต่ละโปรเจกต์ เช่น Spring Boot 4.1.1 และ Laravel 13.26.1 ประกาศก่อนหน้าช่วงเวลานี้)</div>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps & CI/CD</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Docker Engine</strong></td>
+          <td>29.8.0</td>
+          <td>เพิ่มออปชัน <code>HostConfig.Umask</code> / แฟล็ก <code>--umask</code> สำหรับ docker create/run, รองรับ CloudWatch entity attributes, เสริมความปลอดภัยด้วย AppArmor profile template และบล็อกการใช้ 32-bit socketcall(2) สร้าง AF_VSOCK, แก้ปัญหา Swarm service discovery, อัปเดต BuildKit v0.33.0 / containerd v2.3.4 / Go 1.26.8 (released Sep 3, 2026)</td>
+          <td><span class="label label-minor">🔹 Minor</span></td>
+          <td><a href="https://docs.docker.com/engine/release-notes/29/" class="source-badge">docs.docker.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Terraform</strong></td>
+          <td>1.16.1</td>
+          <td>แก้ไขบั๊ก 7 รายการ ได้แก่ CLI ค้างไม่จบเมื่อ run task ล้มเหลวระหว่างรอ policy evaluation, ปัญหาการอ้างอิง dynamic module ใน Terraform Test, ข้อผิดพลาด validation ใน stacks, panic เกี่ยวกับ sensitive values ใน import identities และการจัดลำดับ create_before_destroy (released Sep 2, 2026)</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td><a href="https://github.com/hashicorp/terraform/releases" class="source-badge">github.com/hashicorp</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitHub Actions</strong></td>
+          <td>Early September 2026 update</td>
+          <td>เพิ่ม REST API ใหม่สำหรับตรวจสอบกำหนดการเลิกใช้งาน (deprecation) ของ runner แต่ละเวอร์ชัน, สิทธิ์ <code>vulnerability-alerts</code> (read-only) สำหรับ GITHUB_TOKEN ในการเข้าถึง Dependabot alerts, และ job context properties ใหม่สำหรับระบุ source identity ของ reusable workflows (released Sep 3, 2026)</td>
+          <td><span class="label label-minor">🔹 Feature Update</span></td>
+          <td><a href="https://github.blog/changelog/2026-09-03-github-actions-early-september-2026-updates/" class="source-badge">github.blog</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Kubernetes, Jenkins, GitLab CI, ArgoCD หรือ Ansible ที่มีวันที่ประกาศอยู่ในช่วง 7 วันนี้จากแหล่งข้อมูลทางการ (Kubernetes 1.36.4 และ GitLab Patch 19.3.1 ประกาศก่อนหน้าช่วงเวลานี้ คือ 20 ส.ค. และ 26 ส.ค. 2569 ตามลำดับ)</div>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Database</th><th>Version</th><th>Features / Security Fixes</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Elasticsearch</strong></td>
+          <td>8.19.20 / 9.4.5 / 9.5.1</td>
+          <td>แก้ไขช่องโหว่ HTTP Request Smuggling (CWE-444, CVE-2026-78605) ที่อาจทำให้ผู้โจมตีในเครือข่ายเข้าถึง response ที่ตั้งใจส่งให้ผู้ใช้รายอื่นภายใต้การตั้งค่า Proxy บางรูปแบบ ระดับความรุนแรง Medium (ESA-2026-141)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-141/390092" class="source-badge">discuss.elastic.co</a></td>
+        </tr>
+        <tr>
+          <td><strong>Elasticsearch</strong></td>
+          <td>8.19.19 / 9.3.8 / 9.4.4 / 9.5.1</td>
+          <td>แก้ไขช่องโหว่ Missing Authorization (CWE-862) ใน Custom Inference Service ที่ผู้ใช้ซึ่งมีเพียงสิทธิ์ execute inference สามารถกำหนดปลายทางของ outbound traffic เองได้ และอาจทำให้ credential ที่ผู้ดูแลระบบตั้งค่าไว้รั่วไหล (ESA-2026-143) — <em>ยังไม่พบเลข CVE สาธารณะจากแหล่งที่ตรวจสอบได้ ณ เวลาที่จัดทำรายงาน</em></td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://discuss.elastic.co/t/elasticsearch-8-19-19-9-3-8-9-4-4-9-5-1-security-update-esa-2026-143/390094" class="source-badge">discuss.elastic.co</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ PostgreSQL, MySQL, MariaDB, SQL Server, MongoDB, Redis หรือ Cassandra ที่มีวันที่ประกาศอยู่ในช่วง 7 วันนี้ (รีลีสล่าสุดที่พบ เช่น PostgreSQL 18.6/17.11/… วันที่ 13 ส.ค. และ Redis 8.10.1 วันที่ 17 ส.ค. 2569 อยู่นอกช่วงเวลาที่กำหนด)</div>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>OS</th><th>Version / Advisory</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8714-2 (20.04 LTS, 18.04 LTS – AWS/GCP kernels)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>แก้ไขช่องโหว่ Linux Kernel ในระบบไฟล์ OCFS2 และโปรโตคอล SCTP: CVE-2026-53043, CVE-2026-53224, CVE-2026-53225, CVE-2026-53246, CVE-2026-53309 (Sep 4, 2026)</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8714-2" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN (rabbitmq-c, FFmpeg, libssh2, SPICE vdagent, OpenSSH)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>ชุดประกาศความปลอดภัย 5 รายการสำหรับแพ็กเกจ rabbitmq-c, FFmpeg (อาจ crash หรือรันโปรแกรมได้หากเปิดไฟล์ที่สร้างขึ้นเป็นพิเศษ), libssh2, SPICE vdagent และ OpenSSH (Sep 3, 2026)</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6481-1 (firefox-esr)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>อัปเดตความปลอดภัยของ Firefox ESR สอดคล้องกับ Mozilla MFSA 2026-84 (Sep 2, 2026)</td>
+          <td><a href="https://lists.debian.org/debian-security-announce/2026/msg00326.html" class="source-badge">debian.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6480-1 (keystone)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>อัปเดตความปลอดภัยของแพ็กเกจ keystone (Sep 1, 2026)</td>
+          <td><a href="https://www.debian.org/security/" class="source-badge">debian.org</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ RHEL, Rocky Linux, AlmaLinux หรือ Windows Server ที่มีวันที่ประกาศอยู่ในช่วง 7 วันนี้จากแหล่งข้อมูลทางการที่ตรวจสอบได้</div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Changes</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>VMware Workstation / Fusion</strong></td>
+          <td>26H1u1</td>
+          <td>แก้ไขช่องโหว่ระดับ Critical 2 รายการตาม VMSA-2026-0007: CVE-2026-59346 (Integer overflow ใน VMXNET3 virtual network adapter, CVSSv3 9.3 — ผู้โจมตีที่มีสิทธิ์ admin ระดับ local บน VM สามารถรันโค้ดบน Host ได้) และ CVE-2026-59347 (Stack-based buffer overflow, CVSSv3 8.1) ไม่มี Workaround ต้องอัปเกรดทันที (Sep 3, 2026)</td>
+          <td><a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/37513" class="source-badge">support.broadcom.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🌐 Network & Security Tools</h2>
+    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ Nginx, Apache, HAProxy, Traefik, Caddy, WireGuard, pfSense, OPNsense, Nmap, Wireshark, Nessus, OpenVAS หรือ Metasploit ที่มีวันที่ประกาศอยู่ในช่วง 29 ส.ค. – 5 ก.ย. 2569 จากแหล่งข้อมูลทางการที่ตรวจสอบได้ (พบ CVE ของ Nginx บางรายการจากการค้นหา แต่ไม่สามารถยืนยันวันที่ประกาศอยู่ในช่วงเวลานี้ได้ จึงไม่นำมาแสดง)</div>
+  </section>
+
+  <section>
+    <h2>☁ Cloud & Infrastructure</h2>
+    <div class="empty-note">ไม่พบประกาศ Release ซอฟต์แวร์ (นอกเหนือจากการอัปเดต Certification/Training ของ AWS ซึ่งไม่เข้าข่ายขอบเขตรายงานนี้) จาก AWS, Azure หรือ Google Cloud ที่เป็น Software Release ในช่วง 7 วันนี้ที่ตรวจสอบแหล่งที่มาได้</div>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools & IDE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Visual Studio Code</strong></td>
+          <td>1.136</td>
+          <td>Agent Merge (Preview) สำหรับแก้ review feedback/failed checks/merge conflict จนกว่า PR จะพร้อม merge, รองรับ Multi-root workspace กับ Copilot/Claude agent sessions (Experimental), และฟีเจอร์ Chat backgrounds (Experimental) (Sep 2, 2026)</td>
+          <td><a href="https://code.visualstudio.com/updates/v1_136" class="source-badge">code.visualstudio.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Nginx, Apache, Caddy หรือ IIS ที่มีวันที่ประกาศอยู่ในช่วง 7 วันนี้จากแหล่งข้อมูลทางการที่ตรวจสอบได้</div>
+  </section>
+
+  <section>
+    <h2>🔒 Security & CVE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>VMware Workstation / Fusion</strong></td>
+          <td>CVE-2026-59346 (CVSSv3 9.3)</td>
+          <td><span class="severity-critical">🔴 CRITICAL</span></td>
+          <td>26H1u1</td>
+          <td><a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/37513" class="source-badge">broadcom.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Chrome</strong></td>
+          <td>CVE-2026-85046 — Type confusion ใน V8 (กำลังถูกใช้โจมตีจริง / CISA KEV เพิ่มเมื่อ 4 ก.ย. 2569)</td>
+          <td><span class="severity-critical">🔴 CRITICAL</span></td>
+          <td>152.0.7977.82/.83 (Win/Mac), 152.0.7977.82 (Linux)</td>
+          <td><a href="https://chromereleases.googleblog.com/2026/" class="source-badge">chromereleases.googleblog.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>VMware Workstation / Fusion</strong></td>
+          <td>CVE-2026-59347 (CVSSv3 8.1)</td>
+          <td><span class="severity-high">🟠 HIGH</span></td>
+          <td>26H1u1</td>
+          <td><a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/37513" class="source-badge">broadcom.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu Linux Kernel</strong> (20.04/18.04 LTS, AWS/GCP)</td>
+          <td>CVE-2026-53043, CVE-2026-53224, CVE-2026-53225, CVE-2026-53246, CVE-2026-53309</td>
+          <td><span class="severity-high">🟠 HIGH*</span></td>
+          <td>USN-8714-2</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8714-2" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Elasticsearch</strong></td>
+          <td>CVE-2026-78605 — HTTP Request Smuggling</td>
+          <td><span class="severity-medium">🟡 MEDIUM</span></td>
+          <td>8.19.20 / 9.4.5 / 9.5.1</td>
+          <td><a href="https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-141/390092" class="source-badge">discuss.elastic.co</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">
+      <strong>* หมายเหตุความรุนแรง:</strong> ประกาศ USN-8714-2 ของ Ubuntu ไม่ได้ระบุระดับ CVSS ต่อ CVE แต่ละรายการไว้อย่างชัดเจนในหน้าประกาศที่ตรวจสอบได้ จึงจัดระดับ HIGH ตามลักษณะผลกระทบ (Kernel privilege/DoS) เป็นการประมาณการทั่วไป ควรตรวจสอบ CVSS ที่แท้จริงจากฐานข้อมูล NVD ประกอบการตัดสินใจ Patch Priority<br>
+      <strong>📌 Mozilla Firefox ESR 140.15 (MFSA 2026-84, Sep 1, 2026):</strong> Mozilla ประกาศแก้ไขช่องโหว่หลายระดับ (High/Moderate/Low) ใน Firefox 155, Firefox ESR 153.2, Firefox ESR 140.15 และ Firefox ESR 115.40 แต่รายงานฉบับนี้ไม่สามารถยืนยันเลข CVE รายตัวจากหน้าประกาศทางการได้ครบถ้วน (การเข้าถึงหน้า mozilla.org ถูกจำกัดในระหว่างจัดทำรายงาน) จึงไม่นำมาลงในตาราง CVE ด้านบนตามเกณฑ์ที่ต้องมี CVE ID ครบถ้วน ผู้ดูแลระบบควรตรวจสอบรายละเอียดฉบับเต็มที่ <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-84/">mfsa2026-84</a> โดยตรง<br>
+      <strong>Debian DSA-6480-1 / DSA-6481-1 (Sep 1–2, 2026):</strong> แก้ไขช่องโหว่ใน keystone และ firefox-esr ตามลำดับ รายละเอียด CVE รายตัวให้ตรวจสอบที่ <a href="https://www.debian.org/security/">debian.org/security</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Breaking Change</th><th>Migration Guide</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GitHub Actions (Self-hosted Runners)</strong></td>
+          <td>Minimum version enforcement</td>
+          <td>GitHub Enterprise Cloud จะบังคับใช้ Minimum Version Requirement สำหรับ Self-hosted Runner อย่างเต็มรูปแบบตั้งแต่ 25 ก.ย. 2569 เป็นต้นไป Runner ที่มีเวอร์ชันต่ำกว่าเกณฑ์จะไม่สามารถลงทะเบียนหรือรันงานได้</td>
+          <td>ตรวจสอบเวอร์ชัน Runner ปัจจุบันผ่าน REST API ใหม่ที่ประกาศเมื่อ 3 ก.ย. 2569 และอัปเกรด Runner ให้ทันก่อนกำหนด</td>
+          <td><a href="https://github.blog/changelog/2026-06-12-github-actions-minimum-version-enforcement-timeline-for-self-hosted-runners/" class="source-badge">github.blog</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Breaking Change อื่นที่มีเอกสารทางการยืนยันชัดเจนในช่วง 7 วันนี้ สำหรับ Docker Engine 29.8.0, Go 1.27.1, Terraform 1.16.1 และ VS Code 1.136 เป็นการอัปเดตแบบ Backward-compatible ตามที่ระบุใน Release Notes ทางการ</div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="empty-note">ไม่พบประกาศ End of Life ที่มีวันที่มีผลอยู่ในช่วง 29 ส.ค. – 5 ก.ย. 2569 จากแหล่งข้อมูลทางการที่ตรวจสอบได้ในสัปดาห์นี้</div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li>🔴 <strong>Google Chrome CVE-2026-85046</strong> — อยู่ใน CISA KEV Catalog กำหนด Remediation ภายใน 18 ก.ย. 2569 สำหรับหน่วยงานรัฐบาลกลางสหรัฐฯ ควรเร่งอัปเดตทุกอุปกรณ์โดยเร็ว</li>
+      <li>🔴 <strong>VMware Workstation/Fusion VMSA-2026-0007</strong> — ไม่มี Workaround ต้องอัปเกรดเป็น 26H1u1 ทันที</li>
+      <li>🧪 <strong>Chrome Two-Week Release Cycle</strong> — เริ่มใช้ตั้งแต่ Chrome 153 (Stable) วันที่ 8 ก.ย. 2569 เป็นต้นไป ทีมงานควรเตรียมกระบวนการทดสอบ/Rollout ให้รองรับความถี่ที่เพิ่มขึ้น</li>
+      <li>⏳ <strong>Microsoft Patch Tuesday กันยายน 2569</strong> — กำหนดวันที่ 8 ก.ย. 2569 คาดว่าจะมีการแก้ไขช่องโหว่จำนวนมากต่อเนื่องจากเดือนสิงหาคมที่มี 398 CVE</li>
+      <li>⏳ <strong>GitHub Actions Self-hosted Runner Enforcement</strong> — บังคับใช้เวอร์ชันขั้นต่ำเต็มรูปแบบ 25 ก.ย. 2569</li>
+      <li>📄 <strong>Mozilla MFSA 2026-84 (Firefox ESR 140.15)</strong> — ต้องตรวจสอบรายละเอียด CVE ฉบับเต็มจากหน้าประกาศทางการเพื่อประเมิน Patch Priority</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <div class="highlight-box">
+      <div class="two-column">
+        <div>
+          <h3>📊 Release Breakdown</h3>
+          <ul>
+            <li><strong>Total Items Verified (29 ส.ค. – 5 ก.ย. 2569):</strong> 18</li>
+            <li><strong>Major Releases:</strong> 0</li>
+            <li><strong>Minor Releases:</strong> 3 (Docker Engine, GitHub Actions update, VS Code)</li>
+            <li><strong>Patch Releases:</strong> 2 (Go, Terraform)</li>
+            <li><strong>LTS Releases:</strong> 0</li>
+          </ul>
+        </div>
+        <div>
+          <h3>🔒 Security Breakdown</h3>
+          <ul>
+            <li><strong>Total Security Advisories:</strong> 13</li>
+            <li><strong>Critical Severity:</strong> 2 (Chrome, VMware CVE-2026-59346)</li>
+            <li><strong>High Severity:</strong> 6 (VMware CVE-2026-59347, Ubuntu kernel CVEs ×5)</li>
+            <li><strong>Medium Severity:</strong> 1 (Elasticsearch)</li>
+            <li><strong>ไม่ระบุ/รอตรวจสอบ CVE รายตัว:</strong> 4 (Firefox ESR MFSA 2026-84, Debian DSA ×2, Elasticsearch ESA-2026-143)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>✅ Official</h3>
+    <ul>
+      <li><a href="https://go.dev/doc/devel/release">Go Release History</a></li>
+      <li><a href="https://docs.docker.com/engine/release-notes/29/">Docker Engine Release Notes</a></li>
+      <li><a href="https://github.com/hashicorp/terraform/releases">Terraform Releases (GitHub)</a></li>
+      <li><a href="https://code.visualstudio.com/updates/v1_136">Visual Studio Code 1.136 Release Notes</a></li>
+      <li><a href="https://chromereleases.googleblog.com/2026/">Chrome Releases Blog</a></li>
+      <li><a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/37513">VMSA-2026-0007 (Broadcom Support Portal)</a></li>
+    </ul>
+    <h3>📝 Release Notes</h3>
+    <ul>
+      <li><a href="https://github.blog/changelog/2026-09-03-github-actions-early-september-2026-updates/">GitHub Actions: Early September 2026 Updates</a></li>
+      <li><a href="https://github.blog/changelog/2026-06-12-github-actions-minimum-version-enforcement-timeline-for-self-hosted-runners/">GitHub Actions Minimum Version Enforcement Timeline</a></li>
+    </ul>
+    <h3>🔒 Security Advisory</h3>
+    <ul>
+      <li><a href="https://ubuntu.com/security/notices/USN-8714-2">USN-8714-2: Linux kernel vulnerabilities</a></li>
+      <li><a href="https://ubuntu.com/security/notices">Ubuntu Security Notices</a></li>
+      <li><a href="https://www.debian.org/security/">Debian Security</a></li>
+      <li><a href="https://lists.debian.org/debian-security-announce/2026/msg00326.html">DSA-6481-1 (firefox-esr)</a></li>
+      <li><a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-84/">MFSA 2026-84 — Firefox ESR 140.15</a></li>
+      <li><a href="https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-141/390092">ESA-2026-141 (Elasticsearch)</a></li>
+      <li><a href="https://discuss.elastic.co/t/elasticsearch-8-19-19-9-3-8-9-4-4-9-5-1-security-update-esa-2026-143/390094">ESA-2026-143 (Elasticsearch)</a></li>
+    </ul>
+    <h3>📰 Trusted Media</h3>
+    <ul>
+      <li><a href="https://thehackernews.com/2026/09/google-releases-chrome-update-to-patch.html">The Hacker News — Chrome V8 Zero-Day (CVE-2026-85046)</a></li>
+      <li><a href="https://aicybr.com/blog/chrome-cve-2026-85046-v8-zero-day">AiCybr — CVE-2026-85046 Analysis</a></li>
+    </ul>
+  </section>
+
+  <div class="note">
+    <strong>📝 Data Quality Note:</strong><br>
+    ✅ ทุกรายการยืนยันจาก Official Source, GitHub Releases หรือ Official Security Advisory อย่างน้อย 1 แหล่ง และ Cross-check กับแหล่งข้อมูลที่สองเมื่อทำได้<br>
+    ⚠️ <strong>UNCERTAIN:</strong> ระหว่างจัดทำรายงาน การเข้าถึงโดเมนต่อไปนี้ผ่าน WebFetch โดยตรงถูกจำกัดโดย Network Egress Proxy ของสภาพแวดล้อมนี้ (ใช้ผลลัพธ์จาก WebSearch อ้างอิงแหล่งทางการแทน): chromereleases.googleblog.com, docs.docker.com, www.mozilla.org, kubernetes.io, discuss.elastic.co — รายละเอียด CVE รายตัวของ Firefox ESR 140.15 (MFSA 2026-84) และ Elasticsearch ESA-2026-143 จึงไม่ได้ระบุครบถ้วนในตาราง Security &amp; CVE ผู้ใช้งานควรตรวจสอบยืนยันซ้ำจากลิงก์ทางการที่แนบไว้ก่อนนำไปใช้ตัดสินใจ Patch Priority<br>
+    ✅ รายการที่ไม่มีข้อมูลยืนยันในช่วง 7 วันนี้ถูกระบุไว้อย่างชัดเจนในแต่ละหมวด แทนการคาดเดาหรือใช้ข้อมูลนอกช่วงเวลา
+  </div>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Software Releases Report · Week 36 · September 5, 2026</p>
+    <p>Generated with verified data from official release notes and security advisories</p>
+  </footer>
+</div>
+</body>
+</html>
