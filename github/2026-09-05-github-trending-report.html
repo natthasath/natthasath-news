@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly GitHub Trending Report — Week 36, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#B5502A; --warn-soft:rgba(181,80,42,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14);
+    --warn:#E08A63; --warn-soft:rgba(224,138,99,0.14);
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:980px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+h2{ font-size:22px; font-weight:800; margin:48px 0 16px; padding-top:8px; border-top:1px solid var(--line-strong); display:flex; align-items:center; gap:10px; }
+h2:first-of-type{ border-top:none; }
+h3{ font-size:17px; font-weight:700; margin:26px 0 10px; color:var(--ink); }
+p{ margin:0 0 14px; color:var(--ink-soft); }
+ul, ol{ padding-left:22px; color:var(--ink-soft); }
+li{ margin-bottom:6px; }
+strong{ color:var(--ink); }
+code{ font-family:"JetBrains Mono",monospace; font-size:0.9em; background:var(--surface-2); padding:1px 5px; border-radius:4px; }
+
+.summary-box{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:8px; }
+.summary-box p{ margin:0; color:var(--ink); }
+
+.tablewrap{ overflow-x:auto; margin:14px 0 22px; border:1px solid var(--line); border-radius:10px; }
+table{ width:100%; border-collapse:collapse; font-size:14px; background:var(--surface); min-width:640px; }
+thead th{ text-align:left; font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-faint); padding:12px 14px; border-bottom:1px solid var(--line-strong); background:var(--surface-2); white-space:nowrap; }
+tbody td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ color:var(--ink); font-weight:600; }
+tbody td a{ text-decoration:none; }
+tbody td a:hover{ text-decoration:underline; }
+
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.card-title{ font-weight:700; font-size:15.5px; color:var(--ink); margin-bottom:4px; }
+.card-title a{ text-decoration:none; }
+.card-meta{ font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); margin-bottom:10px; }
+.card p{ margin:0 0 8px; font-size:14.5px; }
+.card ul{ margin:6px 0 0; font-size:14px; }
+
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; background:var(--accent-soft); color:var(--accent); margin-right:6px; }
+.badge.warn{ background:var(--warn-soft); color:var(--warn); }
+
+.note-box{ background:var(--warn-soft); border:1px solid rgba(181,80,42,0.28); border-radius:10px; padding:14px 18px; margin:14px 0; font-size:14px; color:var(--ink); }
+.note-box strong{ color:var(--warn); }
+
+.legend-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px 20px; font-size:14px; }
+.legend-grid div{ display:flex; gap:8px; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin:16px 0; }
+.stat-tile{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+.stat-num{ font-family:"JetBrains Mono",monospace; font-size:24px; font-weight:700; color:var(--accent); }
+.stat-label{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer a{ color:var(--ink-faint); }
+
+@media (max-width:640px){
+  h1{ font-size:26px; }
+  h2{ font-size:19px; }
+  .meta-row{ gap:10px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest · Week 36</p>
+    <h1>⭐ Weekly GitHub Trending Open Source Report</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 29 ส.ค. – 5 ก.ย. 2026 (ICT)</span>
+      <span><b>หมวด:</b> GitHub Open Source</span>
+      <span><b>เผยแพร่:</b> 5 ก.ย. 2026</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้กระแสหลักบน GitHub Trending คือ <strong>"Agent Skills" ระเบิดความนิยม</strong> นำโดย <code>tt-a1i/archify</code> ที่ได้ดาวเพิ่มมากที่สุดในบรรดา repository ทั้งหมดที่พบ (+21,896 ดาว) ตามด้วย <code>THU-MAIC/OpenMAIC</code> (+10,274) และคลัง skill เฉพาะทางด้านวิทยาศาสตร์ <code>K-Dense-AI/scientific-agent-skills</code> (+6,898) ฝั่งบริษัทใหญ่ <strong>Tailscale เปิดตัวเครื่องมือใหม่ <code>tailcat</code></strong> ("netcat ผ่าน Tailscale") ที่พุ่งขึ้นอันดับ 3 ของ Go weekly trending ทันที ขณะที่ <strong>Google (ผ่านทีม Chrome DevTools), Cursor, JetBrains และ Tencent</strong> ต่างมีโครงการ open source ที่เคลื่อนไหวชัดเจนในสัปดาห์นี้ ด้าน MCP ยังคงเติบโตสม่ำเสมอโดยไม่มีสเปกใหม่ประกาศ ทีมจัดทำรายงานขอตั้งข้อสังเกตว่าตัวเลขดาวเพิ่มที่สูงมากบางรายการ (เช่น archify, OpenMAIC) อาจสะท้อนการโปรโมทหรือกระแสไวรัลช่วงสั้น มากกว่าการยืนยันการเติบโตแบบสม่ำเสมอ จึงควรอ่านตัวเลขเหล่านี้เป็น snapshot จาก GitHub Trending เท่านั้น ไม่ใช่ข้อสรุปเชิงสาเหตุ</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Top Trending Repositories</h2>
+    <p>เรียงตามความสำคัญและผลกระทบต่อ Developer Community ตัวเลขทั้งหมดเป็น snapshot จากหน้า GitHub Trending รายสัปดาห์ ณ 5 ก.ย. 2026</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Owner</th><th>Language</th><th>Stars</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/tt-a1i/archify">archify</a> 🔥🧠</td><td>tt-a1i</td><td>JavaScript</td><td>48,558</td><td>Agent Skill / Diagram</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/THU-MAIC/OpenMAIC">OpenMAIC</a> 🔥🧠</td><td>THU-MAIC</td><td>TypeScript</td><td>31,637</td><td>Multi-Agent Education</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/K-Dense-AI/scientific-agent-skills">scientific-agent-skills</a> 🧠</td><td>K-Dense-AI</td><td>Python</td><td>42,739</td><td>Agent Skills / Science</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">chrome-devtools-mcp</a> ✅🧠</td><td>ChromeDevTools</td><td>TypeScript</td><td>50,958</td><td>MCP</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/punkpeye/awesome-mcp-servers">awesome-mcp-servers</a> ⭐🧠</td><td>punkpeye</td><td>—</td><td>94,211</td><td>MCP Directory</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/tailscale/tailcat">tailcat</a> 🚀✅</td><td>tailscale</td><td>Go</td><td>6,274</td><td>Networking / CLI</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/jingyaogong/minimind">minimind</a> ⭐</td><td>jingyaogong</td><td>Python</td><td>58,625</td><td>AI/LLM Education</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/google-research/timesfm">timesfm</a> ✅</td><td>google-research</td><td>Python</td><td>31,151</td><td>AI/LLM Foundation Model</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/calesthio/OpenMontage">OpenMontage</a> 🚀</td><td>calesthio</td><td>Python</td><td>56,189</td><td>AI Agents / Video</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/cursor/plugins">plugins</a> ✅</td><td>cursor</td><td>TypeScript</td><td>6,881</td><td>IDE Tools / Plugin Ecosystem</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/anomalyco/opencode">opencode</a> ⭐</td><td>anomalyco</td><td>TypeScript</td><td>204,314</td><td>Coding Assistant</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/Imbad0202/academic-research-skills">academic-research-skills</a> 🧠</td><td>Imbad0202</td><td>Python</td><td>46,343</td><td>Agent Skills / Research</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥 <a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></div>
+      <div class="card-meta">JavaScript · MIT · 48,558 ★ · release ล่าสุด v2.17.0-dev.1 · <strong>+21,896 ดาวสัปดาห์นี้</strong></div>
+      <p>Agent skill สำหรับสร้างไดอะแกรมสถาปัตยกรรม, workflow, sequence และ data-flow แบบ HTML/SVG ที่ตรวจสอบได้ ทำงานร่วมกับ Cursor, Claude Code, Codex CLI และ OpenCode เป็น repository ที่ได้ดาวเพิ่มมากที่สุดในบรรดาทุกรายการที่พบในการสำรวจสัปดาห์นี้ อัตราการเติบโตที่สูงผิดปกติ (มากกว่า 1,700% ของฐานเดิม) ควรอ่านเป็นตัวเลข snapshot จาก GitHub Trending เท่านั้น ยังไม่พบหลักฐานเหตุการณ์ไวรัลเฉพาะเจาะจง (เช่นโพสต์ Hacker News) ที่ยืนยันได้ในรายงานนี้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥🧠 <a href="https://github.com/THU-MAIC/OpenMAIC">THU-MAIC/OpenMAIC</a></div>
+      <div class="card-meta">TypeScript · MIT · 31,637 ★ · ~5,200 forks · release <code>v1.0.0</code> 27 ส.ค. 2026 · <strong>+10,274 ดาวสัปดาห์นี้</strong></div>
+      <p>"Open Multi-Agent Interactive Classroom" แพลตฟอร์มการศึกษาแบบ multi-agent ที่สร้างบทเรียน แบบทดสอบ และการจำลองแบบโต้ตอบจากหัวข้อหรือเอกสารที่ป้อนเข้า เชื่อมต่อกับ OpenClaw เพื่อส่งมอบผ่านแพลตฟอร์มแชท (Feishu/Slack) จากทีมที่เกี่ยวข้องกับมหาวิทยาลัยชิงหัว (Tsinghua) เป็นตัวแทนชัดเจนของกลุ่ม multi-agent tooling ที่ขยายเข้าสู่วงการการศึกษา</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅🧠 <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">ChromeDevTools/chrome-devtools-mcp</a></div>
+      <div class="card-meta">TypeScript · 50,958 ★ · <strong>+1,067 ดาวสัปดาห์นี้</strong></div>
+      <p>MCP server อย่างเป็นทางการของทีม Chrome DevTools ที่ให้ coding agent เข้าถึงความสามารถของ DevTools โดยตรง (inspect, network, performance) เป็นสัญญาณสำคัญว่าทีมโครงสร้างพื้นฐานของ Google/Chrome กำลังลงทุนใน MCP อย่างจริงจัง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀✅ <a href="https://github.com/tailscale/tailcat">tailscale/tailcat</a></div>
+      <div class="card-meta">Go · BSD-3-Clause · 6,274 ★ · 240 forks · <strong>+3,762 ดาวสัปดาห์นี้ (~150%)</strong></div>
+      <p>เครื่องมือใหม่จาก Tailscale อธิบายตัวเองว่า "เหมือน netcat แต่วิ่งผ่าน data plane ของ Tailscale" สร้างทันเนลแบบเข้ารหัส WireGuard แบบ point-to-point โดยไม่ต้องพึ่ง control plane ของ Tailscale เปิดตัวและขึ้นอันดับ 3 ของ Go weekly trending ภายในสัปดาห์เดียว เป็นตัวอย่างของบริษัทเครือข่ายที่มีชื่อเสียงเปิดตัวเครื่องมือเล็กแต่ได้รับความสนใจไว <em>หมายเหตุ: เวอร์ชัน release ล่าสุดพบข้อมูลไม่ตรงกันระหว่างแหล่ง (v0.1.0 บนหน้า repo กับ v0.5.0 จากผลค้นหา) แนะนำให้ตรวจสอบหน้า Releases โดยตรงก่อนอ้างอิงเวอร์ชัน</em></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🤖 AI &amp; LLM</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/jingyaogong/minimind">jingyaogong/minimind</a></div>
+      <div class="card-meta">Python · 58,625 ★ · <strong>+3,390 ดาวสัปดาห์นี้</strong></div>
+      <p>"เทรน LLM ขนาด 64M พารามิเตอร์จากศูนย์ภายใน 2 ชั่วโมง" — pipeline การเทรนโมเดลภาษาแบบเรียบง่ายเน้นการเรียนรู้ ยังคงติด Trending ต่อเนื่องจากความน่าเข้าถึงของเนื้อหา</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/google-research/timesfm">google-research/timesfm</a> ✅</div>
+      <div class="card-meta">Python · 31,151 ★ · <strong>+2,653 ดาวสัปดาห์นี้</strong></div>
+      <p>Foundation model สำหรับพยากรณ์ time-series แบบ pretrained จาก Google Research ขึ้น Trending ทั้งหน้ารวมและหมวด Python weekly สะท้อนความสนใจต่อโมเดลพยากรณ์เฉพาะทางที่ยังคงมีอยู่ต่อเนื่องแม้กระแสหลักจะอยู่ที่ LLM แบบทั่วไป</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></div>
+      <div class="card-meta">Python · 18,380 ★ · <strong>+5,150 ดาวสัปดาห์นี้ (+1,345 ในวันเดียว)</strong></div>
+      <p>ทางเลือกแบบ local-first ของ ElevenLabs สำหรับ voice cloning และสร้างเสียง รองรับกว่า 646 ภาษาตามคำอธิบายของโครงการ มีทั้งแรงส่งรายวันและรายสัปดาห์ต่อเนื่อง ไม่ใช่การพุ่งขึ้นเพียงวันเดียว</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/p-e-w/heretic">p-e-w/heretic</a></div>
+      <div class="card-meta">Python · 30,503 ★ · <strong>+2,065 ดาวสัปดาห์นี้</strong></div>
+      <p>เครื่องมือลบการเซ็นเซอร์ของโมเดลภาษาแบบอัตโนมัติเต็มรูปแบบ อยู่ในกลุ่ม LLM fine-tuning/alignment tooling ที่มีชุมชนติดตามต่อเนื่อง</p>
+    </div>
+
+    <p><strong>ข้อสังเกตหมวด AI:</strong> สัปดาห์นี้ไม่พบข้อมูลที่ยืนยันได้จากแหล่งปฐมภูมิเกี่ยวกับการออกโมเดลใหม่จากผู้ให้บริการรายใหญ่ (Anthropic, OpenAI, Google, Meta) — พบเพียงข่าวจากเว็บไซต์รวมข่าวรอง (secondary aggregator) ที่ระบุชื่อรุ่นโมเดลต่าง ๆ แต่ไม่สามารถยืนยันกับบล็อกทางการของผู้ให้บริการได้ในรอบการค้นคว้านี้ (ดูรายละเอียดในหมายเหตุข้อจำกัดของข้อมูล) จึงงดนำเสนอเป็นข่าวยืนยันในรายงานฉบับนี้ นอกจากนี้ยังมีเครื่องมือ AI/LLM infra ขนาดเล็กที่โตเร็ว เช่น <code>tashfeenahmed/freellmapi</code> (TypeScript, 24,328 ★, +2,888 ดาว) ที่รวม endpoint LLM ฟรีจากผู้ให้บริการ 34 ราย</p>
+  </section>
+
+  <section>
+    <h2>🧠 MCP &amp; AI Agents</h2>
+
+    <div class="card">
+      <div class="card-title">🧠 <a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a></div>
+      <div class="card-meta">Python · MIT · 42,739 ★ · ~3,900 forks · release <code>v2.65.0</code> · <strong>+6,898 ดาวสัปดาห์นี้</strong></div>
+      <p>คลัง Agent Skill ที่ผ่านการตรวจสอบแล้ว 163 รายการสำหรับงานวิทยาศาสตร์ (ชีววิทยา เคมี การแพทย์ การค้นพบยา) เชื่อมต่อฐานข้อมูลวิทยาศาสตร์กว่า 100 แหล่งรวมถึง Benchling และ DNAnexus ระบุว่ามีนักวิทยาศาสตร์ใช้งานแล้วกว่า 190,000 คน เป็นตัวอย่างของ "vertical skill pack" เฉพาะทางที่โตคู่ขนานกับ skill แบบทั่วไปอย่าง archify</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/Imbad0202/academic-research-skills">Imbad0202/academic-research-skills</a></div>
+      <div class="card-meta">Python · 46,343 ★ · <strong>+2,241 ดาวสัปดาห์นี้</strong></div>
+      <p>ชุด skill สำหรับ workflow งานวิจัยเชิงวิชาการที่ใช้กับ Claude Code สอดคล้องกับแนวโน้ม vertical skill pack เฉพาะทางในสัปดาห์นี้เช่นเดียวกับ scientific-agent-skills</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/punkpeye/awesome-mcp-servers">punkpeye/awesome-mcp-servers</a> ⭐</div>
+      <div class="card-meta">94,211 ★ · <strong>+1,198 ดาวสัปดาห์นี้</strong></div>
+      <p>คลังรวม MCP server แบบ curated ยังคงเติบโตสม่ำเสมอ สะท้อนความสนใจต่อระบบนิเวศ MCP ที่ยังขยายตัวต่อเนื่องแม้ไม่มีสเปกใหม่ประกาศในสัปดาห์นี้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/cursor/plugins">cursor/plugins</a></div>
+      <div class="card-meta">TypeScript · 6,881 ★ · <strong>+992 ดาวสัปดาห์นี้</strong></div>
+      <p>สเปกปลั๊กอินอย่างเป็นทางการของ Cursor พร้อมตัวอย่างปลั๊กอิน เป็นสัญญาณว่า Cursor กำลังเปิดระบบนิเวศปลั๊กอินอย่างเป็นทางการ ต่อจากที่ Anthropic/Claude Code เคยทำมาก่อน</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/weave-os/router">weave-os/router</a></div>
+      <div class="card-meta">Go · Elastic License v2 · 3,883 ★ · 109 forks · <strong>+1,521 ดาวสัปดาห์นี้ (~65%)</strong></div>
+      <p>Model router สำหรับระบบ agentic อ้างว่า route คำสั่งได้ในเวลาต่ำกว่า 50 มิลลิวินาที และลดค่าใช้จ่ายได้ 40–70% ด้วยการเปลี่ยน endpoint เดียว รองรับ Anthropic, OpenAI, Gemini และ OpenRouter รวมถึงเชื่อมกับ Claude Code, Codex, opencode และ Cursor ได้ทันที <em>หมายเหตุ: ใช้ Elastic License v2 ซึ่งเป็น source-available ไม่ใช่ open source ตามนิยาม OSI</em></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/TencentCloud/CubeSandbox">TencentCloud/CubeSandbox</a></div>
+      <div class="card-meta">Go · 11,791 ★ · <strong>+411 ดาวสัปดาห์นี้</strong></div>
+      <p>Sandbox น้ำหนักเบาสำหรับรัน AI agent แบบ concurrent และปลอดภัย จาก Tencent Cloud เป็นหนึ่งในหลายโครงการของ Tencent ที่เคลื่อนไหวพร้อมกันในสัปดาห์นี้ (ดูหมวด Company Adoption)</p>
+    </div>
+
+    <p><strong>สรุปแนวโน้ม MCP และ Agent:</strong> จุดสนใจหลักของสัปดาห์นี้อยู่ที่ "Agent Skills" เฉพาะทาง (วิทยาศาสตร์ งานวิจัย สถาปัตยกรรม) มากกว่าตัว agent loop หรือ MCP spec ใหม่ นอกจากนี้ยังพบเครื่องมือ infra ระดับ routing/sandboxing ขนาดเล็กแต่โตเร็ว เช่น <code>weave-os/router</code>, <code>vllm-project/semantic-router</code> (Go, 5,575 ★, +180 ดาว) และ <code>rtk-ai/rtk</code> (Rust, 78,623 ★, +977 ดาว — CLI proxy ลดการใช้ token 60–90%) ชี้ว่าระบบนิเวศกำลังลงทุนในชั้นโครงสร้างพื้นฐานรองรับ agent มากขึ้น ไม่ใช่แค่ตัว agent เอง</p>
+  </section>
+
+  <section>
+    <h2>⚙️ Developer Tools</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Language</th><th>License</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/colinhacks/zod">colinhacks/zod</a></td><td>TypeScript</td><td>—</td><td>43,840</td><td>+297 ดาว ไลบรารี validation พื้นฐานของระบบนิเวศ TS</td></tr>
+          <tr><td><a href="https://github.com/vercel-labs/portless">vercel-labs/portless</a></td><td>TypeScript</td><td>—</td><td>12,147</td><td>+788 ดาว จาก Vercel Labs</td></tr>
+          <tr><td><a href="https://github.com/abhigyanpatwari/GitNexus">abhigyanpatwari/GitNexus</a></td><td>TypeScript</td><td>—</td><td>47,027</td><td>+1,006 ดาว knowledge-graph สำหรับสำรวจโค้ดในเบราว์เซอร์</td></tr>
+          <tr><td><a href="https://github.com/jdx/mise">jdx/mise</a></td><td>Rust</td><td>MIT</td><td>—</td><td>release v2026.9.0 (1 ก.ย.)</td></tr>
+          <tr><td><a href="https://github.com/farion1231/cc-switch">farion1231/cc-switch</a></td><td>Rust</td><td>—</td><td>131,125</td><td>+182 ดาว (รายวัน) — All-in-one สำหรับ Claude Code/Codex/OpenCode</td></tr>
+          <tr><td><a href="https://github.com/magnitudedev/magnitude">magnitudedev/magnitude</a></td><td>TypeScript</td><td>—</td><td>2,707</td><td>+740 ดาว local inference server สำหรับ coding agent</td></tr>
+          <tr><td><a href="https://github.com/xingkongliang/skills-manager">xingkongliang/skills-manager</a></td><td>Rust</td><td>—</td><td>4,453</td><td>+263 ดาว แอปเดสก์ท็อปจัดการ agent skill</td></tr>
+          <tr><td><a href="https://github.com/RizRiyz/luvus">RizRiyz/luvus</a></td><td>Rust</td><td>Apache-2.0</td><td>707</td><td>+198 ดาว mission control สำหรับ coding agent หลายตัว</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>ฝั่งเครื่องมือช่วยเขียนโค้ด (Coding Assistants) มีการปล่อย release ถี่จาก <code>Kilo-Org/kilocode</code> สองรุ่นในวันเดียว (v7.5.12 และ v7.5.14 เมื่อ 4 ก.ย.) และ <code>lbjlaq/Antigravity-Manager</code> (Rust, 31,022 ★, +272 ดาว) เครื่องมือจัดการบัญชีสำหรับ Google Antigravity ที่สร้างด้วย Tauri v2 + React</p>
+
+    <div class="note-box">
+      <strong>ตัวเลขที่ควรใช้ด้วยความระมัดระวัง:</strong> <code>arcboxlabs/arcbox</code> (Rust, 2,839 ★) ได้ดาวเพิ่ม +567 ในวันเดียว ซึ่งเป็นอัตราสูงมากเมื่อเทียบกับฐาน แต่เป็นตัวเลขรายวัน (daily trending) ไม่ใช่ตัวเลขสะสมรายสัปดาห์ จึงไม่นำไปรวมในตาราง Fastest Growing เพื่อไม่ให้เทียบเคียงกันผิดหน่วยเวลา
+    </div>
+  </section>
+
+  <section>
+    <h2>☁️ Cloud Native &amp; DevOps</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Project</th><th>Language</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th><th>สาระสำคัญ</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/dapr/dapr">dapr/dapr</a></td><td>Go</td><td>26,072</td><td>+36 ดาว</td><td>CNCF graduated project — runtime แอปแบบกระจาย</td></tr>
+          <tr><td><a href="https://github.com/seaweedfs/seaweedfs">seaweedfs/seaweedfs</a></td><td>Go</td><td>34,475</td><td>+137 ดาว</td><td>ระบบจัดเก็บข้อมูลแบบกระจาย รองรับ Apache Iceberg</td></tr>
+          <tr><td><a href="https://github.com/llm-d/llm-d">llm-d/llm-d</a></td><td>Shell</td><td>4,419</td><td>+114 ดาว</td><td>LLM inference บน Kubernetes ด้วยตัวเร่งความเร็วยุคใหม่</td></tr>
+          <tr><td><a href="https://github.com/dockur/windows">dockur/windows</a></td><td>Shell</td><td>53,166</td><td>+112 ดาว</td><td>รัน Windows ใน Docker container</td></tr>
+          <tr><td><a href="https://github.com/community-scripts/ProxmoxVE">community-scripts/ProxmoxVE</a></td><td>Shell</td><td>29,498</td><td>+88 ดาว</td><td>สคริปต์ช่วยตั้งค่า Proxmox VE จากชุมชน</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>เครือข่าย (Networking)</h3>
+    <p>หมวดเครือข่ายสัปดาห์นี้เด่นชัดจากการเปิดตัว <code>tailscale/tailcat</code> (ดูรายละเอียดในหมวด Top Trending) นอกจากนี้ <code>slackhq/nebula</code> (Go, 18,288 ★, +635 ดาว) จาก Slack และ <code>SagerNet/sing-box</code> (Go, 37,629 ★, +320 ดาว) ก็ยังคงเติบโตต่อเนื่อง ส่วน <code>TecharoHQ/anubis</code> (Go, 22,137 ★, +351 ดาว) เครื่องมือป้องกัน AI crawler ยังคงได้รับความสนใจจากชุมชนที่กังวลเรื่อง bot scraping</p>
+
+    <p><strong>ข้อสังเกต:</strong> ไม่พบ release หรือ breaking change ขนาดใหญ่ระดับ Kubernetes/Docker ที่ยืนยันได้ชัดเจนในกรอบ 7 วันนี้ กิจกรรมส่วนใหญ่เป็นการเติบโตแบบสม่ำเสมอของโครงการที่มีอยู่แล้ว</p>
+  </section>
+
+  <section>
+    <h2>🔒 Security</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/kaifcodec/user-scanner">kaifcodec/user-scanner</a></div>
+      <div class="card-meta">Python · 4,669 ★ · <strong>+1,301 ดาวสัปดาห์นี้ (~28%)</strong></div>
+      <p>เครื่องมือ OSINT สำหรับวิเคราะห์อีเมลและ username ผ่านเวกเตอร์ข้อมูลกว่า 465 รายการ ฐานเล็กแต่โตเร็ว เป็นตัวแทนของเครื่องมือ security research ขนาดเล็กที่ได้รับความสนใจในสัปดาห์นี้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/Ed1s0nZ/CyberStrikeAI">Ed1s0nZ/CyberStrikeAI</a></div>
+      <div class="card-meta">Go · 6,386 ★ · <strong>+342 ดาวสัปดาห์นี้</strong></div>
+      <p>ระบบปฏิบัติการด้านความปลอดภัยไซเบอร์แบบ AI-native ที่เน้นการทำงานภายใต้การกำกับดูแล (governed execution) อยู่ในกลุ่ม AI × Security ที่ยังขยายตัวต่อเนื่อง</p>
+    </div>
+
+    <p><strong>โครงการด้านการเรียนรู้ความปลอดภัย</strong> ที่ยังเคลื่อนไหวสม่ำเสมอ ได้แก่ <code>digininja/DVWA</code> (PHP, 13,604 ★, +51 ดาว) และ <code>vulhub/vulhub</code> (21,206 ★, +35 ดาว) ซึ่งเป็น environment ฝึกทดสอบช่องโหว่แบบ Docker Compose</p>
+
+    <div class="note-box">
+      <strong>รายการที่งดนำเสนอ:</strong> พบการอ้างอิงถึงเครื่องมือทดสอบเจาะระบบด้วย AI ชื่อ "Strix" จากเว็บไซต์รวมข่าวรองว่าได้ดาวเพิ่ม 1,400 ดวงใน 7 วัน แต่ไม่สามารถยืนยัน URL หรือตัวเลขดังกล่าวกับหน้า GitHub โดยตรงได้ในรอบการค้นคว้านี้ จึงงดนำเสนอในรายงานฉบับนี้ตามหลักการห้ามคาดเดา
+    </div>
+  </section>
+
+  <section>
+    <h2>🗄️ Database</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/duckdb/duckdb">duckdb/duckdb</a></div>
+      <div class="card-meta">C++ · 41,006 ★ · <strong>+242 ดาวสัปดาห์นี้</strong></div>
+      <p>ฐานข้อมูล SQL เชิงวิเคราะห์แบบ in-process ยังคงเติบโตสม่ำเสมอในฐานะเครื่องมือมาตรฐานของงานวิเคราะห์ข้อมูลขนาดเล็กถึงกลาง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/dragonflydb/dragonfly">dragonflydb/dragonfly</a></div>
+      <div class="card-meta">C++ · 31,410 ★ · <strong>+345 ดาวสัปดาห์นี้</strong></div>
+      <p>ทางเลือกทดแทน Redis/Memcached ยุคใหม่ ยังคงได้รับความสนใจต่อเนื่องในฐานะ in-memory store ประสิทธิภาพสูง</p>
+    </div>
+
+    <p><strong>milvus-io/milvus</strong> (Go, 45,982 ★, +136 ดาว) ฐานข้อมูลเวกเตอร์ระดับ cloud-native ยังคงมีบทบาทสำคัญในงาน RAG ส่วน <strong>GreptimeTeam/greptimedb</strong> (Rust, 6,624 ★) ฐานข้อมูล observability แบบรวม metrics/logs/traces มีกิจกรรมระดับปานกลาง</p>
+  </section>
+
+  <section>
+    <h2>🌐 Web Frameworks</h2>
+
+    <p><strong>bigskysoftware/htmx</strong> (JavaScript, 49,346 ★, +324 ดาว) และ <strong>solidjs/solid</strong> (TypeScript, 35,958 ★, +41 ดาว) ยังคงเติบโตสม่ำเสมอในฐานะเฟรมเวิร์ก frontend ทางเลือก ฝั่ง full-stack/backend มี <strong>filamentphp/filament</strong> (PHP, 31,988 ★, +81 ดาว) แอดมินพาเนลสำหรับ Laravel และ <strong>halo-dev/halo</strong> (Java, 39,673 ★, +49 ดาว) ระบบ CMS โอเพนซอร์ส</p>
+
+    <p>ฝั่ง API/SDK มี <strong>protocolbuffers/protobuf</strong> (C++, 71,999 ★, +186 ดาว จาก Google) และ <strong>microsoft/semantic-kernel</strong> (C#, 28,533 ★, +40 ดาว) เฟรมเวิร์กเชื่อม LLM เข้ากับแอปพลิเคชันจาก Microsoft</p>
+
+    <p><em>ไม่พบข้อมูลยืนยันการปล่อย release ใหม่ที่มีนัยสำคัญจาก React หรือ Vue ในกรอบเจ็ดวันนี้</em></p>
+  </section>
+
+  <section>
+    <h2>📱 Mobile</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Language</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/chen08209/FlClash">chen08209/FlClash</a></td><td>Dart</td><td>50,968</td><td>+743 ดาว</td></tr>
+          <tr><td><a href="https://github.com/localsend/localsend">localsend/localsend</a></td><td>Dart</td><td>90,099</td><td>+522 ดาว</td></tr>
+          <tr><td><a href="https://github.com/LiveContainer/LiveContainer">LiveContainer/LiveContainer</a></td><td>Swift</td><td>11,906</td><td>+532 ดาว</td></tr>
+          <tr><td><a href="https://github.com/AppFlowy-IO/AppFlowy">AppFlowy-IO/AppFlowy</a></td><td>Dart</td><td>76,294</td><td>+283 ดาว</td></tr>
+          <tr><td><a href="https://github.com/termux/termux-app">termux/termux-app</a></td><td>Java</td><td>60,340</td><td>+414 ดาว</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>หมวดมือถือสัปดาห์นี้เคลื่อนไหวสม่ำเสมอโดยไม่มีเหตุการณ์เดี่ยวขนาดใหญ่ ส่วนใหญ่เป็นเครื่องมือ proxy/utility ฝั่ง Dart และ Swift ที่ยังคงเติบโตต่อเนื่องจากสัปดาห์ก่อนหน้า</p>
+  </section>
+
+  <section>
+    <h2>📦 New Releases</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Project</th><th>Version</th><th>Release Date</th><th>Highlights</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/jdx/mise">jdx/mise</a></td><td>v2026.9.0</td><td>1 ก.ย. 2026</td><td>เครื่องมือจัดการเวอร์ชัน dev environment แบบ CLI</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/Kilo-Org/kilocode">Kilo-Org/kilocode</a></td><td>v7.5.12 / v7.5.14</td><td>4 ก.ย. 2026</td><td>ปล่อยสองรุ่นในวันเดียว สะท้อนอัตราการพัฒนาที่รวดเร็วของ coding assistant นี้ (รายละเอียด changelog ยังไม่ได้ตรวจสอบโดยตรง)</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/tailscale/tailcat">tailscale/tailcat</a></td><td>v0.1.0 (ตามหน้า repo)</td><td>~2 ก.ย. 2026</td><td>รุ่นแรกของเครื่องมือใหม่ ข้อมูลเวอร์ชันจากบางแหล่งระบุ v0.5.0 — ยืนยันไม่ตรงกัน</td><td>GitHub Repository (บางส่วนไม่ยืนยัน)</td></tr>
+          <tr><td><a href="https://github.com/THU-MAIC/OpenMAIC">THU-MAIC/OpenMAIC</a></td><td>v1.0.0</td><td>27 ส.ค. 2026</td><td>รุ่นแรกอย่างเป็นทางการ ก่อนกระแสดาวพุ่งในสัปดาห์นี้ไม่กี่วัน</td><td>GitHub Releases</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔥 Viral This Week</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars Growth</th><th>Fork Growth</th><th>เหตุผล</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></td><td>+21,896</td><td>ไม่ยืนยัน</td><td>Agent skill สร้างไดอะแกรม ยอดดาวเพิ่มสูงสุดของสัปดาห์ในบรรดา repository ทั้งหมดที่พบ</td></tr>
+          <tr><td><a href="https://github.com/THU-MAIC/OpenMAIC">THU-MAIC/OpenMAIC</a></td><td>+10,274</td><td>ไม่ยืนยัน</td><td>แพลตฟอร์มการศึกษาแบบ multi-agent จากทีมที่เกี่ยวข้องกับมหาวิทยาลัยชิงหัว</td></tr>
+          <tr><td><a href="https://github.com/bilawalsidhu/gods-eye-view">bilawalsidhu/gods-eye-view</a></td><td>+7,314</td><td>ไม่ยืนยัน</td><td>เครื่องจำลอง "spy satellite" ในเบราว์เซอร์ด้วยข้อมูล spatial intelligence โอเพนซอร์ส</td></tr>
+          <tr><td><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a></td><td>+6,898</td><td>ไม่ยืนยัน</td><td>คลัง Agent Skill เฉพาะทางวิทยาศาสตร์ 163 รายการ ใช้งานจริงกว่า 190,000 คน</td></tr>
+          <tr><td><a href="https://github.com/jingyaogong/minimind">jingyaogong/minimind</a></td><td>+3,390</td><td>ไม่ยืนยัน</td><td>เนื้อหาเทรน LLM แบบเข้าถึงง่าย ดึงดูดผู้เริ่มต้นสายนี้ต่อเนื่อง</td></tr>
+          <tr><td><a href="https://github.com/MadsLorentzen/ai-job-search">MadsLorentzen/ai-job-search</a></td><td>+3,319</td><td>ไม่ยืนยัน</td><td>กรอบสมัครงานด้วย AI บน Claude Code ยังคงติด Trending ต่อเนื่องจากสัปดาห์ก่อน</td></tr>
+          <tr><td><a href="https://github.com/tailscale/tailcat">tailscale/tailcat</a></td><td>+3,762 (~150%)</td><td>ไม่ยืนยัน</td><td>เครื่องมือใหม่จาก Tailscale เปิดตัวและโตทันทีในสัปดาห์เดียว</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Fastest Growing Projects</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars</th><th>Growth</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/weave-os/router">weave-os/router</a></td><td>3,883</td><td>+1,521 (≈65%)</td><td>AI Agents / LLM Routing</td><td>GitHub Trending (Go)</td></tr>
+          <tr><td><a href="https://github.com/MakazhanAlpamys/Soup">MakazhanAlpamys/Soup</a></td><td>5,332</td><td>+1,808 (≈51%)</td><td>AI/LLM Fine-tuning</td><td>GitHub Trending (Python)</td></tr>
+          <tr><td><a href="https://github.com/kaifcodec/user-scanner">kaifcodec/user-scanner</a></td><td>4,669</td><td>+1,301 (≈28%)</td><td>Security / OSINT</td><td>GitHub Trending (Python)</td></tr>
+          <tr><td><a href="https://github.com/RizRiyz/luvus">RizRiyz/luvus</a></td><td>707</td><td>+198 (≈28%)</td><td>AI Agents / Dev Productivity</td><td>GitHub Trending (Rust)</td></tr>
+          <tr><td><a href="https://github.com/magnitudedev/magnitude">magnitudedev/magnitude</a></td><td>2,707</td><td>+740 (≈27%)</td><td>Coding Assistants</td><td>GitHub Trending (TypeScript)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>💎 Hidden Gems</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/RizRiyz/luvus">RizRiyz/luvus</a></div>
+      <p><strong>จุดเด่น:</strong> "mission control" แบบ terminal สำหรับจัดการ AI coding agent หลายตัวพร้อมกัน (Claude Code, GitHub Copilot CLI, Codex) พร้อม session ต่อเนื่อง การรวม Git และ terminal multiplexing<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ฐานเล็กมาก (707 ★) แต่โตต่อเนื่อง +198 ดาวในสัปดาห์เดียว (~28%) ชี้ว่าเป็นโครงการใหม่ที่มีความต้องการจริง<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่สลับใช้ agent หลายตัวและต้องการจัดการ session แบบรวมศูนย์<br>
+      <strong>Source:</strong> GitHub Trending (Rust) + GitHub Repository</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/weave-os/router">weave-os/router</a></div>
+      <p><strong>จุดเด่น:</strong> Model router สำหรับระบบ agentic ที่ route คำสั่งได้ในเวลาต่ำกว่า 50 มิลลิวินาที<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ฐาน 3,883 ★ แต่โต ~65% ในสัปดาห์เดียว เป็นหนึ่งในอัตราการเติบโตเชิงสัดส่วนสูงสุดที่พบในสัปดาห์นี้<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่รัน multi-model agent pipeline และต้องการลดต้นทุนโดยไม่แก้โค้ดมาก<br>
+      <strong>Source:</strong> GitHub Trending (Go) + GitHub Repository (หมายเหตุ: Elastic License v2 ไม่ใช่ open source ตามนิยาม OSI)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/xingkongliang/skills-manager">xingkongliang/skills-manager</a></div>
+      <p><strong>จุดเด่น:</strong> แอปเดสก์ท็อปน้ำหนักเบาสำหรับจัดการ agent skill ข้ามเครื่องมือ<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> แก้ปัญหาจริงจากการที่ skill กระจายอยู่หลายแพลตฟอร์ม ท่ามกลางกระแส "Agent Skills" ที่ระเบิดขึ้นในสัปดาห์นี้<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ใช้ agent หลายตัวและต้องจัดการ skill จำนวนมาก<br>
+      <strong>Source:</strong> GitHub Trending (Rust)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/magnitudedev/magnitude">magnitudedev/magnitude</a></div>
+      <p><strong>จุดเด่น:</strong> local inference server/compatibility layer สำหรับ coding agent หลายตัว ปรับให้เข้ากับฮาร์ดแวร์หลากหลาย<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ฐานเล็ก (2,707 ★) แต่โต +740 ดาวในสัปดาห์เดียว (~27%)<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ต้องการรัน coding agent แบบ local โดยไม่พึ่ง cloud API<br>
+      <strong>Source:</strong> GitHub Trending (TypeScript)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/MakazhanAlpamys/Soup">MakazhanAlpamys/Soup</a></div>
+      <p><strong>จุดเด่น:</strong> Fine-tune LLM จากไฟล์ YAML เดียวพร้อมความสามารถ layer streaming<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> โตเร็ว +1,808 ดาวในสัปดาห์เดียวจากฐาน 5,332 ★ (~51%) ลดความซับซ้อนของขั้นตอน fine-tuning ลงมาก<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการ fine-tune โมเดลโดยไม่ต้องเขียนโค้ด training pipeline เอง<br>
+      <strong>Source:</strong> GitHub Trending (Python)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠 Developer Recommendations</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> สร้างไดอะแกรมสถาปัตยกรรม/workflow/sequence จากโค้ดโดยตรงในแชท agent<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ทำ architecture review หรือทำเอกสารระบบเป็นประจำ<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ผลลัพธ์เป็น HTML/SVG พร้อมใช้ทันที ไม่ต้อง build และรองรับ agent หลายตัว<br>
+      GitHub: <a href="https://github.com/tt-a1i/archify">github.com/tt-a1i/archify</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">ChromeDevTools/chrome-devtools-mcp</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ให้ coding agent เข้าถึงความสามารถของ Chrome DevTools โดยตรง (network, performance, inspect)<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนา frontend ที่ใช้ agent ช่วย debug เว็บแอป<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เป็น MCP server ทางการจากทีม Chrome DevTools โดยตรง<br>
+      GitHub: <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">github.com/ChromeDevTools/chrome-devtools-mcp</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/tailscale/tailcat">tailscale/tailcat</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> สร้างทันเนลแบบเข้ารหัส WireGuard ระหว่างสองจุดโดยไม่ต้องใช้ control plane ของ Tailscale<br>
+      <strong>เหมาะกับใคร:</strong> ผู้ดูแลระบบที่ต้องการทางเลือกของ netcat ที่ปลอดภัยกว่า<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> จากบริษัทเครือข่ายที่มีชื่อเสียง เพิ่งเปิดตัวและยังพัฒนาต่อเนื่อง<br>
+      GitHub: <a href="https://github.com/tailscale/tailcat">github.com/tailscale/tailcat</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/jdx/mise">jdx/mise</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> จัดการเวอร์ชันของ runtime/เครื่องมือ dev environment แบบรวมศูนย์<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ทำงานหลายโปรเจกต์ที่ใช้ runtime ต่างเวอร์ชันกัน<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> อัปเดตสม่ำเสมอ ล่าสุดปล่อย v2026.9.0<br>
+      GitHub: <a href="https://github.com/jdx/mise">github.com/jdx/mise</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/duckdb/duckdb">duckdb/duckdb</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ฐานข้อมูล SQL เชิงวิเคราะห์แบบ in-process ไม่ต้องรัน server แยก<br>
+      <strong>เหมาะกับใคร:</strong> นักวิเคราะห์ข้อมูล/วิศวกรข้อมูลที่ต้องการรัน query เชิงวิเคราะห์บนไฟล์โดยตรง<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เสถียร เอกสารครบ และมีระบบนิเวศ extension กว้างขวาง<br>
+      GitHub: <a href="https://github.com/duckdb/duckdb">github.com/duckdb/duckdb</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/starship/starship">starship/starship</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> shell prompt ที่ปรับแต่งได้และทำงานเร็ว รองรับหลาย shell<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ใช้เทอร์มินัลเป็นหลักและต้องการ prompt ที่มีข้อมูลบริบท (git, ภาษาโปรแกรม ฯลฯ)<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เสถียรมายาวนาน ยังคงพัฒนาต่อเนื่อง (+144 ดาวสัปดาห์นี้)<br>
+      GitHub: <a href="https://github.com/starship/starship">github.com/starship/starship</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/jj-vcs/jj">jj-vcs/jj</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ระบบควบคุมเวอร์ชันที่เข้ากันได้กับ Git แต่ใช้งานง่ายและทรงพลังกว่า<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการ workflow git แบบใหม่โดยไม่ทิ้ง repository เดิม<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง (ต้องปรับความคุ้นเคยจาก git)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ยังคงมีกิจกรรมพัฒนาต่อเนื่องทุกวัน<br>
+      GitHub: <a href="https://github.com/jj-vcs/jj">github.com/jj-vcs/jj</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/RizRiyz/luvus">RizRiyz/luvus</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> เวิร์กสเปซแบบ terminal สำหรับควบคุม coding agent หลายตัวพร้อมกัน<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่สลับใช้ Claude Code, Copilot CLI, Codex ในโปรเจกต์เดียวกัน<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง<br>
+      <strong>เหตุผลที่แนะนำ:</strong> โครงการใหม่ที่โตเร็วและแก้ปัญหาจริงของยุค multi-agent<br>
+      GitHub: <a href="https://github.com/RizRiyz/luvus">github.com/RizRiyz/luvus</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Company Adoption</h2>
+
+    <div class="card">
+      <div class="card-title">Google (ทีม Chrome DevTools)</div>
+      <p>เผยแพร่ <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">chrome-devtools-mcp</a> อย่างเป็นทางการ ให้ coding agent เข้าถึงความสามารถ DevTools โดยตรง เป็นสัญญาณการลงทุนใน MCP อย่างจริงจังของทีมโครงสร้างพื้นฐาน Chrome</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tailscale</div>
+      <p>เปิดตัวเครื่องมือใหม่ <a href="https://github.com/tailscale/tailcat">tailcat</a> ซึ่งขึ้นอันดับ 3 ของ Go weekly trending ทันทีหลังเปิดตัว เป็นตัวอย่างของบริษัทเครือข่ายที่ยังคงผลิตเครื่องมือ open source ขนาดเล็กแต่ได้รับความสนใจสูง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Cursor</div>
+      <p>เผยแพร่สเปกปลั๊กอินอย่างเป็นทางการผ่าน <a href="https://github.com/cursor/plugins">cursor/plugins</a> เปิดระบบนิเวศปลั๊กอินให้นักพัฒนาภายนอกสร้างส่วนขยายได้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">JetBrains</div>
+      <p>เผยแพร่ <a href="https://github.com/JetBrains/go-modern-guidelines">go-modern-guidelines</a> (+648 ดาวสัปดาห์นี้) แนวปฏิบัติสำหรับ AI coding agent ในการเขียนโค้ด Go ที่ทันสมัยและเป็นสำนวนภาษา (idiomatic) เป็นสัญญาณว่าผู้ให้บริการ IDE รายใหญ่กำลังลงทุนในเนื้อหาที่ป้อนให้ agent ใช้งานโดยตรง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tencent</div>
+      <p>มีโครงการ open source เคลื่อนไหวพร้อมกันหลายตัวในสัปดาห์นี้ ได้แก่ <a href="https://github.com/TencentCloud/CubeSandbox">CubeSandbox</a> (agent sandboxing, +411 ดาว) และ <a href="https://github.com/Tencent/WeKnora">WeKnora</a> (RAG platform, +500 ดาว)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Microsoft</div>
+      <p>ยังคงลงทุนต่อเนื่องด้าน MCP ผ่าน <a href="https://github.com/microsoft/mcp">microsoft/mcp</a> (+26 ดาว) และ <a href="https://github.com/microsoft/semantic-kernel">semantic-kernel</a> (+40 ดาว) เฟรมเวิร์กเชื่อม LLM เข้ากับแอปพลิเคชัน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>⚠️ Breaking Changes</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้ — ไม่พบ release ที่ระบุ Breaking Changes, Migration Guide หรือ Deprecated Features ที่ยืนยันได้ครบถ้วนในกรอบ 7 วันนี้จากแหล่งข้อมูลที่ใช้ในรายงานฉบับนี้</p>
+  </section>
+
+  <section>
+    <h2>📊 Top Categories</h2>
+    <p>จัดอันดับจากจำนวนโครงการที่โดดเด่น ปริมาณการเติบโต และแรงสนใจของชุมชนในสัปดาห์นี้</p>
+    <ol>
+      <li><strong>AI Agents &amp; Agent Skills</strong> — archify, OpenMAIC, scientific-agent-skills, academic-research-skills ครองอันดับดาวเพิ่มสูงสุดของสัปดาห์อย่างชัดเจน</li>
+      <li><strong>MCP</strong> — chrome-devtools-mcp, awesome-mcp-servers เติบโตต่อเนื่องแม้ไม่มีสเปกใหม่</li>
+      <li><strong>AI / LLM</strong> — minimind, timesfm, VoiceStudio ยังคงมีแรงส่งจากความสนใจด้านการเทรนและเสียง AI</li>
+      <li><strong>Networking</strong> — tailcat จาก Tailscale เป็นเหตุการณ์เดี่ยวที่โดดเด่นที่สุดของหมวดนี้ในรอบหลายสัปดาห์</li>
+      <li><strong>Developer Tools &amp; CLI</strong> — zod, portless, GitNexus, mise, kilocode</li>
+      <li><strong>Mobile</strong> — FlClash, localsend, LiveContainer เติบโตสม่ำเสมอ</li>
+      <li><strong>Database</strong> — duckdb, dragonfly, milvus เติบโตต่อเนื่องแต่ไม่มีเหตุการณ์เดี่ยวขนาดใหญ่</li>
+      <li><strong>Cloud Native &amp; DevOps</strong> — dapr, seaweedfs, llm-d เคลื่อนไหวสม่ำเสมอ ไม่มี release ขนาดใหญ่ระดับ Kubernetes ในสัปดาห์นี้</li>
+      <li><strong>Security</strong> — user-scanner, CyberStrikeAI เติบโตในระดับเครื่องมือเฉพาะทางขนาดเล็ก</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-num">54</div><div class="stat-label">Repository ที่รายงานครอบคลุม</div></div>
+      <div class="stat-tile"><div class="stat-num">4</div><div class="stat-label">รายการ Release ในกรอบ 7 วัน</div></div>
+      <div class="stat-tile"><div class="stat-num">8</div><div class="stat-label">AI / LLM Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">6</div><div class="stat-label">MCP Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">14</div><div class="stat-label">Agent Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">9</div><div class="stat-label">CLI / Dev Tools Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Cloud / DevOps Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Security Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Hidden Gems</div></div>
+      <div class="stat-tile"><div class="stat-num">0</div><div class="stat-label">Breaking Releases ที่ยืนยันได้</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>เหตุผล</th><th>สิ่งที่ต้องติดตาม</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></td><td>ดาวเพิ่มสูงผิดปกติในสัปดาห์เดียว (+21,896)</td><td>อัตราการเติบโตในสัปดาห์ถัดไปจะยังสูงต่อเนื่องหรือชะลอตัว เพื่อยืนยันว่าเป็นการเติบโตแบบอินทรีย์</td><td><a href="https://github.com/tt-a1i/archify">GitHub Repository</a></td></tr>
+          <tr><td><a href="https://github.com/tailscale/tailcat">tailscale/tailcat</a></td><td>เพิ่งเปิดตัว ยังไม่มี release ที่ยืนยันเวอร์ชันตรงกันระหว่างแหล่งข้อมูล</td><td>หน้า Releases อย่างเป็นทางการและการยืนยันเวอร์ชันล่าสุด</td><td><a href="https://github.com/tailscale/tailcat/releases">GitHub Releases</a></td></tr>
+          <tr><td><a href="https://github.com/THU-MAIC/OpenMAIC">THU-MAIC/OpenMAIC</a></td><td>แพลตฟอร์มการศึกษาแบบ multi-agent ที่โตเร็วมากหลัง release v1.0.0</td><td>การยอมรับจากสถาบันการศึกษาจริงและ release ถัดไป</td><td><a href="https://github.com/THU-MAIC/OpenMAIC">GitHub Repository</a></td></tr>
+          <tr><td>ระบบนิเวศ MCP</td><td>ยังไม่มีสเปกใหม่ประกาศในรอบหลายสัปดาห์</td><td>ประกาศ roadmap หรือสเปกฉบับใหม่จากทีม Model Context Protocol</td><td><a href="https://modelcontextprotocol.io/">MCP Official Site</a></td></tr>
+          <tr><td>Agent Skills Ecosystem</td><td>คลัง skill เฉพาะทางเติบโตเร็วมากในหลายสาขา (วิทยาศาสตร์ วิจัย สถาปัตยกรรม)</td><td>มาตรฐานกลางสำหรับ skill format ข้ามผู้ให้บริการ agent หากมีการประกาศ</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+
+    <h3>GitHub</h3>
+    <ul>
+      <li><a href="https://github.com/trending?since=weekly">GitHub Trending — Weekly</a> และหน้าแยกตามภาษา (<a href="https://github.com/trending/python?since=weekly">Python</a>, <a href="https://github.com/trending/typescript?since=weekly">TypeScript</a>, <a href="https://github.com/trending/rust?since=weekly">Rust</a>, <a href="https://github.com/trending/go?since=weekly">Go</a>, <a href="https://github.com/trending/java?since=weekly">Java</a>, <a href="https://github.com/trending/c%2B%2B?since=weekly">C++</a>, <a href="https://github.com/trending/c%23?since=weekly">C#</a>, <a href="https://github.com/trending/shell?since=weekly">Shell</a>, <a href="https://github.com/trending/dart?since=weekly">Dart</a>, <a href="https://github.com/trending/swift?since=weekly">Swift</a>, <a href="https://github.com/trending/php?since=weekly">PHP</a>) ทั้ง since=weekly และ since=daily</li>
+      <li>หน้า repository โดยตรงสำหรับ stars, forks, license, language และคำอธิบาย ของทุก repository ที่อ้างอิงในรายงานนี้</li>
+      <li>หน้า GitHub Releases ของ <a href="https://github.com/jdx/mise/releases">jdx/mise</a>, <a href="https://github.com/Kilo-Org/kilocode/releases">Kilo-Org/kilocode</a>, <a href="https://github.com/tailscale/tailcat/releases">tailscale/tailcat</a>, <a href="https://github.com/THU-MAIC/OpenMAIC/releases">THU-MAIC/OpenMAIC</a></li>
+    </ul>
+
+    <h3>Official Documentation</h3>
+    <ul>
+      <li><a href="https://modelcontextprotocol.io/">Model Context Protocol — เว็บไซต์ทางการ</a></li>
+    </ul>
+
+    <h3>Community (Trend Only)</h3>
+    <ul>
+      <li>WebSearch สำหรับตรวจสอบวันที่ release และบริบทเสริม เนื่องจากบางโดเมนเข้าถึงไม่ได้โดยตรง (ดูหมายเหตุข้อจำกัดของข้อมูล)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>⚠️ ข้อจำกัดของข้อมูล</h2>
+    <div class="note-box">
+      <p><strong>UNCERTAIN — โดเมนที่เข้าถึงไม่ได้หลังลองซ้ำ:</strong> <code>huggingface.co</code> และ <code>github.blog</code> ถูกบล็อกโดย network egress proxy ในเซสชันนี้ทุกครั้งที่ลอง จึงไม่สามารถดึงข้อมูล Hugging Face trending papers/models หรือ GitHub Changelog อย่างเป็นทางการได้โดยตรง <code>news.ycombinator.com</code> ก็ถูกบล็อกเช่นกันและใช้ WebSearch ทดแทน แต่ไม่ได้ผลลัพธ์ที่ยืนยันหน้าแรกของ Hacker News ในช่วงวันที่ 4–5 ก.ย. 2026 ได้ครบถ้วน ส่วน <code>github.com/search</code> ถูกจำกัดอัตราการเรียก (HTTP 429) ในการค้นหา repository ที่สร้างใหม่ในสัปดาห์นี้ จึงไม่สามารถรายงานหมวดนี้ได้ครบ</p>
+      <p><strong>ข่าวรุ่นโมเดลจากผู้ให้บริการรายใหญ่:</strong> พบข้อมูลจากเว็บไซต์รวมข่าวรอง (secondary aggregator) ที่อ้างถึงชื่อรุ่นโมเดลใหม่จาก Anthropic, OpenAI, Google และ Meta ในสัปดาห์นี้ แต่ไม่สามารถยืนยันกับบล็อกทางการของผู้ให้บริการโดยตรงได้เนื่องจากข้อจำกัดการเข้าถึงโดเมนข้างต้น จึง<strong>งดนำเสนอเป็นข่าวยืนยันในรายงานฉบับนี้ทั้งหมด</strong> ตามหลักการห้ามคาดเดาและห้ามสร้างข้อมูลขึ้นเอง</p>
+      <p><strong>ตัวเลขการเติบโตของดาว:</strong> มาจาก snapshot ของหน้า GitHub Trending ไม่ใช่ค่าที่คำนวณจาก API จึงเป็นค่าประมาณและอาจต่างจากตัวเลขที่เห็นบนหน้าเว็บในเวลาอื่น ตัวเลขการเติบโตของ fork ในตาราง "Viral This Week" ไม่สามารถยืนยันได้จากแหล่งที่ใช้ในรายงานนี้ จึงระบุเป็น "ไม่ยืนยัน" ทั้งหมด</p>
+      <p><strong>รายการที่งดนำเสนอเนื่องจากข้อมูลไม่ครบหรือขัดแย้งกัน:</strong> <code>DietrichGebert/ponytail</code> พบตัวเลขดาวเพิ่มรายสัปดาห์ที่ขัดแย้งกันระหว่างสองหน้า Trending (+10,818 และ +1,679) โดยไม่มีคำอธิบายโครงการที่ยืนยันได้ จึงงดนำเสนอ · เครื่องมือทดสอบเจาะระบบ "Strix" งดนำเสนอเนื่องจากยืนยัน URL และตัวเลขไม่ได้จากหน้า GitHub โดยตรง · หมวด Data Engineering, Edge Computing และ Observability ไม่พบหลักฐานระดับ Tier 1 (GitHub Trending) ของกิจกรรมใหม่ในกรอบ 29 ส.ค. – 5 ก.ย. 2026 จึงงดแสดงเป็นหมวดแยกในรายงานฉบับนี้ · <code>Gitlawb/openclaude</code> เป็นโครงการคนละตัวกับ "OpenClaw" ที่มีการอ้างถึงในแหล่งข่าวรองบางแห่ง ผู้อ่านควรตรวจสอบให้แน่ใจก่อนอ้างอิงชื่อทั้งสอง</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏷 Labels</h2>
+    <div class="legend-grid">
+      <div><span>✅</span><span>Official</span></div>
+      <div><span>⭐</span><span>Trending</span></div>
+      <div><span>🚀</span><span>Fast Growing</span></div>
+      <div><span>🔥</span><span>Viral</span></div>
+      <div><span>🤖</span><span>AI</span></div>
+      <div><span>🧠</span><span>MCP / Agent</span></div>
+      <div><span>☁️</span><span>Cloud Native</span></div>
+      <div><span>🔒</span><span>Security</span></div>
+      <div><span>📦</span><span>New Release</span></div>
+      <div><span>⚠️</span><span>Breaking Change</span></div>
+      <div><span>💎</span><span>Hidden Gem</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🧭 สรุปแนวโน้ม Open Source Ecosystem</h2>
+    <p><strong>หนึ่ง — "Agent Skills" กลายเป็นหน่วยเผยแพร่ความรู้ยุคใหม่แทนไลบรารีโค้ด</strong> การที่ archify, OpenMAIC, scientific-agent-skills และ academic-research-skills ต่างได้ดาวเพิ่มระดับหมื่นในสัปดาห์เดียว ชี้ว่าตลาดกำลังมองหา "ชุดความรู้สำเร็จรูป" ที่ป้อนให้ agent ใช้งานได้ทันที มากกว่าการเขียน framework หรือ prompt เอง โดยเฉพาะในสาขาเฉพาะทาง (วิทยาศาสตร์ วิจัย สถาปัตยกรรมซอฟต์แวร์)</p>
+
+    <p><strong>สอง — บริษัทที่มีชื่อเสียงยังคงลงทุนในเครื่องมือ open source ขนาดเล็กที่จับต้องได้</strong> ทั้ง Tailscale (tailcat), Google/Chrome DevTools (chrome-devtools-mcp), Cursor (plugins) และ JetBrains (go-modern-guidelines) ต่างเลือกเปิดตัวเครื่องมือหรือมาตรฐานเฉพาะทางแทนการประกาศผลิตภัณฑ์ใหญ่ สะท้อนกลยุทธ์การเข้าถึงนักพัฒนาผ่านเครื่องมือเล็กที่แก้ปัญหาเฉพาะจุด</p>
+
+    <p><strong>สาม — ชั้นโครงสร้างพื้นฐานรองรับ agent (routing, sandboxing, memory) กำลังเป็นสนามแข่งขันใหม่</strong> weave-os/router, TencentCloud/CubeSandbox, rtk-ai/rtk และ vllm-project/semantic-router ต่างพุ่งเป้าไปที่ปัญหาต้นทุนและความปลอดภัยในการรัน agent จำนวนมาก ชี้ว่าตลาดกำลังขยายจาก "ตัว agent" ไปสู่ "ระบบนิเวศที่รองรับ agent" อย่างเป็นระบบมากขึ้น</p>
+
+    <p><strong>สี่ — ควรอ่านตัวเลข GitHub Trending ด้วยความระมัดระวังมากขึ้น</strong> อัตราการเติบโตที่สูงผิดปกติของบาง repository ในสัปดาห์นี้ (โดยเฉพาะ archify และ OpenMAIC) ยังไม่มีคำอธิบายเชิงเหตุการณ์ที่ยืนยันได้ชัดเจน (เช่น การถูกแชร์ในโพสต์ไวรัล) ผู้อ่านควรตีความเป็นสัญญาณความสนใจ ไม่ใช่ตัวชี้วัดคุณภาพหรือความยั่งยืนของโครงการโดยตรง</p>
+
+    <p><strong>เทคโนโลยีที่ควรจับตาในสัปดาห์หน้า</strong> ได้แก่ อัตราการเติบโตต่อเนื่องของ archify และ OpenMAIC ว่าจะยั่งยืนหรือชะลอตัว, การยืนยันเวอร์ชัน release อย่างเป็นทางการของ tailcat, ความเคลื่อนไหวใหม่จากทีม Model Context Protocol หากมีการประกาศสเปกฉบับปรับปรุง, และพัฒนาการของมาตรฐาน Agent Skills ข้ามผู้ให้บริการ (Claude Code, Cursor, Codex) ว่าจะรวมเป็นมาตรฐานเดียวกันหรือแยกกันต่อไป</p>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly GitHub Trending Open Source Report · Week 36, 2026</p>
+    <p>ข้อมูลรวบรวมระหว่าง 29 ส.ค. – 5 ก.ย. 2026 (ICT) · <a href="index.html">Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>
