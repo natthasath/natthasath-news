@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-09-08</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 8 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-09-08</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 8 ก.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> รอบนี้เข้าถึง arxiv.org, openai.com, anthropic.com และ techcrunch.com โดยตรงด้วย WebFetch ไม่สำเร็จ (ถูกบล็อกโดย network egress proxy) จึงใช้ WebSearch แทนตามขั้นตอนที่กำหนด แม้พยายามค้นหาหลายรูปแบบก็ไม่พบบทความวิจัยบน arXiv ที่ยืนยันวันที่ยื่นอยู่ในกรอบ 7–8 ก.ย. 2569 ได้ครบถ้วน (พบแต่บทความที่ยื่นเมื่อ 2–4 ก.ย. 2569 ซึ่งอยู่นอกกรอบเวลาและเคยผ่านไปแล้ว) จึงงดแสดงหัวข้อ Research ในรอบนี้ ข้อมูลผลเบนช์มาร์ก (เช่น LMArena, GPQA Diamond) ที่พบมีความคลาดเคลื่อนด้านวันที่อัปเดตระหว่างแหล่งข้อมูลต่าง ๆ จึงงดแสดงหัวข้อ Benchmark เพื่อความถูกต้องเช่นเดียวกับฉบับก่อนหน้า</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ข่าวใหญ่ของรอบ 24 ชั่วโมงนี้คือ Meta เปิดตัว Muse แอปเอเจนต์ AI ส่วนตัวสำหรับผู้บริโภคในสหรัฐฯ ที่เชื่อมต่ออีเมล ปฏิทิน การชำระเงิน และบริการอื่น ๆ เพื่อทำงานแทนผู้ใช้ ท่ามกลางคำถามเรื่องความไว้วางใจหลังกรณีความเป็นส่วนตัวของ Meta AI ที่เพิ่งเป็นข่าวเมื่อวานนี้ ด้าน OpenAI เผชิญข้อครหาจากนักคณิตศาสตร์ NYU ทริสตัน บั๊กมาสเตอร์ ว่าใช้วิธีการที่ไม่เหมาะสมแย่งเครดิตผลงานพิสูจน์ปัญหา Navier-Stokes ที่เกี่ยวข้องกับนักวิจัยของ Anthropic ขณะเดียวกัน OpenAI เปิดตัว ChatGPT Images 2.5 โมเดลสร้างภาพรุ่นใหม่พร้อมฟีเจอร์ Sketch และโมเดล API ใหม่สองตัว ฝั่งการลงทุนคึกคักเป็นพิเศษ โดย Cognition AI ระดมทุน 2 พันล้านดอลลาร์ที่มูลค่าบริษัท 4.8 หมื่นล้านดอลลาร์ และ Mistral AI ระดมทุน 3 พันล้านยูโรที่มูลค่า 2.1 หมื่นล้านยูโร ทำสถิติการระดมทุนครั้งใหญ่ที่สุดของบริษัทเทคโนโลยียุโรป ฝั่งโอเพนซอร์ส heygen-com/hyperframes และ microsoft/markitdown ยังคงติดอันดับ GitHub Trending ต่อเนื่อง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+        <tr>
+          <td>ChatGPT Images 2.5 (+ GPT-Image-2.5 Flare, GPT-Image-2.5 Sunburst)</td>
+          <td>OpenAI</td>
+          <td>Image Generation</td>
+          <td>แสงและพื้นผิวเป็นธรรมชาติขึ้น รักษาตัวแบบจากภาพอ้างอิงได้แม่นยำขึ้น ทำตามคำสั่งแก้ไขหลายรอบได้ดีขึ้น ลด latency สูงสุด 50% เทียบกับ Images 2.0 มีฟีเจอร์ Sketch ให้วาดภาพร่างเป็นแนวทางในแชท</td>
+          <td>เปิดให้ใช้งานแล้วบน ChatGPT, ChatGPT Work, Codex ทุกระดับ (desktop/mobile/web) และผ่าน API</td>
+          <td>✅ <a href="https://openai.com/index/introducing-chatgpt-images-2-5/">OpenAI</a> · 📰 <a href="https://9to5mac.com/2026/09/08/openai-releases-chatgpt-images-2-5-with-sharper-details-and-more-precise-editing/">9to5Mac</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">ไม่พบบทความวิจัยใหม่บน arXiv ที่ยืนยันวันที่ยื่นอยู่ในกรอบ 24 ชั่วโมงล่าสุด (7–8 ก.ย. 2569) ได้ครบตามเกณฑ์ Validation ในรอบนี้ เนื่องจากไม่สามารถเข้าถึง arxiv.org โดยตรงและผลค้นหาผ่าน WebSearch ที่ลองหลายรูปแบบล้วนพบบทความที่ยื่นเมื่อ 2–4 ก.ย. 2569 ซึ่งอยู่นอกกรอบเวลาที่กำหนด</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>heygen-com/hyperframes</td>
+          <td>~43.7k (+2,628 วันนี้)</td>
+          <td>HTML/TypeScript</td>
+          <td>ไลบรารีโอเพนซอร์ส Apache 2.0 จาก HeyGen ให้ AI เอเจนต์เขียน HTML/CSS/JS แล้ว "render" ออกมาเป็นวิดีโอได้โดยตรง ออกแบบมาให้เอเจนต์ประกอบวิดีโอแบบ vibe-coding <span class="badge">ติดอันดับ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/heygen-com/hyperframes">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending?since=daily">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>microsoft/markitdown</td>
+          <td>~179.9k (+2,045 วันนี้)</td>
+          <td>Python</td>
+          <td>เครื่องมือแปลงไฟล์เอกสาร/ออฟฟิศหลากหลายรูปแบบให้เป็น Markdown สำหรับใช้เป็นข้อมูลนำเข้า LLM ยังคงเป็นหนึ่งในโปรเจกต์ที่มีอัตราการเพิ่มดาวเร็วที่สุดบน GitHub ต่อเนื่อง <span class="badge">ติดอันดับ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/microsoft/markitdown">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending?since=daily">GitHub Trending</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวรวมอ้างอิงจากรายงานติดตามภายนอก (star-history, GitHub Stars Leaderboard) ณ ช่วงต้นสัปดาห์นี้ ส่วนตัวเลข "+วันนี้" มาจากหน้า GitHub Trending ที่ดึงข้อมูลสด ณ เวลาสร้างรายงาน</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Description</th><th>Pricing</th><th>Source</th></tr>
+        <tr>
+          <td>Muse (Meta)</td>
+          <td>แอปเอเจนต์ AI ส่วนตัวใหม่ ใช้แทนผู้ใช้ทำงานได้ตั้งแต่ส่งอีเมล จองตั๋วหนัง จองคิว ไปจนถึงวางแผนออกกำลังกายรายปี เชื่อมต่อ Gmail ปฏิทิน การชำระเงิน และบริการอื่น ๆ ใช้งานผ่านแอป Muse แยก หรือผ่าน WhatsApp รันบน virtual machine เฉพาะของผู้ใช้แต่ละคนเพื่อเน้นความปลอดภัยข้อมูล เปิดให้ใช้เฉพาะผู้ใช้อายุ 18 ปีขึ้นไปในสหรัฐฯ ก่อน</td>
+          <td>ฟรี (มีโควตาจำกัดรายสัปดาห์) หรือสมัครสมาชิกรายเดือน 20–100 ดอลลาร์ตามระดับการใช้งาน</td>
+          <td>📰 <a href="https://www.bloomberg.com/news/articles/2026-09-08/meta-announces-muse-ai-agent-for-personal-tasks-and-organization">Bloomberg</a> · 📰 <a href="https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/">TechCrunch</a> · 📰 <a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC</a></td>
+        </tr>
+        <tr>
+          <td>ChatGPT Images 2.5 — Sketch</td>
+          <td>ฟีเจอร์ใหม่ให้ผู้ใช้วาดภาพร่างในแชท (พิมพ์ "@Sketch") เพื่อเป็นแนวทางสร้างภาพขั้นสุดท้าย พร้อมเทมเพลตสำเร็จรูป เช่น โปสเตอร์ สินค้า และฟีเจอร์คอมเมนต์บนภาพเพื่อแก้ไขแบบเจาะจง</td>
+          <td>รวมอยู่ในแพ็กเกจ ChatGPT ทุกระดับที่รองรับ</td>
+          <td>✅ <a href="https://openai.com/index/introducing-chatgpt-images-2-5/">OpenAI</a></td>
+        </tr>
+      </table>
+    </div>
+    <h3>Updates</h3>
+    <p class="note">ไม่พบอัปเดตเครื่องมือที่มีอยู่เดิมซึ่งยืนยันแหล่งที่มาและวันที่ได้ครบตามเกณฑ์ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>เกิดข้อพิพาทเรื่องเครดิตผลงานวิชาการ หลัง OpenAI ประกาศว่าโมเดลของบริษัทแก้โจทย์ปัญหา Navier-Stokes (ปัญหาคณิตศาสตร์ระดับรางวัล Millennium Prize) ได้สำเร็จ แต่ทริสตัน บั๊กมาสเตอร์ นักคณิตศาสตร์จาก NYU กล่าวหาว่า OpenAI ทราบความคืบหน้างานของเขาและเลเวนต์ อัลเปอเก (นักคณิตศาสตร์ของ Anthropic) ที่กำลังพิสูจน์ผล blow-up ของสมการออยเลอร์ (ก้าวสำคัญสู่ Navier-Stokes) มาก่อนที่ทั้งคู่จะเผยแพร่เอง และนำวิธีการเดียวกันไปใช้ นอกจากนี้ บั๊กมาสเตอร์ยังอ้างว่านักวิจัยของ OpenAI (Bubeck) พยายามขอให้ตัดชื่ออัลเปอเกออกจากเครดิต และตั้งคำถามว่า "ทำไมถึงอยากทำลายอาชีพตัวเอง" เมื่อบั๊กมาสเตอร์ต้องการเปิดเผยเรื่องนี้ต่อสาธารณะ OpenAI ตอบโต้ว่าทั้งนักวิจัยและเอเจนต์ของบริษัทไม่เคยเห็นงานของทั้งคู่ก่อนเผยแพร่ แต่ยอมรับว่าทั้งสองทีมทำงานในสายวิจัยที่เกี่ยวข้องกันจากงานฐานเดียวกัน 📰 <a href="https://techcrunch.com/2026/09/08/openai-fought-dirty-on-career-making-math-problem-says-nyu-mathematician/">TechCrunch</a> · 📰 <a href="https://www.axios.com/2026/09/08/openai-math-solution-navier-stokes-credit">Axios</a> · 📰 <a href="https://www.scientificamerican.com/article/openai-claims-blockbuster-math-breakthrough-amid-swirl-of-controversy/">Scientific American</a></p>
+    <p>ในวันเดียวกัน OpenAI เปิดตัว <b>ChatGPT Images 2.5</b> โมเดลสร้างภาพรุ่นใหม่ พร้อมโมเดล API สองตัวคือ GPT-Image-2.5 Flare และ GPT-Image-2.5 Sunburst (รายละเอียดในหัวข้อ AI Models และ Tools &amp; Apps) ✅ <a href="https://openai.com/index/introducing-chatgpt-images-2-5/">OpenAI</a></p>
+
+    <h3>Anthropic</h3>
+    <p>เลเวนต์ อัลเปอเก นักวิจัยของ Anthropic เป็นหนึ่งในคู่กรณีของข้อพิพาทเครดิตผลงาน Navier-Stokes กับ OpenAI ข้างต้น โดยเป็นผู้ร่วมพิสูจน์ผล blow-up ของสมการออยเลอร์กับทริสตัน บั๊กมาสเตอร์แห่ง NYU ยังไม่มีแถลงการณ์อย่างเป็นทางการจาก Anthropic ต่อกรณีนี้โดยตรงในรอบนี้ 📰 <a href="https://techcrunch.com/2026/09/08/openai-fought-dirty-on-career-making-math-problem-says-nyu-mathematician/">TechCrunch</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Google DeepMind ในรอบ 24 ชั่วโมงนี้</p>
+
+    <h3>Meta</h3>
+    <p>Meta เปิดตัว <b>Muse</b> เอเจนต์ AI ส่วนตัวสำหรับผู้บริโภคในสหรัฐฯ (รายละเอียดในหัวข้อ Tools &amp; Apps) ซึ่งเป็นการเดิมพันด้าน consumer AI ครั้งใหญ่ที่สุดของบริษัท ท่ามกลางคำถามเรื่องความไว้วางใจของผู้ใช้ หลังกรณี Meta AI เปิดเผยข้อมูลส่วนตัวของเด็กที่เป็นข่าวเมื่อวานนี้ (7 ก.ย. 2569) บริษัทเน้นย้ำมาตรการความปลอดภัยและความเป็นส่วนตัว โดยระบุว่า Muse รันบน virtual machine เฉพาะของผู้ใช้แต่ละคน 📰 <a href="https://www.bloomberg.com/news/articles/2026-09-08/meta-announces-muse-ai-agent-for-personal-tasks-and-organization">Bloomberg</a> · 📰 <a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC</a> · 📰 <a href="https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/">TechCrunch</a></p>
+
+    <h3>Microsoft</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Microsoft ในรอบ 24 ชั่วโมงนี้ (โปรเจกต์โอเพนซอร์ส microsoft/markitdown ยังติดอันดับ GitHub Trending ต่อเนื่อง ดูหัวข้อ Open Source)</p>
+
+    <h3>Amazon</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Amazon ในรอบ 24 ชั่วโมงนี้</p>
+
+    <h3>NVIDIA</h3>
+    <p>NVIDIA เข้าร่วมเป็นหนึ่งในนักลงทุนของทั้งสองดีลระดมทุนใหญ่วันนี้ ทั้งรอบ Series E ของ Cognition AI (มูลค่าบริษัท 4.8 หมื่นล้านดอลลาร์) และรอบ Series D ของ Mistral AI (มูลค่าบริษัท 2.1 หมื่นล้านยูโร) สะท้อนบทบาทนักลงทุนเชิงยุทธศาสตร์ในระบบนิเวศ AI ต่อเนื่อง (รายละเอียดในหัวข้อ Industry) ✅ <a href="https://cognition.ai/blog/funding-growth-and-the-next-frontier-of-ai-coding-agents">Cognition (official)</a> · ✅ <a href="https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/">Mistral AI (official)</a></p>
+
+    <h3>Startup</h3>
+    <p>ข่าวเด่นด้าน Startup ของวันนี้คือการระดมทุนขนาดใหญ่สองดีล ได้แก่ Cognition AI และ Mistral AI (รายละเอียดในหัวข้อ Industry &gt; Investment)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>API:</b> OpenAI เปิด API โมเดลสร้างภาพใหม่สองตัวคู่กับ ChatGPT Images 2.5 ได้แก่ GPT-Image-2.5 Flare (ความเร็วและคุณภาพเทียบเท่ารุ่นแชท) และ GPT-Image-2.5 Sunburst (เน้นความละเอียดสูงสำหรับงานสร้างสรรค์ ใช้เวลาประมวลผลนานกว่า) ✅ <a href="https://openai.com/index/introducing-chatgpt-images-2-5/">OpenAI</a></li>
+      <li><b>Agent:</b> Meta เปิดตัว Muse เอเจนต์ AI ส่วนตัวที่เชื่อมต่อบริการภายนอกหลายรายการ (อีเมล ปฏิทิน การชำระเงิน) เพื่อทำงานแทนผู้ใช้ รันบน virtual machine แยกต่อผู้ใช้หนึ่งคน 📰 <a href="https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/">TechCrunch</a></li>
+      <li><b>MCP:</b> ไม่พบอัปเดตสเปกหรือรีลีสใหม่เฉพาะเจาะจงของ Model Context Protocol ในรอบ 24 ชั่วโมงนี้ (สเปกล่าสุดคือ 2026-07-28 และ roadmap อัปเดตล่าสุด 22 ส.ค. 2569 นอกกรอบเวลา)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>Investment:</b> Cognition AI (ผู้พัฒนาเอเจนต์เขียนโค้ด Devin) ระดมทุน Series E กว่า 2 พันล้านดอลลาร์ ที่มูลค่าบริษัท 4.8 หมื่นล้านดอลลาร์ นำโดย Andreessen Horowitz, Accel, Founders Fund, General Catalyst และ Avenir พร้อมผู้ร่วมลงทุนอีกกว่า 30 ราย รวมถึง NVIDIA รายได้ต่อปีของบริษัทเติบโตจากราว 492 ล้านดอลลาร์ (รอบก่อนหน้าเดือน พ.ค. 2569) เป็นเกือบ 900 ล้านดอลลาร์ ✅ <a href="https://cognition.ai/blog/funding-growth-and-the-next-frontier-of-ai-coding-agents">Cognition (official)</a> · 📰 <a href="https://www.bloomberg.com/news/articles/2026-09-08/ai-startup-cognition-raises-2-billion-at-a-48-billion-value">Bloomberg</a></li>
+      <li><b>Investment:</b> Mistral AI ระดมทุน Series D มูลค่า 3 พันล้านยูโร ที่มูลค่าบริษัทกว่า 2.1 หมื่นล้านยูโร นำโดย Samsung Electronics ร่วมกับ Scaleup Europe Fund (EQT), PSG Equity และนักลงทุนใหม่ เช่น Advent, กองทุนที่บริหารโดย BlackRock และรัฐบาลลักเซมเบิร์ก ถือเป็นการระดมทุนครั้งใหญ่ที่สุดของบริษัทเทคโนโลยียุโรป และเกือบเพิ่มมูลค่าเป็นสองเท่าจากรอบก่อนหน้า (1.17 หมื่นล้านยูโร เมื่อปี 2568) ✅ <a href="https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/">Mistral AI (official)</a> · 📰 <a href="https://www.bloomberg.com/news/articles/2026-09-08/mistral-ai-raises-at-21-billion-valuation-in-samsung-led-round">Bloomberg</a> · 📰 <a href="https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/">TechCrunch</a></li>
+      <li><b>Ethics/Credit Dispute:</b> ข้อพิพาทเครดิตผลงานพิสูจน์ปัญหา Navier-Stokes ระหว่าง OpenAI กับนักวิจัยของ Anthropic/NYU จุดคำถามเรื่องจริยธรรมการแข่งขันด้านการวิจัย AI ระหว่างแล็บชั้นนำ (ดูรายละเอียดในหัวข้อ Company News &gt; OpenAI) 📰 <a href="https://techcrunch.com/2026/09/08/openai-fought-dirty-on-career-making-math-problem-says-nyu-mathematician/">TechCrunch</a></li>
+      <li><b>Trust/Privacy:</b> การเปิดตัว Muse ของ Meta เกิดขึ้นท่ามกลางคำถามเรื่องความไว้วางใจของผู้บริโภคต่อ AI เอเจนต์ที่เข้าถึงข้อมูลส่วนตัวจำนวนมาก (อีเมล การชำระเงิน สุขภาพ) ต่อเนื่องจากกรณีความเป็นส่วนตัวของ Meta AI ที่เพิ่งเป็นข่าวเมื่อวาน <span class="badge">ต่อเนื่อง</span> 📰 <a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ยืนยันวันที่ประกาศและแหล่งอ้างอิงได้ครบตามเกณฑ์ Validation (ต้องมี Benchmark, Model, Score และ Source ที่ชัดเจน) ในรอบ 24 ชั่วโมงนี้ ข้อมูลอันดับ LMArena และ GPQA Diamond ที่พบมีความคลาดเคลื่อนด้านวันที่อัปเดตระหว่างแหล่งข้อมูลต่าง ๆ จึงงดแสดงเพื่อความถูกต้อง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Trending (GitHub):</b> heygen-com/hyperframes และ microsoft/markitdown ติดอันดับ GitHub Trending ประจำวันนี้ (ดูรายละเอียดในหัวข้อ Open Source) 🔥 <a href="https://github.com/trending?since=daily">GitHub Trending</a></li>
+      <li><b>Trending (Research):</b> Hugging Face Papers Trending สัปดาห์นี้มีหัวข้อเด่นด้าน hallucination detection, autonomous research agent และ visual document retrieval แต่ไม่มีข้อมูลผู้เขียนและวันที่ยื่นที่ยืนยันอยู่ในกรอบ 24 ชั่วโมงล่าสุดครบตามเกณฑ์ Validation ของรายงานนี้ จึงกล่าวถึงในเชิงแนวโน้มเท่านั้น 🔥 <a href="https://huggingface.co/papers/trending">Hugging Face Papers</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. เอเจนต์ส่วนตัวจัดการงานประจำวันแทนผู้ใช้ (Meta Muse)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ผู้บริโภคทั่วไปมีงานจุกจิกที่ต้องทำซ้ำ ๆ เช่น จองคิว จองตั๋ว ส่งอีเมล วางแผนกิจกรรมระยะยาว แต่ไม่มีเวลาหรือความสะดวกจัดการเอง</dd>
+        <dt>วิธีใช้</dt><dd>เชื่อมต่อ Muse กับอีเมล ปฏิทิน การชำระเงิน และบริการอื่น ๆ แล้วมอบหมายงานตั้งแต่ระดับง่าย (ส่งอีเมล) ไปจนถึงเป้าหมายระยะยาว (แผนออกกำลังกายรายปี) โดยระบบรันบน virtual machine เฉพาะของผู้ใช้แต่ละคน</dd>
+        <dt>ประโยชน์</dt><dd>ลดภาระงานจุกจิกประจำวัน พร้อมออกแบบให้แยกข้อมูลผู้ใช้แต่ละคนเพื่อลดความเสี่ยงด้านความเป็นส่วนตัว</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. สร้างภาพจากภาพร่างมือวาดด้วย Sketch (ChatGPT Images 2.5)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ผู้ใช้ที่มีไอเดียภาพในหัวแต่บรรยายเป็นข้อความยาก มักได้ผลลัพธ์ที่ไม่ตรงกับที่จินตนาการไว้</dd>
+        <dt>วิธีใช้</dt><dd>วาดภาพร่างคร่าว ๆ ในแชทด้วยฟีเจอร์ Sketch (พิมพ์ "@Sketch") เพื่อใช้เป็นแนวทางโครงสร้างภาพ แล้วให้โมเดลเติมรายละเอียดและสไตล์ พร้อมเทมเพลตสำเร็จรูปสำหรับงานเฉพาะทาง เช่น โปสเตอร์และภาพสินค้า</dd>
+        <dt>ประโยชน์</dt><dd>ลดช่องว่างระหว่างไอเดียกับผลลัพธ์ ทำให้ควบคุมองค์ประกอบภาพได้แม่นยำขึ้นโดยไม่ต้องพึ่งพรอมป์ข้อความอย่างเดียว</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. เอเจนต์เขียนโค้ดระดับองค์กรที่สเกลรายได้เร็ว (Cognition Devin)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมวิศวกรรมซอฟต์แวร์ต้องการเพิ่มกำลังการพัฒนาโดยไม่เพิ่มจำนวนพนักงานตามสัดส่วน โดยเฉพาะงานที่ทำซ้ำได้และตรวจสอบได้</dd>
+        <dt>วิธีใช้</dt><dd>องค์กรนำเอเจนต์เขียนโค้ด Devin ของ Cognition ไปใช้งานจริงในสายการผลิตซอฟต์แวร์ สะท้อนจากอัตราการเติบโตรายได้ที่เกือบเพิ่มเป็นสองเท่าในเวลาไม่ถึง 4 เดือน</dd>
+        <dt>ประโยชน์</dt><dd>องค์กรขยายกำลังพัฒนาซอฟต์แวร์ได้เร็วขึ้นด้วยต้นทุนที่คาดการณ์ได้ สะท้อนจากเงินทุนและมูลค่าบริษัทที่นักลงทุนสถาบันให้ความเชื่อมั่น</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">1</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ผลกระทบต่อความสัมพันธ์ OpenAI–Anthropic และวงการวิจัยคณิตศาสตร์ AI จากข้อพิพาทเครดิตผลงาน Navier-Stokes</dd>
+        <dt>เหตุผล</dt><dd>หากข้อกล่าวหาของบั๊กมาสเตอร์ได้รับการยืนยันเพิ่มเติม อาจกระทบชื่อเสียงด้านจริยธรรมการวิจัยของ OpenAI และจุดกระแสวิจารณ์การแข่งขันแย่งชิงผลงานวิชาการระหว่างแล็บ AI ชั้นนำ</dd>
+        <dt>Source</dt><dd><a href="https://techcrunch.com/2026/09/08/openai-fought-dirty-on-career-making-math-problem-says-nyu-mathematician/">TechCrunch</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>การตอบรับของผู้บริโภคต่อ Muse เอเจนต์ AI ส่วนตัวของ Meta โดยเฉพาะประเด็นความไว้วางใจด้านข้อมูลส่วนตัว</dd>
+        <dt>เหตุผล</dt><dd>Muse ต้องการสิทธิ์เข้าถึงอีเมล ปฏิทิน การชำระเงิน และข้อมูลสุขภาพของผู้ใช้ ท่ามกลางกระแสวิจารณ์ Meta AI เรื่องความเป็นส่วนตัวที่เพิ่งเกิดขึ้นเมื่อวานนี้ การตอบรับของตลาดจะเป็นตัวชี้วัดสำคัญของโมเดล "เอเจนต์ส่วนตัว" ในวงกว้าง</dd>
+        <dt>Source</dt><dd><a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>คลื่นการระดมทุนขนาดใหญ่ต่อเนื่องในอุตสาหกรรม AI (Cognition, Mistral) ท่ามกลางคำถามเรื่องความยั่งยืนของมูลค่าบริษัท</dd>
+        <dt>เหตุผล</dt><dd>มูลค่าบริษัทที่พุ่งสูงต่อเนื่อง (Cognition จาก 4.7 หมื่นล้านเป็น 4.8 หมื่นล้านดอลลาร์ในเวลาไม่กี่วัน) อาจเป็นสัญญาณของทั้งความเชื่อมั่นของนักลงทุนสถาบันและความเสี่ยงฟองสบู่ในภาคการลงทุน AI</dd>
+        <dt>Source</dt><dd><a href="https://www.bloomberg.com/news/articles/2026-09-08/ai-startup-cognition-raises-2-billion-at-a-48-billion-value">Bloomberg</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://openai.com/index/introducing-chatgpt-images-2-5/">OpenAI — Introducing ChatGPT Images 2.5</a></li>
+          <li><a href="https://cognition.ai/blog/funding-growth-and-the-next-frontier-of-ai-coding-agents">Cognition — Series E announcement</a></li>
+          <li><a href="https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/">Mistral AI — Series D announcement</a></li>
+          <li><a href="https://github.com/heygen-com/hyperframes">GitHub — heygen-com/hyperframes</a></li>
+          <li><a href="https://github.com/microsoft/markitdown">GitHub — microsoft/markitdown</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><span style="color:var(--ink-faint)">ไม่มีบทความที่ผ่านเกณฑ์ในรอบนี้</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://techcrunch.com/2026/09/08/openai-fought-dirty-on-career-making-math-problem-says-nyu-mathematician/">TechCrunch — OpenAI/Navier-Stokes credit dispute</a></li>
+          <li><a href="https://www.axios.com/2026/09/08/openai-math-solution-navier-stokes-credit">Axios</a></li>
+          <li><a href="https://www.scientificamerican.com/article/openai-claims-blockbuster-math-breakthrough-amid-swirl-of-controversy/">Scientific American</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-09-08/meta-announces-muse-ai-agent-for-personal-tasks-and-organization">Bloomberg — Meta Muse</a></li>
+          <li><a href="https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/">TechCrunch — Meta Muse</a></li>
+          <li><a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC — Meta Muse</a></li>
+          <li><a href="https://9to5mac.com/2026/09/08/openai-releases-chatgpt-images-2-5-with-sharper-details-and-more-precise-editing/">9to5Mac — ChatGPT Images 2.5</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-09-08/ai-startup-cognition-raises-2-billion-at-a-48-billion-value">Bloomberg — Cognition funding</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-09-08/mistral-ai-raises-at-21-billion-valuation-in-samsung-led-round">Bloomberg — Mistral funding</a></li>
+          <li><a href="https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/">TechCrunch — Mistral funding</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending?since=daily">GitHub Trending</a></li>
+          <li><a href="https://huggingface.co/papers/trending">Hugging Face Papers</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 8 ก.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
