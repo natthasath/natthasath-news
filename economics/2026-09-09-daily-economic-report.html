@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Economy, Finance &amp; Investment Report — 09 Sep 2026</title>
+<meta name="description" content="สรุปข่าวเศรษฐกิจ การเงิน และการลงทุนรายวัน 9 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --up:#0E7A3E; --up-wash:rgba(14,122,62,0.10);
+  --down:#B23B2E; --down-wash:rgba(178,59,46,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --up:#3FCB7B; --up-wash:rgba(63,203,123,0.12);
+    --down:#E6796A; --down-wash:rgba(230,121,106,0.12);
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:980px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:8px; }
+.masthead{ padding:44px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,4.6vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; display:flex; align-items:center; gap:8px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--ink); }
+.meta-row{ display:flex; gap:18px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:26px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:78ch; }
+ul{ margin:0 0 14px; padding-left:1.2em; }
+ul li{ margin-bottom:8px; max-width:74ch; }
+ul li:last-child{ margin-bottom:0; }
+
+.legend{ display:flex; flex-wrap:wrap; gap:10px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
+.legend span{ white-space:nowrap; }
+
+.table-wrap{ overflow-x:auto; margin:10px 0 16px; border:1px solid var(--line); border-radius:10px; }
+table{ width:100%; border-collapse:collapse; font-size:14.5px; min-width:560px; background:var(--surface); }
+th, td{ text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); background:var(--surface-2); }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td small, .src{ color:var(--ink-faint); font-size:12px; }
+
+.up{ color:var(--up); font-weight:600; }
+.down{ color:var(--down); font-weight:600; }
+.neutral{ color:var(--ink-soft); }
+
+.badge{ display:inline-block; font-size:12px; padding:1px 7px; border-radius:5px; font-family:"JetBrains Mono",monospace; }
+.badge.official{ background:var(--up-wash); color:var(--up); }
+.badge.media{ background:var(--accent-wash); color:var(--accent); }
+.badge.market{ background:var(--surface-2); color:var(--ink-soft); }
+
+.callout{ background:var(--accent-wash); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:14px 0; }
+.callout p:last-child{ margin-bottom:0; }
+.note{ font-size:13.5px; color:var(--ink-faint); border-left:3px solid var(--line-strong); padding-left:12px; margin:12px 0; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:12px 0; }
+.stat-card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+.stat-card .k{ font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.03em; margin-bottom:4px; }
+.stat-card .v{ font-size:15px; font-weight:600; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest — 09 September 2026</p>
+    <h1>💹 Daily Economy, Finance &amp; Investment Report — 2026-09-09</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 09 Sep 2026 (ICT, GMT+7), วันพุธ</span>
+      <span><b>Window:</b> ย้อนหลัง 24 ชั่วโมงล่าสุด — ตลาดสหรัฐฯ อ้างอิงราคาปิดวันอังคารที่ 8 ก.ย. (เซสชันล่าสุดก่อนรายงาน); ตลาดเอเชีย ยุโรป และ SET ไทยอ้างอิงราคาปิดวันนี้ 9 ก.ย.; คริปโตซื้อขายต่อเนื่อง 24/7</span>
+      <span><b>Category:</b> Economics / Finance / Investment</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="legend">
+      <span class="badge official">✅ ยืนยันแล้ว</span><span>Official (Tier 1)</span>
+      <span class="badge media">📰 รายงาน</span><span>Financial Media (Tier 2)</span>
+      <span class="badge market">📈 ข้อมูลตลาด</span><span>Market Data (Tier 3)</span>
+      <span>❓ ยังยืนยันไม่ได้</span>
+    </div>
+    <p class="note">หมายเหตุระเบียบวิธี: WebFetch เข้าถึงโดเมนทางการหลัก (bot.or.th, set.or.th, federalreserve.gov, ecb.europa.eu, bls.gov, fred.stlouisfed.org) และ Tier 2/3 หลายแห่ง (bloomberg.com, reuters.com, cnbc.com, investing.com, tradingeconomics.com) โดยตรงไม่ได้ในเซสชันนี้ จึงใช้ WebSearch แทนตามนโยบาย Network Access Resilience โดยตรวจสอบไขว้อย่างน้อย 2 แหล่งสำหรับดัชนีตลาดหลัก ค่าเงินบาท CPI ดอกเบี้ยนโยบาย Bond Yield ราคาทอง และ VIX เท่าที่ทำได้ จุดที่แหล่งข้อมูลขัดแย้งกันแสดงไว้ทั้งสองค่าตามนโยบาย Conflict Resolution <b>UNCERTAIN:</b> bot.or.th, set.or.th, federalreserve.gov, ecb.europa.eu, bls.gov, fred.stlouisfed.org, tradingeconomics.com, bloomberg.com, reuters.com, cnbc.com, investing.com (เข้าถึงไม่ได้โดยตรงในเซสชันนี้ — ใช้ WebSearch แทนตามขั้นตอน)</p>
+  </section>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>ตลาดหุ้นสหรัฐฯ ปิดปรับตัวลงแรงเมื่อวันอังคาร (8 ก.ย.) เปิดสัปดาห์สั้นด้วยแรงกดดันจากราคาน้ำมันที่พุ่งเข้าใกล้ 100 ดอลลาร์/บาร์เรล โดย Dow Jones ร่วง -1.18% ที่ 52,786.07 จุด นำโดย S&amp;P 500 -0.58% และ Nasdaq -0.32% ขณะอัตราผลตอบแทนพันธบัตรรัฐบาลสหรัฐฯ อายุ 10 ปีแตะใกล้ระดับสูงสุดในรอบเกือบ 2 ทศวรรษที่ 4.79-4.81% สถานการณ์ตะวันออกกลางทวีความรุนแรงขึ้นอีกขั้นหลังสหรัฐฯ โจมตีเรือบรรทุกน้ำมันของอิหร่านหลายลำใกล้เกาะคาร์ก ดันราคาน้ำมัน Brent ทะลุ 99-102 ดอลลาร์/บาร์เรล และ WTI แตะ 96 ดอลลาร์/บาร์เรล ส่งผลให้ตลาดหุ้นเอเชียและยุโรปวันนี้ (9 ก.ย.) ปรับตัวลงเล็กน้อยเกือบทั่วหน้า Nikkei -0.19% Hang Seng -0.17% และ FTSE -0.61% ฝั่งไทย ดัชนี SET ปิดลบ -0.25% ที่ 1,617.89 จุด จากแรงขายหุ้น DELTA และกลุ่มธนาคารที่ขึ้นเครื่องหมาย XD ขณะกลุ่มพลังงานช่วยพยุงดัชนีจากราคาน้ำมันที่ปรับขึ้น นักลงทุนต่างชาติยังคงซื้อสุทธิต่อเนื่องที่ 3,136.62 ล้านบาท เงินบาทเคลื่อนไหวผันผวนเล็กน้อยในกรอบ 32.75-33.00 บาท/ดอลลาร์ อ่อนค่าเล็กน้อยตามราคาน้ำมันดิบที่สูงขึ้น ราคาทองคำแกว่งตัวผันผวนใกล้ 4,400 ดอลลาร์/ออนซ์ โดยช่วงเช้าปรับขึ้นจากดอลลาร์ที่อ่อนค่าลง (DXY ปิด 8 ก.ย. ที่ 98.85 ▼-0.33%) ก่อนย่อตัวลงหลังข่าวสหรัฐฯ โจมตีเรือบรรทุกน้ำมันอิหร่าน เยอรมนีมีอัตราผลตอบแทนพันธบัตร 10 ปีแตะ 3.38% ใกล้ระดับสูงสุดตั้งแต่เม.ย. 2554 ก่อนการประชุม ECB ในวันพรุ่งนี้ (10 ก.ย.) ที่ตลาดคาดจะปรับขึ้นดอกเบี้ย สินทรัพย์เสี่ยงอย่างคริปโตยังคงถูกกดดันจากความตึงเครียดภูมิรัฐศาสตร์ โดย BTC เคลื่อนไหวใกล้ 78,400-78,800 ดอลลาร์ ตลาดจับตาตัวเลข NFIB Small Business Optimism สหรัฐฯ ที่ประกาศวันนี้ปรับลงเล็กน้อยเหลือ 98.7 จุด ก่อนตัวเลข CPI สหรัฐฯ เดือนส.ค. (11 ก.ย.) และการประชุม FOMC (15-16 ก.ย.) ที่ตลาดให้น้ำหนักโอกาสขึ้นดอกเบี้ยราว 58-59%</p>
+  </section>
+
+  <section>
+    <h2>🌍 ภาพรวมตลาดโลก</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Index</th><th>Close</th><th>Change</th><th>%</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>Dow Jones Industrial Average</td><td>52,786.07</td><td class="down">▼ -628.18</td><td class="down">▼ -1.18%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.washingtonpost.com/business/2026/09/08/stock-market-dow-nasdaq/f9240ecc-abc2-11f1-b498-8697f35a6743_story.html">Washington Post</a>, <a href="https://247wallst.com/cards/the-dow-shed-627-points-while-the-nasdaq-finished-within-a-r-gspc-market-bell-01m219x3rgtwd54k697hs1gjtq">24/7 Wall St.</a> — ปิดตลาดอังคาร 8 ก.ย. (2 แหล่งตรงกัน)</td></tr>
+          <tr><td>S&amp;P 500</td><td>7,673.52</td><td class="down">▼ ปรับลง</td><td class="down">▼ -0.58%</td><td class="wrap"><span class="badge media">📰</span> Washington Post/24-7 Wall St. — ปิดตลาด 8 ก.ย.</td></tr>
+          <tr><td>Nasdaq Composite</td><td>26,421.41</td><td class="down">▼ ปรับลง</td><td class="down">▼ -0.32%</td><td class="wrap"><span class="badge media">📰</span> Washington Post/24-7 Wall St. — ปิดตลาด 8 ก.ย.</td></tr>
+          <tr><td>FTSE 100</td><td>10,745.81</td><td class="down">▼ ปรับลง</td><td class="down">▼ -0.61%</td><td class="wrap"><span class="badge media">📰</span> ผลค้นหารวม (ARMENPRESS/ตลาดยุโรป) — ปิดตลาด 9 ก.ย.</td></tr>
+          <tr><td>Nikkei 225</td><td>65,142.78</td><td class="down">▼ ปรับลง</td><td class="down">▼ -0.19%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://armenpress.am/en/article/1260069">ARMENPRESS</a> — ปิดตลาด 9 ก.ย.</td></tr>
+          <tr><td>Hang Seng Index</td><td>25,274.96</td><td class="down">▼ ปรับลง</td><td class="down">▼ -0.17%</td><td class="wrap"><span class="badge media">📰</span> ARMENPRESS — ปิดตลาด 9 ก.ย.</td></tr>
+          <tr><td>SET Index</td><td>1,617.89</td><td class="down">▼ -4.00</td><td class="down">▼ -0.25%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.thebangkokinsight.com/news/stock-finance/stock/1694377/">The Bangkok Insight</a>, <a href="https://www.infoquest.co.th/2026/646005">InfoQuest</a>, <a href="https://hoonsmart.com/archives/437862">Hoonsmart</a> — ปิดตลาด 9 ก.ย. (3 แหล่งตรงกัน)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>ปัจจัยสำคัญ:</b></p>
+    <ul>
+      <li><b>สหรัฐฯ โจมตีเรือบรรทุกน้ำมันอิหร่าน ดันราคาน้ำมันพุ่งแรง:</b> สหรัฐฯ โจมตีเรือบรรทุกน้ำมันของอิหร่านหลายลำใกล้เกาะคาร์ก ซึ่งเป็นจุดส่งออกน้ำมันดิบสำคัญ ผลักดันราคาน้ำมัน Brent ทะลุ 99-102 ดอลลาร์/บาร์เรล ใกล้ระดับสูงสุดในรอบ 7 สัปดาห์ กดดันตลาดหุ้นสหรัฐฯ ร่วงแรงเมื่อวันอังคาร และสร้างแรงกดดันต่อเนื่องต่อตลาดหุ้นเอเชียและยุโรปวันนี้ (<span class="badge media">📰</span> <a href="https://fortune.com/article/price-of-oil-09-09-2026/">Fortune</a>)</li>
+      <li><b>Bond Yield ทั่วโลกยืนสูง กดดันหุ้น:</b> อัตราผลตอบแทนพันธบัตรรัฐบาลสหรัฐฯ อายุ 10 ปีแตะ 4.81% ระหว่างวัน ใกล้ระดับสูงสุดในรอบเกือบ 2 ทศวรรษ ขณะพันธบัตรเยอรมนีอายุ 10 ปีแตะ 3.38% ใกล้สูงสุดตั้งแต่เม.ย. 2554 ก่อนการประชุม ECB วันพรุ่งนี้ที่ตลาดคาดขึ้นดอกเบี้ย สร้างแรงกดดันต่อสินทรัพย์เสี่ยงทั่วโลก (<span class="badge media">📰</span> <a href="https://www.cnbc.com/2026/09/08/us-treasury-yields-bonds.html">CNBC</a>)</li>
+      <li><b>SET ไทยปิดลบเล็กน้อยจากแรงขาย DELTA และกลุ่มแบงก์ขึ้น XD:</b> ดัชนี SET ปิดลบ -0.25% จากแรงขายหุ้น DELTA และกลุ่มธนาคารที่ขึ้นเครื่องหมาย XD ขณะกลุ่มพลังงานช่วยพยุงดัชนีจากราคาน้ำมันที่ปรับขึ้น นักลงทุนต่างชาติยังคงซื้อสุทธิต่อเนื่อง (<span class="badge media">📰</span> <a href="https://www.infoquest.co.th/2026/646005">InfoQuest</a>)</li>
+    </ul>
+    <h3>Earnings / M&amp;A / Sector Rotation</h3>
+    <ul>
+      <li><b>Earnings:</b> Oracle มีกำหนดประกาศผลประกอบการวันที่ 10 ก.ย. 2569 (❓ ยังไม่ประกาศในรอบข้อมูลนี้) กลุ่มหุ้นไทยที่คาดผลประกอบการไตรมาส 3/2569 เติบโตโดดเด่นตามการวิเคราะห์ ได้แก่ BTG, CPALL, CRC, MRDIYT, PR9 และ TFG (<span class="badge media">📰</span> ผลค้นหารวม Kaohoon/InfoQuest)</li>
+      <li><b>M&amp;A:</b> WaFd, Inc. ประกาศดีลควบรวมกิจการแบบ Reverse Merger มูลค่า 3,900 ล้านดอลลาร์กับ EverBank Financial Corp เมื่อ 8 ก.ย. ไม่พบดีล M&amp;A ใหม่เฉพาะของไทยในรอบ 24 ชั่วโมงนี้ (❓)</li>
+      <li><b>Sector Rotation:</b> ตลาดหุ้นไทยกลุ่มพลังงาน (PTT, PTTEP) ได้รับความสนใจต่อเนื่องจากราคาน้ำมันที่ปรับขึ้น โดยมีรายงานแรงซื้อผ่าน NVDR ใน PTTEP ราว 1,500 ล้านบาท และ PTT-SCC เป็นหุ้นเด่นด้านมูลค่าซื้อขาย ขณะกลุ่มชิ้นส่วนอิเล็กทรอนิกส์ (DELTA) และกลุ่มธนาคารเผชิญแรงขายจากปัจจัยขึ้นเครื่องหมาย XD (<span class="badge media">📰</span> <a href="https://www.kaohoon.com/infographic/861568">Kaohoon</a>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🇹🇭 ตลาดหุ้นไทย</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="k">SET Index</div><div class="v down">1,617.89 จุด ▼ -4.00 (-0.25%)</div></div>
+      <div class="stat-card"><div class="k">มูลค่าซื้อขาย</div><div class="v">81,330.74 ล้านบาท</div></div>
+      <div class="stat-card"><div class="k">Foreign Flow</div><div class="v up">ซื้อสุทธิ 3,136.62 ล้านบาท (SET), 3,123.84 ล้านบาท (SET+mai)</div></div>
+      <div class="stat-card"><div class="k">Market Cap</div><div class="v neutral">❓ ไม่พบตัวเลขมูลค่าตลาดรวมของวันที่ 9 ก.ย.ที่ยืนยันได้ในรอบค้นข้อมูลนี้ (set.or.th เข้าถึงไม่ได้โดยตรง)</div></div>
+    </div>
+    <p>ดัชนี SET ปิดลบเล็กน้อย -0.25% ที่ 1,617.89 จุด ระหว่างวันแตะสูงสุด 1,629.21 จุด และต่ำสุด 1,614.50 จุด (ปิดภาคเช้าบวก +0.06% ที่ 1,622.89 จุด ก่อนพลิกลบในภาคบ่าย) แรงขายหลักมาจากหุ้น DELTA กลุ่มชิ้นส่วนอิเล็กทรอนิกส์ และกลุ่มธนาคารที่ขึ้นเครื่องหมาย XD ขณะกลุ่มพลังงานช่วยพยุงดัชนีจากราคาน้ำมันโลกที่ปรับขึ้น นักลงทุนต่างชาติซื้อสุทธิ 3,136.62 ล้านบาท ขณะบัญชีบริษัทหลักทรัพย์ขายสุทธิ 1,259.71 ล้านบาท นักลงทุนสถาบันขายสุทธิ 959.95 ล้านบาท และนักลงทุนในประเทศขายสุทธิ 916.96 ล้านบาท (<span class="badge media">📰</span> <a href="https://www.thebangkokinsight.com/news/stock-finance/stock/1694377/">The Bangkok Insight</a>, <a href="https://hoonsmart.com/archives/437862">Hoonsmart</a>)</p>
+    <h3>หุ้นเด่น</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>หุ้น</th><th>ราคา</th><th>%</th><th class="wrap">เหตุผล</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>PTTEP (ปตท.สผ.)</td><td class="wrap">❓ ไม่พบราคาปิดที่ยืนยันได้เฉพาะรายตัวในรอบนี้</td><td class="up">▲ หุ้นเด่นด้านมูลค่าซื้อขาย</td><td class="wrap">โบรกเกอร์ CGSI ชู PTTEP-PR9 เด่น พร้อมแรงซื้อผ่าน NVDR ราว 1,500 ล้านบาท รับอานิสงส์ราคาน้ำมันที่ปรับขึ้น</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.kaohoon.com/news/861602">Kaohoon</a>, <a href="https://www.kaohoon.com/infographic/861568">Kaohoon</a></td></tr>
+          <tr><td>PTT (ปตท.)</td><td class="wrap">❓ ไม่พบราคาปิดที่ยืนยันได้เฉพาะรายตัวในรอบนี้</td><td class="up">▲ หุ้นเด่นด้านมูลค่าซื้อขาย</td><td class="wrap">อานิสงส์ราคาน้ำมันโลกที่ปรับขึ้นจากความตึงเครียดตะวันออกกลาง ช่วยพยุงดัชนี</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.kaohoon.com/infographic/861568">Kaohoon</a></td></tr>
+          <tr><td>PR9 (รพ.พระรามเก้า)</td><td class="wrap">เป้าหมาย 19.80 / Stop Loss 19.10 บาท</td><td class="up">▲ หุ้นเด่นจากนักวิเคราะห์</td><td class="wrap">คาดผลประกอบการไตรมาส 3/2569 เติบโต โบรกเกอร์ CGSI ชูเป็นหุ้นเด่นคู่กับ PTTEP</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.kaohoon.com/news/861602">Kaohoon</a></td></tr>
+          <tr><td>DELTA (เดลต้า อีเลคโทรนิคส์)</td><td class="wrap">❓ ไม่พบราคาปิดที่ยืนยันได้เฉพาะวันที่ 9 ก.ย.</td><td class="down">▼ แรงขายกดดันดัชนี</td><td class="wrap">แรงขายทำกำไรต่อเนื่องหลังพุ่งแรงในสัปดาห์ก่อนหน้า เป็นหนึ่งในปัจจัยหลักที่กดดัน SET ปิดลบวันนี้</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.kaohoon.com/summary/861883">Kaohoon</a>, <a href="https://www.infoquest.co.th/2026/646005">InfoQuest</a></td></tr>
+          <tr><td>SCC (ปูนซิเมนต์ไทย)</td><td class="wrap">❓ ไม่พบราคาปิดที่ยืนยันได้เฉพาะรายตัวในรอบนี้</td><td class="up">▲ หุ้นเด่นด้านมูลค่าซื้อขาย</td><td class="wrap">ติดกลุ่มหุ้นมูลค่าซื้อขายเด่นร่วมกับ PTT ในรอบเช้าวันนี้</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.kaohoon.com/infographic/861568">Kaohoon</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">ราคาปิดและ %เปลี่ยนแปลงรายตัวที่แม่นยำของ PTTEP, PTT, DELTA และ SCC เฉพาะวันที่ 9 ก.ย.ไม่พบจากแหล่งที่เข้าถึงได้ในรอบนี้ (set.or.th ถูกบล็อกโดยตรง) ยืนยันได้เฉพาะทิศทางและเหตุผลจากรายงานสรุปตลาด/บทวิเคราะห์ (❓)</p>
+  </section>
+
+  <section>
+    <h2>💱 ค่าเงินและสินค้าโภคภัณฑ์</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Asset</th><th>Price</th><th>Change</th><th>%</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>USD/THB</td><td>≈32.75-33.00</td><td class="down">▼ อ่อนค่าเล็กน้อยตามราคาน้ำมัน</td><td class="neutral">❓ ไม่พบ %เปลี่ยนแปลงที่ยืนยันได้ชัดเจนในรอบนี้</td><td class="wrap"><span class="badge market">📈</span> <a href="https://www.share2trade.com/news/59054/">Share2Trade</a>, Pluang — ณ 9 ก.ย. (2 แหล่งใกล้เคียงกัน; ต่างกันในทศนิยม)</td></tr>
+          <tr><td>EUR/USD</td><td>≈1.164</td><td class="up">▲ แข็งค่าขึ้น</td><td class="up">▲ แข็งค่าสุดตั้งแต่ปลายส.ค.</td><td class="wrap"><span class="badge market">📈</span> ผลค้นหารวม (Trading Economics) — 9 ก.ย.</td></tr>
+          <tr><td>USD/JPY</td><td class="wrap">❓ ไม่พบตัวเลขเฉพาะวันที่ 9 ก.ย.ที่ยืนยันได้ในรอบนี้</td><td class="neutral">❓ ไม่พบข้อมูล</td><td class="neutral">❓ ไม่พบข้อมูล</td><td class="wrap"><span class="badge market">📈</span> ไม่พบแหล่งยืนยันเฉพาะวันที่ 9 ก.ย.ในรอบค้นข้อมูลนี้</td></tr>
+          <tr><td>USD/CNY</td><td>6.7054-6.7076</td><td class="neutral">ใกล้เคียงเดิม</td><td class="neutral">❓ ไม่พบ %เปลี่ยนแปลงที่ยืนยันได้ชัดเจน</td><td class="wrap"><span class="badge market">📈</span> ผลค้นหารวม (Trading Economics) — 9 ก.ย. (ต่างกันเล็กน้อยในทศนิยมตัวที่ 3)</td></tr>
+          <tr><td>Gold (Spot)</td><td>≈4,399.6-4,400 USD/oz</td><td class="up">▲ +44.46 (ช่วงเช้า)</td><td class="up">▲ ≈+1.02% (ช่วงเช้า) ก่อนย่อตัวลงช่วงบ่าย</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.cnbc.com/select/the-price-of-gold-today-sept-9-2026/">CNBC Select</a>, <a href="https://finance.yahoo.com/personal-finance/investing/article/gold-price-today-wednesday-september-9-2026-gold-prices-drop-following-us-strikes-on-five-iranian-oil-tankers-104123795.html">Yahoo Finance</a> — 9 ก.ย. (ราคาผันผวนสูงในวันเดียว: ขึ้นช่วงเช้าจากดอลลาร์อ่อนค่า ก่อนย่อตัวหลังข่าวสหรัฐฯ โจมตีเรือบรรทุกน้ำมันอิหร่าน)</td></tr>
+          <tr><td>Silver (Spot)</td><td>≈66.4-68.1 USD/oz</td><td class="up">▲ ผันผวนสูงระหว่างวัน</td><td class="up">▲ ≈+0.1% ถึง +1%</td><td class="wrap"><span class="badge media">📰</span> <a href="https://finance.yahoo.com/personal-finance/investing/article/silver-price-today-wednesday-september-9-2026-silver-prices-hold-in-the-66-range-as-us-iranian-attacks-continue-105942902.html">Yahoo Finance</a>, <a href="https://www.usagold.com/daily-precious-metals-market-report-september-9-2026/">USAGOLD</a> — 9 ก.ย. (ช่วงราคากว้างจากความผันผวนระหว่างวัน)</td></tr>
+          <tr><td>WTI Crude</td><td>≈96.24 USD/bbl</td><td class="up">▲ ปรับขึ้นแรง</td><td class="up">▲ ใกล้ระดับสูงสุดหลายสัปดาห์</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.buckheadenergy.com/oil-gas-prices">Buckhead Energy</a> — 9 ก.ย.</td></tr>
+          <tr><td>Brent Crude</td><td>≈99-102 USD/bbl</td><td class="up">▲ ทะลุ 99-100 ดอลลาร์</td><td class="up">▲ สูงสุดในรอบ 7 สัปดาห์</td><td class="wrap"><span class="badge media">📰</span> <a href="https://fortune.com/article/price-of-oil-09-09-2026/">Fortune</a> — 9 ก.ย. (หลังสหรัฐฯ โจมตีเรือบรรทุกน้ำมันอิหร่านใกล้เกาะคาร์ก)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>Conflict Resolution:</b> ราคาทองคำและเงินมีรายงานหลายค่าในช่วงเวลาต่างกันของวันเดียวกัน สะท้อนความผันผวนสูงจากข่าวสหรัฐฯ โจมตีเรือบรรทุกน้ำมันอิหร่านที่เข้ามาระหว่างวัน (ราคาทองขึ้นช่วงเช้าจากดอลลาร์อ่อน แล้วย่อลงช่วงบ่าย) จึงแสดงเป็นช่วงราคาตามนโยบาย Conflict Resolution ราคาน้ำมัน WTI/Brent ปรับขึ้นสอดคล้องต้องกันจากความขัดแย้งตะวันออกกลางที่ทวีความรุนแรง สอดคล้องกับ Bond Yield เยอรมนี/สหรัฐฯ ที่ยืนสูงและตลาดหุ้นเอเชีย-ยุโรปที่ปรับลง ไม่พบตัวเลข USD/JPY เฉพาะวันที่ 9 ก.ย.ที่ยืนยันได้จากแหล่งที่เข้าถึงได้ในรอบนี้ (❓)</p>
+  </section>
+
+  <section>
+    <h2>🇹🇭 วิเคราะห์ค่าเงินบาท</h2>
+    <p><b>ค่าเงินบาทล่าสุด:</b> ≈32.75-33.00 บาท/ดอลลาร์ (9 ก.ย.) <b>แนวโน้ม:</b> อ่อนค่าเล็กน้อยตามราคาน้ำมันดิบที่สูงขึ้น เคลื่อนไหวผันผวนในกรอบกว้างจากความไม่แน่นอนด้านภูมิรัฐศาสตร์ (USD/THB ปรับขึ้นเล็กน้อย = เงินบาทอ่อนค่าเล็กน้อย)</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="k">High (7 วัน)</div><div class="v">≈33.10-33.20 (ต้นสัปดาห์)</div></div>
+      <div class="stat-card"><div class="k">Low (7 วัน)</div><div class="v">≈32.75-32.80</div></div>
+      <div class="stat-card"><div class="k">Average (7 วัน)</div><div class="v neutral">❓ ไม่พบชุดข้อมูลราคาปิดรายวันครบถ้วนที่ยืนยันได้เพื่อคำนวณค่าเฉลี่ยที่แม่นยำในรอบนี้ (ประมาณอยู่ในช่วง 32.85-33.00 จากจุดข้อมูลที่พบ)</div></div>
+    </div>
+    <p><b>ปัจจัยสำคัญ:</b> (1) ราคาน้ำมันดิบโลกที่พุ่งขึ้นแรงจากการที่สหรัฐฯ โจมตีเรือบรรทุกน้ำมันอิหร่าน สร้างแรงกดดันเงินเฟ้อผ่านต้นทุนนำเข้าพลังงาน เป็นปัจจัยกดดันเงินบาทให้อ่อนค่าเล็กน้อยในวันนี้ (2) อัตราผลตอบแทนพันธบัตรสหรัฐฯ ที่ยืนสูงใกล้ระดับสูงสุดในรอบเกือบ 2 ทศวรรษ (US 10Y ≈4.79-4.81%) ยังคงเป็นแรงหนุนดอลลาร์ในเชิงเปรียบเทียบ แม้ Dollar Index จะอ่อนค่าลงเล็กน้อยเมื่อวาน (DXY ปิด 8 ก.ย. ที่ 98.85 ▼-0.33%) (3) ธปท.คงดอกเบี้ยนโยบายที่ 1.00% ต่อเนื่องเป็นครั้งที่ 3 (26 ส.ค.) ส่วนต่างดอกเบี้ยกับเฟดที่ยังกว้างเป็นแรงกดดันเชิงโครงสร้างต่อเงินทุนไหลออก (4) นักลงทุนต่างชาติยังคงซื้อสุทธิหุ้นไทยต่อเนื่องวันนี้ที่ 3,136.62 ล้านบาท ช่วยพยุงเงินบาทไม่ให้อ่อนค่ามากไปกว่านี้ (<span class="badge media">📰</span> <a href="https://www.share2trade.com/news/59054/">Share2Trade</a>)</p>
+    <p><b>ผลกระทบ:</b> ผู้ส่งออกไทยยังเผชิญแรงกดดันจากความผันผวนของค่าเงินในกรอบกว้างต่อเนื่อง ภาคท่องเที่ยวยังอยู่ในช่วงฟื้นตัวเปราะบาง โดยความขัดแย้งตะวันออกกลางที่ทวีความรุนแรงเป็นความเสี่ยงเพิ่มเติมต่อการเดินทางระหว่างประเทศ ด้านราคาน้ำมันนำเข้าที่สูงขึ้นต่อเนื่องเป็นความเสี่ยงด้านเงินเฟ้อสำหรับผู้นำเข้าและต้นทุนพลังงานภาคครัวเรือน ขณะนักลงทุนต่างชาติยังคงมีสถานะซื้อสุทธิในหุ้นไทยช่วยชดเชยแรงกดดันด้านเงินทุนไหลออกบางส่วน (<span class="badge media">📰</span> ผลค้นหารวม)</p>
+    <p><b>มุมมองจาก BoT/สถาบันการเงิน/นักวิเคราะห์:</b> ธนาคารกสิกรไทย (KBank) คาดกรอบเคลื่อนไหวเงินบาทสัปดาห์นี้ (7-11 ก.ย.) ที่ 32.50-33.20 บาท/ดอลลาร์ ขณะกลุ่มงานตลาดการเงิน ธนาคารไทยพาณิชย์ (SCB FM) ประเมินกรอบที่ 32.75-33.00 บาท/ดอลลาร์ ไม่พบแถลงการณ์ทางการของธปท.ที่ระบุถึงความเคลื่อนไหวค่าเงินบาทโดยตรงในรอบนี้ (❓ bot.or.th เข้าถึงไม่ได้โดยตรง) (<span class="badge media">📰</span> <a href="https://www.prachachat.net/finance/news-2062823">Prachachat</a>)</p>
+  </section>
+
+  <section>
+    <h2>📈 เงินเฟ้อ</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Country</th><th>CPI</th><th>Core</th><th>PPI</th><th>Status</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>ไทย</td><td>+2.53% YoY (ส.ค.)</td><td>+1.44% YoY</td><td>+7.30% YoY (ก.ค.)</td><td class="wrap">ต่อเนื่อง — ประกาศ 7 ก.ย. ยังเป็นตัวเลขล่าสุด</td><td class="wrap"><span class="badge official">✅</span> กระทรวงพาณิชย์ (ต่อเนื่อง)</td></tr>
+          <tr><td>สหรัฐฯ</td><td>+3.4% YoY (ก.ค.)</td><td>+2.5% YoY</td><td>+4.7% YoY (ก.ค.)</td><td class="wrap">ต่อเนื่อง — CPI เดือนส.ค.กำหนดประกาศ 11 ก.ย. 2569</td><td class="wrap"><span class="badge official">✅</span> BLS (ต่อเนื่อง)</td></tr>
+          <tr><td>ยูโรโซน (Flash)</td><td>+3.3% YoY (ส.ค.)</td><td>+2.4% YoY</td><td class="wrap">ไม่พบข้อมูลในรอบข้อมูลนี้</td><td class="wrap">ต่อเนื่อง — ก่อนการประชุม ECB วันพรุ่งนี้ (10 ก.ย.)</td><td class="wrap"><span class="badge official">✅</span> Eurostat (ต่อเนื่อง)</td></tr>
+          <tr><td>จีน</td><td>+0.5% YoY (ก.ค.)</td><td>+0.9% YoY</td><td>-3.5% YoY (ก.ค.)</td><td class="wrap">ต่อเนื่อง — ยังไม่มีตัวเลขเดือนส.ค.ในรอบข้อมูลนี้</td><td class="wrap"><span class="badge media">📰</span> NBS via CGTN (ต่อเนื่อง)</td></tr>
+          <tr><td>ญี่ปุ่น</td><td>+1.9% YoY all items (ก.ค.)</td><td>+1.8% YoY (ex fresh food)</td><td class="wrap">ไม่พบข้อมูลในรอบข้อมูลนี้</td><td class="wrap">ต่อเนื่อง — ยังไม่มีตัวเลขเดือนส.ค.ในรอบข้อมูลนี้</td><td class="wrap"><span class="badge official">✅</span> Statistics Bureau of Japan (ต่อเนื่อง)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>ตัวเลขเงินเฟ้อทุกประเทศในรอบนี้เป็นข้อมูลต่อเนื่องจากรอบประกาศก่อนหน้า ไม่มีการประกาศตัวเลขใหม่ในช่วง 24 ชั่วโมงนี้ ราคาน้ำมันที่พุ่งขึ้นแรงจากความขัดแย้งตะวันออกกลางเป็นความเสี่ยงด้านเงินเฟ้อขาขึ้นที่เพิ่มมากขึ้นทั่วโลก โดยเฉพาะยูโรโซนที่เงินเฟ้อเร่งตัวเกินเป้าหมาย ECB อยู่แล้ว ก่อนการประชุม ECB วันพรุ่งนี้ (10 ก.ย.) ที่ตลาดคาดจะปรับขึ้นดอกเบี้ยตอบสนอง ตัวเลขสำคัญที่ต้องติดตามถัดไปคือ CPI สหรัฐฯ เดือนส.ค. (11 ก.ย.) ก่อนการประชุม FOMC 15-16 ก.ย.</p>
+  </section>
+
+  <section>
+    <h2>📉 Bond Yield</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Country</th><th>2Y</th><th>10Y</th><th>Change</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>สหรัฐฯ</td><td>4.396%</td><td>4.786% (สูงสุดระหว่างวัน 4.812%)</td><td class="up">▲ ยืนสูงใกล้ระดับสูงสุดในรอบเกือบ 2 ทศวรรษ จากราคาน้ำมันที่ปรับขึ้นและตัวเลขจ้างงานที่แข็งแกร่ง</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.cnbc.com/2026/09/08/us-treasury-yields-bonds.html">CNBC</a>, <a href="https://www.forbes.com/advisor/investing/treasury-rates/">Forbes Advisor</a> — 8 ก.ย. (2 แหล่งตรงกัน)</td></tr>
+          <tr><td>ญี่ปุ่น (JGB)</td><td class="wrap">❓ ไม่พบข้อมูลที่ยืนยันได้ในรอบนี้</td><td>≈2.91%</td><td class="down">▼ ย่อลงเล็กน้อยจากระดับสูงสุด 3.00-3.02% เมื่อ 1-8 ก.ย.</td><td class="wrap"><span class="badge media">📰</span> <a href="https://www.cnbc.com/2026/09/03/global-bond-yields-rising-treasuries-jgb-bunds.html">CNBC</a> — 8 ก.ย.</td></tr>
+          <tr><td>เยอรมนี (Bund)</td><td class="wrap">❓ ไม่พบข้อมูลที่ยืนยันได้ในรอบนี้</td><td>3.38%</td><td class="up">▲ ใกล้ระดับสูงสุดตั้งแต่เม.ย. 2554 ก่อนการประชุม ECB วันพรุ่งนี้</td><td class="wrap"><span class="badge market">📈</span> <a href="https://www.thetrading.tools/germany-10-year-yield">Trading data (ผ่านผลค้นหา)</a> — 9 ก.ย.</td></tr>
+          <tr><td>ไทย</td><td>≈1.92%</td><td>≈2.34%</td><td class="neutral">❓ ตัวเลขอ้างอิงต่อเนื่อง — ไม่พบตัวเลขเฉพาะวันที่ 9 ก.ย.ที่ยืนยันได้ในรอบนี้</td><td class="wrap"><span class="badge market">📈</span> ผลค้นหารวม (ต่อเนื่อง)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>Yield Curve / Sentiment:</b> เส้นอัตราผลตอบแทนพันธบัตรสหรัฐฯ ยังเป็นทรงปกติ (ไม่กลับหัว) โดยส่วนต่าง 10Y-2Y อยู่ที่ราว +39 basis points อัตราผลตอบแทนพันธบัตรทั่วโลกยืนสูงต่อเนื่องจากแรงกดดันเงินเฟ้อด้านพลังงาน โดยเยอรมนีใกล้แตะระดับสูงสุดในรอบ 15 ปีก่อนการประชุม ECB วันพรุ่งนี้ ขณะพันธบัตรญี่ปุ่นย่อตัวลงเล็กน้อยจากระดับสูงสุดในรอบ 30 ปีที่ทำไว้ต้นเดือนนี้ สอดคล้องกับตลาดหุ้นทั่วโลกที่เผชิญแรงกดดันจากต้นทุนการเงินที่สูงขึ้น</p>
+  </section>
+
+  <section>
+    <h2>🏦 Central Banks</h2>
+    <ul>
+      <li><b>Bank of Thailand (BoT):</b> คงดอกเบี้ยนโยบายที่ 1.00% ต่อเนื่องเป็นครั้งที่ 3 (26 ส.ค. 2569) ระดับต่ำสุดตั้งแต่ก.ย. 2565 ไม่มีแถลงการณ์ใหม่ในรอบ 24 ชั่วโมงนี้ (ต่อเนื่อง, ❓ bot.or.th เข้าถึงไม่ได้โดยตรง)</li>
+      <li><b>Federal Reserve (Fed):</b> คงกรอบเป้าหมาย Fed Funds Rate ที่ 3.50-3.75% จากการประชุม FOMC ก.ค. 2569 ตลาดให้น้ำหนักโอกาสขึ้นดอกเบี้ยในการประชุม 15-16 ก.ย.ที่ราว 58-59% ท่าทีเข้มงวดขึ้นจากแรงกดดันเงินเฟ้อด้านพลังงานที่เพิ่มขึ้นหลังราคาน้ำมันพุ่งแรง (<span class="badge media">📰</span> ผลค้นหารวม CME FedWatch)</li>
+      <li><b>European Central Bank (ECB):</b> อัตราดอกเบี้ยเงินฝากปัจจุบันอยู่ที่ 2.25% (คงอัตราในการประชุม ก.ค.) มีกำหนดประชุมนโยบายการเงินวันพรุ่งนี้ (10 ก.ย. 2569) ซึ่งตลาดคาดการณ์อย่างกว้างขวางว่าจะปรับขึ้นดอกเบี้ย จากเงินเฟ้อที่เร่งตัวเหนือเป้าหมายและราคาพลังงานที่พุ่งสูงขึ้นจากวิกฤตตะวันออกกลาง (<span class="badge media">📰</span> ผลค้นหารวม)</li>
+      <li><b>Bank of Japan (BoJ):</b> อัตราดอกเบี้ยนโยบายปัจจุบันอยู่ที่ 1.00% มีกำหนดประชุมครั้งถัดไป 17-18 ก.ย. 2569 ซึ่งตลาดยังคงให้น้ำหนักสูงว่าจะขึ้นดอกเบี้ยอีกครั้ง สอดคล้องกับ Bond Yield 10 ปีที่ยังยืนใกล้ระดับสูงสุดในรอบ 30 ปี (ต่อเนื่อง, ❓ ไม่พบแถลงการณ์ใหม่ในรอบ 24 ชั่วโมงนี้)</li>
+      <li><b>People's Bank of China (PBoC):</b> คงอัตรา LPR 1 ปีที่ 3.00% และ 5 ปีที่ 3.50% ต่อเนื่อง การประกาศ LPR ครั้งถัดไปกำหนด 20 ก.ย. 2569 ไม่มีแถลงการณ์ใหม่ในรอบ 24 ชั่วโมงนี้ (ต่อเนื่อง, ❓)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏛 Government Policy</h2>
+    <ul>
+      <li><b>ไทย:</b> กระทรวงเกษตรและสหกรณ์เดินหน้ามาตรการช่วยเหลือเกษตรกรผู้ปลูกข้าวนาปี ปีการผลิต 2568/69 คาดใช้งบประมาณราว 39,000 ล้านบาท ก่อนการชุมนุมของกลุ่มเกษตรกรที่วางแผนไว้ในกรุงเทพฯ วันที่ 10 ก.ย. เพื่อเรียกร้องมาตรการช่วยเหลือเพิ่มเติม (<span class="badge media">📰</span> ผลค้นหารวม)</li>
+      <li><b>สหรัฐฯ:</b> มาตรการภาษีตอบโต้ระหว่างสหรัฐฯ-แคนาดายังคงมีผลบังคับใช้ต่อเนื่องหลังการเจรจาการค้าล้มเหลว สภาผู้แทนราษฎรสหรัฐฯ ผ่านร่างงบประมาณชั่วคราวขยายเวลาถึง 11 ธ.ค. 2569 เพื่อหลีกเลี่ยงการปิดหน่วยงานรัฐบาล (ต่อเนื่อง, ไม่พบมาตรการใหม่เฉพาะในรอบ 24 ชั่วโมงนี้ ❓)</li>
+      <li><b>จีน:</b> ยังคงเป้าหมายขาดดุลการคลังใกล้เคียง 4% ของ GDP พร้อมเร่งออกพันธบัตรพิเศษ เน้นเสถียรภาพและการบริโภคภาคครัวเรือน ไม่มีมาตรการใหม่เฉพาะในรอบ 24 ชั่วโมงนี้ (ต่อเนื่อง, ❓)</li>
+      <li><b>ยุโรป:</b> ราคาก๊าซธรรมชาติยุโรปปรับขึ้นแตะระดับสูงสุดในรอบ 3.5 ปี จากผลกระทบวิกฤตตะวันออกกลาง สร้างแรงกดดันเงินเฟ้อเพิ่มเติมก่อนการประชุม ECB วันพรุ่งนี้ กลุ่มประเทศเยอรมนี เดนมาร์ก เนเธอร์แลนด์ ออสเตรีย ฟินแลนด์ และสวีเดน ยังคงเรียกร้องให้ปรับลดงบประมาณ EU ปี 2571-2577 ต่อเนื่อง (<span class="badge media">📰</span> ผลค้นหารวม)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 Economic Indicators</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Country</th><th>Indicator</th><th>Actual</th><th>Forecast</th><th>Previous</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>สหรัฐฯ</td><td>NFIB Small Business Optimism (ส.ค.)</td><td>98.7</td><td class="wrap">ไม่มีการคาดการณ์</td><td>99.8 (ก.ค.)</td><td class="wrap"><span class="badge official">✅</span> <a href="https://www.nfib.com/news/monthly_report/sbet/">NFIB</a> — ประกาศ 9 ก.ย. (ใหม่ในรอบนี้)</td></tr>
+          <tr><td>ไทย</td><td>GDP (Q2/2569, YoY)</td><td>+1.9%</td><td class="wrap">ไม่มีการคาดการณ์</td><td>+2.8% (Q1/2569)</td><td class="wrap"><span class="badge official">✅</span> NESDC — 17 ส.ค. (ต่อเนื่อง)</td></tr>
+          <tr><td>ไทย</td><td>PMI ภาคการผลิต (ส.ค.)</td><td>53.8</td><td class="wrap">ไม่มีการคาดการณ์</td><td>54.2 (ก.ค.)</td><td class="wrap"><span class="badge market">📈</span> S&amp;P Global — 1 ก.ย. (ต่อเนื่อง)</td></tr>
+          <tr><td>สหรัฐฯ</td><td>ISM PMI ภาคบริการ (ส.ค.)</td><td>55.4</td><td>54.1</td><td>54.1 (ก.ค.)</td><td class="wrap"><span class="badge official">✅</span> ISM — 3 ก.ย. (ต่อเนื่อง)</td></tr>
+          <tr><td>สหรัฐฯ</td><td>Nonfarm Payrolls (ส.ค.)</td><td>+162,000</td><td>≈+55,000</td><td>+23,000 (ก.ค., ปรับปรุง)</td><td class="wrap"><span class="badge official">✅</span> BLS — 4 ก.ย. (ต่อเนื่อง)</td></tr>
+          <tr><td>สหรัฐฯ</td><td>Unemployment Rate (ส.ค.)</td><td>4.1%</td><td>4.1%</td><td>4.1% (ก.ค.)</td><td class="wrap"><span class="badge official">✅</span> BLS — 4 ก.ย. (ต่อเนื่อง)</td></tr>
+          <tr><td>จีน</td><td>Caixin PMI ภาคการผลิต (ส.ค.)</td><td>51.5</td><td>51.0</td><td>50.9 (ก.ค.)</td><td class="wrap"><span class="badge media">📰</span> Caixin — ก.ย. (ต่อเนื่อง)</td></tr>
+          <tr><td>ยูโรโซน</td><td>Manufacturing PMI (ส.ค., S&amp;P Global)</td><td>52.7 (สูงสุดในรอบ 4.5 ปี)</td><td class="wrap">ไม่มีการคาดการณ์</td><td>51.9 (ก.ค.)</td><td class="wrap"><span class="badge market">📈</span> S&amp;P Global — ต้นก.ย. (ต่อเนื่อง)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">ตัวเลขใหม่ในรอบ 24 ชั่วโมงนี้ได้แก่ NFIB Small Business Optimism สหรัฐฯ เดือนส.ค.ที่ปรับลงเหลือ 98.7 จุด (ลดลง 1.1 จุดจากเดือนก่อน) แม้ยังอยู่เหนือค่าเฉลี่ย 52 ปีที่ 98.0 จุด โดยความกังวลด้านเงินเฟ้อในกลุ่มธุรกิจขนาดเล็กเพิ่มขึ้น สอดคล้องกับราคาพลังงานที่ปรับตัวสูงขึ้น ตัวเลขอื่นในตารางเป็นข้อมูลต่อเนื่องจากรอบประกาศก่อนหน้า</p>
+  </section>
+
+  <section>
+    <h2>🏢 Business</h2>
+    <ul>
+      <li><b>Earnings:</b> Oracle มีกำหนดประกาศผลประกอบการวันที่ 10 ก.ย. 2569 (❓ ยังไม่ประกาศในรอบข้อมูลนี้) กลุ่มหุ้นไทยที่คาดผลประกอบการไตรมาส 3/2569 เติบโตโดดเด่น ได้แก่ BTG, CPALL, CRC, MRDIYT, PR9 และ TFG ตามบทวิเคราะห์ (<span class="badge media">📰</span> ผลค้นหารวม Kaohoon/InfoQuest)</li>
+      <li><b>M&amp;A:</b> WaFd, Inc. ประกาศดีล Reverse Merger มูลค่า 3,900 ล้านดอลลาร์กับ EverBank Financial Corp เมื่อ 8 ก.ย. 2569 ไม่พบดีล M&amp;A ใหม่เฉพาะของไทยในรอบ 24 ชั่วโมงนี้ (❓)</li>
+      <li><b>Sector Rotation:</b> ตลาดหุ้นไทยกลุ่มพลังงาน (PTT, PTTEP) และกลุ่มโรงพยาบาล (PR9) ได้รับความสนใจเด่นวันนี้ ขณะกลุ่มชิ้นส่วนอิเล็กทรอนิกส์ (DELTA) และธนาคารเผชิญแรงขายทำกำไร/ผลกระทบจากการขึ้นเครื่องหมาย XD ระดับโลก ตลาดหุ้นสหรัฐฯ ยังคงมีแรงกดดันจากกลุ่มพลังงาน/สินค้าโภคภัณฑ์ที่ผันผวนตามราคาน้ำมัน (<span class="badge media">📰</span> ผลค้นหารวม)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🪙 Crypto</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Coin</th><th>Price</th><th>Change</th><th>%</th><th class="wrap">Source</th></tr></thead>
+        <tbody>
+          <tr><td>Bitcoin (BTC)</td><td>≈78,446-78,825 USD</td><td class="neutral">ทรงตัว-ปรับขึ้นเล็กน้อยช่วงเช้า</td><td class="neutral">❓ ไม่พบ %เปลี่ยนแปลง 24 ชม.ที่ยืนยันได้ชัดเจนในรอบนี้</td><td class="wrap"><span class="badge market">📈</span> <a href="https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-wednesday-september-9-2026-ongoing-escalations-in-the-middle-east-are-keeping-a-lid-on-crypto-112541573.html">Yahoo Finance</a> — 9 ก.ย. (ความตึงเครียดตะวันออกกลางยังกดเพดานราคา)</td></tr>
+          <tr><td>Ethereum (ETH)</td><td>≈2,484.9-2,486.0 USD</td><td class="neutral">ทรงตัว</td><td class="neutral">❓ ไม่พบ %เปลี่ยนแปลง 24 ชม.ที่ยืนยันได้ชัดเจนในรอบนี้</td><td class="wrap"><span class="badge market">📈</span> Yahoo Finance — 9 ก.ย.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>ข่าวสำคัญ:</b> ราคา BTC และ ETH ทรงตัวใกล้เคียงเดิมในช่วงเช้าวันนี้ โดยความตึงเครียดที่ยังดำเนินต่อเนื่องในตะวันออกกลางยังคงเป็นเพดานกดราคาสินทรัพย์เสี่ยงอย่างคริปโต หัวข้อข่าวระบุชัดเจนว่า "ความตึงเครียดในตะวันออกกลางที่ยังดำเนินต่อเนื่องกำลังกดเพดานราคาคริปโต" ตลาดจับตาตัวเลข CPI สหรัฐฯ (11 ก.ย.) และการประชุม FOMC (15-16 ก.ย.) เป็นปัจจัยกระตุ้นสำคัญระยะถัดไป (<span class="badge market">📈</span> <a href="https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-wednesday-september-9-2026-ongoing-escalations-in-the-middle-east-are-keeping-a-lid-on-crypto-112541573.html">Yahoo Finance</a>)</p>
+  </section>
+
+  <section>
+    <h2>📈 Market Sentiment</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="k">VIX</div><div class="v up">15.72 (8 ก.ย.) ▲ +2.75% — ปรับขึ้นสะท้อนความระมัดระวังที่เพิ่มขึ้นจากความขัดแย้งตะวันออกกลาง</div></div>
+      <div class="stat-card"><div class="k">CNN Fear &amp; Greed Index</div><div class="v neutral">❓ ไม่พบตัวเลขที่ยืนยันได้เฉพาะวันที่ 9 ก.ย.ในรอบนี้ (รอบก่อนอยู่ที่ 42 "Fear")</div></div>
+      <div class="stat-card"><div class="k">US Dollar Index (DXY)</div><div class="v down">98.85 (ปิด 8 ก.ย.) ▼ -0.33% — อ่อนค่าลงเล็กน้อยแม้ Bond Yield ยืนสูง</div></div>
+      <div class="stat-card"><div class="k">Bond Market</div><div class="v neutral">US 10Y ≈4.79-4.81% ใกล้สูงสุดรอบเกือบ 2 ทศวรรษ; German Bund 10Y 3.38% ใกล้สูงสุดรอบ 15 ปี; JGB 10Y ≈2.91% ย่อจากจุดสูงสุด</div></div>
+      <div class="stat-card"><div class="k">Fund Flow</div><div class="v up">SET ต่างชาติซื้อสุทธิ 3,136.62 ล้านบาท (วันนี้, SET); ราคาน้ำมัน/ทองคำผันผวนสูงสะท้อนแรงเคลื่อนย้ายเงินทุนเข้าสินทรัพย์ปลอดภัย</div></div>
+    </div>
+    <p>VIX ปรับขึ้นต่อเนื่องสะท้อนความระมัดระวังของตลาดที่เพิ่มขึ้นจากความขัดแย้งตะวันออกกลางที่ทวีความรุนแรงหลังสหรัฐฯ โจมตีเรือบรรทุกน้ำมันอิหร่าน Dollar Index กลับอ่อนค่าลงเล็กน้อยแม้ Bond Yield จะยืนสูง สะท้อนความไม่แน่นอนของทิศทางตลาดเงินในระยะสั้น ขณะแรงซื้อสุทธิของนักลงทุนต่างชาติในตลาดหุ้นไทยยังคงเป็นปัจจัยหนุนสินทรัพย์เสี่ยงในภูมิภาคต่อเนื่องเป็นวันที่สอง แม้ตลาดหุ้นหลักส่วนใหญ่ทั่วโลกจะปรับตัวลงจากความกังวลด้านพลังงานและเงินเฟ้อ</p>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>10 ก.ย. 2569:</b> การประชุมธนาคารกลางยุโรป (ECB) — ตลาดคาดปรับขึ้นดอกเบี้ยจากแรงกดดันเงินเฟ้อด้านพลังงาน; ผลประกอบการ Oracle; การชุมนุมของกลุ่มเกษตรกรในกรุงเทพฯ เรื่องมาตรการช่วยเหลือชาวนา</li>
+      <li><b>11 ก.ย. 2569:</b> ตัวเลขเงินเฟ้อ CPI สหรัฐฯ เดือนส.ค. — ปัจจัยชี้วัดสำคัญก่อนการประชุม FOMC; ผลประกอบการ Kroger</li>
+      <li><b>12 ก.ย. 2569:</b> ดัชนีความเชื่อมั่นผู้บริโภคสหรัฐฯ เบื้องต้นจาก University of Michigan</li>
+      <li><b>15-16 ก.ย. 2569:</b> การประชุม FOMC พร้อม Summary of Economic Projections — ตลาดให้น้ำหนักโอกาสขึ้นดอกเบี้ยราว 58-59%</li>
+      <li><b>17-18 ก.ย. 2569:</b> การประชุมธนาคารกลางญี่ปุ่น (BoJ) — ตลาดยังให้น้ำหนักสูงว่าจะขึ้นดอกเบี้ย</li>
+      <li><b>20 ก.ย. 2569:</b> การประกาศอัตรา LPR ของ PBoC</li>
+      <li><b>ต่อเนื่อง:</b> ความขัดแย้งอิหร่าน-อิสราเอล-สหรัฐฯ ที่ทวีความรุนแรงขึ้น (สหรัฐฯ โจมตีเรือบรรทุกน้ำมันอิหร่านใกล้เกาะคาร์ก) และผลกระทบต่อราคาน้ำมัน/ก๊าซธรรมชาติโลก; มาตรการภาษีตอบโต้ระหว่างสหรัฐฯ-แคนาดา</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <ul>
+      <li><b>ตลาดหุ้น:</b> Dow -1.18% ปิด 52,786.07, S&amp;P 500 -0.58%, Nasdaq -0.32% (8 ก.ย.); Nikkei -0.19%, Hang Seng -0.17%, FTSE -0.61% (9 ก.ย.); SET -0.25% ปิด 1,617.89 จุด (9 ก.ย.)</li>
+      <li><b>ค่าเงิน:</b> USD/THB ≈32.75-33.00 (อ่อนค่าเล็กน้อย); EUR/USD ≈1.164 (แข็งค่าขึ้น); USD/CNY ≈6.705-6.708; Dollar Index 98.85 (▼-0.33%)</li>
+      <li><b>สินค้าโภคภัณฑ์:</b> ทองคำ ≈$4,400/oz (ผันผวนสูง); เงิน ≈$66.4-68.1/oz (▲); น้ำมัน WTI ≈$96.24 และ Brent ≈$99-102/bbl (▲ แรง จากการโจมตีเรือบรรทุกน้ำมันอิหร่าน)</li>
+      <li><b>ตัวเลขเศรษฐกิจ:</b> NFIB Small Business Optimism สหรัฐฯ ส.ค. 98.7 (ใหม่); เงินเฟ้อไทย ส.ค. +2.53% YoY (ต่อเนื่อง); German Bund 10Y 3.38% ใกล้สูงสุดรอบ 15 ปี</li>
+      <li><b>Crypto:</b> BTC ≈$78,446-78,825 (ทรงตัว); ETH ≈$2,485-2,486 (ทรงตัว)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul>
+      <li>กระทรวงพาณิชย์ (Thai CPI, ต่อเนื่อง), NESDC (Thailand GDP, ต่อเนื่อง), BLS (US jobs/CPI/PPI, ต่อเนื่อง), NFIB (Small Business Optimism, ใหม่), Eurostat (ต่อเนื่อง), ISM (US PMI, ต่อเนื่อง), Statistics Bureau of Japan (ต่อเนื่อง)</li>
+    </ul>
+    <h3>Financial Media</h3>
+    <ul>
+      <li>Washington Post, 24/7 Wall St., CNBC, Yahoo Finance, Fortune, Kaohoon, Kaohoon International, The Bangkok Insight, InfoQuest, Hoonsmart, Prachachat, Share2Trade, USAGOLD, Buckhead Energy, ARMENPRESS</li>
+    </ul>
+    <h3>Market Data</h3>
+    <ul>
+      <li>Trading Economics (via search), CME FedWatch (via search)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily Economy, Finance &amp; Investment Report · จัดทำโดย Claude Code Routine · ข้อมูลทั้งหมดอ้างอิงแหล่งที่มาที่ระบุไว้ในแต่ละหัวข้อ รายการที่ทำเครื่องหมาย ❓ ยังไม่สามารถยืนยันได้ครบถ้วนในรอบรวบรวมข้อมูลนี้ WebFetch เข้าถึงโดเมนทางการและ Tier 2/3 หลักเกือบทั้งหมดโดยตรงไม่ได้ในเซสชันนี้ จึงใช้ WebSearch แทนตามนโยบาย Network Access Resilience โดยตรวจสอบไขว้อย่างน้อย 2 แหล่งเท่าที่ทำได้สำหรับหัวข้อสำคัญ ตลาดหุ้นสหรัฐฯ อ้างอิงราคาปิดวันอังคารที่ 8 ก.ย. 2569 (เซสชันล่าสุดก่อนการจัดทำรายงานนี้) ขณะตลาดเอเชีย ยุโรป และไทยมีข้อมูลของวันที่ 9 ก.ย.ครบถ้วน</p>
+  </footer>
+</div>
+</body>
+</html>
