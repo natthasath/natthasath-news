@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly GitHub Trending Report — Week 37, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#B5502A; --warn-soft:rgba(181,80,42,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14);
+    --warn:#E08A63; --warn-soft:rgba(224,138,99,0.14);
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:980px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+h2{ font-size:22px; font-weight:800; margin:48px 0 16px; padding-top:8px; border-top:1px solid var(--line-strong); display:flex; align-items:center; gap:10px; }
+h2:first-of-type{ border-top:none; }
+h3{ font-size:17px; font-weight:700; margin:26px 0 10px; color:var(--ink); }
+p{ margin:0 0 14px; color:var(--ink-soft); }
+ul, ol{ padding-left:22px; color:var(--ink-soft); }
+li{ margin-bottom:6px; }
+strong{ color:var(--ink); }
+code{ font-family:"JetBrains Mono",monospace; font-size:0.9em; background:var(--surface-2); padding:1px 5px; border-radius:4px; }
+
+.summary-box{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:8px; }
+.summary-box p{ margin:0; color:var(--ink); }
+
+.tablewrap{ overflow-x:auto; margin:14px 0 22px; border:1px solid var(--line); border-radius:10px; }
+table{ width:100%; border-collapse:collapse; font-size:14px; background:var(--surface); min-width:640px; }
+thead th{ text-align:left; font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-faint); padding:12px 14px; border-bottom:1px solid var(--line-strong); background:var(--surface-2); white-space:nowrap; }
+tbody td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ color:var(--ink); font-weight:600; }
+tbody td a{ text-decoration:none; }
+tbody td a:hover{ text-decoration:underline; }
+
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.card-title{ font-weight:700; font-size:15.5px; color:var(--ink); margin-bottom:4px; }
+.card-title a{ text-decoration:none; }
+.card-meta{ font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); margin-bottom:10px; }
+.card p{ margin:0 0 8px; font-size:14.5px; }
+.card ul{ margin:6px 0 0; font-size:14px; }
+
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; background:var(--accent-soft); color:var(--accent); margin-right:6px; }
+.badge.warn{ background:var(--warn-soft); color:var(--warn); }
+
+.note-box{ background:var(--warn-soft); border:1px solid rgba(181,80,42,0.28); border-radius:10px; padding:14px 18px; margin:14px 0; font-size:14px; color:var(--ink); }
+.note-box strong{ color:var(--warn); }
+
+.legend-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px 20px; font-size:14px; }
+.legend-grid div{ display:flex; gap:8px; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin:16px 0; }
+.stat-tile{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+.stat-num{ font-family:"JetBrains Mono",monospace; font-size:24px; font-weight:700; color:var(--accent); }
+.stat-label{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer a{ color:var(--ink-faint); }
+
+@media (max-width:640px){
+  h1{ font-size:26px; }
+  h2{ font-size:19px; }
+  .meta-row{ gap:10px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest · Week 37</p>
+    <h1>⭐ Weekly GitHub Trending Open Source Report</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 6 – 12 ก.ย. 2026 (ICT)</span>
+      <span><b>หมวด:</b> GitHub Open Source</span>
+      <span><b>เผยแพร่:</b> 12 ก.ย. 2026</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้กระแส <strong>"Agent Skills" ยังคงเป็นหมวดที่ร้อนแรงที่สุดบน GitHub Trending ต่อเนื่องเป็นสัปดาห์ที่สาม</strong> โดยมี repository ใหม่จำนวนมากพุ่งขึ้นพร้อมกัน เช่น <code>obra/superpowers</code>, <code>mattpocock/skills</code>, <code>affaan-m/ECC</code> และ <code>ayghri/i-have-adhd</code> ขณะที่ <code>tt-a1i/archify</code> ซึ่งเป็นดาวเด่นของสัปดาห์ก่อนยังคงเติบโตต่อเนื่อง (+11,006 ดาว) ด้านความปลอดภัย มีการเปิดเผยช่องโหว่ระดับวิกฤต<strong>ที่กระทบ AI coding agent หลายตัวพร้อมกัน</strong> ผ่านฟีเจอร์ <code>core.fsmonitor</code> ของ Git ซึ่งกระทบ Cursor (CVSS 9.9), Claude Code/Codex และมีคำแนะนำจาก Anthropic โดยตรง ฝั่ง Cloud Native มีข่าวดีจาก CNCF ที่ประกาศให้ <strong><code>karmada-io/karmada</code> จบสถานะ Graduated</strong> อย่างเป็นทางการเมื่อ 8 ก.ย. 2026 ทีมจัดทำรายงานขอตั้งข้อสังเกตว่าตัวเลขดาวเพิ่มที่สูงมากของบาง repository ในหมวด Agent Skills (หลักหมื่นถึงหลักแสนดาวภายในไม่กี่เดือน) ควรอ่านเป็น snapshot จาก GitHub Trending เท่านั้น ยังไม่มีหลักฐานเชิงเหตุการณ์ที่อธิบายอัตราการเติบโตดังกล่าวได้ครบถ้วน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Top Trending Repositories</h2>
+    <p>เรียงตามความสำคัญและผลกระทบต่อ Developer Community ตัวเลขทั้งหมดเป็น snapshot จากหน้า GitHub Trending รายสัปดาห์ ณ 12 ก.ย. 2026 และยืนยันซ้ำผ่าน GitHub Repository API</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Owner</th><th>Language</th><th>Stars</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/obra/superpowers">superpowers</a> 🔥🧠</td><td>obra</td><td>Shell</td><td>285,522</td><td>Agent Skills Framework</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/mattpocock/skills">skills</a> 🔥🧠</td><td>mattpocock</td><td>Shell</td><td>260,028</td><td>Agent Skills</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/affaan-m/ECC">ECC</a> 🔥🧠</td><td>affaan-m</td><td>JavaScript</td><td>256,696</td><td>Agent Harness / Skills</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/NousResearch/hermes-agent">hermes-agent</a> 🔥✅</td><td>NousResearch</td><td>Python</td><td>244,708</td><td>AI Agents</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/DietrichGebert/ponytail">ponytail</a> 🔥🧠</td><td>DietrichGebert</td><td>JavaScript</td><td>136,067</td><td>Agent Skills</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/JuliusBrussee/caveman">caveman</a> 🔥🧠</td><td>JuliusBrussee</td><td>Go</td><td>105,112</td><td>Token Optimization / Skill</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/rtk-ai/rtk">rtk</a> ⭐</td><td>rtk-ai</td><td>Rust</td><td>80,031</td><td>Agent Infra / CLI</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/tt-a1i/archify">archify</a> ⭐🧠</td><td>tt-a1i</td><td>JavaScript</td><td>58,878</td><td>Agent Skill / Diagram</td><td>GitHub Trending (ต่อเนื่อง)</td></tr>
+          <tr><td><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">chrome-devtools-mcp</a> ✅🧠</td><td>ChromeDevTools</td><td>TypeScript</td><td>51,710</td><td>MCP</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/THU-MAIC/OpenMAIC">OpenMAIC</a> 🚀🧠</td><td>THU-MAIC</td><td>TypeScript</td><td>35,990</td><td>Multi-Agent Education</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/cathrynlavery/diagram-design">diagram-design</a> 🚀</td><td>cathrynlavery</td><td>HTML</td><td>38,603</td><td>Agent Skill / Diagram</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/ayghri/i-have-adhd">i-have-adhd</a> 🚀🧠</td><td>ayghri</td><td>Python</td><td>42,565</td><td>Agent Skill / Productivity</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/bilawalsidhu/gods-eye-view">gods-eye-view</a> 🚀</td><td>bilawalsidhu</td><td>JavaScript</td><td>27,664</td><td>Geospatial / OSINT</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/karmada-io/karmada">karmada</a> ✅☁️</td><td>karmada-io</td><td>Go</td><td>5,620</td><td>Cloud Native / Multi-Cluster K8s</td><td>CNCF + GitHub Repository</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥🧠 <a href="https://github.com/obra/superpowers">obra/superpowers</a></div>
+      <div class="card-meta">Shell · MIT · 285,522 ★ · 25,538 forks · <strong>+3,829 ดาวสัปดาห์นี้</strong> · สร้างเมื่อ ต.ค. 2025</div>
+      <p>เฟรมเวิร์ก agent skills และวิธีการพัฒนาซอฟต์แวร์แบบ "subagent-driven development" ที่รวมชุด skill สำหรับ brainstorming, coding และ SDLC เข้าด้วยกัน แม้อัตราการเติบโตรายสัปดาห์ล่าสุดจะชะลอลงเมื่อเทียบกับฐานยอดรวม แต่ยังคงเป็นหนึ่งใน repository ที่มีดาวสะสมสูงที่สุดในหมวด Agent Skills ทั้งหมดที่สำรวจในสัปดาห์นี้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥🧠 <a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></div>
+      <div class="card-meta">JavaScript · MIT · 256,696 ★ · 38,417 forks · <strong>+8,714 ดาวสัปดาห์นี้</strong> · สร้างเมื่อ ม.ค. 2026</div>
+      <p>"ระบบเพิ่มประสิทธิภาพ agent harness" รวม skills, instincts, memory และความปลอดภัยสำหรับ Claude Code, Codex, Opencode และ Cursor เป็นตัวแทนของเทรนด์ "meta-tooling" ที่ปรับแต่งตัว agent harness เองมากกว่าสร้างแอปพลิเคชันปลายทาง <em>หมายเหตุ: อัตราส่วน fork ต่อ star (~15%) และจำนวนดาวที่สะสมในเวลาไม่ถึง 8 เดือนสูงผิดปกติเมื่อเทียบกับ repository ทั่วไป ควรตีความด้วยความระมัดระวัง</em></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥✅ <a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></div>
+      <div class="card-meta">Python · MIT · 244,708 ★ · 50,738 forks · <strong>42,225 open issues</strong> · <strong>+3,481 ดาวสัปดาห์นี้</strong></div>
+      <p>โครงการ agent จาก NousResearch ผู้พัฒนาโมเดล Hermes อธิบายตัวเองว่า "the agent that grows with you" จากองค์กรที่มีชื่อเสียงด้าน open-weight LLM <em>หมายเหตุ: จำนวน open issues ที่สูงถึง 42,225 รายการ (สูงผิดปกติเมื่อเทียบกับขนาดทีมดูแลทั่วไป) เป็นสัญญาณที่ควรตรวจสอบเพิ่มเติมก่อนสรุปคุณภาพการดูแลโครงการ — รายงานนี้รายงานเฉพาะตัวเลขที่พบ ไม่ได้ตีความสาเหตุ</em></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⭐ <a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a> (ต่อเนื่องจากสัปดาห์ก่อน)</div>
+      <div class="card-meta">JavaScript · MIT · 58,878 ★ · 3,854 forks · <strong>+11,006 ดาวสัปดาห์นี้</strong></div>
+      <p>Agent skill สร้างไดอะแกรมสถาปัตยกรรมที่เป็นดาวเด่นของสัปดาห์ที่แล้ว (+21,896 ดาว) ยังคงเติบโตต่อเนื่องแม้อัตราจะชะลอลงราวครึ่งหนึ่ง แนวโน้มนี้สอดคล้องกับการเติบโตแบบอินทรีย์มากกว่าการพุ่งขึ้นชั่วคราวเพียงครั้งเดียว ต่างจากบาง repository ใหม่ในหมวดเดียวกันที่ยังไม่มีประวัติเปรียบเทียบข้ามสัปดาห์</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅☁️ <a href="https://github.com/karmada-io/karmada">karmada-io/karmada</a></div>
+      <div class="card-meta">Go · Apache-2.0 · 5,620 ★ · 1,189 forks · <strong>CNCF Graduated Project (8 ก.ย. 2026)</strong></div>
+      <p>ระบบจัดการ Kubernetes แบบ multi-cluster และ multi-cloud ที่ให้รันแอปพลิเคชันข้ามคลัสเตอร์/คลาวด์โดยไม่ต้องแก้ไขแอป ได้รับการประกาศให้จบสถานะ Graduated จาก Cloud Native Computing Foundation ซึ่งเป็นระดับความเป็นผู้ใหญ่สูงสุดของ CNCF ต้องผ่านการตรวจสอบความปลอดภัยจากบุคคลที่สามและมีโครงสร้างการกำกับดูแลที่โปร่งใส เป็นสัญญาณสำคัญของวงการ Cloud Native ในสัปดาห์นี้มากกว่าตัวเลขดาวที่ค่อนข้างเล็ก</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🤖 AI &amp; LLM</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></div>
+      <div class="card-meta">Python · AGPL-3.0 · 22,682 ★ · 2,790 forks · <strong>+5,465 ดาวสัปดาห์นี้</strong></div>
+      <p>ทางเลือกแบบ local-first ของ ElevenLabs สำหรับ voice cloning, voice design, video dubbing และ audiobook รองรับ 646 ภาษา ยังคงติด Trending ต่อเนื่องจากสัปดาห์ก่อน (+5,150 ดาวสัปดาห์ที่แล้ว) แสดงถึงแรงส่งที่สม่ำเสมอ ไม่ใช่กระแสวันเดียว</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/jingyaogong/minimind">jingyaogong/minimind</a></div>
+      <div class="card-meta">Python · 60,768 ★ · <strong>+2,290 ดาวสัปดาห์นี้</strong></div>
+      <p>"เทรน LLM ขนาด 64M พารามิเตอร์จากศูนย์ภายใน 2 ชั่วโมง" ยังคงติด Trending ต่อเนื่องหลายสัปดาห์จากความน่าเข้าถึงของเนื้อหาสำหรับผู้เริ่มต้นสาย LLM</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/google-research/timesfm">google-research/timesfm</a> ✅</div>
+      <div class="card-meta">Python · 32,279 ★ · <strong>+1,362 ดาวสัปดาห์นี้</strong></div>
+      <p>Foundation model สำหรับพยากรณ์ time-series จาก Google Research ยังคงติด Python weekly trending ต่อเนื่อง สะท้อนความสนใจต่อโมเดลพยากรณ์เฉพาะทางที่ยังมีอยู่คู่ขนานกับกระแส LLM ทั่วไป</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/browser-use/browser-use">browser-use/browser-use</a></div>
+      <div class="card-meta">Python · 114,289 ★ · <strong>+2,023 ดาวสัปดาห์นี้</strong></div>
+      <p>ไลบรารีให้ AI agent ควบคุมเบราว์เซอร์เพื่อทำงานอัตโนมัติ ยังคงเป็นหนึ่งในเครื่องมือพื้นฐานของสาย browser-automation agent ที่มีฐานผู้ใช้ขนาดใหญ่และเติบโตสม่ำเสมอ</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/k2-fsa/OmniVoice">k2-fsa/OmniVoice</a></div>
+      <div class="card-meta">12,507 ★ · <strong>+2,370 ดาวสัปดาห์นี้</strong></div>
+      <p>โมเดล Text-to-Speech สำหรับ voice cloning คุณภาพสูงที่รองรับกว่า 600 ภาษา เป็นอีกหนึ่งโครงการด้านเสียง AI ที่โตเร็วในสัปดาห์นี้เช่นเดียวกับ VoiceStudio</p>
+    </div>
+
+    <p><strong>ข้อสังเกตหมวด AI:</strong> สัปดาห์นี้ไม่พบข้อมูลที่ยืนยันได้จากบล็อกทางการของผู้ให้บริการโมเดลรายใหญ่ (Anthropic, OpenAI, Google, Meta) เกี่ยวกับการเปิดตัวโมเดลใหม่ในกรอบ 7 วันนี้ กิจกรรมส่วนใหญ่อยู่ในระดับเครื่องมือ/แอปพลิเคชันที่สร้างบนโมเดลที่มีอยู่แล้ว เช่น เสียง AI (VoiceStudio, OmniVoice) และ browser agent มากกว่าตัวโมเดลพื้นฐานเอง</p>
+  </section>
+
+  <section>
+    <h2>🧠 MCP &amp; AI Agents</h2>
+
+    <div class="card">
+      <div class="card-title">✅🧠 <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">ChromeDevTools/chrome-devtools-mcp</a></div>
+      <div class="card-meta">TypeScript · 51,710 ★ · 3,633 forks · <strong>+804 ดาวสัปดาห์นี้</strong></div>
+      <p>MCP server อย่างเป็นทางการของทีม Chrome DevTools ให้ coding agent เข้าถึงความสามารถ inspect, network, performance โดยตรง ยังคงเติบโตต่อเนื่องเป็นสัปดาห์ที่สองติดต่อกัน สะท้อนความสนใจต่อ MCP server ระดับ official ที่มีคุณภาพสูง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🧠 <a href="https://github.com/Tencent/WeKnora">Tencent/WeKnora</a></div>
+      <div class="card-meta">Go · 22,468 ★ · <strong>+964 ดาวสัปดาห์นี้</strong></div>
+      <p>แพลตฟอร์มความรู้ LLM แบบโอเพนซอร์สจาก Tencent แปลงเอกสารดิบให้เป็น RAG ที่ค้นหาได้ พร้อม autonomous reasoning agent และ Wiki ที่ดูแลตัวเอง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🧠 <a href="https://github.com/vllm-project/semantic-router">vllm-project/semantic-router</a></div>
+      <div class="card-meta">Go · 5,746 ★ · <strong>+181 ดาวสัปดาห์นี้</strong></div>
+      <p>Mixture-of-Models router แบบ programmable สำหรับ LLM inference ที่ไม่เป็นเนื้อเดียวกัน (heterogeneous) จากทีม vLLM ยังคงเติบโตอย่างต่อเนื่องในกลุ่มโครงสร้างพื้นฐาน routing สำหรับ agent</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🧠 <a href="https://github.com/humanlayer/skills">humanlayer/skills</a></div>
+      <div class="card-meta">TypeScript · MIT · 3,825 ★ · 113 forks · <strong>+1,637 ดาวสัปดาห์นี้ (~74%)</strong></div>
+      <p>คลัง skill ของทีม HumanLayer สำหรับสร้างส่วนติดต่อ AI agent ฐานเล็กแต่โตเร็วมากในสัปดาห์เดียว เป็นตัวอย่างของ vertical skill pack เฉพาะทีมที่ได้รับความสนใจกว้างขึ้น</p>
+    </div>
+
+    <p><strong>สรุปแนวโน้ม MCP และ Agent:</strong> ทั้ง OpenAI (<code>openai/skills</code>, <code>openai/plugins</code>) และ Anthropic ecosystem (ผ่านผู้ใช้จำนวนมากที่สร้าง skill สำหรับ Claude Code) ต่างมีคลัง skill ของตัวเองที่ติด Trending พร้อมกันในสัปดาห์นี้ ชี้ว่า "Agent Skills" กำลังกลายเป็นรูปแบบมาตรฐานที่ผู้ให้บริการ agent รายใหญ่แข่งกันสร้างระบบนิเวศ ขณะที่ MCP เองเติบโตแบบค่อยเป็นค่อยไปในระดับ server เฉพาะทาง (chrome-devtools-mcp, semantic-router) มากกว่าเป็นข่าวสเปกใหม่ — อ้างอิงจากบล็อกทางการของ Model Context Protocol พบว่าสเปกฉบับล่าสุด (2026-07-28) ยังคงเป็นเวอร์ชันปัจจุบัน ไม่มีการอัปเดตใหม่ในกรอบ 7 วันนี้ (<a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">MCP Blog</a>)</p>
+  </section>
+
+  <section>
+    <h2>⚙️ Developer Tools</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Language</th><th>License</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/rtk-ai/rtk">rtk-ai/rtk</a></td><td>Rust</td><td>Apache-2.0</td><td>80,031</td><td>+1,535 ดาว CLI proxy ลด token 60–90%</td></tr>
+          <tr><td><a href="https://github.com/JuliusBrussee/caveman">JuliusBrussee/caveman</a></td><td>Go</td><td>ไม่ระบุชัดเจน (Other)</td><td>105,112</td><td>+1,646 ดาว skill ลด token 65% ด้วยสไตล์ "caveman"</td></tr>
+          <tr><td><a href="https://github.com/mksglu/context-mode">mksglu/context-mode</a></td><td>TypeScript</td><td>—</td><td>22,251</td><td>+1,810 ดาว ลด context window ของ tool output ได้ถึง 98%</td></tr>
+          <tr><td><a href="https://github.com/magnitudedev/magnitude">magnitudedev/magnitude</a></td><td>TypeScript</td><td>Apache-2.0</td><td>4,360</td><td>+2,096 ดาว (~48%) local inference engine สำหรับ coding agent</td></tr>
+          <tr><td><a href="https://github.com/jlcodes99/cockpit-tools">jlcodes99/cockpit-tools</a></td><td>Rust</td><td>—</td><td>17,521</td><td>+493 ดาว ตัวจัดการบัญชี AI IDE หลายแพลตฟอร์ม</td></tr>
+          <tr><td><a href="https://github.com/lbjlaq/Antigravity-Manager">lbjlaq/Antigravity-Manager</a></td><td>Rust</td><td>—</td><td>31,245</td><td>+277 ดาว ตัวจัดการบัญชี Google Antigravity ด้วย Tauri v2 + React</td></tr>
+          <tr><td><a href="https://github.com/ajeetdsouza/zoxide">ajeetdsouza/zoxide</a></td><td>Rust</td><td>—</td><td>39,417</td><td>+250 ดาว smarter cd command</td></tr>
+          <tr><td><a href="https://github.com/coollabsio/coolify">coollabsio/coolify</a></td><td>PHP</td><td>—</td><td>61,695</td><td>+311 ดาว PaaS ทางเลือกของ Vercel/Heroku/Netlify</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>ฝั่งเครื่องมือ AI-assisted design มี <code>mixelpixx/Konnect</code> (Rust, AGPL-3.0, 627 ★, +231 ดาวสัปดาห์นี้) ปลั๊กอิน KiCAD สำหรับออกแบบ PCB ด้วย LLM ที่เปิดเผยเครื่องมือกว่า 217 รายการให้ Claude หรือ LLM อื่นใช้งาน เป็นตัวอย่างของ "vertical agent tooling" ที่ขยายเข้าสู่งานฮาร์ดแวร์</p>
+
+    <div class="note-box">
+      <strong>ตัวเลขที่ควรใช้ด้วยความระมัดระวัง:</strong> <code>JuliusBrussee/caveman</code> ใช้ license แบบ "Other" ที่ GitHub ไม่สามารถระบุ SPDX ได้ชัดเจน ผู้ใช้งานควรตรวจสอบไฟล์ LICENSE ในหน้า repository โดยตรงก่อนนำไปใช้ในเชิงพาณิชย์
+    </div>
+  </section>
+
+  <section>
+    <h2>☁️ Cloud Native &amp; DevOps</h2>
+
+    <div class="card">
+      <div class="card-title">✅ <a href="https://github.com/karmada-io/karmada">karmada-io/karmada</a> — CNCF Graduated</div>
+      <div class="card-meta">Go · Apache-2.0 · 5,620 ★ · 1,189 forks</div>
+      <p>Cloud Native Computing Foundation ประกาศเมื่อ 8 ก.ย. 2026 ให้ Karmada จบสถานะ Graduated ซึ่งเป็นระดับความเป็นผู้ใหญ่สูงสุดของ CNCF โครงการนี้ช่วยให้องค์กรรันแอปพลิเคชันข้ามคลัสเตอร์ Kubernetes หลายคลัสเตอร์และหลายคลาวด์ได้โดยไม่ต้องแก้ไขแอปพลิเคชัน ต้องผ่านการตรวจสอบความปลอดภัยจากบุคคลที่สามและมีคณะกรรมการกำกับดูแลที่เป็นทางการ (ตามที่ระบุใน CNCF announcement — ดูหมายเหตุข้อจำกัดการเข้าถึงโดเมน)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/netbirdio/netbird">netbirdio/netbird</a></div>
+      <div class="card-meta">Go · 29,139 ★ · <strong>+245 ดาวสัปดาห์นี้</strong></div>
+      <p>เครือข่าย overlay แบบ WireGuard พร้อมระบบยืนยันตัวตนและควบคุมการเข้าถึง ยังคงเติบโตสม่ำเสมอในหมวด self-hosted networking</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/maximhq/bifrost">maximhq/bifrost</a></div>
+      <div class="card-meta">Go · 7,990 ★ · <strong>+185 ดาวสัปดาห์นี้</strong></div>
+      <p>AI gateway ระดับองค์กรพร้อม adaptive load balancing และรองรับหลายโมเดล เป็นหนึ่งในเครื่องมือ infra ชั้น gateway สำหรับ LLM ที่เคลื่อนไหวในสัปดาห์นี้</p>
+    </div>
+
+    <p><strong>ข้อสังเกต:</strong> ไม่พบ release หรือ breaking change ขนาดใหญ่ระดับ Docker/Kubernetes core ที่ยืนยันได้ในกรอบ 7 วันนี้ ข่าวเด่นของหมวดนี้คือการรับรองระดับองค์กร (CNCF graduation) มากกว่าฟีเจอร์ใหม่ นอกจากนี้ยังพบข่าว Kubeflow ได้รับสถานะ Graduated จาก CNCF เช่นกันในช่วงเวลาใกล้เคียงกัน แต่ไม่สามารถยืนยันวันที่แน่นอนจากแหล่งปฐมภูมิได้ในรอบการค้นคว้านี้ จึงไม่นำมาลงรายละเอียดเพิ่มเติม</p>
+  </section>
+
+  <section>
+    <h2>🔒 Security</h2>
+
+    <div class="card">
+      <div class="card-title">⚠️ ช่องโหว่ Git config ใน AI Coding Agent หลายตัว</div>
+      <div class="card-meta">รายงานเผยแพร่ต้นเดือน ก.ย. 2026 (ตรวจสอบซ้ำ 1 ก.ย. 2026)</div>
+      <p>นักวิจัยด้านความปลอดภัยเปิดเผยช่องโหว่ที่กระทบ AI coding agent อย่างน้อย 7 ตัว โดยอาศัยฟีเจอร์ <code>core.fsmonitor</code> ของ Git ซึ่งสามารถฝังคำสั่งไว้ในไฟล์ config ของ repository และถูกรันโดยอัตโนมัติเมื่อ agent เรียกคำสั่ง <code>git status</code>/<code>git diff</code> โดยไม่ต้องขออนุมัติจากผู้ใช้และไม่อยู่ใน sandbox ของ agent สำหรับ <strong>Cursor</strong> ได้รับหมายเลข CVE-2026-26268 คะแนนความรุนแรง 9.9/10 (กระทบเวอร์ชันก่อน 2.5) ส่วน <strong>Claude/Codex</strong> ได้รับ CVE-2026-72718 คะแนน CVSS 4.0 ที่ 7.0 และมีคำแนะนำด้านความปลอดภัยจาก Anthropic เอง (CVE-2026-55607) เกี่ยวกับการรัน git fsmonitor ระหว่าง worktree operations ตามรายงานระบุว่า ณ วันที่ 1 ก.ย. 2026 ยังมี 4 ประเด็นที่ไม่ได้รับการแก้ไข</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔒 <a href="https://github.com/NVIDIA/SkillSpector">NVIDIA/SkillSpector</a></div>
+      <div class="card-meta">Python · Apache-2.0 · 16,992 ★ · 1,446 forks · <strong>+911 ดาวสัปดาห์นี้</strong></div>
+      <p>เครื่องมือสแกนความปลอดภัยของ agent skill จาก NVIDIA ตรวจจับช่องโหว่ prompt injection, data exfiltration และความเสี่ยงในห่วงโซ่อุปทาน (supply-chain) สำหรับ skill ของ Claude Code, Codex และ MCP ก่อนติดตั้ง เปิดตัวได้ตรงจังหวะกับกระแส Agent Skills ที่ระเบิดขึ้นและความกังวลด้านความปลอดภัยที่ตามมา</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/vxcontrol/pentagi">vxcontrol/pentagi</a></div>
+      <div class="card-meta">Go · MIT · 23,037 ★ · 3,033 forks · <strong>+698 ดาวสัปดาห์นี้</strong></div>
+      <p>ระบบ AI agent อัตโนมัติเต็มรูปแบบสำหรับงาน penetration testing ที่ซับซ้อน ยังคงเติบโตต่อเนื่องในกลุ่มเครื่องมือ offensive security ที่ขับเคลื่อนด้วย AI agent</p>
+    </div>
+
+    <p><strong>เครื่องมือ security พื้นฐาน</strong> ที่ยังเคลื่อนไหวสม่ำเสมอ ได้แก่ <code>danielmiessler/SecLists</code> (PHP repo listing, 73,456 ★, +190 ดาว) คลังรายการคำสำหรับการประเมินความปลอดภัย และ <code>digininja/DVWA</code> (13,654 ★, +47 ดาว) environment ฝึกทดสอบช่องโหว่</p>
+
+    <div class="note-box">
+      <strong>ข้อจำกัดของข้อมูล:</strong> รายละเอียดฉบับเต็มของช่องโหว่ core.fsmonitor มาจาก The Hacker News และแหล่งข่าวความปลอดภัยรอง เนื่องจากโดเมน thehackernews.com ถูกบล็อกโดย network egress proxy ในเซสชันนี้ทุกครั้งที่ลอง (ดูหมายเหตุท้ายรายงาน) หมายเลข CVE และคะแนน CVSS ที่ระบุในรายงานนี้จึงมาจากการสรุปผลค้นหาเว็บ ไม่ใช่การอ่านฐานข้อมูล CVE/NVD โดยตรง ผู้อ่านที่ต้องการดำเนินการแก้ไข (patch) ควรตรวจสอบ security advisory อย่างเป็นทางการของแต่ละผลิตภัณฑ์ก่อนดำเนินการ
+    </div>
+  </section>
+
+  <section>
+    <h2>🗄️ Database</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้ — ไม่พบฐานข้อมูลโอเพนซอร์สที่ติด GitHub Trending อย่างชัดเจนในกรอบ 7 วันนี้ โครงการที่เกี่ยวข้องกับข้อมูลซึ่งพบมีเพียงระดับ analytics/vector เสริม เช่น <code>alibaba/zvec</code> (C++, 15,898 ★, +129 ดาวสัปดาห์นี้) ฐานข้อมูลเวกเตอร์น้ำหนักเบาแบบ in-process และ <code>ClickHouse/ClickHouse</code> (C++, 49,842 ★, +197 ดาวสัปดาห์นี้) ซึ่งเป็นการเติบโตสม่ำเสมอมากกว่าเหตุการณ์เดี่ยวที่โดดเด่น ด้าน Milvus ปล่อยเวอร์ชัน 3.0.0 ไปแล้วตั้งแต่ 29 ก.ค. 2026 จึงอยู่นอกกรอบเวลาของรายงานฉบับนี้</p>
+  </section>
+
+  <section>
+    <h2>🌐 Web Frameworks</h2>
+    <p><strong>laravel/framework</strong> (PHP, 34,908 ★, +19 ดาว) และ <strong>filamentphp/filament</strong> (PHP, 32,038 ★, +72 ดาว) แอดมินพาเนลสำหรับ Laravel ยังคงเติบโตสม่ำเสมอ ฝั่งเครื่องมือ deploy/self-host มี <strong>coollabsio/coolify</strong> (PHP, 61,695 ★, +311 ดาว) PaaS ทางเลือกของ Vercel/Heroku/Netlify ที่โตเร็วกว่าเฟรมเวิร์กหลักในหมวดเดียวกัน ด้าน backend ฝั่ง Java มี <strong>quarkusio/quarkus</strong> (15,880 ★, +18 ดาว) และ <strong>alibaba/nacos</strong> (33,363 ★, +30 ดาว) เคลื่อนไหวระดับต่ำ</p>
+    <p><em>ไม่พบข้อมูลยืนยันการปล่อย release ใหม่ที่มีนัยสำคัญจาก React, Vue หรือ Angular ในกรอบเจ็ดวันนี้</em></p>
+  </section>
+
+  <section>
+    <h2>📱 Mobile</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Language</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/chen08209/FlClash">chen08209/FlClash</a></td><td>Dart</td><td>51,833</td><td>+938 ดาว</td></tr>
+          <tr><td><a href="https://github.com/KRTirtho/spotube">KRTirtho/spotube</a></td><td>Dart</td><td>49,091</td><td>+187 ดาว</td></tr>
+          <tr><td><a href="https://github.com/Predidit/Kazumi">Predidit/Kazumi</a></td><td>Dart</td><td>29,825</td><td>+277 ดาว</td></tr>
+          <tr><td><a href="https://github.com/ImranR98/Obtainium">ImranR98/Obtainium</a></td><td>Dart</td><td>19,623</td><td>+177 ดาว</td></tr>
+          <tr><td><a href="https://github.com/LiveContainer/LiveContainer">LiveContainer/LiveContainer</a></td><td>Swift</td><td>12,075</td><td>+210 ดาว</td></tr>
+          <tr><td><a href="https://github.com/termux/termux-app">termux/termux-app</a></td><td>Java</td><td>60,672</td><td>+383 ดาว</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>หมวดมือถือสัปดาห์นี้เคลื่อนไหวสม่ำเสมอโดยไม่มีเหตุการณ์เดี่ยวขนาดใหญ่ ส่วนใหญ่เป็นเครื่องมือ proxy/media ฝั่ง Dart (Flutter) ที่ยังคงเติบโตต่อเนื่องจากสัปดาห์ก่อนหน้า</p>
+  </section>
+
+  <section>
+    <h2>📦 New Releases</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Project</th><th>Version</th><th>Release Date</th><th>Highlights</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>CNCF / <a href="https://github.com/karmada-io/karmada">Karmada</a></td><td>Graduated Status</td><td>8 ก.ย. 2026</td><td>จบสถานะความเป็นผู้ใหญ่สูงสุดของ CNCF สำหรับ multi-cluster Kubernetes orchestration</td><td>CNCF Announcement</td></tr>
+          <tr><td>GitHub Actions</td><td>Windows 11 arm64 → VS2026</td><td>ประกาศ 3 ก.ย. 2026 (มีผล 21–30 ก.ย.)</td><td>ทยอยเปลี่ยน runner image เริ่มต้นเป็น Visual Studio 2026 อาจกระทบ workflow ที่พึ่งพา VS2022</td><td>GitHub Changelog</td></tr>
+          <tr><td>GitHub Copilot</td><td>Model Deprecations</td><td>มีผล 2 ต.ค. 2026</td><td>ยกเลิกโมเดลบางตัวใน chat, inline edits, ask/agent mode และ code completions</td><td>GitHub Changelog</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔥 Viral This Week</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars Growth</th><th>Fork Growth</th><th>เหตุผล</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></td><td>+10,571</td><td>ไม่ยืนยัน</td><td>คลัง Agent Skills จากผู้สร้างคอนเทนต์ด้านการเขียนโค้ดที่มีผู้ติดตามจำนวนมาก</td></tr>
+          <tr><td><a href="https://github.com/DietrichGebert/ponytail">DietrichGebert/ponytail</a></td><td>+11,054</td><td>ไม่ยืนยัน</td><td>Agent skill แนว "ทำให้ agent ขี้เกียจเหมือน senior dev" ได้รับความสนใจกว้างขวาง</td></tr>
+          <tr><td><a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></td><td>+13,164 (~31% ของฐาน)</td><td>ไม่ยืนยัน</td><td>Agent skill ปรับรูปแบบผลลัพธ์ให้กระชับ เป็นสัดส่วนการเติบโตต่อฐานสูงที่สุดในกลุ่ม Top Trending สัปดาห์นี้</td></tr>
+          <tr><td><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></td><td>+11,006</td><td>ไม่ยืนยัน</td><td>ยังคงเติบโตต่อเนื่องจากสัปดาห์ก่อน แม้อัตราจะชะลอลงจาก +21,896</td></tr>
+          <tr><td><a href="https://github.com/bilawalsidhu/gods-eye-view">bilawalsidhu/gods-eye-view</a></td><td>+8,916 (~32% ของฐาน)</td><td>ไม่ยืนยัน</td><td>เครื่องจำลอง spy satellite ในเบราว์เซอร์ ยังคงติด Trending ต่อเนื่องจากสัปดาห์ก่อน (+7,314)</td></tr>
+          <tr><td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td><td>+8,714</td><td>ไม่ยืนยัน</td><td>ระบบเพิ่มประสิทธิภาพ agent harness สำหรับ Claude Code/Codex/Cursor</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Fastest Growing Projects</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars</th><th>Growth</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/humanlayer/skills">humanlayer/skills</a></td><td>3,825</td><td>+1,637 (≈74%)</td><td>MCP / Agent Skills</td><td>GitHub Trending (TypeScript)</td></tr>
+          <tr><td><a href="https://github.com/magnitudedev/magnitude">magnitudedev/magnitude</a></td><td>4,360</td><td>+2,096 (≈48%)</td><td>Developer Tools / Local Inference</td><td>GitHub Trending (TypeScript)</td></tr>
+          <tr><td><a href="https://github.com/kunchenguid/firstmate">kunchenguid/firstmate</a></td><td>5,562</td><td>+757 (≈14%)</td><td>AI Agents</td><td>GitHub Trending (Shell)</td></tr>
+          <tr><td><a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></td><td>42,565</td><td>+13,164 (≈31%)</td><td>Agent Skills</td><td>GitHub Trending (Python)</td></tr>
+          <tr><td><a href="https://github.com/bilawalsidhu/gods-eye-view">bilawalsidhu/gods-eye-view</a></td><td>27,664</td><td>+8,916 (≈32%)</td><td>Geospatial / OSINT</td><td>GitHub Trending (JavaScript)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>💎 Hidden Gems</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/humanlayer/skills">humanlayer/skills</a></div>
+      <p><strong>จุดเด่น:</strong> คลัง skill ขนาดกะทัดรัดสำหรับสร้างส่วนติดต่อ (interface) ของ AI agent จากทีม HumanLayer<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ฐานเล็กมาก (3,825 ★) แต่โต +1,637 ดาวในสัปดาห์เดียว (~74% ของฐาน) สูงที่สุดในบรรดา repository ที่สำรวจ<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่สร้าง UI สำหรับ agent และต้องการชุด skill ที่ผ่านการทดสอบจากทีมที่มีประสบการณ์ตรง<br>
+      <strong>Source:</strong> GitHub Trending (TypeScript) + GitHub Repository</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/magnitudedev/magnitude">magnitudedev/magnitude</a></div>
+      <p><strong>จุดเด่น:</strong> local inference engine รันโมเดลบนฮาร์ดแวร์ที่มีอยู่แล้ว (Mac, NVIDIA/AMD GPU, CPU) เชื่อมกับ coding agent หลายตัวได้ทันที<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ฐาน 4,360 ★ แต่โต ~48% ในสัปดาห์เดียว เป็นสัดส่วนการเติบโตสูงสุดอันดับสองที่พบ<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ต้องการรัน coding agent แบบ local โดยไม่พึ่ง cloud API<br>
+      <strong>Source:</strong> GitHub Trending (TypeScript)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/mixelpixx/Konnect">mixelpixx/Konnect</a></div>
+      <p><strong>จุดเด่น:</strong> ปลั๊กอิน KiCAD ที่เปิดเผยเครื่องมือออกแบบ PCB กว่า 217 รายการให้ LLM ใช้งานผ่าน MCP<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ฐานเล็กมาก (627 ★) แต่เป็นตัวแทนของ "vertical agent tooling" ที่ขยายจากงานซอฟต์แวร์ไปสู่งานฮาร์ดแวร์/PCB ซึ่งยังพบได้น้อยมาก<br>
+      <strong>เหมาะกับใคร:</strong> วิศวกรอิเล็กทรอนิกส์ที่อยากทดลองใช้ AI agent ช่วยออกแบบวงจร<br>
+      <strong>Source:</strong> GitHub Trending (Rust)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/kunchenguid/firstmate">kunchenguid/firstmate</a></div>
+      <p><strong>จุดเด่น:</strong> เครื่องมือ "คุยกับ agent ตัวเดียว ส่งมอบงานด้วยทีม" (crew) สำหรับ workflow การพัฒนาซอฟต์แวร์<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ฐาน 5,562 ★ โต +757 ดาวในสัปดาห์เดียว (~14%) ท่ามกลาง repository ขนาดใหญ่ในหมวดเดียวกันที่ครองความสนใจส่วนใหญ่<br>
+      <strong>เหมาะกับใคร:</strong> ทีมพัฒนาที่ต้องการ orchestrate agent หลายบทบาทจากจุดสั่งการเดียว<br>
+      <strong>Source:</strong> GitHub Trending (Shell)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/vllm-project/semantic-router">vllm-project/semantic-router</a></div>
+      <p><strong>จุดเด่น:</strong> Mixture-of-Models router แบบ programmable สำหรับ LLM inference ที่ไม่เป็นเนื้อเดียวกัน จากทีม vLLM<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ฐาน 5,746 ★ ยังเล็กเมื่อเทียบกับชื่อเสียงของทีม vLLM ในวงการ inference engine ชี้ว่ายังมีพื้นที่เติบโตอีกมาก<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่รัน multi-model serving และต้องการ route คำขอตามความหมาย (semantic) แทนการตั้งกฎตายตัว<br>
+      <strong>Source:</strong> GitHub Trending (Go)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠 Developer Recommendations</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">ChromeDevTools/chrome-devtools-mcp</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ให้ coding agent เข้าถึงความสามารถของ Chrome DevTools โดยตรง (network, performance, inspect)<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนา frontend ที่ใช้ agent ช่วย debug เว็บแอป<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เป็น MCP server ทางการจากทีม Chrome DevTools โดยตรง ยังคงอัปเดตต่อเนื่อง<br>
+      GitHub: <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">github.com/ChromeDevTools/chrome-devtools-mcp</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/NVIDIA/SkillSpector">NVIDIA/SkillSpector</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> สแกน agent skill ก่อนติดตั้งเพื่อหา prompt injection, data exfiltration และความเสี่ยง supply-chain<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ติดตั้ง skill จากแหล่งภายนอกจำนวนมากในสภาพแวดล้อมองค์กร<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ตรงจังหวะความกังวลด้านความปลอดภัยของ Agent Skills ที่เพิ่มขึ้นในสัปดาห์นี้ จากผู้พัฒนาที่มีความน่าเชื่อถือสูง<br>
+      GitHub: <a href="https://github.com/NVIDIA/SkillSpector">github.com/NVIDIA/SkillSpector</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/rtk-ai/rtk">rtk-ai/rtk</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> CLI proxy ที่ลดการใช้ token ของ LLM ลง 60–90% สำหรับคำสั่ง dev ทั่วไป<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ใช้ coding agent หนักและต้องการควบคุมค่าใช้จ่าย token<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (Rust binary เดียว ไม่มี dependency)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ฐานผู้ใช้ใหญ่และยังคงเติบโตต่อเนื่อง เป้าหมายชัดเจนและวัดผลได้<br>
+      GitHub: <a href="https://github.com/rtk-ai/rtk">github.com/rtk-ai/rtk</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/browser-use/browser-use">browser-use/browser-use</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ให้ AI agent ควบคุมเบราว์เซอร์เพื่อทำงานอัตโนมัติ เช่น กรอกฟอร์ม ค้นหาข้อมูล<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่สร้าง workflow automation ที่ต้องโต้ตอบกับเว็บไซต์<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ฐานผู้ใช้ใหญ่ (114,289 ★) เอกสารครบและมีชุมชนสนับสนุนกว้างขวาง<br>
+      GitHub: <a href="https://github.com/browser-use/browser-use">github.com/browser-use/browser-use</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/magnitudedev/magnitude">magnitudedev/magnitude</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> รัน local inference server สำหรับ coding agent บนฮาร์ดแวร์ที่มีอยู่แล้ว<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่กังวลเรื่องความเป็นส่วนตัวของโค้ดหรือต้องการลดค่าใช้จ่าย API<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง<br>
+      <strong>เหตุผลที่แนะนำ:</strong> โตเร็วมากในสัปดาห์เดียว (~48%) และรองรับ agent หลายตัว (Claude Code, Codex, OpenCode)<br>
+      GitHub: <a href="https://github.com/magnitudedev/magnitude">github.com/magnitudedev/magnitude</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/vxcontrol/pentagi">vxcontrol/pentagi</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ระบบ AI agent อัตโนมัติสำหรับงาน penetration testing<br>
+      <strong>เหมาะกับใคร:</strong> ทีม security ที่ต้องการทดสอบเจาะระบบแบบอัตโนมัติในสภาพแวดล้อมที่ได้รับอนุญาต<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลางถึงยาก (ต้อง self-host และตั้งค่า)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เอกสารครบ ใช้งานได้จริง และเติบโตต่อเนื่อง<br>
+      GitHub: <a href="https://github.com/vxcontrol/pentagi">github.com/vxcontrol/pentagi</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/ajeetdsouza/zoxide">ajeetdsouza/zoxide</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> คำสั่ง cd อัจฉริยะที่จดจำโฟลเดอร์ที่ใช้บ่อย รองรับทุก shell หลัก<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาทุกคนที่ใช้เทอร์มินัลเป็นประจำ<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่ายมาก<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เสถียรมายาวนาน เบา และยังคงพัฒนาต่อเนื่อง<br>
+      GitHub: <a href="https://github.com/ajeetdsouza/zoxide">github.com/ajeetdsouza/zoxide</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Company Adoption</h2>
+
+    <div class="card">
+      <div class="card-title">CNCF / Linux Foundation</div>
+      <p>ประกาศให้ <a href="https://github.com/karmada-io/karmada">Karmada</a> จบสถานะ Graduated เมื่อ 8 ก.ย. 2026 เป็นระดับความเป็นผู้ใหญ่สูงสุดของ CNCF สำหรับโครงการ multi-cluster Kubernetes orchestration</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">OpenAI</div>
+      <p>เผยแพร่ทั้ง <a href="https://github.com/openai/skills">openai/skills</a> (Skills Catalog สำหรับ Codex, +1,532 ดาว) และ <a href="https://github.com/openai/plugins">openai/plugins</a> (+1,063 ดาว) พร้อมกันในสัปดาห์เดียว เป็นสัญญาณว่า OpenAI กำลังลงทุนสร้างระบบนิเวศ skill/plugin ของตัวเองแข่งกับผู้ให้บริการ agent รายอื่น</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">NVIDIA</div>
+      <p>เผยแพร่ <a href="https://github.com/NVIDIA/SkillSpector">SkillSpector</a> เครื่องมือสแกนความปลอดภัยสำหรับ agent skill โดยเฉพาะ สอดคล้องกับความกังวลด้านความปลอดภัยของ Agent Skills ที่เพิ่มขึ้นในสัปดาห์นี้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Google (ทีม Chrome DevTools)</div>
+      <p><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">chrome-devtools-mcp</a> ยังคงเติบโตต่อเนื่องเป็นสัปดาห์ที่สอง (+804 ดาว) ยืนยันการลงทุนต่อเนื่องด้าน MCP ของทีมโครงสร้างพื้นฐาน Chrome</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tencent</div>
+      <p><a href="https://github.com/Tencent/WeKnora">WeKnora</a> แพลตฟอร์มความรู้ LLM แบบโอเพนซอร์ส ยังคงเติบโตต่อเนื่อง (+964 ดาว) เป็นส่วนหนึ่งของกลุ่มโครงการ AI/RAG ที่ Tencent เผยแพร่ต่อเนื่องหลายสัปดาห์</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">AWS</div>
+      <p>เผยแพร่ <a href="https://github.com/awslabs/aidlc-workflows">awslabs/aidlc-workflows</a> (+217 ดาว) กฎการปรับตัว (adaptive workflow steering rules) สำหรับ AI coding agent ตาม AI-Driven Life Cycle</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>⚠️ Breaking Changes</h2>
+
+    <div class="card">
+      <div class="card-title">GitHub Actions — Windows 11 arm64 runner image</div>
+      <p><strong>Migration Guide:</strong> เริ่มทยอยเปลี่ยนค่าเริ่มต้นของ runner image เป็น Visual Studio 2026 ตั้งแต่ 21 ก.ย. 2026 และเสร็จสิ้นภายใน 30 ก.ย. 2026 <strong>Breaking Changes:</strong> workflow ที่พึ่งพา Visual Studio 2022 อาจล้มเหลว <strong>วิธีทดสอบล่วงหน้า:</strong> เปลี่ยน <code>runs-on:</code> เป็น <code>windows-11-vs2026-arm</code> ก่อนวันที่มีผลจริง (ที่มา: GitHub Changelog, 3 ก.ย. 2026)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">GitHub Copilot — Model Deprecations</div>
+      <p><strong>Deprecated Features:</strong> ยกเลิกการรองรับโมเดลบางตัวใน chat, inline edits, ask/agent mode และ code completions มีผล 2 ต.ค. 2026 <strong>API Changes:</strong> กระทบการเข้าถึงโมเดลระดับ Team-plan สำหรับผู้ใช้ที่อยู่หลายองค์กร รวมถึงการหมดอายุของ budget รายบุคคลและ Copilot code-review approvals <strong>Migration Guide:</strong> ผู้ดูแลระบบควรอัปเดต workflow และการเชื่อมต่อให้ใช้โมเดลที่รองรับก่อนวันที่มีผล (ที่มา: GitHub Changelog)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Top Categories</h2>
+    <p>จัดอันดับจากจำนวนโครงการที่โดดเด่น ปริมาณการเติบโต และแรงสนใจของชุมชนในสัปดาห์นี้</p>
+    <ol>
+      <li><strong>AI Agents &amp; Agent Skills</strong> — superpowers, mattpocock/skills, ECC, hermes-agent, ponytail, caveman, i-have-adhd, diagram-design ครองอันดับดาวเพิ่มสูงสุดของสัปดาห์อย่างท่วมท้น</li>
+      <li><strong>MCP</strong> — chrome-devtools-mcp, semantic-router, humanlayer/skills เติบโตต่อเนื่องในระดับ server/tooling เฉพาะทาง</li>
+      <li><strong>Security</strong> — ช่องโหว่ core.fsmonitor ในหลาย AI coding agent เป็นข่าวเดี่ยวที่สำคัญที่สุดของหมวดนี้ ประกอบกับ SkillSpector และ pentagi ที่เติบโตต่อเนื่อง</li>
+      <li><strong>Cloud Native</strong> — การประกาศ CNCF Graduated ของ Karmada เป็นเหตุการณ์เดี่ยวที่โดดเด่นที่สุดของหมวดนี้</li>
+      <li><strong>AI / LLM</strong> — VoiceStudio, minimind, OmniVoice, browser-use ยังคงมีแรงส่งจากความสนใจด้านเสียง AI และ browser automation</li>
+      <li><strong>Developer Tools &amp; CLI</strong> — rtk, context-mode, magnitude, cockpit-tools</li>
+      <li><strong>Mobile</strong> — FlClash, spotube, Kazumi เติบโตสม่ำเสมอ</li>
+      <li><strong>Database</strong> — ไม่มีโครงการเด่นในสัปดาห์นี้</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-num">48</div><div class="stat-label">Repository ที่รายงานครอบคลุม</div></div>
+      <div class="stat-tile"><div class="stat-num">3</div><div class="stat-label">รายการ Release/ประกาศสำคัญในกรอบ 7 วัน</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">AI / LLM Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">4</div><div class="stat-label">MCP Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">12</div><div class="stat-label">Agent Skills Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">6</div><div class="stat-label">CLI / Dev Tools Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">3</div><div class="stat-label">Cloud / DevOps Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">4</div><div class="stat-label">Security Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Hidden Gems</div></div>
+      <div class="stat-tile"><div class="stat-num">2</div><div class="stat-label">Breaking Releases ที่ยืนยันได้</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>เหตุผล</th><th>สิ่งที่ต้องติดตาม</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>ช่องโหว่ core.fsmonitor</td><td>4 ประเด็นยังไม่ได้รับการแก้ไข ณ 1 ก.ย. 2026 ตามรายงาน</td><td>Patch จาก Cursor, Anthropic และผู้ให้บริการ agent อื่นที่ได้รับผลกระทบ</td><td>Security Advisories (ยืนยันเพิ่มเติมได้ที่หน้า Security ของแต่ละผลิตภัณฑ์)</td></tr>
+          <tr><td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a> และ <a href="https://github.com/obra/superpowers">obra/superpowers</a></td><td>อัตราการเติบโตของดาวสูงมากเมื่อเทียบกับอายุ repository</td><td>อัตราการเติบโตในสัปดาห์ถัดไปและสัดส่วน fork/issue ที่ผิดปกติ เพื่อยืนยันว่าเป็นการเติบโตแบบอินทรีย์</td><td>GitHub Repository</td></tr>
+          <tr><td>Agent Skills Ecosystem</td><td>OpenAI, Anthropic ecosystem และนักพัฒนาอิสระต่างสร้างคลัง skill แข่งกันโดยไม่มีมาตรฐานร่วม</td><td>มาตรฐานกลางสำหรับ skill format ข้ามผู้ให้บริการ agent หากมีการประกาศ</td><td>GitHub Trending</td></tr>
+          <tr><td>GitHub Copilot Model Deprecation</td><td>มีผล 2 ต.ค. 2026</td><td>ผลกระทบต่อทีมที่ยังไม่ได้ย้ายไปใช้โมเดลที่รองรับ</td><td><a href="https://github.blog/changelog/">GitHub Changelog</a></td></tr>
+          <tr><td>CNCF Kubeflow</td><td>พบการอ้างอิงว่าได้ Graduated เช่นกันแต่ยืนยันวันที่แน่นอนไม่ได้ในรอบนี้</td><td>ประกาศทางการจาก CNCF เพื่อยืนยันวันที่และรายละเอียด</td><td><a href="https://www.cncf.io/announcements/">CNCF Announcements</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+
+    <h3>GitHub</h3>
+    <ul>
+      <li><a href="https://github.com/trending?since=weekly">GitHub Trending — Weekly</a> และหน้าแยกตามภาษา (<a href="https://github.com/trending/python?since=weekly">Python</a>, <a href="https://github.com/trending/typescript?since=weekly">TypeScript</a>, <a href="https://github.com/trending/go?since=weekly">Go</a>, <a href="https://github.com/trending/rust?since=weekly">Rust</a>, <a href="https://github.com/trending/java?since=weekly">Java</a>, <a href="https://github.com/trending/php?since=weekly">PHP</a>, <a href="https://github.com/trending/c%2B%2B?since=weekly">C++</a>, <a href="https://github.com/trending/shell?since=weekly">Shell</a>, <a href="https://github.com/trending/dart?since=weekly">Dart</a>, <a href="https://github.com/trending/swift?since=weekly">Swift</a>)</li>
+      <li>GitHub Repository API (ยืนยันตัวเลข stars, forks, license, วันที่สร้าง repository ซ้ำสำหรับทุก repository หลักที่อ้างอิงในรายงานนี้)</li>
+      <li><a href="https://github.blog/changelog/2026-09-03-github-actions-early-september-2026-updates/">GitHub Actions: Early September 2026 updates</a></li>
+    </ul>
+
+    <h3>Official Documentation</h3>
+    <ul>
+      <li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">Model Context Protocol Blog — 2026-07-28 Specification</a></li>
+      <li>CNCF Karmada Graduation Announcement (เข้าถึงผ่านผลค้นหาเนื่องจากโดเมน cncf.io ถูกบล็อกโดยตรง — ดูหมายเหตุข้อจำกัดของข้อมูล)</li>
+    </ul>
+
+    <h3>Community (Trend Only)</h3>
+    <ul>
+      <li>WebSearch สำหรับตรวจสอบข่าวความปลอดภัย (ช่องโหว่ core.fsmonitor), การประกาศของ CNCF และบริบทเสริมอื่น ๆ เนื่องจากบางโดเมนเข้าถึงไม่ได้โดยตรง</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>⚠️ ข้อจำกัดของข้อมูล</h2>
+    <div class="note-box">
+      <p><strong>UNCERTAIN — โดเมนที่เข้าถึงไม่ได้หลังลองซ้ำ:</strong> <code>thehackernews.com</code>, <code>www.cncf.io</code> และ <code>www.prnewswire.com</code> ถูกบล็อกโดย network egress proxy ในเซสชันนี้ทุกครั้งที่ลอง จึงไม่สามารถอ่านเนื้อหาฉบับเต็มของข่าวช่องโหว่ core.fsmonitor และประกาศ CNCF Karmada Graduation โดยตรงได้ ใช้ WebSearch ทดแทนซึ่งให้ผลลัพธ์เพียงพอสำหรับยืนยันข้อเท็จจริงหลัก (วันที่ หมายเลข CVE ชื่อโครงการ) แต่ไม่สามารถอ่านรายละเอียดทางเทคนิคแบบเต็มรูปแบบได้ครบถ้วน</p>
+      <p><strong>ตัวเลขการเติบโตของดาว:</strong> มาจาก snapshot ของหน้า GitHub Trending ไม่ใช่ค่าที่คำนวณจาก API โดยตรง ในบางกรณีตัวเลข "stars this week" จากหน้า Trending กับส่วนต่างของยอดรวมที่ยืนยันผ่าน API มีความคลาดเคลื่อนเล็กน้อย (เช่น <code>magnitudedev/magnitude</code>) จึงควรตีความเป็นค่าประมาณ ตัวเลขการเติบโตของ fork ในตาราง "Viral This Week" ไม่สามารถยืนยันได้จากแหล่งที่ใช้ในรายงานนี้ จึงระบุเป็น "ไม่ยืนยัน" ทั้งหมด</p>
+      <p><strong>ความน่าเชื่อถือของตัวเลขดาวในหมวด Agent Skills:</strong> repository หลายรายการในหมวด Agent Skills (เช่น <code>affaan-m/ECC</code>, <code>obra/superpowers</code>, <code>NousResearch/hermes-agent</code>, <code>mattpocock/skills</code>) มีจำนวนดาวสะสมระดับหลักแสนภายในเวลาไม่ถึง 1 ปี พร้อมสัดส่วน fork ต่อ star และ/หรือจำนวน open issues ที่สูงผิดปกติเมื่อเทียบกับ repository ทั่วไปในขนาดเดียวกัน (ตรวจสอบผ่าน GitHub Repository API โดยตรง) รายงานนี้แสดงตัวเลขตามที่ปรากฏจริงและไม่ได้ยืนยันหรือปฏิเสธว่ามีการปั่นดาว (star manipulation) แต่ขอให้ผู้อ่านตีความอัตราการเติบโตดังกล่าวด้วยความระมัดระวังเป็นพิเศษ</p>
+      <p><strong>รายการที่งดนำเสนอเนื่องจากข้อมูลไม่ครบหรือขัดแย้งกัน:</strong> ข่าว CNCF Kubeflow Graduated พบจากแหล่งข่าวรองเท่านั้น ไม่สามารถยืนยันวันที่แน่นอนจาก cncf.io โดยตรงได้ในรอบการค้นคว้านี้ จึงกล่าวถึงเพียงสั้น ๆ ในหมวด Watch List แทนการนำเสนอเป็นข่าวยืนยัน · หมวด Data Engineering, Edge Computing และ Robotics ไม่พบหลักฐานระดับ Tier 1 (GitHub Trending) ของกิจกรรมใหม่ในกรอบ 6–12 ก.ย. 2026 จึงงดแสดงเป็นหมวดแยกในรายงานฉบับนี้</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏷 Labels</h2>
+    <div class="legend-grid">
+      <div><span>✅</span><span>Official</span></div>
+      <div><span>⭐</span><span>Trending</span></div>
+      <div><span>🚀</span><span>Fast Growing</span></div>
+      <div><span>🔥</span><span>Viral</span></div>
+      <div><span>🤖</span><span>AI</span></div>
+      <div><span>🧠</span><span>MCP / Agent</span></div>
+      <div><span>☁️</span><span>Cloud Native</span></div>
+      <div><span>🔒</span><span>Security</span></div>
+      <div><span>📦</span><span>New Release</span></div>
+      <div><span>⚠️</span><span>Breaking Change</span></div>
+      <div><span>💎</span><span>Hidden Gem</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🧭 สรุปแนวโน้ม Open Source Ecosystem</h2>
+    <p><strong>หนึ่ง — "Agent Skills" ไม่ใช่กระแสชั่วคราว แต่กำลังกลายเป็นสนามแข่งขันระดับแพลตฟอร์ม</strong> สัปดาห์นี้ทั้ง OpenAI (openai/skills, openai/plugins), นักพัฒนาอิสระที่มีชื่อเสียง (mattpocock, obra) และทีมองค์กร (humanlayer) ต่างเผยแพร่คลัง skill ของตัวเองพร้อมกัน สะท้อนว่าตลาดกำลังมองหา "ชุดความรู้สำเร็จรูป" ป้อนให้ agent มากกว่าสร้าง framework ใหม่ และผู้ให้บริการ agent รายใหญ่เริ่มแข่งขันสร้างระบบนิเวศ skill ของตัวเองอย่างจริงจัง</p>
+
+    <p><strong>สอง — ความปลอดภัยของ AI coding agent กลายเป็นประเด็นเร่งด่วนระดับอุตสาหกรรม</strong> ช่องโหว่ core.fsmonitor ที่กระทบ agent อย่างน้อย 7 ตัวพร้อมกัน (รวมถึง Cursor ที่ได้ CVSS สูงถึง 9.9) และการที่ NVIDIA เปิดตัวเครื่องมือสแกนความปลอดภัย skill โดยเฉพาะในสัปดาห์เดียวกัน ชี้ว่าวงการกำลังตระหนักว่าความสะดวกของ agent ที่รันคำสั่งอัตโนมัติมาพร้อมกับพื้นผิวการโจมตีใหม่ที่ต้องจัดการอย่างเป็นระบบ</p>
+
+    <p><strong>สาม — โครงสร้างพื้นฐานระดับองค์กรยังคงเดินหน้าอย่างมั่นคงแม้ไม่หวือหวา</strong> การที่ Karmada ได้รับสถานะ Graduated จาก CNCF อย่างเป็นทางการ แสดงว่าวงการ Cloud Native ยังคงให้ความสำคัญกับกระบวนการตรวจสอบและธรรมาภิบาลที่เข้มงวด แตกต่างจากความเร็วของกระแส AI ที่วัดกันด้วยตัวเลขดาวรายวัน</p>
+
+    <p><strong>สี่ — ควรอ่านตัวเลข GitHub Trending ในหมวด Agent Skills ด้วยความระมัดระวังเป็นพิเศษ</strong> อัตราการเติบโตที่สูงผิดปกติของหลาย repository ในหมวดนี้ (สะสมดาวหลักแสนภายในไม่ถึงปี พร้อมสัดส่วน fork/issue ที่ผิดปกติ) ยังไม่มีคำอธิบายเชิงเหตุการณ์ที่ยืนยันได้ชัดเจนจากแหล่งข้อมูลที่ใช้ในรายงานนี้ ผู้อ่านควรตีความเป็นสัญญาณความสนใจของตลาด ไม่ใช่ตัวชี้วัดคุณภาพหรือความยั่งยืนของโครงการโดยตรง</p>
+
+    <p><strong>เทคโนโลยีที่ควรจับตาในสัปดาห์หน้า</strong> ได้แก่ ความคืบหน้าของการแก้ไขช่องโหว่ core.fsmonitor ในผลิตภัณฑ์ที่ยังไม่ได้รับการแก้ไข ณ 1 ก.ย. 2026, อัตราการเติบโตต่อเนื่องของ repository กลุ่ม Agent Skills ว่าจะยั่งยืนหรือชะลอตัวลงคล้ายกับ archify, ผลกระทบจริงของ GitHub Copilot Model Deprecations ที่มีผล 2 ต.ค. 2026 ต่อทีมพัฒนาที่ใช้งานอยู่ และการยืนยันอย่างเป็นทางการของสถานะ Kubeflow บน CNCF หากมีการประกาศเพิ่มเติม</p>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly GitHub Trending Open Source Report · Week 37, 2026</p>
+    <p>ข้อมูลรวบรวมระหว่าง 6 – 12 ก.ย. 2026 (ICT) · <a href="index.html">Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>
