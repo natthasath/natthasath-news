@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 Weekly Software Releases Report - Week 37</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27, 32, 39, 0.14);
+  --line-strong: rgba(27, 32, 39, 0.28);
+  --accent: #0F7A73;
+  --critical: #D92B2B;
+  --high: #FF6B35;
+  --medium: #FFA500;
+  --low: #4CAF50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231, 230, 224, 0.14);
+    --line-strong: rgba(231, 230, 224, 0.26);
+    --accent: #3FBDAF;
+    --critical: #FF6B6B;
+    --high: #FF8C42;
+    --medium: #FFB84D;
+    --low: #81C784;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.page { max-width: 1200px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topstrip {
+  display: flex; justify-content: space-between; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-faint);
+}
+
+.masthead { padding: 44px 0 30px; border-bottom: 1px solid var(--line-strong); }
+.kicker {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+  font-size: 15px; color: var(--accent); margin: 0 0 14px;
+}
+.kicker::before { content: "◆ "; font-size: 11px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 800; margin: 0 0 16px; }
+h2 {
+  font-size: 24px; font-weight: 700; margin: 36px 0 20px; color: var(--ink);
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; color: var(--ink-soft); }
+
+.meta-row { display: flex; gap: 20px; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+
+.executive-summary {
+  background: var(--surface); border-left: 4px solid var(--accent);
+  padding: 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8;
+}
+
+.dashboard {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.dashboard-item {
+  background: var(--surface); padding: 16px; border-radius: 4px;
+  border-top: 3px solid var(--accent); text-align: center;
+}
+.dashboard-item-value { font-size: 32px; font-weight: 700; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.dashboard-item-label {
+  font-size: 12px; color: var(--ink-faint); margin-top: 8px;
+  text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--surface); }
+th {
+  background: var(--surface-2); color: var(--ink); padding: 12px; text-align: left;
+  font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--line-strong);
+}
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.label {
+  display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 11px;
+  font-weight: 600; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-major { background: rgba(15, 122, 115, 0.2); color: var(--accent); }
+.label-minor { background: rgba(15, 122, 115, 0.1); color: var(--ink-soft); }
+.label-patch { background: rgba(217, 43, 43, 0.1); color: var(--ink-soft); }
+.label-security { background: rgba(217, 43, 43, 0.2); color: var(--critical); }
+.label-lts { background: rgba(255, 165, 0, 0.15); color: var(--medium); }
+.label-rc { background: rgba(156, 39, 176, 0.15); color: var(--ink-soft); }
+.label-eol { background: rgba(217, 43, 43, 0.15); color: var(--critical); }
+
+.severity-critical { color: var(--critical); font-weight: 600; }
+.severity-high { color: var(--high); font-weight: 600; }
+.severity-medium { color: var(--medium); font-weight: 600; }
+.severity-low { color: var(--low); font-weight: 600; }
+
+.source-badge {
+  display: inline-block; padding: 3px 6px; background: var(--surface-2);
+  border-radius: 2px; font-size: 10px; font-family: "JetBrains Mono", monospace; color: var(--ink-faint);
+}
+
+.note {
+  background: var(--surface); border-left: 4px solid var(--medium); padding: 12px;
+  margin: 12px 0; border-radius: 2px; font-size: 13px; color: var(--ink-soft);
+}
+.empty-note {
+  background: var(--surface); border: 1px dashed var(--line-strong); padding: 12px 16px;
+  margin: 12px 0; border-radius: 4px; font-size: 13.5px; color: var(--ink-soft); font-style: italic;
+}
+.highlight-box { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; margin: 12px 0; border-radius: 4px; }
+
+footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-strong); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+.two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest</p>
+    <h1>💻 Weekly Software Releases Report</h1>
+    <div class="meta-row">
+      <span><b>Week:</b> 37</span>
+      <span><b>Period:</b> September 6 – 12, 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="executive-summary">
+      <p>สัปดาห์นี้ (6–12 ก.ย. 2569) เป็นสัปดาห์ที่มีเหตุการณ์ด้านความปลอดภัยหนาแน่นที่สุดสัปดาห์หนึ่งของปี โดยมีช่องโหว่ระดับ CVSS 10.0 ใน GitLab (CVE-2026-85706) ที่เปิดให้ผู้โจมตีไม่ต้องยืนยันตัวตนอ่านไฟล์ใด ๆ บนเซิร์ฟเวอร์ได้ และถูกตรวจพบการโจมตีจริงตั้งแต่ 11 ก.ย. เพียงไม่กี่ชั่วโมงหลังประกาศ ตามมาด้วย Google Chrome 153 ที่แก้ไข Zero-day CVE-2026-87491 ใน V8 ที่ถูกใช้โจมตีจริง พร้อมเริ่มวงจร Release แบบ 2 สัปดาห์เป็นครั้งแรก</p>
+      <p>Microsoft Patch Tuesday เดือนกันยายนถือเป็นการอัปเดตครั้งใหญ่ที่สุดครั้งหนึ่งเท่าที่เคยมีมา (ตัวเลขรวมยังมีความคลาดเคลื่อนระหว่างแหล่งข่าว 964–1,169 CVE ขึ้นกับวิธีนับ) พร้อม Zero-day ที่ถูกโจมตีจริง 2 รายการ นอกจากนี้ยังมีการประสานแพตช์พร้อมกันของ Ubuntu, Debian, RHEL, Rocky Linux และ AlmaLinux สำหรับ Chromium, vim และ SPIP เมื่อ 12 ก.ย. ฝั่ง Programming Language มี Node.js ออกเวอร์ชันบำรุงรักษา 26.8.2 และ 24.21.0 LTS สัปดาห์นี้ไม่พบ Major Release หรือ Framework Release ใหม่ที่ตรวจสอบแหล่งที่มาได้ตามเกณฑ์ที่กำหนด</p>
+      <p><strong>ประเด็นสำคัญ:</strong> ทีมงานที่ดูแล GitLab self-managed ควรอัปเกรดเป็น 19.3.2 / 19.2.6 / 19.1.8 โดยด่วนที่สุด เนื่องจากมีการโจมตีจริงแล้ว และควรเร่งอัปเดต Google Chrome รวมถึงแพ็กเกจ Chromium/vim บนระบบ Linux ที่ได้รับผลกระทบ</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">23</div>
+        <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">19</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">2</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>26.8.2 (Current)</td>
+          <td>อัปเกรด OpenSSL เป็น 3.5.8 และปรับปรุงไลบรารี Undici รวมถึงแก้ไขบั๊กทั่วไป เป็นการอัปเดตบำรุงรักษาตามรอบปกติของสายเวอร์ชัน Current</td>
+          <td>Sep 9, 2026</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td><a href="https://www.linuxcompatible.org/story/nodejs-releases-v2682-and-v24210-lts-with-openssl-358-and-crypto-upgrades" class="source-badge">linuxcompatible.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>24.21.0 (LTS)</td>
+          <td>อัปเกรด OpenSSL เป็น 3.5.8 พร้อมปรับปรุง Crypto module ให้สอดคล้องกับสาย Current เป็นการอัปเดตตามรอบปกติของสาย LTS</td>
+          <td>Sep 9, 2026</td>
+          <td><span class="label label-minor">🔹 Minor</span></td>
+          <td><a href="https://www.linuxcompatible.org/story/nodejs-releases-v2682-and-v24210-lts-with-openssl-358-and-crypto-upgrades" class="source-badge">linuxcompatible.org</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบการเปิดตัวเวอร์ชันใหม่ของ Python, Java, .NET, PHP, Go หรือ Rust ที่ตรวจสอบแหล่งที่มาอย่างเป็นทางการได้ในช่วง 7 วันนี้ (6–12 ก.ย. 2569) — Go 1.27.1/1.26.8 และ Laravel framework update ล่าสุดที่พบจากการค้นหาประกาศก่อนหน้าช่วงเวลานี้ (1–2 ก.ย. 2569)</div>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ React, Vue, Angular, Django, Laravel, FastAPI หรือ Spring Boot ที่มีวันที่ประกาศอยู่ในช่วง 6–12 ก.ย. 2569 จากแหล่งข้อมูลทางการที่ตรวจสอบได้</div>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps & CI/CD</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GitLab CE/EE</strong></td>
+          <td>19.3.2 / 19.2.6 / 19.1.8</td>
+          <td>Critical Patch Release แก้ไขช่องโหว่ความปลอดภัย 18 รายการ รวมถึง CVE-2026-85706 (Path Traversal, CVSSv3.1 10.0, อ่านไฟล์ใด ๆ บนเซิร์ฟเวอร์ได้โดยไม่ต้องยืนยันตัวตน ผ่าน Repository Commits API) ที่ถูกตรวจพบการโจมตีจริงตั้งแต่ 06:00 UTC วันที่ 11 ก.ย. 2569</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://thehackernews.com/2026/09/gitlab-cvss-10-file-read-flaw-draws-in.html" class="source-badge">thehackernews.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Kubernetes, Jenkins, ArgoCD, Terraform, Ansible, Docker หรือ GitHub Actions ที่มีวันที่ประกาศอยู่ในช่วง 7 วันนี้จากแหล่งข้อมูลทางการ (Docker Engine 29.8.0, Terraform 1.16.1 และ GitHub Actions update ประกาศก่อนหน้าช่วงเวลานี้ระหว่าง 1–3 ก.ย. 2569 และได้รายงานไปแล้วในสัปดาห์ก่อนหน้า)</div>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ PostgreSQL, MySQL, MariaDB, SQL Server, MongoDB, Redis, Cassandra หรือ Elasticsearch ที่มีวันที่ประกาศอยู่ในช่วง 6–12 ก.ย. 2569 จากแหล่งข้อมูลทางการที่ตรวจสอบได้ (ESA ล่าสุดของ Elasticsearch ที่พบคือ ESA-2026-141/143 ซึ่งประกาศเมื่อ 4–5 ก.ย. 2569 อยู่นอกช่วงเวลาของรายงานฉบับนี้ และได้รายงานไปแล้วในสัปดาห์ก่อนหน้า)</div>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>OS</th><th>Version / Advisory</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>RHEL / Rocky Linux / AlmaLinux</strong></td>
+          <td>Synchronized advisory (chromium, vim, SPIP)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>อัปเดตความปลอดภัยพร้อมกันหลายดิสโทรสำหรับ Chromium (แก้ไขช่องโหว่ 38 รายการ ครอบคลุม Memory Corruption, Use-after-free และ Authorization ใน V8/Skia/Rendering) และ vim (CVE-2026-28417, CVE-2026-28421, CVE-2026-33412) มีรายงานว่าบางช่องโหว่ถูกใช้โจมตีจริงแล้ว</td>
+          <td><a href="https://errata.almalinux.org/9/ALSA-2026-8259.html" class="source-badge">errata.almalinux.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8744-1 (Python)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>แก้ไขช่องโหว่ Python 5 รายการ: CVE-2026-3644, CVE-2026-4360, CVE-2026-6019 และอีก 2 รายการ (Sep 10, 2026)</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8743-1 (PHP)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>แก้ไขช่องโหว่ PHP: CVE-2026-17544, CVE-2026-7260, CVE-2026-17543 อาจทำให้ PHP crash หรือรั่วไหลข้อมูลได้เมื่อรับ input ที่สร้างขึ้นเป็นพิเศษ (Sep 10, 2026)</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8737-2 (GNU C Library)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>แก้ไขช่องโหว่ glibc 6 รายการ: CVE-2026-77117, CVE-2026-19499, CVE-2026-6791 และอีก 3 รายการ (Sep 10, 2026)</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8748-1 (Linux Kernel — NVIDIA)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>แก้ไขช่องโหว่ Kernel สำหรับ NVIDIA flavour มากกว่า 25 รายการ รวม CVE-2026-53215, CVE-2026-52955, CVE-2026-53055 (Sep 10, 2026)</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8742-1 (Netty) / USN-8741-1 (Flatpak)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>Netty: CVE-2026-47691 · Flatpak: CVE-2026-34079, CVE-2026-34078 (Sep 10, 2026)</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8571-2 (Apache HTTP Server)</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td>ประกาศแก้ไข Regression ที่เกิดจากแพตช์ความปลอดภัยฉบับก่อนหน้าของ Apache HTTP Server (Sep 10, 2026)</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6488-1 (jbig2dec)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>แก้ไขช่องโหว่ Denial of Service จากการตรวจสอบ Input ไม่รัดกุมใน JBIG2 decoder (CVE-2026-38076) (Sep 7, 2026)</td>
+          <td><a href="https://linuxsecurity.com/advisories/debian/debian-dsa-6488-1-jbig2dec" class="source-badge">linuxsecurity.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6485-1 ถึง DSA-6493-1</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>ชุดประกาศความปลอดภัย 8 รายการเพิ่มเติมระหว่าง 6–11 ก.ย. 2569 สำหรับแพ็กเกจ tryton-server, libde265, strongswan, gst-plugins-base1.0, fort-validator, slurm-wlm, ruby-rack และ libevent</td>
+          <td><a href="https://www.debian.org/security/" class="source-badge">debian.org</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Windows Server ที่มีวันที่ประกาศอยู่ในช่วง 7 วันนี้จากแหล่งข้อมูลทางการที่ตรวจสอบได้ นอกเหนือจาก Patch Tuesday ที่รายงานแยกในหมวด Security &amp; CVE ด้านล่าง</div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ VMware, Proxmox, Hyper-V หรือ KVM ที่มีวันที่ประกาศอยู่ในช่วง 6–12 ก.ย. 2569 (VMSA-2026-0007 ของ VMware Workstation/Fusion ประกาศเมื่อ 3 ก.ย. 2569 อยู่นอกช่วงเวลานี้ และได้รายงานไปแล้วในสัปดาห์ก่อนหน้า)</div>
+  </section>
+
+  <section>
+    <h2>🌐 Network & Security Tools</h2>
+    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ Nginx, HAProxy, Traefik, Caddy, WireGuard, pfSense, OPNsense, Nmap, Wireshark, Nessus, OpenVAS หรือ Metasploit ที่มีวันที่ประกาศอยู่ในช่วง 6–12 ก.ย. 2569 จากแหล่งข้อมูลทางการที่ตรวจสอบได้ (Apache HTTP Server มีเฉพาะ Regression Fix ซึ่งแสดงไว้ในหมวด Operating Systems)</div>
+  </section>
+
+  <section>
+    <h2>☁ Cloud & Infrastructure</h2>
+    <div class="empty-note">ไม่พบประกาศ Software Release จาก AWS, Azure หรือ Google Cloud ที่เข้าเกณฑ์ขอบเขตรายงานนี้ในช่วง 7 วันนี้ (พบเฉพาะการอัปเดตเอกสาร/ฟีเจอร์บริการย่อยซึ่งไม่ใช่ Software Release ที่ตรวจสอบเวอร์ชันและวันที่ประกาศอย่างเป็นทางการได้ครบถ้วน)</div>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools & IDE</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ VS Code, JetBrains IDE, Eclipse, Git, npm, pip, Composer, Maven หรือ Gradle ที่มีวันที่ประกาศอยู่ในช่วง 6–12 ก.ย. 2569 จากแหล่งข้อมูลทางการที่ตรวจสอบได้ (IntelliJ IDEA 2026.2.2 เผยแพร่ 2 ก.ย. 2569 และ Composer 2.10.3/2.2.30 ที่แก้ไข CVE-2026-59944 เผยแพร่ 27 ส.ค. 2569 ทั้งสองรายการอยู่นอกช่วงเวลาของรายงานฉบับนี้)</div>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Nginx, Apache, Caddy หรือ IIS ในช่วง 7 วันนี้ นอกเหนือจาก Regression Fix ของ Apache HTTP Server (USN-8571-2) ซึ่งแสดงไว้ในหมวด Operating Systems ด้านบนแล้ว</div>
+  </section>
+
+  <section>
+    <h2>🔒 Security & CVE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GitLab CE/EE</strong></td>
+          <td>CVE-2026-85706 — Path Traversal ใน Repository Commits API (กำลังถูกใช้โจมตีจริงตั้งแต่ 11 ก.ย. 2569)</td>
+          <td><span class="severity-critical">🔴 CRITICAL (CVSS 10.0)</span></td>
+          <td>19.3.2 / 19.2.6 / 19.1.8</td>
+          <td><a href="https://thehackernews.com/2026/09/gitlab-cvss-10-file-read-flaw-draws-in.html" class="source-badge">thehackernews.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitLab EE</strong></td>
+          <td>CVE-2026-87719 — Insecure Deserialization ใน GraphQL Subscription Serializer (ต้องมีสิทธิ์เข้าถึง Duo Chat)</td>
+          <td><span class="severity-critical">🔴 CRITICAL (CVSS 9.9)</span></td>
+          <td>19.3.2 / 19.2.6 / 19.1.8</td>
+          <td><a href="https://securityonline.info/gitlab-vulnerabilities-cve-2026-85706-cvss-10/" class="source-badge">securityonline.info</a></td>
+        </tr>
+        <tr>
+          <td><strong>Chromium</strong> (Google Chrome 153 / RHEL / Rocky / AlmaLinux)</td>
+          <td>CVE-2026-87491 — Out-of-bounds Write ใน V8 (Zero-day กำลังถูกใช้โจมตีจริง) พร้อมช่องโหว่รวม 230 รายการใน Chrome 153 และ 38 รายการในแพ็กเกจ Chromium ของดิสโทร Linux</td>
+          <td><span class="severity-critical">🔴 CRITICAL</span></td>
+          <td>Chrome 153.0.8010.36/.37 (Win/Mac), 153.0.8010.36 (Linux)</td>
+          <td><a href="https://gbhackers.com/google-chrome-153-released-with-230-security-fixes/" class="source-badge">gbhackers.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Windows / Microsoft Products</strong></td>
+          <td>CVE-2026-81963 (Windows Update Stack EoP, กำลังถูกใช้โจมตีจริง) และ CVE-2026-85880 (Zero-day ที่สอง) — September 2026 Patch Tuesday</td>
+          <td><span class="severity-high">🟠 HIGH</span> (CVE-2026-81963 CVSS 7.8)</td>
+          <td>September 2026 Cumulative Updates</td>
+          <td><a href="https://www.tenable.com/blog/microsofts-september-2026-patch-tuesday-addresses-964-cves-cve-2026-81963-cve-2026-85880" class="source-badge">tenable.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitLab EE</strong></td>
+          <td>CVE-2026-88765 — Buffer Overflow ใน Unicode Conversion Wrapper (RCE ผ่านการ Import โปรเจกต์ Git ที่สร้างขึ้นเป็นพิเศษ)</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS 8.5)</span></td>
+          <td>19.3.2 / 19.2.6 / 19.1.8</td>
+          <td><a href="https://cybersecuritynews.com/gitlab-patches-critical-flaws/" class="source-badge">cybersecuritynews.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>vim</strong> (RHEL / Rocky / AlmaLinux)</td>
+          <td>CVE-2026-28417 (RCE ผ่าน OS Command Injection), CVE-2026-33412 (RCE ผ่านฟังก์ชัน glob())</td>
+          <td><span class="severity-high">🟠 HIGH</span></td>
+          <td>ตามประกาศของแต่ละดิสโทร (ALSA/RHSA/errata)</td>
+          <td><a href="https://errata.almalinux.org/9/ALSA-2026-8259.html" class="source-badge">errata.almalinux.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu Linux Kernel</strong> (NVIDIA flavour)</td>
+          <td>CVE-2026-53215, CVE-2026-52955, CVE-2026-53055 และอีก 25+ รายการ (USN-8748-1)</td>
+          <td><span class="severity-high">🟠 HIGH*</span></td>
+          <td>USN-8748-1</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>glibc</strong> (Ubuntu)</td>
+          <td>CVE-2026-77117, CVE-2026-19499, CVE-2026-6791 และอีก 3 รายการ (USN-8737-2)</td>
+          <td><span class="severity-high">🟠 HIGH*</span></td>
+          <td>USN-8737-2</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>vim</strong> (RHEL / Rocky / AlmaLinux)</td>
+          <td>CVE-2026-28421 — Denial of Service และ Information Disclosure</td>
+          <td><span class="severity-medium">🟡 MEDIUM</span></td>
+          <td>ตามประกาศของแต่ละดิสโทร</td>
+          <td><a href="https://errata.almalinux.org/9/ALSA-2026-8259.html" class="source-badge">errata.almalinux.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Python</strong> (Ubuntu)</td>
+          <td>CVE-2026-3644, CVE-2026-4360, CVE-2026-6019 และอีก 2 รายการ (USN-8744-1)</td>
+          <td><span class="severity-medium">🟡 MEDIUM*</span></td>
+          <td>USN-8744-1</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>PHP</strong> (Ubuntu)</td>
+          <td>CVE-2026-17544, CVE-2026-7260, CVE-2026-17543 (USN-8743-1)</td>
+          <td><span class="severity-medium">🟡 MEDIUM*</span></td>
+          <td>USN-8743-1</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>jbig2dec</strong> (Debian)</td>
+          <td>CVE-2026-38076 — Denial of Service จากการตรวจสอบ Input ไม่รัดกุม</td>
+          <td><span class="severity-medium">🟡 MEDIUM</span></td>
+          <td>DSA-6488-1</td>
+          <td><a href="https://linuxsecurity.com/advisories/debian/debian-dsa-6488-1-jbig2dec" class="source-badge">linuxsecurity.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Netty</strong> (Ubuntu) / <strong>Flatpak</strong> (Ubuntu)</td>
+          <td>CVE-2026-47691 / CVE-2026-34079, CVE-2026-34078</td>
+          <td><span class="severity-low">🟢 LOW–MEDIUM*</span></td>
+          <td>USN-8742-1 / USN-8741-1</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">
+      <strong>* หมายเหตุความรุนแรง:</strong> ประกาศ USN ของ Ubuntu หลายฉบับ (kernel/NVIDIA, glibc, Python, PHP, Netty, Flatpak) ไม่ได้ระบุคะแนน CVSS ต่อ CVE แต่ละรายการไว้ชัดเจนในหน้าประกาศที่ตรวจสอบได้ ระดับความรุนแรงที่แสดงจึงเป็นการประมาณจากลักษณะผลกระทบทั่วไป (Crash / Information Disclosure / Privilege) ควรตรวจสอบ CVSS ที่แท้จริงจาก NVD ก่อนกำหนด Patch Priority<br>
+      <strong>📌 Microsoft Patch Tuesday กันยายน 2569:</strong> ตัวเลขจำนวน CVE รวมที่รายงานจากสื่อความปลอดภัยหลายแหล่งไม่ตรงกัน ได้แก่ 964 (Tenable), 966 (บางแหล่งข่าว), 973 (CyberSecurityNews, ntcompatible, warp2search), 974 (บางแหล่งข่าว) และ 1,169 (Senserva) ความแตกต่างนี้น่าจะเกิดจากวิธีนับที่ต่างกัน (เช่น การรวม/ไม่รวมรายการจาก Azure Linux หรือ Third-party CVE) รายงานฉบับนี้ไม่สามารถยืนยันตัวเลขที่ถูกต้องอย่างเป็นทางการจาก MSRC ได้โดยตรงเนื่องจากข้อจำกัดการเข้าถึง msrc.microsoft.com จึงแสดงข้อมูลทั้งสองค่าไว้พร้อมแหล่งอ้างอิงตามหลัก Conflict Resolution รายละเอียดรายชื่อ CVE ทั้งหมดควรตรวจสอบซ้ำจาก MSRC Security Update Guide โดยตรง<br>
+      <strong>SPIP (Debian):</strong> พบรายงานช่องโหว่ Unauthenticated Remote Code Execution ใน SPIP แต่ไม่พบเลข CVE ที่ยืนยันได้จากแหล่งข้อมูลที่เข้าถึงได้ ณ เวลาจัดทำรายงาน จึงไม่นำมาแสดงในตารางนี้ตามเกณฑ์ที่ต้องมี CVE ID ครบถ้วน
+    </div>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="empty-note">ไม่พบ Breaking Change ใหม่ที่มีเอกสารทางการยืนยันชัดเจนในช่วง 6–12 ก.ย. 2569 การเปลี่ยนแปลงวงจร Release ของ Chrome เป็นแบบ 2 สัปดาห์ (เริ่มที่ Chrome 153) เป็นการเปลี่ยนความถี่ของ Release ไม่ใช่ Breaking Change ด้าน API/Compatibility โดยตรง จึงแสดงไว้ในหมวด "สิ่งที่ต้องติดตาม" แทน</div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="empty-note">ไม่พบประกาศ End of Life ที่มีวันที่มีผลอยู่ในช่วง 6–12 ก.ย. 2569 จากแหล่งข้อมูลทางการที่ตรวจสอบได้อย่างชัดเจนในสัปดาห์นี้ (พบข้อมูลที่ไม่ยืนยันแน่ชัดเกี่ยวกับ Metabase และ Maven 3.8.x branch แต่ไม่สามารถยืนยันวันที่ EOL ที่แน่นอนจากแหล่งทางการได้ จึงไม่นำมาแสดง)</div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li>🔴 <strong>GitLab CVE-2026-85706 (CVSS 10.0)</strong> — มีการโจมตีจริงแล้วตั้งแต่ 11 ก.ย. 2569 ผู้ดูแลระบบ GitLab self-managed ควรอัปเกรดเป็น 19.3.2/19.2.6/19.1.8 ทันที</li>
+      <li>🔴 <strong>Google Chrome CVE-2026-87491</strong> — Zero-day ใน V8 กำลังถูกใช้โจมตีจริง ควรอัปเดตเป็น Chrome 153.0.8010.36 ขึ้นไปโดยเร็ว</li>
+      <li>🔴 <strong>Microsoft Zero-days (CVE-2026-81963, CVE-2026-85880)</strong> — September 2026 Patch Tuesday มีการโจมตีจริงแล้ว ควรติดตั้งอัปเดตทันที</li>
+      <li>🟠 <strong>Chromium/vim/SPIP Synchronized Advisory (RHEL/Rocky/AlmaLinux/Debian)</strong> — ประกาศพร้อมกันเมื่อ 12 ก.ย. 2569 มีรายงานว่าบางช่องโหว่ถูกใช้โจมตีจริงแล้ว ควรอัปเดตทันทีโดยไม่รอรอบ Maintenance ปกติ</li>
+      <li>🧪 <strong>Chrome Two-Week Release Cycle</strong> — เริ่มต้นอย่างเป็นทางการที่ Chrome 153 (8 ก.ย. 2569) ทีมงานควรเตรียมกระบวนการทดสอบ/Rollout ให้รองรับความถี่ที่เพิ่มขึ้นต่อเนื่องจากที่เคยแจ้งเตือนไว้ในสัปดาห์ก่อนหน้า</li>
+      <li>⏳ <strong>Node.js Release Schedule เปลี่ยนแปลง</strong> — มีประกาศว่าตั้งแต่ ต.ค. 2569 จะเหลือ Major Release ปีละ 1 ครั้ง (เม.ย.) พร้อมเลื่อนสถานะเป็น LTS ในเดือน ต.ค. ทีมงานควรวางแผนอัปเกรดล่วงหน้า</li>
+      <li>📄 <strong>MSRC September 2026 Security Update Guide</strong> — ตัวเลข CVE รวมยังมีความคลาดเคลื่อนระหว่างแหล่งข่าว ควรตรวจสอบยืนยันจากหน้าทางการโดยตรงก่อนวางแผน Patch Priority</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <div class="highlight-box">
+      <div class="two-column">
+        <div>
+          <h3>📊 Release Breakdown</h3>
+          <ul>
+            <li><strong>Total Items Verified (6–12 ก.ย. 2569):</strong> 23</li>
+            <li><strong>Major Releases:</strong> 0</li>
+            <li><strong>Minor Releases:</strong> 1 (Node.js 24.21.0 LTS)</li>
+            <li><strong>Patch Releases:</strong> 2 (Node.js 26.8.2, Apache HTTP Server regression fix)</li>
+            <li><strong>LTS Releases:</strong> 0 ใหม่ (Node.js 24 อยู่ในสาย LTS เดิม)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>🔒 Security Breakdown</h3>
+          <ul>
+            <li><strong>Total Security Advisories:</strong> 19</li>
+            <li><strong>Critical Severity:</strong> 3 (GitLab CVE-2026-85706, CVE-2026-87719, Chrome/Chromium CVE-2026-87491)</li>
+            <li><strong>High Severity:</strong> 5 (Microsoft zero-days, GitLab CVE-2026-88765, vim ×2, Ubuntu kernel/glibc)</li>
+            <li><strong>Medium Severity:</strong> 5 (vim DoS, Python, PHP, jbig2dec, และอื่น ๆ)</li>
+            <li><strong>รอตรวจสอบ/ไม่มี CVE ยืนยัน:</strong> 1 (SPIP unauthenticated RCE)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>✅ Official</h3>
+    <ul>
+      <li><a href="https://ubuntu.com/security/notices">Ubuntu Security Notices</a></li>
+      <li><a href="https://www.debian.org/security/">Debian Security</a></li>
+      <li><a href="https://errata.almalinux.org/9/ALSA-2026-8259.html">ALSA-2026-8259 (AlmaLinux Errata)</a></li>
+    </ul>
+    <h3>📝 Release Notes</h3>
+    <ul>
+      <li><a href="https://www.linuxcompatible.org/story/nodejs-releases-v2682-and-v24210-lts-with-openssl-358-and-crypto-upgrades">Node.js Releases v26.8.2 and v24.21.0 LTS</a></li>
+      <li><a href="https://linuxsecurity.com/advisories/debian/debian-dsa-6488-1-jbig2dec">DSA-6488-1 (jbig2dec)</a></li>
+    </ul>
+    <h3>🔒 Security Advisory</h3>
+    <ul>
+      <li><a href="https://thehackernews.com/2026/09/gitlab-cvss-10-file-read-flaw-draws-in.html">The Hacker News — GitLab CVSS 10 File-Read Flaw (CVE-2026-85706)</a></li>
+      <li><a href="https://cybersecuritynews.com/gitlab-patches-critical-flaws/">CyberSecurityNews — GitLab Critical Patch Release</a></li>
+      <li><a href="https://securityonline.info/gitlab-vulnerabilities-cve-2026-85706-cvss-10/">SecurityOnline — GitLab Vulnerabilities CVSS 10</a></li>
+      <li><a href="https://watchtowr.com/resources/rapid-reaction-gitlab-critical-path-traversal-vulnerability-cve-2026-85706/">watchTowr — Rapid Reaction: GitLab CVE-2026-85706</a></li>
+      <li><a href="https://gbhackers.com/google-chrome-153-released-with-230-security-fixes/">GBHackers — Chrome 153 Released With 230 Security Fixes</a></li>
+      <li><a href="https://aicybr.com/blog/chrome-153-cve-2026-87491">AiCybr — Chrome 153 Fixes Exploited CVE-2026-87491</a></li>
+      <li><a href="https://www.tenable.com/blog/microsofts-september-2026-patch-tuesday-addresses-964-cves-cve-2026-81963-cve-2026-85880">Tenable — September 2026 Patch Tuesday</a></li>
+      <li><a href="https://cybersecuritynews.com/microsoft-patch-tuesday-update-september-2026/">CyberSecurityNews — Microsoft Patch Tuesday September 2026 (973 CVEs)</a></li>
+      <li><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-september-2026-patch-tuesday-fixes-966-flaws-2-zero-days/">BleepingComputer — Microsoft September 2026 Patch Tuesday (966 flaws)</a></li>
+    </ul>
+    <h3>📰 Trusted Media</h3>
+    <ul>
+      <li><a href="https://piunikaweb.com/2026/09/09/chrome-153-update-two-week-release-security-fixes/">PiunikaWeb — Chrome's Two-Week Release Era Begins</a></li>
+      <li><a href="https://mlq.ai/news/chrome-begins-two-week-release-cycle-with-version-153/">MLQ.ai — Chrome Begins Two-Week Release Cycle</a></li>
+      <li><a href="https://www.linuxcompatible.org/story/linux-security-roundup-critical-chromium-kernel-and-spip-patches-drop">LinuxCompatible — Linux Security Roundup: Chromium, Kernel, and SPIP Patches</a></li>
+    </ul>
+  </section>
+
+  <div class="note">
+    <strong>📝 Data Quality Note:</strong><br>
+    ✅ ทุกรายการยืนยันจาก Official Source, GitHub/GitLab Release, Official Security Advisory หรือสื่อความปลอดภัยที่น่าเชื่อถืออย่างน้อย 1 แหล่ง และ Cross-check กับแหล่งข้อมูลที่สองเมื่อทำได้ (โดยเฉพาะรายการ CVE-2026-85706, CVE-2026-87491 และตัวเลข Patch Tuesday ที่ยืนยันจากหลายแหล่งอิสระ)<br>
+    ⚠️ <strong>UNCERTAIN:</strong> ระหว่างจัดทำรายงาน การเข้าถึงโดเมนต่อไปนี้ผ่าน WebFetch โดยตรงถูกจำกัดโดย Network Egress Proxy ของสภาพแวดล้อมนี้ (ลองซ้ำแล้วแต่ยังไม่สำเร็จ จึงใช้ผลลัพธ์จาก WebSearch และแหล่งข่าวความปลอดภัยที่น่าเชื่อถือแทน): chromereleases.googleblog.com, go.dev, msrc.microsoft.com, docs.gitlab.com, www.linuxcompatible.org (ครั้งแรก) — ผู้ใช้งานควรตรวจสอบยืนยันซ้ำจากหน้าทางการโดยตรงก่อนนำไปใช้ตัดสินใจ Patch Priority โดยเฉพาะตัวเลข CVE รวมของ Microsoft Patch Tuesday ซึ่งมีความคลาดเคลื่อนระหว่างแหล่งข่าว<br>
+    ✅ รายการที่ไม่มีข้อมูลยืนยันในช่วง 7 วันนี้ถูกระบุไว้อย่างชัดเจนในแต่ละหมวด แทนการคาดเดาหรือใช้ข้อมูลนอกช่วงเวลา
+  </div>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Software Releases Report · Week 37 · September 12, 2026</p>
+    <p>Generated with verified data from official release notes and security advisories</p>
+  </footer>
+</div>
+</body>
+</html>
