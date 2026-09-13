@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 13 กันยายน 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 6 – 13 กันยายน 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 37</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้เปิดฉากด้วยผลสรุปที่ยืนยันแล้วของ Italian Grand Prix ที่ Monza: Kimi Antonelli (Mercedes) คว้าชัยชนะจากตำแหน่งสตาร์ท P19 กลายเป็นนักแข่งอิตาลีคนแรกที่ชนะที่บ้านเกิดนับตั้งแต่ปี 1966 และขยายคะแนนนำในแชมป์ชิปผู้ขับขี่เป็น 66 คะแนน หลังการแข่งขันถูกชักธงแดงในรอบที่ 2 จากอุบัติเหตุรุนแรงของ Charles Leclerc ที่โค้ง Parabolica (ปลอดภัยดี) จากนั้น F1 เดินทางต่อไปยังสุดสัปดาห์ประวัติศาสตร์ที่สนามใหม่ MADRING กรุงมาดริด สำหรับ Spanish Grand Prix ครั้งแรก โดย Lando Norris คว้า Pole Position เฉือน Antonelli เพียง 0.011 วินาที ⚠️ <strong>ผลการแข่งขันหลักของ Spanish Grand Prix ยังอยู่ระหว่างดำเนินการ ณ เวลาจัดทำรายงานนี้ จึงยังไม่สามารถยืนยันได้</strong> นอกสนาม Red Bull ยังคงใช้ Liam Lawson แทน Isack Hadjar ที่บาดเจ็บข้อมือ ขณะที่ตลาดผู้ขับขี่ปี 2027 เกือบล็อกครบแล้ว เหลือเพียงอนาคตของ Fernando Alonso และ Esteban Ocon ที่ยังไม่ชัดเจน</p>
+    </div>
+    <div class="warn-box">
+      <p>❓ <strong>ข้อจำกัดของข้อมูล:</strong> ผลการแข่งขันหลักของ Spanish Grand Prix (MADRING) — ตำแหน่งสุดท้าย คะแนน Fastest Lap และ Driver of the Day — ยังไม่ปรากฏในแหล่งข่าวที่ตรวจสอบได้ ณ เวลาที่จัดทำรายงานนี้ เนื่องจากการแข่งขันยังดำเนินอยู่ คาดว่าผลสุดท้ายจะได้รับการยืนยันและนำเสนอในรายงานสัปดาห์ถัดไป เช่นเดียวกับกรณี Italian GP ในสัปดาห์ก่อนหน้า</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">
+      ✅ ตารางนี้เป็นคะแนนสะสมหลัง Italian Grand Prix (รอบที่ 13 จาก 23) — <strong>ยังไม่รวมคะแนนจาก Spanish Grand Prix</strong> เนื่องจากผลการแข่งขันยังไม่ยืนยัน
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>267</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>201</td>
+          <td>-66</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>191</td>
+          <td>-76</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>171</td>
+          <td>-96</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>155</td>
+          <td>-112</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>127</td>
+          <td>-140</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>116</td>
+          <td>-151</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇫🇷 Isack Hadjar<sup>*</sup></td>
+          <td>Red Bull Racing</td>
+          <td>71</td>
+          <td>-196</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>🇳🇿 Liam Lawson<sup>*</sup></td>
+          <td>Racing Bulls</td>
+          <td>51</td>
+          <td>-216</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>🇫🇷 Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>41</td>
+          <td>-226</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">* Hadjar บาดเจ็บข้อมือระหว่างพักร้อนกลางฤดูกาล พลาด Dutch GP, Italian GP และ Spanish GP ติดต่อกัน 3 สนาม — Lawson (นักแข่งประจำ Racing Bulls) ลงแข่งแทนที่ Red Bull Racing ในทั้ง 3 สนามนี้ โดยคะแนนยังคงนับให้ตัวนักแข่งแต่ละคนตามชื่อ ทีมตั้งเป้าให้ Hadjar กลับมาลงแข่งที่ Azerbaijan GP (26 กันยายน)</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://racingnews365.com/2026-f1-championship-standings-after-italian-grand-prix-at-monza">RacingNews365</a>, <a href="https://www.gpfans.com/en/f1-news/1089945/f1-standings-2026-latest-points-leaders-after-italian-grand-prix/">GPFans</a>, <a href="https://www.crash.net/f1/news/1103882/1/f1-italian-grand-prix-red-flagged-after-huge-charles-leclerc-crash">Crash.net</a>, <a href="https://www.skysports.com/f1/news/12433/13582217/italian-gp-kimi-antonelli-sensationally-wins-thrilling-monza-race-from-george-russell-and-max-verstappen">Sky Sports F1</a></div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">
+      ❓ <strong>ข้อมูลบางส่วน:</strong> ยืนยันได้เฉพาะ 3 อันดับแรกจากหลายแหล่งข้อมูล ส่วนอันดับ 4-10 (Red Bull Racing, Racing Bulls, Alpine, Williams, Haas, Aston Martin, Audi) ไม่พบตัวเลขคะแนนที่ยืนยันได้ในรอบการค้นหานี้ จึงงดแสดงตามหลักเกณฑ์ของรายงาน
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>468</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>346</td>
+          <td>-122</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>McLaren</td>
+          <td>285</td>
+          <td>-183</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://scuderiafans.com/2026-f1-constructor-standings-after-italian-gp-mercedes-leads-ferrari-by-122-points/">ScuderiaFans</a>, <a href="https://racingnews365.com/2026-f1-championship-standings-after-italian-grand-prix-at-monza">RacingNews365</a>, <a href="https://www.news.gp/en/2026-f1-standings-after-italian-gp-antonelli-extends-championship-lead-to-66-points">News.GP</a></div>
+  </section>
+
+  <section>
+    <h2>🏁 Italian Grand Prix 2026 — ผลสรุปที่ Monza (ยืนยันแล้ว)</h2>
+    <div class="note">
+      🔄 <strong>ข่าวต่อเนื่องจากสัปดาห์ก่อน:</strong> รายงานสัปดาห์ที่แล้ว (6 กันยายน) ยังไม่สามารถยืนยันผลการแข่งขันได้เนื่องจากการแข่งขันถูกชักธงแดงและอยู่ระหว่างดำเนินการ ขณะนี้ผลสรุปได้รับการยืนยันแล้วจากหลายแหล่งข้อมูล
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา / สถานะ</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>ผู้ชนะ (จากกริด P19)</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>+3.857s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>+14.718s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Lando Norris</td>
+          <td>McLaren</td>
+          <td>+19.056s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>+19.253s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>+24.655s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>+27.351s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Arvid Lindblad</td>
+          <td>Racing Bulls</td>
+          <td>+45.136s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Franco Colapinto</td>
+          <td>Alpine</td>
+          <td>+47.353s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Yuki Tsunoda</td>
+          <td>Racing Bulls</td>
+          <td>+58.187s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>DNF</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>ชนแบริเออร์ที่ Parabolica รอบที่ 2 — ปลอดภัยดี</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>10 (ก่อนปรับ)</td>
+          <td>Esteban Ocon</td>
+          <td>Alpine</td>
+          <td>ได้รับโทษปรับ 5 วินาที จากการปะทะกับ Sebastian Vettel</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">Liam Lawson ลงแข่งแทน Isack Hadjar ในรถ Red Bull Racing แต่ไม่จบการแข่งขันในกลุ่ม Top 10 ที่ยืนยันได้ — Fastest Lap ยังไม่พบข้อมูลยืนยันจากแหล่งข่าวในรอบการค้นหานี้</p>
+
+    <h3>สรุปเหตุการณ์สำคัญ</h3>
+    <ul>
+      <li><strong>Strategy:</strong> Antonelli ต้องสตาร์ทจาก P19 จากการเปลี่ยนหน่วยพลังงาน แต่ไล่แซงขึ้นมาคว้าชัยชนะได้ในช่วงท้ายการแข่งขัน</li>
+      <li><strong>Safety Car / Red Flag:</strong> การแข่งขันถูกชักธงแดงในรอบที่ 2 หลัง Leclerc ปะทะขอบยางอย่างรุนแรงขณะป้องกันตำแหน่งกับ Piastri ที่ Parabolica</li>
+      <li><strong>Incidents:</strong> Leclerc ยอมรับว่าอุบัติเหตุเป็นความผิดพลาดของตัวเอง ("I lost the rear, as simple as that, it's my mistake") ถูกนำตัวไปตรวจที่ศูนย์พยาบาลแต่ไม่พบอาการบาดเจ็บ</li>
+      <li><strong>Driver of the Day:</strong> Kimi Antonelli คว้าคะแนนโหวตแฟน ๆ 39.9%</li>
+    </ul>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.planetf1.com/news/2026-italian-grand-prix-f1-race-results">PlanetF1</a>, <a href="https://www.crash.net/f1/results/1103959/1/2026-f1-italian-grand-prix-race-results">Crash.net</a>, <a href="https://www.skysports.com/f1/news/12433/13582217/italian-gp-kimi-antonelli-sensationally-wins-thrilling-monza-race-from-george-russell-and-max-verstappen">Sky Sports F1</a>, <a href="https://www.the-race.com/formula-1/f1-2026-italian-grand-prix-race-results/">The Race</a>, <a href="https://www.formula1.com/en/latest/article/could-never-have-imagined-antonellis-italian-grand-prix-victory-from-p19-a-dream-coming-true.7oXpbc6pFWmhLpIULsFBfG">Formula1.com</a></div>
+
+    <h3>⚡ Sprint</h3>
+    <p>ไม่มีการแข่งขัน Sprint ในสุดสัปดาห์ Italian GP</p>
+  </section>
+
+  <section>
+    <h2>🏁 Spanish Grand Prix 2026 — สุดสัปดาห์แรกที่ MADRING</h2>
+    <div class="note">
+      📍 <strong>สนามแข่ง:</strong> MADRING, IFEMA Madrid | 🏁 <strong>รอบที่ 16</strong> ของฤดูกาล 2026 | ⏱️ <strong>วันแข่งขัน:</strong> 13 กันยายน 2026 — การแข่งขัน F1 ครั้งแรกที่กรุงมาดริด และเป็นการแข่งขัน Spanish Grand Prix ครั้งแรกในรอบ 45 ปีที่ไม่ได้จัดที่บาร์เซโลนา (สเปนมี 2 สนามแข่งในปฏิทิน 2026: Barcelona-Catalunya GP จัดไปแล้วเมื่อมิถุนายน และ Spanish GP ที่ MADRING สัปดาห์นี้)
+    </div>
+
+    <h3>⏱ ผลการคัดเลือก (Qualifying)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Lando Norris</td>
+          <td>McLaren</td>
+          <td>1:31.824 (Pole Position)</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>+0.011s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>+0.140s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Liam Lawson</td>
+          <td>Red Bull Racing</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Franco Colapinto</td>
+          <td>Alpine</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Arvid Lindblad</td>
+          <td>Racing Bulls</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>Carlos Sainz</td>
+          <td>Williams</td>
+          <td>ตกรอบ Q1</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>Fernando Alonso</td>
+          <td>Aston Martin</td>
+          <td>ตกรอบ Q1</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">McLaren ไม่เคยขึ้นเป็นอันดับ 1 ในทุกเซสชันซ้อมทั้ง 3 ครั้ง แต่ Norris กลับมาทำเวลาได้ในรอบคัดเลือกจริง หลังประสบปัญหาระบบเกียร์ใน FP2</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.crash.net/f1/results/1104497/1/f1-2026-spanish-grand-prix-full-qualifying-result-madrid">Crash.net</a>, <a href="https://racingnews365.com/2026-f1-spanish-grand-prix-madrid-qualifying-results">RacingNews365</a>, <a href="https://www.gpfans.com/en/f1-news/1090138/f1-qualifying-results-2026-spanish-grand-prix-positions-times-madring/">GPFans</a>, <a href="https://www.espn.com/f1/story/_/id/49867167/mclarens-lando-norris-pips-kimi-antonelli-take-thrilling-pole-spanish-grand-prix-spanish-grand-prix-madring-formula-1">ESPN</a></div>
+
+    <h3>🏁 การแข่งขันหลัก — สถานะ ❓ ยังไม่มีผลสรุปยืนยัน</h3>
+    <div class="warn-box">
+      <p><strong>สรุปเหตุการณ์ที่ยืนยันได้ ณ เวลาจัดทำรายงาน (การแข่งขันยังดำเนินอยู่):</strong></p>
+      <ul>
+        <li>ออกตัว: Norris นำจากกริด นำ Antonelli และ Verstappen</li>
+        <li>Lewis Hamilton ประสบปัญหาและออกจากการแข่งขันก่อนกำหนด (retire)</li>
+        <li>มีการใช้ Virtual Safety Car ระหว่างการแข่งขัน และมีรายงานว่า Norris ประสบปัญหาขณะเข้าพิทช่วง VSC</li>
+        <li>สนาม MADRING เป็นสนามสตรีทที่มีโอกาสแซงน้อยมาก ทำให้ตำแหน่งกริดสตาร์ทมีความสำคัญสูง</li>
+      </ul>
+      <p>❓ <strong>ไม่พบข้อมูลยืนยัน:</strong> ผู้ชนะ อันดับสุดท้ายทั้งหมด คะแนน Fastest Lap และ Driver of the Day — แหล่งข่าวที่ตรวจสอบได้ระบุว่าการแข่งขัน "อยู่ระหว่างดำเนินการ (live)" ณ เวลาที่รวบรวมข้อมูล จึงงดแสดงตารางผลการแข่งขันตามหลักเกณฑ์ของรายงาน รายงานพบข้อมูลลำดับระหว่างการแข่งขันที่ขัดแย้งกันเองในแต่ละช่วงเวลา (เช่น ผู้นำเปลี่ยนแปลงตลอด) จึงไม่นำมาแสดงเพื่อป้องกันความสับสน</p>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.espn.com/f1/story/_/id/49867240/spanish-grand-prix-2026-live-madrid-updates-results-analysis-commentary">ESPN (live coverage)</a>, <a href="https://www.autosport.com/f1/live-text/f1-spanish-gp-follow-the-race-in-madrid-with-live-timing/1127776/">Autosport (live timing)</a>, <a href="https://www.crash.net/f1/live/1044265/f1-madrid-live-spanish-gp-race-updates">Crash.net (live)</a>, <a href="https://www.planetf1.com/news/f1-live-spanish-grand-prix-2026-updates">PlanetF1 (live)</a></div>
+
+    <h3>⚡ Sprint</h3>
+    <p>ไม่มีการแข่งขัน Sprint ในสุดสัปดาห์ Spanish GP</p>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญ</h2>
+
+    <h3>🔄 Driver Market</h3>
+    <div class="team-section">
+      <p><strong>ตลาดผู้ขับขี่ปี 2027 ใกล้ล็อกครบแล้ว:</strong> หลังการต่อสัญญาชุดใหญ่ในช่วงหลายสัปดาห์ที่ผ่านมา (Verstappen ถึงปี 2030, Norris ถึงปี 2030, Williams คงไลน์อัพ Sainz+Albon, Colapinto อยู่กับ Alpine ต่อถึงปี 2027) ปัจจุบันเหลือประเด็นหลักที่ยังไม่ชัดเจนคืออนาคตของ Fernando Alonso (Aston Martin) และที่นั่งของ Esteban Ocon</p>
+      <div class="source">✅ ที่มา: <a href="https://www.espn.com/f1/story/_/id/49515865/f1-2027-driver-lineups-lewis-hamilton-max-verstappen-seat-contract">ESPN</a>, <a href="https://www.crash.net/f1/feature/1102535/1/f1-driver-market-latest-rumours-amid-possible-2027-shake">Crash.net</a>, <a href="https://speedcafe.com/f1-news-2026-silly-season-driver-market-update-latest-seats-2027-where-who-fernando-alonso-esteban-ocon-available-transfer-rookie/">Speedcafe</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Pierre Gasly (Alpine):</strong> ต่อสัญญาอยู่กับ Alpine ถึงอย่างน้อยสิ้นปี 2028 — สถานะยืนยันแล้ว ไม่ใช่ข่าวลือ 🔄 ข่าวต่อเนื่อง</p>
+      <div class="source">✅ ที่มา: <a href="https://www.espn.com/f1/story/_/id/49515865/f1-2027-driver-lineups-lewis-hamilton-max-verstappen-seat-contract">ESPN</a></div>
+    </div>
+
+    <h3>🔧 การอัปเดตทางเทคนิค</h3>
+    <div class="team-section">
+      <p><strong>Ferrari (Madrid):</strong> ปรับปรุงแฟริ่งของปีกนก (rear top wishbone) ด้านหลัง เพื่อปรับมุมและการกระจายโหลดตามแนวขวางของปีก — เป็นการอัปเดตขนาดเล็ก</p>
+      <div class="source">✅ ที่มา: <a href="https://scuderiafans.com/madrid-gp-technical-analysis-ferrari-red-bull-and-mclaren-reveal-contrasting-aero-solutions/">ScuderiaFans</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>McLaren (Madrid):</strong> เพิ่มชิ้นส่วนที่ปีกหลังเพื่อปรับการไหลของอากาศเข้าสู่ mainplane และแผ่นปีก</p>
+      <div class="source">✅ ที่มา: <a href="https://www.motorsportweek.com/2026/09/11/f1-spanish-gp-upgrades-what-every-team-brought-to-madrid/">Motorsport Week</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Red Bull Racing (Madrid):</strong> นำอัปเดตด้านความทนทาน 2 รายการต่อเนื่องจาก Monza — ปรับปรุงฝาครอบล้อหลังให้ทนทานขึ้น และปรับโครงสร้าง/วัสดุของพื้นรถ (floor bib) เพื่อลดความเครียดสะสม</p>
+      <div class="source">✅ ที่มา: <a href="https://scuderiafans.com/2026-madrid-gp-upgrades-ferrari-mercedes-and-red-bull-reveal-official-changes/">ScuderiaFans</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Ferrari / McLaren / Red Bull (Monza):</strong> ทั้งสามทีมนำอัปเกรดเน้นลดแรงต้านอากาศ (drag reduction) มาใช้ที่สนามความเร็วสูงอย่าง Monza — Ferrari ปรับพื้นรถ ฝาครอบกระจกมองข้าง และท่อไอเสีย ส่วน McLaren ปรับปีกหลังและพื้นรถ ขณะที่ Red Bull ปรับปลายปีกหน้า 🔄 ข่าวต่อเนื่อง</p>
+      <div class="source">✅ ที่มา: <a href="https://racer.com/2026/09/04/technical-updates-2026-italian-grand-prix">RACER</a></div>
+    </div>
+
+    <h3>🚨 FIA & Regulations / Penalties</h3>
+    <div class="team-section">
+      <p><strong>Esteban Ocon (Alpine, Monza):</strong> ได้รับโทษปรับ 5 วินาที จากการปะทะกับ Sebastian Vettel ระหว่างการแย่งตำแหน่งที่ชิเคนที่สอง (ไม่เว้นระยะรถ 1 คันให้คู่แข่ง) — Ocon ไม่เห็นด้วยกับคำตัดสิน โดยเทียบเคียงกับกรณี Hamilton-Leclerc ปี 2019 ที่สนามเดียวกัน</p>
+      <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/for-once-i-disagree-with-the-stewards-ocon-frustrated-by-costly-5s-penalty.33yb9djggi4pHU3NV0f3m8.html">Formula1.com</a>, <a href="https://www.planetf1.com/news/esteban-ocon-monza-penalty">PlanetF1</a>, <a href="https://www.motorsport.com/f1/news/ocon-frustrated-by-monza-f1-time-penalty/6667841/">Motorsport.com</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Lewis Hamilton / Charles Leclerc (Monza):</strong> สจ๊วตพิจารณาเหตุการณ์ปะทะกันระหว่าง Hamilton และ Leclerc ในรอบแรก และตัดสินว่า "ไม่มีการดำเนินการเพิ่มเติม" (no further action)</p>
+      <div class="source">✅ ที่มา: <a href="https://www.planetf1.com/news/fia-decision-lewis-hamilton-charles-leclerc-italian-grand-prix">PlanetF1</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Charles Leclerc (Monza):</strong> สจ๊วตตัดสินใจไม่สอบสวนเพิ่มเติมกรณีอุบัติเหตุที่ Parabolica เนื่องจากได้ออกธง black-and-white เตือนไปแล้วก่อนหน้า</p>
+      <div class="source">✅ ที่มา: <a href="https://www.motorsport.com/f1/news/huge-crash-knocks-charles-leclerc-out-of-f1-italian-gp/10852996/">Motorsport.com</a></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 การวิเคราะห์การแสดงของทีม</h2>
+
+    <div class="team-section">
+      <h3>🔴 Mercedes</h3>
+      <p><strong>สถานะ:</strong> สัปดาห์ที่โดดเด่นที่สุดของฤดูกาล — คว้าชัยชนะ 1-2 ที่ Monza (Antonelli-Russell) ทำให้นำแชมป์ชิปผู้สร้างรถขยายเป็น 468 คะแนน นำ Ferrari 122 คะแนน ส่วนที่ MADRING Antonelli พลาด Pole ให้ Norris เพียง 0.011 วินาที ขณะที่ Russell ผ่านเข้ารอบอันดับ 6 เท่านั้น</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔵 Ferrari</h3>
+      <p><strong>สถานะ:</strong> สุดสัปดาห์ Monza เป็นฝันร้ายในบ้านตัวเอง — Leclerc ต้องออกจากการแข่งขันตั้งแต่รอบที่ 2 จากอุบัติเหตุที่ตัวเองยอมรับว่าเป็นความผิดพลาด ส่วน Hamilton จบเพียงอันดับ 6 ที่ MADRING ทั้งคู่ผ่านเข้ารอบคัดเลือกอันดับ 4-5 แต่ Hamilton ประสบปัญหาและต้องออกจากการแข่งขันก่อนกำหนดระหว่างที่รายงานถูกจัดทำ</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🟠 McLaren</h3>
+      <p><strong>สถานะ:</strong> Norris คว้า Pole Position ที่ MADRING ได้อย่างน่าประทับใจ แม้รถจะไม่เคยขึ้นนำในทุกเซสชันซ้อม และแก้ปัญหาเกียร์จาก FP2 ได้ทันเวลา ส่วนที่ Monza ทั้ง Norris และ Piastri ต่างต่อสู้แย่งตำแหน่งกันเองในสนามจนถึงรอบสุดท้าย จบอันดับ 4 และ 5 ตามลำดับ</p>
+    </div>
+
+    <div class="team-section">
+      <h3>⭐ Red Bull Racing</h3>
+      <p><strong>สถานะ:</strong> Verstappen ยังคงฟอร์มดี จบอันดับ 3 ที่ Monza และผ่านเข้ารอบคัดเลือกอันดับ 3 ที่ MADRING ขณะที่ Liam Lawson ยังคงลงแข่งแทน Isack Hadjar ที่บาดเจ็บข้อมือต่อเนื่องเป็นสนามที่ 3 ทีมตั้งเป้าให้ Hadjar กลับมาที่ Azerbaijan GP</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔷 Alpine</h3>
+      <p><strong>สถานะ:</strong> Gasly ทำผลงานดีต่อเนื่องจบอันดับ 7 ที่ Monza ส่วน Ocon โดนโทษปรับ 5 วินาทีจากการปะทะกับ Vettel และแสดงความไม่พอใจต่อคำตัดสิน Colapinto จบอันดับ 9 ที่ Monza และผ่านเข้ารอบคัดเลือกอันดับ 9 ที่ MADRING — ไลน์อัพนักแข่งปี 2027 ยืนยันแล้วทั้งคู่</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔶 Williams</h3>
+      <p><strong>สถานะ:</strong> Sainz ตกรอบ Q1 ที่ MADRING (อันดับ 17) เช่นเดียวกับที่คาดว่าจะเป็นสนามที่ท้าทายสำหรับทีมกลางตาราง — ยังไม่มีข้อมูลผลการแข่งขันหลักที่ยืนยันได้</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔹 ทีมอื่น ๆ</h3>
+      <p><strong>Racing Bulls:</strong> Yuki Tsunoda ลงแข่งแทนที่นั่งของ Lawson (ซึ่งไปลงแข่งให้ Red Bull) และจบอันดับ 10 ที่ Monza ส่วน Arvid Lindblad จบอันดับ 8 ที่ Monza และผ่านเข้ารอบคัดเลือกอันดับ 10 ที่ MADRING<br>
+      <strong>Aston Martin:</strong> Fernando Alonso ตกรอบ Q1 ที่ MADRING (อันดับ 18) ขณะที่อนาคตของเขากับทีมยังเป็นประเด็นเปิดในตลาดผู้ขับขี่</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติสำคัญ</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <strong>Antonelli — นักแข่งอิตาลีคนแรกที่ชนะที่ Monza ตั้งแต่ปี 1966</strong><br>
+        นับตั้งแต่ Ludovico Scarfiotti — ชัยชนะครั้งที่ 7 ของฤดูกาล
+      </div>
+      <div class="stat-card">
+        <strong>ชัยชนะจากกริดสตาร์ท P19</strong><br>
+        หนึ่งในการไล่แซงที่น่าประทับใจที่สุดของฤดูกาล 2026
+      </div>
+      <div class="stat-card">
+        <strong>ความนำแชมป์ชิปผู้ขับขี่</strong><br>
+        Kimi Antonelli นำ George Russell 66 คะแนน, นำ Lewis Hamilton 76 คะแนน
+      </div>
+      <div class="stat-card">
+        <strong>MADRING — สนามแข่งใหม่</strong><br>
+        สนามลำดับที่ 81 ที่เคยจัด F1 ชิงแชมป์โลก / สนามยาว 5.414-5.416 กม. 22 โค้ง
+      </div>
+      <div class="stat-card">
+        <strong>Norris คว้า Pole ครั้งประวัติศาสตร์</strong><br>
+        เฉือน Antonelli เพียง 0.011 วินาที ในรอบคัดเลือกครั้งแรกที่ MADRING
+      </div>
+      <div class="stat-card">
+        <strong>Sainz และ Alonso ตกรอบ Q1</strong><br>
+        นักแข่งสัญชาติสเปนทั้งคู่ไม่ผ่านเข้ารอบสองในสุดสัปดาห์ Spanish GP ที่บ้านเกิด
+      </div>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.skysports.com/f1/news/12433/13582217/italian-gp-kimi-antonelli-sensationally-wins-thrilling-monza-race-from-george-russell-and-max-verstappen">Sky Sports F1</a>, <a href="https://www.crash.net/f1/results/1104497/1/f1-2026-spanish-grand-prix-full-qualifying-result-madrid">Crash.net</a>, <a href="https://www.local10.com/sports/2026/09/13/norris-and-antonelli-on-front-row-for-1st-f1-race-in-madrid-in-45-years/">Local10 (AP)</a></div>
+  </section>
+
+  <section>
+    <h2>📅 Grand Prix ถัดไป — Azerbaijan Grand Prix (Baku)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="4">❓ ตารางเวลาเซสชันโดยละเอียด (FP1-FP3 / Qualifying / Race) ที่แปลงเป็นเวลา ICT อย่างแม่นยำ ยังไม่ได้รับการยืนยันครบถ้วนจากแหล่งข้อมูลในรอบการค้นหานี้ — ทราบเพียงกรอบวันแข่งขันคือ 24-26 กันยายน 2026 โดยรอบคัดเลือกจัดวันเสาร์ที่ 25 กันยายน และการแข่งขันหลักจัดวันเสาร์ที่ 26 กันยายน (เลื่อนจากวันอาทิตย์ตามปกติ)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Baku City Circuit — กลับสู่สนามสตรีทที่เร็วที่สุดในปฏิทิน</h3>
+    <div class="summary-box">
+      <p><strong>สนาม:</strong> Baku City Circuit | <strong>ประเทศ:</strong> อาเซอร์ไบจาน | <strong>ความยาว:</strong> 6.003 กม. | <strong>จำนวนรอบ:</strong> 51 รอบ | <strong>Lap Record:</strong> 1:43.009 (Charles Leclerc, Ferrari, 2019)</p>
+
+      <p>นี่คือรอบที่ 17 ของฤดูกาล 2026 ที่ Baku City Circuit สนามสตรีทที่ผสมผสานทางตรงความเร็วสูงกับโค้งแคบในย่านเมืองเก่า เป็นบททดสอบสำคัญของทั้งประสิทธิภาพเครื่องยนต์และการจัดการดาวน์ฟอร์ซ สุดสัปดาห์นี้ปีการแข่งขันย้ายมาจัดวันเสาร์เป็นครั้งแรกในประวัติศาสตร์รายการ เนื่องจากวันอาทิตย์ที่ 27 กันยายนตรงกับวันไว้อาลัยแห่งชาติของอาเซอร์ไบจาน — ประเด็นที่ต้องจับตาคือ Isack Hadjar จะกลับมาลงแข่งให้ Red Bull Racing แทน Liam Lawson หรือไม่</p>
+    </div>
+
+    <div class="source">✅ ที่มา: <a href="https://www.skysports.com/f1/grandprix/azerbaijan">Sky Sports F1</a>, <a href="https://www.f1-fansite.com/f1-calendar/azerbaijan-grand-prix-f1-race-information/">F1-Fansite</a>, <a href="https://www.mercedesamgf1.com/races/azerbaijan-grand-prix-2026">Mercedes F1 (ทางการทีม)</a></div>
+  </section>
+
+  <section>
+    <h2>💬 คำพูดประจำสัปดาห์</h2>
+
+    <div class="quote">
+      "Unbelievable, I'm so happy and I could never have imagined to be here today but we managed to pull it off ... it's a dream coming true."
+      <br><span style="color: var(--ink-soft);">— Kimi Antonelli (Mercedes) หลังคว้าชัยชนะที่ Monza จากกริด P19</span>
+    </div>
+
+    <div class="quote">
+      "Hearing them singing the national anthem was also very, very special. It was fun coming back through the field, chasing, and then finally crossing the line was a big relief and very emotional."
+      <br><span style="color: var(--ink-soft);">— Kimi Antonelli (Mercedes) เรียกชัยชนะที่ Monza ว่า "วันที่ดีที่สุดในชีวิต"</span>
+    </div>
+
+    <div class="quote">
+      "I lost the rear, as simple as that, it's my mistake. I just lost the car, it's my fault."
+      <br><span style="color: var(--ink-soft);">— Charles Leclerc (Ferrari) อธิบายอุบัติเหตุของตัวเองที่ Parabolica</span>
+    </div>
+
+    <div class="quote">
+      "For once I disagree with the stewards"
+      <br><span style="color: var(--ink-soft);">— Esteban Ocon (Alpine) เกี่ยวกับโทษปรับ 5 วินาทีจากเหตุการณ์กับ Vettel ที่ Monza</span>
+    </div>
+
+    <div class="source">✅ ที่มา: <a href="https://sports.yahoo.com/articles/kimi-antonelli-sends-emotional-message-141424057.html">Yahoo Sports</a>, <a href="https://www.formula1.com/en/latest/article/best-day-of-my-life-antonelli-reflects-on-unforgettable-monza-triumph.5KbcyQLTOgTpKe3pQFgf9q">Formula1.com</a>, <a href="https://www.formula1.com/en/latest/article/for-once-i-disagree-with-the-stewards-ocon-frustrated-by-costly-5s-penalty.33yb9djggi4pHU3NV0f3m8.html">Formula1.com</a></div>
+  </section>
+
+  <section>
+    <h2>🔍 การวิเคราะห์แชมป์ชิป</h2>
+
+    <h3>การต่อสู้แชมป์ชิปผู้ขับขี่</h3>
+    <div class="summary-box">
+      <p><strong>Antonelli คุมเกมได้ชัดเจน:</strong> ด้วยชัยชนะครั้งที่ 7 ของฤดูกาลที่ Monza — ซึ่งเป็นการแข่งขันที่ยากที่สุดครั้งหนึ่งเพราะต้องออกจากกริดท้าย — Antonelli ขยายคะแนนนำ Russell เป็น 66 คะแนน และนำ Hamilton (คู่แข่งอันดับ 3) 76 คะแนน ด้วย 10 สนามที่เหลือ (258 คะแนนสูงสุดที่ยังชิงได้) แชมป์ชิปเริ่มเอียงมาทาง Mercedes ชัดเจนมากขึ้น</p>
+
+      <p><strong>Norris ยังไม่ยอมแพ้:</strong> การคว้า Pole ที่ MADRING แม้จะตามหลังในแชมป์ชิป 96 คะแนน แสดงให้เห็นว่า McLaren ยังมีศักยภาพจะไล่ตาม โดยเฉพาะหากผลการแข่งขันจริงออกมาดี แต่ต้องรอผลยืนยันจากรายงานสัปดาห์ถัดไป</p>
+
+      <p>❓ เนื่องจากผลการแข่งขันหลักของ Spanish GP ยังไม่ยืนยัน จึงไม่สามารถวิเคราะห์ผลกระทบต่อคะแนนสะสมจากสนามนี้ได้ในรายงานฉบับนี้</p>
+    </div>
+
+    <h3>แชมป์ชิปผู้สร้างรถ</h3>
+    <div class="summary-box">
+      <p><strong>Mercedes ทิ้งห่างชัดเจน:</strong> ด้วยชัยชนะ 1-2 ที่ Monza ทำให้ Mercedes มีคะแนนนำ Ferrari ถึง 122 คะแนน และนำ McLaren 183 คะแนน จากผลงานที่โดดเด่นทั้งคู่ของ Antonelli และ Russell ตลอดครึ่งหลังของฤดูกาล</p>
+    </div>
+
+    <h3>ศึกกลางตาราง (Midfield Battle)</h3>
+    <p>Alpine ยังคงเป็นทีมที่น่าจับตาในกลุ่มกลางตาราง ด้วยผลงานต่อเนื่องของ Gasly และ Colapinto แม้ Ocon จะเผชิญปัญหาเรื่องบทลงโทษ ขณะที่ Racing Bulls ยังคงปรับตัวกับสถานการณ์นักแข่งที่สลับที่นั่งกับ Red Bull Racing เนื่องจากอาการบาดเจ็บของ Hadjar</p>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix</strong><br>Italian GP — Antonelli ชนะ (ยืนยันแล้ว) / Spanish GP — ผลยังไม่ยืนยัน</div>
+      <div class="stat-card"><strong>Sprint</strong><br>ไม่มีในทั้งสองสุดสัปดาห์</div>
+      <div class="stat-card"><strong>Pole Position</strong><br>Lando Norris (McLaren) — 1:31.824 ที่ MADRING</div>
+      <div class="stat-card"><strong>Fastest Lap</strong><br>❓ ไม่ยืนยัน (Italian GP และ Spanish GP)</div>
+      <div class="stat-card"><strong>FIA Decisions</strong><br>3 กรณีในสัปดาห์นี้ (Ocon, Hamilton/Leclerc, Leclerc)</div>
+      <div class="stat-card"><strong>Penalties</strong><br>Ocon (5 วินาที จาก Vettel incident)</div>
+      <div class="stat-card"><strong>Driver Transfers</strong><br>ไม่มีข่าวใหม่ในสัปดาห์นี้ — สถานะ Alonso/Ocon ยังเปิดอยู่ 🔄</div>
+      <div class="stat-card"><strong>Technical Updates</strong><br>Ferrari, McLaren, Red Bull ที่ MADRING</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 รายการที่ควรจับตาในสัปดาห์ถัดไป</h2>
+
+    <div class="team-section">
+      <h3>จุดโฟกัสที่สำคัญ</h3>
+      <ul>
+        <li><strong>ผลสรุป Spanish Grand Prix:</strong> ต้องติดตามผู้ชนะ อันดับสุดท้าย และผลกระทบต่อคะแนนสะสมของ Antonelli และ Norris — ที่มา: จะยืนยันในรายงานสัปดาห์ถัดไป</li>
+        <li><strong>การกลับมาของ Isack Hadjar:</strong> Red Bull ตั้งเป้าให้ Hadjar กลับมาลงแข่งที่ Azerbaijan GP (26 กันยายน) หลังพลาดไป 3 สนามติดต่อกัน — ที่มา: <a href="https://www.crash.net/f1/news/1102644/1/details-isack-hadjar-injury-and-f1-recovery-timeline-emerge">Crash.net</a></li>
+        <li><strong>อนาคตของ Fernando Alonso และ Esteban Ocon:</strong> สองประเด็นสุดท้ายที่ยังไม่ปิดในตลาดผู้ขับขี่ปี 2027 — ที่มา: <a href="https://speedcafe.com/f1-news-2026-silly-season-driver-market-update-latest-seats-2027-where-who-fernando-alonso-esteban-ocon-available-transfer-rookie/">Speedcafe</a></li>
+        <li><strong>Baku City Circuit บนวันเสาร์:</strong> ครั้งแรกในประวัติศาสตร์ F1 ที่ Azerbaijan GP จัดแข่งในวันเสาร์แทนวันอาทิตย์ — ที่มา: <a href="https://www.skysports.com/f1/grandprix/azerbaijan">Sky Sports F1</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📝 หมายเหตุรายงาน</h2>
+    <div class="note">
+      <p><strong>ข้อจำกัดหลักของรายงานนี้:</strong> ผลการแข่งขันหลักของ Spanish Grand Prix (MADRING) ไม่สามารถยืนยันได้จากแหล่งข่าวที่ตรวจสอบได้ ณ เวลาที่จัดทำรายงาน เนื่องจากการแข่งขันยังดำเนินอยู่ในลักษณะเดียวกับกรณี Italian GP ในรายงานสัปดาห์ก่อนหน้า จึงงดแสดงตารางผลการแข่งขันที่ไม่ครบถ้วน</p>
+
+      <p><strong>ระดับความเชื่อมั่นของข้อมูล:</strong> ผลการแข่งขัน Italian Grand Prix และตารางคะแนนผู้ขับขี่/ผู้สร้างรถอันดับ 1-3 อ้างอิงจากหลายแหล่งที่สอดคล้องกัน ส่วนตารางคะแนนผู้สร้างรถอันดับ 4-10 ไม่พบข้อมูลที่ยืนยันได้ในรอบการค้นหานี้จึงงดแสดง ข้อมูลอุบัติเหตุ/บทลงโทษของ Ocon และ Leclerc มาจากหลายแหล่งที่สอดคล้องกัน (Formula1.com, PlanetF1, Motorsport.com)</p>
+
+      <p><strong>โซนเวลา:</strong> เวลาเซสชันทั้งหมดแสดงเป็น ICT (Indochina Time, GMT+7) ตามที่ขอ</p>
+
+      <p><strong>ช่วงเวลาที่ครอบคลุม:</strong> รายงานนี้ครอบคลุมข่าว F1 ตั้งแต่ 6-13 กันยายน 2026 ยกเว้นข่าวต่อเนื่อง 🔄 (เช่น ตลาดผู้ขับขี่ที่ยังดำเนินอยู่ และการอัปเดตทางเทคนิคจาก Monza ที่ส่งผลต่อเนื่องถึง Madrid) ซึ่งรวมไว้แม้จะเริ่มก่อนช่วงเวลานี้</p>
+
+      <p><strong>UNCERTAIN:</strong> ไม่พบปัญหาการเข้าถึงโดเมนที่ยืนยันซ้ำ 3 รอบขึ้นไปในรอบการจัดทำรายงานนี้ อย่างไรก็ตาม formula1.com ไม่สามารถเข้าถึงโดยตรงผ่าน WebFetch ได้ในสภาพแวดล้อมนี้ (EGRESS_BLOCKED) จึงใช้ผลการค้นหาเว็บ (WebSearch) ที่อ้างอิงเนื้อหาจาก Formula1.com แทนการเปิดหน้าเว็บโดยตรงตลอดทั้งฉบับ</p>
+
+      <p><strong>รายงานถัดไป:</strong> รายงาน F1 ประจำสัปดาห์ถัดไปจะยืนยันผลการแข่งขัน Spanish Grand Prix ที่ MADRING ที่ค้างอยู่ และครอบคลุมสุดสัปดาห์ Azerbaijan Grand Prix ที่ Baku (24-26 กันยายน 2026)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>ทางการ (Official)</h3>
+    <ul>
+      <li>✅ <a href="https://www.formula1.com">Formula1.com</a> (เว็บไซต์ F1 ทางการ — อ้างอิงผ่านผลการค้นหา)</li>
+      <li>✅ <a href="https://www.fia.com">FIA.com</a> (สหพันธ์ยานยนต์นานาชาติ)</li>
+    </ul>
+
+    <h3>สื่อ Motorsport</h3>
+    <ul>
+      <li><a href="https://www.autosport.com/f1">Autosport.com</a></li>
+      <li><a href="https://www.the-race.com/formula-1/">The Race</a></li>
+      <li><a href="https://www.skysports.com/f1">Sky Sports F1</a></li>
+      <li><a href="https://www.crash.net/f1">Crash.net</a></li>
+      <li><a href="https://www.planetf1.com">PlanetF1</a></li>
+      <li><a href="https://www.motorsportweek.com">Motorsport Week</a></li>
+      <li><a href="https://racingnews365.com">RacingNews365</a></li>
+      <li><a href="https://www.espn.com/f1/">ESPN F1</a></li>
+      <li><a href="https://racer.com">RACER</a></li>
+      <li><a href="https://www.gpfans.com">GPFans</a></li>
+      <li><a href="https://www.motorsport.com/f1/">Motorsport.com</a></li>
+      <li><a href="https://scuderiafans.com">ScuderiaFans</a> (บทวิเคราะห์เชิงเทคนิค/คะแนน — ใช้เสริมการตรวจสอบข้าม)</li>
+    </ul>
+
+    <h3>การสื่อสารของทีม / อื่น ๆ</h3>
+    <ul>
+      <li>Mercedes-AMG PETRONAS F1 Team (ประกาศทางการทีม — ปฏิทิน Azerbaijan GP)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>
+      <strong>รายงาน Formula 1 ประจำสัปดาห์</strong> · 13 กันยายน 2026 (สัปดาห์ที่ 37)<br>
+      สร้างสำหรับ natthasath-news · ภาษา: ภาษาไทย (ไทย) · โซนเวลา: ICT (GMT+7)<br>
+      ข้อมูลที่ยืนยันจากแหล่งข้อมูล F1 อย่างเป็นทางการและสื่อ motorsport เท่าที่ตรวจสอบได้ · เวลาทั้งหมดใน ICT
+    </p>
+  </footer>
+</div>
+</body>
+</html>
