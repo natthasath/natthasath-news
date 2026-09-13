@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Premier League Report — Week 37, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#9A5B12; --warn-bg:rgba(154,91,18,0.10); --warn-line:rgba(154,91,18,0.30);
+  --rumor:#8A3B5A;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.12);
+    --warn:#E0A855; --warn-bg:rgba(224,168,85,0.10); --warn-line:rgba(224,168,85,0.30);
+    --rumor:#D98FB2;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:6px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; padding-top:2px; }
+h3{ font-size:16.5px; font-weight:700; margin:20px 0 8px; color:var(--ink); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:30px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:72ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:70ch; }
+ul li ul{ margin-top:8px; }
+
+.callout{ background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px; padding:16px 18px; margin:0 0 18px; }
+.callout p{ margin:0; max-width:none; color:var(--ink); }
+.callout p + p{ margin-top:8px; }
+.callout .label{ font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--warn); text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.note{ font-size:14px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:12px 14px; margin:10px 0 16px; max-width:none; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 14px; border:1px solid var(--line); border-radius:10px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px; }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td a, th a{ white-space:nowrap; }
+
+.badge{ display:inline-block; font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:600; padding:2px 8px; border-radius:999px; white-space:nowrap; }
+.badge-official{ background:var(--accent-soft); color:var(--accent); }
+.badge-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-rumor{ background:rgba(138,59,90,0.12); color:var(--rumor); }
+.badge-cont{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-pending{ background:rgba(154,91,18,0.12); color:var(--warn); border:1px solid var(--warn-line); }
+
+.subhead{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin:18px 0 8px; }
+.subhead:first-child{ margin-top:0; }
+
+.club-block{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px dashed var(--line); }
+.club-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.club-block h3{ margin-top:0; }
+.club-block p{ margin-bottom:6px; }
+
+.src-list{ list-style:none; padding:0; margin:0 0 14px; }
+.src-list li{ margin-bottom:6px; font-size:14.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 37, 2026</p>
+    <h1>⚽ Weekly Premier League Report — Week 37</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 6 – 13 กันยายน 2026 (ICT)</span>
+      <span><b>Category:</b> Football</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="note">หมายเหตุขอบเขต: รายงานนี้ครอบคลุม 6-13 ก.ย. 2026 เริ่มจากผล Arsenal vs Chelsea (6 ก.ย.) ที่รายงานสัปดาห์ก่อนระบุว่า "รอผล" ไปจนถึง Matchweek ถัดไปเกือบทั้งหมด (12-13 ก.ย.) ซึ่งรวมถึงศึกแมนเชสเตอร์ดาร์บี้นัดแรกของฤดูกาลระหว่าง Michael Carrick และ Enzo Maresca — ข้อมูลบางส่วน (ชื่อผู้ทำประตูของ Man Utd vs Man City และลำดับผลต่างประตูของทีมอันดับ 2-3 และ 4-5) ไม่สามารถยืนยันได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ จึงงดแสดงแทนการคาดเดา (ดู UNCERTAIN ท้ายรายงาน)</div>
+    <ul>
+      <li>Arsenal เก็บชัยชนะครบ 4 นัดจาก 4 นัด ขึ้นนำตารางเดี่ยวด้วย 12 แต้มเต็ม ห่างอันดับ 2 ถึง 3 แต้ม หลังเอาชนะ Chelsea 2-1 ที่ Emirates (6 ก.ย.) และบุกเอาชนะ Sunderland 2-0 (12 ก.ย.) เป็นทีมเดียวที่ยังคงสถิติไร้พ่ายและเสียประตูเพียงลูกเดียวตลอดฤดูกาล <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Manchester United ของ Michael Carrick เอาชนะ Manchester City ของ Enzo Maresca 2-0 ในศึกแมนเชสเตอร์ดาร์บี้นัดแรกของฤดูกาลที่ Old Trafford (13 ก.ย.) ทำให้ Man City แพ้นัดแรกของฤดูกาล ส่วนชื่อผู้ทำประตูของ Man Utd ยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Tottenham Hotspur ภายใต้ Roberto De Zerbi เสมอ Everton 0-0 (13 ก.ย.) เป็นนัดที่ 4 ติดต่อกันที่ยิงประตูไม่ได้เลย นับเป็นครั้งแรกในประวัติศาสตร์ 144 ปีของสโมสรที่เปิดฤดูกาลด้วยผลไร้ประตู 4 นัดรวด เก็บได้เพียง 2 แต้มจาก 4 นัด ท่ามกลางแรงกดดันต่อ De Zerbi ที่เพิ่มขึ้นจากฝ่ายบริหารสโมสร <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Hull City ทีมเลื่อนชั้นยังคงไร้พ่ายต่อเนื่อง เสมอ Chelsea 2-2 ที่ Stamford Bridge (12 ก.ย.) ด้วยประตู 2 ลูกรวดของ Mohamed Belloumi ขึ้นเก็บ 8 แต้มจาก 4 นัด (2 ชนะ 2 เสมอ 0 แพ้) <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Newcastle United เอาชนะ Leeds United 4-3 ที่ Elland Road (12 ก.ย.) ในเกมดวลประตูสุดมันส์ 7 ลูก โดย Harvey Barnes ยิงประตูชัยนาทีที่ 102 ซึ่งเป็นประตูชัยที่ทำในเวลาช้าที่สุดเท่าที่มีการบันทึกไว้ในพรีเมียร์ลีก <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>พบข้อมูลขัดแย้งระหว่างแหล่งข่าวเกี่ยวกับสังกัดของ Bruno Guimarães ในสัปดาห์นี้ — บางแหล่งระบุว่าเขายิงประตูแรกให้ Arsenal ในเกมพบ Sunderland ขณะที่อีกหลายแหล่งระบุว่าเขายิงจุดโทษให้ Newcastle ในเกมพบ Leeds นัดเดียวกัน จึงแสดงข้อมูลทั้งสองด้านไว้ตามกฎ Conflict Resolution (ดูรายละเอียดในหัวข้อผลการแข่งขัน) <span class="badge badge-report">📰 รายงาน (ขัดแย้งกัน)</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 ตารางคะแนน Top 6</h2>
+    <div class="note">คำนวณเองจากผลการแข่งขันรายนัดที่ยืนยันได้ทีละคู่ (ครบ Matchweek ถึงวันที่ 13 ก.ย. ทุกทีมลงเล่นครบ 4 นัด) จัดอันดับตาม Points เป็นหลัก เนื่องจากไม่สามารถเข้าถึงหน้าตารางคะแนนอย่างเป็นทางการโดยตรงได้ในสภาพแวดล้อมนี้ (ดู UNCERTAIN ท้ายรายงาน) <b>อันดับ 2-3 (Manchester City, Manchester United) และอันดับ 4-5 (Hull City, Newcastle United) มีแต้มเท่ากัน</b> แต่ไม่สามารถยืนยันผลต่างประตูสะสมที่แม่นยำได้ครบทุกนัดตั้งแต่ต้นฤดูกาล จึงเรียงลำดับตามชื่อทีมชั่วคราวในกลุ่มที่แต้มเท่ากัน ไม่ใช่การยืนยันอันดับที่แท้จริง</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Club</th><th>Played</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>Source</th></tr>
+      <tr><td>1</td><td>Arsenal</td><td>4</td><td>4</td><td>0</td><td>0</td><td>12</td><td><a href="https://www.interceptng.com/sports/28054/" target="_blank" rel="noopener">The Intercept (NG)</a></td></tr>
+      <tr><td>2*</td><td>Manchester City</td><td>4</td><td>3</td><td>0</td><td>1</td><td>9</td><td><a href="https://www.interceptng.com/sports/28054/" target="_blank" rel="noopener">The Intercept (NG)</a></td></tr>
+      <tr><td>3*</td><td>Manchester United</td><td>4</td><td>3</td><td>0</td><td>1</td><td>9</td><td><a href="https://www.nbcsports.com/soccer/live/manchester-united-vs-man-city-live-updates-score-goals-highlights-stats-2026-september-13" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>4*</td><td>Hull City</td><td>4</td><td>2</td><td>2</td><td>0</td><td>8</td><td><a href="https://www.nbcsports.com/soccer/live/chelsea-vs-hull-city-live-updates-score-goals-highlights-stats-2026-september-12" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>5*</td><td>Newcastle United</td><td>4</td><td>2</td><td>2</td><td>0</td><td>8</td><td><a href="https://www.skysports.com/football/news/11095/13490850/newcastle-4-3-leeds-harvey-barnes-scores-in-102nd-minute-as-magpies-win-seven-goal-thriller" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>6</td><td>Chelsea</td><td>4</td><td>2</td><td>1</td><td>1</td><td>7</td><td><a href="https://sundayguardianlive.com/sports/premier-league-standings-updated-september-12-arsenal-stay-unbeaten-as-liverpool-chelsea-and-tottenham-hotspur-drop-points-latest-premier-league-table-283396/" target="_blank" rel="noopener">Sunday Guardian Live</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">ตรวจสอบ Consistency แล้ว: Played = W+D+L และ Points = W×3+D ถูกต้องครบทุกทีมในตาราง Arsenal นำห่างอันดับ 2 อยู่ 3 แต้ม ยืนยันจากอย่างน้อย 2 แหล่ง (The Intercept, Sunday Guardian Live) เครื่องหมาย * หมายถึงคู่ทีมที่แต้มเท่ากันและยังไม่สามารถยืนยันผลต่างประตูที่ใช้จัดลำดับได้อย่างแม่นยำ</p>
+  </section>
+
+  <section>
+    <h2>⚽ ผลการแข่งขันสำคัญ</h2>
+    <h3 class="subhead">6 กันยายน — บิ๊กแมตช์ปิดท้ายสัปดาห์ก่อน</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th class="wrap">Summary</th><th>Source</th></tr>
+      <tr><td>6 ก.ย.</td><td>Arsenal</td><td>2-1</td><td>Chelsea</td><td class="wrap">Chelsea ขึ้นนำได้เร็วเพียง 77 วินาทีจากวอลเลย์ของ Morgan Rogers ก่อน Kai Havertz จะตีเสมอกลางครึ่งแรก และ Martin Ødegaard ยิงประตูชัยหลังรับบอลจากลูกหลอกอันยอดเยี่ยมของ Havertz ทำให้ Arsenal และ Man City เป็นสองทีมเดียวที่ยังคงสถิติไร้พ่าย 100% ในเวลานั้น</td><td><a href="https://www.nbcsports.com/soccer/live/arsenal-vs-chelsea-live-updates-score-goals-highlights-stats-2026-september-6" target="_blank" rel="noopener">NBC Sports</a> / <a href="https://www.aljazeera.com/sports/liveblog/2026/9/6/live-arsenal-vs-chelsea-premier-league-2" target="_blank" rel="noopener">Al Jazeera</a></td></tr>
+    </table>
+    </div>
+
+    <h3 class="subhead">12-13 กันยายน — สัปดาห์นี้</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th class="wrap">Summary</th><th>Source</th></tr>
+      <tr><td>12 ก.ย.</td><td>Sunderland</td><td>0-2</td><td>Arsenal</td><td class="wrap">David Raya เซฟจุดโทษของ Enzo Le Fée ได้ก่อนที่ Arsenal จะขึ้นนำนาทีที่ 58 (ดูข้อขัดแย้งเรื่องผู้ทำประตูด้านล่าง) และ Bukayo Saka สังหารจุดโทษปิดท้ายในช่วงทดเวลาบาดเจ็บ หลัง Reinildo Mandava โดนใบเหลืองใบที่สอง เป็นชัยชนะนัดที่ 4 ติดต่อกันของ Arsenal โดยเสียประตูรวมเพียงลูกเดียวตลอดฤดูกาล</td><td><a href="https://www.skysports.com/football/news/33694/13583579/sunderland-0-2-arsenal-bruno-guimaraes-haunts-black-cats-with-stunner-after-david-raya-penalty-save" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>12 ก.ย.</td><td>Leeds United</td><td>3-4</td><td>Newcastle United</td><td class="wrap">เกมดวลประตูสุดมันส์ที่ Elland Road Newcastle ไล่ตีเสมอถึง 3 ครั้งก่อนที่ Harvey Barnes จะซัดประตูชัยนาทีที่ 102 ซึ่งเป็นประตูชัยที่ทำในเวลาช้าที่สุดเท่าที่มีการบันทึกในพรีเมียร์ลีก (ผู้ทำประตู Newcastle: Barnes 2, Joelinton, จุดโทษ — ดูข้อขัดแย้งเรื่องผู้ยิงจุดโทษด้านล่าง / Leeds: Brenden Aaronson 2, จุดโทษ Dominic Calvert-Lewin)</td><td><a href="https://www.skysports.com/football/news/11095/13490850/newcastle-4-3-leeds-harvey-barnes-scores-in-102nd-minute-as-magpies-win-seven-goal-thriller" target="_blank" rel="noopener">Sky Sports</a> / <a href="https://www.nbcsports.com/soccer/news/newcastle-vs-leeds-recap-final-score-video-highlights-analysis" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>12 ก.ย.</td><td>Chelsea</td><td>2-2</td><td>Hull City</td><td class="wrap">Morgan Rogers ยิงเปิดนำ Chelsea นาทีที่ 7 ก่อน Mohamed Belloumi จะซัดสองประตูรวดในนาทีที่ 28 และ 34 พลิกเกมให้ Hull City ก่อน João Pedro จะตีเสมอให้ Chelsea นาทีที่ 66 Hull City รักษาสถิติไร้พ่ายต่อเนื่อง</td><td><a href="https://www.skysports.com/football/chelsea-vs-hull-city/559476" target="_blank" rel="noopener">Sky Sports</a> / <a href="https://theanalyst.com/articles/chelsea-vs-hull-stats-premier-league-09-2026" target="_blank" rel="noopener">Opta Analyst</a></td></tr>
+      <tr><td>12-13 ก.ย.</td><td>Nottingham Forest</td><td>2-1</td><td>Aston Villa</td><td class="wrap">Igor Jesus ยิงประตูสวยงามช่วย Forest ขึ้นนำ 2-1 และรักษาชัยชนะไว้ได้</td><td><a href="https://www.nbcsports.com/watch/watch/premier-league/premier-league-extended-highlights-2026-aston-villa-v-nottingham-forest" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>12-13 ก.ย.</td><td>Crystal Palace</td><td>2-3</td><td>Ipswich Town</td><td class="wrap">Zian Flemming ยิงประตูชัยช่วงทดเวลาบาดเจ็บ บอลกระทบคานก่อนพุ่งเข้าประตู ทำให้ Ipswich Town พลิกเอาชนะ 3-2</td><td><a href="https://www.nbcsports.com/watch/watch/premier-league/premier-league-highlights-2026-crystal-palace-v-ipswich-town-matchweek-4" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>13 ก.ย.</td><td>Liverpool</td><td>0-0</td><td>Fulham</td><td class="wrap">Liverpool ไม่สามารถเจาะแนวรับ Fulham ได้ที่ Anfield จบเกมด้วยผลเสมอไร้สกอร์</td><td><a href="https://www.nbcsports.com/watch/watch/premier-league/premier-league-extended-highlights-2026-liverpool-v-fulham-matchweek-4" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>13 ก.ย.</td><td>Tottenham Hotspur</td><td>0-0</td><td>Everton</td><td class="wrap">Spurs ถูกโห่ไล่หลังจบเกม เสมอไร้สกอร์นัดที่สองติดต่อกัน ยังไม่ยิงประตูได้เลยตลอด 4 นัดแรกของฤดูกาล เป็นครั้งแรกในประวัติศาสตร์ 144 ปีของสโมสร</td><td><a href="https://ca.sports.yahoo.com/news/zerbi-under-pressure-tottenham-still-203500322.html" target="_blank" rel="noopener">Yahoo Sports</a> / <a href="https://www.cbssports.com/soccer/news/roberto-de-zerbi-says-tottenham-struggle-to-unblock-ourselves-as-goalless-streak-extends-to-four-games/" target="_blank" rel="noopener">CBS Sports</a></td></tr>
+      <tr><td>13 ก.ย.</td><td>Coventry City</td><td>0-1</td><td>Brighton &amp; Hove Albion</td><td class="wrap">Charalampos Kostoulas ยิงประตูเดียวของเกมนาทีที่ 35 พา Brighton เก็บ 3 แต้มบนถิ่น Coventry</td><td><a href="https://www.skysports.com/football/live-blog/11095/13572157/coventry-vs-brighton-live-premier-league-score-updates-news-prediction-lineups-and-how-to-watch-or-stream" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>13 ก.ย.</td><td>AFC Bournemouth</td><td>2-2</td><td>Brentford</td><td class="wrap">สองทีมแบ่งแต้มกันคนละครึ่งในเกมดวลประตู</td><td><a href="https://www.nbcsports.com/watch/watch/premier-league/premier-league-extended-highlights-bournemouth-v-brentford-matchweek-4" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>13 ก.ย.</td><td>Manchester United</td><td>2-0</td><td>Manchester City</td><td class="wrap">แมนเชสเตอร์ดาร์บี้นัดแรกของฤดูกาลระหว่าง Michael Carrick และ Enzo Maresca ที่ Old Trafford Manchester United เก็บชัยชนะ ทำให้ Man City แพ้นัดแรกของฤดูกาล — ชื่อผู้ทำประตูยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้</td><td><a href="https://www.nbcsports.com/soccer/live/manchester-united-vs-man-city-live-updates-score-goals-highlights-stats-2026-september-13" target="_blank" rel="noopener">NBC Sports</a> / <a href="https://blog.ke.sportpesa.com/2026/09/13/manchester-united-vs-manchester-city-3/" target="_blank" rel="noopener">SportPesa Blog</a></td></tr>
+    </table>
+    </div>
+    <div class="callout">
+      <span class="label">⚠️ ข้อมูลขัดแย้ง — สังกัดของ Bruno Guimarães</span>
+      <p>แหล่งข่าวหลายแห่ง (Sky Sports, VAVEL, BBNTimes) รายงานตรงกันว่า <b>Bruno Guimarães ยิง "ประตูแรกให้ Arsenal" นาทีที่ 58</b> ในเกมพบ Sunderland (12 ก.ย.) หลังมีรายงานว่าเขาย้ายจาก Newcastle มา Arsenal ด้วยค่าตัว 75 ล้านปอนด์ในช่วงตลาดฤดูร้อน (อ้างอิง ESPN, Sky Sports)</p>
+      <p>ในขณะเดียวกัน แหล่งข่าวอีกชุด (Sky Sports, NBC Sports) รายงานผลการแข่งขัน Newcastle 4-3 Leeds (นัดเดียวกัน วันเดียวกัน) ว่า <b>Bruno Guimarães ยิงจุดโทษให้ Newcastle</b> นาทีที่ 91</p>
+      <p style="margin-top:6px;">ข้อมูลทั้งสองชุดมาจากนักข่าวสำนักเดียวกัน (Sky Sports) แต่ขัดแย้งกันเองเรื่องสังกัดสโมสรของผู้เล่นคนเดียวกันในวันเดียวกัน จึงไม่สามารถสรุปได้อย่างมั่นใจว่า Bruno Guimarães อยู่ทีมใด ณ ขณะนี้ รายงานฉบับนี้จึงแสดงข้อมูลทั้งสองด้านไว้ตามกฎ และงดนำผลงานของเขาไปคำนวณในตารางดาวซัลโว/แอสซิสต์จนกว่าจะยืนยันได้ชัดเจน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🥇 ดาวซัลโว Top 5</h2>
+    <div class="note">จัดอันดับจากประตูสะสมทั้งฤดูกาล เท่าที่ยืนยันได้จากแหล่งข่าวที่ตรวจสอบ อ้างอิงต่อเนื่องจากรายงานสัปดาห์ก่อน (Week 36) เนื่องจากผู้เล่นในกลุ่มนำส่วนใหญ่ไม่ได้ยิงประตูเพิ่มในสัปดาห์นี้เท่าที่ตรวจสอบได้ (Haaland ไม่ได้ยิงในเกมที่ Man City แพ้ 0-2, ส่วนผู้ทำประตูของ Man Utd ยังไม่ยืนยันได้) <b>ไม่นำผลงานของ Bruno Guimarães มารวมเนื่องจากข้อมูลขัดแย้งเรื่องสังกัดตามที่ระบุข้างต้น</b> ข้อมูลแอสซิสต์รายบุคคลสะสมยังไม่สามารถยืนยันครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ จึงแสดงเครื่องหมาย "–" แทนการเดาตัวเลข</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Player</th><th>Club</th><th>Goals</th><th>Assists</th><th>Source</th></tr>
+      <tr><td>1</td><td>Bruno Fernandes</td><td>Manchester United</td><td>3</td><td>–</td><td><a href="https://sports.yahoo.com/articles/premier-league-2026-27-scoring-193020557.html" target="_blank" rel="noopener">Yahoo Sports (ต่อเนื่องจาก Week 36)</a></td></tr>
+      <tr><td>1</td><td>Erling Haaland</td><td>Manchester City</td><td>3</td><td>–</td><td><a href="https://sports.yahoo.com/articles/premier-league-2026-27-scoring-193020557.html" target="_blank" rel="noopener">Yahoo Sports</a></td></tr>
+      <tr><td>1</td><td>Alexander Isak</td><td>Liverpool</td><td>3</td><td>–</td><td><a href="https://sports.yahoo.com/articles/premier-league-2026-27-scoring-193020557.html" target="_blank" rel="noopener">Yahoo Sports</a></td></tr>
+      <tr><td>4</td><td>João Pedro</td><td>Chelsea</td><td>3</td><td>–</td><td><a href="https://theanalyst.com/articles/chelsea-vs-hull-stats-premier-league-09-2026" target="_blank" rel="noopener">Opta Analyst — ยิงเพิ่มพบ Hull (66')</a></td></tr>
+      <tr><td>5</td><td>Cole Palmer</td><td>Chelsea</td><td>2</td><td>–</td><td><a href="https://en.wikipedia.org/wiki/2026%E2%80%9327_Premier_League" target="_blank" rel="noopener">อ้างอิงต่อเนื่องจาก Week 36</a></td></tr>
+    </table>
+    </div>
+    <div class="note">Erling Haaland, Bruno Fernandes และ Alexander Isak ถูกรายงานเป็นกลุ่มผู้นำร่วมด้วยประตูเท่ากันจากหลายแหล่ง (Yahoo Sports) แต่ตัวเลขที่แน่นอนหลังจบสัปดาห์นี้ยังไม่สามารถยืนยันครบทุกคนจาก 2 แหล่งอิสระ João Pedro ยิงประตูใหม่ที่ยืนยันได้ในสัปดาห์นี้ (พบ Hull City) ทำให้ขยับขึ้นมาเสมอกลุ่มนำที่ 3 ประตู</div>
+  </section>
+
+  <section>
+    <h2>🔥 ข่าวสำคัญ</h2>
+    <h3>Official</h3>
+    <ul>
+      <li>ตลาดซื้อขายนักเตะฤดูร้อนปิดไปแล้วตั้งแต่ 1 ก.ย. ไม่มีการซื้อขายใหม่ในสัปดาห์นี้ <span class="badge badge-cont">ต่อเนื่อง</span></li>
+      <li>มีรายงานจาก ESPN และ Sky Sports ว่า Arsenal เซ็นสัญญา Bruno Guimarães จาก Newcastle ด้วยค่าตัว 75 ล้านปอนด์ในช่วงปิดตลาดฤดูร้อน แต่ข้อมูลนี้<b>ขัดแย้งกับรายงานผลการแข่งขัน</b> Newcastle 4-3 Leeds สัปดาห์นี้ที่ระบุว่าเขายังคงลงเล่นให้ Newcastle จึงยังไม่สามารถยืนยันสถานะที่แท้จริงได้ <span class="badge badge-report">📰 รายงาน (ขัดแย้งกัน)</span> — <a href="https://www.espn.com/soccer/story/_/id/49534772/arsenal-agree-deal-sign-bruno-guimaraes-newcastle-sources" target="_blank" rel="noopener">ESPN</a></li>
+    </ul>
+    <h3>Report</h3>
+    <ul>
+      <li>ไม่พบรายงาน (Report-status) เกี่ยวกับดีลย้ายทีมใหม่ในสัปดาห์นี้ เนื่องจากตลาดฤดูร้อนปิดตัวลงแล้ว หน้าต่างถัดไปคือเดือนมกราคม 2027</li>
+    </ul>
+    <h3>Rumor</h3>
+    <ul>
+      <li>ไม่พบข่าวลือใหม่ที่ตรวจสอบได้ในกรอบเวลา 7 วันนี้จากแหล่งข่าวที่เข้าถึงได้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏥 Injury &amp; Suspension</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Club</th><th>Player</th><th>Status</th><th>Return</th><th>Source</th></tr>
+      <tr><td>Sunderland</td><td>Reinildo Mandava</td><td>โดนใบเหลืองใบที่สองไล่ออกจากสนาม (พบ Arsenal 12 ก.ย.) คาดมีโทษแบน</td><td>รอประกาศจำนวนนัดแบน</td><td><a href="https://www.skysports.com/football/news/33694/13583579/sunderland-0-2-arsenal-bruno-guimaraes-haunts-black-cats-with-stunner-after-david-raya-penalty-save" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>Brentford</td><td>Nathan Collins (กัปตันทีม)</td><td>บาดเจ็บกล้ามเนื้อน่อง</td><td>หลังช่วงพักทีมชาติ (international break)</td><td><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire</a></td></tr>
+      <tr><td>Chelsea</td><td>Moisés Caicedo, Jordan Henderson, Emmanuel Emegha</td><td>บาดเจ็บ (ทั้งสามคน) <span class="badge badge-cont">ต่อเนื่อง</span></td><td>เล็งกลับมาทันเกมพบ Brentford (19 ก.ย.)</td><td><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire</a></td></tr>
+      <tr><td>Manchester City</td><td>Jeremy Doku</td><td>บาดเจ็บกล้ามเนื้อ <span class="badge badge-cont">ต่อเนื่อง</span> — ยังต้องการเวลาพักฟื้นเพิ่ม</td><td>ยังไม่มีกำหนดชัดเจน</td><td><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire</a></td></tr>
+      <tr><td>Arsenal</td><td>William Saliba</td><td>ปัญหาหลัง คาดพลาดหลายนัดถัดไป</td><td>ยังไม่มีกำหนดชัดเจน</td><td><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire</a></td></tr>
+      <tr><td>Aston Villa</td><td>Brian Madjo</td><td>บาดเจ็บ <span class="badge badge-cont">ต่อเนื่อง</span></td><td>อีกประมาณ 2 สัปดาห์</td><td><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire</a></td></tr>
+      <tr><td>Aston Villa</td><td>Amadou Onana</td><td>พักฟื้นจากผ่าตัดสร้างเอ็นเข่าใหม่ <span class="badge badge-cont">ต่อเนื่อง</span></td><td>ระยะยาว ยังไม่มีกำหนดชัดเจน</td><td><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire</a></td></tr>
+      <tr><td>Leeds United</td><td>Charlie Hughes</td><td>บาดเจ็บขาหนีบ <span class="badge badge-cont">ต่อเนื่อง</span></td><td>สูงสุด 7 สัปดาห์ (คาดกลับเดือนหน้า)</td><td><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire</a></td></tr>
+      <tr><td>Leeds United</td><td>Jack Butland</td><td>ผ่าตัดข้อศอก <span class="badge badge-cont">ต่อเนื่อง</span></td><td>ประมาณ 6 สัปดาห์</td><td><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire</a></td></tr>
+      <tr><td>Leeds United</td><td>Joe Rodon</td><td>บาดเจ็บกล้ามเนื้อต้นขาด้านหลัง <span class="badge badge-cont">ต่อเนื่อง</span></td><td>8-10 สัปดาห์ (จาก Week 36)</td><td><a href="https://www.goal.com/en-gb/lists/joe-rodon-leeds-united-injury-blow-/blta0e9c73245d5f825" target="_blank" rel="noopener">Goal.com</a></td></tr>
+      <tr><td>Sunderland</td><td>Habib Diarra</td><td>บาดเจ็บกล้ามเนื้อต้นขาด้านหลัง <span class="badge badge-cont">ต่อเนื่อง</span></td><td>6-8 สัปดาห์ (จาก Week 36)</td><td><a href="https://www.safc.com/news/2026/september/03/le-bris-provides-diarra-injury-update" target="_blank" rel="noopener">Sunderland AFC (Official)</a></td></tr>
+    </table>
+    </div>
+    <div class="note">Everton รายงานว่า Jack Grealish พร้อมลงเล่นแล้ว ส่วน Christian Nørgaard ยังไม่กลับมาซ้อมเต็มรูปแบบบนสนามหญ้า <span class="badge badge-cont">ต่อเนื่อง</span> (แหล่ง: RotoWire) ไม่พบรายงานใบแดงใหม่เพิ่มเติมนอกเหนือจาก Reinildo Mandava (Sunderland) ในสัปดาห์นี้</div>
+  </section>
+
+  <section>
+    <h2>📈 Weekly Statistics</h2>
+    <ul>
+      <li><b>Most Goals:</b> Leeds United 3-4 Newcastle United เป็นนัดที่มีประตูรวมมากที่สุดในสัปดาห์นี้ (7 ประตู) ในเกมที่ Newcastle ไล่ตีเสมอถึง 3 ครั้งก่อนยิงชัยนาทีที่ 102</li>
+      <li><b>Best Defence:</b> Arsenal เสียประตูรวมเพียงลูกเดียวตลอด 4 นัดแรกของฤดูกาล ดีที่สุดในลีกอย่างชัดเจน</li>
+      <li><b>Clean Sheets:</b> Arsenal (พบ Sunderland), Manchester United (พบ Manchester City), Liverpool &amp; Fulham (เสมอ 0-0), Tottenham &amp; Everton (เสมอ 0-0) — คลีนชีตเต็มนัดรวม 6 ทีมจาก 4 คู่</li>
+      <li><b>Player of the Week:</b> ยังไม่มีการประกาศ Player of the Matchweek อย่างเป็นทางการจาก Premier League สำหรับรอบนี้ ณ เวลารวบรวมข้อมูล (นัดสุดท้ายเพิ่งจบไม่กี่ชั่วโมงก่อนหน้า) ผู้เล่นที่โดดเด่นด้วยสถิติที่ยืนยันได้คือ Harvey Barnes (Newcastle) ที่ยิง 2 ประตู รวมถึงประตูชัยนาทีที่ 102 ในเกมดวลประตูพบ Leeds</li>
+    </ul>
+    <div class="note">สถิติ Expected Goals (xG) รายทีม/รายนัด และใบเหลืองสะสมรายบุคคลยังไม่มีแหล่งข้อมูลอย่างเป็นทางการเผยแพร่ครบถ้วน ณ เวลารวบรวมข้อมูลของรายงานนี้ จึงไม่นำมาแสดง</div>
+  </section>
+
+  <section>
+    <h2>🔵 Big 6 Analysis</h2>
+    <div class="club-block">
+      <h3>Arsenal</h3>
+      <p><b>ฟอร์ม:</b> ชนะรวด 4 นัด 4 นัด (2-1 Chelsea, 2-0 Sunderland รวมผลจาก 2 นัดก่อนหน้า) ภายใต้ Mikel Arteta นำตารางเดี่ยวด้วย 12 แต้มเต็ม ห่างอันดับ 2 อยู่ 3 แต้ม</p>
+      <p><b>จุดเด่น:</b> แนวรับแข็งแกร่งที่สุดในลีก เสียประตูรวมเพียงลูกเดียวใน 4 นัด David Raya เซฟจุดโทษสำคัญพบ Sunderland Martin Ødegaard และ Bukayo Saka ยังคงทำผลงานโดดเด่นต่อเนื่อง</p>
+      <p><b>จุดอ่อน:</b> William Saliba มีปัญหาหลังคาดพลาดหลายนัดถัดไป ต้องรอดูว่าแนวรับจะยังแน่นหนาต่อเนื่องหรือไม่เมื่อขาดตัวหลัก</p>
+    </div>
+    <div class="club-block">
+      <h3>Chelsea</h3>
+      <p><b>ฟอร์ม:</b> แพ้ Arsenal 1-2 แล้วเสมอ Hull City 2-2 ทำให้เก็บได้เพียง 1 แต้มจาก 2 นัดหลังสุด อยู่ในอันดับ 6 ด้วย 7 แต้มจาก 4 นัด ภายใต้ Xabi Alonso</p>
+      <p><b>จุดเด่น:</b> João Pedro ยังคงทำประตูได้สม่ำเสมอ ขยับมาเสมอกลุ่มดาวซัลโวนำที่ 3 ประตู</p>
+      <p><b>จุดอ่อน:</b> แนวรับยังมีปัญหาต่อเนื่อง ปล่อยให้ Hull City ไล่ตีเสมอ 2 ประตูรวดในเวลาเพียง 6 นาที ขณะที่ Moisés Caicedo, Jordan Henderson และ Emmanuel Emegha ยังบาดเจ็บพร้อมกันทั้งสามคน</p>
+    </div>
+    <div class="club-block">
+      <h3>Liverpool</h3>
+      <p><b>ฟอร์ม:</b> เสมอ Fulham 0-0 ที่ Anfield ภายใต้ Andoni Iraola ไม่สามารถเจาะแนวรับคู่แข่งได้ตลอด 90 นาที</p>
+      <p><b>จุดเด่น:</b> Alexander Isak ยังอยู่ในกลุ่มดาวซัลโวนำร่วมของลีกด้วย 3 ประตู</p>
+      <p><b>จุดอ่อน:</b> เกมรุกยังไม่คมพอเมื่อเจอทีมที่ตั้งรับลึก เก็บได้เพียง 1 แต้มจากเกมนี้</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester City</h3>
+      <p><b>ฟอร์ม:</b> แพ้นัดแรกของฤดูกาล 0-2 ให้ Manchester United ในศึกดาร์บี้นัดแรกภายใต้ Enzo Maresca ทำให้สถิติชนะรวด 3 นัดสิ้นสุดลง ยังคงอยู่อันดับ 2-3 ด้วย 9 แต้มจาก 4 นัด</p>
+      <p><b>จุดเด่น:</b> ยังเป็นหนึ่งในทีมมีแต้มสูงสุดของลีก แม้จะเพิ่งพ่ายแพ้นัดแรก</p>
+      <p><b>จุดอ่อน:</b> พ่ายให้คู่ปรับร่วมเมืองเป็นครั้งแรกของฤดูกาล และ Jeremy Doku ยังบาดเจ็บกล้ามเนื้อต่อเนื่อง ไม่พร้อมลงเล่น</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester United</h3>
+      <p><b>ฟอร์ม:</b> เอาชนะ Manchester City 2-0 ในศึกดาร์บี้นัดแรกของ Michael Carrick กับทีม ทำให้ขยับขึ้นมาเก็บ 9 แต้มจาก 4 นัด ร่วมกลุ่มอันดับ 2-3 ของตาราง</p>
+      <p><b>จุดเด่น:</b> เก็บคลีนชีตในเกมใหญ่ที่สุดของสัปดาห์ พลิกฟอร์มจากช่วงต้นฤดูกาลที่ยังไม่นิ่ง</p>
+      <p><b>จุดอ่อน:</b> ชื่อผู้ทำประตูในเกมดาร์บี้ยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ ทำให้ยังประเมินความสม่ำเสมอของเกมรุกได้ไม่เต็มที่</p>
+    </div>
+    <div class="club-block">
+      <h3>Tottenham Hotspur</h3>
+      <p><b>ฟอร์ม:</b> เสมอ Everton 0-0 เป็นนัดที่ 4 ติดต่อกันที่ยิงประตูไม่ได้เลย ภายใต้ Roberto De Zerbi เก็บได้เพียง 2 แต้มจาก 4 นัด ถูกแฟนบอลโห่ไล่หลังจบเกม</p>
+      <p><b>จุดเด่น:</b> เก็บคลีนชีตได้ต่อเนื่อง แม้จะไม่ชนะ</p>
+      <p><b>จุดอ่อน:</b> ยังไม่ยิงประตูได้เลยตลอดฤดูกาล เป็นครั้งแรกในประวัติศาสตร์ 144 ปีของสโมสรที่เปิดฤดูกาลด้วยผลไร้ประตู 4 นัดรวด แม้ทุ่มเงินซื้อนักเตะไปกว่า 300 ล้านปอนด์ในตลาดฤดูร้อน De Zerbi เผชิญแรงกดดันจากฝ่ายบริหารสโมสรเพิ่มขึ้นต่อเนื่อง</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 Title Race</h2>
+    <p>Arsenal สร้างระยะห่างจากคู่แข่งอย่างชัดเจนด้วยสถิติชนะครบ 4 นัด 12 แต้มเต็ม นำห่างอันดับ 2 อยู่ 3 แต้ม ขณะที่ Manchester City เสียสถิติไร้พ่ายหลังพ่ายให้ Manchester United ในศึกดาร์บี้ ทำให้ Manchester United ไต่ขึ้นมาอยู่ในกลุ่มอันดับ 2-3 ร่วมกับ City ด้วยแต้มเท่ากันที่ 9 แต้ม การเสียแต้มของ Chelsea และ Man City ในรอบนี้ยิ่งตอกย้ำสถานะจ่าฝูงของ Arsenal ในช่วงต้นฤดูกาล</p>
+  </section>
+
+  <section>
+    <h2>🎯 Top 4 Race</h2>
+    <p>การแย่งชิงโซนท็อป 4 เริ่มแน่นขึ้นเมื่อทีมเลื่อนชั้นอย่าง Hull City และ Newcastle United เกาะกลุ่มบนด้วย 8 แต้มเท่ากัน ตามหลัง Man City และ Man United ที่มี 9 แต้มเพียง 1 แต้ม ขณะที่ Chelsea แม้จะอยู่อันดับ 6 ด้วย 7 แต้ม ก็ยังอยู่ในระยะไล่ตามไม่ห่างมาก ส่วน Liverpool ที่เสมอ Fulham ยังตามหลังกลุ่มบนอยู่พอสมควร ทำให้ต้องติดตามว่าทีมเลื่อนชั้นทั้งสองจะรักษาฟอร์มเซอร์ไพรส์นี้ไว้ได้นานแค่ไหน</p>
+  </section>
+
+  <section>
+    <h2>⬇️ Relegation Battle</h2>
+    <p>ยังเร็วเกินไปที่จะฟันธงโซนตกชั้นหลังแข่งไปเพียง 4 นัด แต่ Tottenham Hotspur เริ่มเป็นทีมที่น่ากังวลที่สุดในกลุ่มทีมใหญ่ หลังเก็บได้เพียง 2 แต้มจาก 4 นัดและยังไม่ยิงประตูได้เลย ท่ามกลางแรงกดดันต่อ Roberto De Zerbi ที่เพิ่มขึ้น ส่วนข้อมูลตารางคะแนนช่วงล่างแบบละเอียดครบทุกทีมยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ จึงยังไม่สามารถระบุกลุ่มทีมเสี่ยงตกชั้นที่แท้จริงได้</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Week Fixtures</h2>
+    <div class="note">โปรแกรม Matchweek ถัดไป (19-20 ก.ย.) รวบรวมจากรายงานข่าวทีมต่างๆ เวลาแข่งขันที่แน่นอน (ICT) ยังไม่สามารถยืนยันจากแหล่ง Tier 1 ได้ครบถ้วนในรอบนี้ จึงระบุเฉพาะคู่แข่งขันที่ยืนยันได้ ส่วนเวลาจะระบุว่า "ยังไม่ยืนยัน" แทนการเดา</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Time (ICT)</th><th>Home</th><th>VS</th><th>Away</th><th>Source</th></tr>
+      <tr><td>19 ก.ย.</td><td>ยังไม่ยืนยันจาก Tier 1</td><td>Arsenal</td><td>vs</td><td>Brighton &amp; Hove Albion</td><td><a href="https://www.fotmob.com/match/4813482" target="_blank" rel="noopener">Fotmob</a></td></tr>
+      <tr><td>19 ก.ย.</td><td>ยังไม่ยืนยันจาก Tier 1</td><td>Tottenham Hotspur</td><td>vs</td><td>Aston Villa</td><td><a href="https://www.skysports.com/football/news/11677/13555662/aston-villa-premier-league-2026-27-fixtures-and-schedule" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>19 ก.ย.</td><td>ยังไม่ยืนยันจาก Tier 1</td><td>Manchester City</td><td>vs</td><td>Sunderland</td><td><a href="https://www.nbcsports.com/soccer/news/premier-league-schedule-for-2026-27-season-released" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>19 ก.ย.</td><td>ยังไม่ยืนยันจาก Tier 1</td><td>Newcastle United</td><td>vs</td><td>Hull City</td><td><a href="https://www.nbcsports.com/soccer/news/premier-league-schedule-for-2026-27-season-released" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>19 ก.ย.</td><td>ยังไม่ยืนยันจาก Tier 1</td><td>Chelsea</td><td>vs</td><td>Brentford</td><td><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire</a></td></tr>
+      <tr><td>20 ก.ย.</td><td>ยังไม่ยืนยันจาก Tier 1</td><td>Fulham</td><td>vs</td><td>Manchester United</td><td><a href="https://www.nbcsports.com/soccer/news/premier-league-schedule-for-2026-27-season-released" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+      <tr><td>20 ก.ย.</td><td>ยังไม่ยืนยันจาก Tier 1</td><td>AFC Bournemouth</td><td>vs</td><td>Liverpool</td><td><a href="https://www.nbcsports.com/soccer/news/premier-league-schedule-for-2026-27-season-released" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:14px;">คู่เด่นของสัปดาห์หน้า:</p>
+    <ul>
+      <li><b>Arsenal vs Brighton &amp; Hove Albion</b> — จ่าฝูงที่ยังไร้พ่ายและชนะครบ 4 นัด ต้องการรักษาสถิติต่อไปในบ้าน</li>
+      <li><b>Tottenham Hotspur vs Aston Villa</b> — Spurs ต้องการหาประตูแรกของฤดูกาลให้ได้ในที่สุด ท่ามกลางแรงกดดันต่อ De Zerbi ที่เพิ่มขึ้น</li>
+      <li><b>Manchester City vs Sunderland</b> — City ต้องการกลับมาทำผลงานหลังพ่ายนัดแรกของฤดูกาลในศึกดาร์บี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <ul>
+      <li><b>Matches:</b> 11 นัด (Arsenal vs Chelsea 6 ก.ย. ที่รอผลจากสัปดาห์ก่อน + 10 นัดจาก Matchweek ถัดไปที่แข่งจบภายใน 13 ก.ย.)</li>
+      <li><b>Goals:</b> 31 ประตู จาก 11 นัด (เฉลี่ยประมาณ 2.8 ประตู/นัด)</li>
+      <li><b>Clean Sheets:</b> 6 ทีม (Arsenal, Manchester United, Liverpool, Fulham, Tottenham Hotspur, Everton)</li>
+      <li><b>Red Cards:</b> 1 ใบ — Reinildo Mandava (Sunderland) โดนใบเหลืองใบที่สองพบ Arsenal</li>
+      <li><b>Yellow Cards:</b> ยังไม่มีแหล่งข้อมูลสรุปแยกรายใบอย่างเป็นทางการเผยแพร่ครบถ้วน ณ เวลารวบรวมข้อมูล</li>
+      <li><b>Penalties:</b> อย่างน้อย 4 ครั้งที่ได้จุดโทษในสัปดาห์นี้ — Bukayo Saka สังหารสำเร็จ (Arsenal พบ Sunderland), Enzo Le Fée ยิงไม่เข้าถูก Raya เซฟ (Sunderland พบ Arsenal), จุดโทษใน Newcastle พบ Leeds ทั้งสองฝั่ง (Dominic Calvert-Lewin สำเร็จ ฝั่ง Leeds; อีกจุดหนึ่งที่ข้อมูลผู้ยิงขัดแย้งกันตามที่ระบุข้างต้น)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>โปรแกรมสำคัญ:</b> Arsenal พบ Brighton และ Tottenham พบ Aston Villa สัปดาห์หน้า (19 ก.ย.) รวมถึงการยืนยันข้อมูลผู้ทำประตูของ Manchester United ในศึกดาร์บี้ที่ยังไม่ครบถ้วนในรอบนี้</li>
+      <li><b>ข่าวย้ายทีม:</b> ติดตามการยืนยันสังกัดที่แท้จริงของ Bruno Guimarães ระหว่าง Arsenal กับ Newcastle ที่ยังขัดแย้งกันในแหล่งข่าวสัปดาห์นี้</li>
+      <li><b>ผู้เล่นบาดเจ็บ:</b> ติดตามความรุนแรงของอาการ William Saliba (Arsenal) และสถานะการกลับมาของ Moisés Caicedo, Jordan Henderson, Emmanuel Emegha (Chelsea) ก่อนเกมพบ Brentford</li>
+      <li><b>ข่าวผู้จัดการทีม:</b> จับตาแรงกดดันต่อ Roberto De Zerbi ที่ Tottenham หลังเปิดฤดูกาลไร้ประตู 4 นัดรวด แม้ยังไม่มีการเปลี่ยนแปลงผู้จัดการทีมอย่างเป็นทางการในสัปดาห์นี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul class="src-list">
+      <li><a href="https://www.safc.com/news/2026/september/03/le-bris-provides-diarra-injury-update" target="_blank" rel="noopener">Sunderland AFC — Le Bris provides Diarra injury update</a></li>
+    </ul>
+    <h3>Media</h3>
+    <ul class="src-list">
+      <li><a href="https://www.nbcsports.com/soccer/live/arsenal-vs-chelsea-live-updates-score-goals-highlights-stats-2026-september-6" target="_blank" rel="noopener">NBC Sports — Arsenal 2-1 Chelsea</a></li>
+      <li><a href="https://www.aljazeera.com/sports/liveblog/2026/9/6/live-arsenal-vs-chelsea-premier-league-2" target="_blank" rel="noopener">Al Jazeera — Arsenal 2-1 Chelsea live blog</a></li>
+      <li><a href="https://www.skysports.com/football/news/33694/13583579/sunderland-0-2-arsenal-bruno-guimaraes-haunts-black-cats-with-stunner-after-david-raya-penalty-save" target="_blank" rel="noopener">Sky Sports — Sunderland 0-2 Arsenal</a></li>
+      <li><a href="https://www.interceptng.com/sports/28054/" target="_blank" rel="noopener">The Intercept (NG) — Arsenal survive Sunderland to go top</a></li>
+      <li><a href="https://www.skysports.com/football/news/11095/13490850/newcastle-4-3-leeds-harvey-barnes-scores-in-102nd-minute-as-magpies-win-seven-goal-thriller" target="_blank" rel="noopener">Sky Sports — Newcastle 4-3 Leeds</a></li>
+      <li><a href="https://www.nbcsports.com/soccer/news/newcastle-vs-leeds-recap-final-score-video-highlights-analysis" target="_blank" rel="noopener">NBC Sports — Newcastle vs Leeds recap</a></li>
+      <li><a href="https://www.skysports.com/football/chelsea-vs-hull-city/559476" target="_blank" rel="noopener">Sky Sports — Chelsea 2-2 Hull City</a></li>
+      <li><a href="https://theanalyst.com/articles/chelsea-vs-hull-stats-premier-league-09-2026" target="_blank" rel="noopener">Opta Analyst — Chelsea vs Hull stats</a></li>
+      <li><a href="https://www.nbcsports.com/watch/watch/premier-league/premier-league-extended-highlights-2026-aston-villa-v-nottingham-forest" target="_blank" rel="noopener">NBC Sports — Nottingham Forest 2-1 Aston Villa</a></li>
+      <li><a href="https://www.nbcsports.com/watch/watch/premier-league/premier-league-highlights-2026-crystal-palace-v-ipswich-town-matchweek-4" target="_blank" rel="noopener">NBC Sports — Crystal Palace 2-3 Ipswich Town</a></li>
+      <li><a href="https://www.nbcsports.com/watch/watch/premier-league/premier-league-extended-highlights-2026-liverpool-v-fulham-matchweek-4" target="_blank" rel="noopener">NBC Sports — Liverpool 0-0 Fulham</a></li>
+      <li><a href="https://ca.sports.yahoo.com/news/zerbi-under-pressure-tottenham-still-203500322.html" target="_blank" rel="noopener">Yahoo Sports — De Zerbi under pressure, Tottenham still winless</a></li>
+      <li><a href="https://www.cbssports.com/soccer/news/roberto-de-zerbi-says-tottenham-struggle-to-unblock-ourselves-as-goalless-streak-extends-to-four-games/" target="_blank" rel="noopener">CBS Sports — De Zerbi: Tottenham struggle to "unblock ourselves"</a></li>
+      <li><a href="https://www.skysports.com/football/live-blog/11095/13572157/coventry-vs-brighton-live-premier-league-score-updates-news-prediction-lineups-and-how-to-watch-or-stream" target="_blank" rel="noopener">Sky Sports — Coventry City 0-1 Brighton</a></li>
+      <li><a href="https://www.nbcsports.com/watch/watch/premier-league/premier-league-extended-highlights-bournemouth-v-brentford-matchweek-4" target="_blank" rel="noopener">NBC Sports — Bournemouth 2-2 Brentford</a></li>
+      <li><a href="https://www.nbcsports.com/soccer/live/manchester-united-vs-man-city-live-updates-score-goals-highlights-stats-2026-september-13" target="_blank" rel="noopener">NBC Sports — Manchester United 2-0 Manchester City</a></li>
+      <li><a href="https://blog.ke.sportpesa.com/2026/09/13/manchester-united-vs-manchester-city-3/" target="_blank" rel="noopener">SportPesa Blog — Manchester derby result</a></li>
+      <li><a href="https://www.espn.com/soccer/story/_/id/49534772/arsenal-agree-deal-sign-bruno-guimaraes-newcastle-sources" target="_blank" rel="noopener">ESPN — Arsenal agree deal to sign Bruno Guimarães</a></li>
+      <li><a href="https://www.rotowire.com/soccer/article/premier-league-injuries-latest-injury-news-updates-suspensions-128516" target="_blank" rel="noopener">RotoWire — Premier League injuries latest</a></li>
+      <li><a href="https://sundayguardianlive.com/sports/premier-league-standings-updated-september-12-arsenal-stay-unbeaten-as-liverpool-chelsea-and-tottenham-hotspur-drop-points-latest-premier-league-table-283396/" target="_blank" rel="noopener">Sunday Guardian Live — Premier League standings updated</a></li>
+    </ul>
+    <h3>Statistics</h3>
+    <ul class="src-list">
+      <li><a href="https://sports.yahoo.com/articles/premier-league-2026-27-scoring-193020557.html" target="_blank" rel="noopener">Yahoo Sports — Premier League 2026-27 scoring leaders</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/2026%E2%80%9327_Premier_League" target="_blank" rel="noopener">Wikipedia — 2026-27 Premier League (ผ่านผลค้นหา ไม่ได้เข้าถึงหน้าเว็บโดยตรง)</a></li>
+    </ul>
+    <div class="note"><b>UNCERTAIN:</b> premierleague.com, bbc.com, espn.com, worldfootball.net, goal.com, nbcsports.com, foxsports.com, footballwebpages.co.uk, theanalyst.com, vavel.com, rotowire.com, aljazeera.com, heavy.com และ matchcalendar.football ไม่สามารถเข้าถึงได้โดยตรงผ่าน WebFetch ในสภาพแวดล้อมนี้ (network egress ปฏิเสธการเชื่อมต่อทุกโดเมนที่ทดลองในรอบนี้) จึงใช้ผลค้นหา (WebSearch) แทนตามลำดับการแก้ปัญหาที่กำหนดไว้ ทุกโดเมนเหล่านี้ล้มเหลวติดต่อกันมากกว่า 3 ครั้งจึงไม่ลองซ้ำต่อ ตารางคะแนนในรายงานนี้เป็นการคำนวณเองจากผลการแข่งขันรายนัดที่ยืนยันได้ ไม่ใช่การคัดลอกจากหน้าตารางคะแนนอย่างเป็นทางการโดยตรง ผลต่างประตูสะสม (Goal Difference) ที่ใช้จัดลำดับทีมอันดับ 2-3 และ 4-5 ไม่สามารถยืนยันได้ครบถ้วน ชื่อผู้ทำประตูในนัด Manchester United vs Manchester City ไม่สามารถยืนยันได้ สังกัดที่แท้จริงของ Bruno Guimarães (Arsenal หรือ Newcastle) ขัดแย้งกันระหว่างแหล่งข่าว และข้อมูลแอสซิสต์รายบุคคลสะสม ใบเหลืองรายบุคคล และ Expected Goals ยังไม่สามารถยืนยันครบถ้วนได้ในรอบนี้ โปรดตรวจสอบซ้ำก่อนใช้อ้างอิงต่อ</div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Premier League Report · จัดทำโดย Claude Code Routine · ข้อมูลทั้งหมดอ้างอิงจากแหล่งข่าวที่ระบุไว้ข้างต้น หากมีข้อมูลใดไม่สามารถยืนยันได้ จะระบุข้อจำกัดไว้อย่างชัดเจนแทนการคาดเดา</p>
+  </footer>
+</div>
+</body>
+</html>
