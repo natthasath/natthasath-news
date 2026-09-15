@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-09-15</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 15 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-09-15</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 15 ก.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> รอบนี้เข้าถึง www.anthropic.com และ arxiv.org โดยตรงด้วย WebFetch ไม่สำเร็จ (ถูกบล็อกโดย network egress proxy) แม้ลองซ้ำแล้ว จึงใช้ WebSearch แทนตามขั้นตอนที่กำหนด ยืนยันข้อมูลบทความวิจัย Vidu S2 บน arXiv (2609.11638) ได้ผ่านผลการค้นหา แต่วันที่ยื่น (10 ก.ย. 2569) อยู่นอกกรอบเวลา 24 ชั่วโมง จึงกล่าวถึงเฉพาะในหัวข้อ Community เชิงแนวโน้มเท่านั้น ไม่พบการเปิดตัวโมเดล AI ใหม่หรือผลเบนช์มาร์กใหม่ที่ยืนยันข้อมูลครบตามเกณฑ์ Validation ในกรอบเวลานี้ ข่าวเรื่องดีล compute มูลค่า 5.17 แสนล้านดอลลาร์ของ Anthropic รายงานครั้งแรกโดย The Information เมื่อ 6 ก.ย. 2569 และมีสื่อทยอยรายงานต่อเนื่องถึง 13 ก.ย. 2569 ไม่พบรายงานใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ จึงไม่นำมาแสดงเป็นข่าวหลัก เช่นเดียวกับข่าว Sam Altman ให้สัมภาษณ์ Fortune เรื่องเลื่อนแผน IPO (12-13 ก.ย. 2569) และคดีฟ้องร้อง Meta เรื่องฐานข้อมูลใบหน้า (ยื่นฟ้อง 4 ก.ย. 2569) ซึ่งทั้งสองกรณีอยู่นอกกรอบเวลาเช่นกัน</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>Bilal Chughtai อดีตนักวิจัยทีมความปลอดภัย AGI ของ Google DeepMind ลาออกและโพสต์เตือนว่า AI "มีศักยภาพที่จะฆ่าเราทุกคนได้" พร้อมระบุว่าโลกกำลังพัฒนาขีดความสามารถ AI เร็วกว่าความเข้าใจด้าน alignment มาก ต่อเนื่องจากกระแสเรียกร้องให้ชะลอความเร็ว AI ที่ Dario Amodei ซีอีโอ Anthropic จุดประเด็นไว้ก่อนหน้านี้ ด้าน Microsoft เผยแพร่เอกสาร "Code of Conduct" ความยาวราว 15,000 คำอย่างเป็นทางการสำหรับโมเดล MAI ของตนเองแล้วในวันนี้ หลัง Satya Nadella ประกาศแผนไว้เมื่อวานนี้ ฝั่งโครงสร้างพื้นฐาน Temporal สตาร์ทอัพระบบ orchestration สำหรับแอปพลิเคชันและเอเจนต์ AI ระดมทุน Series E มูลค่า 550 ล้านดอลลาร์ที่มูลค่าบริษัท 1.255 หมื่นล้านดอลลาร์ ขณะที่ NVIDIA เปิดงาน AI Infra Summit 2026 ที่ซานตาคลารา (15-17 ก.ย.) โดย Ian Buck รองประธานฝ่าย HPC และ Hyperscale ขึ้นคีย์โน้ตหัวข้อโครงสร้างพื้นฐานสำหรับ agentic AI ในฝั่งโอเพนซอร์ส โปรเจกต์ด้านความปลอดภัยไซเบอร์และเครื่องมือสำหรับเอเจนต์โค้ดดิ้งยังคงติดอันดับ GitHub Trending ต่อเนื่อง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ไม่พบการเปิดตัวโมเดล AI ใหม่ต่อสาธารณะที่ยืนยันข้อมูลครบตามเกณฑ์ Validation (Model, Company, Category, Status, Source) ในกรอบ 24 ชั่วโมงนี้ โมเดลแนวหน้าล่าสุดที่เปิดตัวไปก่อนหน้า ได้แก่ GPT-6 Astra ของ OpenAI (3-4 ก.ย. 2569) และ Claude Fable 5.1 / Mythos 5.1 ของ Anthropic (1 ก.ย. 2569) อยู่นอกกรอบเวลาทั้งหมด</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">ไม่พบบทความวิจัยใหม่บน arXiv ที่ยืนยันวันที่ยื่น รายชื่อผู้เขียน และ arXiv ID อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบตามเกณฑ์ Validation ในรอบนี้ บทความ "Vidu S2: Real-Time Interactive, Editable, and Spatial Video Generation" (arXiv:2609.11638) ที่กำลังติดเทรนด์บน Hugging Face Papers ยื่นเมื่อ 10 ก.ย. 2569 อยู่นอกกรอบเวลา จึงกล่าวถึงเฉพาะในหัวข้อ Community เชิงแนวโน้ม</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>alibaba/open-code-review</td>
+          <td>~28,177 (+2,751 วันนี้)</td>
+          <td>Go</td>
+          <td>เครื่องมือรีวิวโค้ดสถาปัตยกรรมไฮบริดจาก Alibaba รวม deterministic pipeline กับ LLM agent ให้คอมเมนต์ระดับบรรทัดแบบแม่นยำ พร้อมชุดกฎหลายภาษาในตัว <span class="badge">ติดอันดับ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/alibaba/open-code-review">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>JustVugg/colibri</td>
+          <td>~33,576 (+2,035 วันนี้)</td>
+          <td>C</td>
+          <td>รันโมเดล MoE ขนาดใหญ่บนฮาร์ดแวร์ที่มีอยู่แล้ว เขียนด้วย C ล้วน ไม่มี dependency สตรีม experts จากดิสก์โดยตรง <span class="badge">ติดอันดับ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/JustVugg/colibri">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>debpalash/VoiceStudio</td>
+          <td>~30,722 (+2,081 วันนี้)</td>
+          <td>Python</td>
+          <td>ทางเลือกโอเพนซอร์สรันในเครื่องแทน ElevenLabs โคลนเสียง ออกแบบเสียง พากย์วิดีโอ ถอดเสียง และสร้างหนังสือเสียงกว่า 646 ภาษา <span class="badge">ติดอันดับ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/debpalash/VoiceStudio">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>NationalSecurityAgency/ghidra</td>
+          <td>~76,592 (+755 วันนี้)</td>
+          <td>Java</td>
+          <td>เฟรมเวิร์ก reverse engineering ซอฟต์แวร์จาก NSA สำหรับวิเคราะห์และถอดคอมไพล์โปรแกรม กลับมาติดเทรนด์อีกครั้งวันนี้</td>
+          <td>✅ <a href="https://github.com/NationalSecurityAgency/ghidra">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>earendil-works/pi</td>
+          <td>~105,604 (+437 วันนี้)</td>
+          <td>TypeScript</td>
+          <td>ชุดเครื่องมือเอเจนต์ครบวงจร รวม LLM API แบบรวมศูนย์ agent loop และ CLI สำหรับเอเจนต์โค้ดดิ้งไว้ในตัวเดียว</td>
+          <td>✅ <a href="https://github.com/earendil-works/pi">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>addyosmani/agent-skills</td>
+          <td>~94,673 (+386 วันนี้)</td>
+          <td>JavaScript</td>
+          <td>ชุด "engineering skills" ระดับโปรดักชันที่ออกแบบมาสำหรับ AI coding agent โดยเฉพาะ</td>
+          <td>✅ <a href="https://github.com/addyosmani/agent-skills">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>danny-avila/LibreChat</td>
+          <td>~43,745 (+261 วันนี้)</td>
+          <td>TypeScript</td>
+          <td>ทางเลือก ChatGPT ที่รองรับหลายโมเดล AI เอเจนต์ และการโฮสต์เอง</td>
+          <td>✅ <a href="https://github.com/danny-avila/LibreChat">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>ever-co/ever-gauzy</td>
+          <td>~6,509 (+632 วันนี้)</td>
+          <td>TypeScript</td>
+          <td>แพลตฟอร์มบริหารธุรกิจครบวงจร ทำหน้าที่เป็นทั้ง ERP, CRM, HRM และระบบบริหารโปรเจกต์</td>
+          <td>✅ <a href="https://github.com/ever-co/ever-gauzy">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวและ "+วันนี้" ดึงจากหน้า GitHub Trending สดในเวลาที่สร้างรายงาน (ผ่าน WebFetch) อาจคลาดเคลื่อนเล็กน้อยจากเวลาที่ผู้อ่านเปิดดู</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบการเปิดตัวเครื่องมือหรือแอป AI ใหม่ที่ยืนยันข้อมูลครบตามเกณฑ์ Validation ในกรอบ 24 ชั่วโมงนี้ (ดูหัวข้อ Open Source สำหรับโปรเจกต์โอเพนซอร์สที่ติดเทรนด์)</p>
+    <h3>Updates</h3>
+    <p class="note">ไม่พบอัปเดตเครื่องมือ/แอปที่มีนัยสำคัญและยืนยันแหล่งที่มาได้ครบถ้วนในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก OpenAI ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบถ้วน ข่าวเรื่อง Sam Altman ให้สัมภาษณ์ Fortune ว่า OpenAI จะยังไม่ IPO ในปี 2569 เผยแพร่เมื่อ 12-13 ก.ย. 2569 อยู่นอกกรอบเวลา</p>
+
+    <h3>Anthropic</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Anthropic ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงนี้ได้ครบถ้วน ดีล compute มูลค่า 5.17 แสนล้านดอลลาร์ที่สื่อหลายแห่งยังคงรายงานต่อเนื่องมีต้นทางรายงานครั้งแรกเมื่อ 6 ก.ย. 2569 จึงไม่นำมาแสดงเป็นข่าวใหม่ในรอบนี้</p>
+
+    <h3>Google DeepMind</h3>
+    <p>Bilal Chughtai อดีตวิศวกรวิจัยในทีมความปลอดภัยและ alignment ของ AGI ที่ Google DeepMind ซึ่งลาออกจากบริษัทไปตั้งแต่เดือนกรกฎาคม 2569 ออกมาโพสต์เตือนต่อสาธารณะในสัปดาห์นี้ว่าเขา "เชื่ออย่างจริงจังว่า AI มีศักยภาพที่จะฆ่าเราทุกคนได้ และเราอาจกำลังหมดเวลาที่จะหลีกเลี่ยงผลลัพธ์นี้" โดยระบุว่าความเข้าใจปัจจุบันเกี่ยวกับการฝึกระบบ AI ให้ "ต้องการสิ่งที่มนุษย์ต้องการอย่างลึกซึ้ง" ยังอยู่ในขั้นพื้นฐานมาก และขีดความสามารถของ AI แนวหน้ากำลังพัฒนาเร็วกว่าความเข้าใจด้าน alignment มาก เขาย้ำว่าไม่ได้เรียกร้องให้หยุดพัฒนา AI แต่ต้องการให้มีการประสานงานเพื่อชะลอการแข่งขันระหว่างบริษัท AI พร้อมเพิ่มความโปร่งใสในการสร้างและทดสอบระบบแนวหน้า คำเตือนนี้เกิดขึ้นไม่นานหลัง Dario Amodei ซีอีโอ Anthropic เรียกร้องให้ชะลอความเร็วการพัฒนา AI ขั้นสูง ซึ่งได้รับการสนับสนุนจาก Elon Musk และ Sam Altman ✅ <a href="https://www.bloomberg.com/news/articles/2026-09-15/google-deepmind-staffer-says-ai-may-kill-us-all-in-exit-post">Bloomberg</a> · 📰 <a href="https://cyprus-mail.com/2026/09/15/former-google-deepmind-researcher-warns-ai-could-kill-all-humans">Cyprus Mail</a> · 📰 <a href="https://www.latestly.com/technology/deepmind-researcher-bilal-chughtai-resigns-warns-ai-has-the-potential-to-kill-us-all-7604724.html">LatestLY</a> · 📰 <a href="https://thenextweb.com/news/bilal-chughtai-deepmind-resignation-ai-kill-us-all-warning">TheNextWeb</a></p>
+
+    <h3>Meta</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Meta ในรอบ 24 ชั่วโมงนี้ (คดีฟ้องร้องเรื่องฐานข้อมูลใบหน้าที่ใช้ฝึก AI ยื่นฟ้องไปแล้วเมื่อ 4 ก.ย. 2569 อยู่นอกกรอบเวลา)</p>
+
+    <h3>Microsoft</h3>
+    <p>Microsoft เผยแพร่เอกสาร "Code of Conduct" อย่างเป็นทางการสำหรับโมเดลตระกูล MAI ของบริษัทเองในวันนี้ ความยาวประมาณ 15,000 คำ วางกรอบแนวคิด "Humanist AI" ที่ให้ระบบ AI อยู่ภายใต้การควบคุมของมนุษย์อย่างเคร่งครัดแทนที่จะกระทำการโดยอิสระ ภายใต้หลักการที่ว่า "คนสำคัญกว่า AI" บริษัทระบุว่าจังหวะเวลาของการเผยแพร่ส่วนหนึ่งเกี่ยวข้องกับความกังวลด้านความปลอดภัย โดยอ้างถึงแคมเปญแฮกที่ประสานงานด้วยเอเจนต์ AI ขนาดใหญ่เมื่อเร็ว ๆ นี้ว่าเป็นสัญญาณว่าอุตสาหกรรมไม่สามารถรอช้าได้อีกต่อไป การเผยแพร่เอกสารนี้เป็นการดำเนินการต่อจากที่ Satya Nadella ประกาศแผนไว้เมื่อวานนี้ (14 ก.ย. 2569) ซึ่งเป็นการตอบรับข้อเรียกร้องชะลอความเร็ว AI ของ Dario Amodei <span class="badge-warn">ต่อเนื่อง (ประกาศแผน 14 ก.ย. 2569 เผยแพร่เอกสารจริง 15 ก.ย. 2569)</span> 📰 <a href="https://www.malaymail.com/news/tech-gadgets/2026/09/15/microsoft-publishes-ai-code-of-conduct-amid-growing-safety-fears/235244">Malay Mail</a> · 📰 <a href="https://www.bloomberg.com/news/articles/2026-09-14/microsoft-joins-ai-firms-calling-for-caution-with-ai-models">Bloomberg</a></p>
+
+    <h3>Amazon</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงด้าน AI จาก Amazon ในรอบ 24 ชั่วโมงนี้</p>
+
+    <h3>NVIDIA</h3>
+    <p>NVIDIA เปิดงาน AI Infra Summit 2026 ที่ศูนย์ประชุม Santa Clara Convention Center ระหว่างวันที่ 15-17 ก.ย. 2569 งานอีเวนต์ด้านโครงสร้างพื้นฐานเต็มสแต็กสำหรับยุค agentic AI โดยมีวิศวกร นักปฏิบัติงานเทคนิค สถาปนิก และผู้บริหารระดับ C-suite กว่า 8,000 คนเข้าร่วม Ian Buck รองประธานฝ่าย HPC และ hyperscale ของ NVIDIA ขึ้นคีย์โน้ตหัวข้อการปรับโครงสร้างพื้นฐานคอมพิวเตอร์เพื่อรองรับ agentic AI โดยเน้นแนวทางเต็มสแต็กของ NVIDIA สำหรับ "AI factories" รวมถึงแพลตฟอร์ม Vera Rubin NVL72, Vera CPU และ Groq 3 LPX ✅ <a href="https://www.nvidia.com/en-us/events/ai-infra-summit/">NVIDIA (official event page)</a></p>
+
+    <h3>Startup</h3>
+    <p>Temporal สตาร์ทอัพผู้พัฒนาแพลตฟอร์ม durable execution สำหรับ orchestration แอปพลิเคชันและเอเจนต์ AI ประกาศระดมทุน Series E มูลค่า 550 ล้านดอลลาร์ ที่มูลค่าบริษัท 1.255 หมื่นล้านดอลลาร์ นำโดย Lightspeed ร่วมกับ Wellington Management, Goldman Sachs Alternatives Growth Equity และ Tiger Global พร้อมนักลงทุนใหม่ T. Rowe Price และ SV Angel รวมถึงนักลงทุนเดิมอย่าง a16z, Sequoia, Index, GIC, Sapphire Ventures และ Amplify บริษัทระบุว่า annualized revenue run rate เพิ่งทะลุ 250 ล้านดอลลาร์ เติบโตกว่า 200% เทียบปีก่อนหน้า ยอดติดตั้งโอเพนซอร์สทะลุ 43 ล้านครั้งในเดือนสิงหาคม เพิ่มขึ้น 134% จากเดือนมกราคม 2569 และมีลูกค้าที่จ่ายเงินกว่า 4,300 รายรวมถึง OpenAI, Snap, NVIDIA, Netflix และ JPMorgan Chase ยอดระดมทุนสะสมรวมของ Temporal แตะ 1.2 พันล้านดอลลาร์แล้ว ✅ <a href="https://temporal.io/news/temporal-raises-550m-at-a-12-55b-valuation">Temporal (official)</a> · 📰 <a href="https://www.geekwire.com/2026/temporal-raises-550m-hits-12-55b-valuation-as-agentic-ai-wave-fuels-massive-growth/">GeekWire</a> · 📰 <a href="https://www.unite.ai/temporal-raises-550m-series-e-at-12-55b-valuation-to-expand-operations/">Unite.AI</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>API/SDK:</b> ไม่พบอัปเดต API หรือ SDK ที่มีนัยสำคัญและยืนยันแหล่งที่มาได้ครบถ้วนในรอบ 24 ชั่วโมงนี้</li>
+      <li><b>Agent/Infrastructure:</b> Temporal ระดมทุน Series E 550 ล้านดอลลาร์เพื่อขยายการลงทุนใน core primitives ของแพลตฟอร์ม durable execution ที่ใช้รองรับ workflow ของเอเจนต์ AI (ดูรายละเอียดในหัวข้อ Company News &gt; Startup)</li>
+      <li><b>MCP:</b> ไม่พบอัปเดตสเปกหรือรีลีสใหม่เฉพาะเจาะจงของ Model Context Protocol ในรอบ 24 ชั่วโมงนี้ (สเปกล่าสุดคือ 2026-07-28 และ roadmap อัปเดตล่าสุด 22 ส.ค. 2569 อยู่นอกกรอบเวลา)</li>
+      <li><b>Framework:</b> ไม่พบการรีลีสเฟรมเวิร์กใหม่ที่ยืนยันแหล่งที่มาได้ครบถ้วนในรอบนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>AI Safety:</b> การลาออกและคำเตือนของ Bilal Chughtai จาก Google DeepMind สะท้อนความกังวลที่เพิ่มขึ้นในหมู่นักวิจัยความปลอดภัย AI เกี่ยวกับความเสี่ยงจาก superintelligence ต่อเนื่องจากคำเรียกร้องของ Dario Amodei และการลาออกของ Josh Engels จาก DeepMind ก่อนหน้านี้ (ดูหัวข้อ Company News &gt; Google DeepMind) 📰 <a href="https://www.bloomberg.com/news/articles/2026-09-15/google-deepmind-staffer-says-ai-may-kill-us-all-in-exit-post">Bloomberg</a></li>
+      <li><b>Regulation/Ethics:</b> Microsoft เผยแพร่เอกสาร Code of Conduct อย่างเป็นทางการสำหรับโมเดล AI ของตนเอง ตอกย้ำแนวโน้มที่บริษัทเทคโนโลยีรายใหญ่เริ่มออกกรอบกำกับดูแลตนเองท่ามกลางแรงกดดันด้านความปลอดภัย (ดูหัวข้อ Company News &gt; Microsoft) 📰 <a href="https://www.malaymail.com/news/tech-gadgets/2026/09/15/microsoft-publishes-ai-code-of-conduct-amid-growing-safety-fears/235244">Malay Mail</a></li>
+      <li><b>Investment:</b> Temporal ระดมทุน Series E มูลค่า 550 ล้านดอลลาร์ ที่มูลค่าบริษัท 1.255 หมื่นล้านดอลลาร์ สะท้อนความต้องการโครงสร้างพื้นฐานสำหรับ agentic AI ที่เชื่อถือได้ (ดูหัวข้อ Company News &gt; Startup) ✅ <a href="https://temporal.io/news/temporal-raises-550m-at-a-12-55b-valuation">Temporal (official)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ยืนยันข้อมูลครบตามเกณฑ์ Validation (Benchmark, Model, Score, Source) พร้อมวันที่ประกาศอยู่ในกรอบ 24 ชั่วโมงนี้ ตัวเลข leaderboard ที่พบ เช่น Artificial Analysis Intelligence Index และ WebDev Arena Elo เป็นข้อมูลสะสมที่อัปเดตต่อเนื่องจากช่วงปลายเดือนสิงหาคมถึงต้นเดือนกันยายน ไม่สามารถยืนยันวันที่ผลคะแนนเปลี่ยนแปลงในรอบ 24 ชั่วโมงนี้ได้ จึงไม่นำมาแสดงเป็นตาราง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Trending (GitHub):</b> alibaba/open-code-review, JustVugg/colibri, debpalash/VoiceStudio, NationalSecurityAgency/ghidra, earendil-works/pi, addyosmani/agent-skills, danny-avila/LibreChat และ ever-co/ever-gauzy ติดอันดับ GitHub Trending ประจำวันนี้ (ดูรายละเอียดในหัวข้อ Open Source) 🔥 <a href="https://github.com/trending">GitHub Trending</a></li>
+      <li><b>Trending (Research):</b> Hugging Face Papers Trending วันนี้มีบทความเด่นด้านวิดีโอเชิงโต้ตอบแบบเรียลไทม์ "Vidu S2: Real-Time Interactive, Editable, and Spatial Video Generation" (arXiv:2609.11638) และงานด้าน multimodal reinforcement post-training แต่ยื่นเมื่อ 10 ก.ย. 2569 อยู่นอกกรอบเวลา 24 ชั่วโมง จึงกล่าวถึงในเชิงแนวโน้มเท่านั้น 🔥 <a href="https://huggingface.co/papers/trending">Hugging Face Papers</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. Durable execution สำหรับ orchestration เอเจนต์ AI ระดับองค์กร (Temporal)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>workflow ของเอเจนต์ AI ที่ทำงานระยะยาวและซับซ้อนมักล้มเหลวเมื่อเจอความผิดพลาดชั่วคราว การรีสตาร์ท หรือการเรียก API ที่ไม่เสถียร ทำให้ยากต่อการรับประกันความน่าเชื่อถือในระดับ production</dd>
+        <dt>วิธีใช้</dt><dd>ใช้แพลตฟอร์ม durable execution ที่บันทึกสถานะการทำงานอัตโนมัติ ทำให้ workflow ของเอเจนต์สามารถกลับมาทำงานต่อได้จากจุดที่ค้างไว้แม้ระบบล่มหรือรีสตาร์ท โดยไม่ต้องเขียนโค้ดจัดการ retry เอง</dd>
+        <dt>ประโยชน์</dt><dd>ช่วยให้บริษัทอย่าง OpenAI, Snap, NVIDIA, Netflix และ JPMorgan Chase รันระบบเอเจนต์ AI และแอปพลิเคชันที่ต้องการความน่าเชื่อถือสูงในสภาพแวดล้อมจริงได้อย่างมั่นคง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. ชุดทักษะวิศวกรรมมาตรฐานสำหรับ AI coding agent (addyosmani/agent-skills)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>เอเจนต์โค้ดดิ้ง AI มักขาดแนวปฏิบัติทางวิศวกรรมที่เป็นมาตรฐานเดียวกัน ทำให้คุณภาพโค้ดและแนวทางแก้ปัญหาแตกต่างกันไปในแต่ละงานหรือแต่ละเอเจนต์</dd>
+        <dt>วิธีใช้</dt><dd>รวบรวมชุด "skills" ระดับโปรดักชันที่ผ่านการทดสอบ ให้เอเจนต์โค้ดดิ้งเรียกใช้เป็นแนวทางมาตรฐานสำหรับงานวิศวกรรมซอฟต์แวร์ทั่วไป</dd>
+        <dt>ประโยชน์</dt><dd>ลดความไม่แน่นอนของผลลัพธ์จากเอเจนต์โค้ดดิ้ง ช่วยให้ทีมพัฒนาได้โค้ดที่มีคุณภาพสม่ำเสมอมากขึ้นเมื่อทำงานร่วมกับ AI agent</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>เสียงเรียกร้องให้ชะลอความเร็ว AI จะขยายวงกว้างขึ้นจนกลายเป็นแนวทางร่วมของอุตสาหกรรมหรือไม่ หลังนักวิจัยความปลอดภัยระดับสูงจาก Google DeepMind ลาออกมาเตือนต่อเนื่องเป็นรายที่สองในรอบไม่ถึงเดือน และ Microsoft เผยแพร่ Code of Conduct ของตนเองแล้ว</dd>
+        <dt>เหตุผล</dt><dd>หากมีนักวิจัยความปลอดภัยระดับสูงลาออกจากบริษัท AI ชั้นนำเพื่อเตือนสาธารณะต่อเนื่อง อาจกดดันให้เกิดการกำกับดูแลตนเองของอุตสาหกรรมหรือการแทรกแซงจากภาครัฐเร็วขึ้น ซึ่งจะกระทบทิศทางการพัฒนาโมเดลแนวหน้าและแผน IPO ของบริษัท AI รายใหญ่</dd>
+        <dt>Source</dt><dd><a href="https://www.bloomberg.com/news/articles/2026-09-15/google-deepmind-staffer-says-ai-may-kill-us-all-in-exit-post">Bloomberg</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>NVIDIA AI Infra Summit 2026 (15-17 ก.ย.) อาจมีการประกาศฮาร์ดแวร์หรือความร่วมมือด้านโครงสร้างพื้นฐานเพิ่มเติมในวันถัดไปของงาน นอกเหนือจากคีย์โน้ตเปิดงานวันแรก</dd>
+        <dt>เหตุผล</dt><dd>งานสัมมนาโครงสร้างพื้นฐาน AI ขนาดใหญ่ระดับอุตสาหกรรมมักเป็นเวทีประกาศความร่วมมือหรือผลิตภัณฑ์ใหม่ที่มีผลต่อทิศทางการลงทุนด้าน AI factory ทั่วโลกในช่วงถัดไป</dd>
+        <dt>Source</dt><dd><a href="https://www.nvidia.com/en-us/events/ai-infra-summit/">NVIDIA (official)</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://temporal.io/news/temporal-raises-550m-at-a-12-55b-valuation">Temporal — Series E announcement</a></li>
+          <li><a href="https://www.nvidia.com/en-us/events/ai-infra-summit/">NVIDIA — AI Infra Summit 2026</a></li>
+          <li><a href="https://github.com/alibaba/open-code-review">GitHub — alibaba/open-code-review</a></li>
+          <li><a href="https://github.com/JustVugg/colibri">GitHub — JustVugg/colibri</a></li>
+          <li><a href="https://github.com/debpalash/VoiceStudio">GitHub — debpalash/VoiceStudio</a></li>
+          <li><a href="https://github.com/NationalSecurityAgency/ghidra">GitHub — NationalSecurityAgency/ghidra</a></li>
+          <li><a href="https://github.com/earendil-works/pi">GitHub — earendil-works/pi</a></li>
+          <li><a href="https://github.com/addyosmani/agent-skills">GitHub — addyosmani/agent-skills</a></li>
+          <li><a href="https://github.com/danny-avila/LibreChat">GitHub — danny-avila/LibreChat</a></li>
+          <li><a href="https://github.com/ever-co/ever-gauzy">GitHub — ever-co/ever-gauzy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><span style="color:var(--ink-faint)">ไม่มีบทความที่ผ่านเกณฑ์ในรอบนี้</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-09-15/google-deepmind-staffer-says-ai-may-kill-us-all-in-exit-post">Bloomberg — DeepMind staffer AI warning</a></li>
+          <li><a href="https://cyprus-mail.com/2026/09/15/former-google-deepmind-researcher-warns-ai-could-kill-all-humans">Cyprus Mail — Chughtai warning</a></li>
+          <li><a href="https://www.latestly.com/technology/deepmind-researcher-bilal-chughtai-resigns-warns-ai-has-the-potential-to-kill-us-all-7604724.html">LatestLY — Chughtai resigns</a></li>
+          <li><a href="https://thenextweb.com/news/bilal-chughtai-deepmind-resignation-ai-kill-us-all-warning">TheNextWeb — Chughtai resignation</a></li>
+          <li><a href="https://www.malaymail.com/news/tech-gadgets/2026/09/15/microsoft-publishes-ai-code-of-conduct-amid-growing-safety-fears/235244">Malay Mail — Microsoft AI Code of Conduct</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-09-14/microsoft-joins-ai-firms-calling-for-caution-with-ai-models">Bloomberg — Microsoft caution with AI models</a></li>
+          <li><a href="https://www.geekwire.com/2026/temporal-raises-550m-hits-12-55b-valuation-as-agentic-ai-wave-fuels-massive-growth/">GeekWire — Temporal funding</a></li>
+          <li><a href="https://www.unite.ai/temporal-raises-550m-series-e-at-12-55b-valuation-to-expand-operations/">Unite.AI — Temporal funding</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://huggingface.co/papers/trending">Hugging Face Papers</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 15 ก.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
