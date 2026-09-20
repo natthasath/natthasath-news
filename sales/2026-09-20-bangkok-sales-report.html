@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Bangkok Sales & Events Report — 20 Sep 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{ --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3; --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F; --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28); --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12); --warn:#B4590E; }
+@media (prefers-color-scheme: dark){ :root{ --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B; --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D; --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26); --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14); --warn:#E0A458; } }
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:1080px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:8px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+h2{ font-size:22px; font-weight:700; margin:36px 0 14px; padding-top:8px; }
+h3{ font-size:17px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:20px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 14px; max-width:78ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:74ch; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 18px; border:1px solid var(--line); border-radius:8px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; background:var(--surface); font-size:14.5px; }
+caption{ caption-side:top; text-align:left; padding:8px 12px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+th{ background:var(--surface-2); font-weight:600; font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.02em; white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+td a{ word-break:break-word; }
+
+.badge{ display:inline-block; font-size:12px; padding:1px 7px; border-radius:20px; background:var(--accent-soft); color:var(--accent); font-weight:600; margin-right:4px; }
+.note{ background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:6px; padding:12px 16px; font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; }
+.limit{ border-left-color:var(--warn); }
+.empty{ font-style:italic; color:var(--ink-faint); }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin:0 0 18px; }
+.stat{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+.deal{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin-bottom:12px; }
+.deal h4{ margin:0 0 6px; font-size:15.5px; }
+.deal .meta{ font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-faint); margin-top:6px; }
+
+.legend{ display:flex; flex-wrap:wrap; gap:10px 18px; font-size:13.5px; color:var(--ink-soft); }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 38, 2026</p>
+    <h1>🛍 Weekly Bangkok Sales & Events Report</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 20 Sep 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 13 ก.ย.–4 ต.ค. 2569</span>
+      <span><b>Region:</b> กรุงเทพฯ และปริมณฑล</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>สัปดาห์ที่ 38 นี้ ICONSIAM ยังเป็นศูนย์กลางกิจกรรมด้วย "Friends & Family Sale 2026" (17–20 ก.ย. ลดสูงสุด 90% ปิดวันนี้พอดี) และแคมเปญ "WONDROUS SHOPPING" ที่ต่อเนื่องถึงสิ้นเดือน ขณะที่ Central Chidlom และ Central Embassy จับมือจัดงานนาฬิกา-จิวเวลรีระดับโลก "TIME & TREASURES" รวม 50 แบรนด์ (2 ก.ย.–11 ต.ค.) ฝั่งงานแฟร์ที่ IMPACT เมืองทองธานีปิดฉาก Home Building and Materials EXPO และ ICONIC CRAFT COFFEE EXPO ที่ ICONSIAM ในวันนี้เช่นกัน ก่อนจะส่งไม้ต่อให้ Siam Paragon Bangkok Watch Week 2026 (22–27 ก.ย., 45+ แบรนด์นาฬิกาหรู) และ Toyota Farm Expo Asia 2026 (24–27 ก.ย., IMPACT) ในสัปดาห์หน้า ด้านศูนย์การค้ายังมีแคมเปญครบรอบต่อเนื่องหลายรายการ ได้แก่ Makro 37 ปี, Robinson "เกษียณสุขใจ", EmQuartier SHOP MISSION PLUS+ ส่วนฝั่งอีคอมเมิร์ซยังไม่พบแคมเปญใหม่ที่ยืนยันได้ในกรอบสัปดาห์นี้ (แคมเปญ 10.10 ของ Lazada ที่ประกาศแล้วอยู่นอกกรอบเวลารายงาน ดู Watch List)</p>
+  </section>
+
+  <section>
+    <h2>🎪 งานที่กำลังจัด</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>เวลา</th><th>ไฮไลท์</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">🔥</span>MINISO × LISA Global Pop-Up <span class="badge">🔄</span></td>
+          <td>Charoennakorn Hall ชั้น M, ICONSIAM</td>
+          <td>1–24 ก.ย. 2569</td>
+          <td>ตามเวลาห้าง</td>
+          <td>ป็อปอัพสโตร์แรกในโลกของความร่วมมือ MINISO x LISA เหลือเวลาอีก 4 วันก่อนปิดตัวที่กรุงเทพฯ</td>
+          <td><a href="https://www.prnewswire.com/apac/news-releases/from-bangkok-to-the-world-the-lisa-x-miniso-global-pop-up-is-calling-302869969.html" target="_blank" rel="noopener">PR Newswire</a>, <a href="https://www.nationthailand.com/life/art-culture/40070284" target="_blank" rel="noopener">Nation Thailand</a> ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🛍</span>Central Chidlom x Central Embassy "TIME & TREASURES" <span class="badge">🔄</span></td>
+          <td>Central Chidlom (Personal Shopping Suite ชั้น 1) และ Central Embassy</td>
+          <td>2 ก.ย.–11 ต.ค. 2569</td>
+          <td>ตามเวลาห้าง</td>
+          <td>งานนาฬิกา-จิวเวลรีระดับโลกรวม 50 แบรนด์ ธีม "CRAFT YOUR OWN TIME" มีกิจกรรมแบรนด์หมุนเวียนรายสัปดาห์ (BLANCPAIN/OMEGA 11–13 ก.ย., PANERAI 18–20 ก.ย.)</td>
+          <td><a href="https://www.bangkokpost.com/life/social-and-lifestyle/3319263/centrals-time-treasures-luxe-watch-fest-running-at-chidlom-embassy-malls" target="_blank" rel="noopener">Bangkok Post</a>, <a href="https://www.biztosuccess.com/archives/137462" target="_blank" rel="noopener">BIZtoSUCCESS</a>, onedeedee.com ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🏬</span>ICONSIAM Friends & Family Sale 2026</td>
+          <td>Meeting Room 1–5 ชั้น 7, ICONSIAM</td>
+          <td>17–20 ก.ย. 2569 (ปิดวันนี้)</td>
+          <td>Pre-sale สมาชิก Black/Gold 10:00–12:00 น. (17 ก.ย.), เปิดทั่วไปตั้งแต่ 12:00 น.</td>
+          <td>รวม 22 แบรนด์แฟชั่น-ไลฟ์สไตล์ระดับโลก ลดสูงสุด 90%</td>
+          <td><a href="https://www.brandbuffet.in.th/2026/09/iconsiam-friends-and-family-sale-2026/" target="_blank" rel="noopener">Brand Buffet</a>, <a href="https://www.thaipost.net/economy-news/1069510/" target="_blank" rel="noopener">Thaipost</a>, <a href="https://www.dailynews.co.th/news/6190165/" target="_blank" rel="noopener">Dailynews</a>, Posttoday, Siamturakij ✅</td>
+        </tr>
+        <tr>
+          <td>Home Building and Materials EXPO 2026</td>
+          <td>Hall 8, IMPACT เมืองทองธานี</td>
+          <td>16–20 ก.ย. 2569 (ปิดวันนี้)</td>
+          <td>ไม่ระบุเวลาเปิด-ปิดชัดเจนในแหล่งข้อมูล</td>
+          <td>งานแฟร์บ้าน/วัสดุก่อสร้าง เข้าชมฟรี</td>
+          <td><a href="https://www.businesseventsthailand.com/tceb-event-preview/home-builder-materials-expo-2026/" target="_blank" rel="noopener">TCEB</a> ❓</td>
+        </tr>
+        <tr>
+          <td>ICONIC CRAFT COFFEE EXPO 2026</td>
+          <td>ICONSIAM Hall & Suralai Hall ชั้น 7</td>
+          <td>16–20 ก.ย. 2569 (ปิดวันนี้)</td>
+          <td>ไม่ระบุในแหล่งข้อมูล</td>
+          <td>เมนูกาแฟกว่า 1,000 เมนูจากทั่วโลก ภายใต้แนวคิด "ICONSIAM GO GREEN"</td>
+          <td><a href="https://www.brandbuffet.in.th/2026/09/iconsiam-go-green/" target="_blank" rel="noopener">Brand Buffet</a>, MGR Online, Siam Turakij, Positioning ✅</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">งานที่จบไปแล้วก่อนวันนี้และตัดออกจากรายงาน: BCT Expo 2026 และ Thailand International Woodworking & Furniture Exhibition (16–18 ก.ย., IMPACT), ICONSIAM 8th Anniversary "INFINITE WONDERS" (18 ส.ค.–18 ก.ย.), ONESIAM Global x Summer Privileges 2026 (สิ้นสุด 15 ก.ย.), TikTok Shop Beauty Fest "The BeautyVerse" (งานหลักจัดไปแล้วเมื่อ 15 ส.ค. ที่ CentralWorld Live ถือว่าสิ้นสุดกิจกรรมหลักแล้ว)</div>
+  </section>
+
+  <section>
+    <h2>📅 งานที่กำลังจะมาถึง (7–14 วัน)</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>ประเภท</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">🔥</span>Siam Paragon Bangkok Watch Week 2026 (ครั้งที่ 2)</td>
+          <td>Siam Paragon</td>
+          <td>22–27 ก.ย. 2569</td>
+          <td>Exhibition (นาฬิกา/ไลฟ์สไตล์หรู)</td>
+          <td><a href="https://www.siamparagon.co.th/events/siam-paragon-bangkok-watch-week-2026-172" target="_blank" rel="noopener">Siam Paragon</a>, <a href="https://www.media-outreach.com/news/thailand/2026/08/28/483667/siam-paragon-bangkok-watch-week-2026-elevates-bangkok-as-a-global-watch-destination/" target="_blank" rel="noopener">Media Outreach</a>, <a href="https://monochrome-watches.com/industry-news-siam-paragon-bangkok-watch-week-thailand-2026-information-event-september-22nd-27th/" target="_blank" rel="noopener">Monochrome Watches</a>, Deployant, Manila Times ✅</td>
+        </tr>
+        <tr>
+          <td>Toyota Farm Expo (Asia) 2026</td>
+          <td>Hall 5–8, IMPACT เมืองทองธานี</td>
+          <td>24–27 ก.ย. 2569</td>
+          <td>Trade Fair (เกษตร)</td>
+          <td><a href="https://www.impact.co.th/th/visitors/event-calendar/exhibition-public/toyota-farm-expo-2026" target="_blank" rel="noopener">IMPACT</a>, <a href="https://www.posttoday.com/smart-city/748765" target="_blank" rel="noopener">Posttoday</a>, thailandexhibition.com, onedeedee.com ✅</td>
+        </tr>
+        <tr>
+          <td>ICONSIAM "Discover Thailand at ICONSIAM"</td>
+          <td>ONESIAM Global Visitor Lounge ชั้น 1, ICONSIAM</td>
+          <td>25 ก.ย.–7 ต.ค. 2569</td>
+          <td>Brand Campaign (นักท่องเที่ยวต่างชาติ)</td>
+          <td><a href="https://www.thailand-business-news.com/pr-news/iconsiam-invites-global-travelers-to-discover-why-bangkok-remains-one-of-asias-most-revisited-destinations-this-golden-week" target="_blank" rel="noopener">Thailand Business News (Media Outreach PR)</a> ✅</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">คลัสเตอร์งานที่ IMPACT เมืองทองธานี (นนทบุรี) ต่อเนื่องด้วย Toyota Farm Expo Asia 2026 หลังจากกลุ่มงานก่อสร้าง/บ้านปิดฉากไปสัปดาห์นี้ ฝั่ง ICONSIAM เสริมความเป็นจุดหมายไลฟ์สไตล์ด้วยแคมเปญนักท่องเที่ยว ส่วน Siam Paragon เตรียมรับไม้ต่อจาก Central Chidlom/Embassy ด้วยงานนาฬิการะดับโลกอีกงาน ไม่พบงาน IT Fair หรือ Book Fair ในกรอบเวลานี้ (Commart รอบถัดไปคือ 26–29 พ.ย. และงานเทศกาลกินเจ 10–18 ต.ค. อยู่นอกกรอบ 14 วัน จึงไม่นำมาแสดง) งาน Dek-D's TCAS Fair & Study Abroad Fair ที่ BITEC พบข้อมูลวันที่ขัดแย้งกันระหว่างแหล่งข้อมูล (บางแหล่งระบุเมษายน บางแหล่งอ้างอิงจากปีก่อน) จึงไม่นำมาแสดงในรายงานนี้จนกว่าจะยืนยันวันที่ 2569 ได้ชัดเจน</div>
+  </section>
+
+  <section>
+    <h2>💸 โปรโมชันตามหมวด</h2>
+
+    <h3>💻 Electronics & IT</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ (Commart Thailand รอบปลายปีจัด 26–29 พ.ย. 2569 อยู่นอกกรอบเวลารายงาน)</p>
+
+    <h3>👕 Fashion</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>แบรนด์</th><th>รายละเอียด</th><th>ส่วนลด/ราคา</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Drôle de Monsieur <span class="badge">🔄</span></td><td>ป็อปอัพสโตร์แรกในไทย ที่ Central Embassy ชั้น 2 — คอลเลกชัน Pre-Fall 2026</td><td>ไม่ระบุส่วนลดในแหล่งข้อมูล (เปิดตัวสินค้าใหม่)</td><td>3 ก.ค.–28 ก.ย. 2569</td><td>Official Facebook (แบรนด์) ❓</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="max-width:78ch;">ICONSIAM Friends & Family Sale 2026 (22 แบรนด์แฟชั่น ลดสูงสุด 90%) อยู่ในหมวดงานที่กำลังจัดแล้ว</p>
+
+    <h3>🛋 Home & Furniture</h3>
+    <p class="empty">ไม่มีข้อมูลโปรโมชันแบรนด์เดี่ยวในช่วงสัปดาห์นี้ (งานแฟร์บ้าน/วัสดุก่อสร้างที่ IMPACT อยู่ในหมวดงานที่กำลังจัดแล้ว)</p>
+
+    <h3>🍜 Food & Beverage</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>แบรนด์</th><th>รายละเอียด</th><th>ส่วนลด/ราคา</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>EM District (EmQuartier/EmSphere) <span class="badge">🔄</span></td><td>Dining Cash Coupon — รับคูปองเงินสดเมื่อใช้จ่ายขั้นต่ำที่ร้านอาหารร่วมรายการใน EM District</td><td>คูปองมูลค่า ฿200</td><td>1–30 ก.ย. 2569</td><td>emsphere.co.th (ไม่สามารถเปิดหน้าเว็บโดยตรงเพื่อยืนยันเงื่อนไขล่าสุด) ❓</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="max-width:78ch;">ICONIC CRAFT COFFEE EXPO 2026 อยู่ในหมวดงานที่กำลังจัดแล้ว</p>
+
+    <h3>💄 Health & Beauty</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ — TikTok Shop Beauty Fest "The BeautyVerse" จัดงานหลักไปแล้วเมื่อ 15 ส.ค. 2569 จึงตัดออกจากรายงาน</p>
+
+    <h3>🎁 Other</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>🏬 โปรโมชันศูนย์การค้า</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>ศูนย์การค้า</th><th>สาขา</th><th>โปรโมชัน</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>ICONSIAM</td><td>Meeting Room 1–5 ชั้น 7</td><td>Friends & Family Sale 2026 — 22 แบรนด์ ลดสูงสุด 90%</td><td>17–20 ก.ย. 2569 (ปิดวันนี้)</td><td>Brand Buffet, Thaipost, Dailynews ✅</td></tr>
+        <tr><td>ICONSIAM <span class="badge">🔄</span></td><td>ทุกโซน</td><td>WONDROUS SHOPPING: End of September Sales (เฉพาะวันจันทร์–ศุกร์) — รับ SIAM Gift Card เมื่อช้อปครบตามเงื่อนไข</td><td>19–29 ก.ย. 2569</td><td>thaibizvision.com ❓</td></tr>
+        <tr><td>Central Chidlom / Central Embassy <span class="badge">🔄</span></td><td>Central Chidlom + Central Embassy</td><td>TIME & TREASURES — งานนาฬิกา-จิวเวลรี 50 แบรนด์</td><td>2 ก.ย.–11 ต.ค. 2569</td><td>Bangkok Post ✅</td></tr>
+        <tr><td>Makro <span class="badge">🔄</span></td><td>170+ สาขา + Makro PRO</td><td>ครบรอบ 37 ปี "รักมาก แม็คโคร" — ของแถมและส่วนลดหมุนเวียนรายสัปดาห์สูงสุด 50%</td><td>22 ก.ค.–29 ก.ย. 2569</td><td><a href="https://www.cpaxtra.com/th/newsroom/news/776/" target="_blank" rel="noopener">CP Axtra</a> ✅</td></tr>
+        <tr><td>Robinson</td><td>ทุกสาขา</td><td>"47 ปี วันนี้วันสุข" — แคมเปญฉลองครบรอบ 47 ปี ผ่าน Robinson Chat & Shop / Central App (ใกล้สิ้นสุด)</td><td>7–22 ก.ย. 2569</td><td>onedeedee.com ❓</td></tr>
+        <tr><td>Robinson <span class="badge">🔄</span></td><td>ทุกสาขา (ยกเว้น 1 สาขา)</td><td>"เกษียณสุขใจ ใช้ชีวิตให้เต็มที่" — แคมเปญกลุ่มผู้สูงวัย ผ่าน Robinson Chat & Shop / Central App</td><td>1 ก.ย.–4 ต.ค. 2569</td><td>The Happening Around ❓</td></tr>
+        <tr><td>EmQuartier / EM District <span class="badge">🔄</span></td><td>EmQuartier, EmSphere</td><td>SHOP MISSION PLUS+ — ภารกิจช้อปสะสมสิทธิพิเศษ</td><td>27 ก.ค.–30 ก.ย. 2569</td><td>EmSphere ❓</td></tr>
+        <tr><td>MBK Center <span class="badge">🔄</span></td><td>ทุกโซน</td><td>"ไทยช่วยไทยพลัส (60/40)" — ส่วนลดร่วมรายการกับร้านค้าที่เข้าร่วมโครงการ</td><td>ถึง 30 ก.ย. 2569</td><td><a href="https://www.mbk-center.co.th/blog/thaichuaithaiplus26/" target="_blank" rel="noopener">MBK Center</a> ✅</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty">CentralWorld, Siam Center/Discovery, Terminal 21, The Mall, Big C, Lotus's: ไม่พบโปรโมชันใหม่ที่ระบุวันที่ชัดเจนและยืนยันแหล่งที่มาได้ในสัปดาห์นี้ — ควรตรวจสอบ Facebook/LINE OA ของแต่ละห้างโดยตรง (ดู Watch List)</p>
+  </section>
+
+  <section>
+    <h2>🛒 E-Commerce Campaigns</h2>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ (ยืนยันได้เพียงว่า Lazada ประกาศแคมเปญ 10.10 แล้วสำหรับ 9–12 ต.ค. ซึ่งอยู่นอกกรอบเวลารายงานนี้ 13 ก.ย.–4 ต.ค. — ดู Watch List)</p>
+  </section>
+
+  <section>
+    <h2>📰 Brand News</h2>
+
+    <h3>New Store</h3>
+    <ul>
+      <li><b>Siam Center</b> — เปิดตัว 4 แบรนด์ใหม่ในรอบ 3 สัปดาห์ที่ผ่านมา: Maison Keeps (แบรนด์ไลฟ์สไตล์ไทย, soft opening ชั้น 1, 4 ก.ย.), 3rd Sense (น้ำหอมไทย, เคาน์เตอร์แรก ใกล้บันไดเลื่อนชั้น 1, 26 ส.ค.), Kantima House (นวดเล็บโดย Grace Kantima Banjobdee, ชั้น 1, กลาง ส.ค.), Subdued (แฟชั่น Gen Z จากอิตาลี, สาขาแรกในไทย, ชั้น G) — Source: <a href="https://insideretail.com.au/business/a-slew-of-new-retailers-at-siam-center-202609" target="_blank" rel="noopener">Inside Retail Australia</a>, <a href="https://www.bkmagazine.com/shopping/4-new-flagship-stores-siam-center-bangkok/" target="_blank" rel="noopener">BK Magazine</a> ✅</li>
+    </ul>
+
+    <h3>Campaign</h3>
+    <p>ดูรายละเอียด ICONSIAM "Discover Thailand at ICONSIAM" ในหมวดงานที่กำลังจะมาถึง</p>
+
+    <h3>Seasonal Promotion</h3>
+    <p>ดูรายละเอียด Central Chidlom/Embassy TIME & TREASURES, ICONSIAM Friends & Family Sale/WONDROUS SHOPPING, Makro 37th Anniversary, Robinson 47th Anniversary/เกษียณสุขใจ และ MBK ไทยช่วยไทยพลัส ในหมวดโปรโมชันศูนย์การค้า</p>
+
+    <h3>Limited-Time Sale</h3>
+    <ul>
+      <li><b>MINISO × LISA Global Pop-Up</b> <span class="badge">🔄</span> — เหลือเวลาอีก 4 วัน ก่อนปิดตัวที่ ICONSIAM (ถึง 24 ก.ย. 2569) — PR Newswire, Nation Thailand ✅</li>
+      <li><b>ICONSIAM Friends & Family Sale 2026</b> — ลดสูงสุด 90% ปิดวันนี้ (20 ก.ย. 2569) — Brand Buffet, Thaipost ✅</li>
+    </ul>
+
+    <h3>Product Launch</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>📍 แนะนำตามพื้นที่</h2>
+    <ul>
+      <li><b>กรุงเทพฯ ชั้นใน:</b> MINISO × LISA Global Pop-Up, ICONSIAM Friends & Family Sale/WONDROUS SHOPPING/Discover Thailand Campaign, Central Chidlom/Embassy TIME & TREASURES, Drôle de Monsieur pop-up, Siam Center (4 ร้านใหม่), Robinson 47th Anniversary/เกษียณสุขใจ, EM District Dining Cash Coupon/SHOP MISSION PLUS+, MBK ไทยช่วยไทยพลัส, Siam Paragon Bangkok Watch Week 2026</li>
+      <li><b>กรุงเทพฯ เหนือ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>กรุงเทพฯ ตะวันออก:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>กรุงเทพฯ ตะวันตก:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นนทบุรี:</b> คลัสเตอร์งานที่ IMPACT เมืองทองธานี — Home Building and Materials EXPO 2026 (ปิดวันนี้), Toyota Farm Expo (Asia) 2026 (24–27 ก.ย.)</li>
+      <li><b>ปทุมธานี:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรปราการ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรสาคร:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นครปฐม:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💡 Best Deals</h2>
+    <div class="deal">
+      <h4>⌚ Siam Paragon Bangkok Watch Week 2026</h4>
+      <p style="margin:0;">งานแสดงนาฬิกาหรูนานาชาติครั้งที่ 2 รวมกว่า 45 แบรนด์ระดับโลก คาดผู้เข้าชมกว่า 40,000 คนตลอด 6 วัน เหมาะสำหรับสายสะสมนาฬิกาและผู้สนใจตลาดหรู</p>
+      <div class="meta">ระยะเวลา: 22–27 ก.ย. 2569 · Source: Siam Paragon, Media Outreach, Monochrome Watches</div>
+    </div>
+    <div class="deal">
+      <h4>🛍 ICONSIAM Friends & Family Sale 2026 — ลดสูงสุด 90%</h4>
+      <p style="margin:0;">งานเซลล์แฟชั่นครั้งใหญ่รวม 22 แบรนด์ดังระดับโลก เหลือเวลาถึงวันนี้เท่านั้น (ปิดงาน 20 ก.ย.)</p>
+      <div class="meta">ระยะเวลา: 17–20 ก.ย. 2569 · Source: Brand Buffet, Thaipost, Dailynews</div>
+    </div>
+    <div class="deal">
+      <h4>⏱ Central Chidlom x Central Embassy "TIME & TREASURES"</h4>
+      <p style="margin:0;">งานนาฬิกา-จิวเวลรีระดับโลกรวม 50 แบรนด์ ธีม "CRAFT YOUR OWN TIME" พร้อม Personal Shopping Suite เฉพาะที่ Central Chidlom ยังมีเวลาอีกกว่า 3 สัปดาห์ก่อนสิ้นสุด</p>
+      <div class="meta">ระยะเวลา: 2 ก.ย.–11 ต.ค. 2569 · Source: Bangkok Post, BIZtoSUCCESS</div>
+    </div>
+    <div class="deal">
+      <h4>🔥 MINISO × LISA Global Pop-Up — สโตร์แรกในโลกที่กรุงเทพฯ</h4>
+      <p style="margin:0;">ป็อปอัพสโตร์ระดับโลกของความร่วมมือ MINISO x ศิลปิน LISA สินค้าคอลเลกชันพิเศษกว่า 70 รายการ เหลือเวลาอีกเพียง 4 วันก่อนปิดตัว</p>
+      <div class="meta">ระยะเวลา: 1–24 ก.ย. 2569 · Source: PR Newswire, Nation Thailand</div>
+    </div>
+    <div class="deal">
+      <h4>🚜 Toyota Farm Expo (Asia) 2026</h4>
+      <p style="margin:0;">งานแสดงสินค้าเกษตรในร่มขนาดใหญ่ที่สุดของไทย เข้าชมฟรี เหมาะสำหรับผู้ประกอบการเกษตรและผู้สนใจเทคโนโลยีการเกษตร คาดผู้เข้าชมกว่า 70,000 คน</p>
+      <div class="meta">ระยะเวลา: 24–27 ก.ย. 2569 · Source: IMPACT, Posttoday</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📅 Event Calendar</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>วันที่</th><th>งาน</th><th>สถานที่</th><th>ประเภท</th></tr></thead>
+      <tbody>
+        <tr><td>1–24 ก.ย.</td><td>MINISO × LISA Global Pop-Up 🔄</td><td>ICONSIAM</td><td>Pop-up Store</td></tr>
+        <tr><td>2 ก.ย.–11 ต.ค.</td><td>Central Chidlom/Embassy TIME & TREASURES 🔄</td><td>Central Chidlom, Central Embassy</td><td>Exhibition</td></tr>
+        <tr><td>17–20 ก.ย. (ปิดวันนี้)</td><td>ICONSIAM Friends & Family Sale 2026</td><td>ICONSIAM</td><td>Mall Promotion</td></tr>
+        <tr><td>16–20 ก.ย. (ปิดวันนี้)</td><td>Home Building and Materials EXPO 2026</td><td>IMPACT เมืองทองธานี</td><td>Trade Fair</td></tr>
+        <tr><td>16–20 ก.ย. (ปิดวันนี้)</td><td>ICONIC CRAFT COFFEE EXPO 2026</td><td>ICONSIAM</td><td>Food Festival</td></tr>
+        <tr><td>19–29 ก.ย. (จันทร์–ศุกร์)</td><td>ICONSIAM WONDROUS SHOPPING</td><td>ICONSIAM</td><td>Mall Promotion</td></tr>
+        <tr><td>ถึง 22 ก.ย.</td><td>Robinson "47 ปี วันนี้วันสุข"</td><td>Robinson ทุกสาขา</td><td>Mall Promotion</td></tr>
+        <tr><td>22–27 ก.ย.</td><td>Siam Paragon Bangkok Watch Week 2026</td><td>Siam Paragon</td><td>Exhibition</td></tr>
+        <tr><td>24–27 ก.ย.</td><td>Toyota Farm Expo (Asia) 2026</td><td>IMPACT เมืองทองธานี</td><td>Trade Fair</td></tr>
+        <tr><td>25 ก.ย.–7 ต.ค.</td><td>ICONSIAM "Discover Thailand at ICONSIAM"</td><td>ICONSIAM</td><td>Brand Campaign</td></tr>
+        <tr><td>ถึง 28 ก.ย.</td><td>Drôle de Monsieur Pop-up 🔄</td><td>Central Embassy</td><td>Pop-up Store</td></tr>
+        <tr><td>ถึง 29 ก.ย.</td><td>สิ้นสุด Makro 37th Anniversary 🔄</td><td>Makro ทุกสาขา</td><td>Mall Promotion</td></tr>
+        <tr><td>ถึง 30 ก.ย.</td><td>EmQuartier SHOP MISSION PLUS+ 🔄</td><td>EmQuartier/EmSphere</td><td>Mall Promotion</td></tr>
+        <tr><td>ถึง 30 ก.ย.</td><td>EM District Dining Cash Coupon</td><td>EmQuartier/EmSphere</td><td>Promotion</td></tr>
+        <tr><td>ถึง 30 ก.ย.</td><td>MBK "ไทยช่วยไทยพลัส" 🔄</td><td>MBK Center</td><td>Mall Promotion</td></tr>
+        <tr><td>ถึง 4 ต.ค.</td><td>Robinson "เกษียณสุขใจ ใช้ชีวิตให้เต็มที่" 🔄</td><td>Robinson ทุกสาขา (ยกเว้น 1 สาขา)</td><td>Mall Promotion</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">7</div><div class="lbl">Events</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Exhibitions</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Trade Fairs</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Promotions</div></div>
+      <div class="stat"><div class="num">9</div><div class="lbl">Mall Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Brand Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">E-Commerce Campaigns</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">New Store Openings</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <ul>
+      <li><b>Lazada 10.10 Campaign</b> — ยืนยันวันจัดแคมเปญแล้ว (9–12 ต.ค. 2569) แต่อยู่นอกกรอบเวลารายงานนี้ (13 ก.ย.–4 ต.ค.) ควรติดตามในรายงานสัปดาห์หน้า และยังไม่พบประกาศวันที่ชัดเจนจาก Shopee</li>
+      <li><b>ICONSIAM WONDROUS SHOPPING: End of September Sales</b> — ยืนยันได้จากแหล่งเดียว (thaibizvision.com) ควรตรวจสอบกับ iconsiam.com โดยตรงก่อนเผยแพร่ซ้ำ</li>
+      <li><b>Robinson "47 ปี วันนี้วันสุข"</b> — ยืนยันได้เพียงแหล่งเดียว (onedeedee.com) ใกล้สิ้นสุดในอีก 2 วัน ควรตรวจสอบเงื่อนไขล่าสุดก่อนใช้งาน</li>
+      <li><b>Pokémon Center Bangkok ที่ CentralWorld</b> — ยืนยันเปิดธันวาคม 2569 ชั้น 6 ผ่านหลายแหล่งข้อมูล (Bangkok Post, Thaiger) แต่ยังไม่มีวันที่เปิดอย่างเป็นทางการ อยู่นอกกรอบเวลา 14 วันของรายงานนี้ ติดตามต่อเนื่อง</li>
+      <li><b>Dek-D's TCAS Fair & Study Abroad Fair ที่ BITEC</b> — พบข้อมูลวันที่ขัดแย้งกันระหว่างแหล่งข้อมูล ควรตรวจสอบที่ bitec.co.th โดยตรงเพื่อยืนยันรอบกิจกรรมเดือนตุลาคม 2569</li>
+      <li><b>CentralWorld, Siam Center/Discovery, Terminal 21, The Mall, Big C, Lotus's</b> — ไม่พบแคมเปญที่ระบุวันที่ชัดเจนในสัปดาห์นี้ ควรตรวจสอบ Facebook/LINE OA ของแต่ละห้างโดยตรง</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <p>impact.co.th, cpaxtra.com (Makro), siamparagon.co.th, mbk-center.co.th, emsphere.co.th (ผ่านผลค้นหา — เปิดหน้าเว็บโดยตรงไม่ได้กับหลายโดเมนในรอบเก็บข้อมูลนี้)</p>
+    <h3>Event Platforms</h3>
+    <p>businesseventsthailand.com (TCEB), allthaievent.com, thailandexhibition.com, bitec.co.th (ตรวจสอบแล้ว พบข้อมูลขัดแย้งบางรายการ), eventpop.me, ticketmelon.com (ตรวจสอบแล้ว ไม่พบรายการเพิ่มเติมในกรอบเวลานี้)</p>
+    <h3>Trusted Sources</h3>
+    <p>Bangkok Post, PR Newswire, Nation Thailand, Media Outreach, Monochrome Watches, Deployant, Manila Times, Brand Buffet, Thaipost, Dailynews, Posttoday, Siamturakij, MGR Online, Positioning, BIZtoSUCCESS, Inside Retail Australia/Asia, BK Magazine, CP Axtra, Thailand Business News</p>
+    <h3>Community (Verification Only)</h3>
+    <p>Official Facebook (Drôle de Monsieur, SkyNani), The Happening Around, onedeedee.com, thaibizvision.com</p>
+    <div class="note limit">
+      <b>ข้อจำกัดของข้อมูล:</b> ในรอบเก็บข้อมูลนี้ WebFetch ไม่สามารถเปิดหน้าเว็บโดยตรงได้กับหลายโดเมนที่ลองเข้าถึง (ถูกบล็อกที่ระดับ proxy เครือข่ายของสภาพแวดล้อมการทำงาน) จึงใช้ WebSearch เป็นแหล่งข้อมูลหลักแทนตามขั้นตอนสำรองที่กำหนดไว้ รายการที่มีเครื่องหมาย ❓ ยืนยันได้จากแหล่งเดียวเท่านั้นและควรตรวจสอบซ้ำก่อนใช้งานจริง ส่วนรายการที่มี ✅ ยืนยันข้ามหลายแหล่งข้อมูลอิสระแล้ว โปรโมชันหรือกิจกรรมที่ไม่มีวันที่ปี 2569 ยืนยันได้ชัดเจน (เช่น Dek-D's TCAS Fair รอบเดือนตุลาคม) ถูกตัดออกจากรายงานหลักตามเกณฑ์ Validation Rules<br><br>
+      <b>UNCERTAIN:</b> โดเมนที่เปิดหน้าเว็บโดยตรงไม่ได้ในรอบนี้และควรตรวจสอบด้วยตนเอง ได้แก่ insight.impact.co.th, insideretail.asia, novotelbangkokplatinum.com, bitec.co.th, qsncc.com, emsphere.co.th, iconsiam.com, centralpattana.co.th
+    </div>
+  </section>
+
+  <section>
+    <h2>🔎 แนวโน้มสัปดาห์นี้</h2>
+    <p>สัปดาห์นี้เป็นช่วง "เปลี่ยนผ่าน" ของทั้งปฏิทินงานแฟร์และแคมเปญศูนย์การค้า โดยกลุ่มงานก่อสร้าง/บ้าน/กาแฟที่จัดต่อเนื่องจากสัปดาห์ก่อนปิดฉากลงพร้อมกันในวันเผยแพร่รายงาน ขณะที่ ICONSIAM เดินหน้าออกแคมเปญใหม่ต่อเนื่อง (Friends & Family Sale ตามด้วย WONDROUS SHOPPING และ Discover Thailand) สะท้อนกลยุทธ์รักษาทราฟฟิกช่วงปลายเดือนกันยายนก่อนเข้าสู่มหกรรม 10.10 ด้านตลาดสินค้าหรูยังคงคึกคักต่อเนื่อง โดย Central Chidlom/Embassy และ Siam Paragon ผลัดกันจัดงานนาฬิการะดับโลกในช่วงเวลาไล่เลี่ยกัน ตอกย้ำสถานะกรุงเทพฯ เป็นจุดหมายตลาดหรูของภูมิภาค ฝั่งปฏิทินงานแฟร์ที่ IMPACT เตรียมเปลี่ยนธีมจากกลุ่มก่อสร้างสู่กลุ่มเกษตรด้วย Toyota Farm Expo ในสัปดาห์หน้า ด้านอีคอมเมิร์ซยังอยู่ในช่วงเงียบก่อนแคมเปญ 10.10 ที่ Lazada ประกาศวันจัดแล้ว (9–12 ต.ค.) แต่ยังไม่เข้ากรอบเวลารายงานนี้ อย่างไรก็ตาม ข้อจำกัดด้านการเข้าถึงเว็บไซต์ทางการโดยตรงในรอบเก็บข้อมูลนี้ทำให้ข้อมูลบางรายการยืนยันได้เพียงแหล่งเดียว จึงควรใช้ประกอบการตัดสินใจอย่างระมัดระวังและตรวจสอบซ้ำก่อนเผยแพร่ต่อ</p>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="legend">
+      <span>✅ Official</span>
+      <span>🎪 Event</span>
+      <span>🛍 Promotion</span>
+      <span>🏬 Shopping Mall</span>
+      <span>🛒 E-Commerce</span>
+      <span>🔄 Continuing Event</span>
+      <span>🔥 Popular Event</span>
+      <span>❓ Information Incomplete</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Bangkok Sales & Events Report · 20 Sep 2026 (Week 38)</p>
+    <p><a href="/">Back to Home</a> · <a href="./">Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>
