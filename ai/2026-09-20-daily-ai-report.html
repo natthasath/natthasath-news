@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-09-20</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 20 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-09-20</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 20 ก.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> รอบก่อนหน้าของรายงานนี้คือ 17 ก.ย. 2569 (เว้นช่วง 2 วัน) รอบนี้จึงรวมข่าวสำคัญบางส่วนจาก 17-19 ก.ย. ที่ยังไม่เคยรายงานและยังเป็นประเด็นต่อเนื่องไว้ด้วย พร้อมระบุวันที่ประกาศจริงกำกับไว้ในแต่ละรายการ การเข้าถึง arxiv.org โดยตรงด้วย WebFetch ไม่สำเร็จ (ถูกบล็อกโดย network egress proxy) แม้ลองซ้ำแล้ว จึงใช้ WebSearch พร้อม site: search แทนเพื่อยืนยันชื่อผู้เขียนงานวิจัย ข่าวเรื่องนโยบายความเป็นส่วนตัวของ Anthropic ที่ถูกวิจารณ์โดยบัญชีโซเชียลที่เกี่ยวข้องกับ CCTV ของจีน อ้างอิงจาก Bloomberg เป็นหลักร่วมกับสื่อรอง (briefs.co, KuCoin News) เนื่องจากต้นทางเป็นบัญชีโซเชียลมีเดีย ไม่ใช่แถลงการณ์ทางการของทั้งสองฝ่าย จึงติดป้าย 📰/❓ กำกับตามความเหมาะสม ไม่พบผลเบนช์มาร์กใหม่หรือการเปิดตัวโมเดล AI สาธารณะที่ยืนยันข้อมูลครบตามเกณฑ์ Validation ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ</div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ประธานาธิบดีโดนัลด์ ทรัมป์ ประกาศเมื่อ 19 ก.ย. 2569 ว่าจะจัดตั้ง "AI Force" ตามแบบ Space Force และแต่งตั้ง "AI czar" คนใหม่ดูแลอุตสาหกรรม AI ของสหรัฐฯ โดยเน้นเร่งพัฒนามากกว่าจำกัดกฎเกณฑ์ Anthropic ประกาศความร่วมมือกับ Accenture ผ่านหน่วย Faculty เป็น "embedded evaluator" รายแรกที่เข้าไปตรวจสอบและ red-team โมเดลจากภายในบริษัท โดยทั้งสองฝ่ายจะลงทุนฝ่ายละอย่างน้อย 1,000 ล้านดอลลาร์ในช่วง 5 ปี ตามแผนชะลอความเร็ว AI ของ Dario Amodei ขณะที่ช่องโหว่ Plugin4Shell ซึ่งกระทบ Claude Code, OpenAI Codex, GitHub Copilot/Microsoft Copilot และ Gemini CLI ยังคงเป็นประเด็นต่อเนื่อง โดย Anthropic และ OpenAI ออกแพตช์แก้ไขแล้ว แต่ Microsoft และ Google ยังไม่มีการอุดช่องโหว่ ด้านความสัมพันธ์สหรัฐฯ-จีน บัญชีโซเชียลที่เกี่ยวข้องกับ CCTV วิจารณ์การแก้ไขนโยบายความเป็นส่วนตัวของ Anthropic ว่าเพิ่มความเสี่ยงข้อมูลผู้ใช้ถูกส่งให้หน่วยข่าวกรองสหรัฐฯ ส่วนฝั่งฮาร์ดแวร์ CXMT ของจีนประกาศเริ่มผลิตชิปหน่วยความจำ DRAM รุ่นที่ 5 (G5) เชิงพาณิชย์แล้วเมื่อ 20 ก.ย. 2569 ท้าทาย Samsung, SK Hynix และ Micron ควบคู่กับรายงานของ Financial Times ที่ระบุว่าแพทย์เริ่มต้านการขยายบทบาท AI ทางการแพทย์ไปไกลกว่าการวินิจฉัยภาพ เนื่องจากข้อมูลประสิทธิภาพยังไม่เพียงพอ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+        <tr>
+          <td>DeepSeek-V4.1-Flash <span class="badge-warn">เผยแพร่ 17 ก.ย. 2569 · ต่อเนื่อง</span></td>
+          <td>DeepSeek-AI</td>
+          <td>Multimodal Mixture-of-Experts LLM (552B พารามิเตอร์)</td>
+          <td>บีบอัด KV cache ขั้นสูงด้วย Compressed Sparse Attention 2 (CSA2) แบบ cross-layer reuse ร่วมกับ FP4 KV cache รองรับบริบทยาวถึง 1 ล้านโทเคน สำหรับงาน agentic และ multimodal</td>
+          <td>เผยแพร่ paper/เทคนิคใหม่ (ยังไม่ยืนยันวันเปิดให้ใช้งานสาธารณะ)</td>
+          <td>✅ <a href="https://arxiv.org/abs/2609.19969">arXiv:2609.19969</a> · ✅ <a href="https://huggingface.co/papers/2609.19969">Hugging Face Papers</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ไม่พบการเปิดตัวโมเดล AI ใหม่เพิ่มเติมที่ยืนยันข้อมูลครบตามเกณฑ์ Validation ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+        <tr>
+          <td>DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>ทีมวิจัย DeepSeek-AI (รายชื่อผู้เขียนจำนวนมาก อาทิ Damai Dai, Chengqi Deng, Chenggang Zhao และคณะ)</td>
+          <td>การบีบอัด KV cache แบบ cross-layer สำหรับโมเดลภาษาบริบทยาวระดับ 1 ล้านโทเคน</td>
+          <td>✅ <a href="https://arxiv.org/abs/2609.19969">arXiv:2609.19969</a></td>
+        </tr>
+        <tr>
+          <td>Score Centering Stabilizes Off-policy Reinforcement Learning <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>Martin Marek, Max Ryabinin (Together AI)</td>
+          <td>แก้ปัญหา training-inference mismatch ในการฝึก RL ของ LLM ด้วยเทอมแก้ไข "score centering" เพื่อลบล้าง drift ระหว่าง training/inference engine โดยเฉพาะภายใต้การควอนไทซ์</td>
+          <td>✅ <a href="https://arxiv.org/abs/2609.20807">arXiv:2609.20807</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ทั้งสองบทความเผยแพร่บน arXiv เมื่อ 17 ก.ย. 2569 (ก่อนช่วง 24 ชั่วโมงล่าสุด) แต่ยังไม่เคยถูกรายงานในรอบก่อนหน้า (17 ก.ย.) และยังเป็นประเด็นวิจัยที่มีการพูดถึงต่อเนื่องในชุมชน จึงนำมาแสดงตามข้อยกเว้นสำหรับงานวิจัยที่ยังเป็นประเด็น</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>affaan-m/ECC</td>
+          <td>~263,587 (+837 วันนี้)</td>
+          <td>JavaScript</td>
+          <td>ระบบปรับแต่งประสิทธิภาพ agent harness สำหรับ Claude Code และเอเจนต์โค้ดดิ้งอื่น ๆ <span class="badge">อันดับ 1 Trending วันนี้ · ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/affaan-m/ECC">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>cloudflare/security-audit-skill</td>
+          <td>~17,855 (+2,375 วันนี้)</td>
+          <td>JavaScript</td>
+          <td>Coding-agent skill จาก Cloudflare สำหรับตรวจสอบความปลอดภัยแบบหลายขั้นตอน ให้ผลลัพธ์เป็น machine-readable findings ที่ตรวจสอบซ้ำได้อิสระ <span class="badge">พุ่งขึ้นแรงวันนี้ · ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/cloudflare/security-audit-skill">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>trycua/cua</td>
+          <td>~25,071 (+1,012 วันนี้)</td>
+          <td>HTML</td>
+          <td>แพลตฟอร์มโอเพนซอร์สสำหรับขยายขนาดงาน computer-use พร้อม driver, การจัดการฟลีต และชุดเบนช์มาร์ก</td>
+          <td>✅ <a href="https://github.com/trycua/cua">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>anthropics/financial-services</td>
+          <td>~35,301 (+236 วันนี้)</td>
+          <td>Python</td>
+          <td>รีพอสิทอรีสนับสนุนผลิตภัณฑ์ Claude สำหรับภาคการเงิน</td>
+          <td>✅ <a href="https://github.com/anthropics/financial-services">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>higgsfield-ai/higgsfield</td>
+          <td>~5,306 (+461 วันนี้)</td>
+          <td>Jupyter Notebook</td>
+          <td>เฟรมเวิร์ก GPU orchestration ที่ทนต่อความล้มเหลวและขยายขนาดได้สำหรับการฝึกโมเดลขนาดใหญ่ <span class="badge">เข้าใหม่ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/higgsfield-ai/higgsfield">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>BuilderIO/agent-native</td>
+          <td>~5,132 (+89 วันนี้)</td>
+          <td>TypeScript</td>
+          <td>เฟรมเวิร์กสำหรับสร้างแอปพลิเคชันแบบ agentic <span class="badge">เข้าใหม่ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/BuilderIO/agent-native">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>anthropics/claude-code</td>
+          <td>~147,042 (+415 วันนี้)</td>
+          <td>TypeScript</td>
+          <td>เครื่องมือ agentic coding ที่เข้าใจโค้ดเบสและรันงานผ่านภาษาธรรมชาติ อัปเดตแพตช์ล่าสุดแก้ช่องโหว่ Plugin4Shell (ดูหัวข้อ Tools &amp; Apps)</td>
+          <td>✅ <a href="https://github.com/anthropics/claude-code">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวและ "+วันนี้" ดึงจากหน้า GitHub Trending สดในเวลาที่สร้างรายงาน (ผ่าน WebFetch) อาจคลาดเคลื่อนเล็กน้อยจากเวลาที่ผู้อ่านเปิดดู</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบการเปิดตัวเครื่องมือ/แอปใหม่ที่ยืนยันแหล่งที่มาได้ครบถ้วนในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ</p>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+        <tr>
+          <td>Claude Code</td>
+          <td>อัปเดตเป็นเวอร์ชัน 2.1.179 เพื่อแก้ช่องโหว่ Plugin4Shell (bypass การล็อกเวอร์ชันปลั๊กอินด้วย SHA-pinning) <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>📰 <a href="https://thehackernews.com/2026/09/plugin4shell-lets-repository-owners.html">The Hacker News</a> · 📰 <a href="https://www.helpnetsecurity.com/2026/09/18/plugin4shell-ai-coding-agents-vulnerability/">Help Net Security</a></td>
+        </tr>
+        <tr>
+          <td>OpenAI Codex</td>
+          <td>อัปเดตเป็นเวอร์ชัน 0.146.0 เพื่อแก้ช่องโหว่ Plugin4Shell เช่นเดียวกัน <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>📰 <a href="https://thehackernews.com/2026/09/plugin4shell-lets-repository-owners.html">The Hacker News</a> · 📰 <a href="https://fourweekmba.com/ai-plugin4shell-claude-code-codex-shared-assumption/">FourWeekMBA</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>OpenAI ออกแพตช์ Codex เวอร์ชัน 0.146.0 เพื่อแก้ไขช่องโหว่ Plugin4Shell ซึ่งเป็นช่องโหว่แบบ zero-click ที่ทำให้เจ้าของ repository สามารถสลับโค้ดปลั๊กอินที่เป็นอันตรายผ่านกลไก SHA-pinning ได้โดยไม่ต้องให้ผู้ใช้กดยืนยันใด ๆ ยังไม่มีรายงานว่าถูกใช้โจมตีจริงในสถานการณ์จริง <span class="badge-warn">แพตช์ 17-18 ก.ย. 2569 · ต่อเนื่อง</span> 📰 <a href="https://thehackernews.com/2026/09/plugin4shell-lets-repository-owners.html">The Hacker News</a> · 📰 <a href="https://cybersecuritynews.com/plugin4shell-zero-click-rce/">Cyber Security News</a></p>
+
+    <h3>Anthropic</h3>
+    <p>Anthropic และ Accenture ประกาศความร่วมมือให้หน่วย Faculty ของ Accenture ทำหน้าที่เป็น "embedded evaluator" รายแรกของ Anthropic เข้าไปประเมินและ red-team โมเดล ตรวจสอบความสอดคล้อง (alignment) และทดสอบ safeguard จากภายในบริษัทโดยมีสิทธิ์เข้าถึงเทียบเท่าพนักงาน ทั้งสองฝ่ายจะลงทุนฝ่ายละอย่างน้อย 1,000 ล้านดอลลาร์ในช่วง 5 ปี โดย Anthropic จะสนับสนุนงบประมาณให้ Accenture โดยตรงเนื่องจากเห็นว่าเรื่องนี้ "สำคัญและเร่งด่วน" ซึ่งเป็นก้าวแรกตามแผนชะลอความเร็ว AI 3 ขั้นตอนของซีอีโอ Dario Amodei <span class="badge-warn">ประกาศ 18 ก.ย. 2569</span> ✅ <a href="https://www.anthropic.com/news/accenture-embedded-evaluation">Anthropic (official)</a> · ✅ <a href="https://newsroom.accenture.com/news/2026/accenture-and-anthropic-partner-to-build-team-of-embedded-evaluators-at-anthropic">Accenture Newsroom (official)</a> · 📰 <a href="https://techcrunch.com/2026/09/18/anthropics-first-embedded-evaluator-is-accenture/">TechCrunch</a></p>
+    <p>บัญชีโซเชียลมีเดีย "Yuyuantantian" ที่เกี่ยวข้องกับสถานีโทรทัศน์ CCTV ของจีน เผยแพร่รายงานวิจารณ์ว่า Anthropic แก้ไขนโยบายความเป็นส่วนตัวมาแล้ว 13 ครั้งตั้งแต่ปี 2023 รวมถึงเงื่อนไขที่เปิดให้โอนย้ายข้อมูลผู้ใช้จากแคนาดา บราซิล เกาหลีใต้ และสหภาพยุโรปมายังสหรัฐฯ และขยายแหล่งข้อมูลจาก 3 เป็น 6 แหล่งระหว่างมิถุนายน 2024 ถึงกันยายน 2025 พร้อมตั้งข้อสังเกตว่า Anthropic เปิดรับสมัครตำแหน่งด้าน threat-intelligence ที่เน้นผู้พูดภาษาจีนกลางหรือรัสเซีย ทั้งนี้ต้นทางเป็นบัญชีโซเชียลมีเดีย ไม่ใช่แถลงการณ์ทางการจากรัฐบาลจีนหรือ Anthropic โดยตรง <span class="badge-warn">เผยแพร่ 19 ก.ย. 2569</span> 📰 <a href="https://www.bloomberg.com/news/articles/2026-09-19/china-state-tv-affiliate-flags-anthropic-data-and-privacy-risks">Bloomberg</a> · ❓ <a href="https://www.briefs.co/news/cctv-linked-account-flags-anthropic-policy-shifts-that-could/">Briefs.co</a></p>
+    <p>Claude Code ได้รับแพตช์เวอร์ชัน 2.1.179 เพื่อแก้ไขช่องโหว่ Plugin4Shell เช่นเดียวกับ Codex (ดูรายละเอียดในหัวข้อ Tools &amp; Apps)</p>
+
+    <h3>Google DeepMind</h3>
+    <p>Gemini CLI เป็นหนึ่งใน 4 เอเจนต์โค้ดดิ้งที่ได้รับผลกระทบจากช่องโหว่ Plugin4Shell แต่ Google ระบุว่าจะไม่ออกแพตช์แก้ไข เนื่องจากอยู่ระหว่างยุติการให้บริการผลิตภัณฑ์นี้ ทำให้ผู้ใช้ Gemini CLI ที่ยังใช้งานอยู่ไม่มีทางเลือกด้านความปลอดภัยอื่นนอกจากเปลี่ยนไปใช้เครื่องมืออื่น <span class="badge-warn">ต่อเนื่อง</span> 📰 <a href="https://thehackernews.com/2026/09/plugin4shell-lets-repository-owners.html">The Hacker News</a> · 📰 <a href="https://aicybr.com/blog/plugin4shell-ai-coding-agents-claude-code-codex-copilot-gemini-cli">AiCybr</a></p>
+
+    <h3>Meta</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Meta ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน</p>
+
+    <h3>Microsoft</h3>
+    <p>Microsoft Copilot เป็นอีกหนึ่งผลิตภัณฑ์ที่ได้รับผลกระทบจากช่องโหว่ Plugin4Shell แต่จนถึงขณะนี้ยังไม่มีการออกแพตช์แก้ไข แม้ได้รับแจ้งช่องโหว่เดียวกันจากทีมวิจัย AIR แล้ว ทำให้ผู้ใช้ Copilot ยังคงเสี่ยงต่อการถูกสลับโค้ดปลั๊กอินโดยไม่ได้รับอนุญาต <span class="badge-warn">ต่อเนื่อง</span> 📰 <a href="https://www.helpnetsecurity.com/2026/09/18/plugin4shell-ai-coding-agents-vulnerability/">Help Net Security</a></p>
+
+    <h3>Amazon</h3>
+    <p>ไม่พบข่าว AI เฉพาะเจาะจงใหม่จาก Amazon/AWS ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้</p>
+
+    <h3>NVIDIA</h3>
+    <p>ไม่พบข่าวเฉพาะเจาะจงใหม่จาก NVIDIA ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ นอกเหนือจากความเคลื่อนไหวด้านฮาร์ดแวร์คู่แข่งจากจีน (ดูหัวข้อ Technical Updates &gt; Infrastructure)</p>
+
+    <h3>Startup</h3>
+    <p>MIND บริษัทความปลอดภัยข้อมูลสัญชาติอิสราเอล-สหรัฐฯ ผู้พัฒนาแพลตฟอร์ม data loss prevention (DLP) แบบ AI-native ระดมทุน 72 ล้านดอลลาร์ในรอบ Series B นำโดย Crosspoint Capital Partners พร้อมนักลงทุนเดิม Paladin Capital Group และ YL Ventures เข้าร่วม ทำให้ยอดระดมทุนสะสมรวมอยู่ที่ 112 ล้านดอลลาร์ บริษัทระบุว่ามีรายได้เติบโต 17 เท่าและลูกค้าเติบโต 8 เท่าในปีที่ผ่านมา พร้อมเป็นบริษัทความปลอดภัยข้อมูลรายแรกที่ผ่านเข้าโครงการ Cyber Verification Program ของ Anthropic และได้รับการรับรอง ISO/IEC 42001 ด้าน AI ที่รับผิดชอบเป็นรายแรกในสายธุรกิจนี้ <span class="badge-warn">ประกาศ 17-18 ก.ย. 2569</span> ✅ <a href="https://www.prnewswire.com/news-releases/mind-raises-72m-series-b-funding-to-bring-complete-dlp-to-the-ai-era-302881118.html">PR Newswire (official press release)</a> · 📰 <a href="https://www.securityweek.com/mind-secures-72-million-for-ai-powered-dlp/">SecurityWeek</a> · 📰 <a href="https://siliconangle.com/2026/09/17/mind-raises-72m-to-stop-sensitive-data-leaking-into-ai-tools/">SiliconANGLE</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>API/SDK:</b> Claude Code อัปเดตเป็น v2.1.179 และ OpenAI Codex อัปเดตเป็น v0.146.0 เพื่อแก้ไขช่องโหว่ Plugin4Shell (ดูรายละเอียดในหัวข้อ Tools &amp; Apps)</li>
+      <li><b>Agent:</b> ช่องโหว่ Plugin4Shell เผยให้เห็นสมมติฐานร่วมด้านความปลอดภัยที่ผิดพลาดในระบบปลั๊กอินของเอเจนต์โค้ดดิ้ง AI 4 ราย (Claude Code, Codex, Copilot, Gemini CLI) ซึ่งอาศัยกลไก SHA-pinning ที่ถูกบายพาสได้โดยเจ้าของ repository โดยไม่ต้องมีการยืนยันจากผู้ใช้ นักวิจัย AIR (Or Nevo, Dor Granat, Niv Hoffman) เป็นผู้เปิดเผยช่องโหว่นี้เมื่อ 17 ก.ย. 2569 <span class="badge-warn">ต่อเนื่อง</span></li>
+      <li><b>Infrastructure:</b> CXMT ผู้ผลิตชิปหน่วยความจำรายใหญ่ของจีน ประกาศเริ่มผลิตแพลตฟอร์ม DRAM รุ่นที่ 5 (G5) เชิงพาณิชย์แล้วที่งาน World Manufacturing Convention เมืองเหอเฝย เมื่อ 20 ก.ย. 2569 ใช้เทคนิค quadruple patterning ลดระยะห่างวงจรลงเหลือ 11.95 นาโนเมตรโดยไม่พึ่งเครื่องจักรของ ASML ที่ถูกจำกัดการส่งออก เพิ่มจำนวนชิปต่อแผ่นเวเฟอร์ได้อย่างน้อย 50% พร้อมเปิดตัวผลิตภัณฑ์ LPDDR5X ขนาด 24Gb สองรุ่นบนแพลตฟอร์มใหม่ ปัจจุบัน CXMT ครองส่วนแบ่งตลาด DRAM โลกราว 10% และวางแผนเพิ่มกำลังผลิตเป็นราว 375,000 เวเฟอร์ต่อเดือนภายในสิ้นปี 2026 ซึ่งอาจส่งผลต่อห่วงโซ่อุปทานหน่วยความจำสำหรับงาน AI ทั่วโลก ✅ <a href="https://www.globaltimes.cn/page/202609/1370944.shtml">Global Times (official-affiliated)</a> · 📰 <a href="https://en.sedaily.com/international/2026/09/20/chinas-cxmt-starts-mass-production-on-5th-generation-dram">Seoul Economic Daily</a></li>
+      <li><b>MCP:</b> ไม่พบอัปเดตสเปกหรือรีลีสใหม่เฉพาะเจาะจงของ Model Context Protocol ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ (อัปเดตสเปกล่าสุดคือ 28 ก.ค. 2569 และโรดแมปอัปเดต 22 ส.ค. 2569 ซึ่งเกินกรอบเวลาของรายงานนี้)</li>
+      <li><b>Framework:</b> ไม่พบการรีลีสเฟรมเวิร์กใหม่ที่ยืนยันแหล่งที่มาได้ครบถ้วนในรอบนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>Regulation:</b> ประธานาธิบดีโดนัลด์ ทรัมป์ ประกาศเมื่อ 19 ก.ย. 2569 ว่าจะจัดตั้ง "AI Force" หน่วยงานตามแบบ Space Force เพื่อดูแลการพัฒนาอุตสาหกรรม AI ของสหรัฐฯ และจะแต่งตั้ง "AI czar" คนใหม่เร็ว ๆ นี้ โดยยังไม่เปิดเผยรายละเอียดโครงสร้างหรือตัวบุคคล ทรัมป์ระบุเป้าหมายคือ "ปกป้องและเร่งพัฒนา" อุตสาหกรรม AI ซึ่งเขามองว่าเป็น "การปฏิวัติอุตสาหกรรมครั้งใหม่" ท่ามกลางเสียงเรียกร้องให้มีมาตรการกำกับดูแลที่เข้มงวดขึ้นจากหลายฝ่าย ท่าทีนี้เน้นการเร่งพัฒนามากกว่าการจำกัดกฎเกณฑ์ <span class="badge-warn">ประกาศ 19 ก.ย. 2569</span> 📰 <a href="https://www.cnn.com/2026/09/19/politics/trump-ai-task-force-czar">CNN</a> · 📰 <a href="https://www.washingtonpost.com/politics/2026/09/19/trump-form-ai-force-name-ai-czar-rejects-calls-constraints/">Washington Post</a> · 📰 <a href="https://www.axios.com/2026/09/19/trump-ai-czar-space-force-safety">Axios</a></li>
+      <li><b>Regulation/Ethics:</b> บัญชีโซเชียลมีเดียที่เกี่ยวข้องกับ CCTV ของจีนวิจารณ์การแก้ไขนโยบายความเป็นส่วนตัวของ Anthropic ว่าเพิ่มความเสี่ยงข้อมูลผู้ใช้ต่างชาติถูกส่งให้หน่วยข่าวกรองสหรัฐฯ (ดูรายละเอียดในหัวข้อ Company News &gt; Anthropic) 📰 <a href="https://www.bloomberg.com/news/articles/2026-09-19/china-state-tv-affiliate-flags-anthropic-data-and-privacy-risks">Bloomberg</a></li>
+      <li><b>Ethics:</b> Financial Times รายงานเมื่อ 20 ก.ย. 2569 ว่าแพทย์และบุคลากรทางการแพทย์เริ่มต้านการขยายบทบาทของ AI ทางการแพทย์ให้ไกลเกินกว่าการวินิจฉัยภาพและการสแกน เนื่องจากข้อมูลประสิทธิภาพทางคลินิกที่รองรับยังมีน้อย งานด้าน AI ภาพถ่ายทางการแพทย์ผ่านมาตรฐานเพราะมีหลักฐานที่ผ่านการรีวิวโดยผู้เชี่ยวชาญและการทดลองทางคลินิกรองรับ ขณะที่เครื่องมือสำหรับงานเอกสาร การให้คำแนะนำการรักษา และการสื่อสารกับผู้ป่วยยังไม่ผ่านกระบวนการตรวจสอบระดับเดียวกัน โดยผลสำรวจแพทย์และพยาบาลสหรัฐฯ 355 คนเมื่อมีนาคม 2026 พบว่าการใช้ AI รายวันเพิ่มขึ้น 3 เท่าในปีที่ผ่านมา แต่ 74% กังวลว่าจะกัดกร่อนทักษะทางคลินิก และ 74% ไม่ไว้ใจผลลัพธ์เพราะปัญหา hallucination <span class="badge-warn">รายงาน 20 ก.ย. 2569</span> 📰 <a href="https://aiweekly.co/alerts/ft-clinicians-push-back-on-medical-ai-beyond-diagnostics">AI Weekly (สรุปรายงานจาก FT)</a> · 📰 <a href="https://www.wionews.com/world/doctors-are-refusing-ai-beyond-scans-and-the-reason-is-thin-evidence-1789912405164">WION News</a></li>
+      <li><b>Investment:</b> MIND ระดมทุน 72 ล้านดอลลาร์รอบ Series B สำหรับแพลตฟอร์ม data loss prevention แบบ AI-native (ดูหัวข้อ Company News &gt; Startup) ✅ <a href="https://www.prnewswire.com/news-releases/mind-raises-72m-series-b-funding-to-bring-complete-dlp-to-the-ai-era-302881118.html">PR Newswire</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ยืนยันข้อมูลครบตามเกณฑ์ Validation (Benchmark, Model, Score, Source พร้อมอย่างน้อย 2 แหล่งอ้างอิง) ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ ผลทดสอบ MLPerf Inference v6.1 เคยรายงานไปแล้วในรอบ 17 ก.ย. 2569</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Trending (GitHub):</b> affaan-m/ECC ครองอันดับ 1 ต่อเนื่อง ขณะที่ cloudflare/security-audit-skill พุ่งขึ้นแรง (+2,375 ดาววันนี้) ซึ่งสอดคล้องกับกระแสความสนใจด้านความปลอดภัยของ AI coding agent หลังข่าว Plugin4Shell รายการเข้าใหม่วันนี้ ได้แก่ higgsfield-ai/higgsfield (GPU orchestration) และ BuilderIO/agent-native (เฟรมเวิร์ก agentic app) สะท้อนเทรนด์โครงสร้างพื้นฐานสำหรับฝึกโมเดลและเครื่องมือสร้างแอป agent ที่มาแรง (ดูรายละเอียดในหัวข้อ Open Source) 🔥 <a href="https://github.com/trending">GitHub Trending</a></li>
+      <li><b>Trending (Hugging Face):</b> โมเดล Qwen รุ่น 3.8-27B ยังคงครองยอดดาวน์โหลดสูงสุดในสัปดาห์นี้ ร่วมกับโมเดลสร้างวิดีโอ MiniMax-H3 และ Lightricks LTX-2.5 ขณะที่เทคนิคการควอนไทซ์ (GGUF, MLX) ยังเป็นหัวข้อที่มีการพัฒนาต่อเนื่องในหมู่นักพัฒนาโอเพนซอร์ส <span class="badge-warn">ข้อมูลรวมรายสัปดาห์ ไม่จำเพาะ 24 ชม.</span> 🔥 <a href="https://huggingface.co/papers/trending">Hugging Face Trending Papers</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. ปิดช่องโหว่ supply-chain ในปลั๊กอินของ AI coding agent (แพตช์ Plugin4Shell)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>กลไก SHA-pinning ที่นักพัฒนาใช้ล็อกเวอร์ชันปลั๊กอินของเอเจนต์โค้ดดิ้ง AI ถูกบายพาสได้ ทำให้เจ้าของ repository สามารถสลับโค้ดปลั๊กอินที่เป็นอันตรายเข้ามาแทนได้โดยไม่ต้องให้ผู้ใช้ยืนยัน</dd>
+        <dt>วิธีใช้</dt><dd>ทีมพัฒนาที่ใช้ Claude Code หรือ OpenAI Codex อัปเดตเป็นเวอร์ชันล่าสุด (2.1.179 และ 0.146.0 ตามลำดับ) ทันที ส่วนผู้ใช้ Microsoft Copilot หรือ Gemini CLI ควรพิจารณาความเสี่ยงเนื่องจากยังไม่มีแพตช์</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงจากการถูกโจมตีแบบ zero-click ที่อาจนำไปสู่การรันโค้ดที่เป็นอันตรายในสภาพแวดล้อมพัฒนาซอฟต์แวร์โดยไม่รู้ตัว</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. ลดต้นทุนการรันโมเดลบริบทยาวด้วยการบีบอัด KV cache (DeepSeek-V4.1-Flash)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การรันโมเดลภาษาขนาดใหญ่ที่รองรับบริบทยาวถึง 1 ล้านโทเคนต้องใช้หน่วยความจำสำหรับ KV cache จำนวนมาก ทำให้ต้นทุนการประมวลผล inference สูง</dd>
+        <dt>วิธีใช้</dt><dd>นำเทคนิค Compressed Sparse Attention 2 (CSA2) แบบ cross-layer reuse ร่วมกับ FP4 KV cache ตามที่ DeepSeek-AI เผยแพร่มาปรับใช้กับ pipeline การให้บริการโมเดลบริบทยาว</dd>
+        <dt>ประโยชน์</dt><dd>ลดหน่วยความจำและต้นทุนต่อการรันงาน agentic/multimodal ที่ต้องใช้บริบทยาว โดยยังคงประสิทธิภาพของโมเดลไว้</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. ป้องกันข้อมูลรั่วไหลเข้าเครื่องมือ GenAI ขององค์กรแบบอัตโนมัติ (MIND)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>พนักงานในองค์กรมักวางข้อมูลลับหรือข้อมูลอ่อนไหวเข้าไปในเครื่องมือ GenAI และ agentic AI โดยไม่ตั้งใจ ซึ่งทีมความปลอดภัยไม่สามารถตรวจจับได้ทันด้วยเครื่องมือ DLP แบบเดิม</dd>
+        <dt>วิธีใช้</dt><dd>องค์กรใช้แพลตฟอร์มของ MIND วิเคราะห์เหตุการณ์ข้อมูลแบบเรียลไทม์ทั่วทั้งสภาพแวดล้อม GenAI, Agentic AI และ IT เพื่อควบคุมความเสี่ยงจากภายในและป้องกันข้อมูลรั่วไหลแบบอัตโนมัติ</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงข้อมูลรั่วไหลจากการใช้งาน AI ในองค์กรขนาดใหญ่ พร้อมมาตรฐานรับรองด้าน AI ที่รับผิดชอบ (ISO/IEC 42001)</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">1</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>Microsoft Copilot และ Google Gemini CLI จะได้รับการแก้ไขช่องโหว่ Plugin4Shell เมื่อใด หรือจะเกิดการโจมตีจริงในสถานการณ์จริงก่อนหรือไม่ โดยเฉพาะ Gemini CLI ที่ Google ระบุว่าจะไม่ออกแพตช์เนื่องจากอยู่ระหว่างยุติผลิตภัณฑ์</dd>
+        <dt>เหตุผล</dt><dd>ช่องโหว่นี้กระทบกลไกความปลอดภัยพื้นฐาน (SHA-pinning) ที่ใช้ร่วมกันในเอเจนต์โค้ดดิ้ง AI หลายราย หากถูกใช้โจมตีจริงอาจกระทบ supply chain ของเครื่องมือพัฒนาซอฟต์แวร์ในวงกว้าง</dd>
+        <dt>Source</dt><dd><a href="https://thehackernews.com/2026/09/plugin4shell-lets-repository-owners.html">The Hacker News</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>รายละเอียดโครงสร้างของ "AI Force" และตัวตนของ "AI czar" ที่ทรัมป์จะแต่งตั้งจะเป็นอย่างไร และจะขัดแย้งกับข้อเรียกร้องด้านความปลอดภัย AI จากอุตสาหกรรมเอง (เช่น แผนชะลอ AI ของ Anthropic) มากน้อยเพียงใด</dd>
+        <dt>เหตุผล</dt><dd>ท่าทีของทำเนียบขาวเน้นเร่งพัฒนามากกว่าจำกัดกฎเกณฑ์ ขณะที่บริษัท AI ชั้นนำอย่าง Anthropic กำลังลงทุนด้านการประเมินความปลอดภัยของโมเดลเพิ่มขึ้น ทิศทางทั้งสองอาจนำไปสู่แรงเสียดทานเชิงนโยบายในอนาคตอันใกล้</dd>
+        <dt>Source</dt><dd><a href="https://www.axios.com/2026/09/19/trump-ai-czar-space-force-safety">Axios</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news/accenture-embedded-evaluation">Anthropic — Accenture embedded evaluation</a></li>
+          <li><a href="https://newsroom.accenture.com/news/2026/accenture-and-anthropic-partner-to-build-team-of-embedded-evaluators-at-anthropic">Accenture Newsroom — Embedded evaluators</a></li>
+          <li><a href="https://www.prnewswire.com/news-releases/mind-raises-72m-series-b-funding-to-bring-complete-dlp-to-the-ai-era-302881118.html">PR Newswire — MIND Series B</a></li>
+          <li><a href="https://www.globaltimes.cn/page/202609/1370944.shtml">Global Times — CXMT G5 DRAM</a></li>
+          <li><a href="https://arxiv.org/abs/2609.19969">arXiv — DeepSeek-V4.1-Flash (2609.19969)</a></li>
+          <li><a href="https://arxiv.org/abs/2609.20807">arXiv — Score Centering (2609.20807)</a></li>
+          <li><a href="https://huggingface.co/papers/2609.19969">Hugging Face Papers — DeepSeek-V4.1-Flash</a></li>
+          <li><a href="https://github.com/affaan-m/ECC">GitHub — affaan-m/ECC</a></li>
+          <li><a href="https://github.com/cloudflare/security-audit-skill">GitHub — cloudflare/security-audit-skill</a></li>
+          <li><a href="https://github.com/trycua/cua">GitHub — trycua/cua</a></li>
+          <li><a href="https://github.com/anthropics/financial-services">GitHub — anthropics/financial-services</a></li>
+          <li><a href="https://github.com/higgsfield-ai/higgsfield">GitHub — higgsfield-ai/higgsfield</a></li>
+          <li><a href="https://github.com/BuilderIO/agent-native">GitHub — BuilderIO/agent-native</a></li>
+          <li><a href="https://github.com/anthropics/claude-code">GitHub — anthropics/claude-code</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2609.19969">DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression</a></li>
+          <li><a href="https://arxiv.org/abs/2609.20807">Score Centering Stabilizes Off-policy Reinforcement Learning</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.cnn.com/2026/09/19/politics/trump-ai-task-force-czar">CNN — Trump AI Force</a></li>
+          <li><a href="https://www.washingtonpost.com/politics/2026/09/19/trump-form-ai-force-name-ai-czar-rejects-calls-constraints/">Washington Post — Trump AI Force</a></li>
+          <li><a href="https://www.axios.com/2026/09/19/trump-ai-czar-space-force-safety">Axios — Trump AI Force</a></li>
+          <li><a href="https://techcrunch.com/2026/09/18/anthropics-first-embedded-evaluator-is-accenture/">TechCrunch — Anthropic x Accenture</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-09-19/china-state-tv-affiliate-flags-anthropic-data-and-privacy-risks">Bloomberg — CCTV-affiliated account vs Anthropic</a></li>
+          <li><a href="https://www.briefs.co/news/cctv-linked-account-flags-anthropic-policy-shifts-that-could/">Briefs.co — Anthropic policy shifts</a></li>
+          <li><a href="https://thehackernews.com/2026/09/plugin4shell-lets-repository-owners.html">The Hacker News — Plugin4Shell</a></li>
+          <li><a href="https://www.helpnetsecurity.com/2026/09/18/plugin4shell-ai-coding-agents-vulnerability/">Help Net Security — Plugin4Shell</a></li>
+          <li><a href="https://cybersecuritynews.com/plugin4shell-zero-click-rce/">Cyber Security News — Plugin4Shell</a></li>
+          <li><a href="https://fourweekmba.com/ai-plugin4shell-claude-code-codex-shared-assumption/">FourWeekMBA — Plugin4Shell</a></li>
+          <li><a href="https://aicybr.com/blog/plugin4shell-ai-coding-agents-claude-code-codex-copilot-gemini-cli">AiCybr — Plugin4Shell patch status</a></li>
+          <li><a href="https://www.securityweek.com/mind-secures-72-million-for-ai-powered-dlp/">SecurityWeek — MIND funding</a></li>
+          <li><a href="https://siliconangle.com/2026/09/17/mind-raises-72m-to-stop-sensitive-data-leaking-into-ai-tools/">SiliconANGLE — MIND funding</a></li>
+          <li><a href="https://en.sedaily.com/international/2026/09/20/chinas-cxmt-starts-mass-production-on-5th-generation-dram">Seoul Economic Daily — CXMT G5 DRAM</a></li>
+          <li><a href="https://aiweekly.co/alerts/ft-clinicians-push-back-on-medical-ai-beyond-diagnostics">AI Weekly — FT medical AI pushback</a></li>
+          <li><a href="https://www.wionews.com/world/doctors-are-refusing-ai-beyond-scans-and-the-reason-is-thin-evidence-1789912405164">WION News — medical AI pushback</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://huggingface.co/papers/trending">Hugging Face Trending Papers</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 20 ก.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
