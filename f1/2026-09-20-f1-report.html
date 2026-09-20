@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 20 กันยายน 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 13 – 20 กันยายน 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 38</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>🔄 สัปดาห์นี้ได้รับการยืนยันผลสรุปของ Spanish Grand Prix ที่ MADRING (มาดริด) ซึ่งค้างมาจากรายงานสัปดาห์ก่อน: Kimi Antonelli (Mercedes) คว้าชัยชนะที่ 8 ของฤดูกาลจากตำแหน่งกริด P2 ด้วยจังหวะเข้าพิทช่วง Virtual Safety Car ที่ลงตัว ขณะที่ Lando Norris ผู้คว้า Pole Position ต้องพลาดโอกาสเข้าพิทและจบเพียงอันดับ 3 ตามหลัง Max Verstappen ที่ขึ้นมาอันดับ 2 Lewis Hamilton ต้องออกจากการแข่งขันตั้งแต่รอบที่ 7 จากปัญหาเบรกยาว (long brake pedal) ทำให้คะแนนนำของ Antonelli ขยายเป็น 81 คะแนนเหนือ George Russell และเกือบปิดโอกาสชิงแชมป์ของ Hamilton ที่ตามหลัง 101 คะแนน นอกสนาม Fernando Alonso ยังไม่ตัดสินใจอนาคตกับ Aston Martin ปี 2027 ขณะที่ Isack Hadjar มีแนวโน้มจะกลับมาลงแข่งให้ Red Bull Racing ที่ Azerbaijan Grand Prix (26 กันยายน) หลังพลาดไป 3 สนามติดต่อกันจากอาการบาดเจ็บข้อมือ ไม่มีการแข่งขัน Grand Prix ใหม่เกิดขึ้นในช่วง 7 วันที่ผ่านมา (13-20 กันยายน) เนื่องจากเป็นสัปดาห์พักระหว่างสนาม</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">
+      ✅ ตารางนี้เป็นคะแนนสะสมหลัง Spanish Grand Prix (รอบที่ 14 จาก 23) — ยืนยันแล้ว รวมคะแนนจากการแข่งขันครบทุกสนามจนถึงปัจจุบัน
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>292</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>211</td>
+          <td>-81</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>191</td>
+          <td>-101</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>186</td>
+          <td>-106</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>167</td>
+          <td>-125</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>145</td>
+          <td>-147</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>120</td>
+          <td>-172</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">❓ <strong>ข้อมูลบางส่วน:</strong> อันดับ 8-10 (คาดว่ารวมถึง Isack Hadjar, Liam Lawson, Pierre Gasly) ไม่พบตัวเลขคะแนนที่ยืนยันได้แยกเป็นรายบุคคลหลัง Spanish GP ในรอบการค้นหานี้ จึงงดแสดงตามหลักเกณฑ์ของรายงาน (แสดงเฉพาะ Top 7 ที่ยืนยันได้)</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.gpfans.com/en/f1-news/1090193/f1-standings-2026-latest-points-leaders-spanish-grand-prix/">GPFans</a>, <a href="https://racingnews365.com/2026-f1-championship-standings-after-spanish-grand-prix-at-madrid">RacingNews365</a>, <a href="https://www.crash.net/f1/results/1104667/1/2026-formula-1-world-championship-standings-after-spanish-grand-prix">Crash.net</a>, <a href="https://www.total-motorsport.com/f1-2026-driver-team-standings-after-spain/">Total Motorsport</a>, <a href="https://www.motorsport.com/f1/news/standings-antonelli-closes-in-on-the-title/10855447/">Motorsport.com</a>, <a href="https://www.forbes.com/sites/yaraelshebiny/2026/09/14/f1-standings-2026-after-the-spanish-grand-prix/">Forbes</a></div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">
+      ✅ ตารางนี้เป็นคะแนนสะสมหลัง Spanish Grand Prix — ตัวเลขคะแนน Mercedes และ Ferrari ยืนยันตรงกันทั้งจากแหล่งข่าวโดยตรงและจากผลรวมคะแนนนักแข่งแต่ละคนในทีม
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>503</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>358</td>
+          <td>-145</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>McLaren</td>
+          <td>306</td>
+          <td>-197</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Red Bull Racing</td>
+          <td>230</td>
+          <td>-273</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Racing Bulls</td>
+          <td>77</td>
+          <td>-426</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Alpine</td>
+          <td>68</td>
+          <td>-435</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">❓ <strong>ข้อมูลบางส่วน:</strong> คะแนนของ Williams, Haas F1 Team, Audi, Aston Martin, Sauber/Cadillac (อันดับ 7-11) ไม่พบตัวเลขที่ยืนยันได้ชัดเจนในรอบการค้นหานี้ จึงงดแสดงตามหลักเกณฑ์ของรายงาน</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.total-motorsport.com/f1-2026-driver-team-standings-after-spain/">Total Motorsport</a>, <a href="https://www.motorsport.com/f1/news/standings-antonelli-closes-in-on-the-title/10855447/">Motorsport.com</a> (Mercedes/Ferrari ยืนยันตรงกับผลรวมคะแนนนักแข่งจากตารางแชมป์ชิปผู้ขับขี่ด้านบน)</div>
+  </section>
+
+  <section>
+    <h2>🏁 Spanish Grand Prix 2026 — ผลสรุปยืนยันแล้วที่ MADRING</h2>
+    <div class="note">
+      🔄 <strong>ข่าวต่อเนื่องจากสัปดาห์ก่อน:</strong> รายงานสัปดาห์ที่แล้ว (13 กันยายน) ยังไม่สามารถยืนยันผลการแข่งขันหลักได้เนื่องจากการแข่งขันยังดำเนินอยู่ ขณะนี้ผลสรุปได้รับการยืนยันแล้วจากหลายแหล่งข้อมูล
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา / สถานะ</th>
+          <th>คะแนน</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>ผู้ชนะ</td>
+          <td>25</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>+4.4s</td>
+          <td>18</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Lando Norris</td>
+          <td>McLaren</td>
+          <td>+5.1s</td>
+          <td>15</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>+29.1s</td>
+          <td>12</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>+29.8s</td>
+          <td>10</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Liam Lawson</td>
+          <td>Red Bull Racing</td>
+          <td>+1m26.7s</td>
+          <td>8</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Franco Colapinto</td>
+          <td>Alpine</td>
+          <td>+1m34.3s</td>
+          <td>6</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>+1m35.8s</td>
+          <td>4</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Arvid Lindblad</td>
+          <td>Racing Bulls</td>
+          <td>+1 รอบ</td>
+          <td>2</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Nico Hulkenberg</td>
+          <td>Audi</td>
+          <td>+1 รอบ</td>
+          <td>1</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>DNF</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>ออกจากการแข่งขันรอบที่ 7 — ปัญหาเบรกยาว (long brake pedal)</td>
+          <td>0</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>สรุปเหตุการณ์สำคัญ</h3>
+    <ul>
+      <li><strong>Strategy:</strong> Antonelli สตาร์ทจาก P2 และคว้าชัยชนะได้ด้วยจังหวะเข้าพิทที่ลงตัวระหว่างช่วง Virtual Safety Car ขณะที่ Norris ผู้นำในสนามพลาดโอกาสเข้าพิทช่วงเดียวกันเนื่องจาก Lance Stroll (Aston Martin) รถหยุดอยู่บริเวณทางเข้าพิท ทำให้เสียตำแหน่งผู้นำไปอย่างน่าเสียดาย</li>
+      <li><strong>Incidents:</strong> Verstappen ตัดชิเคนแรกช่วงออกสตาร์ทและถูกสั่งคืนตำแหน่งให้ Antonelli และ Hamilton ก่อนจะไต่กลับมาจบอันดับ 2</li>
+      <li><strong>Technical Failure:</strong> Hamilton แจ้งทีมทางวิทยุว่า "I've got no brakes, guys" ก่อนถูกเรียกเข้าพิทและยุติการแข่งขันในรอบที่ 7 — Ferrari ยืนยันภายหลังว่าสาเหตุคือปัญหาเบรกยาว (long brake pedal) ที่แก้ไขจากพิทวอลล์ไม่สำเร็จ</li>
+      <li><strong>Driver of the Day:</strong> Max Verstappen ได้รับคะแนนโหวตแฟน ๆ สูงสุด จากการไล่ตามกลับมาจบอันดับ 2 หลังโดนสั่งคืนตำแหน่งช่วงต้นการแข่งขัน</li>
+      <li><strong>Fastest Lap:</strong> Kimi Antonelli ทำเวลาต่อรอบเร็วที่สุดในรอบสุดท้ายของการแข่งขัน หลังเปลี่ยนยางใหม่และขยายช่องว่างนำมากกว่า 3 วินาทีต่อรอบในช่วงท้าย</li>
+    </ul>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.motorsport.com/f1/news/all-results-and-standings-from-the-2026-f1-spanish-grand-prix/10855476/">Motorsport.com</a>, <a href="https://www.formula1.com/en/latest/article/antonelli-clinches-victory-over-verstappen-and-norris-in-spanish-gp.644ZZfPzRPEaUh2JBHcB9">Formula1.com</a>, <a href="https://www.crash.net/f1/news/1104688/1/kimi-antonelli-makes-honest-confession-after-latest-f1-win-madrid">Crash.net</a>, <a href="https://www.planetf1.com/news/2026-spanish-grand-prix-lewis-hamilton-ferrari-investigation">PlanetF1</a>, <a href="https://www.crash.net/f1/news/1104705/1/ferrari-explains-brake-issues-caused-lewis-hamiltons-madrid-f1-retirement">Crash.net</a>, <a href="https://www.formula1.com/en/latest/article/driver-of-the-day-verstappen-takes-fan-honours-after-p2-finish-in-madrid.2WsLTGb177ipjUTCxxusUr">Formula1.com</a></div>
+
+    <h3>⚡ Sprint</h3>
+    <p>ไม่มีการแข่งขัน Sprint ในสุดสัปดาห์ Spanish GP</p>
+
+    <h3>🚨 FIA Decisions / Penalties จากสุดสัปดาห์ Spanish GP</h3>
+    <div class="team-section">
+      <p><strong>Carlos Sainz (Williams):</strong> ได้รับโทษปรับกริด 3 ตำแหน่ง จากการกีดขวาง Valtteri Bottas (Cadillac) ที่โค้ง 6-7 ในช่วงท้าย Q1</p>
+      <div class="source">✅ ที่มา: <a href="https://www.gpfans.com/en/f1-news/1090205/fia-verdicts-mercedes-drivers-norris-sainz-spanish-grand-prix-starting-grid-adjusted-penalty/">GPFans</a>, <a href="https://www.planetf1.com/news/fia-carlos-sainz-spanish-grand-prix-2026-grid-penalty">PlanetF1</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Gabriel Bortoleto (Sauber/Audi):</strong> ได้รับคำเตือน (warning) จากการเบรกกะทันหันขณะป้องกันตำแหน่งกับ Franco Colapinto</p>
+      <div class="source">✅ ที่มา: <a href="https://www.planetf1.com/news/honda-f1-2026-spanish-grand-prix-fia-investigation">PlanetF1</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Kimi Antonelli / George Russell (Mercedes):</strong> ทั้งคู่ถูกเรียกพบสจ๊วตหลังรอบคัดเลือกจากกรณีไม่ปฏิบัติตามคำสั่งของ Race Director และได้รับคำเตือน</p>
+      <div class="source">✅ ที่มา: <a href="https://www.planetf1.com/news/fia-kimi-antonelli-spanish-grand-prix-2026-qualifying">PlanetF1</a>, <a href="https://www.planetf1.com/news/fia-george-russell-spanish-grand-prix-2026-qualifying">PlanetF1</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Lando Norris / McLaren:</strong> ทีมถูกปรับเงิน 900 ยูโร จากความเร็วเกินกำหนดในพิทเลน แต่ Norris ยังคงรักษาตำแหน่ง Pole Position ไว้ได้ | <strong>Yuki Tsunoda / Racing Bulls:</strong> ทีมถูกปรับเงิน 200 ยูโร จากความเร็วเกินกำหนดในพิทเลนช่วงตรวจสอบสนามก่อนแข่งขัน</p>
+      <div class="source">✅ ที่มา: <a href="https://www.planetf1.com/news/f1-results-spanish-grand-prix-2026-qualifying">PlanetF1</a></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญ</h2>
+
+    <h3>Driver Market</h3>
+    <div class="team-section">
+      <p><strong>Fernando Alonso (Aston Martin):</strong> ยังไม่ตัดสินใจอนาคตปี 2027 แม้สัญญาปัจจุบันจะมีเงื่อนไขต่ออายุอัตโนมัติ มีรายงานว่า Alonso เรียกร้องขึ้นค่าตอบแทนจาก 30 ล้านยูโร เป็น 40 ล้านยูโรต่อปี พร้อมสัญญาระยะยาวถึงปี 2028 ขณะที่ Mike Krack (Aston Martin) ระบุว่ายังไม่มีความเร่งด่วนในการประกาศ 🔄 ข่าวต่อเนื่อง</p>
+      <div class="source">✅ ที่มา: <a href="https://www.skysports.com/f1/news/12477/13586010/fernando-alonso-whats-the-latest-on-aston-martin-drivers-future-as-he-weighs-up-retirement-or-new-contract-to-stay-in-f1-in-2027">Sky Sports F1</a>, <a href="https://www.sportscapemagazine.com/blog/fernando-alonso-demands-40-million-contract-extension-aston-martin-2027">Sportscape Magazine</a>, <a href="https://www.f1-fansite.com/f1-news/alonso-still-keeps-his-2027-future-open-at-aston/">F1-Fansite</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Esteban Ocon (Haas):</strong> ที่นั่งปี 2027 ของ Ocon ที่ Haas ยังไม่แน่นอน โดยต้องแข่งขันกับผู้ท้าชิงอีก 4 คน (Hirakawa, Fornaroli, Camara, Doohan) ทีมจะตัดสินใจหลังทดสอบ TPC ที่ Jerez</p>
+      <div class="source">✅ ที่มา: <a href="https://www.the-race.com/formula-1/what-you-need-to-know-about-the-growing-battle-for-a-2027-f1-seat/">The Race</a>, <a href="https://www.f1-fansite.com/f1-news/ocon-now-fights-four-rivals-for-his-seat-next-year/">F1-Fansite</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>Isack Hadjar (Red Bull Racing):</strong> Laurent Mekies ยืนยันการฟื้นตัวจากอาการบาดเจ็บข้อมือเป็นไปตามแผน ไม่มีความล่าช้าเพิ่มเติม ทีมจะให้ Hadjar ทดสอบในซิมูเลเตอร์ก่อนตัดสินใจว่าจะกลับมาลงแข่งที่ Azerbaijan GP (26 กันยายน) แทนที่ Liam Lawson หรือไม่</p>
+      <div class="source">✅ ที่มา: <a href="https://www.skysports.com/f1/news/12433/13588635/isack-hadjar-red-bull-drivers-injury-recovery-going-to-plan-as-team-provide-update-on-next-steps-ahead-of-azerbaijan-gp-decision">Sky Sports F1</a>, <a href="https://www.planetf1.com/news/red-bull-isack-hadjar-baku-comeback-criteria">PlanetF1</a>, <a href="https://speedcafe.com/f1-news-2026-spanish-grand-prix-madring-isack-hadjar-injury-latest-update-when-return-laurent-mekies/">Speedcafe</a></div>
+    </div>
+
+    <h3>Technical Updates</h3>
+    <div class="team-section">
+      <p><strong>Williams (Baku):</strong> เตรียมนำอัปเกรดชุดใหญ่สำหรับ FW48 มาใช้ที่ Azerbaijan GP ซึ่งเป็นแพ็กเกจสำคัญที่พัฒนามานานหลายเดือน และเป็นไพ่ใบสุดท้ายของทีมในฤดูกาล 2026 ก่อนเปลี่ยนโฟกัสไปที่การพัฒนารถปี 2027</p>
+      <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/why-the-fw48-upgrade-package-in-baku-is-so-crucial-for-williams.2vxRlXS2yDBqT7O5VMCn3s">Formula1.com</a>, <a href="https://sports.yahoo.com/articles/baku-decisive-williams-upgrade-must-170033267.html">Yahoo Sports</a></div>
+    </div>
+    <div class="team-section">
+      <p><strong>McLaren (Baku):</strong> นำพื้นรถ (underbody) และปีกหลังแบบใหม่มาใช้ที่ Azerbaijan GP โดยมุ่งเน้นเพิ่มความเร็วสูงสุด (top speed) ของ MCL40 บนทางตรงยาวของสนาม Baku City Circuit</p>
+      <div class="source">✅ ที่มา: <a href="https://blog.f1livepulse.com/mclaren-baku-upgrades-norris-piastri-qualifying-boost">Formula Live Pulse</a></div>
+    </div>
+
+    <h3>FIA & Regulations</h3>
+    <p>ดูรายละเอียดคำตัดสินของสจ๊วตในสุดสัปดาห์ Spanish Grand Prix ที่หัวข้อ "FIA Decisions / Penalties" ด้านบน — ไม่พบข่าวการเปลี่ยนแปลงกฎระเบียบใหม่ที่มีผลเพิ่มเติมในช่วง 7 วันที่ผ่านมา</p>
+  </section>
+
+  <section>
+    <h2>📈 การวิเคราะห์การแสดงของทีม</h2>
+
+    <div class="team-section">
+      <h3>🔴 Mercedes</h3>
+      <p><strong>สถานะ:</strong> Antonelli คว้าชัยชนะที่ 8 ของฤดูกาลด้วยจังหวะกลยุทธ์ที่ลงตัว แม้จะยอมรับเองว่า Norris "สมควรชนะมากกว่า" ในวันนั้น ทำให้คะแนนนำในแชมป์ชิปขยายเป็น 81 คะแนนเหนือ Russell เพื่อนร่วมทีม ซึ่งจบเพียงอันดับ 5 Toto Wolff ยังคงแสดงความกังวลเล็กน้อยต่อสไตล์การขับที่เสี่ยงของ Antonelli หลังไปเฉี่ยวกำแพงในช่วงท้ายการแข่งขัน แต่ไม่ส่งผลกระทบต่อผลการแข่งขัน</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔵 Ferrari</h3>
+      <p><strong>สถานะ:</strong> สุดสัปดาห์ที่เลวร้ายอีกครั้ง — Hamilton ต้องออกจากการแข่งขันตั้งแต่รอบที่ 7 จากปัญหาเบรกยาว ซึ่งเป็นการ DNF ครั้งแรกของเขาในรอบ 10 เดือน ทำให้คะแนนนำในแชมป์ชิปห่างจาก Antonelli ถึง 101 คะแนน แทบปิดโอกาสลุ้นแชมป์โลกสมัยที่ 8 ส่วน Leclerc จบอันดับ 4 เป็นผลงานเดียวที่ทีมทำได้ในสุดสัปดาห์นี้</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🟠 McLaren</h3>
+      <p><strong>สถานะ:</strong> Norris คว้า Pole Position ที่ MADRING ได้ แต่โชคร้ายพลาดจังหวะเข้าพิทช่วง VSC เนื่องจากรถของ Stroll หยุดขวางทางเข้าพิท ทำให้เสียตำแหน่งผู้นำและจบเพียงอันดับ 3 ขณะที่ Piastri ยังคงดิ้นรนปรับตัวกับสไตล์การขับของรถปี 2026 จบเพียงอันดับ 8 — ทีมงานยอมรับว่าสไตล์การขับที่นุ่มนวลของ Piastri ไม่เหมาะกับการดึงประสิทธิภาพจากรถรุ่นนี้ ซึ่งต้องการการปรับแก้ตลอดเวลา (micro-corrections) มากกว่า</p>
+    </div>
+
+    <div class="team-section">
+      <h3>⭐ Red Bull Racing</h3>
+      <p><strong>สถานะ:</strong> Verstappen ได้รับคะแนนโหวต Driver of the Day จากการไล่ตามกลับมาจบอันดับ 2 หลังโดนสั่งคืนตำแหน่งช่วงต้นจากการตัดชิเคนแรก Liam Lawson ยังคงลงแข่งแทน Isack Hadjar ต่อเนื่องเป็นสนามที่ 3 และทำผลงานได้ดีจบอันดับ 6 ทีมมีแนวโน้มจะให้ Hadjar กลับมาลงแข่งที่ Azerbaijan GP หากผ่านการทดสอบในซิมูเลเตอร์</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔷 Alpine</h3>
+      <p><strong>สถานะ:</strong> Colapinto ทำผลงานได้ดีจบอันดับ 7 ที่ MADRING ช่วยให้ทีมสะสมคะแนนอย่างต่อเนื่องในกลุ่มกลางตาราง</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔶 Williams</h3>
+      <p><strong>สถานะ:</strong> Sainz ได้รับโทษปรับกริด 3 ตำแหน่งจากการกีดขวาง Bottas ในรอบคัดเลือก ทีมเตรียมนำอัปเกรดชุดใหญ่มาใช้ที่ Azerbaijan GP ซึ่งถือเป็นความหวังสุดท้ายของฤดูกาลนี้ในการยกระดับผลงาน</p>
+    </div>
+
+    <div class="team-section">
+      <h3>🔹 ทีมอื่น ๆ</h3>
+      <p><strong>Racing Bulls:</strong> Arvid Lindblad จบอันดับ 9 ที่ MADRING ทำคะแนนต่อเนื่อง ส่วน Yuki Tsunoda โดนปรับเงินทีม 200 ยูโรจากความเร็วเกินในพิทเลนช่วงตรวจสนาม<br>
+      <strong>Audi:</strong> Nico Hulkenberg คว้าคะแนนสุดท้ายด้วยอันดับ 10 ที่ MADRING<br>
+      <strong>Aston Martin:</strong> อนาคตของ Fernando Alonso กับทีมยังคงเป็นประเด็นเปิดสำคัญของตลาดผู้ขับขี่ปี 2027</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติสำคัญ</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <strong>Antonelli — ชัยชนะที่ 8 ของฤดูกาล 2026</strong><br>
+        คว้าชัยชนะติดต่อกันเป็นสนามที่ 2 (Monza และ MADRING)
+      </div>
+      <div class="stat-card">
+        <strong>ความนำแชมป์ชิปผู้ขับขี่ขยายเป็น 81 คะแนน</strong><br>
+        Antonelli นำ Russell 81 คะแนน, นำ Hamilton 101 คะแนน จาก 9 สนามที่เหลือ
+      </div>
+      <div class="stat-card">
+        <strong>Hamilton DNF ครั้งแรกในรอบ 10 เดือน</strong><br>
+        ยุติสถิติจบการแข่งขันครบทุกรอบตลอดฤดูกาล 2026 ก่อนหน้านี้
+      </div>
+      <div class="stat-card">
+        <strong>Mercedes นำแชมป์ชิปผู้สร้างรถ 145 คะแนน</strong><br>
+        503 คะแนน เทียบกับ Ferrari 358 คะแนน และ McLaren 306 คะแนน
+      </div>
+      <div class="stat-card">
+        <strong>233 คะแนน เหลือชิงในแชมป์ชิปผู้ขับขี่</strong><br>
+        จาก 9 สนามที่เหลือ (9 Grand Prix + 1 Sprint)
+      </div>
+      <div class="stat-card">
+        <strong>Hadjar พลาดไปแล้ว 3 สนามติดต่อกัน</strong><br>
+        Dutch GP, Italian GP, Spanish GP — เตรียมประเมินความพร้อมกลับมาที่ Baku
+      </div>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.total-motorsport.com/f1-2026-driver-team-standings-after-spain/">Total Motorsport</a>, <a href="https://www.espn.com/f1/story/_/id/49926922/lewis-hamilton-suffers-early-retirement-spanish-grand-prix">ESPN</a>, <a href="https://www.gpfans.com/en/f1-news/1090193/f1-standings-2026-latest-points-leaders-spanish-grand-prix/">GPFans</a></div>
+  </section>
+
+  <section>
+    <h2>📅 Grand Prix ถัดไป — Azerbaijan Grand Prix (Baku)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>24 กันยายน 2026 (พฤหัสบดี)</td>
+          <td>Free Practice 1</td>
+          <td>13:30</td>
+          <td>Sky Sports F1</td>
+        </tr>
+        <tr>
+          <td>24 กันยายน 2026 (พฤหัสบดี)</td>
+          <td>Free Practice 2</td>
+          <td>17:00</td>
+          <td>Sky Sports F1</td>
+        </tr>
+        <tr>
+          <td>25 กันยายน 2026 (ศุกร์)</td>
+          <td>Free Practice 3</td>
+          <td>13:30</td>
+          <td>Sky Sports F1</td>
+        </tr>
+        <tr>
+          <td>25 กันยายน 2026 (ศุกร์)</td>
+          <td>Qualifying</td>
+          <td>17:00</td>
+          <td>Sky Sports F1</td>
+        </tr>
+        <tr class="highlight">
+          <td>26 กันยายน 2026 (เสาร์)</td>
+          <td>Race</td>
+          <td>18:00</td>
+          <td>Sky Sports F1</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">❓ เวลาถ่ายทอดสดคำนวณจากเวลาท้องถิ่นบากู (AZT, UTC+4) แปลงเป็น ICT (UTC+7) ต่างกัน 3 ชั่วโมง — ควรตรวจสอบตารางเวลาอย่างเป็นทางการอีกครั้งก่อนรับชมจริง เนื่องจากแหล่งข้อมูลที่ใช้เป็นการอ้างอิงทางอ้อม ไม่ใช่ตารางเวลาทางการจาก Formula1.com โดยตรง</p>
+
+    <h3>Baku City Circuit — สุดสัปดาห์แข่งวันเสาร์ครั้งแรกในประวัติศาสตร์ F1</h3>
+    <div class="summary-box">
+      <p><strong>สนาม:</strong> Baku City Circuit | <strong>ประเทศ:</strong> อาเซอร์ไบจาน | <strong>ความยาว:</strong> 6.003 กม. | <strong>จำนวนรอบ:</strong> 51 รอบ | <strong>Lap Record:</strong> 1:43.009 (Charles Leclerc, Ferrari, 2019)</p>
+
+      <p>รอบที่ 15 ของฤดูกาล 2026 ที่ Baku City Circuit สนามสตรีทที่ผสมผสานทางตรงความเร็วสูงกับโค้งแคบในย่านเมืองเก่า สุดสัปดาห์นี้ทั้งหมดเลื่อนเร็วขึ้น 1 วัน (ซ้อมวันพฤหัสบดี คัดเลือกวันศุกร์ แข่งขันวันเสาร์) เนื่องจากวันอาทิตย์ที่ 27 กันยายนตรงกับวันไว้อาลัยแห่งชาติของอาเซอร์ไบจาน นับเป็นครั้งแรกในประวัติศาสตร์ที่ Azerbaijan GP จัดแข่งขันวันเสาร์ ประเด็นที่ต้องจับตาคือ Isack Hadjar จะกลับมาลงแข่งให้ Red Bull Racing แทน Liam Lawson หรือไม่ และ Williams จะนำอัปเกรดชุดใหญ่มาใช้เป็นครั้งแรก</p>
+    </div>
+
+    <div class="source">✅ ที่มา: <a href="https://www.skysports.com/f1/news/12433/13588823/azerbaijan-gp-2026-saturday-race-dates-schedule-baku-weather-uk-start-time-and-how-to-watch-or-stream-f1-live-on-sky-sports">Sky Sports F1</a>, <a href="https://www.motorsport.com/f1/news/f1-azerbaijan-gp-is-on-a-saturday-in-2026-why/10855369/">Motorsport.com</a>, <a href="https://grandepremio.com/en/f1/why-is-the-2026-azerbaijan-grand-prix-being-held-on-saturday/">Grande Prêmio</a></div>
+  </section>
+
+  <section>
+    <h2>💬 คำพูดประจำสัปดาห์</h2>
+
+    <div class="quote">
+      "It's good to win, and I think the pace at the end was good. But if I have to be realistic and honest, you know, today we didn't deserve to win. Lando deserved to win today."
+      <br><span style="color: var(--ink-soft);">— Kimi Antonelli (Mercedes) หลังคว้าชัยชนะที่ MADRING</span>
+    </div>
+
+    <div class="quote">
+      "I've got no brakes, guys."
+      <br><span style="color: var(--ink-soft);">— Lewis Hamilton (Ferrari) แจ้งทีมทางวิทยุก่อนออกจากการแข่งขันในรอบที่ 7</span>
+    </div>
+
+    <div class="quote">
+      "What an idiot!"
+      <br><span style="color: var(--ink-soft);">— Toto Wolff (Mercedes) พูดติดตลกถึง Antonelli หลังไปเฉี่ยวกำแพงที่โค้ง 7 ในช่วงท้ายการแข่งขัน ก่อนคว้าชัยชนะ</span>
+    </div>
+
+    <div class="quote">
+      "There is nothing wrong with his recovery. The recovery is going as planned."
+      <br><span style="color: var(--ink-soft);">— Laurent Mekies (Red Bull Racing) เกี่ยวกับความคืบหน้าการฟื้นตัวของ Isack Hadjar ก่อน Azerbaijan GP</span>
+    </div>
+
+    <div class="source">✅ ที่มา: <a href="https://www.crash.net/f1/news/1104688/1/kimi-antonelli-makes-honest-confession-after-latest-f1-win-madrid">Crash.net</a>, <a href="https://www.crash.net/f1/news/1104705/1/ferrari-explains-brake-issues-caused-lewis-hamiltons-madrid-f1-retirement">Crash.net</a>, <a href="https://www.gpblog.com/en/news/what-an-idiot-antonellis-late-madrid-scare-earns-hilarious-wolff-reaction">GPBlog</a>, <a href="https://speedcafe.com/f1-news-2026-spanish-grand-prix-madring-isack-hadjar-injury-latest-update-when-return-laurent-mekies/">Speedcafe</a></div>
+  </section>
+
+  <section>
+    <h2>🔍 การวิเคราะห์แชมป์ชิป</h2>
+
+    <h3>การต่อสู้แชมป์ชิปผู้ขับขี่</h3>
+    <div class="summary-box">
+      <p><strong>Antonelli คุมเกมได้ชัดเจนยิ่งขึ้น:</strong> ด้วยชัยชนะที่ 8 ของฤดูกาลที่ MADRING — แม้จะได้มาจากจังหวะกลยุทธ์มากกว่าฝีมือล้วน ๆ ตามที่ Antonelli เองยอมรับ — ทำให้คะแนนนำ Russell ขยายเป็น 81 คะแนน และคะแนนนำ Hamilton (อันดับ 3) เป็น 101 คะแนน ด้วย 9 สนามที่เหลือ (233 คะแนนสูงสุดที่ยังชิงได้) การ DNF ของ Hamilton ทำให้ Norris ไล่จี้ขึ้นมาเหลือห่างจากอันดับ 3 เพียง 5 คะแนน ทำให้ Norris กลายเป็นตัวเต็งอันดับ 2 มากกว่า Hamilton ในการวิ่งไล่ล่าช่วงท้ายฤดูกาล แม้ว่าการชิงแชมป์อันดับ 1 จะเอียงไปทาง Antonelli อย่างชัดเจน</p>
+
+      <p><strong>Norris ยังมีลุ้น แต่โชคไม่เข้าข้าง:</strong> การพลาดจังหวะเข้าพิทที่ MADRING เนื่องจากรถของ Stroll ขวางทางเข้าพิทระหว่าง VSC ทำให้ McLaren เสียโอกาสคว้าชัยชนะไปอย่างน่าเสียดาย แสดงให้เห็นว่าทีมยังมีศักยภาพแข่งขันเพื่อชัยชนะได้ แต่ต้องอาศัยโชคช่วยมากกว่าคู่แข่ง</p>
+    </div>
+
+    <h3>แชมป์ชิปผู้สร้างรถ</h3>
+    <div class="summary-box">
+      <p><strong>Mercedes ทิ้งห่างมากขึ้น:</strong> ด้วยผลงาน 1-5 ที่ MADRING (แม้ Russell จะจบเพียงอันดับ 5) ทำให้ Mercedes ขยายคะแนนนำ Ferrari เป็น 145 คะแนน ขณะที่ McLaren ไล่กระชับระยะห่างจาก Ferrari เหลือ 52 คะแนน หลัง Hamilton DNF และ Ferrari มีเพียง Leclerc ที่เก็บคะแนนได้ในสุดสัปดาห์นี้ ทำให้ตำแหน่งอันดับ 2 ของ Ferrari เริ่มถูกท้าทายจาก McLaren มากขึ้น</p>
+    </div>
+
+    <h3>ศึกกลางตาราง (Midfield Battle)</h3>
+    <p>Red Bull Racing (230 คะแนน) ยังคงมีคะแนนนำ Racing Bulls (77 คะแนน) และ Alpine (68 คะแนน) อย่างชัดเจนในกลุ่มกลางตาราง โดย Alpine ตามหลัง Racing Bulls เพียง 9 คะแนน ทำให้การแข่งขันเพื่อชิงอันดับ 5 ยังคงสูสี Williams ที่มีแผนนำอัปเกรดชุดใหญ่มาใช้ที่ Baku อาจเป็นตัวแปรสำคัญของกลุ่มกลางตารางในช่วงท้ายฤดูกาล</p>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix</strong><br>ไม่มีการแข่งขันใหม่ในสัปดาห์นี้ — ยืนยันผล Spanish GP ที่ค้างจากสัปดาห์ก่อน (Antonelli ชนะ)</div>
+      <div class="stat-card"><strong>Sprint</strong><br>ไม่มีในสุดสัปดาห์ Spanish GP</div>
+      <div class="stat-card"><strong>Pole Position</strong><br>Lando Norris (McLaren) — MADRING (ยืนยันจากสัปดาห์ก่อน)</div>
+      <div class="stat-card"><strong>Fastest Lap</strong><br>Kimi Antonelli (Mercedes) — รอบสุดท้ายของ Spanish GP</div>
+      <div class="stat-card"><strong>FIA Decisions</strong><br>5 กรณีในสุดสัปดาห์ Spanish GP (Sainz, Bortoleto, Antonelli, Russell, Norris/McLaren, Tsunoda/Racing Bulls)</div>
+      <div class="stat-card"><strong>Penalties</strong><br>Sainz (กริด 3 ตำแหน่ง), ค่าปรับทีม McLaren (900€) และ Racing Bulls (200€)</div>
+      <div class="stat-card"><strong>Driver Transfers</strong><br>ไม่มีข่าวปิดดีลใหม่ — Alonso และ Ocon ยังเป็นประเด็นเปิด 🔄</div>
+      <div class="stat-card"><strong>Technical Updates</strong><br>Williams และ McLaren เตรียมอัปเกรดสำหรับ Azerbaijan GP</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 รายการที่ควรจับตาในสัปดาห์ถัดไป</h2>
+
+    <div class="team-section">
+      <h3>จุดโฟกัสที่สำคัญ</h3>
+      <ul>
+        <li><strong>การกลับมาของ Isack Hadjar:</strong> ต้องติดตามผลการทดสอบในซิมูเลเตอร์และการตัดสินใจสุดท้ายของ Red Bull Racing ว่าจะให้ Hadjar กลับมาลงแข่งที่ Azerbaijan GP แทน Liam Lawson หรือไม่ — ที่มา: <a href="https://www.planetf1.com/news/red-bull-isack-hadjar-baku-comeback-criteria">PlanetF1</a></li>
+        <li><strong>อัปเกรดชุดใหญ่ของ Williams:</strong> FW48 จะได้รับการอัปเกรดครั้งสำคัญที่ Baku ซึ่งอาจเป็นตัวชี้วัดว่าทีมจะไล่ตามกลุ่มกลางตารางได้หรือไม่ในช่วงท้ายฤดูกาล — ที่มา: <a href="https://www.formula1.com/en/latest/article/why-the-fw48-upgrade-package-in-baku-is-so-crucial-for-williams.2vxRlXS2yDBqT7O5VMCn3s">Formula1.com</a></li>
+        <li><strong>อนาคตของ Fernando Alonso และ Esteban Ocon:</strong> สองประเด็นสำคัญที่ยังไม่ปิดในตลาดผู้ขับขี่ปี 2027 — ที่มา: <a href="https://www.skysports.com/f1/news/12477/13586010/fernando-alonso-whats-the-latest-on-aston-martin-drivers-future-as-he-weighs-up-retirement-or-new-contract-to-stay-in-f1-in-2027">Sky Sports F1</a>, <a href="https://www.the-race.com/formula-1/what-you-need-to-know-about-the-growing-battle-for-a-2027-f1-seat/">The Race</a></li>
+        <li><strong>Baku City Circuit บนวันเสาร์:</strong> ครั้งแรกในประวัติศาสตร์ F1 ที่ Azerbaijan GP จัดแข่งในวันเสาร์แทนวันอาทิตย์ — ต้องติดตามผลกระทบต่อตารางเวลาการแข่งขันและผู้ชม — ที่มา: <a href="https://www.skysports.com/f1/news/12433/13588823/azerbaijan-gp-2026-saturday-race-dates-schedule-baku-weather-uk-start-time-and-how-to-watch-or-stream-f1-live-on-sky-sports">Sky Sports F1</a></li>
+        <li><strong>การไล่ล่าอันดับ 3 ในแชมป์ชิปผู้ขับขี่:</strong> Norris ตามหลัง Hamilton เพียง 5 คะแนน หลัง Hamilton DNF ที่ MADRING — ต้องติดตามว่าใครจะขึ้นมาเป็นอันดับ 3 ที่ Baku</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📝 หมายเหตุรายงาน</h2>
+    <div class="note">
+      <p><strong>ข้อจำกัดหลักของรายงานนี้:</strong> คะแนนสะสมแชมป์ชิปผู้ขับขี่อันดับ 8-10 และแชมป์ชิปผู้สร้างรถอันดับ 7-11 (Williams, Haas F1 Team, Audi, Aston Martin, Sauber/Cadillac) ไม่พบตัวเลขที่ยืนยันได้ชัดเจนแยกเป็นรายบุคคล/รายทีมในรอบการค้นหานี้ จึงงดแสดงตามหลักเกณฑ์ของรายงาน</p>
+
+      <p><strong>ระดับความเชื่อมั่นของข้อมูล:</strong> ผลการแข่งขัน Spanish Grand Prix, ตารางคะแนนผู้ขับขี่อันดับ 1-7 และผู้สร้างรถอันดับ 1-6 อ้างอิงจากหลายแหล่งที่สอดคล้องกัน (รวมถึงตรวจสอบข้ามด้วยการรวมคะแนนนักแข่งแต่ละคนในทีมเทียบกับคะแนนทีมที่รายงาน) ข้อมูลบทลงโทษ/FIA Decisions มาจากหลายแหล่งที่สอดคล้องกัน (PlanetF1, GPFans) ส่วนตารางเวลา Azerbaijan GP แปลงจากเวลาท้องถิ่นบากูที่มาจากแหล่งข่าวรอง (Motorsport.com) เนื่องจากไม่สามารถเข้าถึงตารางเวลาทางการจาก Formula1.com ได้โดยตรง</p>
+
+      <p><strong>โซนเวลา:</strong> เวลาเซสชันทั้งหมดแสดงเป็น ICT (Indochina Time, GMT+7) ตามที่ขอ</p>
+
+      <p><strong>ช่วงเวลาที่ครอบคลุม:</strong> รายงานนี้ครอบคลุมข่าว F1 ตั้งแต่ 13-20 กันยายน 2026 ยกเว้นข่าวต่อเนื่อง 🔄 (เช่น ผลการแข่งขัน Spanish Grand Prix ที่ค้างจากสัปดาห์ก่อน และตลาดผู้ขับขี่ที่ยังดำเนินอยู่) ซึ่งรวมไว้แม้จะเริ่มก่อนช่วงเวลานี้ ไม่มีการแข่งขัน Grand Prix ใหม่เกิดขึ้นในสัปดาห์นี้เนื่องจากเป็นช่วงพักระหว่างสนาม (Spanish GP: 13 กันยายน, Azerbaijan GP: 24-26 กันยายน)</p>
+
+      <p><strong>UNCERTAIN:</strong> formula1.com, crash.net และ racingnews365.com ไม่สามารถเข้าถึงโดยตรงผ่าน WebFetch ได้ในสภาพแวดล้อมนี้ (EGRESS_BLOCKED) เช่นเดียวกับรายงานสัปดาห์ก่อน จึงใช้ผลการค้นหาเว็บ (WebSearch) ที่อ้างอิงเนื้อหาจากเว็บไซต์เหล่านี้แทนการเปิดหน้าเว็บโดยตรงตลอดทั้งฉบับ ไม่พบปัญหาการเข้าถึงโดเมนอื่นที่ยืนยันซ้ำ 3 รอบขึ้นไป</p>
+
+      <p><strong>รายงานถัดไป:</strong> รายงาน F1 ประจำสัปดาห์ถัดไปจะครอบคลุมผลการแข่งขัน Azerbaijan Grand Prix ที่ Baku City Circuit (24-26 กันยายน 2026) รวมถึงการตัดสินใจเรื่อง Isack Hadjar และผลของอัปเกรดชุดใหญ่จาก Williams และ McLaren</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>ทางการ (Official)</h3>
+    <ul>
+      <li>✅ <a href="https://www.formula1.com">Formula1.com</a> (เว็บไซต์ F1 ทางการ — อ้างอิงผ่านผลการค้นหา)</li>
+      <li>✅ <a href="https://www.fia.com">FIA.com</a> (สหพันธ์ยานยนต์นานาชาติ)</li>
+    </ul>
+
+    <h3>สื่อ Motorsport</h3>
+    <ul>
+      <li><a href="https://www.autosport.com/f1">Autosport.com</a></li>
+      <li><a href="https://www.the-race.com/formula-1/">The Race</a></li>
+      <li><a href="https://www.skysports.com/f1">Sky Sports F1</a></li>
+      <li><a href="https://www.crash.net/f1">Crash.net</a></li>
+      <li><a href="https://www.planetf1.com">PlanetF1</a></li>
+      <li><a href="https://racingnews365.com">RacingNews365</a></li>
+      <li><a href="https://www.espn.com/f1/">ESPN F1</a></li>
+      <li><a href="https://www.gpfans.com">GPFans</a></li>
+      <li><a href="https://www.motorsport.com/f1/">Motorsport.com</a></li>
+      <li><a href="https://www.total-motorsport.com">Total Motorsport</a> (ข้อมูลตารางคะแนน — ใช้เสริมการตรวจสอบข้าม)</li>
+      <li><a href="https://speedcafe.com">Speedcafe</a></li>
+      <li><a href="https://www.gpblog.com">GPBlog</a></li>
+      <li><a href="https://www.forbes.com">Forbes</a> (บทความ F1 — ใช้เสริมการตรวจสอบข้าม)</li>
+    </ul>
+
+    <h3>การสื่อสารของทีม / อื่น ๆ</h3>
+    <ul>
+      <li>ไม่มีการอ้างอิงประกาศทางการทีมโดยตรงในสัปดาห์นี้</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>
+      <strong>รายงาน Formula 1 ประจำสัปดาห์</strong> · 20 กันยายน 2026 (สัปดาห์ที่ 38)<br>
+      สร้างสำหรับ natthasath-news · ภาษา: ภาษาไทย (ไทย) · โซนเวลา: ICT (GMT+7)<br>
+      ข้อมูลที่ยืนยันจากแหล่งข้อมูล F1 อย่างเป็นทางการและสื่อ motorsport เท่าที่ตรวจสอบได้ · เวลาทั้งหมดใน ICT
+    </p>
+  </footer>
+</div>
+</body>
+</html>
