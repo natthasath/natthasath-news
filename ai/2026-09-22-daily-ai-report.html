@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-09-22</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 22 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-09-22</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 22 ก.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> การเข้าถึง openai.com และ arxiv.org โดยตรงด้วย WebFetch ไม่สำเร็จในรอบนี้ (ถูกบล็อกโดย network egress proxy) แม้ลองซ้ำแล้ว จึงใช้ WebSearch พร้อม site: search แทนเพื่อยืนยันเนื้อหาประกาศทางการของ OpenAI และรายละเอียดผู้เขียนงานวิจัยบน arXiv ส่วน anthropic.com เข้าถึงได้สำเร็จโดยตรง ช่องโหว่ Plugin4Shell (เปิดเผยครั้งแรก 17 ก.ย. 2569) ยังไม่มีแพตช์สำหรับ GitHub Copilot และ Gemini CLI จนถึงวันนี้ จึงนำมาแสดงต่อพร้อมระบุวันที่เปิดเผยจริงตามข้อยกเว้นสำหรับข่าวต่อเนื่อง ไม่พบข่าวด้าน Regulation หรือ Investment ใหม่ที่ยืนยันแหล่งที่มาได้ครบ 2 แหล่งในกรอบ 24 ชั่วโมงของวันนี้โดยเฉพาะ จึงงดแสดงในหมวดดังกล่าว</div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>วันนี้เป็นวันแข่งขันปล่อยโมเดลระหว่างสองค่ายใหญ่พร้อมกัน โดย Anthropic เปิดตัว Claude Opus 5.5 เมื่อ 22 ก.ย. 2569 ซึ่งทำผลงานทัดเทียม Claude Fable 5.1 ในงานส่วนใหญ่แต่ราคาถูกลง 40% และทำคะแนนตรวจสอบความปลอดภัย (alignment audit) ดีที่สุดเท่าที่เคยทดสอบมา ขณะเดียวกัน OpenAI ก็เปิดตัว GPT-6 Sol และ GPT-6 Luna ในวันเดียวกัน โดยลดราคา API ลงกว่า 50% พร้อมปรับปรุงความแม่นยำและการเขียนโค้ด Qualcomm ประกาศชิป Snapdragon 8 Elite Gen 6 และ Extreme Gen 6 ที่มี NPU รุ่นใหม่ "Element Accelerator" รองรับโมเดล Mixture-of-Experts ขนาดถึง 30B พารามิเตอร์บนอุปกรณ์โดยตรง เพื่อรองรับ agentic AI แบบ on-device ด้านความปลอดภัย ช่องโหว่ Plugin4Shell ที่กระทบเครื่องมือโค้ดดิ้ง AI หลายค่ายยังคงไม่มีแพตช์สำหรับ GitHub Copilot และ Gemini CLI ต่อเนื่องเป็นวันที่ 5 นับจากเปิดเผยครั้งแรก ฝั่งโอเพนซอร์ส โปรเจกต์ jev-ultrafast ของ Browser Use ซึ่งจับคู่โมเดลตัดสินใจ Jev ของ Typesafe AI เข้ากับสแต็ก browser agent เติบโตเร็วจนมีดาวเกือบ 17,000 ดวงภายใน 6 วัน สะท้อนความสนใจต่อ web agent ความเร็วสูงที่เพิ่มขึ้นในอุตสาหกรรม</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Model</th><th>Company</th><th>Type</th><th>Capability</th><th>Status</th><th>Source</th></tr>
+        <tr>
+          <td>Claude Opus 5.5</td>
+          <td>Anthropic</td>
+          <td>LLM ทั่วไป (coding, agentic, computer use, knowledge work)</td>
+          <td>ทำผลงานทัดเทียม Fable 5.1 ในงานส่วนใหญ่ Terminal-Bench 4.0 66.4% (Opus 5 เดิม 52.3%), FrontierCode v1.1 54.4%, OSWorld 2.0 (computer use) 81.8% เร็วขึ้น 30% และถูกลง 40% เทียบ Opus 5 ทำคะแนน alignment audit ดีที่สุดของบริษัทเท่าที่เคยทดสอบมา</td>
+          <td>เปิดตัว 22 ก.ย. 2569 ใช้งานได้ทุกแพลตฟอร์มแล้ว ราคา $4/$20 ต่อล้านโทเคน (input/output)</td>
+          <td>✅ <a href="https://www.anthropic.com/news/claude-opus-5-5">Anthropic (official)</a> · 📰 <a href="https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/">TechCrunch</a> · 📰 <a href="https://venturebeat.com/technology/anthropic-releases-claude-opus-5-5-beating-fable-5-1-on-key-agentic-benchmarks-at-60-cheaper-api-price">VentureBeat</a></td>
+        </tr>
+        <tr>
+          <td>GPT-6 Sol &amp; GPT-6 Luna</td>
+          <td>OpenAI</td>
+          <td>LLM ระดับกลาง (Sol) และระดับเบา (Luna) สำหรับงานทั่วไปและงานปริมาณสูง</td>
+          <td>ฝึกด้วยวิธีเดียวกับ GPT-6 Astra ปรับปรุงด้านงานอาชีพ ความแม่นยำ (factuality) การเขียนโค้ด และ computer use บน DeepSWE v1.1, GPT-6 Sol ทำได้ 68.8% (max effort) ใกล้เคียง Fable 5 ที่ 69.9% แต่ต้นทุนเพียง ~20% ส่วน GPT-6 Luna ปรับปรุงขึ้น 5.4 จุดเปอร์เซ็นต์บน AutomationBench ของ Zapier ที่ต้นทุนต่ำลง 58%</td>
+          <td>เปิดตัว 22 ก.ย. 2569 ใน API, ChatGPT และ Codex ลดราคา API 50% หรือมากกว่าเทียบราคาโปรโมชันของ GPT-5.6</td>
+          <td>✅ <a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/">OpenAI (official, ยืนยันผ่าน WebSearch เนื่องจาก WebFetch ถูกบล็อก)</a> · 📰 <a href="https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/">TechCrunch</a> · 📰 <a href="https://venturebeat.com/technology/openai-releases-gpt-6-sol-and-luna-models-slashing-api-costs-50-or-more">VentureBeat</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ไม่พบการเปิดตัวโมเดล AI ใหม่เพิ่มเติมที่ยืนยันข้อมูลครบตามเกณฑ์ Validation ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+        <tr>
+          <td>APort Vault: Benchmarking AI Agent Payment Authorization with the Open Agent Passport</td>
+          <td>Uchi Uchibeke (APort Technologies Inc.)</td>
+          <td>เสนอกรอบมาตรฐานและชุดทดสอบสำหรับการยืนยันสิทธิ์ (authorization) การชำระเงินโดย AI agent ผ่านโปรโตคอล Open Agent Passport เพื่อลดความเสี่ยงของการทำธุรกรรมที่ไม่ได้รับอนุญาต</td>
+          <td>✅ <a href="https://arxiv.org/abs/2609.22076">arXiv:2609.22076</a></td>
+        </tr>
+        <tr>
+          <td>Not All AI Agents Are Equal: Characterizing Resource and Performance Dynamics <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>Wonmi Choi, Minuk Park, Zhixiong Niu, Yongqiang Xiong, Chuck Yoo, Gyeongsik Yang</td>
+          <td>วิเคราะห์พฤติกรรมการใช้ทรัพยากรและประสิทธิภาพของ LLM agent ที่เรียก remote LLM API ร่วมกับ local tool container ใน 3 งานตัวแทน (RAG QA, web search, software coding) พบว่าแม้เครื่องมือเดียวกันก็ใช้ทรัพยากรต่างกันมากตามลักษณะงาน</td>
+          <td>✅ <a href="https://arxiv.org/abs/2609.19947">arXiv:2609.19947</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">บทความที่สองเผยแพร่ครั้งแรกบน arXiv เมื่อ 17 ก.ย. 2569 (ก่อนช่วง 24 ชั่วโมงล่าสุด) แต่ปรากฏในดัชนีรายวันของ arXiv ประจำวันที่ 22 ก.ย. และยังเป็นประเด็นที่เกี่ยวเนื่องโดยตรงกับกระแส agent tooling/benchmarking ของวันนี้ จึงนำมาแสดงตามข้อยกเว้นสำหรับงานวิจัยที่ยังเป็นประเด็น</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>browser-use/jev-ultrafast</td>
+          <td>~16,897 (สร้างเมื่อ 16 ก.ย. เติบโตถึง 16,897 ดาวภายใน 6 วัน)</td>
+          <td>Python</td>
+          <td>เว็บเอเจนต์ที่จับคู่สแต็ก browser agent ของ Browser Use เข้ากับโมเดลตัดสินใจ Jev ของ Typesafe AI ใช้ action space แบบมีดัชนีแทนการอ่านภาพหน้าจอ ค้นหาเที่ยวบินซูริก-ลอนดอนบน Google Flights เสร็จภายใน 7.1 วินาที <span class="badge">เข้าใหม่ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/browser-use/jev-ultrafast">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>davila7/claude-code-templates</td>
+          <td>~31,009 (+113 วันนี้)</td>
+          <td>JavaScript</td>
+          <td>เครื่องมือ CLI สำหรับตั้งค่าและติดตาม Claude Code รวมคอลเลกชัน agent, custom command, hook และ MCP integration <span class="badge">เข้าใหม่ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/davila7/claude-code-templates">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td>anthropics/financial-services</td>
+          <td>~36,204 (+436 วันนี้)</td>
+          <td>Python</td>
+          <td>รีพอสิทอรีสนับสนุนผลิตภัณฑ์ Claude สำหรับภาคการเงิน <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/anthropics/financial-services">GitHub (official repo)</a> · 🔥 <a href="https://github.com/trending">GitHub Trending</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวและ "+วันนี้" อ้างอิงจากรายงานผ่าน WebSearch ของหน้า GitHub Trending และ star-history ในเวลาที่สร้างรายงาน อาจคลาดเคลื่อนเล็กน้อยจากเวลาที่ผู้อ่านเปิดดู</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Description</th><th>Pricing</th><th>Source</th></tr>
+        <tr>
+          <td>Snapdragon 8 Elite Gen 6 / Extreme Gen 6</td>
+          <td>ชิปสมาร์ทโฟนเรือธงรุ่นใหม่จาก Qualcomm มี NPU "Element Accelerator" เร่งความเร็วโมเดล transformer เพิ่มประสิทธิภาพ AI ต่อวัตต์ 33% เร็วขึ้น 35% รองรับโมเดล Mixture-of-Experts สูงสุด 30B พารามิเตอร์บนอุปกรณ์โดยตรง (รุ่น Extreme มีหน่วยความจำร่วมใหญ่กว่า 50%) ออกแบบสำหรับ agentic AI, long-context reasoning และ multi-agent แบบ on-device</td>
+          <td>ไม่เปิดเผยราคาชิปต่อหน่วย (จำหน่ายแก่ผู้ผลิตอุปกรณ์)</td>
+          <td>📰 <a href="https://9to5google.com/2026/09/22/snapdragon-8-elite-gen-6/">9to5Google</a> · 📰 <a href="https://www.androidauthority.com/snapdragon-qualcomm-snapdragon-8-elite-gen-6-npu-3709726/">Android Authority</a></td>
+        </tr>
+      </table>
+    </div>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+        <tr>
+          <td>GitHub Copilot / Gemini CLI</td>
+          <td>ยังไม่มีแพตช์แก้ไขช่องโหว่ Plugin4Shell จนถึง 22 ก.ย. 2569 (เปิดเผยครั้งแรก 17 ก.ย.) ฝั่ง Anthropic Claude Code และ OpenAI Codex ได้รับการแก้ไขแล้วก่อนหน้านี้ ส่วน Gemini CLI (เวอร์ชันผู้บริโภค) จะไม่ได้รับแพตช์ถาวรเนื่องจากอยู่ระหว่างยุติผลิตภัณฑ์ <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>📰 <a href="https://cybersecuritynews.com/plugin4shell-zero-click-rce/">Cybersecurity News</a> · 📰 <a href="https://www.heise.de/en/news/Critical-flaw-in-Claude-Code-OpenAI-Codex-GitHub-Copilot-and-Gemini-CLI-11460259.html">heise online</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>OpenAI เปิดตัว GPT-6 Sol และ GPT-6 Luna เมื่อ 22 ก.ย. 2569 ลดราคา API ลง 50% หรือมากกว่าเทียบราคาโปรโมชันของ GPT-5.6 พร้อมปรับปรุงด้านงานอาชีพ ความแม่นยำ และการเขียนโค้ด (ดูรายละเอียดในหัวข้อ AI Models) ✅ <a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/">OpenAI (official)</a> · 📰 <a href="https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/">TechCrunch</a></p>
+    <p>OpenAI ยังคงเตรียมจัดงาน DevDay 2026 ที่ซานฟรานซิสโกวันที่ 29 ก.ย. 2569 <span class="badge-warn">ต่อเนื่อง</span> ✅ <a href="https://openai.com/index/devday-2026/">OpenAI (official)</a></p>
+
+    <h3>Anthropic</h3>
+    <p>Anthropic เปิดตัว Claude Opus 5.5 เมื่อ 22 ก.ย. 2569 ทำผลงานทัดเทียม Fable 5.1 ในงานส่วนใหญ่ ราคาถูกลง 40% เร็วขึ้น 30% และทำคะแนน alignment audit ดีที่สุดเท่าที่เคยทดสอบมา พร้อมปรับเพิ่มขีดจำกัดการใช้งานราย 5 ชั่วโมงสำหรับแผน Pro, Max, Team และ Enterprise แบบ seat-based (ดูรายละเอียดในหัวข้อ AI Models) ✅ <a href="https://www.anthropic.com/news/claude-opus-5-5">Anthropic (official)</a> · 📰 <a href="https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/">TechCrunch</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>Gemini CLI (เวอร์ชันผู้บริโภค) จะไม่ได้รับแพตช์แก้ไขช่องโหว่ Plugin4Shell อย่างถาวรเนื่องจากอยู่ระหว่างยุติผลิตภัณฑ์ (ดูรายละเอียดในหัวข้อ Tools &amp; Apps) <span class="badge-warn">ต่อเนื่อง</span> 📰 <a href="https://www.heise.de/en/news/Critical-flaw-in-Claude-Code-OpenAI-Codex-GitHub-Copilot-and-Gemini-CLI-11460259.html">heise online</a></p>
+
+    <h3>Meta</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Meta ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน</p>
+
+    <h3>Microsoft</h3>
+    <p>GitHub Copilot ยังไม่ออกแพตช์แก้ไขช่องโหว่ Plugin4Shell (ดูรายละเอียดในหัวข้อ Tools &amp; Apps) <span class="badge-warn">ต่อเนื่อง</span></p>
+
+    <h3>Amazon</h3>
+    <p>AWS ชูแนวคิด OpenSearch เป็นแพลตฟอร์มเดียวสำหรับ retrieval, serverless economics และ agent memory ก่อนงาน OpenSearchCon North America <span class="badge-warn">21-22 ก.ย. 2569</span> 📰 <a href="https://venturebeat.com/">VentureBeat</a></p>
+
+    <h3>NVIDIA</h3>
+    <p>ไม่พบข่าวเฉพาะเจาะจงใหม่จาก NVIDIA ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้</p>
+
+    <h3>Startup</h3>
+    <p>AstroForge บริษัทเทคโนโลยีทำเหมืองแร่ดาวเคราะห์น้อย เปิดเผยระบบควบคุมอัตโนมัติ "Solo" ซึ่งเป็นโมเดล transformer ที่พัฒนาเองภายใน สำหรับให้ AI ควบคุมยานอวกาศรุ่นถัดไปโดยอัตโนมัติ (ดูรายละเอียดในหัวข้อ Use Cases) 📰 <a href="https://techcrunch.com/2026/09/22/astroforge-is-putting-ai-in-command-of-its-next-spacecraft/">TechCrunch</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>API/SDK:</b> OpenAI ลดราคา API สำหรับ GPT-6 Sol/Luna ลง 50% หรือมากกว่า และ Anthropic ลดราคา Opus 5.5 ลง 20-60% ขึ้นกับประเภทโทเคน (ดูรายละเอียดในหัวข้อ AI Models)</li>
+      <li><b>Infrastructure:</b> Qualcomm เปิดตัว NPU รุ่นใหม่ใน Snapdragon 8 Elite Gen 6/Extreme Gen 6 รองรับโมเดล MoE สูงสุด 30B พารามิเตอร์บนอุปกรณ์ (ดูหัวข้อ Tools &amp; Apps); AWS วางตำแหน่ง OpenSearch สำหรับ agent memory และ retrieval infrastructure</li>
+      <li><b>Agent:</b> browser-use/jev-ultrafast เปิดตัวเว็บเอเจนต์ความเร็วสูงที่จับคู่โมเดลตัดสินใจ Jev กับสแต็ก browser agent (ดูหัวข้อ Open Source) <span class="badge-warn">ต่อเนื่อง</span></li>
+      <li><b>MCP:</b> ไม่พบอัปเดตสเปกหรือรีลีสใหม่เฉพาะเจาะจงของ Model Context Protocol ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ (อัปเดตสเปกล่าสุดคือ 28 ก.ค. 2569 ซึ่งเกินกรอบเวลาของรายงานนี้)</li>
+      <li><b>Security:</b> ช่องโหว่ Plugin4Shell ยังไม่มีแพตช์สำหรับ GitHub Copilot และ Gemini CLI (ดูหัวข้อ Tools &amp; Apps) <span class="badge-warn">ต่อเนื่อง</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>Ethics/Safety:</b> Anthropic รายงานว่า Claude Opus 5.5 ทำคะแนนการตรวจสอบพฤติกรรมอัตโนมัติ (automated behavioral audit) ได้ดีที่สุดในบรรดาโมเดลที่เคยทดสอบมา รวมถึงความต้านทานต่อ prompt injection ที่แข็งแกร่งขึ้นในงานโค้ดดิ้งและการใช้เครื่องมือ ทั้งนี้เป็นผลการประเมินภายในของบริษัทเอง ยังไม่มีการตรวจสอบโดยบุคคลที่สาม ✅ <a href="https://www.anthropic.com/news/claude-opus-5-5">Anthropic (official)</a></li>
+      <li><b>Security:</b> ช่องโหว่ Plugin4Shell ยังคงเปิดอยู่สำหรับ GitHub Copilot และ Gemini CLI ต่อเนื่องเป็นวันที่ 5 นับจากเปิดเผยครั้งแรก (ดูหัวข้อ Tools &amp; Apps) <span class="badge-warn">ต่อเนื่อง</span> 📰 <a href="https://cybersecuritynews.com/plugin4shell-zero-click-rce/">Cybersecurity News</a></li>
+    </ul>
+    <p class="note">ไม่พบข่าวด้าน Investment, Acquisition หรือ Regulation ใหม่ที่ยืนยันแหล่งที่มาได้ครบ 2 แหล่ง (โดยมีอย่างน้อย 1 แหล่งเป็น Official) ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+        <tr>
+          <td>Terminal-Bench 4.0</td>
+          <td>Claude Opus 5.5</td>
+          <td>66.4% (เทียบ Opus 5 เดิม 52.3%)</td>
+          <td>✅ <a href="https://www.anthropic.com/news/claude-opus-5-5">Anthropic (official)</a> · 📰 <a href="https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/">TechCrunch</a></td>
+        </tr>
+        <tr>
+          <td>FrontierCode v1.1</td>
+          <td>Claude Opus 5.5</td>
+          <td>54.4% (เทียบ Opus 5 เดิม 48.0%)</td>
+          <td>✅ <a href="https://www.anthropic.com/news/claude-opus-5-5">Anthropic (official)</a> · 📰 <a href="https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/">TechCrunch</a></td>
+        </tr>
+        <tr>
+          <td>DeepSWE v1.1 (max effort)</td>
+          <td>GPT-6 Sol</td>
+          <td>68.8% (เทียบ Fable 5 ที่ xhigh effort 69.9%)</td>
+          <td>📰 <a href="https://thenewstack.io/openai-gpt-6-sol-luna-release/">The New Stack</a> · 📰 <a href="https://www.digitalapplied.com/blog/gpt-6-sol-luna-launch-pricing-benchmarks-2026">Digital Applied</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Trending (GitHub):</b> กระแส Trending วันนี้ยังเน้นเครื่องมือรอบ Claude Code และ web agent ความเร็วสูง โดย browser-use/jev-ultrafast เข้าสู่ Trending ด้วยดาวเกือบ 17,000 ดวงภายใน 6 วัน และ davila7/claude-code-templates เข้าใหม่ Trending พร้อมดาวกว่า 31,000 ดวง สะท้อนความสนใจต่อเครื่องมือรอบระบบนิเวศ coding agent ที่ต่อเนื่องจากวันก่อนหน้า (ดูรายละเอียดในหัวข้อ Open Source) 🔥 <a href="https://github.com/trending">GitHub Trending</a></li>
+      <li><b>Trending (Hugging Face):</b> GLM-5.2, DeepSeek-V4-Flash, Kimi-K3, Solar Open2-250B และ Krea-2 Turbo ยังคงเป็นโมเดลเปิดที่ได้รับความนิยมสูงในสัปดาห์นี้ <span class="badge-warn">ข้อมูลรวมรายสัปดาห์ ไม่จำเพาะ 24 ชม.</span> 🔥 <a href="https://huggingface.co/papers/trending">Hugging Face Trending Papers</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. ลดต้นทุน inference โดยรักษาประสิทธิภาพระดับแนวหน้า (Opus 5.5 / GPT-6 Sol-Luna)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมพัฒนาที่ใช้งาน LLM ระดับสูงในปริมาณมากต้องแบกรับต้นทุน API ที่สูงขึ้นตามการใช้งาน โดยเฉพาะงาน agentic ที่ต้องเรียกโมเดลซ้ำหลายรอบ</dd>
+        <dt>วิธีใช้</dt><dd>ย้ายมาใช้ Claude Opus 5.5 หรือ GPT-6 Sol/Luna ซึ่งให้ผลลัพธ์ใกล้เคียงโมเดลระดับสูงสุดของแต่ละค่าย แต่ราคาต่อโทเคนถูกลงอย่างมีนัยสำคัญ</dd>
+        <dt>ประโยชน์</dt><dd>ลดต้นทุนรวมของ workload ได้ถึง 40-58% ตามที่ผู้พัฒนารายงาน โดยไม่ต้องยอมเสียคุณภาพงานมากนัก</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. Agentic AI แบบ on-device ด้วย NPU รุ่นใหม่ (Snapdragon 8 Elite Gen 6)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>แอปพลิเคชันมือถือที่ต้องการรัน AI agent หรือโมเดลภาษาโดยตรงบนอุปกรณ์ (ไม่พึ่งคลาวด์) มักติดข้อจำกัดด้านหน่วยความจำและพลังงานเมื่อใช้โมเดลขนาดใหญ่</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ชิป Snapdragon 8 Elite Gen 6/Extreme Gen 6 ที่มี NPU และหน่วยความจำร่วมขนาดใหญ่ขึ้น เพื่อรันโมเดล Mixture-of-Experts สูงสุด 30B พารามิเตอร์บนอุปกรณ์โดยตรง</dd>
+        <dt>ประโยชน์</dt><dd>รองรับ multi-agent, long-context reasoning และ low-latency action loop บนมือถือโดยไม่ต้องส่งข้อมูลออกไปประมวลผลบนคลาวด์ ช่วยเรื่องความเป็นส่วนตัวและความหน่วง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. เว็บเอเจนต์ความเร็วสูงสำหรับงานอัตโนมัติ (jev-ultrafast)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>เว็บเอเจนต์ทั่วไปที่ใช้ LLM แบบ autoregressive มักช้าและมีต้นทุนสูงเมื่อต้องทำงานหลายขั้นตอนบนหน้าเว็บจริง เพราะต้องตีความภาพหน้าจอและสร้างข้อความทีละโทเคน</dd>
+        <dt>วิธีใช้</dt><dd>ใช้สแต็ก jev-ultrafast ที่จับคู่ browser agent เข้ากับโมเดลตัดสินใจ Jev ซึ่งอ่าน structured state แทนภาพหน้าจอ และสร้างข้อความเฉพาะเมื่อจำเป็น</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาในการทำงานอัตโนมัติบนเว็บลงอย่างมาก (ตัวอย่างค้นหาเที่ยวบินเสร็จใน 7.1 วินาที) เหมาะสำหรับงานที่ต้องทำซ้ำจำนวนมาก เช่น การจองหรือค้นหาข้อมูล</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. AI ควบคุมยานอวกาศอัตโนมัติ (AstroForge Solo)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ภารกิจทำเหมืองแร่ดาวเคราะห์น้อยต้องการการตัดสินใจแบบเรียลไทม์ในระยะไกลจากโลก ซึ่งการควบคุมโดยมนุษย์ผ่านสัญญาณสื่อสารมีความหน่วงสูงเกินกว่าจะตอบสนองสถานการณ์ฉุกเฉินได้ทัน</dd>
+        <dt>วิธีใช้</dt><dd>AstroForge พัฒนาโมเดล transformer ภายในชื่อ "Solo" เพื่อให้ยานอวกาศตัดสินใจและควบคุมตัวเองแบบอัตโนมัติโดยไม่ต้องรอคำสั่งจากศูนย์ควบคุมภาคพื้น</dd>
+        <dt>ประโยชน์</dt><dd>เพิ่มความสามารถในการตอบสนองสถานการณ์แบบเรียลไทม์ระหว่างภารกิจในอวกาศ ลดความเสี่ยงจากความหน่วงของการสื่อสารระยะไกล</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">3</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>GitHub Copilot และ Gemini CLI จะได้รับการแก้ไขช่องโหว่ Plugin4Shell เมื่อใด หรือจะเกิดการโจมตีจริงก่อนหรือไม่ โดยเฉพาะ Gemini CLI ที่ Google ยืนยันจะไม่ออกแพตช์ถาวร</dd>
+        <dt>เหตุผล</dt><dd>ช่องโหว่นี้เปิดอยู่มาแล้วกว่า 5 วันนับจากการเปิดเผยครั้งแรก กระทบกลไกความปลอดภัยพื้นฐานที่ใช้ร่วมกันในเอเจนต์โค้ดดิ้ง AI หลายราย</dd>
+        <dt>Source</dt><dd><a href="https://cybersecuritynews.com/plugin4shell-zero-click-rce/">Cybersecurity News</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>การแข่งขันลดราคา API ระหว่าง Anthropic และ OpenAI ในวันเดียวกันจะกดดันให้ Google DeepMind และค่ายอื่นปรับราคาตามหรือไม่</dd>
+        <dt>เหตุผล</dt><dd>ทั้งสองบริษัทปล่อยโมเดลที่ลดราคาลงพร้อมกันในวันเดียว (20-60% สำหรับ Anthropic และ 50%+ สำหรับ OpenAI) อาจเป็นจุดเริ่มต้นของสงครามราคาโมเดลระดับกลางที่ส่งผลต่อทั้งอุตสาหกรรม</dd>
+        <dt>Source</dt><dd><a href="https://venturebeat.com/technology/anthropic-releases-claude-opus-5-5-beating-fable-5-1-on-key-agentic-benchmarks-at-60-cheaper-api-price">VentureBeat</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ระบบควบคุมอัตโนมัติ "Solo" ของ AstroForge จะทำงานได้ตามที่ออกแบบไว้หรือไม่เมื่อใช้งานจริงในภารกิจถัดไป</dd>
+        <dt>เหตุผล</dt><dd>เป็นหนึ่งในกรณีแรกๆ ที่ให้ AI ควบคุมยานอวกาศเชิงพาณิชย์แบบอัตโนมัติเต็มรูปแบบในภารกิจที่มีความเสี่ยงสูงและงบประมาณจำกัด</dd>
+        <dt>Source</dt><dd><a href="https://techcrunch.com/2026/09/22/astroforge-is-putting-ai-in-command-of-its-next-spacecraft/">TechCrunch</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news/claude-opus-5-5">Anthropic — Introducing Claude Opus 5.5</a></li>
+          <li><a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/">OpenAI — Introducing GPT-6 Sol and Luna</a></li>
+          <li><a href="https://openai.com/index/devday-2026/">OpenAI — DevDay 2026</a></li>
+          <li><a href="https://arxiv.org/abs/2609.22076">arXiv — APort Vault (2609.22076)</a></li>
+          <li><a href="https://arxiv.org/abs/2609.19947">arXiv — Not All AI Agents Are Equal (2609.19947)</a></li>
+          <li><a href="https://github.com/browser-use/jev-ultrafast">GitHub — browser-use/jev-ultrafast</a></li>
+          <li><a href="https://github.com/davila7/claude-code-templates">GitHub — davila7/claude-code-templates</a></li>
+          <li><a href="https://github.com/anthropics/financial-services">GitHub — anthropics/financial-services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2609.22076">APort Vault: Benchmarking AI Agent Payment Authorization</a></li>
+          <li><a href="https://arxiv.org/abs/2609.19947">Not All AI Agents Are Equal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/">TechCrunch — Opus 5.5</a></li>
+          <li><a href="https://venturebeat.com/technology/anthropic-releases-claude-opus-5-5-beating-fable-5-1-on-key-agentic-benchmarks-at-60-cheaper-api-price">VentureBeat — Opus 5.5</a></li>
+          <li><a href="https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/">TechCrunch — GPT-6 Sol and Luna</a></li>
+          <li><a href="https://venturebeat.com/technology/openai-releases-gpt-6-sol-and-luna-models-slashing-api-costs-50-or-more">VentureBeat — GPT-6 Sol and Luna</a></li>
+          <li><a href="https://thenewstack.io/openai-gpt-6-sol-luna-release/">The New Stack — GPT-6 Sol and Luna</a></li>
+          <li><a href="https://www.digitalapplied.com/blog/gpt-6-sol-luna-launch-pricing-benchmarks-2026">Digital Applied — GPT-6 Sol/Luna benchmarks</a></li>
+          <li><a href="https://9to5google.com/2026/09/22/snapdragon-8-elite-gen-6/">9to5Google — Snapdragon 8 Elite Gen 6</a></li>
+          <li><a href="https://www.androidauthority.com/snapdragon-qualcomm-snapdragon-8-elite-gen-6-npu-3709726/">Android Authority — Snapdragon NPU</a></li>
+          <li><a href="https://techcrunch.com/2026/09/22/astroforge-is-putting-ai-in-command-of-its-next-spacecraft/">TechCrunch — AstroForge autonomous spacecraft</a></li>
+          <li><a href="https://cybersecuritynews.com/plugin4shell-zero-click-rce/">Cybersecurity News — Plugin4Shell</a></li>
+          <li><a href="https://www.heise.de/en/news/Critical-flaw-in-Claude-Code-OpenAI-Codex-GitHub-Copilot-and-Gemini-CLI-11460259.html">heise online — Plugin4Shell</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://huggingface.co/papers/trending">Hugging Face Trending Papers</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 22 ก.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
