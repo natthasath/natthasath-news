@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-09-23</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 23 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-09-23</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 23 ก.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> การเข้าถึง arxiv.org โดยตรงด้วย WebFetch ไม่สำเร็จในรอบนี้ (ถูกบล็อกโดย network egress proxy) แม้ลองซ้ำแล้ว จึงใช้ WebSearch แทนเพื่อยืนยันชื่อผู้เขียนและวันที่ส่งบทความ ข่าวเปิดซอร์ส Intrinsic Core (Alphabet/Intrinsic) และ google/ax เผยแพร่ครั้งแรกเมื่อ 22 ก.ย. 2569 แต่ยังไม่เคยปรากฏในรายงานฉบับก่อนหน้า จึงนำมาแสดงในฉบับนี้พร้อมระบุวันที่เปิดเผยจริง ไม่พบการเปิดตัวโมเดล AI ใหม่หรือคะแนน Benchmark ใหม่ที่ยืนยันแหล่งที่มาได้ครบตามเกณฑ์ Validation ในกรอบ 24 ชั่วโมงของวันนี้โดยเฉพาะ จึงงดแสดงในหมวด AI Models และ Benchmark</div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ประเด็นใหญ่ที่สุดของวันนี้คือผู้บริหารระดับสูงของ OpenAI, Anthropic และ Hugging Face เข้าบรรยายสรุปต่อคณะมนตรีความมั่นคงแห่งสหประชาชาติเป็นครั้งแรกเกี่ยวกับความเสี่ยงด้านความมั่นคงระหว่างประเทศจาก AI ที่ทรงพลังขึ้นเรื่อยๆ OpenAI เสริมความสามารถ ChatGPT บนมือถือด้วยฟีเจอร์เอเจนต์ผ่านเสียง (voice-based agentic) พร้อมประกาศหลักการให้หน่วยงานภายนอกเข้าประเมินความปลอดภัยโมเดลตั้งแต่ขั้นตอนฝึกฝน ฝั่งโอเพนซอร์ส Google เปิดตัว google/ax ซึ่งเป็น orchestrator สำหรับรัน AI agent workload ระดับพันล้านรายการ และ Intrinsic (หน่วยงานหุ่นยนต์ของ Alphabet) เปิดซอร์สโครงสร้างพื้นฐานหุ่นยนต์อุตสาหกรรม Intrinsic Core ที่งาน ROSCon 2026 Amazon ประกาศเปิดปลั๊กอิน Seller Assistant ให้เชื่อมกับ Claude ของ Anthropic โดยตรงในงาน Accelerate ที่ซีแอตเทิล ส่วนงานวิจัยใหม่เสนอวิธีลดต้นทุนการทดสอบ regression ของ coding agent ลงถึง 90% ด้วยการเลือกชุดทดสอบแบบ trajectory-aware</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ไม่พบการเปิดตัวโมเดล AI ใหม่ที่ยืนยันข้อมูลครบตามเกณฑ์ Validation (Model, Company, Category, Status, Source) ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ โมเดลสำคัญล่าสุด (Claude Opus 5.5, GPT-6 Sol/Luna) เปิดตัวเมื่อ 22 ก.ย. 2569 และถูกนำเสนอไปแล้วในรายงานฉบับก่อนหน้า</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+        <tr>
+          <td>Trajectory-Aware Benchmark Subset Selection for Cost-Efficient Software Engineering Agent Regression Testing</td>
+          <td>Mahmoud Ayyad, Zehao Wang, Jiho Shin, Ying Zou, Bram Adams</td>
+          <td>เสนอวิธีเลือกชุดทดสอบย่อยแบบ deterministic โดยใช้ trajectory embedding แทนการสุ่ม เพื่อประเมิน regression ของ SWE-agent อย่างประหยัดต้นทุน ผลทดสอบพบว่าชุดย่อย 10% ลดการใช้โทเคนจาก 3.44 พันล้านเหลือ 345 ล้าน (ประหยัด 90%) โดยยังคงความคลาดเคลื่อนของการประมาณผลต่ำกว่า 5%</td>
+          <td>✅ <a href="https://arxiv.org/abs/2609.24928">arXiv:2609.24928</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">บทความนี้ส่งขึ้น arXiv ครั้งแรกเมื่อ 21 ก.ย. 2569 แต่ปรากฏในดัชนีสรุปรายวันของ arXiv ประจำวันที่ 23 ก.ย. และยังเป็นประเด็นที่เกี่ยวเนื่องโดยตรงกับต้นทุนการประเมิน coding agent ที่กำลังเป็นที่สนใจ จึงนำมาแสดงตามข้อยกเว้นสำหรับงานวิจัยที่ยังเป็นประเด็น <span class="badge-warn">ต่อเนื่อง</span></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>google/ax</td>
+          <td>~8,900</td>
+          <td>Go</td>
+          <td>Orchestrator แบบ declarative จาก Google สำหรับรันงาน AI agent อัตโนมัติระดับพันล้าน workload ต่อคลัสเตอร์ ทำงานบน Agent Substrate เพื่อ sandbox แต่ละ agent เป็น stateful actor ออกแบบอินเทอร์เฟซคล้าย kubectl (apply, get, describe, watch) <span class="badge">เข้าใหม่ Trending วันนี้</span></td>
+          <td>✅ <a href="https://github.com/google/ax">GitHub (official repo)</a> · 📰 <a href="https://www.infoq.com/news/2026/09/google-ax-orchestrator/">InfoQ</a></td>
+        </tr>
+        <tr>
+          <td>agent-substrate/substrate</td>
+          <td>~3,400</td>
+          <td>Go</td>
+          <td>รันไทม์สำหรับรัน agent sandbox หลายล้านตัวพร้อมกันด้วยความหนาแน่นสูงกว่า container runtime ทั่วไปราว 10 เท่า รองรับ microVM และ gVisor เป็นรากฐานที่ google/ax ใช้งานอยู่</td>
+          <td>✅ <a href="https://github.com/agent-substrate/substrate">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>intrinsic-ai/intrinsic-core</td>
+          <td>~281</td>
+          <td>C++, Python, Go</td>
+          <td>รันไทม์และ SDK แบบโอเพนซอร์สจาก Intrinsic (หน่วยงานหุ่นยนต์ของ Alphabet) สำหรับควบคุมหุ่นยนต์อุตสาหกรรมแบบเรียลไทม์ข้ามฮาร์ดแวร์ มาพร้อม pose estimation, motion planning, grasp planning และ ROS 2 driver เปิดตัวที่งาน ROSCon 2026 ภายใต้สัญญาอนุญาต Apache 2.0</td>
+          <td>✅ <a href="https://github.com/intrinsic-ai/intrinsic-core">GitHub (official repo)</a> · ✅ <a href="https://www.intrinsic.ai/blog/posts/introducing-intrinsic-core">Intrinsic (official)</a> · 📰 <a href="https://siliconangle.com/2026/09/22/googles-robotics-unit-intrinsic-open-sources-its-foundational-infrastructure-for-intelligent-robots/">SiliconANGLE</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวอ้างอิงจากการอ่านหน้า GitHub ผ่าน WebFetch โดยตรงในเวลาที่สร้างรายงาน อาจคลาดเคลื่อนเล็กน้อยจากเวลาที่ผู้อ่านเปิดดู google/ax และ Intrinsic Core เปิดเผยครั้งแรกเมื่อ 22 ก.ย. 2569 แต่ยังไม่เคยถูกนำเสนอในรายงานฉบับก่อนหน้า จึงนำมาแสดงในฉบับนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบเครื่องมือหรือแอปใหม่ทั้งหมดที่เปิดตัวครั้งแรกในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ นอกเหนือจากที่แสดงในหัวข้อ Open Source</p>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+        <tr>
+          <td>ChatGPT (มือถือ)</td>
+          <td>เพิ่มฟีเจอร์เอเจนต์ผ่านเสียง (voice-based agentic) ให้ผู้ใช้ Plus/Pro สั่งงานแท็บ Work ด้วยเสียงได้โดยตรง เช่น ร่างเอกสาร อีเมล หรือสรุปข้อความ Slack ส่วนผู้ใช้ Free/Go เข้าถึง plugin และแอปที่เชื่อมต่อได้ พร้อมปรับการสนทนาด้วยเสียงให้แสดงข้อความประกอบสมบูรณ์ขึ้นและสลับโหมดข้อความ/เสียงได้ง่ายขึ้น</td>
+          <td>✅ <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI Help Center (official)</a> · 📰 <a href="https://techcrunch.com/2026/09/23/chatgpt-mobile-app-gets-voice-based-agentic-features/">TechCrunch</a> · 📰 <a href="https://9to5mac.com/2026/09/23/openai-just-upgraded-chatgpt-voice-in-three-ways/">9to5Mac</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>OpenAI ประกาศหลักการเปิดให้หน่วยงานภายนอกเข้าประเมินความปลอดภัยโมเดลตลอดกระบวนการ ตั้งแต่การฝึกฝน การประเมินผล ไปจนถึงการนำไปใช้งานจริง ขยายจากเดิมที่เปิดให้เฉพาะช่วงก่อนเปิดตัว โดยอยู่ระหว่างเจรจากับ METR และ Redwood Research แม้ยังไม่ระบุพันธมิตรหรือเงื่อนไขการเข้าถึงที่แน่ชัด ✅ <a href="https://openai.com/index/priorities-principles-third-party-assessments/">OpenAI (official)</a> · 📰 <a href="https://www.bloomberg.com/news/articles/2026-09-22/openai-to-let-outside-groups-evaluate-ai-models-at-earlier-phase">Bloomberg</a></p>
+    <p>OpenAI เปิดตัวฟีเจอร์เอเจนต์ผ่านเสียงบน ChatGPT มือถือ (ดูรายละเอียดในหัวข้อ Tools &amp; Apps) ✅ <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI (official)</a></p>
+    <p>ซีอีโอ Sam Altman เข้าร่วมบรรยายสรุปต่อคณะมนตรีความมั่นคงแห่งสหประชาชาติเรื่องความเสี่ยงด้าน AI (ดูรายละเอียดในหัวข้อ Industry) 📰 <a href="https://www.bnnbloomberg.ca/business/artificial-intelligence/2026/09/23/ai-leaders-warn-un-of-security-risks-as-systems-grow-more-powerful/">BNN Bloomberg</a></p>
+
+    <h3>Anthropic</h3>
+    <p>ซีอีโอ Dario Amodei ร่วมบรรยายสรุปต่อคณะมนตรีความมั่นคงแห่งสหประชาชาติ ระบุว่าหากบริหารจัดการไม่ดี AI อาจเป็นความเสี่ยงต่อมนุษยชาติโดยรวม (ดูรายละเอียดในหัวข้อ Industry) 📰 <a href="https://www.bnnbloomberg.ca/business/artificial-intelligence/2026/09/23/ai-leaders-warn-un-of-security-risks-as-systems-grow-more-powerful/">BNN Bloomberg</a></p>
+    <p>Claude เป็นโมเดลที่ขับเคลื่อนปลั๊กอิน Seller Assistant ตัวใหม่ของ Amazon สำหรับผู้ขายบุคคลที่สาม (ดูรายละเอียดในหัวข้อ Amazon) ✅ <a href="https://www.aboutamazon.com/news/innovation-at-amazon/seller-assistant-plugin-amazon-quick-claude">Amazon (official)</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>Google เปิดซอร์ส google/ax ซึ่งเป็น orchestrator สำหรับรัน AI agent workload ระดับพันล้านรายการ (ดูรายละเอียดในหัวข้อ Open Source) ✅ <a href="https://github.com/google/ax">GitHub (official)</a> · 📰 <a href="https://www.infoq.com/news/2026/09/google-ax-orchestrator/">InfoQ</a></p>
+    <p>Intrinsic หน่วยงานหุ่นยนต์ของ Alphabet เปิดซอร์สโครงสร้างพื้นฐาน Intrinsic Core ที่งาน ROSCon 2026 (ดูรายละเอียดในหัวข้อ Open Source) ✅ <a href="https://www.intrinsic.ai/blog/posts/introducing-intrinsic-core">Intrinsic (official)</a> · 📰 <a href="https://www.forbes.com/sites/johnkoetsier/2026/09/22/google-is-giving-away-the-android-of-robotics/">Forbes</a></p>
+
+    <h3>Meta</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Meta ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน</p>
+
+    <h3>Microsoft</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Microsoft ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน</p>
+
+    <h3>Amazon</h3>
+    <p>Amazon ประกาศปลั๊กอิน Seller Assistant เวอร์ชันใหม่ที่เชื่อมต่อกับทั้ง Amazon Quick และ Claude ของ Anthropic โดยตรง ให้ผู้ขายบุคคลที่สามตรวจสอบสต็อก ปรับราคา และแก้ไขรายการสินค้าได้โดยไม่ต้องเปิด Seller Central ประกาศในงาน Accelerate ที่ซีแอตเทิล ✅ <a href="https://www.aboutamazon.com/news/innovation-at-amazon/seller-assistant-plugin-amazon-quick-claude">Amazon (official)</a> · 📰 <a href="https://www.geekwire.com/2026/amazon-opens-its-seller-tools-to-outside-ai-agents-starting-with-anthropics-claude/">GeekWire</a> · 📰 <a href="https://en.cryptonomist.ch/2026/09/23/amazon-agentic-ai-automation/">Cryptonomist</a></p>
+
+    <h3>NVIDIA</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก NVIDIA ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน</p>
+
+    <h3>Startup</h3>
+    <p>Hugging Face ซีอีโอ Clément Delangue เข้าร่วมบรรยายสรุปต่อคณะมนตรีความมั่นคงแห่งสหประชาชาติร่วมกับผู้บริหาร OpenAI และ Anthropic (ดูรายละเอียดในหัวข้อ Industry) 📰 <a href="https://www.bnnbloomberg.ca/business/artificial-intelligence/2026/09/23/ai-leaders-warn-un-of-security-risks-as-systems-grow-more-powerful/">BNN Bloomberg</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>Agent/Infrastructure:</b> Google เปิดซอร์ส google/ax orchestrator และ Agent Substrate ซึ่งเป็นรันไทม์ sandbox สำหรับรัน AI agent จำนวนมากบนคลัสเตอร์เดียว ออกแบบอินเทอร์เฟซคล้าย kubectl (ดูหัวข้อ Open Source)</li>
+      <li><b>API/SDK:</b> ChatGPT มือถือเพิ่มฟีเจอร์สั่งงานแท็บ Work ด้วยเสียง และปรับปรุงการสลับโหมดข้อความ/เสียง (ดูหัวข้อ Tools &amp; Apps)</li>
+      <li><b>Robotics/Infrastructure:</b> Intrinsic Core เปิดซอร์สเฟรมเวิร์กควบคุมหุ่นยนต์อุตสาหกรรมแบบเรียลไทม์ข้ามฮาร์ดแวร์ พร้อม ROS 2 driver ภายใต้ Apache 2.0 (ดูหัวข้อ Open Source)</li>
+      <li><b>MCP:</b> ไม่พบอัปเดตสเปกหรือรีลีสใหม่เฉพาะเจาะจงของ Model Context Protocol ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ (สเปกล่าสุดคือ 28 ก.ค. 2569 ซึ่งเกินกรอบเวลาของรายงานนี้)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>Regulation/Security:</b> คณะมนตรีความมั่นคงแห่งสหประชาชาติจัดประชุมระดับสูงครั้งแรกที่เน้นความเสี่ยงด้านความปลอดภัยของ AI ที่ทรงพลังขึ้นเรื่อยๆ โดยมีฝรั่งเศสเป็นประธานการประชุมภายใต้วาระ "การธำรงไว้ซึ่งสันติภาพและความมั่นคงระหว่างประเทศ" ผู้บรรยายสรุปประกอบด้วย Yoshua Bengio (ประธานร่วมคณะกรรมการวิทยาศาสตร์อิสระด้าน AI ของ UN), Sam Altman (OpenAI), Dario Amodei (Anthropic) และ Clément Delangue (Hugging Face) โดย Amodei ระบุว่าหากบริหารจัดการไม่ดี AI อาจเป็นความเสี่ยงต่อมนุษยชาติโดยรวม ขณะที่ Bengio กล่าวว่า "อันตรายนั้นมีจริงและใกล้เข้ามาแล้ว" ✅ <a href="https://webtv.un.org/en/asset/k1c/k1cdceg9sg">UN Web TV (official)</a> · 📰 <a href="https://www.bnnbloomberg.ca/business/artificial-intelligence/2026/09/23/ai-leaders-warn-un-of-security-risks-as-systems-grow-more-powerful/">BNN Bloomberg</a> · 📰 <a href="https://www.cnn.com/2026/09/23/world/video/cncpm-ai-leaders-altman-amodei-address-un-security-council">CNN</a></li>
+    </ul>
+    <p class="note">ไม่พบข่าวด้าน Investment หรือ Acquisition ใหม่ที่ยืนยันแหล่งที่มาได้ครบ 2 แหล่ง (โดยมีอย่างน้อย 1 แหล่งเป็น Official) ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลทดสอบ Benchmark ใหม่ที่ยืนยันข้อมูลครบตามเกณฑ์ Validation (Benchmark, Model, Score, Source อย่างน้อย 2 แหล่ง) ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Trending (GitHub):</b> กระแส Trending วันนี้เปลี่ยนจุดสนใจจากเครื่องมือ coding agent มาสู่โครงสร้างพื้นฐานสำหรับบริหารจัดการ agent fleet ขนาดใหญ่ นำโดย google/ax ที่มีดาวเพิ่มขึ้นอย่างรวดเร็ว รองจากโปรเจกต์อย่าง dream-num/univer และ browser-use/video-use ที่ยังคงติดอันดับต่อเนื่อง (ดูรายละเอียดในหัวข้อ Open Source) 🔥 <a href="https://github.com/trending">GitHub Trending</a></li>
+      <li><b>Trending (Hugging Face):</b> FreeToken (ระบบ serving แบบ Mixture-of-Experts บนอุปกรณ์ส่วนบุคคล), โมเดลพยากรณ์อนุกรมเวลาแบบ zero-shot, Paper2Agent และ Vidu S2 ยังคงเป็นงานวิจัยที่ได้รับความสนใจสูงในช่วงเดือนนี้ <span class="badge-warn">ข้อมูลรวมรายเดือน ไม่จำเพาะ 24 ชม.</span> 🔥 <a href="https://huggingface.co/papers/trending">Hugging Face Trending Papers</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. สั่งงานเอกสารและอีเมลด้วยเสียงระหว่างเดินทาง (ChatGPT Voice Agentic)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ผู้ใช้ที่ไม่สะดวกพิมพ์ระหว่างเดินทางหรือทำงานอื่นอยู่ ต้องรอจนกลับมาที่คอมพิวเตอร์เพื่อร่างเอกสาร อีเมล หรือสรุปข้อความ Slack</dd>
+        <dt>วิธีใช้</dt><dd>ใช้เสียงสั่งงานผ่านแท็บ Work บน ChatGPT มือถือโดยตรง ระบบจะเรียกใช้ plugin และแอปที่เชื่อมต่อให้ทำงานแทน</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาระหว่างการเกิดไอเดียกับการลงมือทำงานจริง เหมาะกับงานเร่งด่วนระหว่างเดินทางหรือประชุม</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. บริหารร้านค้าบน Amazon ผ่าน Claude โดยตรง (Amazon Seller Assistant)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ผู้ขายบุคคลที่สามบน Amazon ต้องเข้า Seller Central เพื่อตรวจสต็อก ปรับราคา และแก้ไขรายการสินค้า ซึ่งใช้เวลาและขั้นตอนหลายจุด</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้งปลั๊กอิน Seller Assistant บน Claude เพื่อสอบถามและสั่งปรับข้อมูลร้านค้าผ่านการสนทนาโดยตรง (ระบบขออนุมัติก่อนทำการเปลี่ยนแปลงจริง)</dd>
+        <dt>ประโยชน์</dt><dd>ลดขั้นตอนการสลับไปมาระหว่างแพลตฟอร์ม ทำให้ผู้ขายรายย่อยจัดการร้านได้เร็วขึ้นจากอินเทอร์เฟซสนทนาที่คุ้นเคยอยู่แล้ว</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. รันฝูง AI agent จำนวนมากอย่างมีระเบียบ (google/ax)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมวิศวกรที่ต้องรัน AI agent จำนวนมากพร้อมกันบนคลัสเตอร์ มักขาดเครื่องมือจัดการวงจรชีวิต การ sandbox และการปรับขนาดที่ออกแบบมาสำหรับ agent โดยเฉพาะ (ต่างจาก container ทั่วไปที่เป็น stateless)</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ google/ax ซึ่งมีคำสั่งคล้าย kubectl (apply, get, describe, watch) เพื่อประกาศ, สั่งรัน และตรวจสอบสถานะ agent workload บน Agent Substrate</dd>
+        <dt>ประโยชน์</dt><dd>รองรับการรัน agent ระดับพันล้าน workload ต่อคลัสเตอร์ พร้อมการ suspend/resume แบบรวดเร็วเพื่อประหยัดทรัพยากรเมื่อ agent ไม่ได้ทำงาน</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. ควบคุมหุ่นยนต์อุตสาหกรรมข้ามฮาร์ดแวร์ด้วยเฟรมเวิร์กเปิด (Intrinsic Core)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ผู้พัฒนาหุ่นยนต์อุตสาหกรรมมักต้องเขียนโค้ดควบคุม การหาตำแหน่งวัตถุ และวางแผนการเคลื่อนที่ใหม่ทุกครั้งที่เปลี่ยนฮาร์ดแวร์หรือผู้ผลิต</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ Intrinsic Core ซึ่งเป็นชุดความสามารถแบบ ROS-compatible ที่รวม real-time control, pose estimation, motion planning และ grasp planning ไว้เป็นบล็อกสำเร็จรูป</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาพัฒนาแอปพลิเคชันหุ่นยนต์ใหม่ เพราะใช้ความสามารถชุดเดียวกับที่ Intrinsic ใช้งานจริงในสายการผลิต และทำงานข้ามฮาร์ดแวร์ได้โดยไม่ต้องเขียนใหม่ทั้งหมด</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">API/Framework Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>การประชุมคณะมนตรีความมั่นคงแห่งสหประชาชาติครั้งนี้จะนำไปสู่กรอบกำกับดูแล AI ระดับนานาชาติที่เป็นรูปธรรม หรือเป็นเพียงการรับฟังโดยไม่มีข้อผูกพันทางกฎหมาย</dd>
+        <dt>เหตุผล</dt><dd>เป็นครั้งแรกที่คณะมนตรีความมั่นคงหารือเฉพาะเจาะจงเรื่องความเสี่ยงด้านความปลอดภัยจาก AI ที่ทรงพลังขึ้น โดยมีผู้บริหารบริษัท AI ชั้นนำเข้าร่วมโดยตรง ขณะที่บางประเทศตั้งคำถามต่อความชอบธรรมของการกำกับดูแลระดับโลก</dd>
+        <dt>Source</dt><dd><a href="https://www.bnnbloomberg.ca/business/artificial-intelligence/2026/09/23/ai-leaders-warn-un-of-security-risks-as-systems-grow-more-powerful/">BNN Bloomberg</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>OpenAI จะสรุปเงื่อนไขการเข้าถึงและพันธมิตรที่ชัดเจนสำหรับหน่วยงานประเมินความปลอดภัยภายนอก (เช่น METR, Redwood Research) ได้เมื่อใด และจะครอบคลุมลึกเพียงใดในทางปฏิบัติ</dd>
+        <dt>เหตุผล</dt><dd>ประกาศหลักการยังไม่มีรายละเอียดพันธมิตรหรือเงื่อนไขที่เป็นรูปธรรม ขณะที่ Anthropic ได้ประกาศให้ผู้ประเมินจาก Accenture เข้าถึงระบบไปก่อนแล้ว ทำให้เกิดแรงกดดันเชิงเปรียบเทียบในอุตสาหกรรม</dd>
+        <dt>Source</dt><dd><a href="https://openai.com/index/priorities-principles-third-party-assessments/">OpenAI (official)</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://openai.com/index/priorities-principles-third-party-assessments/">OpenAI — Priorities and principles for third party assessments</a></li>
+          <li><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI — ChatGPT Release Notes</a></li>
+          <li><a href="https://www.aboutamazon.com/news/innovation-at-amazon/seller-assistant-plugin-amazon-quick-claude">Amazon — Seller Assistant plugin for Amazon Quick and Claude</a></li>
+          <li><a href="https://www.intrinsic.ai/blog/posts/introducing-intrinsic-core">Intrinsic — Introducing Intrinsic Core</a></li>
+          <li><a href="https://github.com/google/ax">GitHub — google/ax</a></li>
+          <li><a href="https://github.com/agent-substrate/substrate">GitHub — agent-substrate/substrate</a></li>
+          <li><a href="https://github.com/intrinsic-ai/intrinsic-core">GitHub — intrinsic-ai/intrinsic-core</a></li>
+          <li><a href="https://arxiv.org/abs/2609.24928">arXiv — Trajectory-Aware Benchmark Subset Selection (2609.24928)</a></li>
+          <li><a href="https://webtv.un.org/en/asset/k1c/k1cdceg9sg">UN Web TV — Security Council AI briefing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2609.24928">Trajectory-Aware Benchmark Subset Selection for Cost-Efficient SWE-Agent Regression Testing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://techcrunch.com/2026/09/23/chatgpt-mobile-app-gets-voice-based-agentic-features/">TechCrunch — ChatGPT mobile voice-agentic features</a></li>
+          <li><a href="https://9to5mac.com/2026/09/23/openai-just-upgraded-chatgpt-voice-in-three-ways/">9to5Mac — ChatGPT Voice upgrades</a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2026-09-22/openai-to-let-outside-groups-evaluate-ai-models-at-earlier-phase">Bloomberg — OpenAI third-party evaluations</a></li>
+          <li><a href="https://www.bnnbloomberg.ca/business/artificial-intelligence/2026/09/23/ai-leaders-warn-un-of-security-risks-as-systems-grow-more-powerful/">BNN Bloomberg — UN Security Council AI briefing</a></li>
+          <li><a href="https://www.cnn.com/2026/09/23/world/video/cncpm-ai-leaders-altman-amodei-address-un-security-council">CNN — Altman, Amodei address UN Security Council</a></li>
+          <li><a href="https://www.geekwire.com/2026/amazon-opens-its-seller-tools-to-outside-ai-agents-starting-with-anthropics-claude/">GeekWire — Amazon Seller Assistant + Claude</a></li>
+          <li><a href="https://en.cryptonomist.ch/2026/09/23/amazon-agentic-ai-automation/">Cryptonomist — Amazon agentic AI seller automation</a></li>
+          <li><a href="https://siliconangle.com/2026/09/22/googles-robotics-unit-intrinsic-open-sources-its-foundational-infrastructure-for-intelligent-robots/">SiliconANGLE — Intrinsic Core open source</a></li>
+          <li><a href="https://www.forbes.com/sites/johnkoetsier/2026/09/22/google-is-giving-away-the-android-of-robotics/">Forbes — Intrinsic Core</a></li>
+          <li><a href="https://www.infoq.com/news/2026/09/google-ax-orchestrator/">InfoQ — google/ax orchestrator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://huggingface.co/papers/trending">Hugging Face Trending Papers</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 23 ก.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
