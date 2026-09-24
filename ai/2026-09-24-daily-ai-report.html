@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-09-24</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 24 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-09-24</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 24 ก.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> ข่าว "Frontier AI Standards Agency" (SAFA) ซึ่ง Google, OpenAI และ Anthropic กำลังหารือกันนั้น พบเฉพาะรายงานจากสื่อหลายสำนัก แต่ยังไม่พบแถลงการณ์อย่างเป็นทางการจากบริษัทใดบนเว็บไซต์บริษัทโดยตรงในรอบนี้ จึงแสดงข้อมูลนี้พร้อมระบุว่ายังไม่ผ่านการยืนยันอย่างเป็นทางการ (ใช้ป้าย ❓) ส่วนคำให้สัมภาษณ์ของหัวหน้า Google DeepMind เรื่อง Gemini 4 มาจากเวทีสัมมนาที่มีสื่อหลายสำนักรายงานตรงกัน แต่ไม่พบบล็อกทางการของ Google DeepMind ยืนยันโดยตรง จึงจัดเป็นข่าวสื่อ (📰) ไม่ใช่ Official ไม่พบข่าวเปิดตัวโมเดล AI ใหม่แบบพร้อมใช้งานจริง (GA) หรือ MCP spec ใหม่ในกรอบ 24 ชั่วโมงของวันนี้โดยเฉพาะ</div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ข่าวใหญ่ที่สุดของวันนี้คือ Anthropic ประกาศว่า Claude ค้นพบระบบเอนไซม์ชนิดใหม่ที่มีคุณสมบัติคล้าย CRISPR ในห้องปฏิบัติการชีววิทยาของบริษัทเอง โดยใช้เวลาเพียง 21 ชั่วโมงผ่านเอเจนต์ 950 ตัว ฝั่ง Google DeepMind หัวหน้าคนใหม่ Koray Kavukcuoglu เปิดเผยต่อสาธารณะเป็นครั้งแรกว่า Gemini 4 อยู่ระหว่างขั้นตอน post-training และอาจเปิดตัวก่อนสิ้นปีนี้ OpenAI เปิดตัว MentalHealthBench เบนช์มาร์กเปิดสำหรับประเมินการตอบสนองของ AI ในบทสนทนาด้านสุขภาพจิต ซึ่งพัฒนาร่วมกับจิตแพทย์และนักจิตวิทยากว่า 80 คนจาก 22 ประเทศ นอกจากนี้ยังมีรายงานว่า Google, OpenAI และ Anthropic กำลังหารือจัดตั้งองค์กรกำกับมาตรฐานความปลอดภัย AI ร่วมกันชื่อ Frontier AI Standards Agency แม้ยังไม่มีการยืนยันอย่างเป็นทางการ ฝั่งโอเพนซอร์ส dream-num/univer ขึ้นอันดับหนึ่ง GitHub Trending ในฐานะรันไทม์ออฟฟิศสำหรับ AI agent ขณะที่ภาคการลงทุนมี TEKEVER ระดมทุน Series D มูลค่า 580 ล้านดอลลาร์สหรัฐที่มูลค่าบริษัท 6.4 พันล้านดอลลาร์</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Model</th><th>Company</th><th>Category</th><th>Status</th><th>Source</th></tr>
+        <tr>
+          <td>Gemini 4</td>
+          <td>Google DeepMind</td>
+          <td>Frontier LLM</td>
+          <td>อยู่ระหว่างขั้นตอน post-training refinement คาดเปิดตัวก่อนสิ้นปี 2569 (ยังไม่มีกำหนดวันที่แน่ชัด)</td>
+          <td>📰 <a href="https://the-decoder.com/deepmind-was-built-to-chase-agi-but-its-new-chief-just-wants-gemini-4-out-the-door/">The Decoder</a> · 📰 <a href="https://www.androidheadlines.com/2026/09/google-deepmind-teases-early-gemini-4-launch.html">Android Headlines</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">คำให้สัมภาษณ์ของ Koray Kavukcuoglu (หัวหน้า Google DeepMind คนใหม่) ที่งาน The Information's AI Agenda Live Summit ไม่พบบล็อกทางการของ Google/DeepMind ยืนยันโดยตรงในรอบนี้ จึงยังไม่นับเป็น Official แม้จะมีสื่อหลายสำนักรายงานตรงกัน</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+        <tr>
+          <td>Recursive self-improvement of AI research agents</td>
+          <td>Dhruv Srikanth, Bingchen Zhao, Dixing Xu, Yuxiang Wu, Zhengyao Jiang</td>
+          <td>นำเสนอ AIDE² ระบบที่ให้ AI research agent แก้ไขโค้ดของตัวเอง ทดสอบประสิทธิภาพเวอร์ชันที่แก้ไขแล้วบนชุดงาน AI R&amp;D และเก็บเฉพาะเวอร์ชันที่ทำผลงานดีที่สุดบนชุดประเมินที่ซ่อนไว้ เป็นงานวิจัยด้านความสามารถในการพัฒนาตัวเองซ้ำของเอเจนต์ AI</td>
+          <td>✅ <a href="https://arxiv.org/abs/2609.26457">arXiv:2609.26457</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">บทความนี้ส่งขึ้น arXiv เมื่อ 22 ก.ย. 2569 แต่ยังเป็นประเด็นที่ถูกพูดถึงต่อเนื่องเรื่องความสามารถของ AI agent ในการปรับปรุงตัวเอง จึงนำมาแสดงตามข้อยกเว้นสำหรับงานวิจัยที่ยังเป็นประเด็น <span class="badge-warn">ต่อเนื่อง</span></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>dream-num/univer</td>
+          <td>ติดอันดับ #1 GitHub Trending วันนี้ (จำนวนดาวรวมไม่ระบุแน่ชัดจากแหล่งข้อมูล)</td>
+          <td>TypeScript</td>
+          <td>"Office Harness for AI Agents" รวม Spreadsheets, Docs, Slides, Canvas, Relational Tables และ PDF ไว้ในรันไทม์เดียว ให้คนและ AI agent ทำงานในไฟล์เดียวกันได้ พร้อม Facade API สำหรับแต่ละโมดูล</td>
+          <td>✅ <a href="https://github.com/dream-num/univer">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>google/ax</td>
+          <td>~8,740 (+~1,542 ในรอบ 24 ชม. ที่ผ่านมา)</td>
+          <td>Go</td>
+          <td>Orchestrator สำหรับรันงาน AI agent ระดับพันล้าน workload ยังคงติดอันดับต้น GitHub Trending ต่อเนื่องจากเมื่อวาน <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/google/ax">GitHub (official repo)</a> · 📰 <a href="https://trendshift.io/repositories/34611">Trendshift</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวของ google/ax อ้างอิงจากบริการติดตามสถิติ GitHub บุคคลที่สาม (Trendshift) ไม่ใช่การอ่านหน้า GitHub โดยตรงในรอบนี้ อาจคลาดเคลื่อนเล็กน้อย ส่วนตัวเลขดาวของ dream-num/univer ไม่พบแหล่งข้อมูลที่ยืนยันจำนวนดาวสะสมได้ครบถ้วน จึงแสดงเฉพาะอันดับ Trending</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบเครื่องมือหรือแอปใหม่ทั้งหมดที่เปิดตัวครั้งแรกและยืนยันแหล่งที่มาได้ครบในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ นอกเหนือจากที่แสดงในหัวข้อ Open Source และ Benchmark</p>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+        <tr>
+          <td>MentalHealthBench (OpenAI)</td>
+          <td>เปิดเป็นเบนช์มาร์กสาธารณะให้นักวิจัยภายนอกตรวจสอบวิธีการ รันการประเมินของตัวเอง และต่อยอดงานวิจัยได้ (รายละเอียดคะแนนดูหัวข้อ Benchmark)</td>
+          <td>✅ <a href="https://openai.com/index/introducing-mentalhealthbench/">OpenAI (official)</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>เปิดตัว MentalHealthBench เบนช์มาร์กเปิดสำหรับประเมินการตอบสนองของโมเดล AI ในบทสนทนาด้านสุขภาพจิต ครอบคลุมบทสนทนาสังเคราะห์ 1,215 บท จับคู่กับเกณฑ์การให้คะแนน 5,262 ข้อ พัฒนาร่วมกับจิตแพทย์และนักจิตวิทยากว่า 80 คนจาก 22 ประเทศ 19 ภาษา (ดูรายละเอียดในหัวข้อ Benchmark) ✅ <a href="https://openai.com/index/introducing-mentalhealthbench/">OpenAI (official)</a></p>
+    <p>มีรายงานจากสื่อหลายสำนักว่า OpenAI ร่วมกับ Google และ Anthropic กำลังหารือจัดตั้ง "Frontier AI Standards Agency" (SAFA) องค์กรกำกับมาตรฐานความปลอดภัย AI ระดับอุตสาหกรรม โดยทาบทาม Sriram Krishnan อดีตที่ปรึกษานโยบาย AI ทำเนียบขาว เป็นซีอีโอ (ดูรายละเอียดในหัวข้อ Industry) ❓ <a href="https://www.proactiveinvestors.com/companies/news/1099096/google-openai-and-anthropic-move-closer-to-ai-safety-standards-body-1099096.html">Proactive Investors</a></p>
+
+    <h3>Anthropic</h3>
+    <p>ประกาศว่า Claude ค้นพบระบบเอนไซม์ชนิดใหม่ที่มีคุณสมบัติคล้าย CRISPR โดยอาศัยการชี้นำระดับสูงจากนักวิทยาศาสตร์ของบริษัทเท่านั้น ระบบนี้มีพื้นฐานจากเอนไซม์ reverse transcriptase ที่คัดลอก RNA เป็น DNA ซึ่งค้นพบผ่านห้องปฏิบัติการชีววิทยาที่ตั้งขึ้นใหม่ในซานฟรานซิสโก โดย Claude ใช้เอเจนต์ 950 ตัวและโทเคนกว่า 210 ล้านโทเคนในเวลา 21 ชั่วโมง Anthropic ย้ำว่ายังต้องใช้เวลาอีกมากเพื่อพิสูจน์ว่าระบบนี้ใช้งานได้จริงหรือไม่ และรอการตรวจสอบจากภายนอก ✅ <a href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">Anthropic (official)</a> · 📰 <a href="https://www.aljazeera.com/economy/2026/9/24/ai-model-claude-discovers-crispr-like-enzyme-system-anthropic-says">Al Jazeera</a> · 📰 <a href="https://dataconomy.com/2026/09/24/anthropic-claude-crispr-enzyme-system-21-hours/">Dataconomy</a></p>
+    <p>มีรายงานว่า Anthropic ร่วมกับ OpenAI และ Google หารือจัดตั้ง Frontier AI Standards Agency (ดูรายละเอียดในหัวข้อ Industry) ❓ <a href="https://www.proactiveinvestors.com/companies/news/1099096/google-openai-and-anthropic-move-closer-to-ai-safety-standards-body-1099096.html">Proactive Investors</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>Koray Kavukcuoglu หัวหน้า Google DeepMind คนใหม่ ให้สัมภาษณ์ต่อสาธารณะครั้งแรกในตำแหน่งนี้ที่งาน The Information's AI Agenda Live Summit ว่า Gemini 4 เข้าสู่ขั้นตอน post-training refinement แล้ว และตั้งเป้าเปิดตัวก่อนสิ้นปีนี้ พร้อมระบุว่าคำถามเรื่อง AGI ที่ผู้บริหารคนก่อน (Demis Hassabis) ให้ความสำคัญนั้น "ไม่ใช่บทสนทนาที่ถูกต้อง" สะท้อนทิศทางใหม่ของทีม (ดูรายละเอียดในหัวข้อ AI Models) 📰 <a href="https://the-decoder.com/deepmind-was-built-to-chase-agi-but-its-new-chief-just-wants-gemini-4-out-the-door/">The Decoder</a></p>
+
+    <h3>Meta</h3>
+    <p>ในงาน Connect เมื่อ 23 ก.ย. Meta เปิดตัวแว่น Ray-Ban Meta Gen 3 สองรุ่น ("Aperol" แบบซันกลาส และ "Bellini" แบบแว่นสายตาที่บางลง) รวมถึง Luna รุ่นเสียงอย่างเดียวไม่มีกล้องเพื่อความเป็นส่วนตัว และเปิดตัวตัวอย่างเฮดเซ็ต mixed-reality โครงการ Phoenix โดยอุปกรณ์ทั้งหมดมาพร้อมโมเดล Muse Spark ของ Meta Superintelligence Labs ตั้งแต่วันแรก <span class="badge-warn">ต่อเนื่อง</span> 📰 <a href="https://the-decoder.com/deepmind-was-built-to-chase-agi-but-its-new-chief-just-wants-gemini-4-out-the-door/">อ้างอิงร่วมจากรายงานข่าวเทคโนโลยีวันที่ 23-24 ก.ย.</a></p>
+
+    <h3>Microsoft</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Microsoft ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน</p>
+
+    <h3>Amazon</h3>
+    <p>ไม่พบข่าวใหม่เพิ่มเติมนอกเหนือจากปลั๊กอิน Seller Assistant ที่รายงานไปแล้วเมื่อวันก่อนหน้า</p>
+
+    <h3>NVIDIA</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก NVIDIA ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน</p>
+
+    <h3>Startup</h3>
+    <p>TEKEVER บริษัทระบบอัตโนมัติ (โดรน/defense tech) ที่ใช้ AI ระดมทุน Series D มูลค่า 580 ล้านดอลลาร์สหรัฐ ที่มูลค่าบริษัท 6.4 พันล้านดอลลาร์ นำโดย UC Investments และ Baillie Gifford (ดูรายละเอียดในหัวข้อ Industry) 📰 <a href="https://tech.eu/2026/09/23/tekever-raises-580m-series-d-at-6-4b-valuation/">Tech.eu</a> · 📰 <a href="https://techfundingnews.com/tekever-580m-series-d-6-4b-valuation-uc-investments/">Tech Funding News</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>Benchmark/Eval:</b> OpenAI เปิด MentalHealthBench เป็นเบนช์มาร์กสาธารณะพร้อมชุดข้อมูลและเกณฑ์การให้คะแนนที่ผู้อื่นนำไปใช้ประเมินโมเดลของตนเองได้ (ดูหัวข้อ Benchmark)</li>
+      <li><b>Agent/Office Runtime:</b> dream-num/univer เปิด Office SDK แบบโอเพนซอร์สที่รวม Sheets, Docs, Slides, Boards, Bases, PDF ไว้ในรันไทม์เดียวสำหรับ AI agent (ดูหัวข้อ Open Source)</li>
+      <li><b>Agent/Infrastructure:</b> google/ax ยังคงเป็น orchestrator สำหรับรัน AI agent จำนวนมากที่ติดอันดับ Trending ต่อเนื่อง (ดูหัวข้อ Open Source) <span class="badge-warn">ต่อเนื่อง</span></li>
+      <li><b>MCP:</b> ไม่พบอัปเดตสเปกหรือรีลีสใหม่เฉพาะเจาะจงของ Model Context Protocol ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ (สเปกล่าสุดคือ 28 ก.ค. 2569 ซึ่งเกินกรอบเวลาของรายงานนี้)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>Investment:</b> TEKEVER ระดมทุน Series D มูลค่า 580 ล้านดอลลาร์สหรัฐ ที่มูลค่าบริษัท 6.4 พันล้านดอลลาร์ นำโดย UC Investments และ Baillie Gifford พร้อมนักลงทุนใหม่ Merlyn Advisors เงินทุนนี้จะใช้ขยายธุรกิจระหว่างประเทศ กำลังการผลิต และการพัฒนาเทคโนโลยี 📰 <a href="https://tech.eu/2026/09/23/tekever-raises-580m-series-d-at-6-4b-valuation/">Tech.eu</a> · 📰 <a href="https://www.suasnews.com/2026/09/tekever-raises-us580-million-reaching-us6-4-billion-valuation-in-series-d-round-led-by-uc-investments-and-baillie-gifford/">sUAS News</a></li>
+      <li><b>Regulation/Safety (ยังไม่ยืนยันอย่างเป็นทางการ):</b> มีรายงานจากสื่อหลายสำนักตรงกันว่า Google, OpenAI และ Anthropic กำลังผลักดันจัดตั้ง "Frontier AI Standards Agency" (ชื่อชั่วคราวคือ SAFA) องค์กรกำกับมาตรฐานความปลอดภัย AI แบบกำกับดูแลตนเองในอุตสาหกรรม จำลองโครงสร้างคล้าย FINRA ของอุตสาหกรรมการเงินสหรัฐฯ วางแผนให้มีระบบทดสอบและตรวจสอบก่อนเปิดตัวโมเดล รวมถึงกฎการรายงานเหตุการณ์ผิดปกติ โดยทาบทาม Sriram Krishnan เป็นซีอีโอ ทั้งนี้ยังไม่พบแถลงการณ์อย่างเป็นทางการจากทั้งสามบริษัทในรอบนี้ ❓ <a href="https://www.proactiveinvestors.com/companies/news/1099096/google-openai-and-anthropic-move-closer-to-ai-safety-standards-body-1099096.html">Proactive Investors</a> · ❓ <a href="https://www.techflowpost.com/en-US/newsletter/137673">TechFlow Post</a></li>
+    </ul>
+    <p class="note">ไม่พบข่าวด้าน Acquisition ใหม่ที่ยืนยันแหล่งที่มาได้ครบ 2 แหล่งในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+        <tr><td>MentalHealthBench</td><td>GPT-6 Astra</td><td>57.3%</td><td>✅ <a href="https://openai.com/index/introducing-mentalhealthbench/">OpenAI (official)</a></td></tr>
+        <tr><td>MentalHealthBench</td><td>GPT-6 Sol</td><td>53.9%</td><td>✅ <a href="https://openai.com/index/introducing-mentalhealthbench/">OpenAI (official)</a></td></tr>
+        <tr><td>MentalHealthBench</td><td>Claude Opus 5.5</td><td>52.4%</td><td>✅ <a href="https://openai.com/index/introducing-mentalhealthbench/">OpenAI (official)</a> · 📰 <a href="https://www.unite.ai/openai-debuts-mentalhealthbench-for-ai-mental-health-conversations/">Unite.AI</a></td></tr>
+        <tr><td>MentalHealthBench</td><td>GPT-6 Luna</td><td>50.2%</td><td>✅ <a href="https://openai.com/index/introducing-mentalhealthbench/">OpenAI (official)</a></td></tr>
+        <tr><td>MentalHealthBench</td><td>GPT-4o</td><td>32.1%</td><td>✅ <a href="https://openai.com/index/introducing-mentalhealthbench/">OpenAI (official)</a></td></tr>
+        <tr><td>MentalHealthBench</td><td>Gemini 2.5 Pro</td><td>29.5%</td><td>✅ <a href="https://openai.com/index/introducing-mentalhealthbench/">OpenAI (official)</a></td></tr>
+      </table>
+    </div>
+    <p class="note">คะแนนวัดความสามารถของโมเดลในการตอบสนองบทสนทนาด้านสุขภาพจิตอย่างปลอดภัยและเหมาะสม ครอบคลุมทั้งบทสนทนาทั่วไป กรณีมีความเสี่ยงสูง และกรณีฉุกเฉิน เผยแพร่โดย OpenAI พร้อมชุดข้อมูลเปิดให้ตรวจสอบวิธีการได้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Trending (GitHub):</b> dream-num/univer ขึ้นอันดับ #1 GitHub Trending วันนี้ในฐานะรันไทม์ออฟฟิศสำหรับ AI agent ตามมาด้วย google/ax ที่ยังติดอันดับต้นต่อเนื่องจากเมื่อวาน สะท้อนกระแสที่เปลี่ยนจากเครื่องมือ coding agent เดี่ยว ไปสู่โครงสร้างพื้นฐานและรันไทม์สำหรับให้ AI agent ทำงานร่วมกับเอกสาร/ข้อมูลจริงในสเกลใหญ่ 🔥 <a href="https://github.com/trending">GitHub Trending</a></li>
+      <li><b>Trending (Hugging Face):</b> ไม่พบข้อมูล Trending Papers เฉพาะวันนี้ที่ยืนยันแยกจากข้อมูลรวมรายเดือนได้ จึงงดแสดงในหัวข้อนี้ของวันนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. เร่งการค้นพบทางวิทยาศาสตร์ด้วย AI agent (Claude Life Sciences)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การค้นหาเอนไซม์หรือกลไกทางชีววิทยาใหม่ในข้อมูล DNA จำนวนมหาศาลต้องใช้เวลาและแรงงานนักวิจัยสูง</dd>
+        <dt>วิธีใช้</dt><dd>นักวิทยาศาสตร์ให้ทิศทางระดับสูงแก่ Claude แล้วปล่อยให้เอเจนต์หลายร้อยตัวสำรวจฐานข้อมูล DNA เพื่อระบุกลุ่มโปรตีนที่ยังไม่มีการจำแนกและตั้งสมมติฐานโดยอัตโนมัติ</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาค้นพบเบื้องต้นจากหลักเดือนหรือหลักปีเหลือเพียง 21 ชั่วโมง แม้ยังต้องรอการตรวจสอบและทดลองยืนยันผลในห้องแล็บจริงต่อไป</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. ประเมินความปลอดภัยของ AI ในบทสนทนาสุขภาพจิต (MentalHealthBench)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ยังไม่มีมาตรฐานกลางที่นักพัฒนาใช้วัดว่าโมเดล AI ตอบสนองต่อผู้ใช้ที่มีความเสี่ยงด้านสุขภาพจิตได้อย่างปลอดภัยและเหมาะสมหรือไม่</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ชุดบทสนทนาสังเคราะห์และเกณฑ์การให้คะแนนที่เขียนโดยจิตแพทย์/นักจิตวิทยากว่า 80 คน มาทดสอบและให้คะแนนโมเดลของตนเอง</dd>
+        <dt>ประโยชน์</dt><dd>ช่วยให้ทีมพัฒนา AI เปรียบเทียบและปรับปรุงความปลอดภัยของผลิตภัณฑ์ก่อนปล่อยให้ผู้ใช้จริงเข้าถึง โดยเฉพาะในสถานการณ์ฉุกเฉิน</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. รวมงานเอกสารสำนักงานให้ AI agent ทำงานร่วมกับคนได้ในรันไทม์เดียว (dream-num/univer)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>AI agent ที่ต้องทำงานกับสเปรดชีต เอกสาร งานนำเสนอ และฐานข้อมูลเชิงสัมพันธ์ มักต้องสลับเครื่องมือหลายตัวและขาดรูปแบบไฟล์ที่ใช้ร่วมกับคนได้จริง</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ Univer Office SDK ที่รวม Sheets, Docs, Slides, Boards, Bases, PDF ไว้ในรันไทม์เดียวพร้อม API กลางให้ทั้งคนและ agent แก้ไขไฟล์เดียวกันได้</dd>
+        <dt>ประโยชน์</dt><dd>ลดความซับซ้อนของการต่อ AI agent เข้ากับงานเอกสารจริง และเปิดทางให้ agent สร้างแดชบอร์ดหรือรายงานเชิงโต้ตอบได้โดยตรง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. ให้ AI research agent พัฒนาโค้ดของตัวเองซ้ำ (AIDE² Recursive Self-Improvement)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การปรับปรุงประสิทธิภาพของ AI research agent ยังต้องพึ่งพาวิศวกรมนุษย์ในการแก้ไขโค้ดและทดสอบซ้ำ ทำให้รอบการพัฒนาช้า</dd>
+        <dt>วิธีใช้</dt><dd>ให้ agent เสนอการแก้ไขโค้ดของตัวเอง ทดสอบเวอร์ชันที่แก้ไขแล้วบนชุดงาน AI R&amp;D แล้วเก็บเฉพาะเวอร์ชันที่ทำผลงานดีที่สุดบนชุดประเมินที่ซ่อนไว้</dd>
+        <dt>ประโยชน์</dt><dd>เปิดแนวทางวิจัยให้ agent พัฒนาความสามารถของตัวเองได้เร็วขึ้นโดยลดการพึ่งพาแรงงานมนุษย์ในรอบการปรับปรุงโค้ด แม้ยังอยู่ในขั้นวิจัยเบื้องต้น</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>การค้นพบระบบเอนไซม์คล้าย CRISPR ของ Claude จะผ่านการตรวจสอบยืนยันจากนักวิทยาศาสตร์ภายนอกและนำไปใช้งานจริงได้หรือไม่</dd>
+        <dt>เหตุผล</dt><dd>Anthropic เองย้ำว่ายังต้องใช้เวลาอีกมากเพื่อพิสูจน์ว่าระบบนี้ทำงานอย่างไรและใช้งานได้จริงหรือไม่ ผลลัพธ์นี้จะเป็นบททดสอบสำคัญว่า AI agent สามารถสร้างการค้นพบทางวิทยาศาสตร์ที่ตรวจสอบซ้ำได้จริงหรือเพียงตั้งสมมติฐานเบื้องต้น</dd>
+        <dt>Source</dt><dd><a href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">Anthropic (official)</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>Google, OpenAI และ Anthropic จะประกาศจัดตั้ง Frontier AI Standards Agency อย่างเป็นทางการเมื่อใด และ Sriram Krishnan จะตอบรับตำแหน่งซีอีโอหรือไม่</dd>
+        <dt>เหตุผล</dt><dd>ขณะนี้มีเพียงรายงานจากสื่อหลายสำนัก ยังไม่มีแถลงการณ์อย่างเป็นทางการจากบริษัทใด หากเกิดขึ้นจริงจะเป็นกลไกกำกับดูแลตนเองระดับอุตสาหกรรมที่ใหญ่ที่สุดของวงการ AI ในรอบหลายปี</dd>
+        <dt>Source</dt><dd><a href="https://www.proactiveinvestors.com/companies/news/1099096/google-openai-and-anthropic-move-closer-to-ai-safety-standards-body-1099096.html">Proactive Investors</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">Anthropic — Claude discovers a novel enzyme system with CRISPR-like repeats</a></li>
+          <li><a href="https://openai.com/index/introducing-mentalhealthbench/">OpenAI — Introducing MentalHealthBench</a></li>
+          <li><a href="https://github.com/dream-num/univer">GitHub — dream-num/univer</a></li>
+          <li><a href="https://github.com/google/ax">GitHub — google/ax</a></li>
+          <li><a href="https://arxiv.org/abs/2609.26457">arXiv — Recursive self-improvement of AI research agents (2609.26457)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2609.26457">Recursive self-improvement of AI research agents</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.aljazeera.com/economy/2026/9/24/ai-model-claude-discovers-crispr-like-enzyme-system-anthropic-says">Al Jazeera — Claude discovers CRISPR-like enzyme system</a></li>
+          <li><a href="https://dataconomy.com/2026/09/24/anthropic-claude-crispr-enzyme-system-21-hours/">Dataconomy — Claude found CRISPR-like enzyme system</a></li>
+          <li><a href="https://the-decoder.com/deepmind-was-built-to-chase-agi-but-its-new-chief-just-wants-gemini-4-out-the-door/">The Decoder — DeepMind chief on Gemini 4</a></li>
+          <li><a href="https://www.androidheadlines.com/2026/09/google-deepmind-teases-early-gemini-4-launch.html">Android Headlines — Gemini 4 early launch tease</a></li>
+          <li><a href="https://www.unite.ai/openai-debuts-mentalhealthbench-for-ai-mental-health-conversations/">Unite.AI — OpenAI debuts MentalHealthBench</a></li>
+          <li><a href="https://www.proactiveinvestors.com/companies/news/1099096/google-openai-and-anthropic-move-closer-to-ai-safety-standards-body-1099096.html">Proactive Investors — Frontier AI Standards Agency</a></li>
+          <li><a href="https://www.techflowpost.com/en-US/newsletter/137673">TechFlow Post — Frontier AI Standards Body</a></li>
+          <li><a href="https://tech.eu/2026/09/23/tekever-raises-580m-series-d-at-6-4b-valuation/">Tech.eu — TEKEVER Series D</a></li>
+          <li><a href="https://techfundingnews.com/tekever-580m-series-d-6-4b-valuation-uc-investments/">Tech Funding News — TEKEVER Series D</a></li>
+          <li><a href="https://www.suasnews.com/2026/09/tekever-raises-us580-million-reaching-us6-4-billion-valuation-in-series-d-round-led-by-uc-investments-and-baillie-gifford/">sUAS News — TEKEVER Series D</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 24 ก.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
