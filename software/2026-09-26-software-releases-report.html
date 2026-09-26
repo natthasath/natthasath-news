@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 Weekly Software Releases Report - Week 39</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27, 32, 39, 0.14);
+  --line-strong: rgba(27, 32, 39, 0.28);
+  --accent: #0F7A73;
+  --critical: #D92B2B;
+  --high: #FF6B35;
+  --medium: #FFA500;
+  --low: #4CAF50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231, 230, 224, 0.14);
+    --line-strong: rgba(231, 230, 224, 0.26);
+    --accent: #3FBDAF;
+    --critical: #FF6B6B;
+    --high: #FF8C42;
+    --medium: #FFB84D;
+    --low: #81C784;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.page { max-width: 1200px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topstrip {
+  display: flex; justify-content: space-between; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-faint);
+}
+
+.masthead { padding: 44px 0 30px; border-bottom: 1px solid var(--line-strong); }
+.kicker {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+  font-size: 15px; color: var(--accent); margin: 0 0 14px;
+}
+.kicker::before { content: "◆ "; font-size: 11px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 800; margin: 0 0 16px; }
+h2 {
+  font-size: 24px; font-weight: 700; margin: 36px 0 20px; color: var(--ink);
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; color: var(--ink-soft); }
+
+.meta-row { display: flex; gap: 20px; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+
+.executive-summary {
+  background: var(--surface); border-left: 4px solid var(--accent);
+  padding: 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8;
+}
+
+.dashboard {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.dashboard-item {
+  background: var(--surface); padding: 16px; border-radius: 4px;
+  border-top: 3px solid var(--accent); text-align: center;
+}
+.dashboard-item-value { font-size: 32px; font-weight: 700; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.dashboard-item-label {
+  font-size: 12px; color: var(--ink-faint); margin-top: 8px;
+  text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--surface); }
+th {
+  background: var(--surface-2); color: var(--ink); padding: 12px; text-align: left;
+  font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--line-strong);
+}
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.label {
+  display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 11px;
+  font-weight: 600; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-major { background: rgba(15, 122, 115, 0.2); color: var(--accent); }
+.label-minor { background: rgba(15, 122, 115, 0.1); color: var(--ink-soft); }
+.label-patch { background: rgba(217, 43, 43, 0.1); color: var(--ink-soft); }
+.label-security { background: rgba(217, 43, 43, 0.2); color: var(--critical); }
+.label-lts { background: rgba(255, 165, 0, 0.15); color: var(--medium); }
+.label-rc { background: rgba(156, 39, 176, 0.15); color: var(--ink-soft); }
+.label-beta { background: rgba(63, 81, 181, 0.15); color: var(--ink-soft); }
+.label-eol { background: rgba(217, 43, 43, 0.15); color: var(--critical); }
+
+.severity-critical { color: var(--critical); font-weight: 600; }
+.severity-high { color: var(--high); font-weight: 600; }
+.severity-medium { color: var(--medium); font-weight: 600; }
+.severity-low { color: var(--low); font-weight: 600; }
+
+.source-badge {
+  display: inline-block; padding: 3px 6px; background: var(--surface-2);
+  border-radius: 2px; font-size: 10px; font-family: "JetBrains Mono", monospace; color: var(--ink-faint);
+}
+
+.note {
+  background: var(--surface); border-left: 4px solid var(--medium); padding: 12px;
+  margin: 12px 0; border-radius: 2px; font-size: 13px; color: var(--ink-soft);
+}
+.empty-note {
+  background: var(--surface); border: 1px dashed var(--line-strong); padding: 12px 16px;
+  margin: 12px 0; border-radius: 4px; font-size: 13.5px; color: var(--ink-soft); font-style: italic;
+}
+.highlight-box { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; margin: 12px 0; border-radius: 4px; }
+
+footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-strong); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+.two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest</p>
+    <h1>💻 Weekly Software Releases Report</h1>
+    <div class="meta-row">
+      <span><b>Week:</b> 39</span>
+      <span><b>Period:</b> September 20 – 26, 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="executive-summary">
+      <p>สัปดาห์นี้ (20–26 ก.ย. 2569) เป็นสัปดาห์ที่หนักด้านความปลอดภัยระดับ Critical ที่กำลังถูกโจมตีจริงพร้อมกันหลายรายการ ได้แก่ Arista VeloCloud Orchestrator (CVE-2026-93952, CVSS 10.0), Check Point Security Gateway/Spark Firewall (CVE-2026-85102, CVSS 9.8) และ Check Point Management Web Service (CVE-2026-93616, CVSS 9.8), F5 BIG-IP APM (CVE-2026-94127, Zero-day, CVSS 9.8) และ Zyxel GS1900 Switch (CVE-2026-7273, CVSS 8.8) ที่มีรายงานว่า Switch ถูกยึดควบคุมแล้วเกือบ 1,000 เครื่อง นอกจากนี้ GitLab ยังออก Critical Patch (19.4.1/19.3.3/19.2.7) แก้ RCE คะแนน CVSS 9.9 สองรายการใน CI/CD Regex Parser และ AlmaLinux ออกแพตช์ FreeIPA/IdM ระดับ Critical (CVSS 9.8) เช่นกัน</p>
+      <p>ด้าน Software Release สัปดาห์นี้ไม่มี Major Release ใหม่ แต่มีความเคลื่อนไหวหนาแน่นในหลายสาย: PostgreSQL 19 Beta 4 เตรียมเข้าสู่ RC, PHP ออกแพตช์ประสานงาน 4 เวอร์ชันพร้อมกัน (8.5.11/8.4.26/8.3.35/8.2.34) ควบคู่กับ Release Candidate ของ PHP 8.6 ที่มีความไม่ตรงกันของชื่อ Tag ระหว่างแหล่งข้อมูล, Angular ออก 22.2.0 (Minor) พร้อม `@boundary` Block ใหม่, Kubernetes และ containerd ออกแพตช์ประสานงานหลายสาขาพร้อมกัน และ GitHub Actions ประกาศถอด Node.js 20 ออกจาก Runner อย่างเป็นทางการซึ่งถือเป็น Breaking Change สำหรับ Custom JavaScript Actions</p>
+      <p><strong>ประเด็นสำคัญ:</strong> ทีมงานที่ดูแล Arista VeloCloud, Check Point Security Gateway/Management, F5 BIG-IP APM (เมื่อกำหนดค่าเป็น OAuth Authorization Server) และ Zyxel GS1900 Switch ควรอัปเดต/แพตช์โดยด่วนที่สุดเนื่องจากมีการโจมตีจริงแล้ว ส่วนทีมที่ใช้ GitLab CI/CD และ AlmaLinux/FreeIPA ควรอัปเกรดเชิงรุกก่อนถูกใช้โจมตี และทีม CI/CD ที่มี Custom GitHub Action ควรตรวจสอบว่า Action รองรับ Node.js 24 แล้วก่อนถูกตัดการทำงาน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">55</div>
+        <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">25</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">10</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>26.10.0 (Current)</td>
+          <td>เพิ่ม `crypto.parsePKCS12()`, `fs.openAsBlobSync()`, `util.throttle()`/`debounce()`, SlidingWindowHistogram Performance Hooks และรองรับการโหลด FFI VFS เพิ่มเติม พร้อมแก้บั๊ก HTTP/2, Stream และ Crypto หลายรายการ</td>
+          <td>Sep 22, 2026</td>
+          <td><span class="label label-minor">🔹 Minor</span></td>
+          <td><a href="https://nodejs.org/en/blog/release/v26.10.0" class="source-badge">nodejs.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>22.23.3 'Jod' (LTS)</td>
+          <td>อัปเดต Root Certificates (NSS 3.125), Corepack 0.36.0, npm 10.9.9, ICU 78.3, OpenSSL 3.5.8 และ Undici 6.28.1</td>
+          <td>Sep 23, 2026</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td><a href="https://github.com/nodejs/node/releases/tag/v22.23.3" class="source-badge">github.com/nodejs</a></td>
+        </tr>
+        <tr>
+          <td><strong>PHP</strong></td>
+          <td>8.5.11 / 8.4.26</td>
+          <td>ส่วนหนึ่งของ Coordinated Release 5 เวอร์ชันพร้อมกัน แก้ไข FastCGI ACL Bypass, ช่องโหว่ OpenSSL Hostname-downgrade และปัญหา Cross-origin Credential Leak</td>
+          <td>Sep 22, 2026</td>
+          <td><span class="label label-patch">🩹 Patch (Security+Bugfix)</span></td>
+          <td><a href="https://www.linuxcompatible.org/story/php-releases-five-versions-at-once-includes-860-rc1-and-8511" class="source-badge">linuxcompatible.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>PHP</strong></td>
+          <td>8.3.35 / 8.2.34</td>
+          <td>Security-only Release ในชุด Coordinated Release เดียวกันกับ 8.5.11/8.4.26</td>
+          <td>Sep 22, 2026</td>
+          <td><span class="label label-patch">🩹 Patch (Security-only)</span></td>
+          <td><a href="https://www.linuxcompatible.org/story/php-releases-five-versions-at-once-includes-860-rc1-and-8511" class="source-badge">linuxcompatible.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>PHP</strong></td>
+          <td>8.6.0 RC (⚠ ชื่อ Tag ไม่ตรงกันระหว่างแหล่งข้อมูล — RC1 หรือ RC2)</td>
+          <td>Feature-frozen Preview ของ PHP 8.6 ก่อนเข้า GA ที่วางแผนไว้ 19 พ.ย. 2569 — php.watch ระบุ RC1 ขณะที่ php.internals Mailing List ระบุว่ามีการแพ็กเกจผิดพลาดและออก RC2 แทนในวันเดียวกัน ควรตรวจสอบ Tag ที่แน่ชัดจาก php.net/downloads ก่อนอ้างอิง</td>
+          <td>Sep 22, 2026</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span></td>
+          <td><a href="https://php.watch/versions/8.6/releases/8.6.0RC1" class="source-badge">php.watch</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Python, Go หรือ Rust ที่มีวันที่ประกาศอยู่ในช่วง 20–26 ก.ย. 2569 (Python 3.15.0rc2 — 1 ก.ย., Go 1.27.1/1.26.8 — 1 ก.ย., Rust 1.98.1 — 3 ก.ย. ทั้งหมดอยู่นอกช่วงเวลานี้ และ Rust 1.99.0 อยู่ระหว่าง Beta วางแผน GA 1 ต.ค. 2569) Java/OpenJDK ก็ไม่มี Release ในช่วงนี้เช่นกัน (JDK 27 GA — 15 ก.ย., รายงานไปแล้วสัปดาห์ก่อนหน้า) และ .NET ล่าสุดคือ Servicing Release 10.0.12/9.0.20/8.0.31 เมื่อ 8 ก.ย. 2569 ซึ่งอยู่นอกช่วงเวลานี้เช่นกัน</div>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Framework</th><th>Version</th><th>Highlights</th><th>Migration</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Angular</strong></td>
+          <td>22.2.0</td>
+          <td>เพิ่ม `@boundary` Block ใหม่, ErrorBoundary Programmatic API และเปิดเผย Router Resource ใน Public API</td>
+          <td>ทีมที่มี Custom Error Boundary ควรตรวจสอบ Angular Update Guide ก่อนอัปเกรด — ไม่มี Breaking Change ที่ระบุชัดเจนในหน้า Release</td>
+          <td><a href="https://github.com/angular/angular/releases" class="source-badge">github.com/angular</a></td>
+        </tr>
+        <tr>
+          <td><strong>Angular</strong></td>
+          <td>22.1.8 (Patch)</td>
+          <td>แก้บั๊กใน Package Common, Compiler, Core, Forms, Platform-server และ Router</td>
+          <td>ไม่มี Breaking Change</td>
+          <td><a href="https://github.com/angular/angular/releases" class="source-badge">github.com/angular</a></td>
+        </tr>
+        <tr>
+          <td><strong>Angular</strong></td>
+          <td>21.2.24 / 20.3.32 (Patch, Backport)</td>
+          <td>Backport การแก้ปัญหา Router เรื่องการจอง Memory ผิดปกติ (Dense-elements Allocation) เมื่อใช้ Numeric URL Keys</td>
+          <td>ไม่มี Breaking Change</td>
+          <td><a href="https://github.com/angular/angular/releases" class="source-badge">github.com/angular</a></td>
+        </tr>
+        <tr>
+          <td><strong>Laravel</strong></td>
+          <td>13.33.0</td>
+          <td>เปลี่ยนพฤติกรรม Queue/Worker โดยถอด `restart_syscalls` ออกจาก `pcntl_signal`, เปลี่ยนเวลาการ Hash Password ใน Session ให้ไม่รั่วไหลผ่าน Timing, เพิ่มตัวเลือก Opt-out การ Kill Worker เมื่อ Job Timeout, แก้ Enum Key ใน `Cache::tags()->many()`/`get()` และรองรับ MSSQL DSN</td>
+          <td><strong>มี Breaking Change เล็กน้อย:</strong> การเปลี่ยนพฤติกรรม `restart_syscalls`/Timing ของ Session Password Hash อาจกระทบ Worker และ Session ที่พึ่งพาพฤติกรรมเดิม ควรตรวจสอบก่อนอัปเกรด</td>
+          <td><a href="https://github.com/laravel/framework/releases/tag/v13.33.0" class="source-badge">github.com/laravel</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ React (ล่าสุด 19.3.0 — 9 ก.ย.), Vue.js (ยังไม่มี Stable ของ 3.6 — RC ล่าสุด 3.6.0-rc.9 เมื่อ 18 ก.ย. อยู่นอกช่วงเวลา 1 วัน), Django (ล่าสุด 6.0.8/5.2.17 — 4 ส.ค.), FastAPI (ล่าสุด 0.141.1 — 29 ก.ค.) หรือ Spring Boot (ล่าสุด 4.1.1 — 21 ส.ค.) ที่มีวันที่ประกาศอยู่ในช่วง 20–26 ก.ย. 2569</div>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps & CI/CD</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GitLab CE/EE</strong></td>
+          <td>19.4.1 / 19.3.3 / 19.2.7</td>
+          <td>Critical Patch Release แก้ไขช่องโหว่ 11 รายการ รวม RCE คะแนน CVSS 9.9 สองรายการใน CI/CD Regex Parser/Compiler (CVE-2026-89078, CVE-2026-93577) และ XSS ใน MR Diff Viewer</td>
+          <td><span class="label label-security">🔒 Security (Critical)</span></td>
+          <td><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/" class="source-badge">docs.gitlab.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Kubernetes</strong></td>
+          <td>v1.37.1 / v1.36.5 / v1.35.9 / v1.34.12</td>
+          <td>ชุดแพตช์ประสานงานพร้อมกัน 4 สาขาที่ยังดูแลอยู่ (Active Minor Branches)</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.37.1" class="source-badge">github.com/kubernetes</a></td>
+        </tr>
+        <tr>
+          <td><strong>containerd</strong></td>
+          <td>2.4.1 / 2.3.6 / 2.2.9 / 2.0.13 / 1.7.36</td>
+          <td>ชุดแพตช์ประสานงาน 5 สาขา แก้ไขช่องโหว่ความปลอดภัย CVE-2026-53493</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://github.com/containerd/containerd/releases" class="source-badge">github.com/containerd</a></td>
+        </tr>
+        <tr>
+          <td><strong>Terraform</strong></td>
+          <td>v1.16.4</td>
+          <td>แก้บั๊กหลายรายการ รวมถึงการแสดงผล Policy Evaluation</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td><a href="https://github.com/hashicorp/terraform/releases" class="source-badge">github.com/hashicorp</a></td>
+        </tr>
+        <tr>
+          <td><strong>Terraform</strong></td>
+          <td>v1.17.0-beta2</td>
+          <td>เพิ่มการรองรับ Variables/Locals ใน Provider Requirements Block</td>
+          <td><span class="label label-beta">⚙ Beta</span></td>
+          <td><a href="https://github.com/hashicorp/terraform/releases" class="source-badge">github.com/hashicorp</a></td>
+        </tr>
+        <tr>
+          <td><strong>Jenkins</strong></td>
+          <td>2.582 / 2.583 (Weekly)</td>
+          <td>Weekly Release ตามรอบปกติ 2 ฉบับในสัปดาห์นี้ (20 และ 22 ก.ย.) แก้บั๊กสะสม</td>
+          <td><span class="label label-minor">🔹 Minor</span></td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases" class="source-badge">github.com/jenkinsci</a></td>
+        </tr>
+        <tr>
+          <td><strong>Docker Desktop</strong></td>
+          <td>4.92.0</td>
+          <td>Build ใหม่ของ Docker Desktop (⚠ พบเฉพาะหน้า Pre-release/Mirror ที่ยืนยันได้ ไม่สามารถเข้าถึง docs.docker.com/desktop/release-notes โดยตรงเพื่อยืนยันรายละเอียดฉบับเต็มได้ในสภาพแวดล้อมนี้ — ควรตรวจสอบซ้ำก่อนอ้างอิง)</td>
+          <td><span class="label label-minor">🔹 Minor (ยังไม่ยืนยันเนื้อหาเต็ม)</span></td>
+          <td><a href="https://github.com/docker/docs/pull/26103" class="source-badge">github.com/docker</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitHub Actions</strong></td>
+          <td>Node.js 20 Runner Retirement</td>
+          <td>ถอด Node.js 20 ออกจาก GitHub Actions Runner อย่างสมบูรณ์ Custom JavaScript Action ต้องใช้ Node.js 24 ขึ้นไป และถอดตัวเลือก Opt-out `ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION` ออกแล้ว</td>
+          <td><span class="label label-security">⚠ Breaking Change</span></td>
+          <td><a href="https://github.blog/changelog/2026-09-23-node-20-is-no-longer-available-in-github-actions/" class="source-badge">github.blog</a></td>
+        </tr>
+        <tr>
+          <td><strong>Pulumi CLI/SDK</strong></td>
+          <td>v3.265.0</td>
+          <td>ปรับข้อความ First-login ใหม่ เพิ่ม Argument `--provider` สำหรับ Stateful Operations และถอดฟีเจอร์ "AI Mode" ของ `pulumi new` ออก</td>
+          <td><span class="label label-minor">🔹 Minor</span></td>
+          <td><a href="https://github.com/pulumi/pulumi/releases" class="source-badge">github.com/pulumi</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Helm (ล่าสุด v4.3.0/v3.22.0 — 9–10 ก.ย.), Ansible/ansible-core (ล่าสุด 2.21.4/2.20.9/2.19.13 — 8 ก.ย., Beta 2.22.0b1 — 18 ก.ย.) หรือ ArgoCD (ล่าสุด v3.5.3/v3.4.9 — 14 ก.ย., v3.6.0-rc1 — 16 ก.ย.) ที่มีวันที่ประกาศอยู่ในช่วง 20–26 ก.ย. 2569</div>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Database</th><th>Version</th><th>Features</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>PostgreSQL</strong></td>
+          <td>19 Beta 4</td>
+          <td>Beta ฉบับที่ 4 ของ PostgreSQL 19 ปรับปรุงประสิทธิภาพ Query และการจัดการ Autovacuum พร้อมแก้บั๊กสะสมตั้งแต่ Beta 3 — คาดว่าจะเข้าสู่ RC ต้นเดือน ต.ค. และ GA ราวเดือน ต.ค. 2569</td>
+          <td><span class="label label-beta">⚙ Beta</span></td>
+          <td><a href="https://www.postgresql.org/about/news/postgresql-19-beta-4-released-3386/" class="source-badge">postgresql.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Elasticsearch</strong></td>
+          <td>9.5.4 / 9.4.7 / 8.19.22</td>
+          <td>แพตช์ความปลอดภัยแก้ไขช่องโหว่ Uncontrolled Resource Consumption (DoS) หลายรายการ ตามชุดประกาศ ESA-2026-18x (⚠ ไม่สามารถยืนยันเลข CVE ที่แน่ชัดครบทุกรายการได้จากหน้าประกาศโดยตรงในสภาพแวดล้อมนี้)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://github.com/elastic/elasticsearch/releases/tag/v8.19.22" class="source-badge">github.com/elastic</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ MySQL (ล่าสุด 9.7.2/8.4.11 LTS GA — ก.ค.), MariaDB (ล่าสุด 13.0.2 GA/13.1.1 RC — 15 ก.ย.), SQL Server (ล่าสุด CU8/CU27 ตาม Patch Tuesday — 8 ก.ย.), Redis (ล่าสุด 8.10.2 ชุด Security Release — 17 ก.ย.), MongoDB (ล่าสุด r8.3.11/r8.0.32/r7.0.43 — 11 ก.ย.) หรือ Cassandra (ล่าสุด 6.0-alpha2/5.0.9 — 7 ส.ค.) ที่มีวันที่ยืนยันอยู่ในช่วง 20–26 ก.ย. 2569 ได้ — ด้าน Cloud Database พบ Amazon RDS for PostgreSQL เปิด Preview Environment รองรับ PostgreSQL 19 Beta 4 เมื่อ 24 ก.ย. 2569 (<a href="https://aws.amazon.com/about-aws/whats-new/2026/09/postgresql-19-beta-4-amazon-rds-database-preview-environment/" class="source-badge">aws.amazon.com</a>) และ Google Cloud SQL เปลี่ยนพฤติกรรมให้ Backup and DR API เปิดใช้งานอัตโนมัติเมื่อเปิด Cloud SQL Admin API ตั้งแต่ 21 ก.ย. 2569 แต่ไม่สามารถเข้าถึงหน้า Release Notes ทางการโดยตรงเพื่อยืนยันรายละเอียดครบถ้วนได้ (ที่มาจาก WebSearch Snippet ควรตรวจสอบซ้ำ)</div>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>OS</th><th>Version / Advisory</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8783-1 ถึง USN-8796-1 (OpenJDK 8/11/17/21/25)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>ชุดแพตช์ความปลอดภัย OpenJDK หลายเวอร์ชันพร้อมกัน ครอบคลุม CVE-2026-70907, CVE-2026-60589, CVE-2026-61308 และอื่น ๆ กระทบ Ubuntu 24.04/22.04/20.04/18.04 LTS (ไม่ระบุคะแนน CVSS ในหน้าประกาศ)</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8796-1" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8820-1 (curl)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-8927 (Use-after-free ใน Pooled TLS Connection ผ่าน Multi-interface, CVSS 9.1 Critical), CVE-2026-80229 (รั่วไหล Proxy-auth Credential ข้าม Request, CVSS 7.5 High), CVE-2026-82209 และอื่น ๆ อีก 4 รายการ</td>
+          <td><a href="https://curl.se/docs/CVE-2026-8927.html" class="source-badge">curl.se</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8821-1 (OpenStack Swift)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-49017 กระทบ Ubuntu 26.04 LTS (ไม่ระบุคะแนน CVSS ในหน้าประกาศ)</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8821-1" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>Linux Kernel — ชุดประกาศ USN-8817-1, USN-8818-1/2, USN-8819-1/2, USN-8730-6, USN-8729-5</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>ชุดแพตช์ Kernel ความปลอดภัยหลาย Flavour (AWS, ทั่วไป และอื่น ๆ) รวม CVE จำนวนมาก เช่น CVE-2025-38724, CVE-2026-53221, CVE-2026-53131, CVE-2026-63912/63984/63924 ความรุนแรงหลากหลายตั้งแต่ Medium ถึง High</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-8824-1 (libpcap)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-0799 (CVSS 8.7 High) — BPF Interpreter อ่าน/เขียนนอกขอบเขตผ่าน Scratch-memory Register Index ที่ไม่ผ่านการตรวจสอบ กระทบเวอร์ชันก่อน 1.10.7</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-0799" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6509-1 (GIMP)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-78465 (Integer Overflow ใน PCX Loader บน Build 32-bit นำไปสู่ Heap Overflow/RCE/DoS, CVSS 7 High), CVE-2026-78475, CVE-2026-82328 (ICO Loader OOB Read, CVSS 6.1 Medium)</td>
+          <td><a href="https://linuxsecurity.com/advisories/debian/debian-dsa-6509-1-gimp" class="source-badge">linuxsecurity.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6510-1 (xdg-dbus-proxy)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-93676 (CVSS 3.2 Low) — บายพาสการกรอง Broadcast Message ทำให้แอป Flatpak ที่ถูก Sandbox ดักฟัง D-Bus Signal ที่ควรถูกจำกัดได้</td>
+          <td><a href="https://ubuntu.com/security/CVE-2026-93676" class="source-badge">ubuntu.com (mirror)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6511-1 (znc)</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td>แพตช์ความปลอดภัยของ ZNC IRC Bouncer — ไม่สามารถยืนยันเลข CVE ที่แน่ชัดได้จากแหล่งข้อมูลที่เข้าถึงได้ จึงไม่จัดเป็น Security Release ตามเกณฑ์ที่ต้องมี CVE ID</td>
+          <td><a href="https://lists.debian.org/debian-security-announce/2026/" class="source-badge">lists.debian.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6512-1 (LibreOffice)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2024-12426, CVE-2026-63272, CVE-2026-63273 — เอกสารที่สร้างขึ้นเป็นพิเศษอาจนำไปสู่ DoS, การรั่วไหลข้อมูล หรือ Arbitrary Code Execution (ไม่ระบุคะแนน CVSS แยกในแหล่งที่เข้าถึงได้)</td>
+          <td><a href="https://vulners.com/debian/DEBIAN:DSA-6512-1:7F8A1" class="source-badge">vulners.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6513-1 (Chromium)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-95274 (DevTools Improper Output Encoding, High) พร้อม CVE-2026-95275/76/77</td>
+          <td><a href="https://vulners.com/debian/DEBIAN:DSA-6513-1:FDB9B" class="source-badge">vulners.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6514-1 (PHP 8.4)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-91765 (CVSS 7.5 High) — Unbounded Recursion ใน SOAP XML Parser (`cleanup_xml_node`) ทำให้เกิด Stack Exhaustion/Crash โดยไม่ต้องยืนยันตัวตน พร้อม CVE-2025-1218, CVE-2025-14181, CVE-2026-6103</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-91765" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>Debian</strong></td>
+          <td>DSA-6515-1 (VLC)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-56711 (Integer Overflow/OOB Write ใน `AllocatePicture` ผ่านภาพขนาดที่สร้างขึ้นเป็นพิเศษ, CVSS 8.6–8.8 High), CVE-2026-73324</td>
+          <td><a href="https://www.cve.org/CVERecord?id=CVE-2026-56711" class="source-badge">cve.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>RHEL</strong></td>
+          <td>GNU Emacs</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-96269 (CVSS4 7.5 High) — Execute Code ได้ทันทีที่เปิดไฟล์ (Emacs 28.1–31.1) ผ่าน `read-symbol-shorthands` ที่ไม่น่าเชื่อถือกระทบ `intern`/`unintern`</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-96269" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>RHEL</strong></td>
+          <td>Ansible Automation Platform (automation-controller)</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-85475 (CVSS 7.2 High) — RainerScript Injection เข้า Config rsyslog ผ่านค่า `LOG_AGGREGATOR_*` ที่ไม่ได้ Sanitize นำไปสู่ Command Execution และ Control-plane Compromise</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-85475" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>RHEL</strong></td>
+          <td>OpenShift Console</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-75887 (CVSS 7.5 High) — Path Traversal โดยไม่ต้องยืนยันตัวตนผ่านพารามิเตอร์ `lng`/`ns` ที่ `/locales/resource.json` ทำให้อ่านไฟล์ .json ใดก็ได้</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-75887" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>RHEL</strong></td>
+          <td>RabbitMQ</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>CVE-2026-67221 (CVSS 5.9 Medium — Shovel AMQP 1.0 เก็บรหัสผ่านแบบ Cleartext ใน URI), CVE-2026-66074 (CVSS 6.0 Medium — Regex DoS ผ่านพารามิเตอร์ `?name=` ที่ไม่จำกัดขอบเขต)</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-67221" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>AlmaLinux</strong></td>
+          <td>ALSA-2026:70564 (FreeIPA/IdM)</td>
+          <td><span class="label label-security">🔒 Security (Critical)</span></td>
+          <td>CVE-2026-73198, CVE-2026-73197, CVE-2026-11861, CVE-2026-18147, CVE-2026-19550 (CVSS 9.8 Critical) — DoS โดยไม่ต้องยืนยันตัวตนผ่านการอ่าน Request Body ไม่จำกัดขนาด, TGS Impersonation ผ่าน Trust Relationship, XSS นำไปสู่ RCE ผ่าน URL ที่สร้างขึ้นเป็นพิเศษ, และเขียน LDAP สิทธิ์สูงผ่านการบายพาส ACI</td>
+          <td><a href="https://github.com/AlmaLinux/updates/issues/3660" class="source-badge">github.com/AlmaLinux</a></td>
+        </tr>
+        <tr>
+          <td><strong>AlmaLinux</strong></td>
+          <td>ALSA-2026:72059 (Kernel, AlmaLinux 10)</td>
+          <td><span class="label label-security">🔒 Security (Critical)</span></td>
+          <td>CVE-2026-53266 (Netfilter ebtables เขียน Shared Memory ผิดพลาดระหว่าง ARP Rewrite), CVE-2026-74581 (IPv6 Use-after-free ใน `fib6_rule_suppress` จาก Stale Pointer)</td>
+          <td><a href="https://github.com/AlmaLinux/updates/issues/3676" class="source-badge">github.com/AlmaLinux</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release/Errata ใหม่ของ Rocky Linux ในช่วง 20–26 ก.ย. 2569 (RLSA-2026-68570/68531/67471/68532 ล่าสุด — 19 ก.ย. อยู่นอกช่วงเวลานี้ 1 วัน) และไม่พบ Release ใหม่ของ Windows Server (Patch Tuesday ล่าสุด — 8 ก.ย., แพตช์ Out-of-band สำหรับปัญหา RDS/Audio — 14 ก.ย. ทั้งสองอยู่นอกช่วงเวลานี้และรายงานไปแล้วก่อนหน้า)</div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ VMware/Broadcom vSphere, Proxmox VE, Hyper-V หรือ KVM/QEMU ที่มีวันที่ประกาศอยู่ในช่วง 20–26 ก.ย. 2569 (มีเพียงประกาศด้วยวาจาเรื่องชุดผลิตภัณฑ์ "vSphere Standard" ใหม่ของ VMware เมื่อ 2 ก.ย. ที่ยังไม่มีเวอร์ชัน/วันที่ชัดเจน, เอกสาร Proxmox VE 9.2.12 ลงวันที่ 18 ก.ย., และแพตช์ Out-of-band ของ Hyper-V เมื่อ 14 ก.ย. — ทั้งหมดอยู่นอกช่วงเวลานี้)</div>
+  </section>
+
+  <section>
+    <h2>🌐 Network & Security</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Zyxel GS1900 Series Switch</strong></td>
+          <td>Firmware ≤ 2.90(ABTQ.1)C0</td>
+          <td>CVE-2026-7273 (CVSS 8.8 High) — Stack-based Buffer Overflow ผ่าน HTTP Management Interface บนเครือข่ายภายใน นำไปสู่ Arbitrary OS Command Execution กำลังถูกโจมตีจริง มีรายงานว่า Switch ถูกยึดควบคุมแล้วเกือบ 1,000 เครื่อง เพิ่มเข้า CISA KEV เมื่อ 21 ก.ย. 2569</td>
+          <td><span class="label label-security">🔒 Security (Critical, Actively Exploited)</span></td>
+          <td><a href="https://thehackernews.com/2026/09/zyxel-and-veeam-flaws-under-active.html" class="source-badge">thehackernews.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Arista VeloCloud Orchestrator (VCO)</strong></td>
+          <td>On-premises Deployment</td>
+          <td>CVE-2026-93952 (CVSS 10.0 v3.1 / 9.5 v4.0 Critical) — Improper Input Validation เปิดทางให้เข้าถึงฟังก์ชันภายในระดับสิทธิ์สูงโดยไม่ต้องยืนยันตัวตน กำลังถูกโจมตีจริง กระทบ SD-WAN Edge Fleet ทั้งหมด เพิ่มเข้า CISA KEV เมื่อ 22 ก.ย. 2569</td>
+          <td><span class="label label-security">🔒 Security (Critical, Actively Exploited)</span></td>
+          <td><a href="https://thehackernews.com/2026/09/new-cvss-100-velocloud-orchestrator.html" class="source-badge">thehackernews.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Check Point Security Gateway / Spark Firewall</strong></td>
+          <td>R81 / R82</td>
+          <td>CVE-2026-85102 (CVSS 9.8 Critical) — ตรวจสอบ Certificate ระหว่างเจรจา VPN ไม่ถูกต้อง นำไปสู่ RCE โดยไม่ต้องยืนยันตัวตน กำลังถูกโจมตีจริง</td>
+          <td><span class="label label-security">🔒 Security (Critical, Actively Exploited)</span></td>
+          <td><a href="https://blog.checkpoint.com/security/security-advisory-action-required-active-exploitation-of-cve-2026-85102-and-a-management-pre-authentication-vulnerability-cve-2026-93616/" class="source-badge">blog.checkpoint.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Check Point Management Web Service</strong></td>
+          <td>—</td>
+          <td>CVE-2026-93616 (CVSS 9.8 Critical) — Path Traversal ก่อนยืนยันตัวตน ร่วมกับการอัปโหลดไฟล์ตามใจชอบ นำไปสู่ Execute Script/โหลด Java Class ตามใจชอบ กำลังถูกโจมตีจริง</td>
+          <td><span class="label label-security">🔒 Security (Critical, Actively Exploited)</span></td>
+          <td><a href="https://blog.checkpoint.com/security/security-advisory-action-required-active-exploitation-of-cve-2026-85102-and-a-management-pre-authentication-vulnerability-cve-2026-93616/" class="source-badge">blog.checkpoint.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>F5 BIG-IP APM</strong></td>
+          <td>17.1.x / 17.5.x / 21.1.0 (เมื่อกำหนดค่าเป็น OAuth Authorization Server)</td>
+          <td>CVE-2026-94127 (CVSS 9.8 / CVSSv4 9.3 Critical) — Zero-day, Heap-based Buffer Overflow นำไปสู่ RCE โดยไม่ต้องยืนยันตัวตน กำลังถูกโจมตีจริง</td>
+          <td><span class="label label-security">🔒 Security (Critical, Zero-day, Actively Exploited)</span></td>
+          <td><a href="https://www.theregister.com/security/2026/09/23/someones-attacking-a-critical-0-day-rce-in-f5-big-ip-apm/" class="source-badge">theregister.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Traefik</strong></td>
+          <td>แก้ไขแล้วใน 3.7.13 (Release เดิม 4 ก.ย. — นอกช่วงเวลา แต่ CVE ถูกเปิดเผยในช่วงเวลานี้)</td>
+          <td>CVE-2026-88010 (CVSS ประมาณ 5.3 Medium ในตระกูล CVE เดียวกัน) เปิดเผยเมื่อ 22 ก.ย. 2569</td>
+          <td><span class="label label-security">🔒 Security (Medium)</span></td>
+          <td><a href="https://www.tenable.com/cve/CVE-2026-88012" class="source-badge">tenable.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Nginx (ล่าสุด 1.31.6 — 15 ก.ย.), Apache HTTP Server, HAProxy, Caddy, WireGuard, pfSense หรือ OPNsense (ล่าสุด 26.7.4 — 15 ก.ย.) ที่มีวันที่ประกาศอยู่ในช่วง 20–26 ก.ย. 2569 ด้าน Nmap, Wireshark, Nessus, OpenVAS/Greenbone และ Metasploit ก็ไม่พบ Release/Advisory ที่ยืนยันวันที่อยู่ในช่วงเวลานี้ได้เช่นกัน (Wireshark ล่าสุด 4.6.8 — 12 ส.ค., Nessus ล่าสุด 10.12.4 — 19 ส.ค., OpenVAS ล่าสุด 23.50.24 — 31 ส.ค.)</div>
+  </section>
+
+  <section>
+    <h2>☁ Cloud & Infrastructure</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Platform</th><th>Update</th><th>Impact</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Microsoft Azure</strong></td>
+          <td>Azure Kubernetes Service (AKS) Flex Nodes (Public Preview) — 22 ก.ย. 2569</td>
+          <td>ให้ Compute นอกสถานที่/Edge เข้าร่วมคลัสเตอร์ AKS ที่จัดการโดย Azure ได้ โดยยังคง Control Plane ไว้บน Azure ช่วยขยายการใช้งาน Kubernetes ไปยังสภาพแวดล้อม Hybrid/Edge</td>
+          <td><a href="https://blog.aks.azure.com/2026/09/22/flex-nodes-for-aks" class="source-badge">blog.aks.azure.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Amazon Web Services</strong></td>
+          <td>Amazon RDS for PostgreSQL — Database Preview Environment รองรับ PostgreSQL 19 Beta 4 — 24 ก.ย. 2569</td>
+          <td>ให้ลูกค้าทดสอบ PostgreSQL 19 รุ่นก่อนเผยแพร่บน RDS ก่อน GA ทีมงาน Database ควรเริ่มวางแผนทดสอบความเข้ากันได้</td>
+          <td><a href="https://aws.amazon.com/about-aws/whats-new/2026/09/postgresql-19-beta-4-amazon-rds-database-preview-environment/" class="source-badge">aws.amazon.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Cloud</strong></td>
+          <td>GKE (Stable Channel) — อัปเดต Release Notes ประจำสัปดาห์ — 23 ก.ย. 2569</td>
+          <td>อัปเดต Release Notes ของ GKE Stable Channel ตามรอบปกติ (⚠ ไม่สามารถเข้าถึงหน้า Release Notes ทางการโดยตรงเพื่อยืนยันรายละเอียดเนื้อหาครบถ้วนได้ ที่มาจาก WebSearch Snippet ควรตรวจสอบซ้ำก่อนอ้างอิง)</td>
+          <td><a href="https://docs.cloud.google.com/kubernetes-engine/docs/release-notes-stable" class="source-badge">docs.cloud.google.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ AWS CloudFormation, Terraform Registry หรือ Pulumi ในหมวด Infrastructure-as-Code ที่มีวันที่อยู่ในช่วง 20–26 ก.ย. 2569 นอกเหนือจาก Terraform/Pulumi ที่รายงานไว้แล้วในหมวด DevOps ด้านบน (AWS CloudFormation Contract Tests v2 — 2 ก.ย., Docker Engine v29.8.1 — 15 ก.ย., Proxmox VE 9.2.12 — 18 ก.ย. ทั้งหมดอยู่นอกช่วงเวลานี้)</div>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools & IDE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Git</strong></td>
+          <td>v2.56.0-rc2</td>
+          <td>Release Candidate ก่อนเข้าสู่ Git 2.56 เสถียร คาดว่ามีประมาณ 700 Commit ที่ไม่ใช่ Merge รวมคำสั่งทดลอง `git history drop`, คำสั่งใหม่ `git refs create/delete/update/rename`, ตัวเลือก `--delete-merged` สำหรับ `git branch` และ `--resolved` สำหรับ `git add`</td>
+          <td><a href="https://github.com/git/git/releases/tag/v2.56.0-rc2" class="source-badge">github.com/git</a></td>
+        </tr>
+        <tr>
+          <td><strong>npm (CLI)</strong></td>
+          <td>v11.20.0 / v12.1.0</td>
+          <td>เพิ่ม Access Token แบบ Granular ที่จำกัดเฉพาะ Read-write-stage-only, แสดงสถานะ Package ที่ Stage ไว้ แก้ปัญหา Provenance/OIDC และแก้ Validation ของ Arborist (ฟีเจอร์ชุดเดียวกันออกพร้อมกันทั้งสาย v11 และ v12)</td>
+          <td><a href="https://github.com/npm/cli/releases/tag/v11.20.0" class="source-badge">github.com/npm</a></td>
+        </tr>
+        <tr>
+          <td><strong>Gradle</strong></td>
+          <td>9.8.0</td>
+          <td>รองรับ Java 27 ทั้ง Daemon และ Toolchain, นำ Maven Mirror Settings กลับมาใช้ซ้ำได้, ลดความซับซ้อนของ Build Authoring (File/Object/Process Services ใน Script) และเพิ่ม Up-to-date Check ให้ Maven Publish Plugin</td>
+          <td><a href="https://github.com/gradle/gradle/releases/tag/v9.8.0" class="source-badge">github.com/gradle</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitHub (Platform)</strong></td>
+          <td>SSH Security Improvements</td>
+          <td>เริ่มยกเลิก SSH Algorithm ที่อ่อนแอลง กำหนดขนาด RSA Key ขั้นต่ำเป็น 3072-bit ตั้งแต่ 14 ต.ค. 2569 และเริ่มรองรับ Post-Quantum Key Exchange (mlkem768x25519-sha256)</td>
+          <td><a href="https://github.blog/changelog/2026-09-22-security-improvements-for-ssh/" class="source-badge">github.blog</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitHub Copilot</strong></td>
+          <td>Weekly Digest (สัปดาห์ 21 ก.ย.)</td>
+          <td>เพิ่มโมเดลใหม่ให้เลือกใช้ (Claude Opus 5.5, GPT-6 Sol, GPT-6 Luna, Grok 4.7 ตามระดับแผนการใช้งาน), เพิ่ม Local Sandboxing ใน Copilot App และอัปเดตการรองรับ JetBrains/VS Code/Slack/Teams</td>
+          <td><a href="https://github.blog/changelog/2026-09-25-github-copilot-weekly-releases-september-21/" class="source-badge">github.blog</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ VS Code (ล่าสุด 1.137 — 2 ก.ย.), JetBrains IntelliJ IDEA/PyCharm/WebStorm (ล่าสุด 2026.2.3 — 16–18 ก.ย., รายงานไปแล้วสัปดาห์ก่อนหน้า), Eclipse (ล่าสุด 2026-09/Platform 4.41 — 9 ก.ย.), Composer (ล่าสุด 2.10.3 — 27 ส.ค.), Maven (ล่าสุด 3.9.16 — 17 พ.ค.) หรือ pip (ล่าสุด 26.2.1 — 4 ส.ค.) ที่มีวันที่ประกาศอยู่ในช่วง 20–26 ก.ย. 2569</div>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Nginx, Apache HTTP Server, Caddy หรือ IIS ที่มีวันที่ประกาศอยู่ในช่วง 20–26 ก.ย. 2569 (Nginx 1.31.6 — 15 ก.ย., Apache httpd 2.4.68 — 8 มิ.ย., Caddy 2.11.4 — 3 มิ.ย. ทั้งหมดอยู่นอกช่วงเวลานี้และรายงานไปแล้วก่อนหน้า)</div>
+  </section>
+
+  <section>
+    <h2>🔒 Security & CVE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Arista VeloCloud Orchestrator (VCO)</strong></td>
+          <td>CVE-2026-93952 — Improper Input Validation เปิดทางเข้าถึงฟังก์ชันภายในระดับสิทธิ์สูงโดยไม่ต้องยืนยันตัวตน (Actively Exploited)</td>
+          <td><span class="severity-critical">🔴 CRITICAL (CVSS 10.0 v3.1 / 9.5 v4.0)</span></td>
+          <td>ตรวจสอบ Arista Security Advisory 0183 สำหรับ Patch/Workaround</td>
+          <td><a href="https://thehackernews.com/2026/09/new-cvss-100-velocloud-orchestrator.html" class="source-badge">thehackernews.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Check Point Security Gateway / Spark Firewall</strong></td>
+          <td>CVE-2026-85102 — ตรวจสอบ Certificate การเจรจา VPN ไม่ถูกต้อง นำไปสู่ RCE (Actively Exploited)</td>
+          <td><span class="severity-critical">🔴 CRITICAL (CVSS 9.8)</span></td>
+          <td>อัปเดตตาม Check Point Security Advisory ทันที</td>
+          <td><a href="https://blog.checkpoint.com/security/security-advisory-action-required-active-exploitation-of-cve-2026-85102-and-a-management-pre-authentication-vulnerability-cve-2026-93616/" class="source-badge">blog.checkpoint.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Check Point Management Web Service</strong></td>
+          <td>CVE-2026-93616 — Pre-auth Path Traversal + Arbitrary File Upload นำไปสู่ Execute Script/โหลด Java Class ตามใจชอบ (Actively Exploited)</td>
+          <td><span class="severity-critical">🔴 CRITICAL (CVSS 9.8)</span></td>
+          <td>อัปเดตตาม Check Point Security Advisory ทันที</td>
+          <td><a href="https://blog.checkpoint.com/security/security-advisory-action-required-active-exploitation-of-cve-2026-85102-and-a-management-pre-authentication-vulnerability-cve-2026-93616/" class="source-badge">blog.checkpoint.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>F5 BIG-IP APM</strong></td>
+          <td>CVE-2026-94127 — Zero-day, Heap-based Buffer Overflow นำไปสู่ RCE โดยไม่ต้องยืนยันตัวตนเมื่อกำหนดค่าเป็น OAuth Authorization Server (Actively Exploited)</td>
+          <td><span class="severity-critical">🔴 CRITICAL (CVSS 9.8 / CVSSv4 9.3)</span></td>
+          <td>ตรวจสอบ F5 Security Advisory / CERT-EU 2026-013 สำหรับ Patch</td>
+          <td><a href="https://www.theregister.com/security/2026/09/23/someones-attacking-a-critical-0-day-rce-in-f5-big-ip-apm/" class="source-badge">theregister.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitLab CE/EE</strong></td>
+          <td>CVE-2026-89078, CVE-2026-93577 — RCE ผ่าน CI/CD Regex Parser/Compiler</td>
+          <td><span class="severity-critical">🔴 CRITICAL (CVSS 9.9)</span></td>
+          <td>19.4.1 / 19.3.3 / 19.2.7</td>
+          <td><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/" class="source-badge">docs.gitlab.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>AlmaLinux FreeIPA/IdM</strong></td>
+          <td>CVE-2026-73198, CVE-2026-73197, CVE-2026-11861, CVE-2026-18147, CVE-2026-19550 — DoS, TGS Impersonation, XSS→RCE, Privileged LDAP Write</td>
+          <td><span class="severity-critical">🔴 CRITICAL (CVSS 9.8)</span></td>
+          <td>ALSA-2026:70564</td>
+          <td><a href="https://github.com/AlmaLinux/updates/issues/3660" class="source-badge">github.com/AlmaLinux</a></td>
+        </tr>
+        <tr>
+          <td><strong>curl</strong></td>
+          <td>CVE-2026-8927 — Use-after-free ใน Multi-interface Pooled TLS Connection</td>
+          <td><span class="severity-critical">🔴 CRITICAL (CVSS 9.1)</span></td>
+          <td>USN-8820-1 (Ubuntu)</td>
+          <td><a href="https://curl.se/docs/CVE-2026-8927.html" class="source-badge">curl.se</a></td>
+        </tr>
+        <tr>
+          <td><strong>Zyxel GS1900 Series Switch</strong></td>
+          <td>CVE-2026-7273 — Stack Buffer Overflow ผ่าน HTTP Management Interface นำไปสู่ OS Command Execution (Actively Exploited, ~996 เครื่องถูกยึดควบคุมแล้ว)</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS 8.8)</span></td>
+          <td>อัปเดต Firmware เป็นเวอร์ชันที่ Zyxel แก้ไขแล้ว</td>
+          <td><a href="https://thehackernews.com/2026/09/zyxel-and-veeam-flaws-under-active.html" class="source-badge">thehackernews.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>libpcap</strong> (Ubuntu)</td>
+          <td>CVE-2026-0799 — BPF Interpreter อ่าน/เขียนนอกขอบเขต</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS 8.7)</span></td>
+          <td>&lt; 1.10.7 (USN-8824-1)</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-0799" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>VLC</strong> (Debian)</td>
+          <td>CVE-2026-56711 — Integer Overflow/OOB Write ใน `AllocatePicture`</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS 8.6–8.8)</span></td>
+          <td>DSA-6515-1</td>
+          <td><a href="https://www.cve.org/CVERecord?id=CVE-2026-56711" class="source-badge">cve.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>curl</strong></td>
+          <td>CVE-2026-80229 — รั่วไหล Proxy-auth Credential ข้าม Request</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS 7.5)</span></td>
+          <td>USN-8820-1 (Ubuntu)</td>
+          <td><a href="https://curl.se/docs/CVE-2026-80229.html" class="source-badge">curl.se</a></td>
+        </tr>
+        <tr>
+          <td><strong>PHP 8.4</strong> (Debian)</td>
+          <td>CVE-2026-91765 — Unbounded Recursion ใน SOAP XML Parser</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS 7.5)</span></td>
+          <td>DSA-6514-1</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-91765" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>GNU Emacs</strong> (RHEL)</td>
+          <td>CVE-2026-96269 — Execute Code ทันทีที่เปิดไฟล์ผ่าน `read-symbol-shorthands`</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS4 7.5)</span></td>
+          <td>ตรวจสอบ Red Hat Security Advisory</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-96269" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ansible Automation Platform</strong> (RHEL)</td>
+          <td>CVE-2026-85475 — RainerScript Injection นำไปสู่ Command Execution</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS 7.2)</span></td>
+          <td>ตรวจสอบ Red Hat Security Advisory</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-85475" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>OpenShift Console</strong> (RHEL)</td>
+          <td>CVE-2026-75887 — Path Traversal ผ่านพารามิเตอร์ `lng`/`ns`</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS 7.5)</span></td>
+          <td>ตรวจสอบ Red Hat Security Advisory</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-75887" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>GIMP</strong> (Debian)</td>
+          <td>CVE-2026-78465 — Integer Overflow ใน PCX Loader (32-bit)</td>
+          <td><span class="severity-high">🟠 HIGH (CVSS 7)</span></td>
+          <td>DSA-6509-1</td>
+          <td><a href="https://linuxsecurity.com/advisories/debian/debian-dsa-6509-1-gimp" class="source-badge">linuxsecurity.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>AlmaLinux Kernel</strong> (AlmaLinux 10)</td>
+          <td>CVE-2026-53266, CVE-2026-74581 — Netfilter ebtables SNAT / IPv6 Use-after-free</td>
+          <td><span class="severity-high">🟠 HIGH (จัดระดับ Critical โดย Errata แต่ไม่ระบุคะแนน CVSS แยก)</span></td>
+          <td>ALSA-2026:72059</td>
+          <td><a href="https://github.com/AlmaLinux/updates/issues/3676" class="source-badge">github.com/AlmaLinux</a></td>
+        </tr>
+        <tr>
+          <td><strong>RabbitMQ</strong> (RHEL)</td>
+          <td>CVE-2026-66074 — Regex DoS ผ่านพารามิเตอร์ `?name=`</td>
+          <td><span class="severity-medium">🟡 MEDIUM (CVSS 6.0)</span></td>
+          <td>ตรวจสอบ Red Hat Security Advisory</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-66074" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>RabbitMQ</strong> (RHEL)</td>
+          <td>CVE-2026-67221 — Shovel AMQP 1.0 เก็บรหัสผ่านแบบ Cleartext ใน URI</td>
+          <td><span class="severity-medium">🟡 MEDIUM (CVSS 5.9)</span></td>
+          <td>ตรวจสอบ Red Hat Security Advisory</td>
+          <td><a href="https://www.strix.ai/cve/CVE-2026-67221" class="source-badge">strix.ai</a></td>
+        </tr>
+        <tr>
+          <td><strong>Traefik</strong></td>
+          <td>CVE-2026-88010 (ตระกูล CVE เดียวกับที่แก้ใน 3.7.13)</td>
+          <td><span class="severity-medium">🟡 MEDIUM (CVSS ~5.3)</span></td>
+          <td>3.7.13</td>
+          <td><a href="https://www.tenable.com/cve/CVE-2026-88012" class="source-badge">tenable.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>xdg-dbus-proxy</strong> (Debian)</td>
+          <td>CVE-2026-93676 — บายพาสการกรอง Broadcast D-Bus Message</td>
+          <td><span class="severity-low">🟢 LOW (CVSS 3.2)</span></td>
+          <td>DSA-6510-1</td>
+          <td><a href="https://ubuntu.com/security/CVE-2026-93676" class="source-badge">ubuntu.com (mirror)</a></td>
+        </tr>
+        <tr>
+          <td><strong>containerd</strong></td>
+          <td>CVE-2026-53493 (ไม่ระบุคะแนน CVSS อย่างเป็นทางการในหน้าประกาศที่ตรวจสอบได้)</td>
+          <td><span class="severity-medium">🟡 ไม่ระบุคะแนน*</span></td>
+          <td>2.4.1 / 2.3.6 / 2.2.9 / 2.0.13 / 1.7.36</td>
+          <td><a href="https://github.com/containerd/containerd/releases" class="source-badge">github.com/containerd</a></td>
+        </tr>
+        <tr>
+          <td><strong>OpenJDK</strong> (Ubuntu, หลายเวอร์ชัน)</td>
+          <td>CVE-2026-70907, CVE-2026-60589, CVE-2026-61308 (+ อื่น ๆ)</td>
+          <td><span class="severity-medium">🟡 ไม่ระบุคะแนน*</span></td>
+          <td>USN-8783-1 ถึง USN-8796-1</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8796-1" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>OpenStack Swift</strong> (Ubuntu)</td>
+          <td>CVE-2026-49017</td>
+          <td><span class="severity-medium">🟡 ไม่ระบุคะแนน*</span></td>
+          <td>USN-8821-1</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-8821-1" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Linux Kernel</strong> (Ubuntu, หลาย Flavour)</td>
+          <td>CVE-2025-38724, CVE-2026-53221, CVE-2026-53131, CVE-2026-63912/63984/63924 (+ อื่น ๆ)</td>
+          <td><span class="severity-medium">🟡 ผสม (ส่วนใหญ่ Medium/High)*</span></td>
+          <td>USN-8817-1, 8818-1/2, 8819-1/2, 8730-6, 8729-5</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>LibreOffice</strong> (Debian)</td>
+          <td>CVE-2024-12426, CVE-2026-63272, CVE-2026-63273</td>
+          <td><span class="severity-medium">🟡 ไม่ระบุคะแนน*</span></td>
+          <td>DSA-6512-1</td>
+          <td><a href="https://vulners.com/debian/DEBIAN:DSA-6512-1:7F8A1" class="source-badge">vulners.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Chromium</strong> (Debian)</td>
+          <td>CVE-2026-95274 (High), CVE-2026-95275/76/77</td>
+          <td><span class="severity-high">🟠 HIGH*</span></td>
+          <td>DSA-6513-1</td>
+          <td><a href="https://vulners.com/debian/DEBIAN:DSA-6513-1:FDB9B" class="source-badge">vulners.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">
+      <strong>* หมายเหตุความรุนแรง:</strong> รายการที่มีเครื่องหมาย * ไม่มีคะแนน CVSS อย่างเป็นทางการระบุไว้ในหน้าประกาศที่ตรวจสอบได้โดยตรง (Ubuntu USN/Debian DSA บางฉบับไม่แสดง CVSS ต่อ CVE รายตัว) ระดับความรุนแรงที่แสดงจึงเป็นการประมาณจากลักษณะผลกระทบ ควรตรวจสอบ CVSS ที่แท้จริงจาก NVD ก่อนกำหนด Patch Priority<br>
+      <strong>📌 นอกช่วงเวลารายงาน (ไม่นำมานับ):</strong> Microsoft Patch Tuesday (8 ก.ย.) และแพตช์ Out-of-band ของ Windows/Hyper-V (14 ก.ย.) — รายงานไปแล้วในสัปดาห์ก่อนหน้า<br>
+      <strong>⚠️ UNCERTAIN:</strong> cisa.gov, debian.org/lists.debian.org, endoflife.date เข้าถึงไม่ได้โดยตรงผ่าน WebFetch ในสภาพแวดล้อมนี้ (Network Egress Proxy บล็อก) ข้อมูล CISA KEV และ Debian DSA ข้างต้นจึงอ้างอิงจาก WebSearch และแหล่งข้อมูลรองที่น่าเชื่อถือ (TheHackerNews, The Register, Check Point Blog, curl.se, vulners.com, linuxsecurity.com) แทนหน้าหลักโดยตรง ควรตรวจสอบซ้ำจาก cisa.gov/known-exploited-vulnerabilities-catalog และ lists.debian.org/debian-security-announce โดยตรงก่อนใช้อ้างอิงอย่างเป็นทางการ
+    </div>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Breaking Change</th><th>Migration Guide</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GitHub Actions</strong></td>
+          <td>Runner Update (23 ก.ย. 2569)</td>
+          <td>ถอด Node.js 20 ออกจาก Runner อย่างสมบูรณ์ Custom JavaScript Action ที่ยังใช้ `using: node20` จะไม่สามารถทำงานได้ และถอดตัวเลือก Opt-out `ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION` ออกแล้ว</td>
+          <td>ทีมที่ดูแล Custom GitHub Action ต้องอัปเดต `action.yml` ให้ใช้ `using: node24` และทดสอบ Workflow ก่อน Runner Image เริ่มบังคับใช้เต็มรูปแบบ</td>
+          <td><a href="https://github.blog/changelog/2026-09-23-node-20-is-no-longer-available-in-github-actions/" class="source-badge">github.blog</a></td>
+        </tr>
+        <tr>
+          <td><strong>Laravel</strong></td>
+          <td>13.33.0</td>
+          <td>ถอด `restart_syscalls` ออกจาก `pcntl_signal()` ใน Queue Worker และเปลี่ยนพฤติกรรมเวลา Hash Password ของ Session</td>
+          <td>ทีมที่พึ่งพาพฤติกรรม Signal Handling เดิมของ Queue Worker หรือ Timing ของ Session Password Hash ควรตรวจสอบ Changelog ก่อนอัปเกรดจาก 13.32.x</td>
+          <td><a href="https://github.com/laravel/framework/releases/tag/v13.33.0" class="source-badge">github.com/laravel</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Breaking Change อื่นที่มีเอกสารทางการยืนยันชัดเจนในช่วง 20–26 ก.ย. 2569 นอกเหนือจากสองรายการข้างต้น</div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="empty-note">ไม่พบซอฟต์แวร์ใดที่ถึงสถานะ End of Life ตรงกับช่วงเวลา 20–26 ก.ย. 2569 จากแหล่งข้อมูลที่ตรวจสอบได้ (Google Chromecast และ Ceph ถึง EOL เมื่อ 19 ก.ย., Linux Kernel 7.1 ถึง EOL เมื่อ 2 ก.ย. — ทั้งหมดอยู่นอกช่วงเวลานี้ และ Microsoft Office 2021 มีกำหนด EOL วันที่ 13 ต.ค. 2569 ซึ่งยังไม่ถึง) ⚠️ <strong>UNCERTAIN:</strong> ไม่สามารถเข้าถึง endoflife.date โดยตรงเพื่อตรวจสอบซอฟต์แวร์อื่นที่อาจถึง EOL ในสัปดาห์นี้ได้ครบถ้วน เนื่องจากถูกบล็อกโดย Network Egress Proxy ของสภาพแวดล้อมนี้</div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li>🔴 <strong>F5 BIG-IP APM Zero-day CVE-2026-94127 (CVSS 9.8)</strong> — กำลังถูกโจมตีจริง ทีมที่กำหนดค่า APM เป็น OAuth Authorization Server ควรแพตช์/Mitigate ทันที</li>
+      <li>🔴 <strong>Check Point CVE-2026-85102 และ CVE-2026-93616 (CVSS 9.8 ทั้งคู่)</strong> — กำลังถูกโจมตีจริงพร้อมกัน ควรอัปเดต Security Gateway และ Management Server ทันที</li>
+      <li>🔴 <strong>Arista VeloCloud Orchestrator CVE-2026-93952 (CVSS 10.0)</strong> — กำลังถูกโจมตีจริง กระทบ SD-WAN Edge Fleet ทั้งหมด</li>
+      <li>🔴 <strong>Zyxel GS1900 Switch CVE-2026-7273 (CVSS 8.8)</strong> — พบ Switch ถูกยึดควบคุมแล้วเกือบ 1,000 เครื่อง ควรอัปเดต Firmware และจำกัดการเข้าถึง Management Interface ทันที</li>
+      <li>🔴 <strong>GitLab CVE-2026-89078 / CVE-2026-93577 (CVSS 9.9)</strong> — ยังไม่ยืนยันการโจมตีจริง แต่เป็น RCE ระดับ Critical ควรอัปเกรดเป็น 19.4.1/19.3.3/19.2.7 เชิงรุกโดยเร็ว</li>
+      <li>🟠 <strong>AlmaLinux FreeIPA/IdM ALSA-2026:70564 (CVSS 9.8)</strong> — ควรแพตช์เชิงรุกก่อนถูกใช้โจมตี โดยเฉพาะระบบที่ใช้ FreeIPA เป็น Identity Provider หลัก</li>
+      <li>⚠️ <strong>GitHub Actions ถอด Node.js 20 (Breaking Change)</strong> — ทีม CI/CD ที่มี Custom JavaScript Action ต้องอัปเดตเป็น Node.js 24 ก่อน Runner บังคับใช้เต็มรูปแบบ</li>
+      <li>🧪 <strong>PHP 8.6.0 RC</strong> — ยังมีความไม่ตรงกันของชื่อ Tag ระหว่างแหล่งข้อมูล (RC1 vs RC2) ควรตรวจสอบ Tag ที่แน่ชัดจาก php.net ก่อนใช้อ้างอิงหรือทดสอบ</li>
+      <li>🧪 <strong>PostgreSQL 19 Beta 4 และ Git 2.56.0-rc2</strong> — อยู่ระหว่างเตรียมเข้าสู่ RC/เสถียร ทีมงานที่เกี่ยวข้องควรเริ่มทดสอบความเข้ากันได้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <div class="highlight-box">
+      <div class="two-column">
+        <div>
+          <h3>📊 Release Breakdown</h3>
+          <ul>
+            <li><strong>Total Items Verified (20–26 ก.ย. 2569):</strong> 55</li>
+            <li><strong>Major Releases:</strong> 0</li>
+            <li><strong>Minor Releases:</strong> ~14 (Node.js 26.10.0, Angular 22.2.0, Jenkins 2.582/2.583, Docker Desktop 4.92.0, Pulumi v3.265.0, Gradle 9.8.0, npm 11.20.0/12.1.0 ฯลฯ)</li>
+            <li><strong>Patch Releases:</strong> ~10 (Node.js 22.23.3, PHP 8.5.11/8.4.26/8.3.35/8.2.34, Angular 22.1.8/21.2.24/20.3.32, Kubernetes 4 สาขา, Terraform v1.16.4)</li>
+            <li><strong>RC / Beta / Preview:</strong> 6 (PHP 8.6.0 RC, Terraform v1.17.0-beta2, PostgreSQL 19 Beta 4, Git v2.56.0-rc2, Azure AKS Flex Nodes Preview, Amazon RDS PostgreSQL 19 Beta 4 Preview)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>🔒 Security Breakdown</h3>
+          <ul>
+            <li><strong>Total Security Advisories:</strong> 25 (Ubuntu USN 5 กลุ่ม, Debian DSA 6 กลุ่ม, RHEL 4 CVE, AlmaLinux 2 กลุ่ม, GitLab, containerd, CISA KEV 5 รายการ, Traefik)</li>
+            <li><strong>Critical Severity:</strong> 7 (Arista VeloCloud, Check Point ×2, F5 BIG-IP APM, GitLab, AlmaLinux FreeIPA/IdM, curl UAF)</li>
+            <li><strong>High Severity:</strong> 8 (Zyxel, libpcap, VLC, curl Proxy-auth, PHP 8.4 SOAP, GNU Emacs, Ansible Automation Platform, OpenShift Console, GIMP, AlmaLinux Kernel)</li>
+            <li><strong>Medium/Low Severity:</strong> 5 (RabbitMQ ×2, Traefik, xdg-dbus-proxy, containerd)</li>
+            <li><strong>Actively Exploited (CISA KEV สัปดาห์นี้):</strong> 5 รายการ (Zyxel GS1900, Arista VeloCloud, Check Point ×2, F5 BIG-IP APM)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>✅ Official</h3>
+    <ul>
+      <li><a href="https://nodejs.org/en/blog/release/v26.10.0">Node.js — v26.10.0 Release Blog</a></li>
+      <li><a href="https://www.postgresql.org/about/news/postgresql-19-beta-4-released-3386/">PostgreSQL — 19 Beta 4 Announcement</a></li>
+      <li><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/">GitLab — 19.4.1 Patch Release Notes</a></li>
+      <li><a href="https://ubuntu.com/security/notices">Ubuntu Security Notices</a></li>
+      <li><a href="https://curl.se/docs/CVE-2026-8927.html">curl.se — CVE-2026-8927</a></li>
+      <li><a href="https://blog.checkpoint.com/security/security-advisory-action-required-active-exploitation-of-cve-2026-85102-and-a-management-pre-authentication-vulnerability-cve-2026-93616/">Check Point Security Advisory</a></li>
+      <li><a href="https://github.blog/changelog/2026-09-23-node-20-is-no-longer-available-in-github-actions/">GitHub Changelog — Node 20 Retirement</a></li>
+    </ul>
+    <h3>📝 Release Notes</h3>
+    <ul>
+      <li><a href="https://github.com/angular/angular/releases">Angular — GitHub Releases</a></li>
+      <li><a href="https://github.com/laravel/framework/releases/tag/v13.33.0">Laravel — v13.33.0 Release Notes</a></li>
+      <li><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.37.1">Kubernetes — v1.37.1 Release Notes</a></li>
+      <li><a href="https://github.com/containerd/containerd/releases">containerd — GitHub Releases</a></li>
+      <li><a href="https://github.com/git/git/releases/tag/v2.56.0-rc2">Git — v2.56.0-rc2 Release Notes</a></li>
+      <li><a href="https://github.com/gradle/gradle/releases/tag/v9.8.0">Gradle — v9.8.0 Release Notes</a></li>
+      <li><a href="https://github.com/elastic/elasticsearch/releases/tag/v8.19.22">Elasticsearch — v8.19.22 Release Notes</a></li>
+    </ul>
+    <h3>🔒 Security Advisory</h3>
+    <ul>
+      <li><a href="https://thehackernews.com/2026/09/new-cvss-100-velocloud-orchestrator.html">The Hacker News — Arista VeloCloud Orchestrator (CVE-2026-93952)</a></li>
+      <li><a href="https://thehackernews.com/2026/09/zyxel-and-veeam-flaws-under-active.html">The Hacker News — Zyxel GS1900 Actively Exploited (CVE-2026-7273)</a></li>
+      <li><a href="https://www.theregister.com/security/2026/09/23/someones-attacking-a-critical-0-day-rce-in-f5-big-ip-apm/">The Register — F5 BIG-IP APM Zero-day (CVE-2026-94127)</a></li>
+      <li><a href="https://github.com/AlmaLinux/updates/issues/3660">AlmaLinux Updates — FreeIPA/IdM (ALSA-2026:70564)</a></li>
+      <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-56711">CVE.org — VLC (CVE-2026-56711)</a></li>
+    </ul>
+    <h3>📰 Trusted Media</h3>
+    <ul>
+      <li><a href="https://aws.amazon.com/about-aws/whats-new/2026/09/postgresql-19-beta-4-amazon-rds-database-preview-environment/">AWS What's New — RDS PostgreSQL 19 Beta 4 Preview</a></li>
+      <li><a href="https://blog.aks.azure.com/2026/09/22/flex-nodes-for-aks">Azure AKS Blog — Flex Nodes Preview</a></li>
+      <li><a href="https://github.blog/changelog/2026-09-25-github-copilot-weekly-releases-september-21/">GitHub Blog — Copilot Weekly Releases</a></li>
+      <li><a href="https://www.linuxcompatible.org/story/php-releases-five-versions-at-once-includes-860-rc1-and-8511">LinuxCompatible — PHP Coordinated Release</a></li>
+    </ul>
+  </section>
+
+  <div class="note">
+    <strong>📝 Data Quality Note:</strong><br>
+    ✅ ทุกรายการยืนยันจาก Official Source, GitHub Releases, Official Security Advisory หรือสื่อความปลอดภัยที่น่าเชื่อถืออย่างน้อย 1 แหล่ง<br>
+    ⚠️ <strong>UNCERTAIN:</strong> การเข้าถึงโดเมนต่อไปนี้ผ่าน WebFetch โดยตรงถูกจำกัดโดย Network Egress Proxy ของสภาพแวดล้อมนี้ (ลองซ้ำแล้วแต่ยังไม่สำเร็จ จึงใช้ผลลัพธ์จาก WebSearch/แหล่งข้อมูลรองแทน): cisa.gov, debian.org/lists.debian.org, endoflife.date, docs.docker.com, docs.cloud.google.com (บางหน้า), azure.microsoft.com/updates — ผู้ใช้งานควรตรวจสอบยืนยันซ้ำจากหน้าทางการโดยตรงก่อนนำไปใช้ตัดสินใจ โดยเฉพาะรายละเอียด Docker Desktop 4.92.0, GKE Release Notes, Google Cloud SQL Backup-and-DR และ CISA KEV Catalog<br>
+    ⚠️ <strong>PHP 8.6.0 RC:</strong> พบความไม่ตรงกันของชื่อ Tag ระหว่างแหล่งข้อมูล (RC1 บน php.watch เทียบกับรายงานเรื่อง RC2 บน Mailing List php.internals) ควรตรวจสอบ Tag ที่แน่ชัดจาก php.net/downloads ก่อนอ้างอิง<br>
+    ✅ รายการที่ไม่มีข้อมูลยืนยันในช่วง 7 วันนี้ถูกระบุไว้อย่างชัดเจนในแต่ละหมวด พร้อมวันที่ Release ล่าสุดที่ตรวจสอบได้ แทนการคาดเดาหรือใช้ข้อมูลนอกช่วงเวลา
+  </div>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Software Releases Report · Week 39 · September 26, 2026</p>
+    <p>Generated with verified data from official release notes and security advisories</p>
+  </footer>
+</div>
+</body>
+</html>
