@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Premier League Report — Week 39, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#9A5B12; --warn-bg:rgba(154,91,18,0.10); --warn-line:rgba(154,91,18,0.30);
+  --rumor:#8A3B5A;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.12);
+    --warn:#E0A855; --warn-bg:rgba(224,168,85,0.10); --warn-line:rgba(224,168,85,0.30);
+    --rumor:#D98FB2;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:6px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; padding-top:2px; }
+h3{ font-size:16.5px; font-weight:700; margin:20px 0 8px; color:var(--ink); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:30px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:72ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:70ch; }
+ul li ul{ margin-top:8px; }
+
+.callout{ background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px; padding:16px 18px; margin:0 0 18px; }
+.callout p{ margin:0; max-width:none; color:var(--ink); }
+.callout p + p{ margin-top:8px; }
+.callout .label{ font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--warn); text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.note{ font-size:14px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:12px 14px; margin:10px 0 16px; max-width:none; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 14px; border:1px solid var(--line); border-radius:10px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px; }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td a, th a{ white-space:nowrap; }
+
+.badge{ display:inline-block; font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:600; padding:2px 8px; border-radius:999px; white-space:nowrap; }
+.badge-official{ background:var(--accent-soft); color:var(--accent); }
+.badge-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-rumor{ background:rgba(138,59,90,0.12); color:var(--rumor); }
+.badge-cont{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-pending{ background:rgba(154,91,18,0.12); color:var(--warn); border:1px solid var(--warn-line); }
+
+.subhead{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin:18px 0 8px; }
+.subhead:first-child{ margin-top:0; }
+
+.club-block{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px dashed var(--line); }
+.club-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.club-block h3{ margin-top:0; }
+.club-block p{ margin-bottom:6px; }
+
+.src-list{ list-style:none; padding:0; margin:0 0 14px; }
+.src-list li{ margin-bottom:6px; font-size:14.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 39, 2026</p>
+    <h1>⚽ Weekly Premier League Report — Week 39</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 20 – 27 กันยายน 2026 (ICT)</span>
+      <span><b>Category:</b> Football</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="note">หมายเหตุขอบเขต: รายงานนี้ครอบคลุม 20-27 ก.ย. 2026 ช่วงต้นสัปดาห์ (20 ก.ย.) เป็นนัดค้าง 2 คู่สุดท้ายที่ปิดท้าย Matchweek 5 ซึ่งยังแข่งไม่จบในรายงานสัปดาห์ก่อน (Manchester City vs Sunderland และ Leeds United vs Crystal Palace) ส่วนที่เหลือของสัปดาห์นี้ (21-27 ก.ย.) พรีเมียร์ลีกหยุดพักเนื่องจากช่วงพักทีมชาติเดือนกันยายน-ตุลาคมที่รวมเป็นช่วงเดียว (21 ก.ย. - 10 ต.ค. 2026) จึงไม่มีโปรแกรมแข่งขันระดับสโมสรในช่วงที่เหลือของสัปดาห์ ข่าวส่วนใหญ่ในรายงานนี้จึงเป็นข่าวนอกสนาม (บาดเจ็บจากทีมชาติ ข่าวย้ายทีม สถานการณ์ผู้จัดการทีม) ตามที่ยืนยันได้จากแหล่งข้อมูลจริง</div>
+    <ul>
+      <li>Manchester City เอาชนะ Sunderland 5-3 ที่ Etihad Stadium (20 ก.ย.) ปิดท้าย Matchweek 5 ขยับขึ้นมามี 12 แต้มเท่า Arsenal และ Manchester United จากการคำนวณต่อเนื่องจากตารางสัปดาห์ก่อน โดยสื่อหลายสำนักรายงานว่า Manchester City ขยับขึ้นเป็นอันดับ 1 จากผลต่างประตูที่ดีกว่า <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Brian Brobbey ของ Sunderland ทำแฮตทริกในเกมที่พ่าย 3-5 ให้ Manchester City นับเป็นแฮตทริกแรกของนักเตะ Sunderland ในพรีเมียร์ลีกนับตั้งแต่ Jermain Defoe เมื่อปี 2016 และได้รับเลือกเป็น Player of the Matchweek 5 ด้วยคะแนนโหวต 33% แม้ทีมจะแพ้ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Leeds United เสมอ Crystal Palace 0-0 ที่ Elland Road (20 ก.ย.) ปิดฉาก Matchweek 5 อย่างสมบูรณ์ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Kai Havertz ของ Arsenal บาดเจ็บกล้ามเนื้อ (คล้ายอาการฮึมสตริง) ขณะลงเล่นให้เยอรมนีพบเนเธอร์แลนด์ (24 ก.ย.) ต้องเดินทางกลับสโมสรเพื่อตรวจอาการ มีรายงานว่าอาจต้องพักได้ถึง 4 สัปดาห์ แต่สโมสรยังไม่ยืนยันระยะเวลาแน่ชัด <span class="badge badge-official">✅ ยืนยันแล้ว (อาการ)</span> <span class="badge badge-pending">❓ ระยะพักฟื้นยังไม่ยืนยัน</span></li>
+      <li>Roberto De Zerbi ให้ผู้เล่น Tottenham ที่ไม่ติดทีมชาติหยุดพักเต็มสัปดาห์ระหว่างช่วงพักทีมชาติ ท่ามกลางเสียงวิจารณ์จากสื่อว่าเป็นการตัดสินใจที่ "แปลก" ขณะทีมยังรั้งอันดับสุดท้ายของตารางด้วย 2 แต้มจาก 5 นัด และไม่ชนะเลยในฤดูกาลนี้ แต่ Fabrizio Romano ยืนยันว่า Tottenham ยังไม่มีแผนปลดในช่วงพักนี้ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 ตารางคะแนน Top 6</h2>
+    <div class="note">คำนวณต่อเนื่องจากตาราง Top 6 ที่ยืนยันแล้วของรายงานสัปดาห์ก่อน (Week 38 ครบทุกทีมยกเว้น Manchester City ที่มีนัดค้าง) บวกผลชัยชนะ 5-3 เหนือ Sunderland ของ Manchester City ที่ยืนยันได้ในสัปดาห์นี้ ทำให้ทุกทีมใน Top 6 เล่นครบ Matchweek 5 แล้ว มี 3 ทีมแต้มเท่ากันที่ 12 แต้ม (Arsenal, Manchester City, Manchester United) สื่อหลายสำนัก (รวมถึงหัวข้อข่าวของ 101greatgoals.com และ Sky Sports) ระบุตรงกันว่า Manchester City "move clear of Arsenal at top" หลังชนะนัดนี้ ซึ่งสอดคล้องกับผลต่างประตูสะสมที่ดีกว่า (มีรายงานว่า Manchester City มีผลต่างประตู +6 จาก 4 นัดก่อนเกมนี้ เทียบกับ Arsenal ที่ +4 จาก 5 นัด) จึงจัดให้ Manchester City ขึ้นเป็นอันดับ 1 ตามผลต่างประตู อย่างไรก็ตาม ไม่สามารถยืนยันตัวเลขผลต่างประตูที่แน่นอนของ Manchester United ได้จากแหล่งที่เข้าถึงได้ในรอบนี้ จึงไม่สามารถระบุลำดับที่แน่ชัดระหว่าง Arsenal กับ Manchester United ได้</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Club</th><th>Played</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>Source</th></tr>
+      <tr><td>1</td><td>Manchester City</td><td>5</td><td>4</td><td>0</td><td>1</td><td>12</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879272/sunderland-manchester-city" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>2*</td><td>Arsenal</td><td>5</td><td>4</td><td>0</td><td>1</td><td>12</td><td><a href="https://www.espn.com/soccer/report/_/gameId/401879274" target="_blank" rel="noopener">ESPN (สัปดาห์ก่อน)</a></td></tr>
+      <tr><td>2*</td><td>Manchester United</td><td>5</td><td>4</td><td>0</td><td>1</td><td>12</td><td><a href="https://www.skysports.com/football/news/11095/13500729/man-utd-3-2-fulham-benjamin-sesko-scores-late-winner-as-michael-carrick-guides-side-to-third-straight-premier-league-win" target="_blank" rel="noopener">Sky Sports (สัปดาห์ก่อน)</a></td></tr>
+      <tr><td>4</td><td>Newcastle United</td><td>5</td><td>3</td><td>2</td><td>0</td><td>11</td><td><a href="https://www.skysports.com/football/newcastle-united-vs-hull-city/559491" target="_blank" rel="noopener">Sky Sports (สัปดาห์ก่อน)</a></td></tr>
+      <tr><td>5*</td><td>Chelsea</td><td>5</td><td>2</td><td>2</td><td>1</td><td>8</td><td><a href="https://www.365scores.com/en-us/football/match/premier-league-7/brentford-chelsea-63-106-7" target="_blank" rel="noopener">365Scores (สัปดาห์ก่อน)</a></td></tr>
+      <tr><td>5*</td><td>Hull City</td><td>5</td><td>2</td><td>2</td><td>1</td><td>8</td><td><a href="https://www.skysports.com/football/newcastle-united-vs-hull-city/559491" target="_blank" rel="noopener">Sky Sports (สัปดาห์ก่อน)</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">ตรวจสอบ Consistency แล้ว: Played = W+D+L และ Points = W×3+D ถูกต้องครบทุกทีมในตาราง เครื่องหมาย * หมายถึงคู่ทีมที่แต้มเท่ากันและไม่สามารถยืนยันผลต่างประตูที่ใช้จัดลำดับได้อย่างสมบูรณ์ (กรณี Arsenal vs Manchester United) ทุกทีมใน Top 6 เล่นครบ Matchweek 5 แล้ว ไม่มีนัดค้างในกลุ่มนี้อีก</p>
+  </section>
+
+  <section>
+    <h2>⚽ ผลการแข่งขันสำคัญ</h2>
+    <div class="note">สัปดาห์นี้มีการแข่งขันระดับสโมสรเพียง 2 นัด ซึ่งเป็นนัดค้างสุดท้ายของ Matchweek 5 ที่ยังไม่จบในรายงานสัปดาห์ก่อน หลังจากนี้พรีเมียร์ลีกหยุดพักยาวจนถึง 10 ต.ค. จึงไม่มีนัดอื่นให้แสดงเพิ่มเติมในช่วงเวลาที่กำหนด (ตามกฎห้ามใช้ข้อมูลนอกช่วง 7 วัน)</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th class="wrap">Summary</th><th>Source</th></tr>
+      <tr><td>20 ก.ย.</td><td>Manchester City</td><td>5-3</td><td>Sunderland</td><td class="wrap">Enzo Fernández ยิงฟรีคิกเปิดสกอร์ ตามด้วย Antoine Semenyo ยิง 2 ประตู และ Rayan Cherki ก่อน Erling Haaland ปิดท้ายประตูที่ 5 ในนาทีที่ 81 จากลูกจ่ายของ Josko Gvardiol ฝั่ง Sunderland ไล่มาด้วยแฮตทริกของ Brian Brobbey แต่ไม่พอพลิกเกม Phil Foden ไม่ได้ลงเล่นเพราะโดนแบน</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879272/sunderland-manchester-city" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.skysports.com/football/video/12606/13590137/goal-e-haaland-manchester-city-5-3-sunderland" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>20 ก.ย.</td><td>Leeds United</td><td>0-0</td><td>Crystal Palace</td><td class="wrap">ทั้งสองทีมเสมอกันไร้สกอร์ที่ Elland Road โดย Crystal Palace เป็นฝ่ายได้เปรียบในเกมรุกมากกว่าแต่ทำได้เพียงแต้มเสมอ มีจังหวะประตูของ Leeds ที่ถูกปฏิเสธระหว่างเกม</td><td><a href="https://www.cpfc.co.uk/news/match-reports/match-report-leeds-united-crystal-palace-september-2026/" target="_blank" rel="noopener">Crystal Palace FC (Official)</a> / <a href="https://www.vavel.com/en-us/soccer/2026/09/20/1272239-leeds-vs-crystal-palace-live-updates-premier-league.html" target="_blank" rel="noopener">Vavel</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🥇 ดาวซัลโว Top 5</h2>
+    <div class="note">จัดอันดับจากประตูสะสมทั้งฤดูกาล ต่อเนื่องจากรายงานสัปดาห์ก่อน บวกประตูที่ยืนยันได้ในนัด Manchester City vs Sunderland สัปดาห์นี้ ไม่มีนักเตะกลุ่มดาวซัลโวนำคนอื่นลงเล่นในนัดที่เหลือของสัปดาห์เนื่องจากช่วงพักทีมชาติ ข้อมูลแอสซิสต์รายบุคคลสะสมยังไม่สามารถยืนยันครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้เช่นเดิม</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Player</th><th>Club</th><th>Goals</th><th>Assists</th><th>Source</th></tr>
+      <tr><td>1</td><td>Erling Haaland</td><td>Manchester City</td><td>5</td><td>–</td><td><a href="https://www.skysports.com/football/video/12606/13590137/goal-e-haaland-manchester-city-5-3-sunderland" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Bruno Fernandes</td><td>Manchester United</td><td>3</td><td>–</td><td><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports (ต่อเนื่องจากสัปดาห์ก่อน)</a></td></tr>
+      <tr><td>2</td><td>Alexander Isak</td><td>Liverpool</td><td>3</td><td>–</td><td><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports (ต่อเนื่องจากสัปดาห์ก่อน)</a></td></tr>
+      <tr><td>2</td><td>Bukayo Saka</td><td>Arsenal</td><td>3</td><td>–</td><td><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports (ต่อเนื่องจากสัปดาห์ก่อน)</a></td></tr>
+      <tr><td>2</td><td>João Pedro</td><td>Chelsea</td><td>3</td><td>–</td><td><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports (ต่อเนื่องจากสัปดาห์ก่อน)</a></td></tr>
+    </table>
+    </div>
+    <div class="note">Erling Haaland ขยับนำห่างขึ้นเป็น 5 ประตู หลังยิงประตูที่ 5 ของ Manchester City ในเกมพบ Sunderland ส่วนกลุ่มผู้เล่นที่ตามมาด้วย 3 ประตูยังไม่มีความเคลื่อนไหวเนื่องจากไม่มีนัดแข่งขันของทีมต้นสังกัดในสัปดาห์นี้ (ยกเว้น Manchester City)</div>
+  </section>
+
+  <section>
+    <h2>🔥 ข่าวสำคัญ</h2>
+    <h3>Official</h3>
+    <ul>
+      <li>Brian Brobbey (Sunderland) ได้รับเลือกเป็น Player of the Matchweek 5 อย่างเป็นทางการจากพรีเมียร์ลีก ด้วยคะแนนโหวต 33% นำหน้า Pascal Gross (Brighton) ที่ได้ 22% แม้ทีมจะพ่ายแพ้ในเกมที่เขาทำแฮตทริก <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.premierleague.com/en/news/4726058/sunderlands-brobbey-voted-player-of-the-matchweek" target="_blank" rel="noopener">Premier League (Official)</a></li>
+      <li>Harvey Barnes (Newcastle United) ได้รับการเสนอชื่อเข้าชิงรางวัล Guinness Goal of the Month ประจำเดือนกันยายน จากประตูสุดสวยในเกมพบ AFC Bournemouth <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.newcastleunited.com/en/news/harvey-barnes-nominated-for-premier-league-guinness-goal-of-the-month-award" target="_blank" rel="noopener">Newcastle United (Official)</a></li>
+      <li>ตลาดซื้อขายนักเตะฤดูร้อนปิดไปแล้วตั้งแต่ 1 ก.ย. 2026 ไม่มีการซื้อขายอย่างเป็นทางการใหม่ในสัปดาห์นี้ ตลาดถัดไปจะเปิดวันที่ 1 มกราคม 2027 <span class="badge badge-cont">ต่อเนื่อง</span> — <a href="https://www.premierleague.com/en/news/4698998/summer-2026-transfer-deadline-day-everything-you-need-to-know" target="_blank" rel="noopener">Premier League (Official)</a></li>
+    </ul>
+    <h3>Report</h3>
+    <ul>
+      <li>Fabrizio Romano รายงานว่า Tottenham ตัดสินใจสนับสนุน Roberto De Zerbi ต่อไปในช่วงนี้ แม้ทีมจะรั้งอันดับท้ายตาราง โดยฝ่ายบริหารสโมสรมองว่าการพลิกฟื้นทีมจากอันดับล่างต้องใช้เวลา ไม่ใช่สิ่งที่ทำได้ทันทีเพียงเพราะทุ่มเงินซื้อนักเตะจำนวนมาก <span class="badge badge-report">📰 รายงาน</span> — <a href="https://tothelaneandback.com/2026/09/21/fabrizio-romano-tottenham-stance-roberto-de-zerbi/" target="_blank" rel="noopener">To The Lane And Back</a></li>
+      <li>ESPN รายงานว่า Noni Madueke ของ Arsenal ถูกสโมสรคู่แข่งในพรีเมียร์ลีกหลายทีมจับตาความเป็นไปได้ที่จะย้ายทีมในหน้าต่างเดือนมกราคม เนื่องจากยังไม่ได้ลงเล่นเป็นตัวหลักในช่วงต้นฤดูกาล <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.espn.com/soccer/story/_/id/49977798/transfer-rumors-news-arsenal-noni-madueke-eyed-premier-league-rivals" target="_blank" rel="noopener">ESPN</a></li>
+      <li>มีรายงานว่า Liverpool สนใจติดตามผลงานของ Kees Smit จาก AZ Alkmaar ขณะที่สโมสรในพรีเมียร์ลีกหลายทีมจับตา Trent Alexander-Arnold เช่นกัน <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.transferfeed.com/clubs/liverpool/8" target="_blank" rel="noopener">TransferFeed</a></li>
+      <li>Manchester City และ Liverpool ส่งทีมสอดแนมติดตาม Felix Nmecha ของ Borussia Dortmund แต่มีรายงานว่าการย้ายทีมในเดือนมกราคมยังไม่น่าจะเกิดขึ้น <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.espn.com/soccer/transfers-news-and-features/" target="_blank" rel="noopener">ESPN</a></li>
+      <li>Arsenal มีกำหนดติดต่อสโมสรอย่างเป็นทางการอีกครั้งในสัปดาห์หน้าเพื่อเจรจาเรื่อง Bruno Guimarães ขณะที่ Newcastle United สอบถามความเป็นไปได้ในการคว้าตัว Fikayo Tomori เข้าสู่ทีมเช่นกัน <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.espn.com/soccer/story/_/id/49977798/transfer-rumors-news-arsenal-noni-madueke-eyed-premier-league-rivals" target="_blank" rel="noopener">ESPN</a></li>
+    </ul>
+    <h3>Rumor</h3>
+    <ul>
+      <li>ไม่พบข่าวลือระดับข่าวลือ (Rumor tier) ที่สามารถยืนยันแหล่งที่มาได้ครบถ้วนในสัปดาห์นี้ ข่าวย้ายทีมทั้งหมดที่พบจัดอยู่ในระดับ Report ซึ่งมีนักข่าวสายตรงหรือสื่อกีฬาอ้างอิงชัดเจน</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏥 Injury &amp; Suspension</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Club</th><th>Player</th><th>Status</th><th>Return</th><th>Source</th></tr>
+      <tr><td>Arsenal</td><td>Kai Havertz</td><td>บาดเจ็บกล้ามเนื้อ (ลักษณะคล้ายแฮมสตริง) ขณะลงเล่นให้เยอรมนีพบเนเธอร์แลนด์ (24 ก.ย.) เดินทางกลับสโมสรเพื่อตรวจอาการเพิ่มเติม</td><td>มีรายงานว่าอาจพักได้ถึง 4 สัปดาห์ แต่สโมสรยังไม่ยืนยันระยะเวลาที่แน่นอน</td><td><a href="https://www.cbssports.com/soccer/news/kai-havertz-arsenal-muscle-strain-germany/" target="_blank" rel="noopener">CBS Sports</a> / <a href="https://www.skysports.com/football/news/13591713/kai-havertz-returning-to-arsenal-to-be-assessed-after-suffering-injury-for-germany-against-netherlands" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>Liverpool</td><td>Alexander Isak</td><td>ถอนตัวจากทีมชาติสวีเดนด้วยอาการบาดเจ็บที่นิ้วเท้า และมีปัญหาที่ต้นขาร่วมด้วย เดินทางกลับไปตรวจร่างกายกับทีมแพทย์ Liverpool</td><td>คาดมีเวลาพักฟื้นประมาณ 2 สัปดาห์ก่อนเกมพบ Manchester City วันที่ 11 ต.ค.</td><td><a href="https://sports.yahoo.com/articles/liverpool-handed-alexander-isak-injury-110000016.html" target="_blank" rel="noopener">Yahoo Sports</a> / <a href="https://www.si.com/soccer/alexander-isak-injury-progress-potential-return-date-liverpool-star-2026" target="_blank" rel="noopener">Sports Illustrated</a></td></tr>
+      <tr><td>Chelsea</td><td>João Pedro</td><td>ปัญหาที่หัวเข่า ทำให้พลาดเกมพบ Brentford เมื่อสัปดาห์ก่อน <span class="badge badge-cont">ต่อเนื่อง</span></td><td>คาดพักประมาณ 3 สัปดาห์นับจากช่วงที่ได้รับบาดเจ็บ</td><td><a href="https://sports.yahoo.com/articles/full-chelsea-players-selected-international-213034640.html" target="_blank" rel="noopener">Yahoo Sports</a></td></tr>
+      <tr><td>Chelsea</td><td>Cole Palmer</td><td>ถอนตัวจากทีมชาติอังกฤษด้วยอาการบาดเจ็บเล็กน้อย</td><td>ยังไม่มีกำหนดชัดเจน</td><td><a href="https://sports.yahoo.com/articles/full-chelsea-players-selected-international-213034640.html" target="_blank" rel="noopener">Yahoo Sports</a></td></tr>
+      <tr><td>Manchester City</td><td>Jeremy Doku</td><td>บาดเจ็บกล้ามเนื้อ <span class="badge badge-cont">ต่อเนื่อง</span></td><td>ยังไม่มีกำหนดชัดเจน</td><td><a href="https://www.premierleague.com/en/latest-player-injuries" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+    </table>
+    </div>
+    <div class="note">ข้อมูลใบเหลืองสะสมรายบุคคลและรายชื่อผู้เล่นที่โดนพักการแข่งขันจากสะสมใบเหลือง/ใบแดงยังไม่มีแหล่งอย่างเป็นทางการเผยแพร่ครบถ้วน ณ เวลารวบรวมข้อมูล เนื่องจากไม่มีนัดแข่งขันสโมสรในช่วงพักทีมชาติ Phil Foden (Manchester City) ยังคงติดโทษแบนต่อเนื่องจากสัปดาห์ก่อนและไม่ได้ลงเล่นพบ Sunderland</div>
+  </section>
+
+  <section>
+    <h2>📈 Weekly Statistics</h2>
+    <ul>
+      <li><b>Most Goals:</b> Manchester City 5-3 Sunderland เป็นนัดที่มีประตูรวมมากที่สุดของสัปดาห์ (8 ประตู) จาก 2 นัดที่แข่งขันทั้งหมด</li>
+      <li><b>Best Defence:</b> Leeds United และ Crystal Palace เก็บคลีนชีตร่วมกันจากผลเสมอ 0-0</li>
+      <li><b>Clean Sheets:</b> Leeds United, Crystal Palace (จากนัดเดียวที่จบ 0-0)</li>
+      <li><b>Player of the Week:</b> Brian Brobbey (Sunderland) — ได้รับเลือกอย่างเป็นทางการจากพรีเมียร์ลีกด้วยคะแนนโหวต 33% จากผลงานแฮตทริกในเกมที่ทีมพ่ายแพ้</li>
+    </ul>
+    <div class="note">เนื่องจากมีเพียง 2 นัดแข่งขันระดับสโมสรในสัปดาห์นี้ (ปิดท้าย Matchweek 5) สถิติภาพรวมรายสัปดาห์อื่น ๆ เช่น Possession และ Expected Goals (xG) รายทีมยังไม่มีแหล่งข้อมูลอย่างเป็นทางการเผยแพร่ครบถ้วนสำหรับ 2 นัดนี้โดยเฉพาะ ณ เวลารวบรวมข้อมูล</div>
+  </section>
+
+  <section>
+    <h2>🔵 Big 6 Analysis</h2>
+    <div class="club-block">
+      <h3>Arsenal</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้เนื่องจากช่วงพักทีมชาติ ยังคงมี 12 แต้มจาก 5 นัด (4W-0D-1L) ต่อเนื่องจากผลแพ้ Brighton 0-3 เมื่อสัปดาห์ก่อน</p>
+      <p><b>จุดเด่น:</b> ยังเป็นหนึ่งในทีมมีแต้มสูงสุดของลีก มีผู้เล่น 19 คนติดทีมชาติในช่วงพักนี้ แสดงถึงความลึกของทีม</p>
+      <p><b>จุดอ่อน:</b> Kai Havertz บาดเจ็บกล้ามเนื้อขณะติดทีมชาติเยอรมนี อาจไม่ทันลงเล่นเกมพบ Leeds United วันที่ 10 ต.ค. ซึ่งเป็นความเสี่ยงต่อความลึกของแนวรุกในช่วงเปิดฤดูกาลใหม่หลังพักยาว</p>
+    </div>
+    <div class="club-block">
+      <h3>Chelsea</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ยังคงมี 8 แต้มจาก 5 นัด (2W-2D-1L) ต่อเนื่องจากสัปดาห์ก่อน</p>
+      <p><b>จุดเด่น:</b> João Pedro ยังอยู่ในกลุ่มดาวซัลโวนำร่วมที่ 3 ประตู แม้จะพักรักษาตัวอยู่</p>
+      <p><b>จุดอ่อน:</b> มีผู้เล่นบาดเจ็บ/ถอนตัวจากทีมชาติ 2 ราย (João Pedro และ Cole Palmer) ในช่วงพักนี้ ซึ่งอาจกระทบความพร้อมของแนวรุกเมื่อลีกกลับมาแข่งขัน</p>
+    </div>
+    <div class="club-block">
+      <h3>Liverpool</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ต่อเนื่องจากผลแพ้ Bournemouth 2-3 เมื่อสัปดาห์ก่อน ซึ่งเป็นความพ่ายแพ้นัดที่ 7 ของฤดูกาล</p>
+      <p><b>จุดเด่น:</b> มีเวลาราว 2 สัปดาห์ในช่วงพักทีมชาติเพื่อปรับปรุงทีมก่อนเกมสำคัญพบ Manchester City วันที่ 11 ต.ค.</p>
+      <p><b>จุดอ่อน:</b> Alexander Isak ถอนตัวจากทีมชาติสวีเดนด้วยอาการบาดเจ็บ เพิ่มความเสี่ยงต่อความพร้อมของกองหน้าคนสำคัญก่อนเกมพบ Manchester City</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester City</h3>
+      <p><b>ฟอร์ม:</b> เอาชนะ Sunderland 5-3 (20 ก.ย.) ปิดท้าย Matchweek 5 ด้วยผลงาน 4W-0D-1L มี 12 แต้ม และมีรายงานว่าขยับขึ้นเป็นอันดับ 1 ของตารางจากผลต่างประตูที่ดีกว่า</p>
+      <p><b>จุดเด่น:</b> เกมรุกยังทำประตูได้อย่างมีประสิทธิภาพ (ยิง 5 ประตูในนัดนี้) โดยมีผู้ทำประตูหลากหลายคน (Fernández, Semenyo, Cherki, Haaland)</p>
+      <p><b>จุดอ่อน:</b> เสียไปถึง 3 ประตูให้ Sunderland ในบ้านตัวเอง สะท้อนปัญหาเกมรับที่ยังไม่นิ่งพอ และ Phil Foden ยังติดโทษแบนไม่ได้ลงเล่น</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester United</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ยังคงมี 12 แต้มจาก 5 นัด (4W-0D-1L) ต่อเนื่องจากชัยชนะเหนือ Fulham 3-2 เมื่อสัปดาห์ก่อน</p>
+      <p><b>จุดเด่น:</b> ฟอร์มดีต่อเนื่อง 3 นัดรวดก่อนช่วงพัก ภายใต้ Michael Carrick</p>
+      <p><b>จุดอ่อน:</b> ไม่สามารถยืนยันผลต่างประตูสะสมที่แน่นอนได้จากแหล่งที่เข้าถึงได้ในรอบนี้ จึงไม่ทราบตำแหน่งที่แน่ชัดเทียบกับ Arsenal ในกรณีแต้มเท่ากัน</p>
+    </div>
+    <div class="club-block">
+      <h3>Tottenham Hotspur</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ยังคงรั้งอันดับสุดท้ายของตาราง (อันดับ 20) ด้วย 2 แต้มจาก 5 นัด (0W-2D-3L) และยังไม่ชนะเลยในฤดูกาลนี้</p>
+      <p><b>จุดเด่น:</b> Fabrizio Romano ยืนยันว่าสโมสรยังคงให้การสนับสนุน Roberto De Zerbi ต่อไปในขณะนี้ ไม่มีแผนปลดทันที</p>
+      <p><b>จุดอ่อน:</b> De Zerbi ตัดสินใจให้ผู้เล่นที่ไม่ติดทีมชาติหยุดพักเต็มสัปดาห์ระหว่างช่วงพักทีมชาติ ซึ่งผู้เชี่ยวชาญที่ติดตามสโมสรมองว่าเป็นการตัดสินใจที่ "แปลก" ท่ามกลางปัญหาฟิตเนสของทีมที่ยังไม่คลี่คลาย</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 Title Race</h2>
+    <p>การลุ้นแชมป์ยังคงสูสีอย่างมากหลัง Matchweek 5 ปิดฉากลง โดยมี 3 ทีมแต้มเท่ากันที่ 12 แต้ม (Manchester City, Arsenal, Manchester United) สื่อหลายสำนักรายงานว่า Manchester City ขยับขึ้นเป็นอันดับ 1 จากผลต่างประตูที่ดีกว่าหลังเอาชนะ Sunderland 5-3 แต่ Arsenal ยังตามมาติด ๆ ด้วยผลงานที่สม่ำเสมอเช่นกัน ช่วงพักทีมชาติยาว 3 สัปดาห์ทำให้สถานการณ์นี้จะคงที่จนกว่าลีกจะกลับมาแข่งขันในวันที่ 10 ต.ค.</p>
+  </section>
+
+  <section>
+    <h2>🎯 Top 4 Race</h2>
+    <p>Newcastle United ยังคงยืนหยัดอยู่ในกลุ่มบนของตารางด้วย 11 แต้มจาก 5 นัด ตามหลังกลุ่มผู้นำเพียง 1 แต้ม ขณะที่ Chelsea และ Hull City เกาะกลุ่มอยู่ด้วย 8 แต้มเท่ากัน การแข่งขันเพื่อโซนท็อป 4 ยังไม่มีความเคลื่อนไหวเพิ่มเติมในสัปดาห์นี้เนื่องจากไม่มีการแข่งขันระดับสโมสร แต่ยังคงสูสีและเปิดกว้างสำหรับทุกทีมในกลุ่มบนเมื่อลีกกลับมาแข่งขัน</p>
+  </section>
+
+  <section>
+    <h2>⬇️ Relegation Battle</h2>
+    <p>Tottenham Hotspur ยังคงรั้งอันดับสุดท้ายของตารางด้วย 2 แต้มจาก 5 นัด และยังไม่ชนะเลยในฤดูกาลนี้ ท่ามกลางการตัดสินใจที่เป็นที่วิพากษ์วิจารณ์ของ Roberto De Zerbi ในการให้ผู้เล่นหยุดพักเต็มสัปดาห์ระหว่างช่วงพักทีมชาติ แม้สโมสรจะยังไม่มีแผนปลดผู้จัดการทีมในขณะนี้ก็ตาม ข้อมูลตารางคะแนนช่วงล่างแบบละเอียดครบทุกทีมยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ จึงยังไม่สามารถระบุกลุ่มทีมเสี่ยงตกชั้นที่แท้จริงทั้งหมดได้นอกเหนือจาก Tottenham</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Week Fixtures</h2>
+    <div class="note"><b>ไม่มีโปรแกรมแข่งขันระดับสโมสรของพรีเมียร์ลีกในสัปดาห์หน้า</b> เนื่องจากช่วงพักทีมชาติเดือนกันยายน-ตุลาคมยังดำเนินต่อไปจนถึงวันที่ 10 ตุลาคม 2026 พรีเมียร์ลีกจะกลับมาแข่งขัน Matchweek 6 ในวันที่ 10-12 ตุลาคม 2026 ซึ่งเป็นโปรแกรมที่ยืนยันอย่างเป็นทางการแล้วแต่อยู่นอกช่วง "สัปดาห์หน้า" ตามนิยามของรายงานนี้ (เกิน 7 วันจากวันที่จัดทำรายงาน) จึงแสดงไว้เพื่อการติดตามเท่านั้น</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Time (ICT)</th><th>Home</th><th>VS</th><th>Away</th><th>Source</th></tr>
+      <tr><td>10 ต.ค.</td><td>ยังไม่ประกาศเวลาแข่งขัน</td><td>Manchester United</td><td>vs</td><td>Tottenham Hotspur</td><td><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>10 ต.ค.</td><td>ยังไม่ประกาศเวลาแข่งขัน</td><td>Chelsea</td><td>vs</td><td>AFC Bournemouth</td><td><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>11 ต.ค.</td><td>ยังไม่ประกาศเวลาแข่งขัน</td><td>Liverpool</td><td>vs</td><td>Manchester City</td><td><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:14px;">เวลาแข่งขันที่แน่นอนยังไม่ประกาศจากแหล่งที่เข้าถึงได้ในรอบนี้ ตามกฎห้ามคาดเดาเวลาแข่งขัน จึงไม่ระบุเวลา ICT ในตารางนี้ สิ่งที่น่าติดตามระหว่างช่วงพัก:</p>
+    <ul>
+      <li><b>สถานการณ์บาดเจ็บของ Kai Havertz และ Alexander Isak</b> — ทั้งคู่มีความเสี่ยงไม่ทันลงเล่นเกมเปิดสนามหลังพักยาวของทีมต้นสังกัด</li>
+      <li><b>สถานการณ์ Roberto De Zerbi ที่ Tottenham</b> — ต้องติดตามว่าการตัดสินใจให้ผู้เล่นหยุดพักจะส่งผลต่อฟอร์มทีมเมื่อกลับมาแข่งขันหรือไม่</li>
+      <li><b>Matchweek 6 (10-12 ต.ค. 2026)</b> — พรีเมียร์ลีกจะกลับมาแข่งขันอีกครั้งหลังช่วงพักยาว รวมถึงคู่ใหญ่ Liverpool vs Manchester City</li>
+    </ul>
+    <p style="font-size:13px;color:var(--ink-soft);">อ้างอิง: <a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official) — Matchweek 6 fixtures</a></p>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <ul>
+      <li><b>Matches:</b> 2 นัดที่แข่งจบและยืนยันผลแล้วในสัปดาห์นี้ (ปิดท้าย Matchweek 5 ทั้งลีก)</li>
+      <li><b>Goals:</b> 8 ประตู จาก 2 นัด (เฉลี่ย 4.0 ประตู/นัด)</li>
+      <li><b>Clean Sheets:</b> 2 ทีม (Leeds United, Crystal Palace)</li>
+      <li><b>Red Cards:</b> ไม่พบรายงานใบแดงในนัดที่แข่งจบแล้วของสัปดาห์นี้จากแหล่งที่เข้าถึงได้</li>
+      <li><b>Yellow Cards:</b> ยังไม่มีแหล่งข้อมูลสรุปแยกรายใบอย่างเป็นทางการเผยแพร่ครบถ้วน ณ เวลารวบรวมข้อมูล</li>
+      <li><b>Penalties:</b> ไม่พบรายงานจุดโทษในนัดที่แข่งจบแล้วของสัปดาห์นี้จากแหล่งที่เข้าถึงได้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>โปรแกรมสำคัญ:</b> พรีเมียร์ลีกกลับมาแข่งขัน Matchweek 6 วันที่ 10-12 ต.ค. รวมถึงคู่ใหญ่ Manchester United vs Tottenham และ Liverpool vs Manchester City</li>
+      <li><b>ข่าวย้ายทีม:</b> ไม่มีความเคลื่อนไหวในตลาดจนกว่าจะถึงหน้าต่างเดือนมกราคม 2027 แต่มีข่าวรายงานความสนใจของหลายสโมสรต่อ Noni Madueke, Trent Alexander-Arnold, Bruno Guimarães และ Fikayo Tomori</li>
+      <li><b>ผู้เล่นบาดเจ็บ:</b> ติดตามความคืบหน้าการรักษาของ Kai Havertz (Arsenal) และ Alexander Isak (Liverpool) ก่อนเกมเปิดสนามหลังพักยาว รวมถึง João Pedro และ Cole Palmer ของ Chelsea</li>
+      <li><b>ข่าวผู้จัดการทีม:</b> จับตาสถานการณ์ของ Roberto De Zerbi ที่ Tottenham หลังการตัดสินใจให้ผู้เล่นหยุดพักที่เป็นที่วิพากษ์วิจารณ์ แม้สโมสรจะยังไม่มีแผนปลดในขณะนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul class="src-list">
+      <li><a href="https://www.premierleague.com/en/news/4726058/sunderlands-brobbey-voted-player-of-the-matchweek" target="_blank" rel="noopener">Premier League — Sunderland's Brobbey voted Player of the Matchweek</a></li>
+      <li><a href="https://www.premierleague.com/en/news/4725573/vote-who-was-the-best-player-of-matchweek-5" target="_blank" rel="noopener">Premier League — Nominees for Player of the Matchweek 5</a></li>
+      <li><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League — Matchweek 6 fixtures</a></li>
+      <li><a href="https://www.premierleague.com/en/news/4689113/when-are-the-international-breaks-for-202627" target="_blank" rel="noopener">Premier League — When are the international breaks for 2026/27</a></li>
+      <li><a href="https://www.premierleague.com/en/news/4698998/summer-2026-transfer-deadline-day-everything-you-need-to-know" target="_blank" rel="noopener">Premier League — Summer 2026 transfer deadline day</a></li>
+      <li><a href="https://www.premierleague.com/en/latest-player-injuries" target="_blank" rel="noopener">Premier League — Latest player injuries, club by club</a></li>
+      <li><a href="https://www.newcastleunited.com/en/news/harvey-barnes-nominated-for-premier-league-guinness-goal-of-the-month-award" target="_blank" rel="noopener">Newcastle United (Official) — Harvey Barnes nominated for Goal of the Month</a></li>
+      <li><a href="https://www.cpfc.co.uk/news/match-reports/match-report-leeds-united-crystal-palace-september-2026/" target="_blank" rel="noopener">Crystal Palace FC (Official) — Leeds United vs Crystal Palace match report</a></li>
+    </ul>
+    <h3>Media</h3>
+    <ul class="src-list">
+      <li><a href="https://www.espn.com/soccer/match/_/gameId/401879272/sunderland-manchester-city" target="_blank" rel="noopener">ESPN — Man City 5-3 Sunderland</a></li>
+      <li><a href="https://www.skysports.com/football/video/12606/13590137/goal-e-haaland-manchester-city-5-3-sunderland" target="_blank" rel="noopener">Sky Sports — Man City 5-3 Sunderland, Haaland goal</a></li>
+      <li><a href="https://www.101greatgoals.com/football/premier-league/man-city-sunderland-report-result-goals-arsenal-antoine-semenyo-brian-brobbey/" target="_blank" rel="noopener">101GreatGoals — Man City 5-3 Sunderland report</a></li>
+      <li><a href="https://sports.yahoo.com/articles/man-city-5-3-sunderland-151157118.html" target="_blank" rel="noopener">Yahoo Sports — Man City 5-3 Sunderland player ratings</a></li>
+      <li><a href="https://www.vavel.com/en-us/soccer/2026/09/20/1272239-leeds-vs-crystal-palace-live-updates-premier-league.html" target="_blank" rel="noopener">Vavel — Leeds United vs Crystal Palace</a></li>
+      <li><a href="https://tothelaneandback.com/2026/09/21/fabrizio-romano-tottenham-stance-roberto-de-zerbi/" target="_blank" rel="noopener">To The Lane And Back — Romano on Tottenham's stance on De Zerbi</a></li>
+      <li><a href="https://tothelaneandback.com/2026/09/23/pre-planned-rest-truth-de-zerbi-decision-fitness-concerns-mount-spurs/" target="_blank" rel="noopener">To The Lane And Back — De Zerbi's week-off decision</a></li>
+      <li><a href="https://sports.yahoo.com/articles/tottenham-considering-shock-roberto-zerbi-155226362.html" target="_blank" rel="noopener">Yahoo Sports — Tottenham and De Zerbi situation</a></li>
+      <li><a href="https://www.cbssports.com/soccer/news/kai-havertz-arsenal-muscle-strain-germany/" target="_blank" rel="noopener">CBS Sports — Kai Havertz muscle strain with Germany</a></li>
+      <li><a href="https://www.skysports.com/football/news/13591713/kai-havertz-returning-to-arsenal-to-be-assessed-after-suffering-injury-for-germany-against-netherlands" target="_blank" rel="noopener">Sky Sports — Havertz returning to Arsenal for assessment</a></li>
+      <li><a href="https://sports.yahoo.com/articles/liverpool-handed-alexander-isak-injury-110000016.html" target="_blank" rel="noopener">Yahoo Sports — Isak injury concern, leaves Sweden camp</a></li>
+      <li><a href="https://www.si.com/soccer/alexander-isak-injury-progress-potential-return-date-liverpool-star-2026" target="_blank" rel="noopener">Sports Illustrated — Isak injury progress, return date</a></li>
+      <li><a href="https://sports.yahoo.com/articles/full-chelsea-players-selected-international-213034640.html" target="_blank" rel="noopener">Yahoo Sports — Chelsea players selected for international duty (Pedro, Palmer)</a></li>
+      <li><a href="https://www.espn.com/soccer/story/_/id/49977798/transfer-rumors-news-arsenal-noni-madueke-eyed-premier-league-rivals" target="_blank" rel="noopener">ESPN — Transfer rumors: Madueke, Guimarães, Tomori</a></li>
+      <li><a href="https://www.transferfeed.com/clubs/liverpool/8" target="_blank" rel="noopener">TransferFeed — Liverpool transfer rumours (Smit, Alexander-Arnold interest)</a></li>
+      <li><a href="https://www.espn.com/soccer/transfers-news-and-features/" target="_blank" rel="noopener">ESPN — Soccer transfer news (Nmecha)</a></li>
+    </ul>
+    <h3>Statistics</h3>
+    <ul class="src-list">
+      <li><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports — Premier League top scorers, Golden Boot rankings</a></li>
+    </ul>
+    <div class="note"><b>UNCERTAIN:</b> premierleague.com, skysports.com, espn.com, bbc.com, en.wikipedia.org, worldfootball.net, footballwebpages.co.uk, goal.com, 365scores.com, standingstoday.com, dailycannon.com, yardbarker.com, teamtalk.com, football365.com, tothelaneandback.com และโดเมนข่าวกีฬา/สถิติส่วนใหญ่ไม่สามารถเข้าถึงได้โดยตรงผ่าน WebFetch ในสภาพแวดล้อมนี้ (network egress ปฏิเสธการเชื่อมต่อทุกโดเมนที่ทดลองในรอบนี้) จึงใช้ผลค้นหา (WebSearch) แทนตามลำดับการแก้ปัญหาที่กำหนดไว้ ระหว่างการค้นคว้าพบว่าเนื้อหาสรุปจาก WebSearch หลายรายการมีความไม่สอดคล้องกันเองหรือปะปนข้อมูลจากช่วงเวลาอื่นของฤดูกาล (เช่น ตัวเลขแต้ม/สถิติที่ขัดแย้งกันของ Manchester City, Newcastle, Chelsea, Bournemouth และการอ้างอิงนัดแข่งขัน FA Cup/Champions League ที่ยังไม่เกิดขึ้นในฤดูกาลนี้) รายงานฉบับนี้จึงคัดกรองโดยยึดเฉพาะข้อมูลที่มีรายละเอียดสอดคล้องกันจากอย่างน้อย 2 แหล่งอิสระ หรือมีความสอดคล้องเชิงตรรกะกับข้อมูลที่ยืนยันแล้วของสัปดาห์ก่อนหน้าเท่านั้น และตัดข้อมูลที่ขัดแย้งกันเองอย่างชัดเจนออก ผลต่างประตูสะสม (Goal Difference) ที่แน่นอนของ Manchester United และอันดับที่แน่ชัดระหว่าง Arsenal กับ Manchester United ในกรณีแต้มเท่ากันยังไม่สามารถยืนยันได้ในรอบนี้ ระหว่างการค้นคว้ายังพบหลักฐานใหม่ (จากรายชื่อผู้เข้าชิง Player of the Matchweek 5 ที่ระบุ "Jannik Schuster (Brentford 3-0 Chelsea)" และรายงานอาการบาดเจ็บของ João Pedro ที่ระบุว่า "missed Chelsea's 3-0 away defeat to Brentford on 18 September") ซึ่งชี้ว่าผลการแข่งขัน Brentford vs Chelsea เมื่อ 18 ก.ย. (นอกช่วงเวลาของรายงานฉบับนี้) อาจเป็น 3-0 ไม่ใช่ 0-0 ตามที่รายงานสัปดาห์ก่อนสรุปไว้ แต่เนื่องจากอยู่นอกช่วงข้อมูล 7 วันของรายงานนี้ จึงไม่แก้ไขย้อนหลัง เพียงระบุไว้เพื่อให้ผู้ใช้ตรวจสอบเพิ่มเติม โปรดตรวจสอบซ้ำก่อนใช้อ้างอิงต่อ</div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Premier League Report · จัดทำโดย Claude Code Routine · ข้อมูลทั้งหมดอ้างอิงจากแหล่งข่าวที่ระบุไว้ข้างต้น หากมีข้อมูลใดไม่สามารถยืนยันได้ จะระบุข้อจำกัดไว้อย่างชัดเจนแทนการคาดเดา</p>
+  </footer>
+</div>
+</body>
+</html>
