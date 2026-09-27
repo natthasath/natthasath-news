@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 27 กันยายน 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 20 – 27 กันยายน 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 39</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>🏁 สัปดาห์นี้มีการแข่งขัน Azerbaijan Grand Prix ที่ Baku City Circuit (24-26 กันยายน) โดย George Russell (Mercedes) คว้าชัยชนะแบบ lights-to-flag เป็นครั้งที่ 3 ของฤดูกาล เฉือนเอาชนะ Max Verstappen (Red Bull) ไปเพียง 0.196 วินาทีในช่วงโค้งสุดท้าย ขณะที่ Isack Hadjar ทำให้ Red Bull ได้ double podium ครั้งแรกนับตั้งแต่ Chinese GP 2024 ด้วยอันดับ 3 ในการกลับมาลงแข่งครั้งแรกหลังพักรักษาอาการบาดเจ็บข้อมือ 3 สนาม การแข่งขันเต็มไปด้วยความชุลมุนหลัง Safety Car ถูกเรียก 2 ครั้ง ทั้งจากอุบัติเหตุของ Alex Albon และเหตุการณ์ที่ Franco Colapinto พารถชน Pierre Gasly และ Lando Norris จนต้องออกจากการแข่งขันทั้งคู่ Kimi Antonelli แม้ต้องออกสตาร์ทจากอันดับ 16 หลังชนกำแพงในรอบควอลิฟาย แต่ไต่กลับมาจบอันดับ 5 รักษาตำแหน่งผู้นำแชมป์ชิปผู้ขับขี่ไว้ได้โดยคะแนนนำ Russell เหลือ 66 คะแนน (จากเดิม 81 คะแนนก่อนเริ่มสุดสัปดาห์) ด้านตลาดนักแข่ง Isack Hadjar เซ็นสัญญาต่อกับ Red Bull สำหรับปี 2027 เป็นรายล่าสุด ขณะที่ยังมีที่นั่งอีกหลายตำแหน่งบนกริดที่ยังไม่ยืนยันสำหรับฤดูกาลหน้า จากนี้ทัพนักแข่งจะมุ่งหน้าสู่ Singapore Grand Prix (9-11 ตุลาคม) ซึ่งเป็นสนาม Sprint ครั้งแรกในประวัติศาสตร์ของสนาม Marina Bay</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">
+      ✅ ตารางนี้เป็นคะแนนสะสมหลัง Azerbaijan Grand Prix (รอบที่ 15 จาก 23) — ยืนยันแล้วจากหลายแหล่งข้อมูล
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>302</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>236</td>
+          <td>-66</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>199</td>
+          <td>-103</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>186</td>
+          <td>-116</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>179</td>
+          <td>-123</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>163</td>
+          <td>-139</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>86</td>
+          <td>-216</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">❓ <strong>ข้อมูลบางส่วน:</strong> อันดับ 7, 9 และ 10 (คาดว่ารวมถึง Oscar Piastri และนักแข่งกลุ่ม midfield อื่น ๆ) ไม่พบตัวเลขคะแนนที่ยืนยันได้ชัดเจนแยกเป็นรายบุคคลในรอบการค้นหานี้ จึงงดแสดงตามหลักเกณฑ์ของรายงาน</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://racingnews365.com/2026-f1-championship-standings-after-azerbaijan-grand-prix-at-baku">RacingNews365</a>, <a href="https://www.gpfans.com/en/f1-news/1090686/f1-standings-2026-latest-points-leaders-azerbaijan-grand-prix/">GPFans</a>, <a href="https://www.racefans.net/2026/09/26/2026-azerbaijan-grand-prix-race-result-and-championship-points/">RaceFans</a>, <a href="https://www.si.com/onsi/f1/news/f1-standings-and-results-after-the-2026-azerbaijan-grand-prix">Sports Illustrated</a>, ยืนยันโดย Formula1.com (ผ่านผลการค้นหา — เข้าถึงหน้าเว็บโดยตรงไม่ได้ในรอบนี้)</div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">
+      ✅ ตารางนี้เป็นคะแนนสะสมหลัง Azerbaijan Grand Prix — ตัวเลขคะแนน Mercedes/Ferrari/McLaren/Red Bull ยืนยันตรงกันจากหลายแหล่งข่าว
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>538</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>378</td>
+          <td>-160</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>McLaren</td>
+          <td>306</td>
+          <td>-232</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Red Bull Racing</td>
+          <td>263</td>
+          <td>-275</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Racing Bulls</td>
+          <td>83</td>
+          <td>-455</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Alpine</td>
+          <td>68</td>
+          <td>-470</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Haas F1 Team</td>
+          <td>27</td>
+          <td>-511</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">❓ <strong>ข้อมูลบางส่วน:</strong> Audi และ Williams อยู่อันดับ 8-9 ตามลำดับ แต่ไม่พบคะแนนสะสมที่ยืนยันได้ชัดเจนในรอบการค้นหานี้ ส่วน Aston Martin และ Cadillac (อันดับ 10-11) ไม่พบข้อมูลคะแนนที่ยืนยันได้เช่นกัน จึงงดแสดงตัวเลขตามหลักเกณฑ์ของรายงาน</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://scuderiafans.com/2026-f1-team-standings-after-azerbaijan-gp-ferrari-remains-second/">ScuderiaFans</a>, <a href="https://www.gpblog.com/en/news/f1-standings-antonelli-recovers-but-russell-scores-big-in-baku">GPblog</a>, <a href="https://www.total-motorsport.com/f1-2026-driver-team-standings-after-azerbaijan/">Total Motorsport</a></div>
+  </section>
+
+  <section>
+    <h2>🏁 Azerbaijan Grand Prix 2026 — Baku City Circuit</h2>
+    <div class="note">
+      ✅ การแข่งขันจัดขึ้นระหว่าง 24-26 กันยายน 2026 — ผลการแข่งขันยืนยันแล้วจากหลายแหล่งข้อมูล
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา / สถานะ</th>
+          <th>คะแนน</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>ผู้ชนะ</td>
+          <td>25</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>+0.196s</td>
+          <td>18</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>+10.704s</td>
+          <td>15</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>+14.136s</td>
+          <td>12</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>+15.512s</td>
+          <td>10</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>จบการแข่งขัน</td>
+          <td>8</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Arvid Lindblad</td>
+          <td>Racing Bulls</td>
+          <td>จบการแข่งขัน</td>
+          <td>6</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Esteban Ocon</td>
+          <td>Haas</td>
+          <td>จบการแข่งขัน</td>
+          <td>4</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Oliver Bearman</td>
+          <td>Haas</td>
+          <td>จบการแข่งขัน</td>
+          <td>2</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Carlos Sainz</td>
+          <td>Williams</td>
+          <td>จบการแข่งขัน</td>
+          <td>1</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">📋 ผู้เข้าเส้นชัยนอกโซนคะแนน (11-16): Nico Hulkenberg (Audi), Liam Lawson (Racing Bulls), Gabriel Bortoleto (Audi), Oscar Piastri (McLaren), Sergio Perez (Cadillac), Valtteri Bottas (Cadillac)</p>
+    <p class="note">🚨 <strong>DNF:</strong> Franco Colapinto (Alpine), Pierre Gasly (Alpine), Lando Norris (McLaren), Alex Albon (Williams)</p>
+
+    <h3>สรุปเหตุการณ์สำคัญ</h3>
+    <ul>
+      <li><strong>Strategy:</strong> Russell ควบคุมการแข่งขันแบบ lights-to-flag จากตำแหน่งโพล และบริหารช่วง Safety Car restart ได้ 2 ครั้งเพื่อรักษาตำแหน่งนำ</li>
+      <li><strong>Safety Car:</strong> ถูกเรียก 2 ครั้ง — ครั้งแรกจากอุบัติเหตุของ Alex Albon (Williams) ที่ชนกำแพง และครั้งที่สองจากเหตุการณ์ Franco Colapinto ล็อกล้อพารถชน Pierre Gasly (เพื่อนร่วมทีม Alpine) และ Lando Norris (McLaren) จนทั้งคู่ต้องออกจากการแข่งขัน</li>
+      <li><strong>Overtakes/Incidents:</strong> Kimi Antonelli ไต่จากกริด P16 (หลังชนกำแพงโค้ง 1 ในรอบควอลิฟาย) ขึ้นมาจบอันดับ 5 ถือเป็นการไล่แซงที่โดดเด่นที่สุดของสุดสัปดาห์</li>
+      <li><strong>Driver of the Day:</strong> Max Verstappen ตามผลโหวตทางการของ Formula1.com หลังพลาดชัยชนะไปอย่างเฉียดฉิว</li>
+      <li><strong>Fastest Lap:</strong> George Russell ทำเวลาต่อรอบเร็วที่สุด 1:44.916 ในรอบที่ 49</li>
+    </ul>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.the-race.com/formula-1/f1-2026-azerbaijan-grand-prix-race-results/">The Race</a>, <a href="https://racingnews365.com/2026-f1-azerbaijan-grand-prix-baku-results">RacingNews365</a>, <a href="https://www.gpfans.com/en/f1-news/1090761/f1-azerbaijan-grand-prix-2026-results-final-classification-all-penalties-applied-baku/">GPFans</a>, <a href="https://www.planetf1.com/news/f1-results-azerbaijan-grand-prix-2026-race">PlanetF1</a>, ยืนยันโดยบทความ Formula1.com "Russell narrowly holds off Verstappen to take victory over the line in chaotic Azerbaijan GP" (ผ่านผลการค้นหา)</div>
+  </section>
+
+  <section>
+    <h2>⏱ Qualifying — Azerbaijan Grand Prix</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>1:42.526</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>+0.837s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Lando Norris</td>
+          <td>McLaren</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Carlos Sainz</td>
+          <td>Williams</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Franco Colapinto</td>
+          <td>Alpine</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">⚠️ เวลาต่อรอบยืนยันได้ชัดเจนเฉพาะอันดับ 1-2 (Russell/Leclerc) จากรอบการค้นหานี้ ส่วนอันดับ 3-10 ยืนยันได้เฉพาะลำดับตำแหน่งเท่านั้น — เรื่องเด่นของรอบนี้คือ Kimi Antonelli (ผู้นำแชมป์ชิปฤดูกาล) ตกไปอยู่อันดับ 16 หลังชนกำแพงด้านในโค้ง 1 ในช่วงต้นของการควอลิฟาย</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.planetf1.com/news/f1-results-azerbaijan-grand-prix-2026-qualifying">PlanetF1</a>, <a href="https://racingnews365.com/2026-f1-azerbaijan-grand-prix-baku-qualifying-results">RacingNews365</a>, <a href="https://www.gpfans.com/en/f1-news/1090634/f1-qualifying-results-2026-azerbaijan-grand-prix-positions-times/">GPFans</a>, ยืนยันโดยบทความ Formula1.com "Russell charges to pole position as Antonelli suffers shock exit in Qualifying for Azerbaijan GP" (ผ่านผลการค้นหา)</div>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญประจำสัปดาห์</h2>
+
+    <h3>Driver Market</h3>
+    <p>Isack Hadjar เซ็นสัญญาต่ออายุกับ Red Bull Racing สำหรับฤดูกาล 2027 เป็นที่เรียบร้อย หลังกลับมาลงแข่งครั้งแรกในรอบ 3 สนามด้วยการจบอันดับ 3 ที่ Baku ขณะที่ในภาพรวมตลาดนักแข่ง ยังคงมีที่นั่งจำนวนมากที่ยังไม่ได้รับการยืนยันสำหรับปี 2027 แม้จะมีนักแข่งหลักหลายคนปิดดีลไปแล้ว ได้แก่ Lando Norris (McLaren ถึงอย่างน้อยปี 2030), Oscar Piastri (McLaren ถึงสิ้นปี 2028), Max Verstappen (Red Bull ถึงปี 2030) และ Pierre Gasly (Alpine ถึงอย่างน้อยสิ้นปี 2028)</p>
+    <div class="source">✅ ที่มา: <a href="https://www.planetf1.com/news/f1-driver-contracts-2026-expiry">PlanetF1</a>, <a href="https://www.the-race.com/formula-1/2027-f1-grid-every-confirmed-driver/">The Race</a>, <a href="https://fervogear.com/2026/09/22/news/f1/f1-drivers-2027-contracts/">Fervogear</a></div>
+
+    <h3>Technical Updates</h3>
+    <p>🔧 McLaren, Red Bull, Williams และ Audi นำแพ็กเกจอัปเกรดชุดใหญ่มาใช้ที่ Azerbaijan Grand Prix โดย McLaren ปรับปรุงหลายจุด เริ่มจากช่องรับอากาศไซด์พอดและฝาครอบเครื่องยนต์ รวมถึงขอบพื้นรถ (floor edge) และดิฟฟิวเซอร์ใหม่ พร้อมปรับปรุงแฟริ่งระบบกันสะเทือนด้านหลัง</p>
+    <div class="source">✅ ที่มา: <a href="https://racer.com/2026/09/24/technical-updates-2026-azerbaijan-grand-prix">RACER</a>, <a href="https://racingnews365.com/red-bull-and-williams-upgrades-explained-as-development-war-intensifies">RacingNews365</a></div>
+
+    <h3>FIA & Regulations</h3>
+    <p>🚨 Audi ยืนยันจุดยืนไม่ยอมรับการประนีประนอมเรื่องกฎเครื่องยนต์ปี 2026 หลังมีรายงานว่า Mercedes และ Red Bull Powertrains พบช่องโหว่ที่เกี่ยวข้องกับอัตราส่วนการอัด (compression ratio) โดย James Key ผู้อำนวยการฝ่ายเทคนิคของ Audi ย้ำว่า F1 ต้องมีสนามแข่งขันที่เป็นธรรมสำหรับทุกทีม</p>
+    <div class="source">✅ ที่มา: <a href="https://www.planetf1.com/news/audi-f1-2026-engine-cadillac-team-radio">PlanetF1</a></div>
+
+    <h3>Penalties — Azerbaijan Grand Prix</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>เรื่อง</th>
+          <th>ผลการตัดสิน</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Franco Colapinto ชนหลาย Multi-car incident (Gasly, Norris)</td>
+          <td>โทษปรับเวลา 10 วินาที</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Gabriel Bortoleto แซงในช่วงธงเหลือง</td>
+          <td>ได้รับโทษ (สจ๊วตระบุว่าสัญญาณ Safety Car ที่คลาดเคลื่อนมีส่วนเกี่ยวข้อง)</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Arvid Lindblad ปะทะ Liam Lawson โค้งแรก</td>
+          <td>ไม่มีโทษ (สจ๊วตระบุเป็นอุบัติเหตุโค้งแรกทั่วไป)</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Sergio Perez กีดขวาง Oscar Piastri ในรอบควอลิฟาย</td>
+          <td>โทษปรับกริด 3 อันดับ</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Carlos Sainz และ Isack Hadjar ในรอบวอร์มอัปก่อนสตาร์ท</td>
+          <td>ได้รับคำเตือน (warning)</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Fernando Alonso เปลี่ยนชิ้นส่วน Power Unit</td>
+          <td>โทษปรับกริด 25 อันดับ</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Lance Stroll สะสมโทษปรับกริด</td>
+          <td>โทษปรับกริดรวม 20 อันดับ</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา: <a href="https://www.planetf1.com/news/fia-azerbaijan-grand-prix-gabriel-bortoleto-investigation">PlanetF1</a>, <a href="https://www.planetf1.com/news/fia-oscar-piastri-sergio-perez-azerbaijan-grand-prix-2026-qualifying">PlanetF1</a>, <a href="https://www.planetf1.com/news/fia-franco-colapinto-penalty-azerbaijan-grand-prix">PlanetF1</a>, <a href="https://www.planetf1.com/news/liam-lawson-fia-decision-arvid-lindblad-2026-azerbaijan-grand-prix">PlanetF1</a>, <a href="https://www.planetf1.com/news/fia-aston-martin-azerbaijan-grand-prix-2026-penalty">PlanetF1</a>, เอกสารการตัดสินของสจ๊วต FIA (fia.com — เข้าถึงหน้าเว็บโดยตรงไม่ได้ในรอบนี้ แต่ยืนยันผ่านผลการค้นหาที่อ้างอิงเอกสาร PDF ของ FIA โดยตรง)</div>
+  </section>
+
+  <section>
+    <h2>📈 วิเคราะห์ผลงานทีม</h2>
+
+    <div class="team-section">
+      <strong>Mercedes</strong> — คว้าชัยชนะที่ Baku ด้วย Russell พร้อมกับ Antonelli ที่ไต่จากกริดท้ายตารางขึ้นมาจบท็อป 5 ได้ ตอกย้ำความแข็งแกร่งทั้งความเร็วรถและความสามารถกู้สถานการณ์ ทีมนำห่างในตารางผู้สร้างรถถึง 160 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Ferrari</strong> — Leclerc จบอันดับ 4 และ Hamilton อันดับ 6 ถือเป็นผลงานที่มั่นคงแต่ยังตามหลัง Mercedes อยู่มาก ขณะที่ตำแหน่งของ Hamilton ในแชมป์ชิปผู้ขับขี่เริ่มถูก Norris ไล่ตามใกล้
+    </div>
+    <div class="team-section">
+      <strong>Red Bull Racing</strong> — สุดสัปดาห์ที่โดดเด่นที่สุดของทีมในรอบหลายสนาม ด้วย double podium จาก Verstappen (P2) และ Hadjar (P3) ในการกลับมาลงแข่งครั้งแรกหลังบาดเจ็บ ถือเป็น double podium ครั้งแรกนับตั้งแต่ Chinese GP 2024
+    </div>
+    <div class="team-section">
+      <strong>McLaren</strong> — สุดสัปดาห์ที่ยากลำบาก Norris ต้องออกจากการแข่งขันหลังถูก Colapinto ชนในเหตุการณ์ Safety Car ครั้งที่สอง ส่วน Piastri หลุดออกนอกโซนคะแนนไปจบอันดับ 14
+    </div>
+    <div class="team-section">
+      <strong>Aston Martin</strong> — Alonso และ Stroll ต้องแบกโทษปรับกริดจำนวนมาก (25 และ 20 อันดับตามลำดับ) จากการเปลี่ยนชิ้นส่วน Power Unit ทำให้ผลงานในสุดสัปดาห์นี้ถูกจำกัดตั้งแต่ต้น
+    </div>
+    <div class="team-section">
+      <strong>Williams</strong> — Sainz คว้าคะแนนสุดท้ายด้วยอันดับ 10 ขณะที่ Albon ต้องออกจากการแข่งขันหลังชนกำแพงจนเป็นต้นเหตุของ Safety Car ครั้งแรก
+    </div>
+    <div class="team-section">
+      <strong>Alpine</strong> — สุดสัปดาห์ที่เลวร้าย ทั้ง Colapinto และ Gasly ต้องออกจากการแข่งขันจากเหตุการณ์เดียวกัน โดย Colapinto เป็นต้นเหตุของการชนและได้รับโทษปรับเวลา 10 วินาที
+    </div>
+    <div class="team-section">
+      <strong>Haas</strong> — ผลงานที่มั่นคงของทั้งคู่ Ocon (P8) และ Bearman (P9) ทำคะแนนได้ทั้งสองคัน
+    </div>
+    <div class="team-section">
+      <strong>Racing Bulls</strong> — Lindblad ทำคะแนนด้วยอันดับ 7 ขณะที่ Lawson จบนอกโซนคะแนนในอันดับ 12 พร้อมเผชิญการตรวจสอบจากเหตุการณ์ปะทะกับ Lindblad ในโค้งแรกซึ่งสจ๊วตตัดสินไม่ลงโทษ
+    </div>
+    <div class="team-section">
+      <strong>Audi</strong> — Hulkenberg และ Bortoleto จบอันดับ 11 และ 13 ตามลำดับ นอกโซนคะแนน โดย Bortoleto ได้รับโทษจากการแซงในช่วงธงเหลือง ด้านทีมยังคงยืนยันจุดยืนคัดค้านการประนีประนอมกฎเครื่องยนต์ปี 2026
+    </div>
+    <div class="team-section">
+      <strong>Sauber</strong> — ไม่มีข้อมูลผลการแข่งขันหรือข่าวเฉพาะทีมที่ยืนยันได้ในรอบสัปดาห์นี้จากแหล่งข้อมูลที่เข้าถึงได้
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติ</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>ชัยชนะสูงสุด (ฤดูกาลนี้):</strong> Kimi Antonelli — นำอันดับผู้ขับขี่ด้วยคะแนนสะสมสูงสุด</div>
+      <div class="stat-card"><strong>ชัยชนะครั้งที่ 3 ของ Russell:</strong> ที่ Azerbaijan GP 2026</div>
+      <div class="stat-card"><strong>Fastest Lap Baku:</strong> George Russell — 1:44.916 (รอบที่ 49)</div>
+      <div class="stat-card"><strong>Red Bull Double Podium:</strong> ครั้งแรกนับตั้งแต่ Chinese GP 2024</div>
+      <div class="stat-card"><strong>ระยะห่างเข้าเส้นชัย:</strong> 0.196 วินาที ระหว่าง Russell และ Verstappen</div>
+    </div>
+    <p class="note">❓ สถิติเชิงลึกอื่น ๆ (จำนวน pole/podium สะสมรายบุคคลตลอดฤดูกาล) ไม่พบข้อมูลที่ยืนยันได้ครบถ้วนในรอบการค้นหานี้</p>
+  </section>
+
+  <section>
+    <h2>📅 การแข่งขันครั้งถัดไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>9 ต.ค. 2026</td>
+          <td>Sprint Qualifying</td>
+          <td>❓ ไม่พบเวลาที่ยืนยันเป็น ICT ในรอบนี้</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>10 ต.ค. 2026</td>
+          <td>Sprint Race</td>
+          <td>❓ (17:30 เวลาสิงคโปร์ ≈ 16:30 ICT — ยังไม่ยืนยันจากแหล่งทางการ)</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>10 ต.ค. 2026</td>
+          <td>Qualifying</td>
+          <td>❓ ไม่พบเวลาที่ยืนยันเป็น ICT ในรอบนี้</td>
+          <td>❓</td>
+        </tr>
+        <tr class="highlight">
+          <td>11 ต.ค. 2026</td>
+          <td>Race</td>
+          <td>❓ (13:00 เวลาอังกฤษ ≈ 19:00 ICT — ยังไม่ยืนยันจากแหล่งทางการ)</td>
+          <td>❓</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">❓ <strong>ข้อมูลไม่ครบ:</strong> เวลาการแข่งขันแต่ละ session ในรูปแบบ ICT ที่แม่นยำและช่องทางถ่ายทอดสดในไทย ไม่พบข้อมูลที่ยืนยันได้ชัดเจนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบการค้นหานี้ ตัวเลขในวงเล็บเป็นการแปลงเวลาคร่าว ๆ จากรายงานต้นทางเท่านั้น ควรตรวจสอบตารางเวลาอย่างเป็นทางการอีกครั้งก่อนการแข่งขัน</p>
+
+    <h3>รายละเอียดสนาม</h3>
+    <ul>
+      <li><strong>Circuit:</strong> Marina Bay Street Circuit</li>
+      <li><strong>Country:</strong> สิงคโปร์</li>
+      <li><strong>Circuit Length:</strong> 4.927 กม. (19 โค้ง)</li>
+      <li><strong>Number of Laps:</strong> 62 รอบ</li>
+      <li><strong>Lap Record:</strong> 1:33.808 — Lewis Hamilton (Ferrari SF-25, 2025)</li>
+    </ul>
+
+    <h3>Preview</h3>
+    <p>Singapore Grand Prix 2026 (รอบที่ 18 จาก 23) จะเป็นสนาม Sprint ครั้งแรกในประวัติศาสตร์ของ Marina Bay โดยรูปแบบสุดสัปดาห์จะมี Sprint Qualifying ในวันศุกร์ ตามด้วย Sprint Race และ Qualifying หลักในวันเสาร์ ก่อนการแข่งขันหลักในวันอาทิตย์ Sprint Race มีระยะทางประมาณ 100 กม. ไม่มีการเข้าพิทบังคับ และมอบคะแนนสูงสุด 8 คะแนน ถือเป็นสนาม Sprint สุดท้ายของฤดูกาล 2026</p>
+    <div class="source">✅ ที่มา: <a href="https://racingnews365.com/f1/races/singapore-gp">RacingNews365</a>, <a href="https://www.legit.ng/sports/1730209-singapore-grand-prix-2026-sprint-race-debut-dates-tickets-killers-lana-headlining/">Legit.ng</a>, <a href="https://www.total-motorsport.com/singapore-grand-prix-track-guide-marina-bay/">Total Motorsport</a>, ยืนยันโดยบทความ Formula1.com "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2026 - full timetable" (ผ่านผลการค้นหา — เข้าถึงหน้าเว็บโดยตรงไม่ได้ในรอบนี้)</div>
+  </section>
+
+  <section>
+    <h2>💬 คำกล่าวประจำสัปดาห์</h2>
+    <div class="quote">
+      "I think the performance outside today was great, but, you know, he [Antonelli] has been flawless this whole season."
+      <div class="source">— George Russell (Mercedes) หลังจบการแข่งขัน Azerbaijan GP</div>
+    </div>
+    <div class="quote">
+      "I think when you look at every championship campaign, even for the winners, there are mistakes along the way."
+      <div class="source">— George Russell (Mercedes) ให้สัมภาษณ์เรื่องการต่อสู้ชิงแชมป์</div>
+    </div>
+    <div class="quote">
+      "We never accept [a compromise on the 2026 engine rules]... F1 has got to have a level playing field."
+      <div class="source">— James Key ผู้อำนวยการฝ่ายเทคนิค Audi F1</div>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.espn.com/f1/story/_/id/50011986/azerbaijan-grand-prix-2026-live-baku-updates-results-analysis-commentary">ESPN</a>, <a href="https://www.aljazeera.com/sports/2026/9/26/russell-edges-out-verstappen-to-win-in-baku-antonelli-settles-for-fifth">Al Jazeera</a>, <a href="https://www.planetf1.com/news/audi-f1-2026-engine-cadillac-team-radio">PlanetF1</a></div>
+  </section>
+
+  <section>
+    <h2>🔍 วิเคราะห์แชมป์ชิป</h2>
+    <p><strong>Drivers Championship:</strong> Antonelli ยังคงคุมเกมด้วยคะแนนนำ Russell 66 คะแนน แม้จะออกสตาร์ทจากอันดับ 16 ที่ Baku แต่ความสามารถในการไต่อันดับกลับมาจบท็อป 5 สะท้อนความสม่ำเสมอตลอดฤดูกาล ขณะที่ Russell กำลังไล่บี้ด้วยฟอร์มการแข่งที่ร้อนแรงต่อเนื่อง เหลืออีก 8 สนามซึ่งยังมีคะแนนสะสมได้อีกถึง 200 คะแนน ทำให้การชิงแชมป์ยังไม่จบง่าย ๆ</p>
+    <p><strong>Constructors Championship:</strong> Mercedes คุมเกมได้ขาดด้วยคะแนนนำ Ferrari ถึง 160 คะแนน จากผลงานที่แข็งแกร่งของทั้ง Russell และ Antonelli ส่วนการต่อสู้อันดับ 3-4 ระหว่าง McLaren และ Red Bull ยังคงสูสี โดย Red Bull เพิ่งทำคะแนนได้มากถึง 33 คะแนนจาก double podium ที่ Baku ทำให้ช่องว่างกับ McLaren แคบลงเหลือ 43 คะแนน</p>
+    <p><strong>Midfield Battle:</strong> Racing Bulls, Alpine และ Haas ยังคงแข่งขันกันอย่างสูสีในกลุ่มกลางตาราง โดย Racing Bulls นำอยู่ด้วยคะแนนสะสม 83 คะแนน ขณะที่ Haas ทำคะแนนได้ทั้งสองคันที่ Baku เป็นสัญญาณบวกของทีม</p>
+    <p><strong>Momentum:</strong> Red Bull เป็นทีมที่มีโมเมนตัมดีที่สุดในสัปดาห์นี้จากการกลับมาของ Hadjar และผลงาน double podium ส่วน Mercedes ยังคงเป็นทีมที่แข็งแกร่งที่สุดโดยรวมของฤดูกาล</p>
+    <p><strong>Teams to Watch:</strong> จับตา Red Bull ว่าจะรักษาโมเมนตัมนี้ต่อได้หรือไม่ที่ Singapore ซึ่งเป็นสนาม Sprint ครั้งแรกของสนามนี้ และจับตา McLaren ที่ต้องฟื้นฟูฟอร์มหลังสุดสัปดาห์ที่ยากลำบากของ Norris และ Piastri</p>
+  </section>
+
+  <section>
+    <h2>📊 สรุปตัวเลขด่วน</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix:</strong> 1 สนาม (Azerbaijan GP)</div>
+      <div class="stat-card"><strong>Sprint:</strong> ไม่มี</div>
+      <div class="stat-card"><strong>Pole Position:</strong> George Russell</div>
+      <div class="stat-card"><strong>Fastest Lap:</strong> George Russell (1:44.916)</div>
+      <div class="stat-card"><strong>FIA Decisions:</strong> 6 กรณี (Colapinto, Bortoleto, Lindblad, Perez, Sainz/Hadjar warning, Alonso/Stroll grid penalty)</div>
+      <div class="stat-card"><strong>Penalties:</strong> 5 โทษปรับ + 2 คำเตือน</div>
+      <div class="stat-card"><strong>Driver Transfers:</strong> Hadjar ต่อสัญญา Red Bull ถึงปี 2027</div>
+      <div class="stat-card"><strong>Technical Updates:</strong> McLaren, Red Bull, Williams, Audi</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ควรจับตาต่อไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ประเด็น</th>
+          <th>เหตุผล</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Singapore GP สนาม Sprint ครั้งแรกของ Marina Bay</td>
+          <td>รูปแบบสุดสัปดาห์ใหม่ (Sprint 3 วัน) อาจส่งผลต่อกลยุทธ์ทีมและผลคะแนนสะสมก่อนโค้งสุดท้ายของฤดูกาล</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Red Bull double podium ต่อเนื่องหรือไม่</td>
+          <td>หากทำผลงานต่อเนื่องได้ อาจไล่จี้ McLaren ขึ้นอันดับ 3 ผู้สร้างรถ</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>ที่นั่งนักแข่งปี 2027 ที่ยังไม่ยืนยัน</td>
+          <td>ยังมีที่นั่งจำนวนมากบนกริดที่รอการประกาศ อาจมีข่าวใหญ่ในช่วงโค้งท้ายฤดูกาล</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>ข้อพิพาทกฎเครื่องยนต์ปี 2026 ระหว่าง Audi กับผู้ผลิตรายอื่น</td>
+          <td>อาจนำไปสู่การพิจารณาของ FIA เพิ่มเติมก่อนสิ้นฤดูกาล</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>Official</h3>
+    <p>Formula1.com (อ้างอิงผ่านผลการค้นหา — ไม่สามารถเข้าถึงหน้าเว็บโดยตรงได้ในรอบนี้เนื่องจากถูกบล็อกโดย network egress proxy ของระบบ), FIA.com (เช่นเดียวกัน — อ้างอิงเฉพาะเอกสารการตัดสินของสจ๊วตที่ถูกอ้างถึงในแหล่งข่าวรอง)</p>
+
+    <h3>Motorsport Media</h3>
+    <p><a href="https://www.the-race.com/formula-1/f1-2026-azerbaijan-grand-prix-race-results/">The Race</a>, <a href="https://racingnews365.com/">RacingNews365</a>, <a href="https://www.racefans.net/">RaceFans</a>, <a href="https://www.gpfans.com/">GPFans</a>, <a href="https://www.planetf1.com/">PlanetF1</a>, <a href="https://www.si.com/onsi/f1">Sports Illustrated F1</a>, <a href="https://www.espn.com/f1/">ESPN F1</a>, <a href="https://www.aljazeera.com/sports/">Al Jazeera Sport</a>, <a href="https://racer.com/">RACER</a>, <a href="https://www.total-motorsport.com/">Total Motorsport</a>, <a href="https://scuderiafans.com/">ScuderiaFans</a>, <a href="https://www.gpblog.com/">GPblog</a></p>
+
+    <h3>Team Communications</h3>
+    <p>ไม่พบข่าวหรือแถลงการณ์อย่างเป็นทางการจากทีมโดยตรงที่เข้าถึงได้ในรอบการค้นหานี้ นอกเหนือจากที่อ้างอิงผ่านสื่อข้างต้น</p>
+  </section>
+
+  <section>
+    <h2>⚠️ หมายเหตุข้อจำกัดของข้อมูล</h2>
+    <div class="warn-box">
+      <p><strong>UNCERTAIN:</strong> ในรอบการรวบรวมข้อมูลนี้ ไม่สามารถเข้าถึงโดเมน <code>formula1.com</code>, <code>fia.com</code> และเว็บไซต์ต้นทางอื่น ๆ ผ่านการเปิดหน้าเว็บโดยตรงได้เลย (ระบบแจ้ง "network egress blocked" ในทุกโดเมนที่ทดสอบ รวมถึง Wikipedia) จึงต้องอาศัยผลลัพธ์จากการค้นหาเว็บ (WebSearch) ซึ่งดึงเนื้อหาผ่านสรุปผลการค้นหาแทนการอ่านหน้าเว็บเต็มรูปแบบ ข้อมูลตัวเลข เช่น คะแนนสะสมและเวลาเข้าเส้นชัย ได้ทำการตรวจสอบไขว้ (cross-check) จากหลายแหล่งข่าวสำรอง (Tier 2) แล้ว แต่ยังไม่สามารถยืนยันได้โดยตรงจากหน้าเว็บทางการของ Formula1.com หรือ FIA ในรอบนี้ ผู้อ่านที่ต้องการความแม่นยำสูงสุดควรตรวจสอบซ้ำจาก formula1.com และ fia.com โดยตรง</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔮 แนวโน้มสัปดาห์ถัดไป</h2>
+    <div class="summary-box">
+      <p>การชิงแชมป์ผู้ขับขี่ยังคงเป็นเรื่องของ Mercedes กับตัวเอง โดย Antonelli ต้องรักษาความสม่ำเสมอเพื่อสกัดการไล่ตามของ Russell ที่กำลังมาแรง ขณะที่ในฝั่งผู้สร้างรถ การต่อสู้ระหว่าง McLaren และ Red Bull เพื่ออันดับ 3 จะเป็นประเด็นน่าติดตามที่ Singapore ซึ่งเป็นสนาม Sprint ครั้งแรกของสุดสัปดาห์ อาจเพิ่มความไม่แน่นอนให้กับผลคะแนนสะสม นอกสนาม ตลาดนักแข่งสำหรับฤดูกาล 2027 ยังคงเปิดกว้างในหลายที่นั่ง คาดว่าจะมีความเคลื่อนไหวเพิ่มเติมในช่วงโค้งสุดท้ายของฤดูกาล 2026</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly F1 Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 27 กันยายน 2026 เวลา ICT (GMT+7)</p>
+  </footer>
+</div>
+</body>
+</html>
