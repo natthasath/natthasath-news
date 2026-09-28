@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-09-28</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 28 กันยายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-09-28</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 28 ก.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูล:</b> ในรอบนี้ไม่สามารถเข้าถึงเว็บไซต์ทางการของ Cambridge Programme on AI Science &amp; Policy (casp.ac) โดยตรงได้แม้ลองซ้ำแล้ว (ปัญหา network egress ชั่วคราว) จึงใช้ผลค้นหาแบบ site-specific และรายงานข่าวจากสื่อหลายสำนักเพื่อยืนยันชื่อผู้แต่งและ URL รายงานแทนการอ่านหน้า casp.ac โดยตรง เช่นเดียวกับ axios.com, pymnts.com และ implicator.ai ที่เข้าถึงไม่ได้ในรอบนี้ ต้องใช้ผลค้นหาแทน — หากปัญหานี้เกิดต่อเนื่องเกิน 3 วันทำการจะระบุเป็น <code>UNCERTAIN: casp.ac</code> ในรายงานถัดไป นอกจากนี้ยังไม่มีรายละเอียดสเปกทางการของ "Standards Authority for Frontier AI (SAFA)" หรือเนื้อหาเต็มของรายงาน CASP ที่ยืนยันได้ครบทุกจุดจากแหล่งข้อมูลหลักโดยตรง จึงนำเสนอเท่าที่ยืนยันได้จากหลายแหล่งสื่อที่สอดคล้องกัน ข่าว OpenAI DevDay 2026 (จัดจริงวันที่ 29 ก.ย.) และ Claude Marketplace (ประกาศทางการ 23 ก.ย.) เกินกรอบ 24 ชั่วโมงของวันนี้แต่ยังเป็นประเด็นที่สื่อพูดถึงต่อเนื่อง จึงนำมาแสดงพร้อมระบุ <span class="badge-warn">ต่อเนื่อง</span></div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ข่าวใหญ่ที่สุดของวันนี้คือรายงานวิชาการ "What if automating AI R&amp;D triggers an intelligence explosion?" ที่นักวิจัย AI ระดับแนวหน้า 22 คน รวมถึง Geoffrey Hinton, Yoshua Bengio และหัวหน้านักวิทยาศาสตร์จาก OpenAI, Anthropic, Microsoft และ Meta ร่วมกันเผยแพร่ผ่าน Cambridge Programme on AI Science &amp; Policy เรียกร้องให้รัฐบาลกำหนดให้มีผู้ตรวจสอบ (auditor) ประจำในห้องแล็บ AI ชั้นนำ พร้อมเปิดเผยว่า AI ของ Anthropic ทำงานวิจัยภายในบริษัทได้เองโดยมีการกำกับดูแลระดับสูงเพียงอย่างเดียวเพิ่มจาก 1% เป็น 26% ในรอบ 5 เดือน ขณะเดียวกันมีรายงานว่า Google, OpenAI และ Anthropic วางแผนตั้งองค์กรกำกับดูแลตนเองร่วมกันชื่อ "Standards Authority for Frontier AI (SAFA)" ในรูปแบบคล้าย FINRA ฝั่งธุรกิจ Meta เปิดตัว Meta Enterprise Platform นำ Muse agent, Meta Business Agent, Muse API และ Muse Code เข้าสู่ตลาดองค์กรอย่างเป็นทางการ นำโดย CJ Desai อดีต CEO ของ MongoDB สตาร์ทอัพเอเจนต์ส่วนตัว Instinct ระดมทุน Series C มูลค่า 1 พันล้านดอลลาร์ที่มูลค่าบริษัท 1 หมื่นล้านดอลลาร์ ส่วนวงการโอเพนซอร์สมีโปรเจกต์ด้าน agent memory อย่าง Hindsight และ Univer ขึ้นเทรนด์บน GitHub อย่างรวดเร็ว</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ไม่พบข่าวเปิดตัวหรือประกาศโมเดล AI ใหม่ที่ยืนยันแหล่งที่มาได้ครบถ้วนในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ (โมเดลล่าสุดที่ยืนยันได้ เช่น Claude Opus 5.5 และ GPT-6 Sol เปิดตัวเมื่อ 22 ก.ย. ซึ่งเกินกรอบเวลาของรายงานนี้)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Paper</th><th>Authors</th><th>Topic</th><th>Source</th></tr>
+        <tr>
+          <td>What if automating AI R&amp;D triggers an intelligence explosion?</td>
+          <td>นักวิจัยรวม 22 คน นำโดย Geoffrey Hinton, Yoshua Bengio, Andrew Barto, Jakub Pachocki (OpenAI), Jack Clark (Anthropic), Eric Horvitz (Microsoft), Dawn Song (Meta) และคณะ</td>
+          <td>เตือนความเสี่ยงจากการที่ AI เข้ามาช่วยทำวิจัยและพัฒนา AI รุ่นถัดไปด้วยตัวเอง (self-improving R&amp;D) อาจนำไปสู่ "การระเบิดของความฉลาด" (intelligence explosion) ที่ความก้าวหน้าเทียบเท่าหนึ่งปีอาจเกิดขึ้นภายในไม่กี่สัปดาห์ พร้อมเสนอมาตรการ เช่น การรายงานระดับการทำงานอัตโนมัติ ผู้ตรวจสอบประจำห้องแล็บ การจำกัดความเร็วของการพัฒนาความสามารถ และเครือข่ายวิจัยแบบตัดขาดอินเทอร์เน็ต (air-gapped)</td>
+          <td>✅ <a href="https://casp.ac/reports/intelligence-explosion">CASP — Cambridge Programme on AI Science &amp; Policy</a> · 📰 <a href="https://www.axios.com/2026/09/28/ai-pioneers-intelligence-explosion">Axios</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ไม่สามารถเข้าถึงหน้า casp.ac โดยตรงได้ในรอบนี้ (network egress ชั่วคราว) ชื่อผู้แต่งและรายละเอียดยืนยันผ่านผลค้นหาและรายงานข่าวจากหลายสำนักที่สอดคล้องกัน (Axios, Bloomberg, PYMNTS, implicator.ai)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>vectorize-io/hindsight</td>
+          <td>~40,800</td>
+          <td>Python / TypeScript / Go</td>
+          <td>ระบบหน่วยความจำสำหรับ AI agent ที่ออกแบบให้เอเจนต์เรียนรู้และพัฒนาต่อเนื่องแทนการจดจำแค่ประวัติการสนทนา ขึ้นเทรนด์อันดับต้นบน GitHub วันนี้ด้วยดาวเพิ่มกว่า 4,500 ดวงในวันเดียว</td>
+          <td>✅ <a href="https://github.com/vectorize-io/hindsight">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>dream-num/univer</td>
+          <td>~21,100</td>
+          <td>TypeScript</td>
+          <td>เฟรมเวิร์กโอเพนซอร์สสำหรับสร้างสภาพแวดล้อมสำนักงาน (สเปรดชีต เอกสาร งานนำเสนอ ตารางเชิงสัมพันธ์ และ PDF) ในรันไทม์เดียว ออกแบบให้ AI agent ทำงานร่วมด้วยได้โดยตรง ("Office Harness for AI Agents")</td>
+          <td>✅ <a href="https://github.com/dream-num/univer">GitHub (official repo)</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวอ้างอิงจากการอ่านหน้า GitHub โดยตรง ณ เวลาที่จัดทำรายงาน อาจคลาดเคลื่อนเล็กน้อยเนื่องจากตัวเลขเปลี่ยนแปลงตลอดเวลา paperclipai/paperclip ยังคงติดเทรนด์ต่อเนื่องจากที่เคยรายงานไปก่อนหน้านี้ <span class="badge-warn">ต่อเนื่อง</span> จึงไม่นำมาแสดงซ้ำในตารางนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Description</th><th>Pricing</th><th>Source</th></tr>
+        <tr>
+          <td>Meta Enterprise Platform (Muse Business Agent, Muse API, Muse Code)</td>
+          <td>แพลตฟอร์มใหม่ของ Meta ที่นำโมเดล เอเจนต์ และเครื่องมือสำหรับนักพัฒนาเข้าสู่ตลาดองค์กร เปิดตัวชุดแรกประกอบด้วย Muse agent เวอร์ชันธุรกิจ, Muse Business Agent, Muse API และ Muse Code เพื่อช่วยองค์กรใช้เทคโนโลยี AI ของ Meta ในการเติบโตและปรับเปลี่ยนการดำเนินงาน</td>
+          <td>ยังไม่ระบุราคาแน่ชัดจากแหล่งข้อมูลในรอบนี้</td>
+          <td>✅ <a href="https://about.fb.com/news/2026/09/launching-meta-enterprise-platform/">Meta (about.fb.com, official)</a></td>
+        </tr>
+      </table>
+    </div>
+    <h3>Updates</h3>
+    <p class="note">ไม่พบอัปเดตเครื่องมือเพิ่มเติมที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน นอกเหนือจากที่แสดงในหัวข้อ New Releases</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p>หัวหน้านักวิทยาศาสตร์ Jakub Pachocki ร่วมลงนามในรายงาน "intelligence explosion" เรียกร้องการกำกับดูแลการทำวิจัย AI แบบอัตโนมัติ (ดูหัวข้อ Research) ขณะเดียวกัน OpenAI ยังคงเดินหน้าเข้าร่วมวางแผนจัดตั้ง Standards Authority for Frontier AI ร่วมกับ Google และ Anthropic (ดูหัวข้อ Industry) ส่วนการนับถอยหลังสู่งาน DevDay 2026 วันที่ 29 ก.ย. พร้อมกระแสลือเรื่องเอเจนต์ทำงานต่อเนื่องชื่อ "o" ยังไม่มีการยืนยันอย่างเป็นทางการเพิ่มเติมจากบริษัทในรอบ 24 ชั่วโมงนี้ <span class="badge-warn">ต่อเนื่อง</span> ✅ <a href="https://www.axios.com/2026/09/28/ai-pioneers-intelligence-explosion">Axios</a> · ❓ <a href="https://www.testingcatalog.com/openai-to-announce-o-always-on-agent-during-devday/">TestingCatalog</a></p>
+
+    <h3>Anthropic</h3>
+    <p>ผู้ร่วมก่อตั้ง Jack Clark ร่วมลงนามในรายงาน "intelligence explosion" พร้อมเปิดเผยตัวเลขว่า AI ของ Anthropic ทำงานวิจัยและพัฒนาภายในบริษัทได้เองโดยมีการกำกับดูแลระดับสูงเพียงอย่างเดียว เพิ่มขึ้นจาก 1% เป็น 26% ในช่วง 5 เดือนที่ผ่านมา (ดูหัวข้อ Research) Anthropic ยังอยู่ระหว่างวางแผนจัดตั้ง Standards Authority for Frontier AI ร่วมกับ Google และ OpenAI (ดูหัวข้อ Industry) ส่วนกระแสข่าว Claude Marketplace ที่เปิดตัวอย่างเป็นทางการเมื่อ 23 ก.ย. ยังคงได้รับความสนใจจากสื่ออย่างต่อเนื่องจนถึงสัปดาห์นี้ <span class="badge-warn">ต่อเนื่อง</span> ✅ <a href="https://www.axios.com/2026/09/28/ai-pioneers-intelligence-explosion">Axios</a> · ✅ <a href="https://claude.com/blog/claude-marketplace">Claude by Anthropic (official)</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p>Google เข้าร่วมวางแผนจัดตั้ง Standards Authority for Frontier AI (SAFA) ร่วมกับ OpenAI และ Anthropic โดยแนวคิดนี้มีจุดเริ่มต้นจากข้อเสนอของ Demis Hassabis ซีอีโอ Google DeepMind เมื่อเดือน ก.ค. ที่เสนอให้ตั้งองค์กรกำกับดูแลตนเองแบบเดียวกับ FINRA (ดูรายละเอียดในหัวข้อ Industry) 📰 <a href="https://www.forbes.com/sites/jonmarkman/2026/09/28/google-openai--anthropic-plan-their-own-finra-style-ai-safety-regulator/">Forbes</a></p>
+
+    <h3>Meta</h3>
+    <p>เปิดตัว Meta Enterprise Platform อย่างเป็นทางการเมื่อ 28 ก.ย. นำโมเดล เอเจนต์ (Muse) และเครื่องมือพัฒนาเข้าสู่ตลาดองค์กร นำโดย Chirantan "CJ" Desai อดีต CEO และประธานของ MongoDB ในตำแหน่ง Chief Enterprise Platform Officer รายงานตรงต่อ Mark Zuckerberg (ดูหัวข้อ Tools &amp; Apps) นอกจากนี้ Dawn Song รองประธานฝ่ายวิจัย AI ของ Meta ยังร่วมลงนามในรายงาน "intelligence explosion" ด้วย (ดูหัวข้อ Research) ✅ <a href="https://about.fb.com/news/2026/09/launching-meta-enterprise-platform/">Meta (about.fb.com, official)</a></p>
+
+    <h3>Microsoft</h3>
+    <p>Eric Horvitz ประธานเจ้าหน้าที่ฝ่ายวิทยาศาสตร์ของ Microsoft ร่วมลงนามในรายงาน "intelligence explosion" เรียกร้องการกำกับดูแลการทำวิจัย AI แบบอัตโนมัติ ไม่พบข่าวผลิตภัณฑ์ใหม่เฉพาะเจาะจงจาก Microsoft ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วนนอกเหนือจากนี้ (ดูหัวข้อ Research) ✅ <a href="https://www.axios.com/2026/09/28/ai-pioneers-intelligence-explosion">Axios</a></p>
+
+    <h3>Amazon</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก Amazon ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน</p>
+
+    <h3>NVIDIA</h3>
+    <p>ไม่พบข่าวใหม่เฉพาะเจาะจงจาก NVIDIA ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วน</p>
+
+    <h3>Startup</h3>
+    <p>Instinct สตาร์ทอัพเอเจนต์ AI ส่วนตัวจากซานฟรานซิสโก ประกาศระดมทุนรอบ Series C มูลค่า 1 พันล้านดอลลาร์สหรัฐ ที่มูลค่าบริษัท 1 หมื่นล้านดอลลาร์ นำโดย Sequoia Capital, Benchmark และ Coatue เพียงหนึ่งเดือนหลังจากรอบระดมทุนก่อนหน้าที่มูลค่า 2.5 พันล้านดอลลาร์ บริษัทก่อตั้งโดย Noah Shinn พัฒนาเอเจนต์อัตโนมัติสำหรับจัดการงานส่วนตัว เช่น ฟีเจอร์ "Instinct Concierge" ที่โทรศัพท์และจองนัดหมายแทนผู้ใช้ (ดูรายละเอียดในหัวข้อ Industry) ✅ <a href="https://www.businesswire.com/news/home/20260928153437/en/Instinct-Raises-$1-Billion-in-Series-C-Funding-from-Sequoia-Benchmark-and-Coatue-at-$10-Billion-Valuation">Business Wire (official release)</a> · 📰 <a href="https://techcrunch.com/2026/09/28/viral-ai-agent-instinct-raises-1b-series-c-at-a-10b-valuation/">TechCrunch</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>Agent/Infrastructure:</b> Meta เปิดตัว Muse API และ Muse Code เป็นส่วนหนึ่งของ Meta Enterprise Platform ให้นักพัฒนาเข้าถึงเอเจนต์และโมเดล Muse Spark ผ่าน API สำหรับสร้างแอปพลิเคชันและระบบอัตโนมัติขององค์กร (ดูหัวข้อ Tools &amp; Apps)</li>
+      <li><b>Agent Memory:</b> vectorize-io/hindsight ขึ้นเทรนด์บน GitHub ด้วยแนวคิดหน่วยความจำที่เรียนรู้ได้ต่อเนื่องสำหรับ AI agent (ดูหัวข้อ Open Source)</li>
+      <li><b>Agent Safety/Governance:</b> รายงาน "intelligence explosion" เสนอมาตรการทางเทคนิคหลายข้อ เช่น การรายงานระดับการทำงานอัตโนมัติของ AI ภายในห้องแล็บ ผู้ตรวจสอบประจำ และเครือข่ายวิจัยแบบตัดขาดอินเทอร์เน็ต (ดูหัวข้อ Research)</li>
+      <li><b>MCP Spec:</b> ไม่พบรีลีสสเปกใหม่ของ Model Context Protocol ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <ul>
+      <li><b>Regulation/Governance:</b> Google, OpenAI และ Anthropic วางแผนจัดตั้งองค์กรกำกับดูแลตนเองร่วมกันชื่อ "Standards Authority for Frontier AI (SAFA)" ในรูปแบบคล้าย FINRA (องค์กรกำกับดูแลตนเองของนายหน้าซื้อขายหลักทรัพย์สหรัฐฯ) เพื่อกำหนดมาตรฐานการทดสอบโมเดลก่อนเปิดตัว การรายงานเหตุการณ์ด้านความปลอดภัย และการรับรองผู้ตรวจสอบ ตั้งเป้าเปิดตัวภายในปลายปีนี้ถึงต้นปี 2570 แนวคิดนี้ต่อยอดจากข้อเสนอของ Demis Hassabis (Google DeepMind) เมื่อเดือน ก.ค. หลังแผนความร่วมมือภาครัฐ-เอกชนที่มีรัฐบาลกลางกำกับดูแลชะงักไป นักวิจารณ์ชี้ว่าบริษัทผู้ก่อตั้งอาจได้เปรียบด้านการแข่งขันจากการเป็นผู้กำหนดกฎเกณฑ์เอง 📰 <a href="https://www.forbes.com/sites/jonmarkman/2026/09/28/google-openai--anthropic-plan-their-own-finra-style-ai-safety-regulator/">Forbes</a> · 📰 <a href="https://www.bankinfosecurity.com/google-openai-anthropic-plan-frontier-ai-standards-body-a-32926">BankInfoSecurity</a></li>
+      <li><b>Ethics/Safety:</b> นักวิจัย AI ระดับแนวหน้า 22 คน เตือนความเสี่ยง "intelligence explosion" จากการที่ AI ช่วยเร่งวิจัยและพัฒนา AI รุ่นถัดไปด้วยตัวเอง อาจทำให้มนุษย์ตามไม่ทันการกำกับดูแล เรียกร้องมาตรการเชิงนโยบายก่อนที่ระดับการทำงานอัตโนมัติจะสูงขึ้นไปอีก (ดูหัวข้อ Research) ✅ <a href="https://casp.ac/reports/intelligence-explosion">CASP (official)</a> · 📰 <a href="https://www.axios.com/2026/09/28/ai-pioneers-intelligence-explosion">Axios</a></li>
+      <li><b>Investment:</b> Instinct สตาร์ทอัพเอเจนต์ AI ส่วนตัว ระดมทุน Series C มูลค่า 1 พันล้านดอลลาร์สหรัฐ ที่มูลค่าบริษัท 1 หมื่นล้านดอลลาร์ นำโดย Sequoia Capital, Benchmark และ Coatue (ดูรายละเอียดในหัวข้อ Company News) ✅ <a href="https://www.businesswire.com/news/home/20260928153437/en/Instinct-Raises-$1-Billion-in-Series-C-Funding-from-Sequoia-Benchmark-and-Coatue-at-$10-Billion-Valuation">Business Wire (official)</a> · 📰 <a href="https://techcrunch.com/2026/09/28/viral-ai-agent-instinct-raises-1b-series-c-at-a-10b-valuation/">TechCrunch</a></li>
+    </ul>
+    <p class="note">ไม่พบข่าวด้าน Acquisition ใหม่ที่ยืนยันแหล่งที่มาได้ครบ 2 แหล่งในกรอบ 24 ชั่วโมงล่าสุดของวันนี้โดยเฉพาะ</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่มีตาราง Benchmark ในรอบนี้ เนื่องจากไม่พบผลคะแนนใหม่ที่ยืนยันได้ครบทุกช่อง (Benchmark, Model, Score, Source) ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ตามกฎ Validation Rules ผลเปรียบเทียบ Claude Opus 5.5 กับ GPT-6 Sol/Astra บนเบนช์มาร์กต่างๆ ที่พบในการค้นหามีอายุเกินกรอบเวลาของรายงานนี้ (โมเดลทั้งสองเปิดตัวเมื่อ 22 ก.ย.)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Trending (GitHub):</b> vectorize-io/hindsight และ dream-num/univer ขึ้นเทรนด์แรงในหมวดเครื่องมือและโครงสร้างพื้นฐานสำหรับ AI agent วันนี้ นอกจากนี้ยังมี mvschwarz/openrig (~1,600 ดาว) เครื่องมือรวม Claude Code และ Codex ให้ทำงานเป็นระบบเดียวกัน และ debpalash/VoiceStudio ด้าน voice cloning หลายภาษา ที่ติดเทรนด์เช่นกัน (ดูหัวข้อ Open Source) 🔥 <a href="https://github.com/trending">GitHub Trending</a></li>
+      <li><b>Discussion:</b> ชุมชนนักพัฒนาและวงการนโยบาย AI ให้ความสนใจกับรายงาน "intelligence explosion" และแผนจัดตั้ง Standards Authority for Frontier AI อย่างกว้างขวาง สะท้อนความกังวลเรื่องความเร็วในการพัฒนา AI แบบอัตโนมัติ 🔥 <a href="https://news.ycombinator.com/front">Hacker News</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. ฝังผู้ตรวจสอบอิสระในห้องแล็บ AI เพื่อติดตามระดับการทำงานอัตโนมัติ</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>รัฐบาลและสาธารณะไม่มีช่องทางตรวจสอบว่าห้องแล็บ AI ชั้นนำใช้ AI ช่วยทำวิจัยและพัฒนา AI รุ่นถัดไปด้วยตัวเองในระดับใด ซึ่งอาจเร่งความก้าวหน้าเร็วเกินกว่าจะกำกับดูแลทัน</dd>
+        <dt>วิธีใช้</dt><dd>รายงาน "intelligence explosion" เสนอให้กำหนดการรายงานระดับการทำงานอัตโนมัติภายในบริษัทอย่างสม่ำเสมอ พร้อมวางผู้ตรวจสอบอิสระประจำในบางห้องแล็บชั้นนำ และจำกัดความเร็วของการเพิ่มขีดความสามารถในบางกรณี</dd>
+        <dt>ประโยชน์</dt><dd>ช่วยให้ผู้กำหนดนโยบายมีข้อมูลล่วงหน้าเพียงพอในการรับมือกับความเสี่ยงก่อนที่ AI จะเร่งพัฒนาตัวเองจนควบคุมไม่ทัน</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. นำเอเจนต์ส่วนตัวและเครื่องมือพัฒนาเข้าสู่ตลาดองค์กร (Meta Enterprise Platform)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>องค์กรธุรกิจต้องการใช้เอเจนต์ AI อย่าง Muse เพื่อโต้ตอบกับลูกค้าและปรับปรุงกระบวนการทำงาน แต่ยังขาดชุดเครื่องมือระดับองค์กรที่เข้าถึง API และปรับแต่งได้โดยตรง</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ Meta Business Agent สำหรับงานลูกค้าสัมพันธ์ พร้อม Muse API และ Muse Code สำหรับนักพัฒนาในการสร้างแอปพลิเคชันและระบบอัตโนมัติที่ต่อยอดจากโมเดล Muse Spark</dd>
+        <dt>ประโยชน์</dt><dd>ช่วยให้บริษัทนำเทคโนโลยี AI แบบเดียวกับที่ Meta ใช้กับผู้บริโภคหลายล้านคนมาปรับใช้ในงานองค์กรได้เร็วขึ้น โดยไม่ต้องพัฒนาโครงสร้างพื้นฐาน AI เอง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. มอบหมายงานส่วนตัวที่ต้องติดต่อโลกจริงให้เอเจนต์อัตโนมัติ (Instinct Concierge)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งานส่วนตัวประจำวัน เช่น การโทรศัพท์จองร้านอาหารหรือนัดหมาย ยังต้องทำเอง แม้จะเป็นงานที่ใช้เวลาและซ้ำซาก</dd>
+        <dt>วิธีใช้</dt><dd>มอบหมายให้เอเจนต์ของ Instinct โทรศัพท์และดำเนินการจองนัดหมายแทนผู้ใช้ผ่านฟีเจอร์ Instinct Concierge โดยสื่อสารกับผู้ให้บริการจริงในนามผู้ใช้</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาที่ผู้ใช้ต้องเสียไปกับงานธุระส่วนตัวที่ซ้ำซาก และเปิดทางให้เอเจนต์ AI ทำงานที่ต้องติดต่อโลกภายนอกแทนมนุษย์ได้จริง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. สร้างสำนักงานดิจิทัลที่ AI agent ทำงานร่วมได้โดยตรง (Univer)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>นักพัฒนาที่ต้องการให้ AI agent เข้าถึงและแก้ไขสเปรดชีต เอกสาร หรืองานนำเสนอ มักต้องต่อประสานกับซอฟต์แวร์สำนักงานหลายตัวแยกกัน ซึ่งซับซ้อนและไม่รองรับการทำงานของเอเจนต์โดยตรง</dd>
+        <dt>วิธีใช้</dt><dd>ฝัง Univer เป็นรันไทม์เดียวที่รวมสเปรดชีต เอกสาร งานนำเสนอ แคนวาส ตารางเชิงสัมพันธ์ และ PDF ไว้ในผลิตภัณฑ์ของตนเอง แล้วให้ AI agent เรียกใช้ผ่าน API ของรันไทม์นี้โดยตรง</dd>
+        <dt>ประโยชน์</dt><dd>ลดความซับซ้อนในการสร้างผลิตภัณฑ์สำนักงานที่ขับเคลื่อนด้วย AI agent โดยไม่ต้องพึ่งแอปสำนักงานแบบปิดที่ตายตัว</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>รัฐบาลและองค์กรระหว่างประเทศจะตอบสนองต่อข้อเรียกร้องในรายงาน "intelligence explosion" ด้วยการออกกฎเกณฑ์บังคับหรือไม่ และ Standards Authority for Frontier AI (SAFA) ของ Google, OpenAI และ Anthropic จะมีอำนาจกำกับดูแลจริงมากน้อยเพียงใดเมื่อไม่มีภาครัฐหนุนหลัง</dd>
+        <dt>เหตุผล</dt><dd>ผลลัพธ์จะกำหนดว่าอุตสาหกรรม AI จะถูกกำกับดูแลโดยภาครัฐ โดยอุตสาหกรรมเอง หรือไม่มีการกำกับดูแลที่มีผลบังคับใช้จริงเลย ซึ่งส่งผลต่อความเร็วในการพัฒนา AI ทั่วโลก</dd>
+        <dt>Source</dt><dd><a href="https://www.forbes.com/sites/jonmarkman/2026/09/28/google-openai--anthropic-plan-their-own-finra-style-ai-safety-regulator/">Forbes</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>OpenAI จะเปิดตัวเอเจนต์ทำงานต่อเนื่อง "o" อย่างเป็นทางการในงาน DevDay วันที่ 29 ก.ย. ตามกระแสข่าวลือหรือไม่</dd>
+        <dt>เหตุผล</dt><dd>หากเป็นจริง จะเป็นก้าวสำคัญของ OpenAI จากแชทบอตแบบสนทนาไปสู่เอเจนต์ที่ทำงานต่อเนื่องนอกช่วงสนทนา ซึ่งจะส่งผลต่อทิศทางการแข่งขันด้าน AI agent ทั้งอุตสาหกรรม</dd>
+        <dt>Source</dt><dd><a href="https://www.testingcatalog.com/openai-to-announce-o-always-on-agent-during-devday/">TestingCatalog</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://casp.ac/reports/intelligence-explosion">CASP — What if automating AI R&amp;D triggers an intelligence explosion?</a></li>
+          <li><a href="https://about.fb.com/news/2026/09/launching-meta-enterprise-platform/">Meta — Launching Meta Enterprise Platform</a></li>
+          <li><a href="https://claude.com/blog/claude-marketplace">Claude by Anthropic — Claude Marketplace</a></li>
+          <li><a href="https://www.businesswire.com/news/home/20260928153437/en/Instinct-Raises-$1-Billion-in-Series-C-Funding-from-Sequoia-Benchmark-and-Coatue-at-$10-Billion-Valuation">Business Wire — Instinct Raises $1 Billion in Series C Funding</a></li>
+          <li><a href="https://github.com/vectorize-io/hindsight">GitHub — vectorize-io/hindsight</a></li>
+          <li><a href="https://github.com/dream-num/univer">GitHub — dream-num/univer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li><a href="https://casp.ac/reports/intelligence-explosion">What if automating AI R&amp;D triggers an intelligence explosion? (CASP)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.axios.com/2026/09/28/ai-pioneers-intelligence-explosion">Axios — AI pioneers, executives warn of an "intelligence explosion"</a></li>
+          <li><a href="https://www.forbes.com/sites/jonmarkman/2026/09/28/google-openai--anthropic-plan-their-own-finra-style-ai-safety-regulator/">Forbes — Google, OpenAI &amp; Anthropic Plan Their Own FINRA-Style AI Safety Regulator</a></li>
+          <li><a href="https://www.bankinfosecurity.com/google-openai-anthropic-plan-frontier-ai-standards-body-a-32926">BankInfoSecurity — Google, OpenAI, Anthropic Plan Frontier AI Standards Body</a></li>
+          <li><a href="https://techcrunch.com/2026/09/28/viral-ai-agent-instinct-raises-1b-series-c-at-a-10b-valuation/">TechCrunch — Viral AI agent Instinct raises $1B Series C at a $10B valuation</a></li>
+          <li><a href="https://www.testingcatalog.com/openai-to-announce-o-always-on-agent-during-devday/">TestingCatalog — OpenAI to announce "o" always-on agent</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://news.ycombinator.com/front">Hacker News</a></li>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 28 ก.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
