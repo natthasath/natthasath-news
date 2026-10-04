@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 4 ตุลาคม 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 27 กันยายน – 4 ตุลาคม 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 40</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>🏁 สัปดาห์นี้มีการแข่งขัน Formula 1 Gulf Air Bahrain Grand Prix in Malaysia ที่ Sepang International Circuit (2-4 ตุลาคม) ซึ่งเป็นสนามที่ย้ายมาจัดแทน Bahrain International Circuit หลังการแข่งขันเดิมในเดือนเมษายนถูกยกเลิกจากสถานการณ์ความไม่สงบในภูมิภาค Max Verstappen (Red Bull) คว้าชัยชนะแรกของฤดูกาล 2026 และเป็นชัยชนะแรกของ Red Bull ในฤดูกาลนี้เช่นกัน ในการแข่งขันที่เต็มไปด้วยความชุลมุนจากฝนตกหนัก สตาร์ทล่าช้า 2 ครั้ง และ Safety Car ถูกเรียก 2 ครั้ง โดย Kimi Antonelli (Mercedes) จบอันดับ 2 รักษาตำแหน่งผู้นำแชมป์ชิปผู้ขับขี่ไว้ได้ ขณะที่ Lewis Hamilton (Ferrari) สร้างการไต่อันดับที่โดดเด่นที่สุดของสุดสัปดาห์ จากที่หลุดไปอยู่อันดับ 18 หลังกลยุทธ์ยางของทีมผิดพลาด กลับมาจบอันดับ 3 ได้สำเร็จ ส่วน George Russell (Mercedes) ต้องออกจากการแข่งขันในช่วงท้าย ทำให้ Antonelli นำ Russell ในตารางคะแนนสะสม 84 คะแนน จากนี้ทัพนักแข่งจะมุ่งหน้าสู่ Singapore Grand Prix (9-11 ตุลาคม) ซึ่งเป็นสนาม Sprint ครั้งแรกในประวัติศาสตร์ของ Marina Bay</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">
+      ✅ ตารางนี้เป็นคะแนนสะสมหลัง Bahrain Grand Prix in Malaysia (รอบที่ 16) — ยืนยันแล้วจากหลายแหล่งข้อมูล
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>320</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>236</td>
+          <td>-84</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>214</td>
+          <td>-106</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>191</td>
+          <td>-129</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>188</td>
+          <td>-132</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>188</td>
+          <td>-132</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>128</td>
+          <td>-192</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>96</td>
+          <td>-224</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>🇳🇿 Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>65</td>
+          <td>-255</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>🇫🇷 Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>41</td>
+          <td>-279</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.crash.net/f1/news/1106505/1/f1-championship-standings-after-bahrain-grand-prix-malaysia">Crash.net</a>, <a href="https://www.racefans.net/2026/10/04/2026-bahrain-grand-prix-in-malaysia-race-result-and-championship-points/">RaceFans</a>, <a href="https://www.formulaonehistory.com/results/2026-f1-drivers-championship-standings/">FormulaOneHistory</a>, ยืนยันโดยบทความ Formula1.com เกี่ยวกับผลการแข่งขัน (ผ่านผลการค้นหา — เข้าถึงหน้าเว็บโดยตรงไม่ได้ในรอบนี้)</div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">
+      ✅ ตารางนี้เป็นคะแนนสะสมหลัง Bahrain Grand Prix in Malaysia — ยืนยันตรงกันจากหลายแหล่งข่าว
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>503</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>358</td>
+          <td>-145</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>McLaren</td>
+          <td>306</td>
+          <td>-197</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Red Bull Racing</td>
+          <td>230</td>
+          <td>-273</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Racing Bulls</td>
+          <td>77</td>
+          <td>-426</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Alpine</td>
+          <td>68</td>
+          <td>-435</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Haas F1 Team</td>
+          <td>21</td>
+          <td>-482</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Audi</td>
+          <td>17</td>
+          <td>-486</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Williams</td>
+          <td>11</td>
+          <td>-492</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Aston Martin</td>
+          <td>3</td>
+          <td>-500</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Cadillac</td>
+          <td>0</td>
+          <td>-503</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://africa.espn.com/f1/table/_/group/constructors">ESPN F1 Standings</a>, <a href="https://www.crash.net/f1/news/1106505/1/f1-championship-standings-after-bahrain-grand-prix-malaysia">Crash.net</a></div>
+  </section>
+
+  <section>
+    <h2>🏁 Formula 1 Gulf Air Bahrain Grand Prix in Malaysia — Sepang International Circuit</h2>
+    <div class="note">
+      ✅ การแข่งขันจัดขึ้นระหว่าง 2-4 ตุลาคม 2026 (รอบที่ 16 จาก 24) — สนามนี้ย้ายมาจัด Sepang แทน Bahrain International Circuit เนื่องจากการแข่งขันเดิมในเดือนเมษายนถูกยกเลิกจากสถานการณ์ความไม่สงบในภูมิภาค ผลการแข่งขันยืนยันจากหลายแหล่งข้อมูล รวมถึงหัวข้อข่าวของ Formula1.com และ Sky Sports โดยตรง
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา / สถานะ</th>
+          <th>คะแนน</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>ผู้ชนะ</td>
+          <td>25</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>+2.307s</td>
+          <td>18</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>+4.919s</td>
+          <td>15</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>จบการแข่งขัน</td>
+          <td>12</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>จบการแข่งขัน</td>
+          <td>10</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>จบการแข่งขัน</td>
+          <td>8</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>จบการแข่งขัน</td>
+          <td>6</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Fernando Alonso</td>
+          <td>Aston Martin</td>
+          <td>จบการแข่งขัน</td>
+          <td>4</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Lando Norris</td>
+          <td>McLaren</td>
+          <td>จบการแข่งขัน</td>
+          <td>2</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Arvid Lindblad</td>
+          <td>Racing Bulls</td>
+          <td>จบการแข่งขัน</td>
+          <td>1</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">📋 ผู้เข้าเส้นชัยนอกโซนคะแนน (ลำดับไม่ยืนยันแน่ชัด 100%): Nico Hulkenberg (Audi), Lance Stroll (Aston Martin), Franco Colapinto (Alpine), Oliver Bearman (Haas), Esteban Ocon (Haas), Pierre Gasly (Alpine), Carlos Sainz (Williams), Gabriel Bortoleto (Audi), Sergio Perez (Cadillac)</p>
+    <p class="note">🚨 <strong>DNF:</strong> George Russell (Mercedes), Alex Albon (Williams), Valtteri Bottas (Cadillac) — สาเหตุการออกจากการแข่งขันของ Russell ไม่พบรายละเอียดที่ยืนยันได้ชัดเจนในรอบการค้นหานี้</p>
+
+    <h3>สรุปเหตุการณ์สำคัญ</h3>
+    <ul>
+      <li><strong>Strategy:</strong> Ferrari เลือกกลยุทธ์ยางที่ผิดพลาดกับ Hamilton ทำให้หลุดไปอยู่อันดับ 18 กลางการแข่งขัน ก่อนจะไต่กลับมาจบอันดับ 3 ได้สำเร็จ ถือเป็นการไต่อันดับที่โดดเด่นที่สุดของสุดสัปดาห์</li>
+      <li><strong>Safety Car:</strong> ถูกเรียก 2 ครั้งจากฝนตกหนัก ซึ่งส่งผลให้การแข่งขันต้องเลื่อนสตาร์ทออกไป 2 ครั้งก่อนปล่อยตัวจริง</li>
+      <li><strong>Overtakes/Incidents:</strong> สภาพสนามเปียกลื่นทำให้เกิดการแซงและเปลี่ยนตำแหน่งจำนวนมากตลอดการแข่งขัน โดยเฉพาะในช่วงการบริหารยางเปียก</li>
+      <li><strong>Driver of the Day / Fastest Lap:</strong> ❓ ไม่พบข้อมูลที่ยืนยันได้ชัดเจนสำหรับสนามนี้ในรอบการค้นหานี้</li>
+    </ul>
+    <div class="source">✅ ที่มา (cross-checked): หัวข้อข่าว Formula1.com "Verstappen wins rain-hit Bahrain GP in Malaysia over Antonelli as Russell retires late on", <a href="https://www.skysports.com/f1/news/13594860/bahrain-gp-in-malaysia-max-verstappen-wins-first-race-of-2026-f1-season-in-wild-rain-hit-grand-prix-as-lewis-hamilton-surges-back">Sky Sports</a>, <a href="https://www.crash.net/f1/results/1106501/1/f1-bahrain-grand-prix-malaysia-full-race-results">Crash.net</a>, <a href="https://www.planetf1.com/news/f1-results-bahrain-grand-prix-malaysia-2026-race">PlanetF1</a>, <a href="https://www.racefans.net/2026/10/04/2026-bahrain-grand-prix-in-malaysia-race-result-and-championship-points/">RaceFans</a> (ผ่านผลการค้นหา — ไม่สามารถเข้าถึงหน้าเว็บโดยตรงได้ในรอบนี้)</div>
+  </section>
+
+  <section>
+    <h2>⏱ Qualifying — Bahrain Grand Prix in Malaysia</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">⚠️ ยืนยันได้เฉพาะอันดับ 1-2 ในรอบการค้นหานี้ — Verstappen คว้าตำแหน่งโพลเป็นครั้งแรกของ Red Bull ในฤดูกาล 2026 เอาชนะ Hamilton ซึ่งออกสตาร์ทอันดับ 2 ส่วนลำดับที่ 3 เป็นต้นไป ไม่พบข้อมูลที่ยืนยันได้ชัดเจนในรอบนี้ จึงงดแสดงตามหลักเกณฑ์ของรายงาน</p>
+    <div class="source">✅ ที่มา: หัวข้อข่าว Sky Sports "Bahrain GP in Malaysia: Max Verstappen beats Lewis Hamilton to pole position to claim first Red Bull pole of 2026 Formula 1 season" (ผ่านผลการค้นหา)</div>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญประจำสัปดาห์</h2>
+
+    <h3>Driver Market</h3>
+    <p>🔄 <strong>Max Verstappen:</strong> สัญญากับ Red Bull มีผลถึงสิ้นปี 2028 แต่มีเงื่อนไขพิเศษที่เกี่ยวข้องกับผลงาน ซึ่งอาจเปิดช่องให้ Verstappen ออกจากทีมได้ โดยช่วงเวลาที่เงื่อนไขนี้มีผลบังคับคือระหว่างเดือนสิงหาคมถึงตุลาคมของปีนี้ ยังไม่มีการยืนยันว่าจะมีการใช้เงื่อนไขดังกล่าวหรือไม่</p>
+    <p>🔄 <strong>Fernando Alonso:</strong> สัญญากับ Aston Martin จะสิ้นสุดลงในปลายปี 2026 และยังไม่มีการยืนยันว่า Alonso จะแข่งต่อในปี 2027 หรือไม่ หากเขาตัดสินใจไม่ต่อสัญญา อาจส่งผลกระทบต่อตลาดนักแข่งในวงกว้าง</p>
+    <p>✅ <strong>สัญญาที่ยืนยันแล้วสำหรับปี 2027:</strong> Lando Norris และ Oscar Piastri (McLaren), Charles Leclerc และ Lewis Hamilton (Ferrari), George Russell (Mercedes), Sergio Perez และ Valtteri Bottas (Cadillac)</p>
+    <p>⚠️ <strong>Rumor:</strong> Esteban Ocon เป็นนักแข่งอิสระ (free agent) สำหรับปี 2027 และยืนยันว่าอยู่ระหว่างเจรจากับทีมอื่น โดยการเจรจากับ Haas ยังไม่ได้ยุติลงอย่างแน่ชัด</p>
+    <div class="source">✅ ที่มา: <a href="https://www.crash.net/f1/feature/1102535/1/f1-driver-market-latest-rumours-amid-possible-2027-shake">Crash.net</a>, <a href="https://www.planetf1.com/news/f1-driver-contracts-2026-expiry">PlanetF1</a>, <a href="https://www.businesstoday.com.my/2026/09/25/f1-2027-driver-market-narrows-with-alonso-still-undecided/">Business Today Malaysia</a></div>
+
+    <h3>FIA & Regulations / Penalties — Bahrain GP in Malaysia</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>เรื่อง</th>
+          <th>ผลการตัดสิน</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Franco Colapinto — โทษสะสมจากอุบัติเหตุชน Gasly และ Norris ที่ Azerbaijan GP</td>
+          <td>โทษปรับกริดสตาร์ท 5 อันดับ สำหรับ Bahrain GP in Malaysia</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>George Russell และ Kimi Antonelli — ออกจากโรงเก็บรถก่อนเวลาที่ FIA กำหนดในรอบควอลิฟาย (pit-lane procedural breach)</td>
+          <td>โทษปรับกริดสตาร์ทคนละ 1 อันดับ</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา: <a href="https://racingnews365.com/franco-colapinto-hit-with-further-penalty-after-azerbaijan-calamity">RacingNews365</a>, <a href="https://www.planetf1.com/news/fia-mercedes-george-russell-andrea-kimi-antonelli-investigation-dodgy">PlanetF1</a></div>
+
+    <h3>Technical Updates</h3>
+    <p>❓ ไม่พบข่าวอัปเกรดทางเทคนิคที่เจาะจงสำหรับสุดสัปดาห์ Bahrain GP in Malaysia ที่ยืนยันได้ชัดเจนในรอบการค้นหานี้ ข้อมูลอัปเกรดที่พบส่วนใหญ่เป็นของสนามก่อนหน้าในช่วงกลางฤดูกาล (มิถุนายน-กันยายน) จึงไม่นำมาแสดงเนื่องจากเกินช่วงเวลา 7 วัน</p>
+  </section>
+
+  <section>
+    <h2>📈 วิเคราะห์ผลงานทีม</h2>
+
+    <div class="team-section">
+      <strong>Red Bull Racing</strong> — สุดสัปดาห์ที่ดีที่สุดของฤดูกาล ด้วยชัยชนะแรกของทั้ง Verstappen และทีมใน 2026 จากตำแหน่งโพล พร้อมกับ Hadjar ที่ทำคะแนนในอันดับ 5 ทำให้ทีมไล่จี้ McLaren ขึ้นมาอยู่อันดับ 4 ผู้สร้างรถ
+    </div>
+    <div class="team-section">
+      <strong>Mercedes</strong> — ผลงานแบบสองขั้ว Antonelli จบอันดับ 2 รักษาตำแหน่งผู้นำแชมป์ชิปไว้ได้ แต่ Russell ต้องออกจากการแข่งขันในช่วงท้าย ทำให้ทีมเสียคะแนนสำคัญในศึกชิงแชมป์ผู้สร้างรถ แม้ยังคงนำห่างเป็นอันดับ 1 อย่างชัดเจน
+    </div>
+    <div class="team-section">
+      <strong>Ferrari</strong> — Hamilton สร้างการไต่อันดับที่โดดเด่นที่สุดของสุดสัปดาห์จาก P18 กลับมาจบ P3 หลังกลยุทธ์ยางผิดพลาดในช่วงต้น ขณะที่ Leclerc จบอันดับ 4 ได้อย่างมั่นคง
+    </div>
+    <div class="team-section">
+      <strong>McLaren</strong> — สุดสัปดาห์ที่ต่ำกว่ามาตรฐาน Piastri จบอันดับ 6 และ Norris จบอันดับ 9 เท่านั้น ทำให้ช่องว่างกับ Red Bull ในตารางผู้สร้างรถแคบลงเหลือ 76 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Racing Bulls</strong> — ทำคะแนนได้ทั้งสองคัน Lawson (P7) และ Lindblad (P10) ถือเป็นสุดสัปดาห์ที่มั่นคงของทีม
+    </div>
+    <div class="team-section">
+      <strong>Aston Martin</strong> — Alonso ทำคะแนนในอันดับ 8 ขณะที่อนาคตของเขาในทีมหลังปี 2026 ยังไม่มีการยืนยัน
+    </div>
+    <div class="team-section">
+      <strong>Alpine</strong> — Colapinto ต้องแบกโทษปรับกริด 5 อันดับจากเหตุการณ์ที่ Azerbaijan GP ส่งผลให้สุดสัปดาห์นี้ของทีมไม่มีข้อมูลผลงานที่โดดเด่นในโซนคะแนน
+    </div>
+    <div class="team-section">
+      <strong>Williams, Haas, Audi, Cadillac</strong> — ไม่มีข่าวเฉพาะทีมหรือผลงานในโซนคะแนนที่ยืนยันได้ชัดเจนสำหรับสนามนี้ในรอบการค้นหานี้
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติ</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>ชัยชนะแรกของฤดูกาล:</strong> Max Verstappen และ Red Bull Racing — ชัยชนะแรกของทั้งคู่ใน 2026</div>
+      <div class="stat-card"><strong>ผู้นำแชมป์ชิปผู้ขับขี่:</strong> Kimi Antonelli — นำ Russell 84 คะแนน</div>
+      <div class="stat-card"><strong>ระยะห่างเข้าเส้นชัย P1-P2:</strong> 2.307 วินาที</div>
+      <div class="stat-card"><strong>Safety Car:</strong> ถูกเรียก 2 ครั้งจากฝนตกหนัก</div>
+    </div>
+    <p class="note">❓ สถิติเชิงลึกอื่น ๆ เช่น Fastest Lap, Driver of the Day และจำนวน pole/podium สะสมรายบุคคล ไม่พบข้อมูลที่ยืนยันได้ครบถ้วนสำหรับสนามนี้ในรอบการค้นหานี้</p>
+  </section>
+
+  <section>
+    <h2>📅 การแข่งขันครั้งถัดไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>9 ต.ค. 2026</td>
+          <td>Practice 1</td>
+          <td>15:30 - 16:30</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>9 ต.ค. 2026</td>
+          <td>Sprint Qualifying</td>
+          <td>19:30 - 20:14</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>10 ต.ค. 2026</td>
+          <td>Sprint Race</td>
+          <td>16:00 - 16:30</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>10 ต.ค. 2026</td>
+          <td>Qualifying</td>
+          <td>20:00 - 21:00</td>
+          <td>❓</td>
+        </tr>
+        <tr class="highlight">
+          <td>11 ต.ค. 2026</td>
+          <td>Race</td>
+          <td>19:00 - 21:00</td>
+          <td>❓</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">⏰ เวลาแปลงจากเวลาสิงคโปร์ (SGT, GMT+8) เป็น ICT (GMT+7) โดยลบ 1 ชั่วโมง — ควรตรวจสอบตารางเวลาอย่างเป็นทางการอีกครั้งก่อนการแข่งขัน ส่วนช่องทางถ่ายทอดสดในไทย ❓ ไม่พบข้อมูลที่ยืนยันได้ในรอบการค้นหานี้</p>
+
+    <h3>รายละเอียดสนาม</h3>
+    <ul>
+      <li><strong>Circuit:</strong> Marina Bay Street Circuit</li>
+      <li><strong>Country:</strong> สิงคโปร์</li>
+      <li><strong>Circuit Length:</strong> 4.94 กม. (19 โค้ง)</li>
+      <li><strong>Number of Laps:</strong> 62 รอบ</li>
+      <li><strong>Lap Record:</strong> 1:33.808 — Lewis Hamilton (2025)</li>
+    </ul>
+
+    <h3>Preview</h3>
+    <p>Singapore Grand Prix 2026 (รอบที่ 18 จาก 24) เป็นสนาม Sprint ครั้งแรกในประวัติศาสตร์ของ Marina Bay โดยรูปแบบสุดสัปดาห์จะมี Sprint Qualifying ในวันศุกร์ ตามด้วย Sprint Race และ Qualifying หลักในวันเสาร์ ก่อนการแข่งขันหลักในวันอาทิตย์ นอกจากความร้อนและความชื้นสูงที่ท้าทายสมรรถภาพนักแข่งแล้ว Antonelli จะเดินหน้ารักษาตำแหน่งผู้นำแชมป์ชิป ขณะที่ Red Bull หวังสานต่อโมเมนตัมจากชัยชนะที่ Sepang</p>
+    <div class="source">✅ ที่มา: <a href="https://blog.wego.com/f1-schedule-singapore-time/">Wego (ตารางเวลาสิงคโปร์)</a>, <a href="https://www.crash.net/f1/event/1044267/f1-2026-singapore-grand-prix">Crash.net</a>, <a href="https://www.f1-fansite.com/f1-circuits/singapore-circuit/">F1-Fansite (ข้อมูลสนาม)</a>, ยืนยันโดยบทความ Formula1.com "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2026" (ผ่านผลการค้นหา — เข้าถึงหน้าเว็บโดยตรงไม่ได้ในรอบนี้)</div>
+  </section>
+
+  <section>
+    <h2>💬 คำกล่าวประจำสัปดาห์</h2>
+    <div class="quote">
+      "I would just re-establish the order and just make sure that I am back to my usual level."
+      <div class="source">— Kimi Antonelli (Mercedes) ก่อนการแข่งขันที่ Malaysia</div>
+    </div>
+    <div class="quote">
+      "[I was] driving more like my grandma [in Azerbaijan]."
+      <div class="source">— Kimi Antonelli (Mercedes) พูดถึงผลงานของตัวเองที่ Baku</div>
+    </div>
+    <p class="note">❓ ไม่พบคำกล่าวหลังการแข่งขัน Bahrain GP in Malaysia จาก Verstappen, Hamilton หรือ Russell ที่ยืนยันได้ชัดเจนในรอบการค้นหานี้</p>
+    <div class="source">✅ ที่มา: <a href="https://www.gulftoday.ae/sport/2026/09/30/antonelli-eager-to-re-establish-order-as-f1-returns-to-malaysia">Gulf Today</a>, <a href="https://citizen.digital/article/antonelli-eager-to-re-establish-order-as-f1-returns-to-malaysia-n391135">Citizen Digital</a></div>
+  </section>
+
+  <section>
+    <h2>🔍 วิเคราะห์แชมป์ชิป</h2>
+    <p><strong>Drivers Championship:</strong> Antonelli ยังคงคุมเกมด้วยคะแนนนำ Russell 84 คะแนน หลัง Russell ไม่ได้คะแนนจากการ DNF ที่ Sepang ขณะที่ Hamilton ไล่ขึ้นมาอยู่อันดับ 3 ด้วยคะแนน 214 จากการไต่อันดับที่โดดเด่น ส่วน Verstappen แม้ชนะการแข่งขัน แต่ยังอยู่อันดับ 6 ของตารางคะแนนสะสม เนื่องจากพลาดคะแนนไปหลายสนามก่อนหน้านี้ในฤดูกาล</p>
+    <p><strong>Constructors Championship:</strong> Mercedes คุมเกมได้ขาดด้วยคะแนนนำ Ferrari 145 คะแนน แม้ Russell จะ DNF ที่ Sepang ส่วนการต่อสู้อันดับ 3-4 ระหว่าง McLaren และ Red Bull สูสีขึ้น หลัง Red Bull ทำคะแนนได้มากถึง 35 คะแนนจากชัยชนะและ P5 ของ Hadjar ทำให้ช่องว่างแคบลงเหลือ 76 คะแนน</p>
+    <p><strong>Midfield Battle:</strong> Racing Bulls ยังคงนำกลุ่มกลางตารางด้วย 77 คะแนน จากผลงานที่มั่นคงของ Lawson และ Lindblad ที่ทำคะแนนได้ทั้งคู่ที่ Sepang</p>
+    <p><strong>Momentum:</strong> Red Bull เป็นทีมที่มีโมเมนตัมดีที่สุดในสัปดาห์นี้ จากชัยชนะแรกของฤดูกาลพร้อมกับผลงานที่ดีของ Hadjar ขณะที่ Ferrari ได้รับแรงหนุนจากการไต่อันดับของ Hamilton</p>
+    <p><strong>Teams to Watch:</strong> จับตา Red Bull ว่าจะรักษาโมเมนตัมต่อได้หรือไม่ที่ Singapore ซึ่งเป็นสนาม Sprint ครั้งแรกของสนามนี้ และจับตาสถานะสัญญาของ Verstappen กับ Red Bull ในช่วงเดือนนี้</p>
+  </section>
+
+  <section>
+    <h2>📊 สรุปตัวเลขด่วน</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix:</strong> 1 สนาม (Bahrain GP in Malaysia)</div>
+      <div class="stat-card"><strong>Sprint:</strong> ไม่มี</div>
+      <div class="stat-card"><strong>Pole Position:</strong> Max Verstappen</div>
+      <div class="stat-card"><strong>Fastest Lap:</strong> ❓ ไม่ยืนยัน</div>
+      <div class="stat-card"><strong>FIA Decisions:</strong> 2 กรณี (Colapinto grid drop, Russell/Antonelli grid drop)</div>
+      <div class="stat-card"><strong>Penalties:</strong> โทษปรับกริดรวม 2 กรณี</div>
+      <div class="stat-card"><strong>Driver Transfers:</strong> ไม่มีการประกาศใหม่ในสัปดาห์นี้</div>
+      <div class="stat-card"><strong>Technical Updates:</strong> ❓ ไม่พบข้อมูลยืนยันสำหรับสนามนี้</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ควรจับตาต่อไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ประเด็น</th>
+          <th>เหตุผล</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Singapore GP สนาม Sprint ครั้งแรกของ Marina Bay</td>
+          <td>รูปแบบสุดสัปดาห์ใหม่อาจส่งผลต่อกลยุทธ์ทีมและคะแนนสะสมก่อนโค้งสุดท้ายของฤดูกาล</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>เงื่อนไขพิเศษในสัญญา Verstappen กับ Red Bull</td>
+          <td>ช่วงเวลาที่เงื่อนไขมีผลบังคับ (ส.ค.-ต.ค.) กำลังดำเนินอยู่ อาจมีความเคลื่อนไหวสำคัญเกี่ยวกับอนาคตของ Verstappen</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>การตัดสินใจของ Alonso เกี่ยวกับอนาคตหลังปี 2026</td>
+          <td>หากประกาศเลิกแข่ง อาจส่งผลกระทบต่อตลาดนักแข่งในวงกว้าง</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>การไล่จี้อันดับ 3-4 ผู้สร้างรถระหว่าง McLaren และ Red Bull</td>
+          <td>ช่องว่างแคบลงเหลือ 76 คะแนน หลังผลงานที่แข็งแกร่งของ Red Bull ที่ Sepang</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>Official</h3>
+    <p>Formula1.com (อ้างอิงผ่านหัวข้อข่าวและผลการค้นหา — ไม่สามารถเข้าถึงหน้าเว็บโดยตรงได้ในรอบนี้เนื่องจากถูกบล็อกโดย network egress proxy ของระบบ), FIA.com (เช่นเดียวกัน)</p>
+
+    <h3>Motorsport Media</h3>
+    <p><a href="https://www.skysports.com/f1/">Sky Sports F1</a>, <a href="https://www.crash.net/f1">Crash.net</a>, <a href="https://www.planetf1.com/">PlanetF1</a>, <a href="https://www.racefans.net/">RaceFans</a>, <a href="https://www.gpfans.com/">GPFans</a>, <a href="https://racingnews365.com/">RacingNews365</a>, <a href="https://www.motorsport.com/f1/">Motorsport.com</a>, <a href="https://www.espn.com/f1/">ESPN F1</a>, <a href="https://www.formulaonehistory.com/">FormulaOneHistory</a></p>
+
+    <h3>Team Communications</h3>
+    <p>ไม่พบแถลงการณ์อย่างเป็นทางการจากทีมโดยตรงที่เข้าถึงได้ในรอบการค้นหานี้ นอกเหนือจากที่อ้างอิงผ่านสื่อข้างต้น</p>
+  </section>
+
+  <section>
+    <h2>⚠️ หมายเหตุข้อจำกัดของข้อมูล</h2>
+    <div class="warn-box">
+      <p><strong>UNCERTAIN:</strong> ในรอบการรวบรวมข้อมูลนี้ ไม่สามารถเข้าถึงโดเมน <code>formula1.com</code>, <code>fia.com</code>, <code>skysports.com</code>, <code>espn.com</code>, <code>racefans.net</code>, <code>motorsport.com</code> และ <code>gpfans.com</code> ผ่านการเปิดหน้าเว็บโดยตรงได้เลย (ระบบแจ้ง "network egress blocked" ในทุกโดเมนที่ทดลอง) จึงต้องอาศัยผลลัพธ์จากการค้นหาเว็บ (WebSearch) ซึ่งดึงเนื้อหาผ่านสรุปผลการค้นหาแทนการอ่านหน้าเว็บเต็มรูปแบบ ข้อมูลหลัก เช่น ผู้ชนะ โพเดียม คะแนนสะสม และโทษปรับกริด ได้ตรวจสอบไขว้จากหลายแหล่งข่าวแล้วและมีความสอดคล้องกันสูง แต่รายละเอียดเชิงลึก เช่น เวลาต่อรอบของอันดับ 3-19 ในรอบควอลิฟาย, Fastest Lap, Driver of the Day และข่าวอัปเกรดทางเทคนิคของสนามนี้ ไม่สามารถยืนยันได้ชัดเจนในรอบนี้ จึงงดแสดงหรือระบุเป็นข้อมูลไม่ครบตามหลักเกณฑ์ของรายงาน ผู้อ่านที่ต้องการความแม่นยำสูงสุดควรตรวจสอบซ้ำจาก formula1.com และ fia.com โดยตรง</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔮 แนวโน้มสัปดาห์ถัดไป</h2>
+    <div class="summary-box">
+      <p>ชัยชนะแรกของ Verstappen และ Red Bull ที่ Sepang อาจเป็นจุดเปลี่ยนสำคัญของฤดูกาล แม้ Antonelli ยังคุมเกมแชมป์ชิปผู้ขับขี่ได้อยู่ แต่ Russell และ Hamilton กำลังไล่ตามมาติด ๆ ในฝั่งผู้สร้างรถ การไล่จี้ระหว่าง McLaren และ Red Bull เพื่ออันดับ 3 จะเป็นประเด็นน่าติดตามที่ Singapore ซึ่งเป็นสนาม Sprint ครั้งแรกของสุดสัปดาห์ อาจเพิ่มความไม่แน่นอนให้กับผลคะแนนสะสม นอกสนาม ควรติดตามความชัดเจนเกี่ยวกับอนาคตของ Verstappen กับ Red Bull และการตัดสินใจของ Alonso เกี่ยวกับปี 2027 อย่างใกล้ชิดในช่วงสัปดาห์ถัดไป</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly F1 Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 4 ตุลาคม 2026 เวลา ICT (GMT+7)</p>
+  </footer>
+</div>
+</body>
+</html>
