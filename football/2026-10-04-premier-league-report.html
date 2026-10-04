@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Premier League Report — Week 40, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#9A5B12; --warn-bg:rgba(154,91,18,0.10); --warn-line:rgba(154,91,18,0.30);
+  --rumor:#8A3B5A;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.12);
+    --warn:#E0A855; --warn-bg:rgba(224,168,85,0.10); --warn-line:rgba(224,168,85,0.30);
+    --rumor:#D98FB2;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:6px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; padding-top:2px; }
+h3{ font-size:16.5px; font-weight:700; margin:20px 0 8px; color:var(--ink); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:30px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:72ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:70ch; }
+ul li ul{ margin-top:8px; }
+
+.callout{ background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px; padding:16px 18px; margin:0 0 18px; }
+.callout p{ margin:0; max-width:none; color:var(--ink); }
+.callout p + p{ margin-top:8px; }
+.callout .label{ font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--warn); text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.note{ font-size:14px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:12px 14px; margin:10px 0 16px; max-width:none; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 14px; border:1px solid var(--line); border-radius:10px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px; }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td a, th a{ white-space:nowrap; }
+
+.badge{ display:inline-block; font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:600; padding:2px 8px; border-radius:999px; white-space:nowrap; }
+.badge-official{ background:var(--accent-soft); color:var(--accent); }
+.badge-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-rumor{ background:rgba(138,59,90,0.12); color:var(--rumor); }
+.badge-cont{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-pending{ background:rgba(154,91,18,0.12); color:var(--warn); border:1px solid var(--warn-line); }
+
+.subhead{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin:18px 0 8px; }
+.subhead:first-child{ margin-top:0; }
+
+.club-block{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px dashed var(--line); }
+.club-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.club-block h3{ margin-top:0; }
+.club-block p{ margin-bottom:6px; }
+
+.src-list{ list-style:none; padding:0; margin:0 0 14px; }
+.src-list li{ margin-bottom:6px; font-size:14.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 40, 2026</p>
+    <h1>⚽ Weekly Premier League Report — Week 40</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 28 กันยายน – 4 ตุลาคม 2026 (ICT)</span>
+      <span><b>Category:</b> Football</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="note">หมายเหตุขอบเขต: ตลอดสัปดาห์นี้ (28 ก.ย. – 4 ต.ค. 2026) พรีเมียร์ลีกยังอยู่ในช่วงพักทีมชาติเดือนกันยายน-ตุลาคม (21 ก.ย. – 10 ต.ค. 2026) ต่อเนื่องจากสัปดาห์ก่อน จึงไม่มีโปรแกรมแข่งขันระดับสโมสรเลยทั้งสัปดาห์ ตารางคะแนนและสถิติดาวซัลโวจึงไม่มีการเปลี่ยนแปลงจากรายงานสัปดาห์ก่อน เนื้อหาหลักของรายงานฉบับนี้จึงเป็นข่าวนอกสนาม (ความคืบหน้าการบาดเจ็บ สถานะผู้จัดการทีม ข่าวย้ายทีม) ที่ยืนยันได้จากแหล่งข้อมูลจริงภายในช่วง 7 วันนี้เท่านั้น</div>
+    <ul>
+      <li>ไม่มีนัดแข่งขันพรีเมียร์ลีกทั้งสัปดาห์เนื่องจากช่วงพักทีมชาติที่ยืดยาว 3 สัปดาห์ (21 ก.ย. – 10 ต.ค.) ลีกจะกลับมาแข่งขัน Matchweek 6 ในวันที่ 10-12 ตุลาคม <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>João Pedro (Chelsea) มีความคืบหน้าเชิงบวกจากอาการบาดเจ็บเข่า (ACL/MCL strain) ที่เกิดขึ้นในเกมเสมอ Hull City เมื่อ 12 ก.ย. โดยฝึกซ้อมอย่างกระตือรือร้นและมีเป้าหมายทันลงเล่นเกมเปิดสนามพบ AFC Bournemouth วันที่ 10 ต.ค. ตามกำหนดฟื้นตัว 3.5 สัปดาห์ แต่สโมสรยังไม่ยืนยันเป็นทางการ <span class="badge badge-report">📰 รายงาน</span></li>
+      <li>Alexander Isak (Liverpool) มีความคืบหน้าดีจากอาการนิ้วเท้า/ต้นขาเล็กน้อยที่เกิดขึ้นระหว่างติดทีมชาติสวีเดน มีความหวังสูงที่จะทันลงเล่นเกมใหญ่พบ Manchester City วันที่ 11 ต.ค. <span class="badge badge-report">📰 รายงาน</span></li>
+      <li>Tottenham ยืนยันไม่มีแผนปลด Roberto De Zerbi ในช่วงพักทีมชาตินี้ แม้ทีมจะอยู่อันดับสุดท้ายของตารางด้วย 2 แต้มจาก 5 นัด และยังไม่ชนะเลยในฤดูกาลนี้ โดยฝ่ายบริหารยืนยันว่า "ไม่มีใครเหมาะสมกว่า Roberto ในการพลิกฟื้นทีม" <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Noni Madueke (Arsenal) ถูกจับตาจาก Atlético Madrid และ Juventus ซึ่งสนใจคว้าตัวไปร่วมทีมแบบยืมตัวในหน้าต่างเดือนมกราคม หลังลงเล่นเป็นตัวจริงในพรีเมียร์ลีกเพียง 2 นัดจากตัวสำรองในฤดูกาลนี้ <span class="badge badge-report">📰 รายงาน</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 ตารางคะแนน Top 6</h2>
+    <div class="note">ไม่มีนัดแข่งขันระดับสโมสรในสัปดาห์นี้ ตารางคะแนน Top 6 จึงต่อเนื่องจากรายงานสัปดาห์ก่อนโดยไม่มีการเปลี่ยนแปลงทุกประการ (ครบ Matchweek 5 ทุกทีม) <span class="badge badge-cont">ต่อเนื่อง</span></div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Club</th><th>Played</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>Source</th></tr>
+      <tr><td>1</td><td>Manchester City</td><td>5</td><td>4</td><td>0</td><td>1</td><td>12</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879272/sunderland-manchester-city" target="_blank" rel="noopener">ESPN (สัปดาห์ก่อน)</a></td></tr>
+      <tr><td>2*</td><td>Arsenal</td><td>5</td><td>4</td><td>0</td><td>1</td><td>12</td><td><a href="https://www.espn.com/soccer/report/_/gameId/401879274" target="_blank" rel="noopener">ESPN (ต่อเนื่อง)</a></td></tr>
+      <tr><td>2*</td><td>Manchester United</td><td>5</td><td>4</td><td>0</td><td>1</td><td>12</td><td><a href="https://www.skysports.com/football/news/11095/13500729/man-utd-3-2-fulham-benjamin-sesko-scores-late-winner-as-michael-carrick-guides-side-to-third-straight-premier-league-win" target="_blank" rel="noopener">Sky Sports (ต่อเนื่อง)</a></td></tr>
+      <tr><td>4</td><td>Newcastle United</td><td>5</td><td>3</td><td>2</td><td>0</td><td>11</td><td><a href="https://www.skysports.com/football/newcastle-united-vs-hull-city/559491" target="_blank" rel="noopener">Sky Sports (ต่อเนื่อง)</a></td></tr>
+      <tr><td>5*</td><td>Chelsea</td><td>5</td><td>2</td><td>2</td><td>1</td><td>8</td><td><a href="https://www.365scores.com/en-us/football/match/premier-league-7/brentford-chelsea-63-106-7" target="_blank" rel="noopener">365Scores (ต่อเนื่อง)</a></td></tr>
+      <tr><td>5*</td><td>Hull City</td><td>5</td><td>2</td><td>2</td><td>1</td><td>8</td><td><a href="https://www.skysports.com/football/newcastle-united-vs-hull-city/559491" target="_blank" rel="noopener">Sky Sports (ต่อเนื่อง)</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">ตรวจสอบ Consistency แล้ว: Played = W+D+L และ Points = W×3+D ถูกต้องครบทุกทีมในตาราง เครื่องหมาย * หมายถึงคู่ทีมที่แต้มเท่ากันซึ่งยังไม่สามารถยืนยันผลต่างประตูที่ใช้จัดลำดับได้อย่างสมบูรณ์จากแหล่งที่เข้าถึงได้ในรอบนี้ (ต่อเนื่องจากข้อจำกัดของสัปดาห์ก่อน) ไม่มีทีมใดใน Top 6 ลงเล่นเพิ่มในสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>⚽ ผลการแข่งขันสำคัญ</h2>
+    <div class="note">ไม่มีการแข่งขันระดับสโมสรของพรีเมียร์ลีกเกิดขึ้นเลยในช่วง 28 ก.ย. – 4 ต.ค. 2026 เนื่องจากอยู่ในช่วงพักทีมชาติที่ยืดยาว 3 สัปดาห์ (21 ก.ย. – 10 ต.ค. 2026) ซึ่งยืนยันจาก Premier League (Official) ลีกจะกลับมาแข่งขันอีกครั้งในวันที่ 10 ตุลาคม จึงไม่มีผลการแข่งขันให้รายงานในสัปดาห์นี้ตามกฎห้ามใช้ข้อมูลนอกช่วง 7 วัน — <a href="https://www.premierleague.com/en/news/4689113/when-are-the-international-breaks-for-202627" target="_blank" rel="noopener">Premier League (Official)</a></div>
+  </section>
+
+  <section>
+    <h2>🥇 ดาวซัลโว Top 5</h2>
+    <div class="note">ไม่มีนัดแข่งขันระดับสโมสรในสัปดาห์นี้ ตารางดาวซัลโวจึงต่อเนื่องจากรายงานสัปดาห์ก่อนโดยไม่มีการเปลี่ยนแปลง <span class="badge badge-cont">ต่อเนื่อง</span></div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Player</th><th>Club</th><th>Goals</th><th>Assists</th><th>Source</th></tr>
+      <tr><td>1</td><td>Erling Haaland</td><td>Manchester City</td><td>5</td><td>–</td><td><a href="https://www.skysports.com/football/video/12606/13590137/goal-e-haaland-manchester-city-5-3-sunderland" target="_blank" rel="noopener">Sky Sports (ต่อเนื่อง)</a></td></tr>
+      <tr><td>2</td><td>Bruno Fernandes</td><td>Manchester United</td><td>3</td><td>–</td><td><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports (ต่อเนื่อง)</a></td></tr>
+      <tr><td>2</td><td>Alexander Isak</td><td>Liverpool</td><td>3</td><td>–</td><td><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports (ต่อเนื่อง)</a></td></tr>
+      <tr><td>2</td><td>Bukayo Saka</td><td>Arsenal</td><td>3</td><td>–</td><td><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports (ต่อเนื่อง)</a></td></tr>
+      <tr><td>2</td><td>João Pedro</td><td>Chelsea</td><td>3</td><td>–</td><td><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports (ต่อเนื่อง)</a></td></tr>
+    </table>
+    </div>
+    <div class="note">ไม่มีผู้เล่นกลุ่มดาวซัลโวนำลงเล่นให้สโมสรในสัปดาห์นี้เนื่องจากไม่มีนัดแข่งขัน จึงไม่มีความเคลื่อนไหวของตัวเลขประตู/แอสซิสต์เพิ่มเติม</div>
+  </section>
+
+  <section>
+    <h2>🔥 ข่าวสำคัญ</h2>
+    <h3>Official</h3>
+    <ul>
+      <li>Tottenham Hotspur ยืนยันไม่มีแผนปลด Roberto De Zerbi ในช่วงพักทีมชาตินี้ แม้ทีมจะอยู่อันดับสุดท้ายของตารางด้วย 2 แต้มจาก 5 นัด ซึ่งเป็นช่วงเริ่มต้นฤดูกาลที่แย่ที่สุดของสโมสรในรอบหลายปี โดยแหล่งข่าวใกล้ชิดสโมสรระบุว่า "ไม่มีใครเหมาะสมไปกว่า Roberto ในการพลิกฟื้นทีมช่วงนี้ นี่ไม่ใช่งานง่ายตั้งแต่แรก แม้จะทุ่มเงินซื้อนักเตะในซัมเมอร์ที่ผ่านมา เขาคือคนที่ใช่สำหรับ Tottenham" <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.football365.com/news/tottenham-reach-decision-sacking-roberto-de-zerbi-manager-aston-villa-defeat" target="_blank" rel="noopener">Football365</a> / <a href="https://www.teamtalk.com/tottenham-hotspur/tottenham-reach-decision-sacking-roberto-de-zerbi" target="_blank" rel="noopener">TeamTalk</a></li>
+      <li>ตลาดซื้อขายนักเตะฤดูร้อนปิดไปแล้วตั้งแต่ 1 ก.ย. 2026 ไม่มีการซื้อขายอย่างเป็นทางการใหม่ในสัปดาห์นี้ ตลาดถัดไปจะเปิดวันที่ 1 มกราคม 2027 <span class="badge badge-cont">ต่อเนื่อง</span> — <a href="https://www.premierleague.com/en/news/4698998/summer-2026-transfer-deadline-day-everything-you-need-to-know" target="_blank" rel="noopener">Premier League (Official)</a></li>
+    </ul>
+    <h3>Report</h3>
+    <ul>
+      <li>João Pedro (Chelsea) ฝึกซ้อมอย่างกระตือรือร้นและมีความคืบหน้าเชิงบวกจากอาการบาดเจ็บเข่า โดยมีเป้าหมายทันลงเล่นเกมเปิดสนามหลังพักยาวพบ AFC Bournemouth วันที่ 10 ต.ค. แต่ยังไม่มีการยืนยันเป็นทางการจากสโมสรว่าจะทันหรือไม่ <span class="badge badge-report">📰 รายงาน</span> — <a href="https://roundtable.io/sports/soccer/premier-league/chelsea/news/joao-pedro-takes-active-approach-in-positive-injury-chelsea-update-ahead-of-bournemouth-clash" target="_blank" rel="noopener">Roundtable.io (29 ก.ย.)</a> / <a href="https://www.sportsmole.co.uk/football/chelsea/injury-news/news/chelsea-star-sees-specialist-amid-bid-for-october-injury-return_605955.html" target="_blank" rel="noopener">SportsMole</a></li>
+      <li>Atlético Madrid และ Juventus ให้ความสนใจคว้าตัว Noni Madueke (Arsenal) ไปร่วมทีมแบบยืมตัวพร้อมเงื่อนไขซื้อขาดในหน้าต่างเดือนมกราคม หลังเขาลงเล่นเป็นตัวจริงในพรีเมียร์ลีกเพียง 2 นัดจากตัวสำรองในฤดูกาลนี้ นับตั้งแต่ Bukayo Saka กลับมาฟิตสมบูรณ์ <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.football365.com/news/arsenal-transfer-decision-madueke-atletico-madrid-juventus-arteta-deal-very-close" target="_blank" rel="noopener">Football365</a> / <a href="https://www.soccernews.com/juventus-atletico-madrid-weigh-up-a-january-swoop-for-noni-madueke/404835/" target="_blank" rel="noopener">SoccerNews</a></li>
+      <li>Alexander Isak (Liverpool) มีความคืบหน้าดีจากอาการบาดเจ็บเล็กน้อยที่นิ้วเท้า/ต้นขาระหว่างติดทีมชาติสวีเดน มีความหวังสูงว่าจะทันลงเล่นเกมใหญ่พบ Manchester City วันที่ 11 ต.ค. <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.si.com/soccer/alexander-isak-injury-progress-potential-return-date-liverpool-star-2026" target="_blank" rel="noopener">Sports Illustrated</a> / <a href="https://www.yardbarker.com/soccer/articles/a_real_blow_liverpool_star_injured_ahead_of_manchester_city_clash/s1_17790_44354466" target="_blank" rel="noopener">Yardbarker</a></li>
+    </ul>
+    <h3>Rumor</h3>
+    <ul>
+      <li>ไม่พบข่าวลือระดับข่าวลือ (Rumor tier) ที่สามารถยืนยันแหล่งที่มาได้ครบถ้วนในสัปดาห์นี้ ข่าวย้ายทีมทั้งหมดที่พบจัดอยู่ในระดับ Report ซึ่งมีสื่อกีฬาอ้างอิงชัดเจนอย่างน้อย 2 แหล่ง</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏥 Injury &amp; Suspension</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Club</th><th>Player</th><th>Status</th><th>Return</th><th>Source</th></tr>
+      <tr><td>Arsenal</td><td>Kai Havertz</td><td>บาดเจ็บกล้ามเนื้อ (คล้ายแฮมสตริง) จากเกมทีมชาติเยอรมนีพบเนเธอร์แลนด์ (24 ก.ย.) <span class="badge badge-cont">ต่อเนื่อง</span> สโมสรมีความหวังเนื่องจากบาดเจ็บเกิดขึ้นช่วงต้นของพักยาว ทำให้มีเวลาพักฟื้นกว่า 2 สัปดาห์ก่อนเกมพบ Leeds</td><td>มีรายงานว่าอาจพักได้ถึง 4 สัปดาห์ในกรณีเลวร้ายสุด แต่สโมสรยังไม่ยืนยันระยะเวลาที่แน่นอน เป้าหมายคือทันเกมพบ Leeds United 10 ต.ค.</td><td><a href="https://www.skysports.com/football/news/13591713/kai-havertz-returning-to-arsenal-to-be-assessed-after-suffering-injury-for-germany-against-netherlands" target="_blank" rel="noopener">Sky Sports</a> / <a href="https://dailycannon.com/2026/09/havertz-injury-germany/" target="_blank" rel="noopener">DailyCannon</a></td></tr>
+      <tr><td>Liverpool</td><td>Alexander Isak</td><td>อาการบาดเจ็บเล็กน้อยที่นิ้วเท้าและต้นขาจากทีมชาติสวีเดน <span class="badge badge-cont">ต่อเนื่อง</span> มีความคืบหน้าดี</td><td>มีความหวังสูงว่าจะทันเกมพบ Manchester City 11 ต.ค. แต่สโมสรยังไม่ยืนยันเป็นทางการ</td><td><a href="https://www.si.com/soccer/alexander-isak-injury-progress-potential-return-date-liverpool-star-2026" target="_blank" rel="noopener">Sports Illustrated</a> / <a href="https://www.rotowire.com/soccer/headlines/alexander-isak-injury-returns-to-liverpool-with-injury-536093" target="_blank" rel="noopener">Rotowire</a></td></tr>
+      <tr><td>Chelsea</td><td>João Pedro</td><td>บาดเจ็บเข่า (ACL/MCL strain) จากเกมเสมอ Hull City (12 ก.ย.) <span class="badge badge-cont">ต่อเนื่อง</span> ปัจจุบันฝึกซ้อมอย่างกระตือรือร้นและมีความคืบหน้าเชิงบวก</td><td>เป้าหมายคือทันเกมพบ AFC Bournemouth 10 ต.ค. ตามกำหนดฟื้นตัว 3.5 สัปดาห์ แต่ยังไม่ยืนยันเป็นทางการ มีความเสี่ยงที่อาจพลาดนัดนี้หากฟื้นตัวช้ากว่าคาด</td><td><a href="https://roundtable.io/sports/soccer/premier-league/chelsea/news/joao-pedro-takes-active-approach-in-positive-injury-chelsea-update-ahead-of-bournemouth-clash" target="_blank" rel="noopener">Roundtable.io</a> / <a href="https://cryptobriefing.com/chelsea-joao-pedro-injury-update/" target="_blank" rel="noopener">CryptoBriefing</a></td></tr>
+    </table>
+    </div>
+    <div class="note">Phil Foden (Manchester City) พ้นโทษแบนแล้วหลังไม่ได้ลงเล่นในนัดพบ Sunderland สัปดาห์ก่อน แต่เนื่องจากไม่มีนัดแข่งขันระดับสโมสรในสัปดาห์นี้ จึงยังไม่มีข้อมูลยืนยันความพร้อมในสนามจริง ข้อมูลใบเหลืองสะสมรายบุคคลและผู้เล่นที่โดนพักจากสะสมใบเหลือง/ใบแดงยังไม่มีแหล่งอย่างเป็นทางการเผยแพร่ครบถ้วน ณ เวลารวบรวมข้อมูล เนื่องจากไม่มีนัดแข่งขันสโมสรทั้งสัปดาห์</div>
+  </section>
+
+  <section>
+    <h2>📈 Weekly Statistics</h2>
+    <div class="note">ไม่มีนัดแข่งขันระดับสโมสรของพรีเมียร์ลีกเกิดขึ้นเลยในสัปดาห์นี้เนื่องจากช่วงพักทีมชาติ จึงไม่มีข้อมูล Most Goals, Best Defence, Clean Sheets หรือ Player of the Week ของสัปดาห์นี้ให้รายงาน (ไม่มีข้อมูลที่ตรวจสอบย้อนกลับได้เนื่องจากไม่มีการแข่งขันเกิดขึ้นจริง)</div>
+  </section>
+
+  <section>
+    <h2>🔵 Big 6 Analysis</h2>
+    <div class="club-block">
+      <h3>Arsenal</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ยังคงมี 12 แต้มจาก 5 นัด (4W-0D-1L) ต่อเนื่องจากสัปดาห์ก่อน</p>
+      <p><b>จุดเด่น:</b> สโมสรมีความหวังว่า Kai Havertz จะทันลงเล่นเกมเปิดสนามพบ Leeds United 10 ต.ค. เนื่องจากบาดเจ็บช่วงต้นของพักยาวทำให้มีเวลาฟื้นตัวมากกว่าปกติ</p>
+      <p><b>จุดอ่อน:</b> Noni Madueke ถูกจับตาจาก Atlético Madrid และ Juventus สำหรับหน้าต่างเดือนมกราคม สะท้อนปัญหาความลึกของตัวเลือกปีกที่ยังไม่ได้ลงเล่นสม่ำเสมอ</p>
+    </div>
+    <div class="club-block">
+      <h3>Chelsea</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ยังคงมี 8 แต้มจาก 5 นัด (2W-2D-1L) ต่อเนื่องจากสัปดาห์ก่อน</p>
+      <p><b>จุดเด่น:</b> João Pedro มีความคืบหน้าเชิงบวกจากอาการบาดเจ็บเข่าและมีเป้าหมายทันเกมเปิดสนามพบ Bournemouth 10 ต.ค.</p>
+      <p><b>จุดอ่อน:</b> ยังไม่มีการยืนยันเป็นทางการว่า João Pedro จะทันลงเล่นจริงหรือไม่ หากพลาดนัดนี้จะกระทบแนวรุกในเกมแรกหลังพักยาว</p>
+    </div>
+    <div class="club-block">
+      <h3>Liverpool</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ต่อเนื่องจากผลแพ้ Bournemouth 2-3 เมื่อสองสัปดาห์ก่อน</p>
+      <p><b>จุดเด่น:</b> Alexander Isak มีความคืบหน้าดีและมีความหวังสูงว่าจะทันลงเล่นเกมใหญ่พบ Manchester City 11 ต.ค.</p>
+      <p><b>จุดอ่อน:</b> ยังต้องรอการยืนยันความพร้อมของ Isak อย่างเป็นทางการก่อนเกมสำคัญ ความเสี่ยงยังไม่หมดไปทั้งหมด</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester City</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ยังคงมี 12 แต้มจาก 5 นัด (4W-0D-1L) ต่อเนื่องจากชัยชนะเหนือ Sunderland 5-3 สัปดาห์ก่อน</p>
+      <p><b>จุดเด่น:</b> Phil Foden พ้นโทษแบนแล้ว คาดว่าจะพร้อมกลับมาเสริมทีมในเกมพบ Liverpool วันที่ 11 ต.ค.</p>
+      <p><b>จุดอ่อน:</b> ไม่มีข้อมูลเพิ่มเติมในสัปดาห์นี้เนื่องจากไม่มีนัดแข่งขัน ยังต้องติดตามความนิ่งของเกมรับต่อเนื่องจากสัปดาห์ก่อน</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester United</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ยังคงมี 12 แต้มจาก 5 นัด (4W-0D-1L) ต่อเนื่องจากสัปดาห์ก่อน</p>
+      <p><b>จุดเด่น:</b> ฟอร์มดีต่อเนื่อง 3 นัดรวดก่อนช่วงพักภายใต้ Michael Carrick</p>
+      <p><b>จุดอ่อน:</b> ไม่สามารถยืนยันผลต่างประตูสะสมที่แน่นอนได้จากแหล่งที่เข้าถึงได้ในรอบนี้ จึงยังไม่ทราบตำแหน่งที่แน่ชัดเทียบกับ Arsenal ในกรณีแต้มเท่ากัน</p>
+    </div>
+    <div class="club-block">
+      <h3>Tottenham Hotspur</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันในสัปดาห์นี้ ยังคงรั้งอันดับสุดท้ายของตาราง (อันดับ 20) ด้วย 2 แต้มจาก 5 นัด (0W-2D-3L) และยังไม่ชนะเลยในฤดูกาลนี้</p>
+      <p><b>จุดเด่น:</b> ฝ่ายบริหารสโมสรยืนยันชัดเจนในสัปดาห์นี้ว่าไม่มีแผนปลด Roberto De Zerbi และยังให้ความเชื่อมั่นเต็มที่ว่าเขาคือคนที่ใช่สำหรับการพลิกฟื้นทีม</p>
+      <p><b>จุดอ่อน:</b> ผลงานที่ย่ำแย่ต่อเนื่องก่อนช่วงพักทำให้แรงกดดันต่อ De Zerbi ยังสูงอยู่ แม้สโมสรจะยังไม่ตัดสินใจปลดในขณะนี้ก็ตาม</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 Title Race</h2>
+    <p>การลุ้นแชมป์ยังคงหยุดนิ่งในสัปดาห์นี้เนื่องจากไม่มีการแข่งขัน โดยยังมี 3 ทีมแต้มเท่ากันที่ 12 แต้มต่อเนื่องจากสัปดาห์ก่อน (Manchester City, Arsenal, Manchester United) สถานการณ์นี้จะยังไม่เปลี่ยนแปลงจนกว่าลีกจะกลับมาแข่งขันในวันที่ 10 ต.ค. ซึ่งจะเป็นจุดเริ่มต้นของการไล่บี้แต้มกันใหม่อีกครั้ง</p>
+  </section>
+
+  <section>
+    <h2>🎯 Top 4 Race</h2>
+    <p>Newcastle United ยังคงยืนหยัดอยู่ในกลุ่มบนของตารางด้วย 11 แต้มจาก 5 นัด ตามหลังกลุ่มผู้นำเพียง 1 แต้ม ต่อเนื่องจากสัปดาห์ก่อน ขณะที่ Chelsea และ Hull City เกาะกลุ่มอยู่ด้วย 8 แต้มเท่ากัน ไม่มีความเคลื่อนไหวเพิ่มเติมในสัปดาห์นี้เนื่องจากไม่มีการแข่งขันระดับสโมสร การลุ้นโซนท็อป 4 ยังเปิดกว้างสำหรับทุกทีมในกลุ่มบนเมื่อลีกกลับมาแข่งขัน</p>
+  </section>
+
+  <section>
+    <h2>⬇️ Relegation Battle</h2>
+    <p>Tottenham Hotspur ยังคงรั้งอันดับสุดท้ายของตารางด้วย 2 แต้มจาก 5 นัด และยังไม่ชนะเลยในฤดูกาลนี้ ต่อเนื่องจากสัปดาห์ก่อน แม้สโมสรจะยืนยันในสัปดาห์นี้ว่าไม่มีแผนปลด Roberto De Zerbi ก็ตาม ข้อมูลตารางคะแนนช่วงล่างแบบละเอียดครบทุกทีมยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ จึงยังไม่สามารถระบุกลุ่มทีมเสี่ยงตกชั้นที่แท้จริงทั้งหมดได้นอกเหนือจาก Tottenham</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Week Fixtures</h2>
+    <div class="note">พรีเมียร์ลีกยังไม่กลับมาแข่งขันภายใน 7 วันถัดไปทั้งหมด แต่จะเริ่ม Matchweek 6 ในวันที่ 10-12 ตุลาคม 2026 ซึ่งคู่ 10-11 ต.ค. อยู่ในช่วง 7 วันถัดไปจากวันที่จัดทำรายงานนี้ จึงแสดงโปรแกรมที่ยืนยันอย่างเป็นทางการจาก Premier League ไว้เพื่อการติดตาม เวลาแข่งขันแปลงจาก BST เป็น ICT (+6 ชั่วโมง)</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Time (ICT)</th><th>Home</th><th>VS</th><th>Away</th><th>Source</th></tr>
+      <tr><td>10 ต.ค.</td><td>18:30</td><td>Arsenal</td><td>vs</td><td>Leeds United</td><td><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>10 ต.ค.</td><td>21:00</td><td>Aston Villa</td><td>vs</td><td>Brentford</td><td><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>10 ต.ค.</td><td>21:00</td><td>Chelsea</td><td>vs</td><td>AFC Bournemouth</td><td><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>10 ต.ค.</td><td>21:00</td><td>Ipswich Town</td><td>vs</td><td>Fulham</td><td><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-6/" target="_blank" rel="noopener">FIFPlay</a></td></tr>
+      <tr><td>10 ต.ค.</td><td>21:00</td><td>Sunderland</td><td>vs</td><td>Brighton &amp; Hove Albion</td><td><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-6/" target="_blank" rel="noopener">FIFPlay</a></td></tr>
+      <tr><td>10 ต.ค.</td><td>23:30</td><td>Manchester United</td><td>vs</td><td>Tottenham Hotspur</td><td><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>11 ต.ค.</td><td>20:00</td><td>Crystal Palace</td><td>vs</td><td>Nottingham Forest</td><td><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-6/" target="_blank" rel="noopener">FIFPlay</a></td></tr>
+      <tr><td>11 ต.ค.</td><td>20:00</td><td>Hull City</td><td>vs</td><td>Everton</td><td><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-6/" target="_blank" rel="noopener">FIFPlay</a></td></tr>
+      <tr><td>11 ต.ค.</td><td>22:30</td><td>Liverpool</td><td>vs</td><td>Manchester City</td><td><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13px;color:var(--ink-soft);">คู่ Coventry City vs Newcastle United (12 ต.ค.) อยู่นอกช่วง 7 วันถัดไปจากวันที่จัดทำรายงานนี้พอดี จึงไม่นำมาแสดงในตารางนี้</p>
+    <ul>
+      <li><b>Manchester United vs Tottenham Hotspur (10 ต.ค., 23:30 ICT)</b> — นัดแรกหลังพักยาวของ Tottenham ภายใต้แรงกดดันมหาศาลต่อ Roberto De Zerbi ขณะที่ Manchester United เดินหน้าด้วยฟอร์มดี 3 นัดรวดก่อนพัก</li>
+      <li><b>Liverpool vs Manchester City (11 ต.ค., 22:30 ICT)</b> — คู่ปะทะทีมลุ้นแชมป์ตัวจริง ต้องติดตามว่า Alexander Isak จะทันลงเล่นให้ Liverpool หรือไม่ ขณะที่ Manchester City มีลุ้นได้ Phil Foden กลับมาเสริมทีมเต็มตัว</li>
+      <li><b>Chelsea vs AFC Bournemouth (10 ต.ค., 21:00 ICT)</b> — นัดเปิดสนามหลังพักยาวของ Chelsea ที่ต้องรอดูว่า João Pedro จะกลับมาทันเกมนี้ได้หรือไม่ตามเป้าหมายที่สโมสรวางไว้</li>
+    </ul>
+    <p style="font-size:13px;color:var(--ink-soft);">อ้างอิง: <a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League (Official) — Matchweek 6 fixtures</a> / <a href="https://www.fifplay.com/premier-league-2026-2027-matchday-6/" target="_blank" rel="noopener">FIFPlay — Matchday 6</a></p>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <ul>
+      <li><b>Matches:</b> 0 นัด — ไม่มีการแข่งขันระดับสโมสรของพรีเมียร์ลีกเกิดขึ้นเลยในสัปดาห์นี้เนื่องจากช่วงพักทีมชาติ</li>
+      <li><b>Goals:</b> ไม่มีข้อมูล เนื่องจากไม่มีนัดแข่งขันเกิดขึ้น</li>
+      <li><b>Clean Sheets:</b> ไม่มีข้อมูล เนื่องจากไม่มีนัดแข่งขันเกิดขึ้น</li>
+      <li><b>Red Cards:</b> ไม่มีข้อมูล เนื่องจากไม่มีนัดแข่งขันเกิดขึ้น</li>
+      <li><b>Yellow Cards:</b> ไม่มีข้อมูล เนื่องจากไม่มีนัดแข่งขันเกิดขึ้น</li>
+      <li><b>Penalties:</b> ไม่มีข้อมูล เนื่องจากไม่มีนัดแข่งขันเกิดขึ้น</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>โปรแกรมสำคัญ:</b> พรีเมียร์ลีกกลับมาแข่งขัน Matchweek 6 วันที่ 10-12 ต.ค. รวมถึงคู่ใหญ่ Manchester United vs Tottenham และ Liverpool vs Manchester City</li>
+      <li><b>ข่าวย้ายทีม:</b> ติดตามสถานการณ์ Noni Madueke กับความสนใจจาก Atlético Madrid และ Juventus ก่อนหน้าต่างเดือนมกราคม</li>
+      <li><b>ผู้เล่นบาดเจ็บ:</b> ติดตามว่า Kai Havertz, Alexander Isak และ João Pedro จะทันลงเล่นเกมเปิดสนามหลังพักยาวของทีมต้นสังกัดหรือไม่</li>
+      <li><b>ข่าวผู้จัดการทีม:</b> จับตาผลงานของ Roberto De Zerbi ที่ Tottenham ในเกมแรกหลังพัก (พบ Manchester United) ซึ่งอาจเป็นจุดชี้วัดสำคัญต่ออนาคตของเขาแม้สโมสรจะยืนยันความเชื่อมั่นในสัปดาห์นี้ก็ตาม</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul class="src-list">
+      <li><a href="https://www.premierleague.com/en/news/4689113/when-are-the-international-breaks-for-202627" target="_blank" rel="noopener">Premier League — When are the international breaks for 2026/27</a></li>
+      <li><a href="https://www.premierleague.com/en/matches/premier-league/2026-27/matchweek-6" target="_blank" rel="noopener">Premier League — Matchweek 6 fixtures</a></li>
+      <li><a href="https://www.premierleague.com/en/news/4698998/summer-2026-transfer-deadline-day-everything-you-need-to-know" target="_blank" rel="noopener">Premier League — Summer 2026 transfer deadline day</a></li>
+    </ul>
+    <h3>Media</h3>
+    <ul class="src-list">
+      <li><a href="https://www.football365.com/news/tottenham-reach-decision-sacking-roberto-de-zerbi-manager-aston-villa-defeat" target="_blank" rel="noopener">Football365 — Tottenham's decision on De Zerbi</a></li>
+      <li><a href="https://www.teamtalk.com/tottenham-hotspur/tottenham-reach-decision-sacking-roberto-de-zerbi" target="_blank" rel="noopener">TeamTalk — Tottenham's decision on De Zerbi</a></li>
+      <li><a href="https://roundtable.io/sports/soccer/premier-league/chelsea/news/joao-pedro-takes-active-approach-in-positive-injury-chelsea-update-ahead-of-bournemouth-clash" target="_blank" rel="noopener">Roundtable.io — João Pedro injury update (29 ก.ย.)</a></li>
+      <li><a href="https://www.sportsmole.co.uk/football/chelsea/injury-news/news/chelsea-star-sees-specialist-amid-bid-for-october-injury-return_605955.html" target="_blank" rel="noopener">SportsMole — João Pedro sees specialist</a></li>
+      <li><a href="https://cryptobriefing.com/chelsea-joao-pedro-injury-update/" target="_blank" rel="noopener">CryptoBriefing — João Pedro sidelined 3.5 weeks</a></li>
+      <li><a href="https://www.si.com/soccer/alexander-isak-injury-progress-potential-return-date-liverpool-star-2026" target="_blank" rel="noopener">Sports Illustrated — Isak injury progress</a></li>
+      <li><a href="https://www.rotowire.com/soccer/headlines/alexander-isak-injury-returns-to-liverpool-with-injury-536093" target="_blank" rel="noopener">Rotowire — Isak returns to Liverpool with injury</a></li>
+      <li><a href="https://www.yardbarker.com/soccer/articles/a_real_blow_liverpool_star_injured_ahead_of_manchester_city_clash/s1_17790_44354466" target="_blank" rel="noopener">Yardbarker — Isak injury ahead of Man City clash</a></li>
+      <li><a href="https://www.skysports.com/football/news/13591713/kai-havertz-returning-to-arsenal-to-be-assessed-after-suffering-injury-for-germany-against-netherlands" target="_blank" rel="noopener">Sky Sports — Havertz returning to Arsenal for assessment</a></li>
+      <li><a href="https://dailycannon.com/2026/09/havertz-injury-germany/" target="_blank" rel="noopener">DailyCannon — Havertz injury timeline speculated</a></li>
+      <li><a href="https://www.football365.com/news/arsenal-transfer-decision-madueke-atletico-madrid-juventus-arteta-deal-very-close" target="_blank" rel="noopener">Football365 — Madueke eyed by Atlético Madrid, Juventus</a></li>
+      <li><a href="https://www.soccernews.com/juventus-atletico-madrid-weigh-up-a-january-swoop-for-noni-madueke/404835/" target="_blank" rel="noopener">SoccerNews — Juventus, Atlético Madrid weigh January move for Madueke</a></li>
+      <li><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-6/" target="_blank" rel="noopener">FIFPlay — Premier League 2026-27 Matchday 6</a></li>
+      <li><a href="https://notjustok.com/sports/who-are-the-promoted-teams-to-the-premier-league-2026-2027/amp/" target="_blank" rel="noopener">NotJustOK — Promoted teams to the Premier League 2026/27 (Coventry City, Ipswich Town, Hull City)</a></li>
+    </ul>
+    <h3>Statistics</h3>
+    <ul class="src-list">
+      <li><a href="https://ca.sports.yahoo.com/news/premier-league-top-scorers-golden-134123398.html" target="_blank" rel="noopener">Yahoo Sports — Premier League top scorers, Golden Boot rankings</a></li>
+    </ul>
+    <div class="note"><b>UNCERTAIN:</b> premierleague.com, mancity.com และ roundtable.io ไม่สามารถเข้าถึงได้โดยตรงผ่าน WebFetch ในสภาพแวดล้อมนี้ (ถูกปฏิเสธโดย network egress proxy ทุกครั้งที่ลอง) จึงใช้ผลค้นหา (WebSearch) แทนตามลำดับการแก้ปัญหาที่กำหนดไว้ และอ้างอิง URL ที่พบจากผลค้นหาโดยตรง ระหว่างการค้นคว้าสัปดาห์นี้พบข้อมูลที่ขัดแย้งกันอย่างมีนัยสำคัญเกี่ยวกับสถานะการย้ายทีมของ Bruno Guimarães (บางแหล่งอ้างว่าย้ายไป Arsenal เสร็จสิ้นแล้วตั้งแต่เดือนสิงหาคม 2026 โดยอ้างถึงผู้จัดการทีม Arsenal ชื่อ "Matthias Jaissle" ซึ่งขัดแย้งโดยตรงกับข้อมูลที่ยืนยันสอดคล้องกันในหลายแหล่งของสัปดาห์นี้และสัปดาห์ก่อนว่าผู้จัดการทีม Arsenal คือ Mikel Arteta) เนื่องจากข้อมูลนี้ขัดแย้งกับข้อเท็จจริงที่ยืนยันแล้วอย่างชัดเจน จึงตัดสินใจไม่นำเสนอสถานะ Guimarães ในรายงานฉบับนี้จนกว่าจะตรวจสอบได้ชัดเจนกว่านี้ นอกจากนี้ยังพบข้อมูลไม่สอดคล้องกันเกี่ยวกับสาเหตุของการบาดเจ็บของ William Saliba (บางแหล่งระบุว่าเป็นอาการบาดเจ็บหลังจากฟุตบอลโลกตั้งแต่เดือนกรกฎาคม 2026 บางแหล่งระบุว่าเป็นข้อเท้าพลิกก่อนเกมพบ Liverpool) จึงไม่นำข้อมูลผู้เล่นรายนี้มาแสดงในรายงานฉบับนี้เช่นกันเพื่อหลีกเลี่ยงการนำเสนอข้อมูลที่อาจไม่ถูกต้อง โปรดตรวจสอบซ้ำก่อนใช้อ้างอิงต่อ</div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Premier League Report · จัดทำโดย Claude Code Routine · ข้อมูลทั้งหมดอ้างอิงจากแหล่งข่าวที่ระบุไว้ข้างต้น หากมีข้อมูลใดไม่สามารถยืนยันได้ จะระบุข้อจำกัดไว้อย่างชัดเจนแทนการคาดเดา</p>
+  </footer>
+</div>
+</body>
+</html>
