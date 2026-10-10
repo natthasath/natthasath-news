@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 Weekly Software Releases Report - Week 41</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27, 32, 39, 0.14);
+  --line-strong: rgba(27, 32, 39, 0.28);
+  --accent: #0F7A73;
+  --critical: #D92B2B;
+  --high: #FF6B35;
+  --medium: #FFA500;
+  --low: #4CAF50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231, 230, 224, 0.14);
+    --line-strong: rgba(231, 230, 224, 0.26);
+    --accent: #3FBDAF;
+    --critical: #FF6B6B;
+    --high: #FF8C42;
+    --medium: #FFB84D;
+    --low: #81C784;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.page { max-width: 1200px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topstrip {
+  display: flex; justify-content: space-between; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-faint);
+}
+
+.masthead { padding: 44px 0 30px; border-bottom: 1px solid var(--line-strong); }
+.kicker {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+  font-size: 15px; color: var(--accent); margin: 0 0 14px;
+}
+.kicker::before { content: "◆ "; font-size: 11px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 800; margin: 0 0 16px; }
+h2 {
+  font-size: 24px; font-weight: 700; margin: 36px 0 20px; color: var(--ink);
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; color: var(--ink-soft); }
+
+.meta-row { display: flex; gap: 20px; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+
+.executive-summary {
+  background: var(--surface); border-left: 4px solid var(--accent);
+  padding: 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8;
+}
+
+.dashboard {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.dashboard-item {
+  background: var(--surface); padding: 16px; border-radius: 4px;
+  border-top: 3px solid var(--accent); text-align: center;
+}
+.dashboard-item-value { font-size: 32px; font-weight: 700; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.dashboard-item-label {
+  font-size: 12px; color: var(--ink-faint); margin-top: 8px;
+  text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--surface); }
+th {
+  background: var(--surface-2); color: var(--ink); padding: 12px; text-align: left;
+  font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--line-strong);
+}
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.label {
+  display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 11px;
+  font-weight: 600; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-major { background: rgba(15, 122, 115, 0.2); color: var(--accent); }
+.label-minor { background: rgba(15, 122, 115, 0.1); color: var(--ink-soft); }
+.label-patch { background: rgba(217, 43, 43, 0.1); color: var(--ink-soft); }
+.label-security { background: rgba(217, 43, 43, 0.2); color: var(--critical); }
+.label-lts { background: rgba(255, 165, 0, 0.15); color: var(--medium); }
+.label-rc { background: rgba(156, 39, 176, 0.15); color: var(--ink-soft); }
+.label-beta { background: rgba(63, 81, 181, 0.15); color: var(--ink-soft); }
+.label-eol { background: rgba(217, 43, 43, 0.15); color: var(--critical); }
+
+.severity-critical { color: var(--critical); font-weight: 600; }
+.severity-high { color: var(--high); font-weight: 600; }
+.severity-medium { color: var(--medium); font-weight: 600; }
+.severity-low { color: var(--low); font-weight: 600; }
+
+.source-badge {
+  display: inline-block; padding: 3px 6px; background: var(--surface-2);
+  border-radius: 2px; font-size: 10px; font-family: "JetBrains Mono", monospace; color: var(--ink-faint);
+}
+
+.note {
+  background: var(--surface); border-left: 4px solid var(--medium); padding: 12px;
+  margin: 12px 0; border-radius: 2px; font-size: 13px; color: var(--ink-soft);
+}
+.empty-note {
+  background: var(--surface); border: 1px dashed var(--line-strong); padding: 12px 16px;
+  margin: 12px 0; border-radius: 4px; font-size: 13.5px; color: var(--ink-soft); font-style: italic;
+}
+.highlight-box { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; margin: 12px 0; border-radius: 4px; }
+
+footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-strong); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+.two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest</p>
+    <h1>💻 Weekly Software Releases Report</h1>
+    <div class="meta-row">
+      <span><b>Week:</b> 41</span>
+      <span><b>Period:</b> October 4 – 10, 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="executive-summary">
+      <p>สัปดาห์นี้ (4–10 ต.ค. 2569) ไม่มี Major Release ใหม่ แต่มีประเด็นความปลอดภัยที่ต้องเร่งติดตาม ได้แก่ Citrix NetScaler ADC/Gateway ที่พบช่องโหว่ High Severity ตัวใหม่ CVE-2026-88779 (CVSS 8.7) ซึ่งกำลังถูกโจมตีจริงและถูกเพิ่มเข้า CISA KEV Catalog เมื่อ 4 ต.ค. 2569 และ Django ออก Security Release พร้อมกัน 3 สาย (6.1.2 / 6.0.9 / 5.2.18) แก้ไข CVE ระดับ Medium 3-4 รายการ นอกจากนี้ Ubuntu ยังออก USN ชุดใหญ่ครอบคลุม Linux Kernel หลายสายและไลบรารีอย่าง BlueZ, libxml2, libgit2 และ libarchive</p>
+      <p>ด้าน Software Release ทั่วไป: Node.js ออก 26.11.0/26.11.1 (Current) เพิ่ม API ใหม่หลายรายการ, Laravel Framework v13.35.0, Angular แพตช์ 22.2.2, FastAPI ออก 0.143.0 ที่เปลี่ยน OpenTelemetry Auto-instrumentation เป็น Opt-in (Breaking Change), ArgoCD ออก Patch สายเสถียร v3.5.4/v3.4.10/v3.3.15 พร้อม RC ของ v3.6.0, Ansible Core แพตช์ 3 สาย (2.21.5/2.20.10/2.19.14), Elasticsearch ออก 9.5.5/9.4.8/8.19.23, Traefik Proxy ออกแพตช์ความปลอดภัย v3.7.14/v2.11.58 (รอ CVE ID จาก GHSA 8+5 รายการ) และ OpenVAS Scanner ออก v23.51.0 ที่มี Breaking Change สำคัญคือเขียน HTTP API ใหม่ทั้งหมดด้วย Axum ส่วน PHP เข้าสู่ Release Candidate รอบที่ 3 (8.6.0 RC3) และ Vue เข้าสู่ RC ตัวที่ 11 ของสาย 3.6</p>
+      <p><strong>ประเด็นสำคัญ:</strong> ทีมที่ใช้งาน Citrix NetScaler ADC/Gateway ควรอัปเดตเป็น 14.1-73.41+ หรือ 13.1-64.28+ โดยเร่งด่วนเนื่องจากมีการโจมตีจริงแล้ว ทีมที่ใช้ Django ควรอัปเกรดเป็น 6.1.2/6.0.9/5.2.18 โดยเร็ว ทีมที่ใช้ Ubuntu LTS ควรตรวจสอบและติดตั้งแพตช์ USN ที่เกี่ยวข้อง และทีมที่ใช้ Windows Server 2012/2012 R2/2022 ควรเตรียมแผนรองรับ เนื่องจากระยะ ESU/Mainstream Support จะสิ้นสุดวันที่ 13 ต.ค. 2569 ซึ่งอยู่นอกกรอบ 7 วันของสัปดาห์นี้เพียง 3 วัน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">19</div>
+        <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">3</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">7</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>26.11.0 / 26.11.1 (Current)</td>
+          <td>26.11.0 เพิ่ม API ใหม่แบบ Semver-minor หลายรายการ ได้แก่ <code>buffer.isLatin1</code>, <code>Buffer.stringLength()</code>, <code>isValidHeaderName()</code>/<code>isValidHeaderValue()</code>, <code>histogram.diff()</code>/<code>snapshot()</code> และ Flag <code>--process-timeout=N</code> ตามด้วย 26.11.1 ที่ Revert การเปลี่ยนแปลง 3 รายการ (Doc-kit Verbosity Toggle, การย้าย Docs Redesign และการอัปเดต Tooling Dependency)</td>
+          <td>Oct 7, 2026</td>
+          <td><span class="label label-minor">🔹 Minor</span></td>
+          <td><a href="https://github.com/nodejs/node/releases/tag/v26.11.0" class="source-badge">github.com/nodejs</a></td>
+        </tr>
+        <tr>
+          <td><strong>PHP</strong></td>
+          <td>8.6.0 RC3 / 8.5.12 RC1 / 8.4.27 RC1</td>
+          <td>Release Candidate ของทั้ง 3 สายประกาศพร้อมกัน โดย 8.6.0 RC3 แก้ไข 21 Issue ด้านบั๊กและความปลอดภัยของ Memory โดยไม่มีฟีเจอร์ใหม่เพิ่ม (Feature Freeze แล้ว) เตรียมเข้าสู่ GA ที่วางแผนไว้วันที่ 19 พ.ย. 2569</td>
+          <td>Oct 6, 2026</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span></td>
+          <td><a href="https://www.warp2search.net/story/php-releases-860-rc3-8512-rc1-and-8427-rc1-across-all-active-branches/" class="source-badge">warp2search.net (รายงาน)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Rust (ล่าสุด 1.99.0 เมื่อ 1 ต.ค. 2569 ก่อนช่วงเวลานี้), Python (3.13.16 ล่าสุดเมื่อ 30 ก.ย. 2569), Java/OpenJDK, .NET และ Go (go1.27 ล่าสุดเมื่อ 19 ส.ค. 2569) ที่มีวันที่ประกาศอยู่ในช่วง 4–10 ต.ค. 2569</div>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Framework</th><th>Version</th><th>Highlights</th><th>Migration</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vue</strong></td>
+          <td>3.6.0-rc.11</td>
+          <td>Release Candidate ตัวที่ 11 ของสาย Vue 3.6 ซึ่งยังอยู่ระหว่างการปรับความเสถียรของ "Vapor Mode" ก่อนเข้าสู่ Stable</td>
+          <td>เป็น Pre-release ยังไม่มี Migration Guide ฉบับสมบูรณ์จนกว่าจะถึง Stable</td>
+          <td><a href="https://github.com/vuejs/core/releases/tag/v3.6.0-rc.11" class="source-badge">github.com/vuejs</a></td>
+        </tr>
+        <tr>
+          <td><strong>Angular</strong></td>
+          <td>22.2.2 (+ Pre-release 22.3.0-next.1)</td>
+          <td>Patch Release ของสาย 22.2 พร้อม Pre-release Build ที่ 2 ของสาย 22.3 (รายละเอียดการแก้ไขเฉพาะเจาะจงไม่ได้เผยแพร่แยกจาก Release Note บน GitHub)</td>
+          <td>ไม่มีการระบุ Breaking Change สำหรับแพตช์นี้</td>
+          <td><a href="https://github.com/angular/angular/releases" class="source-badge">github.com/angular</a></td>
+        </tr>
+        <tr>
+          <td><strong>Laravel</strong></td>
+          <td>Framework v13.35.0</td>
+          <td>อัปเดต Framework สายหลักตามรอบรายสัปดาห์ปกติ (ไม่มี Backport ใหม่สำหรับสาย 12/11 ในสัปดาห์นี้)</td>
+          <td>ไม่มีการระบุ Breaking Change หรือ Migration Guide อย่างเป็นทางการสำหรับเวอร์ชันนี้</td>
+          <td><a href="https://github.com/laravel/framework/releases/tag/v13.35.0" class="source-badge">github.com/laravel</a></td>
+        </tr>
+        <tr>
+          <td><strong>FastAPI</strong></td>
+          <td>0.143.0</td>
+          <td>เปลี่ยนให้การตั้งค่า OpenTelemetry Exporter แบบอัตโนมัติเป็น Opt-in (เดิมเปิดอัตโนมัติเมื่อตรวจพบ Config)</td>
+          <td><strong>Breaking Change:</strong> แอปที่พึ่งพาการ Auto-config OpenTelemetry แบบเดิมต้องเปิดใช้งานฟีเจอร์นี้เองอย่างชัดเจนหลังอัปเกรด</td>
+          <td><a href="https://github.com/fastapi/fastapi/releases" class="source-badge">github.com/fastapi</a></td>
+        </tr>
+        <tr>
+          <td><strong>FastAPI</strong></td>
+          <td>0.142.3 / 0.142.4</td>
+          <td>แพตช์แก้ไขปัญหาการแยก Telemetry สำหรับ Request ที่ถูก Exclude พร้อมแก้ไขเอกสารและอัปเดต Dependency</td>
+          <td>ไม่มีการระบุ Breaking Change</td>
+          <td><a href="https://github.com/fastapi/fastapi/releases" class="source-badge">github.com/fastapi</a></td>
+        </tr>
+        <tr>
+          <td><strong>Django</strong></td>
+          <td>6.1.2 / 6.0.9 / 5.2.18</td>
+          <td>Security Release พร้อมกัน 3 สาย แก้ไขช่องโหว่ Denial-of-Service ใน <code>parse_header_parameters()</code>, SSRF ที่เป็นการแก้ไขเพิ่มเติมของ CVE-2026-15307 ใน Spatial Lookups และ DoS ใน <code>get_supported_language_variant()</code> (ดูรายละเอียดในหัวข้อ Security &amp; CVE)</td>
+          <td>อัปเกรดเป็นเวอร์ชันแพตช์ของสายที่ใช้งานอยู่ ไม่มี Breaking Change ด้าน API</td>
+          <td><a href="https://www.djangoproject.com/weblog/2026/oct/06/security-releases/" class="source-badge">djangoproject.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ React (เสถียรล่าสุด 19.3.0 เมื่อ 9 ก.ย. 2569) และ Spring Boot (Milestone ล่าสุด 4.2.0-M2 เมื่อ 24 ก.ย. 2569) ในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps &amp; CI/CD</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Jenkins</strong></td>
+          <td>2.585 (Weekly)</td>
+          <td>อัปเดตรายสัปดาห์ตามรอบปกติ สืบต่อจาก 2.584 (รายละเอียดฉบับเต็มอยู่ใน Changelog อย่างเป็นทางการ)</td>
+          <td>CI/CD</td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases/tag/jenkins-2.585" class="source-badge">github.com/jenkinsci</a></td>
+        </tr>
+        <tr>
+          <td><strong>Docker Engine</strong></td>
+          <td>v29.9.0</td>
+          <td>อัปเดตเวอร์ชันหลักของสาย 29.x ยืนยันการเผยแพร่จาก GitHub Releases เมื่อ 8 ต.ค. 2569 — รายละเอียด Release Notes ฉบับเต็มจาก docs.docker.com ไม่สามารถดึงได้ในรอบตรวจสอบนี้ (ดูหมายเหตุ UNCERTAIN)</td>
+          <td>Containers</td>
+          <td><a href="https://github.com/moby/moby/releases/tag/v29.9.0" class="source-badge">github.com/moby</a></td>
+        </tr>
+        <tr>
+          <td><strong>Terraform</strong></td>
+          <td>v1.17.0-rc1</td>
+          <td>Release Candidate ตัวแรกของสาย 1.17 ต่อจาก Beta 2 ของสัปดาห์ก่อนหน้า</td>
+          <td>IaC</td>
+          <td><a href="https://github.com/hashicorp/terraform/releases/tag/v1.17.0-rc1" class="source-badge">github.com/hashicorp</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ansible Core</strong></td>
+          <td>2.21.5 / 2.20.10 / 2.19.14</td>
+          <td>แพตช์ประสานงาน 3 สายพร้อมกันตามรอบ Bugfix ปกติ (รายละเอียดเต็มอยู่ใน CHANGELOG ของแต่ละสาย)</td>
+          <td>Automation</td>
+          <td><a href="https://github.com/ansible/ansible/releases/tag/v2.21.5" class="source-badge">github.com/ansible</a></td>
+        </tr>
+        <tr>
+          <td><strong>Argo CD</strong></td>
+          <td>v3.5.4 / v3.4.10 / v3.3.15 (+ RC v3.6.0-rc2)</td>
+          <td>แพตช์ Backport พร้อมกัน 3 สายเสถียร (3.5/3.4/3.3) พร้อม Release Candidate ตัวที่ 2 ของสาย 3.6 ที่กำลังพัฒนา</td>
+          <td>GitOps/CD</td>
+          <td><a href="https://github.com/argoproj/argo-cd/releases" class="source-badge">github.com/argoproj</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release เสถียรใหม่ของ Kubernetes (พบเพียง Tag พัฒนา v1.38.0-alpha.2 เมื่อ 7 ต.ค. 2569 ซึ่งเป็น Alpha Build ไม่ใช่ Release ประกาศ — ดู "สิ่งที่ต้องติดตาม"), GitLab (Patch ล่าสุด 19.4.1/19.3.3/19.2.7 เมื่อ 23 ก.ย. 2569 — รอบถัดไปคาดว่าประมาณ 14 หรือ 28 ต.ค. 2569 ตามรอบ Patch Release ปกติ แต่ docs.gitlab.com เข้าถึงไม่ได้ในรอบตรวจสอบนี้ จึงไม่ยืนยันวันที่แน่ชัด) และ Docker Compose (ล่าสุด v5.6.0 เมื่อ 2 ต.ค. 2569 ซึ่งอยู่นอกช่วงเวลา 7 วันนี้) ในช่วง 4–10 ต.ค. 2569</div>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Database</th><th>Version</th><th>Features</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Elasticsearch</strong></td>
+          <td>9.5.5 / 9.4.8 / 8.19.23</td>
+          <td>แพตช์ประสานงาน 3 สายพร้อมกันตามรอบปกติ (รายละเอียดเต็มอยู่ใน Release Notes ที่ elastic.co ซึ่งไม่สามารถดึงเนื้อหาผ่าน WebFetch ได้ในรอบตรวจสอบนี้)</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td><a href="https://github.com/elastic/elasticsearch/releases/tag/v9.5.5" class="source-badge">github.com/elastic</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">จากการตรวจสอบระบบฐานข้อมูลหลักอื่น ๆ ไม่พบ Release ที่มีวันที่ประกาศอยู่ในช่วง 4–10 ต.ค. 2569 ที่ยืนยันได้ ได้แก่ PostgreSQL (19 RC1 มีกำหนดวันที่ 15 ต.ค. 2569 และ GA วันที่ 29 ต.ค. 2569 ตามประกาศผ่าน Mailing List ของ Release Manager — ยังไม่ถึงกำหนดในสัปดาห์นี้ ดู "สิ่งที่ต้องติดตาม"), MySQL (ล่าสุด 9.7.2/8.4.11 เมื่อ 28 ก.ค. 2569), MariaDB, SQL Server/Azure SQL, MongoDB, Redis (ล่าสุด 8.10.2 เมื่อ 17 ก.ย. 2569), Cassandra, AWS RDS/Aurora และ Google Cloud SQL</div>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>OS</th><th>Version</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>ชุด USN: 8911-1, 8887-3, 8875-2, 8903-2, 8905-2, 8908-1, 8910-1, 8909-1, 8907-1, 8902-1</td>
+          <td><span class="label label-security">🔒 Security Release</span></td>
+          <td>แพตช์ความปลอดภัยชุดใหญ่ ครอบคลุม Linux Kernel หลายสายย่อย (Generic, OEM, NVIDIA, GCP) พร้อมไลบรารี BlueZ, libxml2, libde265, libgit2 และ libarchive สำหรับรุ่นที่รองรับอยู่ (26.04/24.04/22.04/20.04/18.04/16.04 LTS ตามแต่ละแพ็กเกจ)</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com/security</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Errata หรือ Release ที่ยืนยันวันที่แน่ชัดในช่วงนี้สำหรับ Debian (DSA ล่าสุดที่ยืนยันได้คือ DSA-6526-1 เมื่อ 28 ก.ย. 2569), Rocky Linux, AlmaLinux (ล่าสุด 10.2/9.8 เมื่อ มิ.ย. 2569) และ RHEL (Errata ล่าสุดที่ยืนยันได้คือ RHSA 2026:69103 เมื่อ 21 ก.ย. 2569) เนื่องจากหลายโดเมน (security-tracker.debian.org, access.redhat.com บางหน้า) เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน ส่วน Windows Server ไม่มีรอบ Patch Tuesday ในสัปดาห์นี้ (รอบถัดไปคือ 13 ต.ค. 2569 ซึ่งอยู่นอกกรอบเวลา 7 วันนี้)</div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ VMware/Broadcom ESXi/vSphere/vCenter (แอดไวเซอรีล่าสุด VMSA-2026-0006 เมื่อ 29 ก.ค. 2569), Proxmox VE (เวอร์ชันปัจจุบัน 9.2 ออกเมื่อ 21 พ.ค. 2569), Hyper-V (ผูกกับ Cumulative Update ของ Windows Server ซึ่งไม่มีรอบในสัปดาห์นี้) และ KVM/QEMU (Tag ล่าสุด v11.1.2 เมื่อ 28 ก.ย. 2569) ในช่วง 4–10 ต.ค. 2569</div>
+  </section>
+
+  <section>
+    <h2>🌐 Network &amp; Security</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Traefik Proxy</strong></td>
+          <td>v3.7.14 / v2.11.58</td>
+          <td>แพตช์ความปลอดภัยแก้ไขรวม 13 Advisory (v3.7.14: 8 รายการ, v2.11.58: 5 รายการ) ที่ระบุด้วย GitHub Security Advisory ID (เช่น GHSA-53qr-784g-cj35, GHSA-cw35-4q88-3rmp, GHSA-fh26-gfpp-7xxx) — CVE ID อย่างเป็นทางการยังไม่ถูกกำหนด/เผยแพร่ ณ เวลาตรวจสอบ จึงยังไม่นำไปจัดในตาราง Security &amp; CVE</td>
+          <td>Reverse Proxy (Security)</td>
+          <td><a href="https://github.com/traefik/traefik/releases/tag/v3.7.14" class="source-badge">github.com/traefik</a></td>
+        </tr>
+        <tr>
+          <td><strong>OpenVAS Scanner (Greenbone)</strong></td>
+          <td>v23.51.0</td>
+          <td>เขียน HTTP API ใหม่ทั้งหมดด้วย Framework Axum (จากเดิม), บังคับให้ Route ที่รับ JSON ต้องตั้งค่า Header <code>Content-Type</code>, Route แบบ Trailing-slash คืนค่า 404 และเปลี่ยนค่า Default ของ Option <code>enable-get-scans</code> เป็น <code>false</code></td>
+          <td>Security Scanner</td>
+          <td><a href="https://github.com/greenbone/openvas-scanner/releases/tag/v23.51.0" class="source-badge">github.com/greenbone</a></td>
+        </tr>
+        <tr>
+          <td><strong>Wireshark</strong></td>
+          <td>v4.7.4 (+ Pre-release v4.7.5rc0)</td>
+          <td>อัปเดตตามรอบปกติของสาย 4.7 — รายละเอียด Release Notes ฉบับเต็มจาก wireshark.org ไม่สามารถดึงเนื้อหาได้ในรอบตรวจสอบนี้ (ดูหมายเหตุ UNCERTAIN)</td>
+          <td>Network Analysis</td>
+          <td><a href="https://github.com/wireshark/wireshark/tags" class="source-badge">github.com/wireshark</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Nginx (ล่าสุด release-1.31.6 เมื่อ 15 ก.ย. 2569), Apache httpd, HAProxy (ล่าสุด v3.5-dev8 เมื่อ 1 ต.ค. 2569 ก่อนช่วงเวลานี้), Caddy (ครอบคลุมแล้วในรายงานสัปดาห์ก่อน — ล่าสุด v2.11.7 เมื่อ 3 ต.ค. 2569), WireGuard, pfSense, OPNsense, Nmap, Nessus และ Metasploit Framework ในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>☁ Cloud &amp; Infrastructure</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Platform</th><th>Update</th><th>Impact</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pulumi CLI</strong></td>
+          <td>v3.268.0</td>
+          <td>อัปเดตตามรอบปกติต่อจาก v3.267.0 ของสัปดาห์ก่อนหน้า</td>
+          <td><a href="https://github.com/pulumi/pulumi/releases/tag/v3.268.0" class="source-badge">github.com/pulumi</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบประกาศฟีเจอร์ใหม่ (GA) ที่ยืนยันวันที่อยู่ในช่วงนี้จาก AWS What's New, Azure Updates หรือ Google Cloud Release Notes เนื่องจากโดเมนหลัก (aws.amazon.com, azure.microsoft.com, cloud.google.com) เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ และผลการค้นหาที่ได้เป็นเพียงบทสรุปของสำนักข่าวบุคคลที่สามที่ไม่สามารถยืนยันวันที่ประกาศที่แน่ชัดได้ จึงไม่นำมาแสดงเพื่อเลี่ยงการคาดเดา — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน</div>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools &amp; IDE</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ VS Code (code.visualstudio.com เข้าถึงไม่ได้ในรอบตรวจสอบนี้), JetBrains IDE (IntelliJ IDEA ล่าสุด 2026.2.2 เมื่อ ก.ย. 2569), Eclipse IDE, Git/git-scm (เสถียรล่าสุด 2.56.0 เมื่อ 28 ก.ย. 2569), GitLab, npm CLI (ล่าสุด v12.2.0 เมื่อ 30 ก.ย. 2569), pip, Composer, Apache Maven และ Gradle ในช่วงเวลา 4–10 ต.ค. 2569 ที่ยืนยันได้</div>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Nginx, Apache httpd และ IIS (ผูกกับ Patch Tuesday รอบ 13 ต.ค. 2569) ในช่วงเวลานี้ ส่วน Caddy ได้รายงานไปแล้วในสัปดาห์ก่อนหน้า (v2.11.6/v2.11.7 เมื่อ 1–3 ต.ค. 2569)</div>
+  </section>
+
+  <section>
+    <h2>🔒 Security &amp; CVE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Citrix NetScaler ADC / Gateway</strong></td>
+          <td>CVE-2026-88779</td>
+          <td><span class="severity-high">High (CVSS 8.7)</span> — <em>กำลังถูกโจมตีจริง, อยู่ใน CISA KEV</em></td>
+          <td>ADC: 13.1-37.282+ / 13.1-64.28+ / 14.1-73.41+ (รวม FIPS) · Gateway: 13.1-64.28+ / 14.1-73.41+</td>
+          <td><a href="https://www.cyber.gc.ca/en/alerts-advisories/citrix-security-advisory-av26-996" class="source-badge">cyber.gc.ca (AV26-996)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Django</strong></td>
+          <td>CVE-2026-84429</td>
+          <td><span class="severity-medium">Medium (CVSS 5.3–6.9)</span></td>
+          <td>6.1.2 / 6.0.9 / 5.2.18</td>
+          <td><a href="https://www.djangoproject.com/weblog/2026/oct/06/security-releases/" class="source-badge">djangoproject.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Django</strong></td>
+          <td>CVE-2026-87890</td>
+          <td><span class="severity-medium">Medium (CVSS 5.3)</span></td>
+          <td>6.1.2 / 6.0.9 / 5.2.18</td>
+          <td><a href="https://www.djangoproject.com/weblog/2026/oct/06/security-releases/" class="source-badge">djangoproject.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Django</strong></td>
+          <td>CVE-2026-77050</td>
+          <td><span class="severity-medium">Medium (CVSS 5.3)</span></td>
+          <td>6.1.2 / 6.0.9 / 5.2.18</td>
+          <td><a href="https://www.djangoproject.com/weblog/2026/oct/06/security-releases/" class="source-badge">djangoproject.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">หมายเหตุ: Django Security Release เมื่อ 6 ต.ค. 2569 แก้ไข CVE จริงรวม 4 รายการ โดย CVE-2026-87975 (แก้ไขใน 5.2.18) มี CVE ID ยืนยันจาก Debian Security Tracker แล้ว แต่ยังไม่พบ CVSS/Severity ที่เผยแพร่อย่างเป็นทางการในรอบตรวจสอบนี้ จึงไม่นำมาแสดงในตารางเพื่อเลี่ยงการคาดเดา Traefik Proxy v3.7.14/v2.11.58 (ดูหัวข้อ Network &amp; Security) แก้ไข Security Advisory จริง 13 รายการ แต่ยังไม่มี CVE ID ที่ยืนยันได้ จึงไม่นำมาแสดงในตารางนี้ตามนโยบายของรายงาน ("หากไม่มี CVE ไม่จัดเป็น Security Release") เช่นเดียวกับ Ubuntu USN ชุดใหญ่ (8911-1, 8887-3, 8875-2, 8903-2, 8905-2, 8908-1, 8910-1, 8909-1, 8907-1, 8902-1 — ดูหัวข้อ Operating Systems) ซึ่งมี CVE ID จริงจำนวนมาก (รวมหลักพันรายการสำหรับ USN สาย Linux Kernel) แต่ยังไม่ได้ดึง CVSS รายตัวจาก NVD ภายในรอบตรวจสอบนี้ เนื่องจาก nvd.nist.gov เข้าถึงไม่ได้โดยตรง <strong>UNCERTAIN:</strong> nvd.nist.gov, cisa.gov เข้าถึงไม่ได้โดยตรงในสัปดาห์นี้ ข้อมูลที่เกี่ยวข้องผ่านการยืนยันข้ามแหล่งด้วย WebSearch และแหล่งข้อมูล Official อื่นที่เข้าถึงได้แทน</div>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Breaking Change</th><th>Migration Guide</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>FastAPI</strong></td>
+          <td>0.143.0</td>
+          <td>การตั้งค่า OpenTelemetry Exporter แบบอัตโนมัติเปลี่ยนจากเปิดโดย Default เป็น Opt-in</td>
+          <td>แอปที่ต้องการให้ OpenTelemetry ทำงานอัตโนมัติต่อไปต้องเพิ่ม Configuration เปิดใช้งานฟีเจอร์นี้อย่างชัดเจนก่อนอัปเกรด</td>
+          <td><a href="https://github.com/fastapi/fastapi/releases" class="source-badge">github.com/fastapi</a></td>
+        </tr>
+        <tr>
+          <td><strong>OpenVAS Scanner (Greenbone)</strong></td>
+          <td>v23.51.0</td>
+          <td>เขียน HTTP API ใหม่ด้วย Axum, Route ที่รับ JSON ต้องมี Header <code>Content-Type</code> มิฉะนั้นจะถูกปฏิเสธ, Route แบบ Trailing-slash คืนค่า 404 แทนที่จะ Redirect และ Option <code>enable-get-scans</code> เปลี่ยน Default เป็น <code>false</code></td>
+          <td>ทีมที่เรียก API ของ OpenVAS Scanner โดยตรง (ไม่ผ่าน GVM/Greenbone UI) ต้องตรวจสอบ Header และรูปแบบ URL ของ Request ทั้งหมด พร้อมเปิดใช้งาน <code>enable-get-scans</code> อย่างชัดเจนหากยังต้องใช้งาน</td>
+          <td><a href="https://github.com/greenbone/openvas-scanner/releases/tag/v23.51.0" class="source-badge">github.com/greenbone</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="empty-note">ไม่พบประกาศ End of Life ที่มีผลหรือประกาศใหม่ภายในช่วงเวลา 4–10 ต.ค. 2569 ที่ยืนยันได้จากแหล่งข้อมูล Official Windows Server 2012/2012 R2 (สิ้นสุด ESU) และ Windows Server 2022 (สิ้นสุด Mainstream Support) มีผลจริงวันที่ 13 ต.ค. 2569 ซึ่งอยู่นอกกรอบเวลา 7 วันของสัปดาห์นี้ — ดูรายละเอียดในหัวข้อ "สิ่งที่ต้องติดตาม" ด้านล่าง</div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <div class="highlight-box">
+      <ul>
+        <li><strong>Windows Server 2012 / 2012 R2</strong> — ระยะ Extended Security Updates (ESU) ปีสุดท้ายจะสิ้นสุดวันที่ 13 ต.ค. 2569 หลังจากนั้นจะไม่มีแพตช์ความปลอดภัยใด ๆ อีกและไม่มีการต่ออายุปีที่ 4 (<a href="https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2012">learn.microsoft.com</a>)</li>
+        <li><strong>Windows Server 2022</strong> — Mainstream Support จะสิ้นสุดวันที่ 13 ต.ค. 2569 และเข้าสู่ Extended Support (<a href="https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2022">learn.microsoft.com</a>)</li>
+        <li><strong>Microsoft Patch Tuesday ต.ค. 2569</strong> — มีกำหนดเผยแพร่วันที่ 13 ต.ค. 2569 คาดว่าจะมี CVE จำนวนมากตามรอบเดือนก่อนหน้าที่สูงถึง 900+ CVE</li>
+        <li><strong>PostgreSQL 19</strong> — RC1 มีกำหนดวันที่ 15 ต.ค. 2569 และ GA วันที่ 29 ต.ค. 2569 ตามประกาศผ่าน Mailing List ของ Release Manager</li>
+        <li><strong>PHP 8.6.0</strong> — อยู่ระหว่าง Release Candidate (RC3 ประกาศเมื่อ 6 ต.ค. 2569) เตรียมเข้าสู่ GA ที่วางแผนไว้วันที่ 19 พ.ย. 2569</li>
+        <li><strong>Kubernetes 1.38</strong> — พบ Tag พัฒนา <code>v1.38.0-alpha.2</code> เมื่อ 7 ต.ค. 2569 ซึ่งเป็นสัญญาณต่อเนื่องของรอบพัฒนาใหม่ (ยังไม่ใช่ Release)</li>
+        <li><strong>GitLab 19.5</strong> — คาดว่าจะออกตามรอบ Patch Release ปกติ (สัปดาห์ที่ 2/4 ของเดือน) ประมาณ 14 หรือ 28 ต.ค. 2569 แต่ยังไม่มีประกาศวันที่แน่ชัดจาก docs.gitlab.com ในรอบตรวจสอบนี้</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">19</div>
+        <div class="dashboard-item-label">Total Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">3</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">7</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">5</div>
+        <div class="dashboard-item-label">New CVEs</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <div class="two-column">
+      <div>
+        <h3>Official</h3>
+        <ul>
+          <li><a href="https://github.com/nodejs/node/releases">github.com/nodejs/node</a></li>
+          <li><a href="https://github.com/vuejs/core/releases">github.com/vuejs/core</a></li>
+          <li><a href="https://github.com/angular/angular/releases">github.com/angular/angular</a></li>
+          <li><a href="https://github.com/laravel/framework/releases">github.com/laravel/framework</a></li>
+          <li><a href="https://github.com/fastapi/fastapi/releases">github.com/fastapi/fastapi</a></li>
+          <li><a href="https://www.djangoproject.com/weblog/2026/oct/06/security-releases/">djangoproject.com/weblog</a></li>
+          <li><a href="https://github.com/jenkinsci/jenkins/releases">github.com/jenkinsci/jenkins</a></li>
+          <li><a href="https://github.com/moby/moby/releases">github.com/moby/moby</a></li>
+          <li><a href="https://github.com/hashicorp/terraform/releases">github.com/hashicorp/terraform</a></li>
+          <li><a href="https://github.com/ansible/ansible/releases">github.com/ansible/ansible</a></li>
+          <li><a href="https://github.com/argoproj/argo-cd/releases">github.com/argoproj/argo-cd</a></li>
+          <li><a href="https://github.com/elastic/elasticsearch/releases">github.com/elastic/elasticsearch</a></li>
+          <li><a href="https://github.com/traefik/traefik/releases">github.com/traefik/traefik</a></li>
+          <li><a href="https://github.com/wireshark/wireshark/tags">github.com/wireshark/wireshark</a></li>
+          <li><a href="https://github.com/greenbone/openvas-scanner/releases">github.com/greenbone/openvas-scanner</a></li>
+          <li><a href="https://github.com/pulumi/pulumi/releases">github.com/pulumi/pulumi</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Release Notes</h3>
+        <ul>
+          <li><a href="https://ubuntu.com/security/notices">ubuntu.com/security/notices</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2012">learn.microsoft.com/lifecycle (Windows Server 2012)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2022">learn.microsoft.com/lifecycle (Windows Server 2022)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Security Advisory</h3>
+        <ul>
+          <li><a href="https://www.cyber.gc.ca/en/alerts-advisories/citrix-security-advisory-av26-996">cyber.gc.ca/AV26-996 — Citrix NetScaler CVE-2026-88779</a></li>
+          <li><a href="https://www.djangoproject.com/weblog/2026/oct/06/security-releases/">djangoproject.com — Django Security Release</a></li>
+          <li><a href="https://security-tracker.debian.org/tracker/CVE-2026-84429">security-tracker.debian.org — CVE-2026-84429</a></li>
+          <li><a href="https://security-tracker.debian.org/tracker/CVE-2026-87890">security-tracker.debian.org — CVE-2026-87890</a></li>
+          <li><a href="https://security-tracker.debian.org/tracker/CVE-2026-77050">security-tracker.debian.org — CVE-2026-77050</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Trusted Media</h3>
+        <ul>
+          <li><a href="https://www.sophos.com/en-us/blog/citrix-netscaler-vulnerability-cve-2026-88779-in-active-exploitation">Sophos — Citrix NetScaler CVE-2026-88779 in Active Exploitation</a></li>
+          <li><a href="https://www.warp2search.net/story/php-releases-860-rc3-8512-rc1-and-8427-rc1-across-all-active-branches/">warp2search.net — PHP 8.6.0 RC3</a></li>
+          <li><a href="https://techbytes.app/posts/django-security-releases-issued-612-609-and-5218/">TechBytes — Django Security Releases 6.1.2/6.0.9/5.2.18</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">UNCERTAIN: บางโดเมนเข้าถึงไม่ได้ในสัปดาห์นี้ผ่าน Network Proxy ของ Session นี้ แม้ลองใหม่ตามนโยบาย Network Access Resilience แล้ว ได้แก่ nvd.nist.gov, cisa.gov, docs.gitlab.com, code.visualstudio.com, www.postgresql.org, www.djangoproject.com (เข้าถึงไม่ได้โดยตรงแต่ยืนยัน URL ผ่านการอ้างอิงจากหลายแหล่งทุติยภูมิที่น่าเชื่อถือ เช่น Debian Security Tracker และ cyber.gc.ca), www.wireshark.org, docs.docker.com, releases.sh, www.mariadb.org, dev.mysql.com, mongodb.com, redis.io, aws.amazon.com, azure.microsoft.com, cloud.google.com, security-tracker.debian.org (บางหน้าเข้าถึงได้ บางหน้าไม่ได้), access.redhat.com (บางหน้า) และ almalinux.org — ข้อมูลที่เกี่ยวข้องได้ผ่านการยืนยันข้ามแหล่งด้วย WebSearch, GitHub Releases/Tags หรือแหล่งข้อมูล Official อื่นที่เข้าถึงได้แทน ตามนโยบาย Network Access Resilience ของรายงานนี้ รายการที่ไม่สามารถยืนยันได้จริงจึงถูกงดแสดงเฉพาะส่วนนั้น ไม่ได้งดแสดงทั้งหมวด</div>
+  </section>
+
+  <footer>
+    Generated for natthasath-news · Weekly Software Releases Report · Week 41, 2026 · Data window: Oct 4 – 10, 2026 (ICT)
+  </footer>
+</div>
+</body>
+</html>
