@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 11 ตุลาคม 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 4 – 11 ตุลาคม 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 41</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>🏁 สัปดาห์นี้ Formula 1 จัดการแข่งขัน Singapore Airlines Singapore Grand Prix 2026 ที่ Marina Bay Street Circuit (9-11 ตุลาคม) ซึ่งเป็นสนาม Sprint ครั้งแรกในประวัติศาสตร์ของสิงคโปร์ Max Verstappen (Red Bull) คว้าทั้งชัยชนะ Sprint และชัยชนะในการแข่งขันหลัก นำเป็นผู้นำตลอดทุกรอบของ Grand Prix และเป็นชัยชนะแรกของเขาที่ Marina Bay หลังลงแข่งมา 10 ครั้ง โดยเอาชนะ Charles Leclerc (Ferrari) ไป 7.335 วินาที ขณะที่ Kimi Antonelli (Mercedes) แซง Lewis Hamilton และ Lando Norris ในช่วงท้ายคว้าอันดับ 3 รักษาตำแหน่งผู้นำแชมป์ชิปผู้ขับขี่และขยายคะแนนนำ George Russell เป็น 102 คะแนน ด้านจุดเปลี่ยนสำคัญของสุดสัปดาห์คือ Russell ที่ได้ตำแหน่งโพลสำหรับการแข่งขันหลัก แต่ถูกปรับกริดสตาร์ทไปอยู่ท้ายแถวจากการเปลี่ยนเครื่องยนต์เกินโควตา ทำให้ Verstappen ได้สตาร์ทจากตำแหน่งที่ 1 แทน สัปดาห์หน้าทัพนักแข่งจะมุ่งหน้าสู่ United States Grand Prix ที่ Circuit of the Americas (23-25 ตุลาคม)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">
+      ✅ ตารางนี้เป็นคะแนนสะสมหลัง Singapore Grand Prix — ยืนยันจากหลายแหล่งข้อมูล และตรวจสอบไขว้ด้วยการคำนวณคะแนน Sprint + Race บนฐานคะแนนสะสมก่อนหน้า ซึ่งตรงกันทุกแถว
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>340</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>238</td>
+          <td>-102</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>229</td>
+          <td>-111</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>221</td>
+          <td>-119</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>215</td>
+          <td>-125</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>201</td>
+          <td>-139</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>138</td>
+          <td>-202</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>97</td>
+          <td>-243</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>🇳🇿 Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>75</td>
+          <td>-265</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>🇫🇷 Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>41</td>
+          <td>-299</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.si.com/onsi/f1/news/f1-standings-and-results-after-the-2026-singapore-grand-prix">Sports Illustrated (SI.com)</a>, <a href="https://www.racefans.net/2026/10/11/2026-singapore-grand-prix-race-result-and-championship-points/">RaceFans</a>, คำนวณไขว้จากคะแนนสะสมก่อนหน้า (รายงานสัปดาห์ที่แล้ว) รวมกับคะแนน Sprint และ Race ของสุดสัปดาห์นี้ซึ่งตรงกันทุกแถว</div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">
+      ✅ ตารางนี้เป็นคะแนนสะสมหลัง Singapore Grand Prix — ยืนยันจาก SI.com และตรวจสอบไขว้ด้วยการรวมคะแนนผู้ขับขี่สองคนของแต่ละทีม (Mercedes และ McLaren ตรงกันทั้งสองวิธี)
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>578</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>444</td>
+          <td>-134</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>McLaren</td>
+          <td>339</td>
+          <td>-239</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Red Bull Racing</td>
+          <td>318</td>
+          <td>-260</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Racing Bulls</td>
+          <td>113</td>
+          <td>-465</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Alpine</td>
+          <td>68</td>
+          <td>-510</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Haas F1 Team</td>
+          <td>30</td>
+          <td>-548</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Audi</td>
+          <td>23</td>
+          <td>-555</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Williams</td>
+          <td>12</td>
+          <td>-566</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Aston Martin</td>
+          <td>7</td>
+          <td>-571</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Cadillac</td>
+          <td>0</td>
+          <td>-578</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา: <a href="https://www.si.com/onsi/f1/news/f1-standings-and-results-after-the-2026-singapore-grand-prix">Sports Illustrated (SI.com)</a>, ตรวจสอบไขว้โดยคำนวณจากคะแนนสะสมรายบุคคลของ Antonelli+Russell (Mercedes) และ Norris+Piastri (McLaren) ซึ่งตรงกัน</div>
+  </section>
+
+  <section>
+    <h2>🏁 Singapore Airlines Singapore Grand Prix — Marina Bay Street Circuit</h2>
+    <div class="note">
+      ✅ การแข่งขันจัดขึ้น 9-11 ตุลาคม 2026 — สนาม Sprint ครั้งแรกในประวัติศาสตร์ของ Marina Bay ผลการแข่งขันยืนยันตรงกันจากหลายแหล่งข้อมูล (Motorsport.com, RaceFans, Motorsport Week, GrandePremio)
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา / สถานะ</th>
+          <th>คะแนน</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>ผู้ชนะ (นำทุกรอบจากตำแหน่งที่ 1)</td>
+          <td>25</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>+7.335s</td>
+          <td>18</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>+24.573s</td>
+          <td>15</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Lando Norris</td>
+          <td>McLaren</td>
+          <td>จบการแข่งขัน</td>
+          <td>12</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>จบการแข่งขัน</td>
+          <td>10</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>จบการแข่งขัน</td>
+          <td>8</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>จบการแข่งขัน</td>
+          <td>6</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Nico Hulkenberg</td>
+          <td>Audi</td>
+          <td>จบการแข่งขัน</td>
+          <td>4</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>จบการแข่งขัน (ไต่จากท้ายแถวหลังโทษปรับกริด)</td>
+          <td>2</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>จบการแข่งขัน</td>
+          <td>1</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">🚨 <strong>DNF:</strong> Gabriel Bortoleto (Audi) — เกียร์บอกซ์ขัดข้องใกล้ทางออกพิท รอบที่ 8 (เป็นเหตุให้เรียก Virtual Safety Car); Franco Colapinto (Alpine) — หยุดรถในพื้นที่ปลอดภัย รอบที่ 31 (ควบคุมด้วยธงเหลืองประจำที่ ไม่มีการเรียก VSC เพิ่ม) แหล่งข้อมูลหนึ่งระบุว่า Lance Stroll (Aston Martin) อาจหยุดรถเช่นกันจนเกิด VSC สั้น ๆ อีกครั้ง แต่จำนวนผู้ออกจากการแข่งขันทั้งหมดมีรายงานไม่ตรงกันระหว่างแหล่งข่าว จึงขอระบุ ❓ ไว้สำหรับรายละเอียดนี้</p>
+    <p class="note">❓ <strong>Fastest Lap / Driver of the Day:</strong> ไม่พบข้อมูลที่ยืนยันได้ชัดเจนสำหรับการแข่งขันหลักในรอบการค้นหานี้ (มีเฉพาะ Fastest Lap ของ Sprint คือ Lewis Hamilton 1:45.457 ที่รอบ 20)</p>
+
+    <h3>สรุปเหตุการณ์สำคัญ</h3>
+    <ul>
+      <li><strong>Strategy/Grid Shuffle:</strong> George Russell ทำเวลาควอลิฟายได้เร็วที่สุด (โพล) แต่ถูกปรับกริดไปอยู่ท้ายแถวจากโทษเปลี่ยนเครื่องยนต์เกินโควตา ทำให้ Verstappen ขยับขึ้นมาสตาร์ทอันดับ 1 และคุมเกมตลอดการแข่งขัน</li>
+      <li><strong>Safety Car:</strong> มีการเรียก Virtual Safety Car จากเหตุรถ Bortoleto เสียที่รอบ 8; ไม่มีรายงานการเรียก Safety Car เต็มรูปแบบหรือธงแดงในการแข่งขันหลัก</li>
+      <li><strong>Overtakes/Incidents:</strong> Antonelli แซง Hamilton และ Norris ในช่วงท้ายการแข่งขันเพื่อขึ้นมาอยู่อันดับ 3 เป็นจุดเปลี่ยนสำคัญของการจบโพเดียม ส่วน Russell ไต่จากท้ายแถวขึ้นมาทำแต้มอันดับ 9 ได้สำเร็จ</li>
+      <li><strong>Driver of the Day:</strong> ❓ ไม่พบข้อมูลที่ยืนยันได้ชัดเจนในรอบการค้นหานี้</li>
+    </ul>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.motorsport.com/f1/results/2026/singapore-gp-661687/">Motorsport.com</a>, <a href="https://www.racefans.net/2026/10/11/2026-singapore-grand-prix-race-result-and-championship-points/">RaceFans</a>, <a href="https://www.motorsportweek.com/2026/10/11/f1-2026-singapore-gp-race-results/">Motorsport Week</a>, <a href="https://grandepremio.com/en/f1/verstappen-wins-singapore-gp-as-antonelli-closes-in-on-f1-title/">GrandePremio</a> (ผ่านผลการค้นหา — ไม่สามารถเข้าถึง formula1.com, racefans.net โดยตรงได้ในรอบนี้)</div>
+  </section>
+
+  <section>
+    <h2>⚡ Sprint Results — Singapore Grand Prix Sprint</h2>
+    <div class="note">
+      ✅ Sprint ครั้งแรกในประวัติศาสตร์ของ Marina Bay จัดขึ้นวันที่ 10 ตุลาคม 2026 (21 รอบ) ในสภาพสนามเปียก — Max Verstappen คว้าชัยชนะ กลายเป็นผู้ชนะ Sprint คนแรกของสนามนี้
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>8</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>7</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>6</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>5</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>4</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Oliver Bearman</td>
+          <td>Haas F1 Team</td>
+          <td>3</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Nico Hulkenberg</td>
+          <td>Audi</td>
+          <td>2</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Lando Norris</td>
+          <td>McLaren</td>
+          <td>1</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">🚨 George Russell ออกสตาร์ทจากตำแหน่งโพลของ Sprint แต่หมุนและชนออกจากการแข่งขันตั้งแต่รอบแรก (DNF) หลังขึ้นนำไปก่อนในสภาพสนามเปียก ด้าน Oscar Piastri และ Norris มีรายงานจากสื่อหนึ่ง (PlanetF1) ว่าเกิดการชนกันระหว่าง McLaren ทั้งสองคันในสุดสัปดาห์นี้ แต่รายละเอียดช่วงเวลาที่แน่ชัดและผลการพิจารณาของสจ๊วตยังไม่สามารถยืนยันได้ครบถ้วนในรอบการค้นหานี้ จึงระบุ ❓ สำหรับประเด็นนี้</p>
+    <p class="note">⏱ <strong>Fastest Lap (Sprint):</strong> Lewis Hamilton — 1:45.457 (รอบที่ 20)</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://racingnews365.com/2026-f1-singapore-grand-prix-sprint-results">RacingNews365</a>, <a href="https://www.planetf1.com/news/f1-results-singapore-grand-prix-2026-sprint-race">PlanetF1</a>, <a href="https://www.crash.net/f1/results/1107073/1/f1-singapore-grand-prix-full-sprint-race-results">Crash.net</a>, <a href="https://www.racefans.net/2026/10/10/verstappen-wins-sprint-race-after-russell-crashes-out-of-lead-on-wet-track/">RaceFans</a></div>
+  </section>
+
+  <section>
+    <h2>⏱ Qualifying — Singapore Grand Prix (รอบคัดเลือกสำหรับการแข่งขันหลัก)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>เวลา</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>George Russell</td>
+          <td>Mercedes</td>
+          <td>1:29.158</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>+0.182s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Lando Norris</td>
+          <td>McLaren</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">🚨 Russell ทำเวลาควอลิฟายได้เร็วที่สุด แต่ถูกปรับกริดสตาร์ทไปอยู่ท้ายแถว (back of the grid) จากการเปลี่ยนเครื่องยนต์สันดาปภายใน (ICE), เทอร์โบ และระบบไอเสียเป็นชิ้นที่ 5 ซึ่งเกินโควตาสูงสุด 4 ชิ้นต่อฤดูกาล ส่งผลให้ Verstappen ได้สตาร์ทจากตำแหน่งที่ 1 แทนในการแข่งขันจริง ลำดับที่ 8 เป็นต้นไปไม่พบข้อมูลที่ยืนยันได้ชัดเจนในรอบการค้นหานี้</p>
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/highlights-relive-qualifying-from-singapore-as-russell-denies-verstapen-and.7xOgRfClbQDwkDRs1qFMCZ">Formula1.com</a>, <a href="https://www.gpfans.com/nl/f1-nieuws/1030798/dit-is-de-definitieve-startopstelling-voor-de-grand-prix-van-singapore/">GPFans</a> (ผ่านผลการค้นหา)</div>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญประจำสัปดาห์</h2>
+
+    <h3>Driver Market</h3>
+    <p>❓ ไม่พบข่าวตลาดนักแข่งที่ประกาศใหม่อย่างยืนยันได้ภายใน 7 วันที่ผ่านมา ข่าวการต่อสัญญาของ Isack Hadjar กับ Red Bull (ประกาศเมื่อ 23 กันยายน) และข้อมูลสถานะของ Gabriel Bortoleto ที่ Audi ยังมีรายงานขัดแย้งกันระหว่างแหล่งข่าว ทั้งสองเรื่องเกิดขึ้นก่อนช่วงเวลา 7 วันของรายงานนี้ จึงไม่นำมาแสดงเป็นข่าวหลัก</p>
+
+    <h3>FIA & Regulations / Penalties — Singapore Grand Prix</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>เรื่อง</th>
+          <th>ผลการตัดสิน</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>George Russell — เปลี่ยนเครื่องยนต์สันดาปภายใน (ICE) เทอร์โบ และระบบไอเสีย เป็นชิ้นที่ 5 เกินโควตาสูงสุด 4 ชิ้นต่อฤดูกาล สืบเนื่องจากเครื่องยนต์เสียที่ Bahrain GP in Malaysia</td>
+          <td>โทษปรับกริดสตาร์ทไปอยู่ท้ายแถว (back of the grid) สำหรับการแข่งขันหลักที่ Singapore GP (ไม่กระทบ Sprint)</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Max Verstappen — ถูกสอบสวนกรณีแซง Lewis Hamilton ภายใต้ธงเหลืองใน SQ1 ของรอบ Sprint Qualifying ขณะที่มีธงเหลืองจากอุบัติเหตุของ Sergio Perez</td>
+          <td>สจ๊วตพบว่าเป็นการละเมิดกฎธงเหลืองจริง แต่สถานการณ์ (ข้อมูลเทเลเมทรีแสดงว่าถอนคันเร่งเต็มที่ภายในระยะ ~40 เมตรหลังเข้าเขตธงเหลือง) ไม่เข้าเกณฑ์ลงโทษ — คงตำแหน่งโพล Sprint ไว้</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/why-verstappen-avoided-a-penalty-after-sprint-qualifying-yellow-flag-incident-in-singapore.41kSukNyM3UHFGoX0absV6">Formula1.com</a>, <a href="https://www.planetf1.com/news/fia-george-russell-singapore-grand-prix-2026-grid-penalty">PlanetF1</a>, <a href="https://racingnews365.com/max-verstappen-unsafe-situation-sparks-stewards-verdict-after-lewis-hamilton-incident">RacingNews365</a></div>
+
+    <h3>Technical Updates</h3>
+    <p>❓ ไม่พบข่าวอัปเกรดทางเทคนิคที่เจาะจงสำหรับสุดสัปดาห์ Singapore GP ที่ยืนยันได้ชัดเจนในรอบการค้นหานี้</p>
+  </section>
+
+  <section>
+    <h2>📈 วิเคราะห์ผลงานทีม</h2>
+
+    <div class="team-section">
+      <strong>Red Bull Racing</strong> — สุดสัปดาห์ที่สมบูรณ์แบบที่สุดของฤดูกาล คว้าทั้งชัยชนะ Sprint และ Grand Prix จาก Verstappen พร้อมกับ Hadjar ที่ทำคะแนนในอันดับ 10 ทำให้ทีมขยับขึ้นมาอยู่อันดับ 4 ผู้สร้างรถด้วยคะแนน 318 ไล่จี้ McLaren ที่อันดับ 3 ห่างกันเพียง 21 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Mercedes</strong> — ผลงานแบบสองขั้วต่อเนื่อง Antonelli จบอันดับ 3 รักษาตำแหน่งผู้นำแชมป์ชิปและขยายคะแนนนำ Russell เป็น 102 คะแนน ขณะที่ Russell ทำเวลาควอลิฟายเร็วที่สุดของสุดสัปดาห์แต่ต้องสตาร์ทจากท้ายแถวจากโทษเครื่องยนต์ ก่อนไต่กลับมาทำคะแนนอันดับ 9 ได้สำเร็จ ทีมยังคงนำห่างในตารางผู้สร้างรถอย่างชัดเจนด้วย 578 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Ferrari</strong> — สุดสัปดาห์ที่แข็งแกร่ง Leclerc จบอันดับ 2 ในการแข่งขันหลักและอันดับ 3 ใน Sprint ส่วน Hamilton จบอันดับ 2 ใน Sprint และอันดับ 6 ในการแข่งขันหลัก ทำให้ทีมรักษาอันดับ 2 ผู้สร้างรถไว้ได้มั่นคง
+    </div>
+    <div class="team-section">
+      <strong>McLaren</strong> — Norris จบอันดับ 4 และ Piastri จบอันดับ 5 ในการแข่งขันหลัก แต่ Norris ทำคะแนนได้เพียง 1 คะแนนใน Sprint ขณะที่ Piastri ไม่ติดโซนคะแนน Sprint ทำให้ช่องว่างกับ Red Bull ในตารางผู้สร้างรถแคบลงเหลือ 21 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Racing Bulls</strong> — Lawson ทำคะแนนได้ทั้งใน Sprint (อันดับ 5) และการแข่งขันหลัก (อันดับ 7) ถือเป็นสุดสัปดาห์ที่มั่นคงของทีม ยังคงนำกลุ่มกลางตารางด้วย 113 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Audi</strong> — Hulkenberg ทำคะแนนได้ทั้งสองรายการ (Sprint อันดับ 7, Race อันดับ 8) ขณะที่ Bortoleto ต้องออกจากการแข่งขันหลักจากเกียร์บอกซ์ขัดข้องที่รอบ 8
+    </div>
+    <div class="team-section">
+      <strong>Haas F1 Team</strong> — Bearman ทำคะแนนได้ในอันดับ 6 ของ Sprint ซึ่งเป็นผลงานเด่นของทีมในสุดสัปดาห์นี้
+    </div>
+    <div class="team-section">
+      <strong>Alpine</strong> — Colapinto ต้องออกจากการแข่งขันหลักที่รอบ 31 ไม่มีข้อมูลผลงานในโซนคะแนนที่ยืนยันได้สำหรับทีมในสุดสัปดาห์นี้
+    </div>
+    <div class="team-section">
+      <strong>Williams, Aston Martin, Cadillac</strong> — ไม่มีข่าวเฉพาะทีมหรือผลงานในโซนคะแนนที่ยืนยันได้ชัดเจนสำหรับสนามนี้ในรอบการค้นหานี้ (มีรายงานหนึ่งระบุว่า Stroll อาจออกจากการแข่งขันหลัก แต่ยืนยันไม่ได้ชัดเจน)
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติ</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>ชัยชนะแรกที่ Marina Bay:</strong> Max Verstappen — ชัยชนะแรกหลังลงแข่งที่สนามนี้มา 10 ครั้ง</div>
+      <div class="stat-card"><strong>Double ของสุดสัปดาห์:</strong> Verstappen ชนะทั้ง Sprint และ Grand Prix</div>
+      <div class="stat-card"><strong>ระยะห่างเข้าเส้นชัย P1-P2 (Race):</strong> 7.335 วินาที</div>
+      <div class="stat-card"><strong>ผู้นำแชมป์ชิปผู้ขับขี่:</strong> Kimi Antonelli — นำ Russell 102 คะแนน</div>
+    </div>
+    <p class="note">❓ สถิติเชิงลึกอื่น ๆ เช่น Fastest Lap และ Driver of the Day ของการแข่งขันหลัก ไม่พบข้อมูลที่ยืนยันได้ครบถ้วนสำหรับสนามนี้ในรอบการค้นหานี้</p>
+  </section>
+
+  <section>
+    <h2>📅 การแข่งขันครั้งถัดไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>23 ต.ค. 2026</td>
+          <td>Practice 1 / Practice 2</td>
+          <td>❓</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>24 ต.ค. 2026</td>
+          <td>Practice 3 / Qualifying</td>
+          <td>❓</td>
+          <td>❓</td>
+        </tr>
+        <tr class="highlight">
+          <td>25 ต.ค. 2026</td>
+          <td>Race</td>
+          <td>❓</td>
+          <td>❓</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">⏰ สุดสัปดาห์นี้ไม่มีรูปแบบ Sprint เวลาแข่งขันที่แน่นอนตามเวลา ICT และช่องทางถ่ายทอดสดในไทย ❓ ไม่พบข้อมูลที่ยืนยันได้ในรอบการค้นหานี้ — ควรตรวจสอบตารางเวลาอย่างเป็นทางการจาก Formula1.com อีกครั้งก่อนการแข่งขัน</p>
+
+    <h3>รายละเอียดสนาม</h3>
+    <ul>
+      <li><strong>Circuit:</strong> Circuit of the Americas (COTA)</li>
+      <li><strong>Country:</strong> สหรัฐอเมริกา (Austin, Texas)</li>
+      <li><strong>Circuit Length:</strong> 5.513 กม.</li>
+      <li><strong>Number of Laps:</strong> 56 รอบ</li>
+      <li><strong>Lap Record:</strong> 1:36.169 — Charles Leclerc (2019)</li>
+    </ul>
+
+    <h3>Preview</h3>
+    <p>United States Grand Prix 2026 เป็นสุดสัปดาห์ไม่มี Sprint หลังจากที่ Singapore เป็นสนาม Sprint ครั้งที่ 6 และครั้งสุดท้ายของฤดูกาล Max Verstappen เป็นแชมป์เก่าของสนามนี้จากปี 2025 (นำหน้า Norris และ Leclerc) และจะเดินหน้าสานต่อโมเมนตัมจากชัยชนะ double ที่ Singapore ขณะที่ Antonelli มุ่งขยายคะแนนนำในตารางแชมป์ชิปผู้ขับขี่ให้มากขึ้น มีรายงานว่า Singapore อาจเป็นจุดเริ่มต้นที่ Antonelli เข้าใกล้การคว้าแชมป์โลกได้เร็วที่สุดในสนามนี้หากผลงานเป็นไปตามเงื่อนไขที่กำหนด</p>
+    <div class="source">✅ ที่มา: <a href="https://www.silverstone.co.uk/news/f1-2026-calendar-full-list-venues-key-dates">Silverstone (ปฏิทินการแข่งขัน)</a>, <a href="https://redbull.com/us-en/formula-1-schedule-race-calendar">Red Bull (ปฏิทินการแข่งขัน)</a>, <a href="https://racingnews365.com/f1/races/united-states-gp">RacingNews365</a>, ยืนยันบริบทโดยบทความ Formula1.com "POINTS PERMUTATIONS: When is the earliest Antonelli could win the World Championship?" (ผ่านผลการค้นหา)</div>
+  </section>
+
+  <section>
+    <h2>💬 คำกล่าวประจำสัปดาห์</h2>
+    <div class="quote">
+      "There are no guarantees."
+      <div class="source">— Max Verstappen (Red Bull) ประเมินโอกาสคว้าชัยชนะครั้งแรกที่ Singapore ก่อนการแข่งขัน</div>
+    </div>
+    <div class="quote">
+      "We had pace when we needed it. It worked out at the end, and very happy to win here."
+      <div class="source">— Max Verstappen (Red Bull) หลังคว้าชัยชนะครั้งแรกที่ Marina Bay</div>
+    </div>
+    <div class="quote">
+      "We're here to attack."
+      <div class="source">— Lewis Hamilton (Ferrari) ก่อนการแข่งขันที่ Singapore ร่วมกับ Charles Leclerc</div>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/there-are-no-guarantees-verstappen-evaluates-chances-of-long-awaited-singapore-win.32IJkWTcOpZXZObCiSlHA6">Formula1.com</a>, Yahoo Sports / Autoracing1.com (รายงานผลการแข่งขัน), <a href="https://www.formula1.com/en/latest/article/were-here-to-attack-hamilton-and-leclerc-preview-ferraris-chances-in-singapore-gp.6nzWl7doxY9SlrpgTm5hNH">Formula1.com</a></div>
+  </section>
+
+  <section>
+    <h2>🔍 วิเคราะห์แชมป์ชิป</h2>
+    <p><strong>Drivers Championship:</strong> Antonelli ขยายคะแนนนำ Russell เป็น 102 คะแนนหลังจบอันดับ 3 ที่ Singapore ขณะที่ Russell เสียโอกาสทำคะแนนเต็มจากโทษปรับกริดแม้จะทำเวลาควอลิฟายได้เร็วที่สุด ด้าน Hamilton ไล่ขึ้นมาอยู่อันดับ 3 ด้วย 229 คะแนน ส่วน Verstappen ขยับขึ้นมาอยู่อันดับ 4 ด้วย 221 คะแนน จากชัยชนะ double ของสุดสัปดาห์นี้ ระยะห่างระหว่างอันดับ 3-5 (Hamilton, Verstappen, Leclerc) แคบลงเหลือเพียง 14 คะแนน</p>
+    <p><strong>Constructors Championship:</strong> Mercedes คุมเกมได้ขาดด้วยคะแนนนำ Ferrari 134 คะแนน แม้ Russell จะเริ่มจากท้ายแถว ส่วนการต่อสู้อันดับ 3-4 ระหว่าง McLaren และ Red Bull สูสีขึ้นมาก หลัง Red Bull ทำคะแนนได้ถึง 34 คะแนนจากชัยชนะ double ทำให้ช่องว่างแคบลงเหลือเพียง 21 คะแนน</p>
+    <p><strong>Midfield Battle:</strong> Racing Bulls ยังคงนำกลุ่มกลางตารางด้วย 113 คะแนน จากผลงานที่ทำคะแนนได้ทั้ง Sprint และ Race ของ Lawson</p>
+    <p><strong>Momentum:</strong> Red Bull และ Verstappen มีโมเมนตัมดีที่สุดของฤดูกาลในขณะนี้ ด้วยชัยชนะ double ที่ Singapore ต่อเนื่องจากชัยชนะที่ Bahrain GP in Malaysia เมื่อสัปดาห์ก่อน รวม 2 สุดสัปดาห์ติดต่อกัน</p>
+    <p><strong>Teams to Watch:</strong> จับตา Red Bull ว่าจะรักษาโมเมนตัมต่อได้หรือไม่ที่ Circuit of the Americas ซึ่ง Verstappen เป็นแชมป์เก่า และจับตาการไล่จี้อันดับ 3 ผู้สร้างรถระหว่าง McLaren และ Red Bull ที่ตีคู่กันมากขึ้นทุกสัปดาห์</p>
+  </section>
+
+  <section>
+    <h2>📊 สรุปตัวเลขด่วน</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix:</strong> 1 สนาม (Singapore GP)</div>
+      <div class="stat-card"><strong>Sprint:</strong> 1 ครั้ง (Verstappen ชนะ)</div>
+      <div class="stat-card"><strong>Pole Position:</strong> George Russell (ควอลิฟายหลัก) / Max Verstappen (Sprint Qualifying)</div>
+      <div class="stat-card"><strong>Fastest Lap:</strong> Lewis Hamilton (Sprint) — ❓ ไม่ยืนยันสำหรับ Race</div>
+      <div class="stat-card"><strong>FIA Decisions:</strong> 2 กรณี (Russell grid penalty, Verstappen SQ1 investigation)</div>
+      <div class="stat-card"><strong>Penalties:</strong> โทษปรับกริด 1 กรณี (Russell)</div>
+      <div class="stat-card"><strong>Driver Transfers:</strong> ไม่มีการประกาศใหม่ภายในสัปดาห์นี้</div>
+      <div class="stat-card"><strong>Technical Updates:</strong> ❓ ไม่พบข้อมูลยืนยันสำหรับสนามนี้</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ควรจับตาต่อไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ประเด็น</th>
+          <th>เหตุผล</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>United States GP ที่ COTA — Verstappen แชมป์เก่า</td>
+          <td>Red Bull มีโมเมนตัมดีที่สุดของฤดูกาลหลังชนะ 2 สุดสัปดาห์ติดต่อกัน อาจสานต่อความได้เปรียบที่สนามซึ่งเคยคว้าชัยชนะมาก่อน</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>โอกาสคว้าแชมป์โลกเร็วที่สุดของ Antonelli</td>
+          <td>มีรายงานว่า United States GP อาจเป็นสนามแรกที่ Antonelli มีโอกาสคว้าแชมป์โลกได้ หากช่องว่างคะแนนและผลงานเป็นไปตามเงื่อนไข</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>การไล่จี้อันดับ 3 ผู้สร้างรถระหว่าง McLaren และ Red Bull</td>
+          <td>ช่องว่างแคบลงเหลือเพียง 21 คะแนน หลังผลงานที่แข็งแกร่งของ Red Bull ที่ Singapore</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>สถานะเครื่องยนต์ของ Russell</td>
+          <td>Russell เผยว่าอาจต้องรับโทษเปลี่ยนเครื่องยนต์อีกครั้งก่อนสิ้นฤดูกาล ซึ่งอาจกระทบผลงานต่อเนื่อง</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>Official</h3>
+    <p>Formula1.com (อ้างอิงผ่านหัวข้อข่าวและผลการค้นหา — ไม่สามารถเข้าถึงหน้าเว็บโดยตรงได้ในรอบนี้เนื่องจาก DNS/network egress ของระบบไม่สามารถ resolve โดเมนได้), FIA.com (เช่นเดียวกัน)</p>
+
+    <h3>Motorsport Media</h3>
+    <p><a href="https://www.motorsport.com/f1/">Motorsport.com</a>, <a href="https://www.racefans.net/">RaceFans</a>, <a href="https://www.planetf1.com/">PlanetF1</a>, <a href="https://www.crash.net/f1">Crash.net</a>, <a href="https://racingnews365.com/">RacingNews365</a>, <a href="https://www.motorsportweek.com/">Motorsport Week</a>, <a href="https://www.gpfans.com/">GPFans</a>, <a href="https://www.si.com/onsi/f1/">Sports Illustrated F1</a>, <a href="https://grandepremio.com/en/f1/">GrandePremio</a></p>
+
+    <h3>Team Communications</h3>
+    <p>ไม่พบแถลงการณ์อย่างเป็นทางการจากทีมโดยตรงที่เข้าถึงได้ในรอบการค้นหานี้ นอกเหนือจากแถลงการณ์ของ Mercedes เกี่ยวกับโทษเครื่องยนต์ของ Russell ที่อ้างอิงผ่านสื่อข้างต้น</p>
+  </section>
+
+  <section>
+    <h2>⚠️ หมายเหตุข้อจำกัดของข้อมูล</h2>
+    <div class="warn-box">
+      <p><strong>UNCERTAIN:</strong> ในรอบการรวบรวมข้อมูลนี้ ไม่สามารถเข้าถึงโดเมน <code>formula1.com</code>, <code>fia.com</code>, <code>racefans.net</code>, <code>motorsport.com</code> ผ่านการเปิดหน้าเว็บโดยตรงได้เลย (DNS resolution ล้มเหลวในทุกโดเมนที่ทดลอง — "getaddrinfo ENOTFOUND") จึงต้องอาศัยผลลัพธ์จากการค้นหาเว็บ (WebSearch) ซึ่งดึงเนื้อหาผ่านสรุปผลการค้นหาแทนการอ่านหน้าเว็บเต็มรูปแบบ ข้อมูลหลัก เช่น ผู้ชนะ โพเดียม คะแนนสะสม และโทษปรับกริด ได้ตรวจสอบไขว้จากหลายแหล่งข่าวและยืนยันด้วยการคำนวณคะแนนสะสมอย่างอิสระแล้ว มีความสอดคล้องกันสูงมาก แต่รายละเอียดเชิงลึกบางส่วน เช่น Fastest Lap และ Driver of the Day ของการแข่งขันหลัก, รายละเอียดครบถ้วนของเหตุการณ์ Norris/Piastri ใน Sprint, และจำนวนผู้ออกจากการแข่งขันทั้งหมด ไม่สามารถยืนยันได้ชัดเจนในรอบนี้ จึงงดแสดงหรือระบุเป็นข้อมูลไม่ครบตามหลักเกณฑ์ของรายงาน ผู้อ่านที่ต้องการความแม่นยำสูงสุดควรตรวจสอบซ้ำจาก formula1.com และ fia.com โดยตรง</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔮 แนวโน้มสัปดาห์ถัดไป</h2>
+    <div class="summary-box">
+      <p>ชัยชนะ double ของ Verstappen และ Red Bull ที่ Singapore ต่อเนื่องจาก Bahrain GP in Malaysia เมื่อสัปดาห์ก่อน ตอกย้ำว่า Red Bull กำลังเข้าสู่ฟอร์มที่ดีที่สุดของฤดูกาลในช่วงโค้งสุดท้าย แม้ Antonelli ยังคุมเกมแชมป์ชิปผู้ขับขี่ได้อย่างมั่นคงด้วยคะแนนนำ 102 คะแนน แต่การไล่จี้อันดับ 3-5 ระหว่าง Hamilton, Verstappen และ Leclerc กำลังสูสีขึ้นทุกสัปดาห์ ในฝั่งผู้สร้างรถ การต่อสู้อันดับ 3 ระหว่าง McLaren และ Red Bull ที่เหลือช่องว่างเพียง 21 คะแนน จะเป็นประเด็นน่าติดตามที่ United States Grand Prix ซึ่ง Verstappen เป็นแชมป์เก่า นอกสนาม ควรติดตามว่า Russell จะต้องรับโทษเปลี่ยนเครื่องยนต์อีกครั้งหรือไม่ และว่า Singapore จะเป็นจุดเริ่มต้นที่ Antonelli เข้าใกล้การคว้าแชมป์โลกเร็วที่สุดของฤดูกาลหรือไม่</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly F1 Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 11 ตุลาคม 2026 เวลา ICT (GMT+7)</p>
+  </footer>
+</div>
+</body>
+</html>
