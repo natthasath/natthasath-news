@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Bangkok Sales & Events Report — 11 Oct 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{ --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3; --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F; --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28); --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12); --warn:#B4590E; }
+@media (prefers-color-scheme: dark){ :root{ --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B; --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D; --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26); --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14); --warn:#E0A458; } }
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:1080px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:8px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+h2{ font-size:22px; font-weight:700; margin:36px 0 14px; padding-top:8px; }
+h3{ font-size:17px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:20px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 14px; max-width:78ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:74ch; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 18px; border:1px solid var(--line); border-radius:8px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; background:var(--surface); font-size:14.5px; }
+caption{ caption-side:top; text-align:left; padding:8px 12px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+th{ background:var(--surface-2); font-weight:600; font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.02em; white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+td a{ word-break:break-word; }
+
+.badge{ display:inline-block; font-size:12px; padding:1px 7px; border-radius:20px; background:var(--accent-soft); color:var(--accent); font-weight:600; margin-right:4px; }
+.note{ background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:6px; padding:12px 16px; font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; }
+.limit{ border-left-color:var(--warn); }
+.empty{ font-style:italic; color:var(--ink-faint); }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin:0 0 18px; }
+.stat{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+.deal{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin-bottom:12px; }
+.deal h4{ margin:0 0 6px; font-size:15.5px; }
+.deal .meta{ font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-faint); margin-top:6px; }
+
+.legend{ display:flex; flex-wrap:wrap; gap:10px 18px; font-size:13.5px; color:var(--ink-soft); }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 41, 2026</p>
+    <h1>🛍 Weekly Bangkok Sales & Events Report</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 11 Oct 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 4–25 ต.ค. 2569</span>
+      <span><b>Region:</b> กรุงเทพฯ และปริมณฑล</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>สัปดาห์นี้เป็นวันปิดฉากของแคมเปญรอบต้นเดือนตุลาคมหลายรายการพร้อมกัน: Bangkok International Fashion Week 2026 (BIFW2026), Art Bangkok 2026 — The First Chapter และ Central Chidlom x Central Embassy "TIME & TREASURES" ทั้งหมดปิดงานวันนี้ (11 ต.ค.) ส่วน RoV 10 Years — The Experience ที่ CentralWorld ปิดพรุ่งนี้ (12 ต.ค.) ฝั่งแคมเปญต่อเนื่องยังมี ICONSIAM "Infinite Wonders" ฉลองครบรอบ 8 ปี, MBK ASEAN Shopping Festival/Education Plus และโปรโมชันตุลาคมของ EmSphere (Shop Aholic, M Point Universe, Crazy Delicious) ที่เดินหน้าต่อไปจนถึงเดือนพฤศจิกายน มองไปข้างหน้า 7–14 วัน มี Melody Of Life 17 (Chang Music Connection) คอนเสิร์ตฟรีที่ CentralWorld (16–18 ต.ค.) และงาน Book Expo Thailand 2026 ครั้งที่ 31 ที่ศูนย์การประชุมแห่งชาติสิริกิติ์ (23 ต.ค.–1 พ.ย.) ยืนยันแล้วจากหลายแหล่ง ส่วนแคมเปญอีคอมเมิร์ซ 10.10 เฉพาะตลาดไทยและกิจกรรมฮาโลวีนประจำปีของห้างต่าง ๆ ยังไม่พบประกาศทางการของปี 2569 ที่ยืนยันได้ครบตามเกณฑ์ จึงยังไม่นำมาแสดงในรายงานหลัก (ดู Watch List)</p>
+  </section>
+
+  <section>
+    <h2>🎪 งานที่กำลังจัด</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>เวลา</th><th>ไฮไลท์</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">🔥</span>Bangkok International Fashion Week 2026 (BIFW2026, ครั้งที่ 19) <span class="badge">🔄</span></td>
+          <td>Siam Paragon, Siam Center, Siam Discovery</td>
+          <td>1–11 ต.ค. 2569 (ปิดวันนี้)</td>
+          <td>ตามเวลาห้าง</td>
+          <td>งานแฟชั่นวีคระดับนานาชาติ วันสุดท้ายของ Grand Runway ที่ Siam Paragon Parc Paragon (8–11 ต.ค.) รวม 10 โชว์จากนักออกแบบไทย เช่น 27 FRIDAY, CHATO, VVON SUGUNNASIL</td>
+          <td><a href="https://www.malaymail.com/news/money/mediaoutreach/2026/09/17/siam-paragon-siam-center-and-siam-discovery-unite-thailands-creative-power-to-create-the-years-most-spectacular-runway-phenomenon/488196" target="_blank" rel="noopener">Media OutReach (ONESIAM)</a>, <a href="https://www.thailand-business-news.com/?p=329270" target="_blank" rel="noopener">Thailand Business News</a>, asianews.network ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🔥</span>Art Bangkok 2026 — The First Chapter</td>
+          <td>NEX Hall & Jewel Zone ชั้น 5, Siam Paragon</td>
+          <td>7–11 ต.ค. 2569 (ปิดวันนี้)</td>
+          <td>ตามเวลาห้าง</td>
+          <td>งานอาร์ตแฟร์นานาชาติครั้งใหม่ของสมาคมหอการค้าศิลปะไทย ร่วมกับ The Cloud และ UOB พื้นที่กว่า 1,500 ตร.ม. รวม 20+ แกลเลอรีไทย-นานาชาติ วันสุดท้ายวันนี้</td>
+          <td><a href="https://www.sanook.com/money/957011/" target="_blank" rel="noopener">Sanook</a>, <a href="https://www.thaipr.net/?p=3758560" target="_blank" rel="noopener">thaipr.net</a>, แนวหน้า ✅</td>
+        </tr>
+        <tr>
+          <td>Central Chidlom x Central Embassy "TIME & TREASURES" <span class="badge">🔄</span></td>
+          <td>Central Chidlom + Central Embassy (The Event Hall)</td>
+          <td>2 ก.ย.–11 ต.ค. 2569 (ปิดวันนี้)</td>
+          <td>ตามเวลาห้าง</td>
+          <td>งานนาฬิกา-จิวเวลรีระดับโลกรวม 50 แบรนด์ วันสุดท้ายวันนี้</td>
+          <td><a href="https://www.centralembassy.com/time-treasures-20261/" target="_blank" rel="noopener">Central Embassy (official)</a>, Bangkok Post ✅</td>
+        </tr>
+        <tr>
+          <td>RoV 10 Years — The Experience <span class="badge">🔄</span></td>
+          <td>CentralwOrld LIVE ชั้น 8, CentralWorld</td>
+          <td>3–12 ต.ค. 2569 (ปิดพรุ่งนี้)</td>
+          <td>เข้าชมฟรี</td>
+          <td>นิทรรศการฉลองครบรอบ 10 ปีเกม RoV ธีมเกม/ไลฟ์สไตล์ เหลือเวลาอีก 1 วัน</td>
+          <td>MGR Online, compgamer.com ✅</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">งานที่จบไปแล้วก่อนวันนี้และตัดออกจากรายงาน: Thailand Mobile Expo 2026 รอบตุลาคม (ปิด 4 ต.ค.), Siam Discovery "Fashion Revolutionary 2026" (จัดแล้วเมื่อ 6 ต.ค.)</div>
+  </section>
+
+  <section>
+    <h2>📅 งานที่กำลังจะมาถึง (7–14 วัน)</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>ประเภท</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">🔥</span>Melody Of Life 17 (Chang Music Connection)</td>
+          <td>หน้าลาน CentralWorld</td>
+          <td>16–18 ต.ค. 2569</td>
+          <td>Concert & Festival (มีกิจกรรมการค้า/ช้อปปิ้งร่วม) — คอนเสิร์ตฟรี 3 วัน รวมศิลปินกว่า 100 คน จัดโดย SPICYDISC ร่วมกับ CentralWorld</td>
+          <td><a href="https://www.timeout.com/bangkok/th/news/melody-of-life-at-centralworld-082426" target="_blank" rel="noopener">Time Out Bangkok</a> ✅</td>
+        </tr>
+        <tr>
+          <td>Book Expo Thailand 2026 (31st National Book Expo)</td>
+          <td>ฮอลล์ 5–7 ชั้น LG, ศูนย์การประชุมแห่งชาติสิริกิติ์ (QSNCC)</td>
+          <td>23 ต.ค.–1 พ.ย. 2569</td>
+          <td>Book Fair — จัดโดยสมาคมผู้จัดพิมพ์และผู้จำหน่ายหนังสือแห่งประเทศไทย (PUBAT) เข้าชมฟรี เวลา 10:00–21:00 น. ปีนี้จัดสั้นลงเป็น 10 วัน</td>
+          <td><a href="https://www.timeout.com/bangkok/news/book-expo-thailand-2026-queen-sirikit-centre-090926" target="_blank" rel="noopener">Time Out Bangkok</a>, <a href="https://www.businesseventsthailand.com/tceb-event-preview/31st-national-book-expo-thailand/" target="_blank" rel="noopener">TCEB</a>, thebeat.asia ✅</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>💸 โปรโมชันตามหมวด</h2>
+
+    <h3>💻 Electronics & IT</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ — ยังไม่พบโปรโมชันรอบใหม่ของเดือนตุลาคมที่ยืนยันแหล่งที่มาได้</p>
+
+    <h3>👕 Fashion</h3>
+    <p style="max-width:78ch;">ดูรายละเอียด Bangkok International Fashion Week 2026 (ปิดวันนี้) ในหมวดงานที่กำลังจัด</p>
+
+    <h3>🛋 Home & Furniture</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>🍜 Food & Beverage</h3>
+    <p style="max-width:78ch;">ดูรายละเอียด EmSphere "Crazy Delicious" ในหมวดโปรโมชันศูนย์การค้า</p>
+
+    <h3>💄 Health & Beauty</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>🎁 Other</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>🏬 โปรโมชันศูนย์การค้า</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>ศูนย์การค้า</th><th>สาขา</th><th>โปรโมชัน</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>ICONSIAM <span class="badge">🔄</span></td><td>ICONSIAM / ICS / Siam Takashimaya</td><td>"Infinite Wonders" 8th Anniversary — ลุ้นรางวัล SIAM Gift Card และทองคำแท่ง มูลค่ารวมกว่า 10 ล้านบาทตลอดแคมเปญ</td><td>21 ก.ย.–9 พ.ย. 2569</td><td><a href="https://www.brandbuffet.in.th/2026/08/the-8th-anniversary-iconsiam/" target="_blank" rel="noopener">Brand Buffet</a>, marketeeronline.co, naewna.com ✅</td></tr>
+        <tr><td>EmSphere <span class="badge">🔄</span></td><td>EmSphere</td><td>Shop Aholic — รับเงินคืนสูงสุด ฿700 ผ่านบัตรกรุงไทย</td><td>1–28 ต.ค. 2569</td><td><a href="https://emsphere.co.th/promotion-shopping-shop-aholic-2026/" target="_blank" rel="noopener">EmSphere (official)</a> ❓</td></tr>
+        <tr><td>EmSphere <span class="badge">🔄</span></td><td>EmSphere</td><td>M Point Universe — แคมเปญสะสมคะแนน/สิทธิพิเศษ</td><td>1 ต.ค.–5 พ.ย. 2569</td><td><a href="https://emsphere.co.th/promotion-m-point-universe-2026/" target="_blank" rel="noopener">EmSphere (official)</a> ❓</td></tr>
+        <tr><td>EmSphere <span class="badge">🔄</span></td><td>EmSphere</td><td>"Crazy Delicious" — โปรโมชันร้านอาหาร</td><td>1 ต.ค.–26 พ.ย. 2569</td><td><a href="https://emsphere.co.th/promotion-dining-crazy-delicious-2026/" target="_blank" rel="noopener">EmSphere (official)</a> ❓</td></tr>
+        <tr><td>MBK Center <span class="badge">🔄</span></td><td>ทุกโซน</td><td>ASEAN Shopping Festival 2026 — นักท่องเที่ยวรับ Welcome Pack และคูปองส่วนลดร้านค้าร่วมรายการ</td><td>ถึง 31 ต.ค. 2569</td><td>ryt9.com, thethaipress.com ✅</td></tr>
+        <tr><td>MBK Center <span class="badge">🔄</span></td><td>ทุกโซน + ห้างพันธมิตร</td><td>Education Plus — ส่วนลด 2 ระดับสำหรับการใช้จ่ายที่เกี่ยวข้องกับการศึกษา</td><td>ถึง 31 ต.ค. 2569</td><td>thethaipress.com ❓</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty">CentralWorld (นอกเหนือจาก RoV 10 Years และ Melody Of Life 17), Siam Center/Discovery (หลัง BIFW2026), Terminal 21, The Mall, Robinson, Central, Big C, Lotus's, Makro: ไม่พบโปรโมชันใหม่ที่ระบุวันที่ชัดเจนและยืนยันแหล่งที่มาได้เพิ่มเติมในสัปดาห์นี้ — ควรตรวจสอบ Facebook/LINE OA ของแต่ละห้างโดยตรง</p>
+  </section>
+
+  <section>
+    <h2>🛒 E-Commerce Campaigns</h2>
+    <p class="empty">ไม่มีข้อมูลสำคัญที่ยืนยันได้ในสัปดาห์นี้ — ยังไม่พบประกาศทางการของ Shopee, Lazada หรือ TikTok Shop ที่ระบุรายละเอียดแคมเปญ 10.10 เฉพาะตลาดไทยที่ยืนยันวันที่/เงื่อนไขได้ครบตามเกณฑ์ Validation Rules จึงยังไม่นำมาแสดง — ดู Watch List</p>
+  </section>
+
+  <section>
+    <h2>📰 Brand News</h2>
+
+    <h3>New Store</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญใหม่ในสัปดาห์นี้ — ไม่พบประกาศเปิดสาขาใหม่ของห้างสรรพสินค้าหรือแบรนด์รายใหญ่ในกรุงเทพฯ และปริมณฑลที่ยืนยันวันที่ได้ในช่วงกรอบเวลานี้</p>
+
+    <h3>Campaign</h3>
+    <p>ดูรายละเอียด ICONSIAM Infinite Wonders 8th Anniversary และ Melody Of Life 17 (Chang Music Connection) ในหมวดที่เกี่ยวข้องข้างต้น</p>
+
+    <h3>Seasonal Promotion</h3>
+    <p>ดูรายละเอียดแคมเปญ EmSphere รอบตุลาคมและ MBK ASEAN Shopping Festival/Education Plus ในหมวดโปรโมชันศูนย์การค้า</p>
+
+    <h3>Limited-Time Sale</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญเพิ่มเติมในช่วงสัปดาห์นี้ นอกเหนือจากที่ระบุในหมวดงานที่กำลังจัดและโปรโมชันศูนย์การค้า</p>
+
+    <h3>Product Launch</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>📍 แนะนำตามพื้นที่</h2>
+    <ul>
+      <li><b>กรุงเทพฯ ชั้นใน:</b> Bangkok International Fashion Week 2026 (Siam Paragon/Center/Discovery, ปิดวันนี้), Art Bangkok 2026 (Siam Paragon, ปิดวันนี้), Central Chidlom/Embassy TIME & TREASURES (ปิดวันนี้), RoV 10 Years — The Experience (CentralWorld, ปิดพรุ่งนี้), Melody Of Life 17 (CentralWorld, 16–18 ต.ค.), ICONSIAM Infinite Wonders 8th Anniversary, MBK ASEAN Shopping Festival/Education Plus, EmSphere Shop Aholic/M Point Universe/Crazy Delicious</li>
+      <li><b>กรุงเทพฯ เหนือ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>กรุงเทพฯ ตะวันออก:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>กรุงเทพฯ ตะวันตก:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นนทบุรี:</b> Book Expo Thailand 2026 ยังจัดในฝั่งกรุงเทพฯ (QSNCC) — ในนนทบุรีเองไม่พบงานใหม่ในกรอบเวลานี้ (IMPACT เมืองทองธานีไม่มีงานยืนยันในช่วง 11–18 ต.ค. จากปฏิทินทางการ)</li>
+      <li><b>ปทุมธานี:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรปราการ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรสาคร:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นครปฐม:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💡 Best Deals</h2>
+    <div class="deal">
+      <h4>👗 Bangkok International Fashion Week 2026 — วันสุดท้าย</h4>
+      <p style="margin:0;">งานแฟชั่นวีคนานาชาติครั้งที่ 19 ของ Siam Piwat ปิดฉาก Grand Runway ที่ Siam Paragon Parc Paragon วันนี้เป็นวันสุดท้าย เหมาะสำหรับผู้ที่ตามงานแฟชั่นวีคมาตลอดเดือน</p>
+      <div class="meta">ระยะเวลา: 1–11 ต.ค. 2569 (ปิดวันนี้) · Source: Media OutReach (ONESIAM), Thailand Business News</div>
+    </div>
+    <div class="deal">
+      <h4>🎨 Art Bangkok 2026 — The First Chapter — วันสุดท้าย</h4>
+      <p style="margin:0;">อาร์ตแฟร์นานาชาติครั้งใหม่ของสมาคมหอการค้าศิลปะไทย รวม 20+ แกลเลอรีไทย-นานาชาติ บนพื้นที่กว่า 1,500 ตร.ม. ที่ Siam Paragon เข้าชมฟรีวันสุดท้ายวันนี้</p>
+      <div class="meta">ระยะเวลา: 7–11 ต.ค. 2569 (ปิดวันนี้) · Source: Sanook, thaipr.net, แนวหน้า</div>
+    </div>
+    <div class="deal">
+      <h4>⏱ Central Chidlom x Central Embassy "TIME & TREASURES" — วันสุดท้าย</h4>
+      <p style="margin:0;">งานนาฬิกา-จิวเวลรีระดับโลกรวม 50 แบรนด์ วันสุดท้ายของแคมเปญวันนี้ ก่อนหมดเขต</p>
+      <div class="meta">ระยะเวลา: 2 ก.ย.–11 ต.ค. 2569 (ปิดวันนี้) · Source: Central Embassy, Bangkok Post</div>
+    </div>
+    <div class="deal">
+      <h4>🎵 Melody Of Life 17 (Chang Music Connection)</h4>
+      <p style="margin:0;">คอนเสิร์ตฟรี 3 วันที่หน้าลาน CentralWorld รวมศิลปินกว่า 100 คน เหมาะสำหรับครอบครัวและนักช้อปที่แวะเวียนมาในพื้นที่</p>
+      <div class="meta">ระยะเวลา: 16–18 ต.ค. 2569 · Source: Time Out Bangkok</div>
+    </div>
+    <div class="deal">
+      <h4>👑 ICONSIAM "Infinite Wonders" 8th Anniversary</h4>
+      <p style="margin:0;">แคมเปญฉลองครบรอบ 8 ปีของ ICONSIAM ลุ้นรางวัล SIAM Gift Card และทองคำแท่งมูลค่ารวมกว่า 10 ล้านบาท ยังเหลือเวลาอีกเกือบ 1 เดือน</p>
+      <div class="meta">ระยะเวลา: 21 ก.ย.–9 พ.ย. 2569 · Source: Brand Buffet, marketeeronline.co, naewna.com</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📅 Event Calendar</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>วันที่</th><th>งาน</th><th>สถานที่</th><th>ประเภท</th></tr></thead>
+      <tbody>
+        <tr><td>21 ก.ย.–9 พ.ย.</td><td>ICONSIAM Infinite Wonders 8th Anniversary 🔄</td><td>ICONSIAM</td><td>Mall Promotion</td></tr>
+        <tr><td>1–11 ต.ค. (ปิดวันนี้)</td><td>Bangkok International Fashion Week 2026</td><td>Siam Paragon/Siam Center/Siam Discovery</td><td>Fashion Event</td></tr>
+        <tr><td>1–28 ต.ค.</td><td>EmSphere Shop Aholic</td><td>EmSphere</td><td>Mall Promotion</td></tr>
+        <tr><td>1 ต.ค.–5 พ.ย.</td><td>EmSphere M Point Universe</td><td>EmSphere</td><td>Mall Promotion</td></tr>
+        <tr><td>1 ต.ค.–26 พ.ย.</td><td>EmSphere "Crazy Delicious"</td><td>EmSphere</td><td>Food Festival/Promotion</td></tr>
+        <tr><td>2 ก.ย.–11 ต.ค. (ปิดวันนี้)</td><td>Central Chidlom/Embassy TIME & TREASURES</td><td>Central Chidlom, Central Embassy</td><td>Exhibition</td></tr>
+        <tr><td>3–12 ต.ค. (ปิดพรุ่งนี้)</td><td>RoV 10 Years — The Experience</td><td>CentralWorld</td><td>Exhibition</td></tr>
+        <tr><td>7–11 ต.ค. (ปิดวันนี้)</td><td>Art Bangkok 2026 — The First Chapter</td><td>Siam Paragon</td><td>Exhibition</td></tr>
+        <tr><td>ถึง 31 ต.ค.</td><td>MBK ASEAN Shopping Festival / Education Plus</td><td>MBK Center</td><td>Mall Promotion</td></tr>
+        <tr><td>16–18 ต.ค.</td><td>Melody Of Life 17 (Chang Music Connection)</td><td>CentralWorld</td><td>Concert & Festival</td></tr>
+        <tr><td>23 ต.ค.–1 พ.ย.</td><td>Book Expo Thailand 2026 (31st)</td><td>QSNCC</td><td>Book Fair</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">6</div><div class="lbl">Events</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Exhibitions</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Trade Fairs</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Promotions</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Mall Campaigns</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Brand Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">E-Commerce Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New Store Openings</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <ul>
+      <li><b>แคมเปญ 10.10 ของ Shopee / Lazada / TikTok Shop ในตลาดไทย</b> — ยังไม่พบประกาศทางการเฉพาะสำหรับประเทศไทยที่ยืนยันวันที่/รายละเอียดได้ครบตามเกณฑ์ Cross Validation (สืบเนื่องจากสัปดาห์ก่อน) ควรตรวจสอบกับ shopee.co.th/lazada.co.th/tiktok.com/th โดยตรง</li>
+      <li><b>Bangkok Art Biennale 2026 (BAB 2026)</b> — ธีม "Angels and Mara" เริ่มจัดทั่วเมือง (วัดอรุณฯ, วัดโพธิ์, พิพิธภัณฑ์สยาม, BACC, CentralWorld) แต่แหล่งข้อมูลระบุวันเริ่มต่างกัน: thailand.go.th/TAT ระบุ 29 ต.ค. 2569 ส่วน Time Out ระบุ 26 ต.ค. 2569 — ทั้งสองวันยังเกินกรอบเวลา 14 วันของรายงานนี้ (18–21 วัน) และข้อมูลขัดแย้งกันเล็กน้อย ควรยืนยันกับเว็บไซต์ทางการ BkkArtBiennale ก่อนนำเข้ารายงานสัปดาห์หน้า</li>
+      <li><b>Thailand Game Show 2026</b> — ยืนยันจัดวันที่ 29 ต.ค.–1 พ.ย. 2569 ที่ QSNCC (Plenary Hall + Exhibition Hall) ร่วมกับ gamescom asia แต่เกินกรอบเวลา 14 วัน (18 วัน) ติดตามในรายงานสัปดาห์หน้า</li>
+      <li><b>Thailand (Bangkok) Amusement & Attraction Parks Expo 2026 (TAAPE, ครั้งที่ 6) และ Thailand Billiards Expo 2026</b> — ทั้งสองงานจัดวันที่ 29–31 ต.ค. 2569 ที่ IMPACT เกินกรอบเวลา 14 วัน ติดตามในรายงานสัปดาห์หน้า</li>
+      <li><b>EM District Haunted Halloween (EmSphere/EmQuartier/EMPORIUM)</b> — ปี 2568 จัดช่วง 1 ต.ค.–2 พ.ย. แต่ยังไม่พบประกาศทางการของปี 2569 (2026) ที่ยืนยันวันที่/รายละเอียดได้ ควรตรวจสอบกับ EM District โดยตรงก่อนนำมาแสดงในรายงานหลัก</li>
+      <li><b>CentralWorld Halloween "Spooky Boo" 2026</b> — ปีก่อนจัดกิจกรรมฮาโลวีนตลอดเดือนตุลาคม แต่ยังไม่พบประกาศยืนยันรายละเอียดเฉพาะของปี 2569 ควรตรวจสอบกับ centralworld.co.th โดยตรง</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <p>centralembassy.com, emsphere.co.th (ยืนยันผ่านผลค้นหา — เปิดหน้าเว็บโดยตรงไม่ได้ในรอบเก็บข้อมูลนี้), businesseventsthailand.com (TCEB)</p>
+    <h3>Event Platforms</h3>
+    <p>ryt9.com, thailandstarterkit.com (ไม่พบรายการเพิ่มเติมจาก Eventpop/Ticketmelon ในกรอบเวลานี้)</p>
+    <h3>Trusted Sources</h3>
+    <p>Media OutReach (ONESIAM press release), Thailand Business News, Time Out Bangkok, Bangkok Post, Sanook, thaipr.net, แนวหน้า (naewna.com), Brand Buffet, marketeeronline.co, MGR Online, compgamer.com, thebeat.asia, asianews.network</p>
+    <h3>Community (Verification Only)</h3>
+    <p>thethaipress.com</p>
+    <div class="note limit">
+      <b>ข้อจำกัดของข้อมูล:</b> ในรอบเก็บข้อมูลนี้ WebFetch ไม่สามารถเปิดหน้าเว็บโดยตรงได้กับโดเมนศูนย์การค้าหลักที่ลองเข้าถึง (emsphere.co.th, iconsiam.com, impact.co.th) ระบบตอบกลับว่าไม่สามารถ resolve โดเมนได้ (DNS/ENOTFOUND) จึงสลับไปใช้ WebSearch เป็นแหล่งข้อมูลหลักตามขั้นตอนสำรองที่กำหนดไว้ ข้อมูลโปรโมชันของ EmSphere (Shop Aholic, M Point Universe, Crazy Delicious) และ MBK Education Plus สืบทอดการยืนยันจากรายงานสัปดาห์ก่อนหน้า รายการที่มีเครื่องหมาย ❓ ยืนยันได้จากแหล่งเดียวหรือสืบทอดจากรอบก่อนเท่านั้น ควรตรวจสอบซ้ำก่อนใช้งานจริง ส่วนรายการที่มี ✅ ยืนยันข้ามหลายแหล่งข้อมูลอิสระแล้ว ไม่พบงานใหม่ที่ยืนยันได้ที่ IMPACT เมืองทองธานีในช่วง 8–18 ต.ค. 2569 จากปฏิทินทางการที่สืบค้นผ่าน WebSearch<br><br>
+      <b>UNCERTAIN:</b> emsphere.co.th, iconsiam.com, impact.co.th — WebFetch ไม่สามารถเปิดหน้าเว็บโดยตรงได้ (ENOTFOUND) ในรอบเก็บข้อมูลนี้ ควรมีการตรวจสอบซ้ำผ่านการเปิดหน้าเว็บโดยตรงในรอบถัดไปหากเป็นไปได้
+    </div>
+  </section>
+
+  <section>
+    <h2>🔎 แนวโน้มสัปดาห์นี้</h2>
+    <p>สัปดาห์นี้เป็นจุดเปลี่ยนผ่านที่ชัดเจนของธีม "แฟชั่น-ศิลปะ" ต้นเดือนตุลาคม โดย Bangkok International Fashion Week 2026, Art Bangkok 2026 และ Central Chidlom/Embassy TIME & TREASURES ปิดฉากพร้อมกันในวันนี้ สะท้อนรูปแบบการจัดแคมเปญระยะยาวข้ามสัปดาห์ของ Siam Piwat และ Central Embassy ที่เริ่มและจบในจังหวะใกล้เคียงกัน ขณะที่ ICONSIAM และ MBK ยังคงเดินหน้าแคมเปญระยะยาวข้ามเดือน (Infinite Wonders ถึง 9 พ.ย., ASEAN Shopping Festival/Education Plus ถึง 31 ต.ค.) ร่วมกับ EmSphere ที่กระจายแคมเปญย่อย 3 รายการคาบเกี่ยวกันตลอดเดือนตุลาคมถึงปลายพฤศจิกายน ฝั่งกิจกรรมดนตรี/ไลฟ์สไตล์กำลังจะกลับมาคึกคักอีกครั้งกลางเดือนด้วย Melody Of Life 17 ที่ CentralWorld ก่อนเข้าสู่ช่วงพีคของงานหนังสือประจำปีปลายเดือนตุลาคม (Book Expo Thailand 2026 ครั้งที่ 31) ซึ่งเป็นสัญญาณว่าการบริโภคเชิงวัฒนธรรม/ไลฟ์สไตล์ของกรุงเทพฯ ยังคงมาแรงกว่าโปรโมชันลดราคาขนาดใหญ่ในสัปดาห์นี้ ด้านอีคอมเมิร์ซยังไม่มีสัญญาณแคมเปญ 10.10 ที่ชัดเจนสำหรับตลาดไทยเป็นสัปดาห์ที่สองต่อเนื่อง และยังไม่มีประกาศกิจกรรมฮาโลวีนประจำปีของห้างหลักสำหรับปี 2569 ทั้งที่ใกล้เข้าสู่ช่วงปลายเดือนตุลาคมแล้ว จึงเป็นประเด็นที่ควรติดตามใกล้ชิดในรายงานสัปดาห์หน้า พร้อมกับ Bangkok Art Biennale 2026, Thailand Game Show 2026 และงานแสดงสินค้าปลายเดือนที่ IMPACT ซึ่งทั้งหมดจะเข้าสู่กรอบเวลารายงาน 7–14 วันในรอบถัดไป</p>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="legend">
+      <span>✅ Official</span>
+      <span>🎪 Event</span>
+      <span>🛍 Promotion</span>
+      <span>🏬 Shopping Mall</span>
+      <span>🛒 E-Commerce</span>
+      <span>🔄 Continuing Event</span>
+      <span>🔥 Popular Event</span>
+      <span>❓ Information Incomplete</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Bangkok Sales & Events Report · 11 Oct 2026 (Week 41)</p>
+    <p><a href="/">Back to Home</a> · <a href="./">Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>
