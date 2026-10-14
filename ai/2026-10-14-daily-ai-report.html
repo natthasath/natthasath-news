@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-10-14</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 14 ตุลาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-10-14</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 14 ต.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูลที่สำคัญ:</b> ในรอบนี้เข้าถึง anthropic.com, github.com และหน้าย่อยของ GitHub (releases, trending, repo) ได้โดยตรงตามปกติ แต่ยังเข้าถึงโดเมนสำคัญอื่น ๆ ไม่ได้อีกครั้งแม้ลองซ้ำตามขั้นตอน Network Access Resilience แล้ว (ล้มเหลวแบบ DNS resolution) ได้แก่ openai.com, blog.google, ai.meta.com, news.microsoft.com, aws.amazon.com, nvidianews.nvidia.com, huggingface.co, arxiv.org และ paperswithcode.com ได้ใช้ WebSearch แบบ site-specific และคำค้นทั่วไปเป็นทางเลือกตามขั้นตอนที่ 2 แต่ผลค้นหาส่วนใหญ่มาจากเว็บไซต์รวมข่าว/อักกริเกเตอร์ที่มีข้อมูลขัดแย้งกันเอง (เช่น วันเปิดตัว GPT-6 Astra ที่มีทั้งอ้างว่าเปิดตัวแล้วเดือนมีนาคม 2569 และอ้างว่าเลื่อนออกไป) และตรวจสอบย้อนกลับกับแหล่งทางการหรือสำนักข่าวสายหลักไม่ได้ครบถ้วน จึง<b>ไม่นำมาแสดงในรายงาน</b>ตามหลักการห้ามสร้างข้อมูลขึ้นเองและห้ามสรุปเกินกว่าแหล่งข้อมูลระบุ ส่วนข่าว Anthropic เปิดสำนักงานสิงคโปร์ ตรวจสอบได้จากหน้า Newsroom ทางการของ Anthropic โดยตรง (Official) ประกอบกับข่าวแผนเปิดสำนักงานที่สำนักข่าว Fortune, Business Today และ DealStreetAsia รายงานไว้ล่วงหน้าเมื่อเดือนกันยายน 2569 <b>UNCERTAIN:</b> โดเมน openai.com, blog.google, ai.meta.com, huggingface.co, arxiv.org, paperswithcode.com เข้าถึงไม่ได้ติดต่อกันมาตั้งแต่อย่างน้อยรอบวันที่ 1, 4, 5, 6, 7, 8, 11, 12, 13 และ 14 ต.ค. 2569 (10 วันทำการติดต่อกัน) ควรตรวจสอบการตั้งค่า network access ของสภาพแวดล้อมนี้โดยเร็ว
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>Anthropic ประกาศข่าวทางการ 2 รายการในรอบ 24 ชั่วโมงล่าสุดผ่าน Newsroom: การเปิดสำนักงานในสิงคโปร์พร้อมลงนาม MOU กับรัฐบาลสิงคโปร์ และบทความเตรียมความพร้อมสำหรับการเลือกตั้งกลางเทอมสหรัฐฯ ปี 2026 ด้าน Claude Code CLI ออกเวอร์ชันใหม่ v2.1.300 ในวันนี้ ขณะที่ GitHub Trending มีโปรเจกต์ AI agent ใหม่เข้าอันดับ 4 รายการ ได้แก่ ifixai-ai/iFixAi, vxcontrol/pentagi, K-Dense-AI/scientific-agent-skills และ HKUDS/CLI-Anything โดยสะท้อนแนวโน้มเครื่องมือตรวจสอบและขยายขีดความสามารถของ AI agent รอบนี้ยังเข้าถึงโดเมนข่าวและบล็อกทางการของ OpenAI, Google, Meta, Microsoft, Amazon, NVIDIA, Hugging Face, arXiv และ Papers With Code ไม่ได้โดยตรงอีกครั้ง (DNS resolution ล้มเหลวติดต่อกันเป็นวันที่ 10) จึงไม่มีข่าวใหม่ที่ยืนยันได้จากบริษัทเหล่านี้ในรอบนี้ ผลค้นหาสำรองพบข้อมูลขัดแย้งกันเกี่ยวกับ OpenAI GPT-6 Astra ที่ตรวจสอบย้อนกลับไม่ได้ จึงไม่นำมาแสดง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ไม่พบการเปิดตัวโมเดล AI ใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วนจากแหล่งที่เข้าถึงได้ (ตรวจสอบ anthropic.com/news โดยตรงแล้ว ไม่มีการเปิดตัวโมเดลใหม่ในรอบนี้) ไม่สามารถเข้าถึง openai.com, blog.google และ ai.meta.com โดยตรงเพื่อตรวจสอบโมเดลใหม่จากบริษัทอื่นได้ ผลค้นหาพบการอ้างถึงวันเปิดตัว GPT-6 Astra ของ OpenAI ที่ขัดแย้งกันเอง (บางแหล่งอ้างว่าเปิดตัวแล้วเดือนมีนาคม 2569 บางแหล่งอ้างว่ายังเลื่อนอยู่) จึงไม่นำมาแสดงตามเกณฑ์ Cross Validation</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">ไม่สามารถเข้าถึง arxiv.org, huggingface.co/papers และ paperswithcode.com ได้โดยตรงในรอบนี้ (ลองซ้ำแล้วตามขั้นตอน Network Access Resilience แต่ยังล้มเหลวแบบ DNS) ผลค้นหาแบบ WebSearch สำหรับงานวิจัยใหม่บน arXiv ในกรอบ 24 ชั่วโมงล่าสุดไม่พบรายการที่ยืนยันวันที่เผยแพร่ ชื่อผู้เขียน และ arXiv ID ครบถ้วนตาม Validation Rules จึงไม่นำมาแสดงเป็นข่าวงานวิจัยใหม่ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars (today)</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>morluto/rea</td>
+          <td>~41,187</td>
+          <td>TypeScript</td>
+          <td>MCP server ให้ AI agent ทำ reverse engineering ซอฟต์แวร์ได้ ตั้งแต่พฤติกรรมแอประดับรันไทม์ไปจนถึง native binary <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/morluto/rea">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>debpalash/VoiceStudio</td>
+          <td>~3,547</td>
+          <td>Python</td>
+          <td>เครื่องมือเสียงโอเพนซอร์สที่รันในเครื่อง ครอบคลุม voice cloning, voice design, dubbing, dictation, transcription และ audiobook รองรับ 646 ภาษา <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/debpalash/VoiceStudio">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>ifixai-ai/iFixAi</td>
+          <td>~2,143</td>
+          <td>Python</td>
+          <td>เครื่องมือตรวจสอบอิสระว่า AI agent ทำงานตามที่ควรจะเป็นหรือไม่ รันตรวจสอบได้โดยมนุษย์หรือโดย agent เอง</td>
+          <td>✅ <a href="https://github.com/ifixai-ai/iFixAi">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>xtool-org/xtool</td>
+          <td>~1,510</td>
+          <td>Swift</td>
+          <td>ทางเลือกทดแทน Xcode แบบข้ามแพลตฟอร์ม สำหรับ build และ deploy แอป iOS ด้วย SwiftPM บน Linux, Windows และ macOS <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/xtool-org/xtool">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>vxcontrol/pentagi</td>
+          <td>~1,070</td>
+          <td>Go</td>
+          <td>ระบบ AI agent ที่ทำงานอัตโนมัติเต็มรูปแบบสำหรับงาน penetration testing ที่ซับซ้อน</td>
+          <td>✅ <a href="https://github.com/vxcontrol/pentagi">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>mksglu/context-mode</td>
+          <td>~946</td>
+          <td>TypeScript</td>
+          <td>เครื่องมือจัดการ context window ของ AI coding agent ด้วยการแยก sandbox ผลลัพธ์ของ tool และคงความจำของ session <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/mksglu/context-mode">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>K-Dense-AI/scientific-agent-skills</td>
+          <td>~146</td>
+          <td>Python</td>
+          <td>คลังชุด agent skills กว่า 177 รายการสำหรับงานวิทยาศาสตร์ ครอบคลุมชีววิทยา เคมี การแพทย์ และการค้นคว้ายา เข้ากันได้กับมาตรฐาน Agent Skills แบบเปิด</td>
+          <td>✅ <a href="https://github.com/K-Dense-AI/scientific-agent-skills">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>HKUDS/CLI-Anything</td>
+          <td>~94</td>
+          <td>Python</td>
+          <td>ทำให้ซอฟต์แวร์ทำงานร่วมกับ AI agent ได้ผ่าน command-line interface</td>
+          <td>✅ <a href="https://github.com/HKUDS/CLI-Anything">GitHub (official repo)</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวเป็นจำนวนที่เพิ่มขึ้น "วันนี้" ตามที่หน้า GitHub Trending รายงาน รายการที่มีเครื่องหมาย "ต่อเนื่อง" คือโปรเจกต์ที่ติดอันดับ Trending ต่อเนื่องจากรอบรายงานก่อนหน้า (รอบล่าสุดที่มีข้อมูลเปรียบเทียบคือ 13 ต.ค. 2569) ส่วน ifixai-ai/iFixAi, vxcontrol/pentagi, K-Dense-AI/scientific-agent-skills และ HKUDS/CLI-Anything เป็นรายการที่เข้าอันดับใหม่ในรอบนี้ แทนที่ storytold/artcraft, cathrynlavery/diagram-design, bilawalsidhu/gods-eye-view, lyogavin/airllm และ vercel-labs/skills ที่หลุดอันดับ นอกจากนี้วันนี้ยังมีโปรเจกต์ที่ไม่เกี่ยวกับ AI โดยตรงติดอันดับด้วย เช่น nvm-sh/nvm, rust-lang/rust, ntdevlabs/tiny11builder และ NationalSecurityAgency/ghidra จึงไม่นำมาแสดงในตารางนี้เนื่องจากอยู่นอกหมวด AI</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบเครื่องมือหรือแอปใหม่ที่ยืนยันวันเปิดตัว ราคา และแหล่งอ้างอิงอยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วนตาม Validation Rules</p>
+    <h3>Updates</h3>
+    <p class="note">Claude Code CLI ออกเวอร์ชันใหม่ v2.1.300 ในวันนี้ (14 ต.ค. 2569) อยู่ในกรอบ 24 ชั่วโมงล่าสุด ✅ <a href="https://github.com/anthropics/claude-code/releases">GitHub — anthropics/claude-code releases</a>. ด้าน modelcontextprotocol/python-sdk เวอร์ชันล่าสุดยังเป็น v2.3.0 (2 ต.ค. 2569) ไม่มี release ใหม่ในรอบนี้ ✅ <a href="https://github.com/modelcontextprotocol/python-sdk/releases">GitHub — modelcontextprotocol/python-sdk releases</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p class="note">ไม่สามารถเข้าถึง openai.com โดยตรงได้ในรอบนี้ (DNS resolution ล้มเหลว) ผลค้นหาพบข้อมูลขัดแย้งกันเกี่ยวกับโมเดล GPT-6 Astra และการอ้างถึง "GPT-5.6-Cyber"/"Daybreak" จากเว็บไซต์รวมข่าวที่ตรวจสอบย้อนกลับกับแหล่งทางการไม่ได้ จึงไม่นำมาแสดงในรอบนี้</p>
+
+    <h3>Anthropic</h3>
+    <p class="note">ตรวจสอบ anthropic.com/news โดยตรงแล้ว พบประกาศใหม่ 2 รายการในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ (14 ต.ค. 2569): (1) "Anthropic opens Singapore office and signs MOU with the Government of Singapore" และ (2) "Preparing for the 2026 US midterms" ทั้งสองอยู่ในหมวด Announcements/Policy ของ Newsroom การเปิดสำนักงานสิงคโปร์นี้เคยถูกสำนักข่าว Fortune, Business Today และ DealStreetAsia รายงานไว้ล่วงหน้าตั้งแต่ 16 ก.ย. 2569 ว่ามีแผนเปิดในเดือนตุลาคม ✅ <a href="https://www.anthropic.com/news">Anthropic — Newsroom (official)</a> 📰 <a href="https://www.businesstoday.com.my/2026/09/16/anthropic-to-open-singapore-office-in-october-hire-locally/">Business Today — แผนเปิดสำนักงานสิงคโปร์</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่สามารถเข้าถึง blog.google และ deepmind.google โดยตรงได้ในรอบนี้ (DNS resolution ล้มเหลว) และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วนจากแหล่งสำรอง</p>
+
+    <h3>Meta</h3>
+    <p class="note">ไม่สามารถเข้าถึง ai.meta.com โดยตรงได้ในรอบนี้ (DNS resolution ล้มเหลว) และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วนจากแหล่งสำรอง</p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่สามารถเข้าถึง news.microsoft.com โดยตรงได้ในรอบนี้ (DNS resolution ล้มเหลว) และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วน</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่สามารถเข้าถึง aws.amazon.com โดยตรงได้ในรอบนี้ (DNS resolution ล้มเหลว) และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วน</p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">ไม่สามารถเข้าถึง nvidianews.nvidia.com โดยตรงได้ในรอบนี้ (DNS resolution ล้มเหลว) และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วนจากแหล่งสำรอง</p>
+
+    <h3>Startup</h3>
+    <p class="note">ผลค้นหา WebSearch สำหรับข่าวระดมทุนหรือ M&amp;A ของสตาร์ทอัพ AI ในกรอบ 24 ชั่วโมงล่าสุดไม่พบรายการที่ยืนยันวันที่และแหล่งอ้างอิงอย่างน้อย 2 แหล่ง (มีอย่างน้อยหนึ่งแหล่งเป็น Official) ได้ครบถ้วนตามเกณฑ์ Cross Validation</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>SDK/CLI:</b> Claude Code CLI ออกเวอร์ชันใหม่ v2.1.300 ในวันนี้ (14 ต.ค. 2569) ✅ <a href="https://github.com/anthropics/claude-code/releases">GitHub — anthropics/claude-code releases</a></li>
+      <li><b>API:</b> ไม่พบการอัปเดต Claude API release notes ใหม่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ (รายการล่าสุดยังเป็น 9 ต.ค. 2569 ซึ่งอยู่นอกกรอบเวลา) ✅ <a href="https://platform.claude.com/docs/en/release-notes/api">Anthropic — API Release Notes</a></li>
+      <li><b>MCP:</b> modelcontextprotocol/python-sdk เวอร์ชันล่าสุดยังเป็น v2.3.0 (2 ต.ค. 2569) ไม่มี release ใหม่ในรอบนี้ ✅ <a href="https://github.com/modelcontextprotocol/python-sdk/releases">GitHub — modelcontextprotocol/python-sdk releases</a></li>
+      <li><b>Agent:</b> GitHub Trending วันนี้มีโปรเจกต์เครื่องมือ AI agent เข้าอันดับใหม่ 4 รายการ ได้แก่ ifixai-ai/iFixAi (ตรวจสอบอิสระการทำงานของ agent), vxcontrol/pentagi (agent ทำ penetration testing อัตโนมัติ), K-Dense-AI/scientific-agent-skills (ชุด skills สำหรับ AI scientist) และ HKUDS/CLI-Anything (ทำให้ซอฟต์แวร์ใช้งานร่วมกับ agent ผ่าน CLI) ดูรายละเอียดในหัวข้อ Open Source ✅ <a href="https://github.com/trending">GitHub Trending</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <p class="note">ไม่พบข่าวด้าน Investment, Acquisition หรือ Regulation ใหม่ที่ยืนยันแหล่งที่มาได้ครบอย่างน้อย 2 แหล่ง (โดยมีอย่างน้อยหนึ่งแหล่งเป็น Official) ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ Anthropic เผยแพร่บทความ "Preparing for the 2026 US midterms" ทางหน้า Newsroom ซึ่งเกี่ยวข้องกับนโยบายและการเลือกตั้ง แต่ยังเป็นแหล่งทางการเพียงแหล่งเดียวที่ยืนยันได้ในรอบนี้ (ดูหัวข้อ Company News — Anthropic) ✅ <a href="https://www.anthropic.com/news">Anthropic — Newsroom (official)</a></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ยืนยัน Benchmark, Model, Score และ Source ครบถ้วนตาม Validation Rules ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Trending (GitHub):</b> เครื่องมือ AI agent ยังคงครองพื้นที่ GitHub Trending โดยวันนี้มี ifixai-ai/iFixAi, vxcontrol/pentagi, K-Dense-AI/scientific-agent-skills และ HKUDS/CLI-Anything เข้าอันดับใหม่ ส่วน morluto/rea, debpalash/VoiceStudio, xtool-org/xtool และ mksglu/context-mode ยังติดอันดับต่อเนื่อง (ดูหัวข้อ Open Source) <span class="badge-warn">ต่อเนื่อง</span> ✅ <a href="https://github.com/trending">GitHub Trending</a></li>
+      <li><b>Tutorials / Events:</b> ไม่พบทูทอเรียลหรืออีเวนต์ใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ (ไม่สามารถเข้าถึง news.ycombinator.com และ reddit.com ได้โดยตรงเพื่อตรวจสอบกระแสชุมชนเพิ่มเติม)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. ตรวจสอบความถูกต้องของ AI agent ด้วย iFixAi</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมที่ปล่อยให้ AI agent ทำงานอัตโนมัติมักขาดวิธีตรวจสอบอย่างเป็นระบบว่า agent ทำงานตามที่ตั้งใจไว้จริงหรือไม่ อาจมีการทำงานผิดพลาดที่ไม่ถูกสังเกตเห็น</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ iFixAi เป็นเครื่องมือตรวจสอบอิสระ (audit) ของผลลัพธ์จาก AI agent โดยให้มนุษย์หรือ agent อื่นเป็นผู้ตรวจสอบซ้ำ</dd>
+        <dt>ประโยชน์</dt><dd>เพิ่มความมั่นใจว่าระบบ agent ที่ใช้งานจริงทำงานได้ตามเป้าหมาย ลดความเสี่ยงจากข้อผิดพลาดที่ไม่ถูกตรวจพบ</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. ทดสอบเจาะระบบอัตโนมัติด้วย PentAGI</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การทำ penetration testing แบบดั้งเดิมต้องใช้ผู้เชี่ยวชาญด้านความปลอดภัยจำนวนมากและใช้เวลานานในการทดสอบระบบที่ซับซ้อน</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ PentAGI เป็นระบบ AI agent ที่ทำงานอัตโนมัติเต็มรูปแบบในการดำเนินงาน penetration testing ที่ซับซ้อนแทนทีมทดสอบ</dd>
+        <dt>ประโยชน์</dt><dd>ช่วยให้ทีมความปลอดภัยสแกนและทดสอบช่องโหว่ได้เร็วขึ้นและครอบคลุมมากขึ้น เหมาะกับงาน security testing ที่ได้รับอนุญาต</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. เปลี่ยน AI agent ให้เป็นนักวิทยาศาสตร์ด้วย Scientific Agent Skills</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การสร้าง AI agent สำหรับงานวิจัยวิทยาศาสตร์ เช่น ชีววิทยาหรือการค้นคว้ายา ต้องใช้ความรู้เฉพาะทางจำนวนมากที่ทีมพัฒนาทั่วไปไม่มี</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้งคลัง agent skills กว่า 177 รายการจาก K-Dense-AI ซึ่งครอบคลุมชีววิทยา เคมี การแพทย์ และการค้นคว้ายา เข้ากับ agent ที่ใช้มาตรฐาน Agent Skills แบบเปิด</dd>
+        <dt>ประโยชน์</dt><dd>นักวิจัยและทีมพัฒนาเข้าถึงทักษะเฉพาะทางวิทยาศาสตร์สำหรับ agent ได้รวดเร็วขึ้นโดยไม่ต้องสร้างใหม่ทั้งหมด</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. จัดการเสียงครบวงจรในเครื่องด้วย VoiceStudio</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งานด้านเสียง เช่น พากย์เสียง, ถอดเทป หรือทำหนังสือเสียง มักต้องใช้บริการคลาวด์หลายตัวที่มีค่าใช้จ่ายและมีข้อจำกัดเรื่องความเป็นส่วนตัวของข้อมูล</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้ง VoiceStudio รันในเครื่องของตนเอง เพื่อทำ voice cloning, voice design, dubbing, dictation, transcription และสร้างหนังสือเสียงได้ในแพ็กเกจเดียว รองรับกว่า 646 ภาษา</dd>
+        <dt>ประโยชน์</dt><dd>ลดค่าใช้จ่ายบริการคลาวด์และเก็บข้อมูลเสียงไว้ในเครื่องได้ เหมาะกับทีมคอนเทนต์ นักแปล และผู้ผลิตสื่อที่ต้องทำงานหลายภาษา</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>โดเมนแหล่งข้อมูล Tier 1/2/3 หลายแห่ง (OpenAI, Google/DeepMind, Meta, Microsoft, Amazon, NVIDIA, Hugging Face, arXiv, Papers With Code) เข้าถึงโดยตรงไม่ได้ติดต่อกันมาหลายวันทำการ (อย่างน้อยวันที่ 1, 4, 5, 6, 7, 8, 11, 12, 13 และ 14 ต.ค. 2569 รวม 10 วันทำการ) โดยเป็นการล้มเหลวแบบ DNS resolution ขณะที่ anthropic.com และ github.com เข้าถึงได้ตามปกติในรอบนี้</dd>
+        <dt>เหตุผล</dt><dd>หากสถานการณ์นี้ดำเนินต่อไป คุณภาพและความครบถ้วนของรายงานรายวันจะลดลงอย่างมีนัยสำคัญ ควรตรวจสอบการตั้งค่า network egress ของสภาพแวดล้อมนี้โดยเร็ว</dd>
+        <dt>Source</dt><dd>❓ ผลการทดสอบเข้าถึงโดเมนด้วย WebFetch ในรอบรายงานวันที่ 1, 4, 5, 6, 7, 8, 11, 12, 13 และ 14 ต.ค. 2569 (internal diagnostic)</dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ผลค้นหา WebSearch ในรอบนี้พบข้อมูลขัดแย้งกันเองเกี่ยวกับโมเดล GPT-6 Astra ของ OpenAI บางแหล่งอ้างว่าเปิดตัวแล้วตั้งแต่เดือนมีนาคม 2569 บางแหล่งอ้างว่ายังเลื่อนออกไปเพื่อเพิ่มมาตรการด้านความปลอดภัย และยังพบการอ้างถึงชื่อโมเดล/ผลิตภัณฑ์ที่ตรวจสอบย้อนกลับไม่ได้ (เช่น "GPT-5.6-Cyber", "Daybreak")</dd>
+        <dt>เหตุผล</dt><dd>ข้อมูลเหล่านี้มาจากเว็บไซต์รวมข่าวคุณภาพไม่แน่นอนเป็นหลัก จึงไม่นำมาแสดงเป็นข้อเท็จจริงในรายงานตามหลักการห้ามสร้างข้อมูลขึ้นเองและเกณฑ์ Cross Validation ควรตรวจสอบกับ openai.com โดยตรงเมื่อเข้าถึงโดเมนได้ตามปกติ ก่อนนำมารายงานในรอบถัดไป</dd>
+        <dt>Source</dt><dd>❓ ผลสรุปจาก WebSearch อ้างอิงเว็บไซต์รวมข่าวหลายแหล่งที่ขัดแย้งกันเอง (ไม่สามารถเข้าถึง openai.com โดยตรงเพื่อตรวจสอบในรอบนี้)</dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ยังไม่พบรายงานข่าวจากสำนักข่าวสายหลัก (นอกจาก Anthropic เอง) ยืนยันว่าสำนักงานสิงคโปร์ของ Anthropic เปิดดำเนินการจริงแล้วในวันนี้ มีเพียงข่าวแผนการล่วงหน้าจากเดือนกันยายน 2569</dd>
+        <dt>เหตุผล</dt><dd>ควรติดตามว่าสำนักข่าวสายหลัก (Reuters, Bloomberg, Straits Times ฯลฯ) จะรายงานพิธีเปิดหรือรายละเอียด MOU กับรัฐบาลสิงคโปร์เพิ่มเติมในรอบถัดไปหรือไม่ เพื่อยืนยันแบบ Cross Validation ครบ 2 แหล่ง</dd>
+        <dt>Source</dt><dd>✅ <a href="https://www.anthropic.com/news">Anthropic — Newsroom (official)</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news">Anthropic — Newsroom</a></li>
+          <li><a href="https://platform.claude.com/docs/en/release-notes/api">Anthropic — API Release Notes</a></li>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://github.com/morluto/rea">GitHub — morluto/rea</a></li>
+          <li><a href="https://github.com/debpalash/VoiceStudio">GitHub — debpalash/VoiceStudio</a></li>
+          <li><a href="https://github.com/ifixai-ai/iFixAi">GitHub — ifixai-ai/iFixAi</a></li>
+          <li><a href="https://github.com/xtool-org/xtool">GitHub — xtool-org/xtool</a></li>
+          <li><a href="https://github.com/vxcontrol/pentagi">GitHub — vxcontrol/pentagi</a></li>
+          <li><a href="https://github.com/mksglu/context-mode">GitHub — mksglu/context-mode</a></li>
+          <li><a href="https://github.com/K-Dense-AI/scientific-agent-skills">GitHub — K-Dense-AI/scientific-agent-skills</a></li>
+          <li><a href="https://github.com/HKUDS/CLI-Anything">GitHub — HKUDS/CLI-Anything</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/python-sdk/releases">GitHub — modelcontextprotocol/python-sdk releases</a></li>
+          <li><a href="https://github.com/anthropics/claude-code/releases">GitHub — anthropics/claude-code releases</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:0;border:none;background:none;">ไม่มีแหล่งข้อมูลงานวิจัยใหม่ที่ยืนยันอยู่ในกรอบ 24 ชั่วโมงล่าสุดในรอบนี้</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li><a href="https://www.businesstoday.com.my/2026/09/16/anthropic-to-open-singapore-office-in-october-hire-locally/">Business Today — Anthropic Singapore office plan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 14 ต.ค. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
