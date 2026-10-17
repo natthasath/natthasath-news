@@ -170,9 +170,9 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
   <section>
     <h2>📌 Executive Summary</h2>
     <div class="executive-summary">
-      <p>สัปดาห์นี้ (11–17 ต.ค. 2569) เป็นสัปดาห์ที่มีประเด็นความปลอดภัยหนาแน่นที่สุดในรอบหลายเดือน นำโดย GitLab ที่ออกแพตช์ฉุกเฉินแก้ไขช่องโหว่ระดับ Critical CVSS เต็ม 10.0 (CVE-2026-97229) ใน CI/CD Regular Expression Compiler ซึ่งผู้โจมตีไม่ต้องยืนยันตัวตนสามารถรันโค้ดบนเซิร์ฟเวอร์ได้ (เวอร์ชันแก้ไข 19.4.2/19.3.5/19.2.8 เมื่อ 12 ต.ค.) ตามด้วยการออก GitLab 19.5 ตามรอบปกติเมื่อ 15 ต.ค. ขณะเดียวกัน Ivanti Connect Secure พบช่องโหว่ Zero-day CVE-2026-104935 (CVSS 8.6) ที่ถูกโจมตีจริงก่อนมีประกาศ และถูกเพิ่มเข้า CISA KEV Catalog เมื่อ 13 ต.ค. และ Microsoft ออก Patch Tuesday เดือน ต.ค. 2569 ครั้งใหญ่ที่สุดเป็นประวัติการณ์กว่า 1,400 CVE (ครั้งแรกที่แตะระดับ 4 หลัก) รวมถึงช่องโหว่ Zero-day ที่ถูกโจมตีจริง CVE-2026-96951 ใน Windows Shell (ข้ามการป้องกัน Mark of the Web)</p>
-      <p>ด้าน Software Release ทั่วไป: Node.js ออกรุ่น LTS ใหม่ 24.22.0 "Krypton" และรุ่น Current 26.12.0 พร้อมกันเมื่อ 14 ต.ค., Docker Engine ออกแพตช์ v29.9.1 เมื่อ 14 ต.ค., PostgreSQL ออก 19 RC1 ตามกำหนดเมื่อ 15 ต.ค. แต่ทีมพัฒนาเลื่อนกำหนด GA จากเดิม 29 ต.ค. ออกไปเป็น 19 พ.ย. 2569 พร้อมเพิ่ม RC2 อีกรอบในวันที่ 12 พ.ย. และ Ubuntu ออกชุด USN ขนาดใหญ่ (14–15 ต.ค.) ครอบคลุม RabbitMQ, OpenSSH, curl, Apache HTTP Server, BIND, Go, U-Boot และ urllib3</p>
-      <p><strong>ประเด็นสำคัญ:</strong> ทีมที่ใช้งาน GitLab Self-managed ทุกเวอร์ชัน 19.2–19.4 ควรอัปเกรดเป็น 19.4.2/19.3.5/19.2.8 โดยเร่งด่วนที่สุด เนื่องจากเป็นช่องโหว่ CVSS สูงสุดและไม่ต้องยืนยันตัวตน ทีมที่ใช้ Ivanti Connect Secure ควรตรวจสอบสัญญาณการโจมตีและอัปเดตทันทีตามกำหนด CISA KEV (16 ต.ค. ซึ่งผ่านไปแล้ว) และ Windows Server 2022 ได้เข้าสู่ End of Mainstream Support แล้วตั้งแต่ 13 ต.ค. 2569 (เข้าสู่ Extended Support ถึงปี 2574) ทีมที่ยังใช้งานควรวางแผนย้ายไปยัง Windows Server 2025 หรือตรวจสอบเงื่อนไข Extended Support ให้ครบถ้วน</p>
+      <p>สัปดาห์นี้ (11–17 ต.ค. 2569) เป็นสัปดาห์ที่มีประเด็นความปลอดภัยหนาแน่นที่สุดในรอบหลายเดือน นำโดย GitLab ที่ออกแพตช์ฉุกเฉินแก้ไขช่องโหว่ระดับ Critical CVSS เต็ม 10.0 (CVE-2026-97229) ใน CI/CD Regular Expression Compiler ที่ไม่ต้องยืนยันตัวตนก็สามารถรันโค้ดบนเซิร์ฟเวอร์ได้ (เวอร์ชันแก้ไข 19.4.2/19.2.8 และ 19.3.4 หรือ 19.3.5 ตามแต่แหล่งข่าว — ดูหมายเหตุความขัดแย้งของข้อมูลในหัวข้อ Security &amp; CVE) ตามด้วย GitLab 19.5 ที่ออกตามรอบปกติเมื่อ 15 ต.ค. ขณะเดียวกัน Ivanti Connect Secure พบช่องโหว่ Zero-day CVE-2026-104935 (CVSS 8.6) ที่ถูกโจมตีจริงก่อนมีประกาศและถูกเพิ่มเข้า CISA KEV Catalog เมื่อ 13 ต.ค., Microsoft ออก Patch Tuesday เดือน ต.ค. 2569 ครั้งใหญ่ที่สุดเป็นประวัติการณ์ (ประมาณ 1,407–1,415 CVE ขึ้นกับวิธีนับของแต่ละแหล่ง) รวม Zero-day ที่ถูกโจมตีจริง CVE-2026-96951 ใน Windows Shell และ .NET (8.0/9.0/10.0/11.0 RC2) ออก Security Release แก้ไขรวม 44 ช่องโหว่ และ nginx ออกแพตช์ความปลอดภัยแก้ไข Use-after-free ระดับ High (CVE-2026-97205, CVSS 8.1)</p>
+      <p>ด้าน Software Release ทั่วไป: Node.js ออกรุ่น Current 26.12.0 และ LTS 24.22.0 "Krypton" พร้อมกันเมื่อ 14 ต.ค., Rust ออกแพตช์ 1.99.1, กลุ่ม Framework มีความเคลื่อนไหวหนาแน่น ได้แก่ React (Patch 4 สาย), Vue (Patch 3.5.44 + RC ตัวที่ 12 ของสาย 3.6), Angular 22.2.3, Laravel Framework v13.37.0 และ FastAPI 0.143.1–0.143.3 ฝั่ง DevOps มี Docker Engine v29.9.1, Jenkins (Weekly 2.586 + RC ของ LTS ถัดไป), ArgoCD (Patch 3 สาย + RC ของ 3.6), Terraform (Patch 1.16.6 + RC2 ของ 1.17.0) และ Ansible Core RC แรกของสาย 2.22 ฝั่งฐานข้อมูล PostgreSQL 19 ออก RC1 ตามกำหนดแต่ประกาศเลื่อน GA จาก 29 ต.ค. ไปเป็น 19 พ.ย. 2569 พร้อมเพิ่ม RC2 วันที่ 12 พ.ย. และ Ubuntu ออกชุด USN ขนาดใหญ่ครอบคลุม OpenSSH, Apache HTTP Server, curl, BIND, RabbitMQ, U-Boot, Go และ Kernel หลายสาย นอกจากนี้ยังพบ Traefik v3.7.15, OpenVAS Scanner 3 เวอร์ชันย่อย, Metasploit Framework 6.5.7, VS Code (สาย 1.141–1.142) และ npm CLI v12.2.1/v11.21.1</p>
+      <p><strong>ประเด็นสำคัญ:</strong> ทีมที่ใช้งาน GitLab Self-managed ทุกเวอร์ชัน 19.2–19.4 ควรอัปเกรดโดยเร่งด่วนที่สุดเนื่องจากเป็นช่องโหว่ CVSS สูงสุดและไม่ต้องยืนยันตัวตน ทีมที่ใช้ Ivanti Connect Secure ควรตรวจสอบสัญญาณการโจมตีและอัปเดตทันที (กำหนด CISA KEV ผ่านไปแล้ว) ทีมที่ใช้ nginx ควรอัปเกรดเป็น 1.31.7/1.30.6 และทีมที่ใช้ .NET 8/9/10 ควรติดตั้งแพตช์ความปลอดภัยของเดือนนี้โดยเร็ว สุดท้าย Windows Server 2012/2012 R2 สิ้นสุดการสนับสนุนอย่างสมบูรณ์แล้วตั้งแต่ 13 ต.ค. 2569 (ไม่มี ESU อีกต่อไป) และ Windows Server 2022 เข้าสู่ Extended Support — ทีมที่ยังใช้งานระบบเหล่านี้ควรวางแผนโยกย้ายหรือตรวจสอบเงื่อนไขการสนับสนุนโดยเร็ว</p>
     </div>
   </section>
 
@@ -180,7 +180,7 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
     <h2>📊 Dashboard</h2>
     <div class="dashboard">
       <div class="dashboard-item">
-        <div class="dashboard-item-value">8</div>
+        <div class="dashboard-item-value">29</div>
         <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
       </div>
       <div class="dashboard-item">
@@ -188,15 +188,15 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
         <div class="dashboard-item-label">Major Releases</div>
       </div>
       <div class="dashboard-item">
-        <div class="dashboard-item-value">4</div>
+        <div class="dashboard-item-value">6</div>
         <div class="dashboard-item-label">Security Releases</div>
       </div>
       <div class="dashboard-item">
-        <div class="dashboard-item-value">1</div>
+        <div class="dashboard-item-value">14</div>
         <div class="dashboard-item-label">Patch Releases</div>
       </div>
       <div class="dashboard-item">
-        <div class="dashboard-item-value">1</div>
+        <div class="dashboard-item-value">2</div>
         <div class="dashboard-item-label">EOL Announcements</div>
       </div>
     </div>
@@ -213,20 +213,87 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
         <tr>
           <td><strong>Node.js</strong></td>
           <td>26.12.0 (Current) / 24.22.0 "Krypton" (LTS)</td>
-          <td>ออกพร้อมกันทั้งสาย Current และ LTS โดย 26.12.0 ปรับปรุง WebSocket Mask Helper และข้อความ Error ให้ชัดเจนขึ้นเมื่อไม่รองรับ WebAssembly/RegExp บางฟีเจอร์ พร้อมเดินหน้างาน Synchronous ES Module Loading อย่างต่อเนื่อง (รายละเอียดเฉพาะเจาะจงอ้างอิงจากรายงานของบุคคลที่สาม เนื่องจาก Release Note ฉบับเต็มบน nodejs.org ดึงเนื้อหารายละเอียดได้จำกัดในรอบตรวจสอบนี้)</td>
+          <td>ออกพร้อมกันทั้งสาย Current และ LTS โดยสาย 24 เข้ารหัสชื่อโค้ด "Krypton" อย่างเป็นทางการ; รายละเอียดการเปลี่ยนแปลงเฉพาะเจาะจงของ 26.12.0 อ้างอิงจากรายงานบุคคลที่สาม เนื่องจาก Release Note ฉบับเต็มบน nodejs.org ดึงเนื้อหารายละเอียดได้จำกัดในรอบตรวจสอบนี้</td>
           <td>Oct 14, 2026</td>
           <td><span class="label label-minor">🔹 Minor</span></td>
-          <td><a href="https://nodejs.org/en/blog/release" class="source-badge">nodejs.org/blog/release</a></td>
+          <td><a href="https://github.com/nodejs/node/releases/tag/v26.12.0" class="source-badge">github.com/nodejs</a></td>
+        </tr>
+        <tr>
+          <td><strong>Rust</strong></td>
+          <td>1.99.1</td>
+          <td>แพตช์แก้ไข 3 บั๊ก: missing symbol <code>wcslen</code> บน UEFI/embedded targets, Miscompilation ของค่าส่งกลับ FFI <code>bool</code> บน x86_64 และปัญหา rpath ของ <code>libLLVM</code> บน macOS</td>
+          <td>Oct 16, 2026</td>
+          <td><span class="label label-patch">🩹 Patch</span></td>
+          <td><a href="https://github.com/rust-lang/rust/releases/tag/1.99.1" class="source-badge">github.com/rust-lang</a></td>
+        </tr>
+        <tr>
+          <td><strong>.NET</strong></td>
+          <td>11.0 RC2 / 10.0.13 / 9.0.21 / 8.0.32</td>
+          <td><span class="label label-security">🔒 Security Release</span> แก้ไขรวม 44 ช่องโหว่ข้าม .NET 8/9/10/11, ASP.NET Core และ .NET SDK ครอบคลุม RCE หลายรายการ (เช่น CVE-2026-96235, CVE-2026-96224, CVE-2026-87697, CVE-2026-85363, CVE-2026-96230, CVE-2026-102870, CVE-2026-105016), EoP (CVE-2026-96231, CVE-2026-96225), Info Disclosure (CVE-2026-66822, CVE-2026-96229) และ DoS (CVE-2026-96958/59/60) ยังไม่พบ CVSS Score รายตัวที่ยืนยันจาก MSRC โดยตรงในรอบตรวจสอบนี้</td>
+          <td>Oct 13, 2026</td>
+          <td><span class="label label-security">🔒 Security Release</span></td>
+          <td><a href="https://github.com/dotnet/core/blob/main/release-notes/10.0/10.0.13/10.0.13.md" class="source-badge">github.com/dotnet/core</a></td>
         </tr>
       </tbody>
     </table>
     </div>
-    <div class="empty-note">ไม่พบ Release ใหม่ของ PHP ในช่วงนี้ (RC3 ของทั้ง 3 สายประกาศไปแล้วเมื่อ 6 ต.ค. 2569 ก่อนช่วงเวลานี้ — RC4 มีรายงานกำหนดไว้ประมาณ 22 ต.ค. 2569 ดู "สิ่งที่ต้องติดตาม"), Python (ล่าสุด 3.13.16 เมื่อ 30 ก.ย. 2569), Java/OpenJDK, .NET, Go (go1.27.0 ล่าสุดเมื่อ 19 ส.ค. 2569 มีรายงานจุดย่อย go1.27.1/go1.26.8 ที่ไม่สามารถยืนยันวันที่แน่ชัดในรอบตรวจสอบนี้) และ Rust (1.91.0 ล่าสุดเมื่อ 30 ต.ค. 2568 ก่อนช่วงเวลานี้มาก) ที่มีวันที่ประกาศอยู่ในช่วง 11–17 ต.ค. 2569 ที่ยืนยันได้</div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Python (ล่าสุด 3.13.16 เมื่อ 30 ก.ย. 2569), Java/OpenJDK (มีเพียง Early-Access Tag <code>jdk-28+20</code> เมื่อ 15 ต.ค. 2569 ซึ่งเป็น Dev Build ไม่ใช่ Release ทางการ), Go (ล่าสุด go1.27.2/go1.26.9 เมื่อ 8 ต.ค. 2569) และ PHP (RC3 ของทั้ง 3 สายออกไปแล้วเมื่อ 6 ต.ค. 2569 — RC4 มีรายงานไม่เป็นทางการว่าจะออกประมาณ 22 ต.ค. 2569 ดู "สิ่งที่ต้องติดตาม") ที่มีวันที่ประกาศอยู่ในช่วง 11–17 ต.ค. 2569</div>
   </section>
 
   <section>
     <h2>⚙ Frameworks</h2>
-    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันได้ในช่วง 11–17 ต.ค. 2569 สำหรับ React, Vue (ยังอยู่ระหว่าง Release Candidate ของสาย 3.6 ต่อเนื่องจากสัปดาห์ก่อน แต่ไม่สามารถยืนยันเลขรุ่น RC ล่าสุดที่แน่ชัดได้ในรอบตรวจสอบนี้เนื่องจากข้อมูลจากแหล่งต่าง ๆ ขัดแย้งกัน — ดู UNCERTAIN), Angular, Django (ไม่มี Security/Patch Release ใหม่ต่อจาก 6.1.2/6.0.9/5.2.18 เมื่อ 6 ต.ค. 2569), Laravel Framework, FastAPI และ Spring Boot</div>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Framework</th><th>Version</th><th>Highlights</th><th>Migration</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>React</strong></td>
+          <td>19.3.1 / 19.2.9 / 19.1.10 / 19.0.9</td>
+          <td><span class="label label-patch">🩹 Patch</span> แพตช์พร้อมกัน 4 สาย ปรับปรุง Transport Protocol ของ React Server Components</td>
+          <td>ไม่มีการระบุ Breaking Change</td>
+          <td><a href="https://github.com/facebook/react/releases" class="source-badge">github.com/facebook</a></td>
+        </tr>
+        <tr>
+          <td><strong>Vue</strong></td>
+          <td>3.5.44</td>
+          <td><span class="label label-patch">🩹 Patch</span> แพตช์ของสาย Stable 3.5</td>
+          <td>ไม่มีการระบุ Breaking Change</td>
+          <td><a href="https://github.com/vuejs/core/releases" class="source-badge">github.com/vuejs</a></td>
+        </tr>
+        <tr>
+          <td><strong>Vue</strong></td>
+          <td>3.6.0-rc.12</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> RC ตัวที่ 12 ของสาย 3.6 ยังอยู่ระหว่างปรับความเสถียรของ "Vapor Mode"</td>
+          <td>เป็น Pre-release ยังไม่มี Migration Guide ฉบับสมบูรณ์จนกว่าจะถึง Stable</td>
+          <td><a href="https://github.com/vuejs/core/releases" class="source-badge">github.com/vuejs</a></td>
+        </tr>
+        <tr>
+          <td><strong>Angular</strong></td>
+          <td>22.2.3 (+ Pre-release 22.3.0-next.2 และ 20.3.34)</td>
+          <td><span class="label label-patch">🩹 Patch</span> แพตช์ของสาย 22.2 พร้อม Pre-release Build ที่ 2 ของสาย 22.3</td>
+          <td>ไม่มีการระบุ Breaking Change</td>
+          <td><a href="https://github.com/angular/angular/releases" class="source-badge">github.com/angular</a></td>
+        </tr>
+        <tr>
+          <td><strong>Laravel</strong></td>
+          <td>Framework v13.37.0 (+ v13.36.0 / v12.70.0)</td>
+          <td><span class="label label-minor">🔹 Minor</span> แก้ไข Race Condition ใน Queue ที่ใช้ <code>onOneServer()</code> ร่วมกับ <code>withoutOverlapping()</code>, เพิ่ม Flag <code>--queue</code> ให้คำสั่ง <code>queue:failed</code>, <code>queue:forget</code> รับหลาย ID ได้พร้อมกัน, Eloquent <code>cursor()</code> สร้าง Model Instance น้อยลง และเพิ่มรองรับ JPEG XL ใน Image API</td>
+          <td>ไม่มีการระบุ Breaking Change</td>
+          <td><a href="https://github.com/laravel/framework/releases/tag/v13.37.0" class="source-badge">github.com/laravel</a></td>
+        </tr>
+        <tr>
+          <td><strong>FastAPI</strong></td>
+          <td>0.143.1 / 0.143.2 / 0.143.3</td>
+          <td><span class="label label-patch">🩹 Patch</span> 0.143.3 แก้ไขการ Serialize ค่า Float ที่ไม่ Finite ใน JSONL/SSE Streams</td>
+          <td>ไม่มีการระบุ Breaking Change</td>
+          <td><a href="https://github.com/fastapi/fastapi/releases/tag/0.143.3" class="source-badge">github.com/fastapi</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ Django (Security Release ล่าสุด 6.1.2/6.0.9/5.2.18 เมื่อ 6 ต.ค. 2569 ก่อนช่วงเวลานี้ รายงานไปแล้วในสัปดาห์ก่อน) และ Spring Boot (Milestone ล่าสุด 4.2.0-M2 เมื่อ 24 ก.ย. 2569) ในช่วงเวลานี้</div>
   </section>
 
   <section>
@@ -238,30 +305,79 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
       </thead>
       <tbody>
         <tr>
+          <td><strong>Docker Engine</strong></td>
+          <td>v29.9.1</td>
+          <td><span class="label label-patch">🩹 Patch</span> แพตช์ต่อจาก v29.9.0 ของสัปดาห์ก่อนหน้า</td>
+          <td>Containers</td>
+          <td><a href="https://github.com/moby/moby/releases/tag/v29.9.1" class="source-badge">github.com/moby</a></td>
+        </tr>
+        <tr>
+          <td><strong>Jenkins</strong></td>
+          <td>2.586 (Weekly)</td>
+          <td><span class="label label-patch">🩹 Patch</span> อัปเดตรายสัปดาห์ตามรอบปกติ</td>
+          <td>CI/CD</td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases" class="source-badge">github.com/jenkinsci</a></td>
+        </tr>
+        <tr>
+          <td><strong>Jenkins</strong></td>
+          <td>2.580.2-RC</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> RC ของรุ่น LTS ถัดไปที่มีกำหนดออกจริงประมาณ 28 ต.ค. 2569</td>
+          <td>CI/CD (LTS)</td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases" class="source-badge">github.com/jenkinsci</a></td>
+        </tr>
+        <tr>
           <td><strong>GitLab</strong></td>
-          <td>19.4.2 / 19.3.5 / 19.2.8</td>
-          <td><span class="label label-security">🔒 Security Release</span> แพตช์ฉุกเฉินแก้ไขช่องโหว่รวม 24 รายการ โดยรายการสำคัญที่สุดคือ CVE-2026-97229 ระดับ Critical CVSS 10.0 (ดูรายละเอียดในหัวข้อ Security &amp; CVE) GitLab แนะนำให้ทุกผู้ใช้ Self-managed อัปเกรดทันที หมายเหตุ: การอัปเกรดมี Database Migration จึงอาจเกิด Downtime บนระบบแบบ Single-node</td>
+          <td>19.4.2 / 19.2.8 (+ สาย 19.3 — ดูหมายเหตุ)</td>
+          <td><span class="label label-security">🔒 Security Release</span> แพตช์ฉุกเฉินแก้ไขช่องโหว่ Critical CVSS 10.0 (CVE-2026-97229 — ดูหัวข้อ Security &amp; CVE) GitLab แนะนำให้ Self-managed ทุกรุ่นอัปเกรดทันที การอัปเกรดมี Database Migration จึงอาจเกิด Downtime บนระบบ Single-node <strong>หมายเหตุความขัดแย้งของข้อมูล:</strong> เวอร์ชันแก้ไขของสาย 19.3 มีรายงานไม่ตรงกัน — helpnetsecurity.com และ cyberdaily.au ระบุ 19.3.4 ขณะที่บางแหล่งข่าวระบุ 19.3.5 จึงแสดงทั้งสองค่าไว้เพื่อให้ตรวจสอบกับ GitLab โดยตรงก่อนอัปเกรด</td>
           <td>CI/CD (Security)</td>
           <td><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/" class="source-badge">docs.gitlab.com</a></td>
         </tr>
         <tr>
           <td><strong>GitLab</strong></td>
           <td>19.5</td>
-          <td>ออกตามรอบ Minor Release ปกติ (รายละเอียดฟีเจอร์ฉบับเต็มจาก about.gitlab.com ไม่สามารถดึงเนื้อหาได้ในรอบตรวจสอบนี้ — ดูหมายเหตุ UNCERTAIN จึงไม่ระบุรายฟีเจอร์เพื่อเลี่ยงการคาดเดา)</td>
+          <td><span class="label label-minor">🔹 Minor</span> ออกตามรอบ Minor Release ปกติ (รายละเอียดฟีเจอร์ฉบับเต็มจาก about.gitlab.com ไม่สามารถดึงเนื้อหาได้ครบในรอบตรวจสอบนี้ — ดูหมายเหตุ UNCERTAIN จึงไม่ระบุรายฟีเจอร์เพื่อเลี่ยงการคาดเดา)</td>
           <td>CI/CD</td>
           <td><a href="https://docs.gitlab.com/releases/19/gitlab-19-5-released/" class="source-badge">docs.gitlab.com</a></td>
         </tr>
         <tr>
-          <td><strong>Docker Engine</strong></td>
-          <td>v29.9.1</td>
-          <td>แพตช์ต่อจาก v29.9.0 ของสัปดาห์ก่อนหน้า ยืนยันการเผยแพร่จาก GitHub Releases (รายละเอียด Changelog ฉบับเต็มไม่สามารถดึงได้ในรอบตรวจสอบนี้)</td>
-          <td>Containers</td>
-          <td><a href="https://github.com/moby/moby/releases" class="source-badge">github.com/moby</a></td>
+          <td><strong>Argo CD</strong></td>
+          <td>v3.5.5 / v3.4.11 / v3.3.16</td>
+          <td><span class="label label-patch">🩹 Patch</span> แพตช์ Backport พร้อมกัน 3 สายเสถียร ต่อจากเวอร์ชันที่แก้ CVE-2026-55797 (Command Injection ใน Repo-server ผ่าน SSH ProxyCommand) ไปแล้วก่อนหน้า (นอกช่วงเวลานี้)</td>
+          <td>GitOps/CD</td>
+          <td><a href="https://github.com/argoproj/argo-cd/releases" class="source-badge">github.com/argoproj</a></td>
+        </tr>
+        <tr>
+          <td><strong>Argo CD</strong></td>
+          <td>v3.6.0-rc3</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> RC ตัวที่ 3 ของสาย 3.6 ที่กำลังพัฒนา</td>
+          <td>GitOps/CD</td>
+          <td><a href="https://github.com/argoproj/argo-cd/releases" class="source-badge">github.com/argoproj</a></td>
+        </tr>
+        <tr>
+          <td><strong>Terraform</strong></td>
+          <td>v1.16.6</td>
+          <td><span class="label label-patch">🩹 Patch</span> แพตช์ของสายเสถียร 1.16</td>
+          <td>IaC</td>
+          <td><a href="https://github.com/hashicorp/terraform/releases" class="source-badge">github.com/hashicorp</a></td>
+        </tr>
+        <tr>
+          <td><strong>Terraform</strong></td>
+          <td>v1.17.0-rc2</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> RC ตัวที่ 2 ของสาย 1.17 ที่กำลังพัฒนา</td>
+          <td>IaC</td>
+          <td><a href="https://github.com/hashicorp/terraform/releases" class="source-badge">github.com/hashicorp</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ansible Core</strong></td>
+          <td>v2.22.0rc1</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> RC แรกของสาย 2.22 (เวอร์ชันเสถียรล่าสุดคือ 2.21.5 ออกก่อนหน้า 5 ต.ค. 2569)</td>
+          <td>Automation</td>
+          <td><a href="https://github.com/ansible/ansible/releases" class="source-badge">github.com/ansible</a></td>
         </tr>
       </tbody>
     </table>
     </div>
-    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันได้ในช่วงนี้สำหรับ Jenkins (ไม่สามารถยืนยันเลข Build รายสัปดาห์ล่าสุดได้ในรอบตรวจสอบนี้), GitHub Actions, Argo CD (สาย 3.6 ยังอยู่ระหว่าง Release Candidate ต่อเนื่อง ไม่สามารถยืนยันเลข RC ล่าสุด), Terraform (พบไฟล์ Checksum ของ v1.17.0-rc1 บน releases.hashicorp.com แต่ไม่สามารถยืนยันวันที่เผยแพร่ที่แน่ชัดในช่วงนี้), Ansible Core และ Kubernetes (ยังไม่มี Release เสถียรของสาย 1.38 — อยู่ระหว่างการพัฒนา)</div>
+    <div class="empty-note">ไม่พบ Release เสถียรใหม่ของ Kubernetes (สาย 1.38 ยังอยู่ระหว่างพัฒนา, Stable ล่าสุดคือ 1.37.1 เมื่อ 23 ก.ย. 2569), Docker Compose (ล่าสุด v5.6.0 เมื่อ 2 ต.ค. 2569), GitHub Actions Runner (ล่าสุด v2.338.0 เมื่อ 6 ต.ค. 2569) และ GitHub CLI (ล่าสุด v2.102.0 เมื่อ 30 ก.ย. 2569) ในช่วง 11–17 ต.ค. 2569</div>
   </section>
 
   <section>
@@ -275,14 +391,14 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
         <tr>
           <td><strong>PostgreSQL</strong></td>
           <td>19 RC1</td>
-          <td>ออกตามกำหนดเดิม มีฟีเจอร์เด่นคือ Native REPACK และ Parallel Autovacuum ทีมพัฒนาประกาศเลื่อนกำหนด General Availability (GA) จากเดิมที่เคยระบุไว้ 29 ต.ค. 2569 ออกไปเป็น 19 พ.ย. 2569 พร้อมเพิ่ม Release Candidate รอบที่ 2 (RC2) ในวันที่ 12 พ.ย. 2569 ก่อนเข้าสู่ GA</td>
+          <td>ออกตามกำหนดเดิมเมื่อ 15 ต.ค. มีฟีเจอร์เด่นคือ Native REPACK และ Parallel Autovacuum ทีมพัฒนาประกาศเลื่อนกำหนด General Availability (GA) จากเดิมที่ระบุไว้ 29 ต.ค. 2569 ออกไปเป็น 19 พ.ย. 2569 พร้อมเพิ่ม Release Candidate รอบที่ 2 (RC2) ในวันที่ 12 พ.ย. 2569 ก่อนเข้าสู่ GA</td>
           <td><span class="label label-rc">🧪 Release Candidate</span></td>
           <td><a href="https://www.postgresql.org/about/news/postgresql-19-rc-1-released-3409/" class="source-badge">postgresql.org</a></td>
         </tr>
       </tbody>
     </table>
     </div>
-    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันได้ในช่วงนี้สำหรับ MySQL, MariaDB, SQL Server/Azure SQL, MongoDB, Redis, Cassandra, Elasticsearch (แพตช์ล่าสุด 9.5.5/9.4.8/8.19.23 ประกาศโดย Canada Cyber Centre เมื่อ 8 ต.ค. 2569 ซึ่งอยู่นอกช่วงเวลา 7 วันนี้), AWS RDS/Aurora และ Google Cloud SQL</div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันได้ในช่วงนี้สำหรับ MySQL, MariaDB, SQL Server/Azure SQL, MongoDB, Redis, Cassandra, Elasticsearch (แพตช์ล่าสุด 9.5.5/9.4.8/8.19.23 เมื่อ 8 ต.ค. 2569 อยู่นอกช่วงเวลา 7 วันนี้), AWS RDS/Aurora และ Google Cloud SQL</div>
   </section>
 
   <section>
@@ -295,27 +411,27 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
       <tbody>
         <tr>
           <td><strong>Ubuntu</strong></td>
-          <td>ชุด USN: 8933-1 (RabbitMQ), 8932-1/8927-1 (curl), 8931-1 (Apache HTTP Server), 8930-1 (U-Boot), 8929-1 (Bind), 8928-1 (OpenSSH), 8926-1 (urllib3), 8922-2 (Linux kernel Azure), 8883-2 (Go)</td>
+          <td>ชุด USN รวมถึง: 8933-1 (RabbitMQ), 8932-1/8927-1 (curl), 8931-1 (Apache HTTP Server), 8930-1 (U-Boot), 8929-1 (BIND), 8928-1 (OpenSSH), 8926-1 (urllib3), 8922-2 (Kernel Azure), 8920-1 (Kernel AWS/Azure/IBM), 8915-1 (ffmpeg), 8913-1 (libx11), 8912-1 (libdbi-perl), 8883-2 (Go)</td>
           <td><span class="label label-security">🔒 Security Release</span></td>
-          <td>แพตช์ความปลอดภัยชุดใหญ่เมื่อ 14–15 ต.ค. 2569 ครอบคลุมหลายแพ็กเกจสำคัญ เช่น OpenSSH (แก้ไขปัญหา sftp client เขียนไฟล์ผิดตำแหน่งจาก Path ที่ Server ส่งกลับมา — CVE-2026-106552 และอื่น ๆ รวม 9 CVE), Apache HTTP Server (รวม 9 CVE เช่น CVE-2026-58415 ข้อมูลหลุดผ่าน WebDAV property), curl, BIND, RabbitMQ Server และ Go (ป้องกันการเข้าถึง Network Service โดยไม่ได้ตั้งใจ) สำหรับรุ่นที่รองรับอยู่</td>
+          <td>แพตช์ความปลอดภัยชุดใหญ่ตลอดสัปดาห์ (12–15 ต.ค. 2569) ครอบคลุมหลายแพ็กเกจสำคัญ เช่น OpenSSH (แก้ไขปัญหา sftp client เขียนไฟล์ผิดตำแหน่งจาก Path ที่ Server ส่งกลับมา), Apache HTTP Server (ข้อมูลหลุดผ่าน WebDAV property), curl, BIND, RabbitMQ Server และ Linux Kernel หลายสาย (Generic/AWS/Azure/IBM) สำหรับรุ่นที่รองรับอยู่</td>
           <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com/security</a></td>
         </tr>
         <tr>
           <td><strong>Windows Server</strong> (+ Windows 11/10)</td>
           <td>Patch Tuesday ต.ค. 2569</td>
           <td><span class="label label-security">🔒 Security Release</span></td>
-          <td>Microsoft เผยแพร่ Patch Tuesday เดือน ต.ค. 2569 ซึ่งมีจำนวนช่องโหว่ที่แก้ไขมากเป็นประวัติการณ์ (รายงานแตกต่างกันระหว่าง 1,411–1,415 CVE ขึ้นกับวิธีการนับของแต่ละแหล่ง ถือเป็นครั้งแรกที่แตะระดับ 4 หลัก) รวม Critical 70 รายการ และ Zero-day ที่ถูกโจมตีจริง 1 รายการ (ดู CVE-2026-96951 ในหัวข้อ Security &amp; CVE) พร้อมกันนี้ Windows Server 2022 เข้าสู่ End of Mainstream Support และ Windows 11 24H2 Home/Pro และ Windows 10 Enterprise LTSB 2016 สิ้นสุดการอัปเดตในรอบนี้ด้วย (ดูหัวข้อ End of Life)</td>
+          <td>Microsoft เผยแพร่ Patch Tuesday เดือน ต.ค. 2569 ซึ่งมีจำนวนช่องโหว่มากเป็นประวัติการณ์ (รายงานแตกต่างกันระหว่าง 1,407–1,415 CVE ขึ้นกับวิธีนับของแต่ละแหล่ง — ครั้งแรกที่แตะระดับ 4 หลัก) รวม Critical ประมาณ 69–80 รายการ (ตัวเลขต่างกันตามแหล่งนับเช่นกัน) และ Zero-day ที่ถูกโจมตีจริง 1 รายการ (CVE-2026-96951 ดูหัวข้อ Security &amp; CVE) พร้อมช่องโหว่ที่เปิดเผยต่อสาธารณะแต่ยังไม่พบการโจมตีอีก 1 รายการ (CVE-2026-108398, .NET Framework) <strong>UNCERTAIN:</strong> msrc.microsoft.com เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ตัวเลขทั้งหมดอ้างอิงจากสื่อ Trusted Media หลายแหล่งที่ไม่ตรงกันทุกประการ</td>
           <td><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/" class="source-badge">bleepingcomputer.com</a></td>
         </tr>
       </tbody>
     </table>
     </div>
-    <div class="empty-note">ไม่พบ Errata หรือ Release ที่ยืนยันวันที่แน่ชัดในช่วงนี้สำหรับ Debian, RHEL (RHSA หลายรายการจาก access.redhat.com ที่พบในการค้นหามีวันที่อยู่ก่อนช่วงเวลานี้ทั้งหมด), Rocky Linux และ AlmaLinux — หลายโดเมน (access.redhat.com บางหน้า, security-tracker.debian.org บางหน้า) เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ดูหมายเหตุ UNCERTAIN ท้ายรายงาน</div>
+    <div class="empty-note">ไม่พบ Errata หรือ Release ที่ยืนยันวันที่แน่ชัดในช่วงนี้สำหรับ Debian, RHEL, Rocky Linux และ AlmaLinux — หลายโดเมน (access.redhat.com บางหน้า, security-tracker.debian.org บางหน้า, errata.almalinux.org) เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ (พบรายงานไม่ยืนยัน ALSA-2026:81406 สำหรับ AlmaLinux kernel แต่ไม่สามารถตรวจสอบกับ errata.almalinux.org ได้จริง จึงไม่นำมาแสดง) ดูหมายเหตุ UNCERTAIN ท้ายรายงาน</div>
   </section>
 
   <section>
     <h2>🖥 Virtualization</h2>
-    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ VMware/Broadcom ESXi/vSphere/vCenter (VMSA ล่าสุด VMSA-2026-0007 เมื่อ 3 ก.ย. 2569), Proxmox VE, Hyper-V (ผูกกับ Patch Tuesday ของ Windows Server ซึ่งไม่มี Errata เฉพาะ Hyper-V ที่ยืนยันแยกได้ในรอบนี้) และ KVM/QEMU ในช่วง 11–17 ต.ค. 2569</div>
+    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ VMware/Broadcom ESXi/vSphere/vCenter (VMSA ล่าสุด VMSA-2026-0007 เมื่อ 3 ก.ย. 2569), Proxmox VE (ล่าสุด 9.2 เมื่อ 21 พ.ค. 2569), Hyper-V (ผูกกับ Patch Tuesday ของ Windows Server ซึ่งไม่มี Errata เฉพาะ Hyper-V ที่ยืนยันแยกได้ในรอบนี้) และ KVM/QEMU ในช่วง 11–17 ต.ค. 2569</div>
   </section>
 
   <section>
@@ -328,30 +444,87 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
       <tbody>
         <tr>
           <td><strong>Ivanti Connect Secure</strong></td>
-          <td>แก้ไขเป็น 25.1.1.2 / 25.1.3.0 / 25.1.3.1</td>
-          <td><span class="label label-security">🔒 Security Release</span> ช่องโหว่ Zero-day CVE-2026-104935 ถูกโจมตีจริงก่อนมีประกาศ (ดูรายละเอียดในหัวข้อ Security &amp; CVE)</td>
+          <td>25.1.1.2 / 25.1.3.0 / 25.1.3.1 (+ 22.8R2.5 ตามบางแหล่ง)</td>
+          <td><span class="label label-security">🔒 Security Release</span> ช่องโหว่ Zero-day CVE-2026-104935 ถูกโจมตีจริงก่อนมีประกาศ (ดูรายละเอียดในหัวข้อ Security &amp; CVE) <strong>หมายเหตุความขัดแย้งของข้อมูล:</strong> รายชื่อเวอร์ชันที่ได้รับผลกระทบ/แก้ไขไม่ตรงกันระหว่างแหล่งข่าว (BleepingComputer vs. Itdaily) — ควรตรวจสอบกับ Ivanti โดยตรงก่อนอัปเดต และมีรายงานจาก Volexity ว่าช่องโหว่ Privilege Escalation อีกตัวที่ใช้ร่วมกันในการโจมตียังไม่มีแพตช์ (ไม่มี CVE ยืนยัน)</td>
           <td>VPN / Remote Access</td>
-          <td><a href="https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks" class="source-badge">bleepingcomputer.com</a></td>
+          <td><a href="https://cyber.gc.ca/en/alerts-advisories/ivanti-security-advisory-av26-1035" class="source-badge">cyber.gc.ca (AV26-1035)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Traefik Proxy</strong></td>
+          <td>v3.7.15</td>
+          <td><span class="label label-patch">🩹 Patch</span> แก้ไขช่องโหว่ด้านความปลอดภัย 3 รายการใน Kubernetes Ingress NGINX Provider (mTLS ถูกปิดโดยไม่ตั้งใจ, ตรวจสอบ Namespace ผิดพลาด) และ Experimental FastProxy (Panic จากการจัดการ Buffer ไม่ปลอดภัย) พร้อมปรับปรุงการปฏิเสธ CONNECT Request — ทั้ง 3 รายการมีเฉพาะ GHSA ID ยังไม่มี CVE ID จึงไม่จัดเป็น Security Release ตามเกณฑ์ของรายงานนี้</td>
+          <td>Reverse Proxy</td>
+          <td><a href="https://github.com/traefik/traefik/releases/tag/v3.7.15" class="source-badge">github.com/traefik</a></td>
+        </tr>
+        <tr>
+          <td><strong>OpenVAS Scanner (Greenbone)</strong></td>
+          <td>v23.51.1 / v23.51.2 / v23.52.0</td>
+          <td><span class="label label-patch">🩹 Patch</span> v23.51.1 แก้ปัญหาเวลาแก้ไขไฟล์ Include ที่ซ้อนกันระหว่างสแกน, v23.51.2 แก้ไขปัญหาการเข้าถึงแบบไม่ยืนยันตัวตนเมื่อเปิดใช้ mTLS (ไม่มี CVE ID) และ v23.52.0 เพิ่ม Endpoint <code>/health/performance</code> พร้อมบังคับยืนยันตัวตน</td>
+          <td>Security Scanner</td>
+          <td><a href="https://github.com/greenbone/openvas-scanner/releases" class="source-badge">github.com/greenbone</a></td>
+        </tr>
+        <tr>
+          <td><strong>Metasploit Framework</strong></td>
+          <td>6.5.7</td>
+          <td><span class="label label-patch">🩹 Patch</span> Rapid7 แท็กเวอร์ชันบน GitHub เมื่อ 16 ต.ค. 2569 (ประมาณ 97 Commits จาก 18 ผู้ร่วมพัฒนา) ไม่พบ Release Notes ที่ระบุรายละเอียดโมดูลใหม่อย่างเป็นทางการในรอบตรวจสอบนี้</td>
+          <td>Security Tool</td>
+          <td><a href="https://github.com/rapid7/metasploit-framework/tags" class="source-badge">github.com/rapid7</a></td>
         </tr>
       </tbody>
     </table>
     </div>
-    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันได้ในช่วงนี้สำหรับ Nginx, Caddy, HAProxy, Traefik Proxy (ล่าสุด v3.7.11 เมื่อ 19 ส.ค. 2569), WireGuard, pfSense, OPNsense, Nmap, Wireshark (ล่าสุด v4.6.5/v4.4.15 เมื่อ 29 เม.ย. 2569), Nessus, OpenVAS และ Metasploit Framework ส่วนช่องโหว่ Citrix NetScaler CVE-2026-107406 (Critical CVSS 9.5) ที่ Citrix เปิดเผยและออกแพตช์ไปแล้วเมื่อ 8 ต.ค. 2569 (ก่อนช่วงเวลา 7 วันของรายงานนี้) ยังมีหน่วยงานความปลอดภัยหลายประเทศออกคำเตือนต่อเนื่องในสัปดาห์นี้ (เช่น Singapore CSA เมื่อ 12 ต.ค. 2569) จึงนำมาระบุไว้ใน "สิ่งที่ต้องติดตาม" แทนการจัดเป็น Release ใหม่ของสัปดาห์นี้</div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ HAProxy, WireGuard, pfSense, OPNsense, Nmap (ล่าสุด 7.99 เมื่อ 26 มี.ค. 2569), Wireshark (ล่าสุด 4.6.9/4.4.19 เมื่อ 23 ก.ย. 2569) และ Nessus (ล่าสุดประมาณ 10.12.2 เมื่อ 23 ก.ค. 2569) ในช่วงเวลานี้ ส่วนช่องโหว่ Citrix NetScaler CVE-2026-107406 (Critical CVSS 9.5) ที่ Citrix แพตช์ไปแล้วเมื่อ 8 ต.ค. 2569 (ก่อนช่วงเวลา 7 วันของรายงานนี้) ยังมีหน่วยงานความปลอดภัยหลายประเทศออกคำเตือนต่อเนื่อง (เช่น Singapore CSA เมื่อ 12 ต.ค. 2569) จึงนำมาระบุไว้ใน "สิ่งที่ต้องติดตาม" แทนการจัดเป็น Release ใหม่ของสัปดาห์นี้</div>
   </section>
 
   <section>
     <h2>☁ Cloud &amp; Infrastructure</h2>
-    <div class="empty-note">ไม่พบประกาศฟีเจอร์ใหม่ (GA) ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 11–17 ต.ค. 2569 จาก AWS What's New, Azure Updates หรือ Google Cloud Release Notes เนื่องจากโดเมนหลัก (aws.amazon.com, azure.microsoft.com, cloud.google.com) เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ และผลการค้นหาที่ได้เป็นเพียงบทสรุปของสำนักข่าวบุคคลที่สามที่ไม่สามารถยืนยันวันที่ประกาศที่แน่ชัดได้ จึงไม่นำมาแสดงเพื่อเลี่ยงการคาดเดา — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน ด้าน Pulumi CLI เวอร์ชันล่าสุดที่ยืนยันได้คือ v3.267.0 เมื่อ 1 ต.ค. 2569 ซึ่งอยู่นอกช่วงเวลา 7 วันนี้ และ Terraform/CloudFormation ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดในสัปดาห์นี้</div>
+    <div class="empty-note">ไม่พบประกาศฟีเจอร์ใหม่ (GA) ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 11–17 ต.ค. 2569 จาก AWS What's New, Azure Updates หรือ Google Cloud Release Notes เนื่องจากโดเมนหลัก (aws.amazon.com, azure.microsoft.com, cloud.google.com) เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ และผลการค้นหาที่ได้เป็นเพียงบทสรุปของสื่อบุคคลที่สามที่ไม่สามารถยืนยันวันที่ประกาศที่แน่ชัดได้ จึงไม่นำมาแสดงเพื่อเลี่ยงการคาดเดา — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน ด้าน Pulumi CLI เวอร์ชันล่าสุดที่ยืนยันได้คือ v3.267.0 เมื่อ 1 ต.ค. 2569 ซึ่งอยู่นอกช่วงเวลา 7 วันนี้ ส่วน Terraform ได้รายงานแยกไว้แล้วในหัวข้อ DevOps &amp; CI/CD และ CloudFormation ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดในสัปดาห์นี้</div>
   </section>
 
   <section>
     <h2>🧰 Developer Tools &amp; IDE</h2>
-    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันได้ในช่วง 11–17 ต.ค. 2569 สำหรับ VS Code, JetBrains IDE, Eclipse IDE, Git/git-scm, npm CLI, pip, Composer, Apache Maven และ Gradle (code.visualstudio.com และ git-scm.com เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ผลการค้นหาที่ได้เป็นข้อมูลเก่ากว่าช่วงเวลานี้ทั้งหมด)</div>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>VS Code</strong></td>
+          <td>1.142.0 / 1.141.2 / 1.141.1</td>
+          <td><span class="label label-patch">🩹 Patch</span> ชุดรีลีสต่อเนื่องของสาย 1.141–1.142 ในสัปดาห์นี้ (13–14 ต.ค.) รายละเอียดฟีเจอร์เฉพาะไม่สามารถยืนยันได้ครบถ้วนเนื่องจาก code.visualstudio.com/updates เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้</td>
+          <td><a href="https://github.com/microsoft/vscode/releases" class="source-badge">github.com/microsoft</a></td>
+        </tr>
+        <tr>
+          <td><strong>npm CLI</strong></td>
+          <td>v12.2.1 / v11.21.1</td>
+          <td><span class="label label-patch">🩹 Patch</span> แก้บั๊กเกี่ยวกับการเขียนคีย์ <code>allowScripts</code> เมื่อใช้ <code>install-strategy=linked</code> พร้อมอัปเดต Dependency (เช่น undici 6.29.0)</td>
+          <td><a href="https://github.com/npm/cli/releases" class="source-badge">github.com/npm</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ JetBrains IDEs (อยู่ระหว่าง EAP ของสาย 2026.2, Build ล่าสุดที่พบ 2026.2.2), Eclipse IDE (รีลีสรายไตรมาสล่าสุด 2026-09 รอบถัดไปคือ ธ.ค. 2569), Git/git-scm (Tag ล่าสุด v2.56.0 เมื่อ 28 ก.ย. 2569), pip (ล่าสุด 26.2.1 เมื่อ 4 ส.ค. 2569), Composer (ล่าสุด 2.10.3/2.2.30 เมื่อ 27 ส.ค. 2569), Apache Maven (ล่าสุด 3.10.0 เมื่อ 1 ต.ค. 2569) และ Gradle (ล่าสุด 9.8.1 เมื่อ 7 ต.ค. 2569 และ 8.14.6 เมื่อ 8 ต.ค. 2569) ในช่วงเวลา 11–17 ต.ค. 2569 ที่ยืนยันได้</div>
   </section>
 
   <section>
     <h2>🌍 Web Server</h2>
-    <div class="empty-note">Apache HTTP Server ได้รับการแพตช์ความปลอดภัยผ่านชุด USN ของ Ubuntu แล้ว (ดูหัวข้อ Operating Systems — USN-8931-1) ไม่พบ Release ต้นทาง (upstream) ใหม่ของ Apache HTTP Server, Nginx, Caddy และ IIS (ผูกกับ Patch Tuesday ซึ่งไม่มี Errata เฉพาะ IIS ที่ยืนยันแยกได้ในรอบนี้) ในช่วงเวลานี้</div>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Changes</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>nginx</strong></td>
+          <td>mainline 1.31.7 / stable 1.30.6</td>
+          <td><span class="label label-security">🔒 Security Release</span> แก้ไขช่องโหว่ Use-after-free ใน <code>ngx_http_core_module</code> (CVE-2026-97205, CVSS 8.1) ซึ่งเกิดเมื่อเปิดใช้ Asynchronous File I/O ร่วมกับ SSI "include virtual" — สื่อรองบางแห่งอ้างว่ามีการแก้ไขอีก 4 CVE ร่วมด้วย (CVE-2026-15176, CVE-2026-93479, CVE-2026-95101, CVE-2026-97629) แต่ไม่สามารถยืนยันกับ nginx.org ได้โดยตรงในรอบตรวจสอบนี้ จึงไม่นำ 4 รายการนี้มาแสดง</td>
+          <td><a href="https://github.com/nginx/nginx/tags" class="source-badge">github.com/nginx (tag)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">Apache HTTP Server ได้รับแพตช์ผ่านชุด USN ของ Ubuntu แล้ว (ดูหัวข้อ Operating Systems — USN-8931-1) ไม่พบ Release ต้นทาง (Upstream) ใหม่ของ Apache HTTP Server (ล่าสุด httpd 2.4.69 เมื่อ 1 ต.ค. 2569 ก่อนช่วงเวลานี้), Caddy (ล่าสุด v2.11.7 เมื่อ 3 ต.ค. 2569) และ IIS (ผูกกับ Patch Tuesday ซึ่งไม่มี Errata เฉพาะ IIS ที่ยืนยันแยกได้ในรอบนี้) ในช่วงเวลานี้</div>
   </section>
 
   <section>
@@ -366,32 +539,46 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
           <td><strong>GitLab (CE/EE)</strong></td>
           <td>CVE-2026-97229</td>
           <td><span class="severity-critical">Critical (CVSS 10.0)</span> — <em>ไม่ต้องยืนยันตัวตน, RCE</em></td>
-          <td>19.4.2 / 19.3.5 / 19.2.8</td>
+          <td>19.4.2 / 19.2.8 / 19.3.4 (บางแหล่งระบุ 19.3.5 — ดูหมายเหตุ)</td>
           <td><a href="https://www.helpnetsecurity.com/2026/10/13/gitlab-ci-cd-regular-expression-compiler-vulnerability-cve-2026-97229" class="source-badge">helpnetsecurity.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Atlassian Data Center/Server</strong> (Bitbucket, Confluence, Jira Software/Service Mgmt, Bamboo, Crowd, Crucible, FishEye)</td>
+          <td>CVE-2026-21589</td>
+          <td><span class="severity-critical">Critical (CVSS v4.0 9.3)</span> — <em>Arbitrary File Access, มีรายงานการโจมตีจริงหลัง PoC เผยแพร่ต่อสาธารณะ</em></td>
+          <td>ตามคำแนะนำของ Atlassian — ไม่พบเลขเวอร์ชันที่แก้ไขเจาะจงในแหล่งข้อมูลที่ตรวจสอบได้ในรอบนี้ (ควรตรวจสอบกับ Atlassian Security Advisory โดยตรง)</td>
+          <td><a href="https://cyber.gc.ca/en/alerts-advisories/atlassian-security-advisory-av26-1002" class="source-badge">cyber.gc.ca (AV26-1002)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft Windows (Shell)</strong></td>
+          <td>CVE-2026-96951</td>
+          <td><span class="severity-high">High (CVSS 8.8)</span> — <em>Zero-day, กำลังถูกโจมตีจริง, ข้ามการป้องกัน Mark of the Web</em></td>
+          <td>Patch Tuesday ต.ค. 2569 (KB ตามรุ่น Windows)</td>
+          <td><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/" class="source-badge">bleepingcomputer.com</a></td>
         </tr>
         <tr>
           <td><strong>Ivanti Connect Secure</strong></td>
           <td>CVE-2026-104935</td>
           <td><span class="severity-high">High (CVSS 8.6)</span> — <em>Zero-day, กำลังถูกโจมตีจริง, อยู่ใน CISA KEV</em></td>
-          <td>25.1.1.2 / 25.1.3.0 / 25.1.3.1</td>
-          <td><a href="https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks" class="source-badge">bleepingcomputer.com</a></td>
+          <td>25.1.1.2 / 25.1.3.0 / 25.1.3.1 (รายชื่อเวอร์ชันมีความขัดแย้งระหว่างแหล่งข่าว — ดูหัวข้อ Network &amp; Security)</td>
+          <td><a href="https://cyber.gc.ca/en/alerts-advisories/ivanti-security-advisory-av26-1035" class="source-badge">cyber.gc.ca (AV26-1035)</a></td>
         </tr>
         <tr>
-          <td><strong>Microsoft Windows (Shell)</strong></td>
-          <td>CVE-2026-96951</td>
-          <td><span class="severity-high">High (CVSS 8.8)</span> — <em>Zero-day, กำลังถูกโจมตีจริง</em></td>
-          <td>Patch Tuesday ต.ค. 2569 (KB ตามรุ่น Windows)</td>
-          <td><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/" class="source-badge">bleepingcomputer.com</a></td>
+          <td><strong>nginx</strong></td>
+          <td>CVE-2026-97205</td>
+          <td><span class="severity-high">High (CVSS 8.1)</span> — <em>Use-after-free</em></td>
+          <td>1.31.7 (mainline) / 1.30.6 (stable)</td>
+          <td><a href="https://security-tracker.debian.org/tracker/CVE-2026-97205" class="source-badge">security-tracker.debian.org</a></td>
         </tr>
       </tbody>
     </table>
     </div>
-    <div class="note">หมายเหตุ: Microsoft Patch Tuesday เดือน ต.ค. 2569 แก้ไข CVE รวมประมาณ 1,411–1,415 รายการ (ตัวเลขแตกต่างกันตามวิธีนับของแต่ละแหล่ง เช่น Release Note ของ Microsoft เอง 1,413 รายการ, รายชื่อ CVE ที่เผยแพร่ 1,411 รายการ) รวม Critical 70 รายการ โดยมี Zero-day ที่ถูกเปิดเผยต่อสาธารณะอีก 2 รายการที่ยังไม่มี CVSS/รายละเอียดที่ยืนยันได้ครบถ้วนในรอบตรวจสอบนี้ ได้แก่ CVE-2026-108398 (.NET Framework) และ CVE-2026-92707 (MessagePack-CSharp, DoS ระดับ Moderate ตามรายงานของ SOCRadar) จึงไม่นำมาแสดงในตารางเพื่อเลี่ยงการคาดเดา CVSS ที่ไม่ยืนยัน เช่นเดียวกับ Ubuntu USN ชุดใหญ่ (ดูหัวข้อ Operating Systems) ซึ่งมี CVE ID จริงหลายรายการ (เช่น CVE-2026-106552 ของ OpenSSH, CVE-2026-58415 ของ Apache HTTP Server) แต่ยังไม่ได้ดึง CVSS/Severity รายตัวที่ยืนยันจาก NVD ภายในรอบตรวจสอบนี้ เนื่องจาก nvd.nist.gov เข้าถึงไม่ได้โดยตรง <strong>UNCERTAIN:</strong> nvd.nist.gov, cisa.gov เข้าถึงไม่ได้โดยตรงในสัปดาห์นี้ ข้อมูลที่เกี่ยวข้องผ่านการยืนยันข้ามแหล่งด้วย WebSearch และแหล่งข้อมูล Official/Trusted Media อื่นที่เข้าถึงได้แทน</div>
+    <div class="note">หมายเหตุ: .NET Security Release (8.0.32/9.0.21/10.0.13/11.0 RC2 — ดูหัวข้อ Programming Languages) แก้ไขรวม 44 CVE แต่ยังไม่พบ CVSS รายตัวที่ยืนยันจาก MSRC โดยตรงในรอบตรวจสอบนี้ จึงไม่นำมาแสดงเป็นแถวเดี่ยวในตารางนี้ Ubuntu USN ชุดใหญ่สัปดาห์นี้ (ดูหัวข้อ Operating Systems) มี CVE ID จริงจำนวนมากแต่ยังไม่ได้ดึง CVSS รายตัวจาก NVD เนื่องจาก nvd.nist.gov เข้าถึงไม่ได้โดยตรง นอกจากนี้ยังมีรายงานเพิ่มเติมที่ตรวจสอบได้เพียงบางส่วนจากแหล่งเดียว จึงไม่นำเข้าตารางหลักเพื่อเลี่ยงการคาดเดา ได้แก่ Cisco AsyncOS/Secure Email Gateway (CVE-2026-76519 — Cisco ยืนยันการโจมตีจริง, CISA KEV เพิ่มเมื่อ 14 ต.ค. แต่ยังไม่พบ CVSS/เวอร์ชันแก้ไขที่ยืนยันได้ — cyber.gc.ca AV26-1042), Fortinet FortiSIEM (CVE-2026-106173) และ FortiSandbox GUI (CVE-2026-107656) ที่รายงานว่าเป็น Critical จากแหล่งเดียว (dailysecurityreview.com) ยังไม่ยืนยันกับ FortiGuard โดยตรง และ Microsoft .NET Framework (CVE-2026-108398, Security Feature Bypass/WDAC — เปิดเผยต่อสาธารณะแล้วแต่ยังไม่พบรายงานการโจมตีจริง) <strong>UNCERTAIN:</strong> nvd.nist.gov, cisa.gov, msrc.microsoft.com เข้าถึงไม่ได้โดยตรงในสัปดาห์นี้ ข้อมูลที่เกี่ยวข้องผ่านการยืนยันข้ามแหล่งด้วย WebSearch และแหล่งข้อมูล Official/Government CERT (cyber.gc.ca) ที่เข้าถึงได้แทน</div>
   </section>
 
   <section>
     <h2>⚠ Breaking Changes</h2>
-    <div class="empty-note">ไม่พบ Breaking Change ใหม่ที่ประกาศอย่างเป็นทางการในช่วง 11–17 ต.ค. 2569 ที่ยืนยันได้จาก Official Documentation (รายการ Breaking Change ของ FastAPI 0.143.0 และ OpenVAS Scanner v23.51.0 ได้รายงานไปแล้วในสัปดาห์ก่อนหน้า วันที่ 4–10 ต.ค. 2569)</div>
+    <div class="empty-note">ไม่พบ Breaking Change ใหม่ที่ประกาศอย่างเป็นทางการในช่วง 11–17 ต.ค. 2569 จาก Official Documentation (รายการ Breaking Change ของ FastAPI 0.143.0 และ OpenVAS Scanner v23.51.0 รายงานไปแล้วในสัปดาห์ก่อนหน้า วันที่ 4–10 ต.ค. 2569)</div>
   </section>
 
   <section>
@@ -403,10 +590,16 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
       </thead>
       <tbody>
         <tr>
+          <td><strong>Windows Server 2012 / 2012 R2</strong></td>
+          <td>Oct 13, 2026 <span class="label label-eol">⛔ End of Life</span></td>
+          <td>ระยะ Extended Security Updates (ESU) ปีสุดท้าย (ปีที่ 3) สิ้นสุดแล้ว ไม่มีแพตช์ความปลอดภัยใด ๆ อีกในทุกราคา ควรย้ายไปยัง Windows Server รุ่นใหม่โดยเร็ว</td>
+          <td><a href="https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2012" class="source-badge">learn.microsoft.com/lifecycle</a></td>
+        </tr>
+        <tr>
           <td><strong>Windows Server 2022</strong> (+ Windows 11 24H2 Home/Pro, Windows 10 Enterprise LTSB 2016)</td>
           <td>Oct 13, 2026 <span class="label label-eol">⛔ End of Life</span></td>
-          <td>Windows Server 2022 เข้าสู่ Extended Support ถึง 14 ต.ค. 2574 (ไม่มีค่าใช้จ่ายเพิ่มสำหรับแพตช์ความปลอดภัยรายเดือน) แนะนำย้ายไปยัง Windows Server 2025 (สิ้นสุด Mainstream Support พ.ย. 2572) ส่วน Windows 11 24H2 Home/Pro และ Windows 10 Enterprise LTSB 2016 สิ้นสุดการอัปเดตแล้วตั้งแต่รอบนี้ ผู้ใช้ควรอัปเกรดเป็นรุ่นที่ยังรองรับ</td>
-          <td><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-windows-server-2022-reached-end-of-mainstream-support" class="source-badge">bleepingcomputer.com</a></td>
+          <td>Windows Server 2022 สิ้นสุด Mainstream Support เข้าสู่ Extended Support ถึง 14 ต.ค. 2574 (ไม่มีฟีเจอร์ใหม่/non-security fix อีก) แนะนำวางแผนย้ายไปยัง Windows Server 2025 ส่วน Windows 11 24H2 Home/Pro และ Windows 10 Enterprise LTSB 2016 สิ้นสุดการอัปเดตแล้วตั้งแต่รอบนี้ ควรอัปเกรดเป็นรุ่นที่ยังรองรับ</td>
+          <td><a href="https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2022" class="source-badge">learn.microsoft.com/lifecycle</a></td>
         </tr>
       </tbody>
     </table>
@@ -418,12 +611,14 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
     <div class="highlight-box">
       <ul>
         <li><strong>PostgreSQL 19 GA</strong> — เลื่อนจากกำหนดเดิม 29 ต.ค. 2569 ออกไปเป็น 19 พ.ย. 2569 โดยจะมี RC2 อีกรอบในวันที่ 12 พ.ย. 2569 ก่อนเข้าสู่ Stable (<a href="https://www.postgresql.org/about/news/postgresql-19-rc-1-released-3409/">postgresql.org</a>)</li>
-        <li><strong>PHP 8.6.0</strong> — มีรายงาน (ยังไม่ยืนยันจากประกาศทางการ) ว่า RC4 มีกำหนดประมาณ 22 ต.ค. 2569 และ RC5 ประมาณ 5 พ.ย. 2569 ก่อนเข้าสู่ GA ที่วางแผนไว้ 19 พ.ย. 2569</li>
-        <li><strong>Citrix NetScaler ADC/Gateway</strong> — ช่องโหว่ Critical CVSS 9.5 (CVE-2026-107406) ที่แก้ไขไปแล้วเมื่อ 8 ต.ค. 2569 ยังมีหน่วยงานความปลอดภัยหลายประเทศออกคำเตือนให้เร่งอัปเดตต่อเนื่องในสัปดาห์นี้ (Singapore CSA, 12 ต.ค. 2569) ทีมที่ยังไม่อัปเดตควรดำเนินการทันทีเป็น 14.1-73.46+ หรือ 13.1-64.29+</li>
-        <li><strong>Ivanti Connect Secure</strong> — กำหนด Remediation ของ CISA KEV สำหรับ CVE-2026-104935 คือ 16 ต.ค. 2569 ซึ่งผ่านไปแล้ว หน่วยงานรัฐบาลกลางสหรัฐฯ และองค์กรทั่วไปที่ยังไม่แพตช์ควรดำเนินการเร่งด่วนที่สุด และมีรายงานช่องโหว่ Privilege Escalation อีกตัวที่ยังไม่มีแพตช์ซึ่งถูกใช้โจมตีร่วมกัน (รอ Ivanti ออกแพตช์เพิ่มเติม)</li>
-        <li><strong>Node.js 26</strong> — มีรายงานว่าจะเข้าสู่ Long-Term Support (LTS) ประมาณ 28 ต.ค. 2569 (ยังไม่ยืนยันจาก Release Schedule ทางการในรอบตรวจสอบนี้)</li>
-        <li><strong>GitLab Secrets Manager</strong> — อยู่ระหว่างการเตรียมเปิดใช้งาน General Availability (GA) บน Self-managed ต่อจาก Public Beta ที่เริ่มในเวอร์ชัน 19.0 (พ.ค. 2569) ยังไม่มีกำหนดวันที่แน่ชัดในรอบตรวจสอบนี้</li>
-        <li><strong>Kubernetes 1.38</strong> — ยังอยู่ระหว่างการพัฒนา (Stable ล่าสุดคือ 1.37.0 เมื่อ 26 ส.ค. 2569) ยังไม่มีกำหนด Release ที่ชัดเจนในรอบตรวจสอบนี้</li>
+        <li><strong>PHP 8.6.0</strong> — มีรายงานไม่เป็นทางการว่า RC4 มีกำหนดประมาณ 22 ต.ค. 2569 และ RC5 ประมาณ 5 พ.ย. 2569 ก่อนเข้าสู่ GA ที่วางแผนไว้ 19 พ.ย. 2569</li>
+        <li><strong>Jenkins LTS ถัดไป</strong> — มีกำหนดออกจริงประมาณ 28 ต.ค. 2569 ต่อจาก RC 2.580.2 ของสัปดาห์นี้</li>
+        <li><strong>Citrix NetScaler ADC/Gateway</strong> — ช่องโหว่ Critical CVSS 9.5 (CVE-2026-107406) ที่แพตช์ไปแล้วเมื่อ 8 ต.ค. 2569 ยังมีหน่วยงานความปลอดภัยหลายประเทศออกคำเตือนให้เร่งอัปเดตต่อเนื่องในสัปดาห์นี้ (Singapore CSA, 12 ต.ค. 2569) ทีมที่ยังไม่อัปเดตควรดำเนินการทันที</li>
+        <li><strong>Ivanti Connect Secure</strong> — กำหนด Remediation ของ CISA KEV สำหรับ CVE-2026-104935 คือ 16 ต.ค. 2569 ซึ่งผ่านไปแล้ว และมีรายงานช่องโหว่ Privilege Escalation อีกตัวที่ยังไม่มีแพตช์ซึ่งถูกใช้โจมตีร่วมกัน (รอ Ivanti ออกแพตช์เพิ่มเติม)</li>
+        <li><strong>GitLab Secrets Manager</strong> — อยู่ระหว่างเตรียมเปิดใช้งาน General Availability (GA) บน Self-managed ต่อจาก Public Beta ที่เริ่มในเวอร์ชัน 19.0 ยังไม่มีกำหนดวันที่แน่ชัดในรอบตรวจสอบนี้</li>
+        <li><strong>Kubernetes 1.38</strong> — ยังอยู่ระหว่างการพัฒนา (Stable ล่าสุดคือ 1.37.1 เมื่อ 23 ก.ย. 2569) ยังไม่มีกำหนด Release ที่ชัดเจนในรอบตรวจสอบนี้</li>
+        <li><strong>Oracle Critical Patch Update</strong> — มีกำหนดเผยแพร่วันที่ 20 ต.ค. 2569 ซึ่งอยู่นอกกรอบเวลา 7 วันของสัปดาห์นี้ (<a href="https://blogs.oracle.com/security/">blogs.oracle.com/security</a>)</li>
+        <li><strong>SAP Security Patch Day / Adobe Patch Tuesday ต.ค. 2569</strong> — มีรายงานจากสื่อว่าออกพร้อม Microsoft Patch Tuesday เมื่อ 13 ต.ค. (SAP ประมาณ 20 CVE, Adobe ประมาณ 174 รายการใน 11 Bulletin) แต่ยังไม่สามารถยืนยัน CVE ID/CVSS รายตัวจากหน้า Official ของ SAP และ Adobe ได้โดยตรงในรอบตรวจสอบนี้ — ควรตรวจสอบ support.sap.com/securitynotes และ helpx.adobe.com/security ก่อนประเมินความเสี่ยง</li>
       </ul>
     </div>
   </section>
@@ -432,7 +627,7 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
     <h2>📈 Quick Stats</h2>
     <div class="dashboard">
       <div class="dashboard-item">
-        <div class="dashboard-item-value">8</div>
+        <div class="dashboard-item-value">29</div>
         <div class="dashboard-item-label">Total Releases</div>
       </div>
       <div class="dashboard-item">
@@ -440,19 +635,19 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
         <div class="dashboard-item-label">Major Releases</div>
       </div>
       <div class="dashboard-item">
-        <div class="dashboard-item-value">4</div>
+        <div class="dashboard-item-value">6</div>
         <div class="dashboard-item-label">Security Releases</div>
       </div>
       <div class="dashboard-item">
-        <div class="dashboard-item-value">1</div>
+        <div class="dashboard-item-value">14</div>
         <div class="dashboard-item-label">Patch Releases</div>
       </div>
       <div class="dashboard-item">
-        <div class="dashboard-item-value">3</div>
+        <div class="dashboard-item-value">5</div>
         <div class="dashboard-item-label">New CVEs</div>
       </div>
       <div class="dashboard-item">
-        <div class="dashboard-item-value">1</div>
+        <div class="dashboard-item-value">2</div>
         <div class="dashboard-item-label">EOL Announcements</div>
       </div>
     </div>
@@ -464,13 +659,31 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
       <div>
         <h3>Official</h3>
         <ul>
-          <li><a href="https://nodejs.org/en/blog/release">nodejs.org/en/blog/release</a></li>
+          <li><a href="https://github.com/nodejs/node/releases">github.com/nodejs/node</a></li>
+          <li><a href="https://github.com/rust-lang/rust/releases">github.com/rust-lang/rust</a></li>
+          <li><a href="https://github.com/dotnet/core/releases">github.com/dotnet/core</a></li>
+          <li><a href="https://github.com/facebook/react/releases">github.com/facebook/react</a></li>
+          <li><a href="https://github.com/vuejs/core/releases">github.com/vuejs/core</a></li>
+          <li><a href="https://github.com/angular/angular/releases">github.com/angular/angular</a></li>
+          <li><a href="https://github.com/laravel/framework/releases">github.com/laravel/framework</a></li>
+          <li><a href="https://github.com/fastapi/fastapi/releases">github.com/fastapi/fastapi</a></li>
           <li><a href="https://github.com/moby/moby/releases">github.com/moby/moby</a></li>
-          <li><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/">docs.gitlab.com — GitLab 19.4.2 Patch Release</a></li>
-          <li><a href="https://docs.gitlab.com/releases/19/gitlab-19-5-released/">docs.gitlab.com — GitLab 19.5 Released</a></li>
+          <li><a href="https://github.com/jenkinsci/jenkins/releases">github.com/jenkinsci/jenkins</a></li>
+          <li><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/">docs.gitlab.com — GitLab 19.4.2</a></li>
+          <li><a href="https://docs.gitlab.com/releases/19/gitlab-19-5-released/">docs.gitlab.com — GitLab 19.5</a></li>
+          <li><a href="https://github.com/argoproj/argo-cd/releases">github.com/argoproj/argo-cd</a></li>
+          <li><a href="https://github.com/hashicorp/terraform/releases">github.com/hashicorp/terraform</a></li>
+          <li><a href="https://github.com/ansible/ansible/releases">github.com/ansible/ansible</a></li>
           <li><a href="https://www.postgresql.org/about/news/postgresql-19-rc-1-released-3409/">postgresql.org — PostgreSQL 19 RC1</a></li>
-          <li><a href="https://www.postgresql.org/message-id/f161fbb7-e193-42eb-bec7-4cfc1af74a50%40postgresql.org">postgresql.org — Updated RC/GA dates</a></li>
           <li><a href="https://ubuntu.com/security/notices">ubuntu.com/security/notices</a></li>
+          <li><a href="https://github.com/traefik/traefik/releases">github.com/traefik/traefik</a></li>
+          <li><a href="https://github.com/greenbone/openvas-scanner/releases">github.com/greenbone/openvas-scanner</a></li>
+          <li><a href="https://github.com/rapid7/metasploit-framework/tags">github.com/rapid7/metasploit-framework</a></li>
+          <li><a href="https://github.com/nginx/nginx/tags">github.com/nginx/nginx</a></li>
+          <li><a href="https://github.com/microsoft/vscode/releases">github.com/microsoft/vscode</a></li>
+          <li><a href="https://github.com/npm/cli/releases">github.com/npm/cli</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2012">learn.microsoft.com/lifecycle — Windows Server 2012</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2022">learn.microsoft.com/lifecycle — Windows Server 2022</a></li>
         </ul>
       </div>
       <div>
@@ -478,9 +691,12 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
         <ul>
           <li><a href="https://www.helpnetsecurity.com/2026/10/13/gitlab-ci-cd-regular-expression-compiler-vulnerability-cve-2026-97229">helpnetsecurity.com — GitLab CVE-2026-97229</a></li>
           <li><a href="https://www.cyberdaily.au/security/14302-patch-now-gitlab-publishes-fixes-for-perfect-10-vulnerability-cve-2026-97229">cyberdaily.au — GitLab CVE-2026-97229</a></li>
-          <li><a href="https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks">bleepingcomputer.com — Ivanti CVE-2026-104935</a></li>
-          <li><a href="https://cyber.gc.ca/en/alerts-advisories/ivanti-security-advisory-av26-1035">cyber.gc.ca — AV26-1035 (Ivanti)</a></li>
-          <li><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/">bleepingcomputer.com — Microsoft October 2026 Patch Tuesday</a></li>
+          <li><a href="https://cyber.gc.ca/en/alerts-advisories/ivanti-security-advisory-av26-1035">cyber.gc.ca (AV26-1035) — Ivanti CVE-2026-104935</a></li>
+          <li><a href="https://www.rapid7.com/blog/post/etr-ivanti-connect-secure-zero-day-exploited-in-the-wild-cve-2026-104935/">rapid7.com — Ivanti CVE-2026-104935 analysis</a></li>
+          <li><a href="https://cyber.gc.ca/en/alerts-advisories/atlassian-security-advisory-av26-1002">cyber.gc.ca (AV26-1002) — Atlassian CVE-2026-21589</a></li>
+          <li><a href="https://cyber.gc.ca/en/alerts-advisories/cisco-security-advisory-av26-1042">cyber.gc.ca (AV26-1042) — Cisco AsyncOS CVE-2026-76519</a></li>
+          <li><a href="https://security-tracker.debian.org/tracker/CVE-2026-97205">security-tracker.debian.org — nginx CVE-2026-97205</a></li>
+          <li><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/">bleepingcomputer.com — Microsoft Patch Tuesday Oct 2026</a></li>
         </ul>
       </div>
       <div>
@@ -488,19 +704,21 @@ footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-s
         <ul>
           <li><a href="https://securityaffairs.com/?p=200868">securityaffairs.com — GitLab CVE-2026-97229</a></li>
           <li><a href="https://www.warp2search.net/story/nodejs-26120-and-24220-krypton-what-changed-and-how-to-upgrade/">warp2search.net — Node.js 26.12.0 / 24.22.0</a></li>
+          <li><a href="https://www.warp2search.net/story/net-11-rc2-and-october-2026-security-patches-cves-fix-across-net-8-9-and-10/">warp2search.net — .NET 11 RC2 Security Patches</a></li>
           <li><a href="https://blog.elest.io/self-hosted-weekly-week-42-2026-gitlab-cvss-10-drupal-rce-mattermost-12">blog.elest.io — Self-Hosted Weekly Week 42</a></li>
-          <li><a href="https://www.rapid7.com/blog/post/etr-ivanti-connect-secure-zero-day-exploited-in-the-wild-cve-2026-104935/">rapid7.com — Ivanti CVE-2026-104935 analysis</a></li>
+          <li><a href="https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks">bleepingcomputer.com — Ivanti Zero-day</a></li>
+          <li><a href="https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html">thehackernews.com — Ivanti exploit chain</a></li>
+          <li><a href="https://bleepingcomputer.com/news/security/hackers-exploit-critical-atlassian-flaw-after-public-poc-release">bleepingcomputer.com — Atlassian CVE-2026-21589 exploited</a></li>
         </ul>
       </div>
       <div>
         <h3>Release Notes</h3>
         <ul>
-          <li><a href="https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2022">learn.microsoft.com/lifecycle — Windows Server 2022</a></li>
           <li><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-windows-server-2022-reached-end-of-mainstream-support">bleepingcomputer.com — Windows Server 2022 EOL mainstream support</a></li>
         </ul>
       </div>
     </div>
-    <div class="note">UNCERTAIN: บางโดเมนเข้าถึงไม่ได้ในสัปดาห์นี้ผ่าน Network Proxy ของ Session นี้ แม้ลองใหม่ตามนโยบาย Network Access Resilience แล้ว ได้แก่ nvd.nist.gov, cisa.gov, msrc.microsoft.com, cyber.gc.ca, about.gitlab.com, docs.gitlab.com (บางหน้าดึงเนื้อหารายละเอียดไม่สำเร็จ), code.visualstudio.com, git-scm.com, aws.amazon.com, azure.microsoft.com, cloud.google.com, access.redhat.com (บางหน้า), security-tracker.debian.org (บางหน้า), wireshark.org และ releases.hashicorp.com (เฉพาะหน้า Release Note) — ข้อมูลที่เกี่ยวข้องได้ผ่านการยืนยันข้ามแหล่งด้วย WebSearch, GitHub Releases หรือแหล่งข้อมูล Official/Trusted Media อื่นที่เข้าถึงได้แทนตามนโยบาย Network Access Resilience ของรายงานนี้ รายการที่ไม่สามารถยืนยันได้จริงจึงถูกงดแสดงเฉพาะส่วนนั้น ไม่ได้งดแสดงทั้งหมวด นอกจากนี้ตัวเลขจำนวน CVE ของ Microsoft Patch Tuesday เดือนนี้มีความแตกต่างกันเล็กน้อยระหว่างแหล่งข่าว (1,411/1,413/1,415) เนื่องจากวิธีนับที่ต่างกัน (Release Note vs. รายชื่อ CVE ที่เผยแพร่ vs. การนับของ ZDI) จึงแสดงเป็นช่วงตัวเลขในรายงานนี้แทนการเลือกตัวเลขเดียว</div>
+    <div class="note">UNCERTAIN: บางโดเมนเข้าถึงไม่ได้ในสัปดาห์นี้ผ่าน Network Proxy ของ Session นี้ แม้ลองใหม่ตามนโยบาย Network Access Resilience แล้ว ได้แก่ nvd.nist.gov, cisa.gov, msrc.microsoft.com, cyber.gc.ca (บางหน้า), djangoproject.com, php.net, python.org, about.gitlab.com, docs.gitlab.com (บางหน้าดึงรายละเอียดฟีเจอร์ไม่สำเร็จ), kubernetes.io, code.visualstudio.com, git-scm.com, www.jenkins.io, nginx.org, haproxy.org, wireshark.org, nmap.org, docs.tenable.com, wireguard.com, httpd.apache.org, docs.opnsense.org, errata.almalinux.org, aws.amazon.com, azure.microsoft.com, cloud.google.com, access.redhat.com (บางหน้า), security-tracker.debian.org (บางหน้า), releases.hashicorp.com (เฉพาะหน้า Release Note), helpx.adobe.com/security และ support.sap.com (เนื้อหา Bulletin ฉบับเต็ม) — ข้อมูลที่เกี่ยวข้องได้ผ่านการยืนยันข้ามแหล่งด้วย WebSearch, GitHub Releases/Tags หรือแหล่งข้อมูล Official/Government CERT อื่นที่เข้าถึงได้แทนตามนโยบาย Network Access Resilience ของรายงานนี้ รายการที่ไม่สามารถยืนยันได้จริงจึงถูกงดแสดงเฉพาะส่วนนั้น ไม่ได้งดแสดงทั้งหมวด ตัวเลขจำนวน CVE ของ Microsoft Patch Tuesday เดือนนี้และรายชื่อเวอร์ชันที่แก้ไขของ GitLab/Ivanti มีความแตกต่างกันเล็กน้อยระหว่างแหล่งข่าวตามที่ระบุไว้ในแต่ละหัวข้อ</div>
   </section>
 
   <footer>
