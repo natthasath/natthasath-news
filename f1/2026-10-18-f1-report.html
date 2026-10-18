@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 18 ตุลาคม 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 11 – 18 ตุลาคม 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 42</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>🔄 สัปดาห์นี้ไม่มีการแข่งขัน Formula 1 — เป็นสัปดาห์พักระหว่าง Singapore Grand Prix (9-11 ตุลาคม) กับ United States Grand Prix ที่จะจัดขึ้น 23-25 ตุลาคม ตารางคะแนนจึงไม่มีการเปลี่ยนแปลงจากสัปดาห์ก่อน โดย Kimi Antonelli (Mercedes) ยังคงนำ George Russell อยู่ 102 คะแนน และมีโอกาสคว้าแชมป์โลกครั้งแรกได้เร็วที่สุดที่ Austin หากผลงานเป็นไปตามเงื่อนไขที่กำหนด ข่าวสำคัญของสัปดาห์คือความไม่แน่นอนเรื่องอนาคตของ Fred Vasseur ที่ Ferrari ซึ่งยังไม่มีการยืนยันสัญญาต่อปี 2027 อย่างเป็นทางการ แม้ผู้บริหารจะออกแถลงการณ์สนับสนุนต่อเนื่อง ด้าน Mercedes ยังคงงุนงงกับอัปเกรด W17 ที่ไม่ได้ผลตามคาด ขณะที่ Red Bull และ Max Verstappen เดินหน้าด้วยโมเมนตัมที่ดีที่สุดของฤดูกาลหลังชนะติดต่อกัน 2 สนาม</p>
+    </div>
+    <div class="note">🔄 ข่าวต่อเนื่อง: หัวข้อ Driver Market (Vasseur/Ferrari), Technical Update (Mercedes W17), และสถานะคะแนนสะสมเป็นประเด็นต่อเนื่องจาก Singapore Grand Prix ที่รายงานไปแล้วในสัปดาห์ก่อน แต่ยังมีพัฒนาการใหม่ภายใน 7 วันนี้จึงนำมารายงานต่อ</div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">
+      ✅ ไม่มีการแข่งขันในสัปดาห์นี้ ตารางคะแนนจึงเหมือนกับหลัง Singapore Grand Prix ทุกประการ — ยืนยันตรงกันจากหลายแหล่งข้อมูลที่รายงานคะแนนล่าสุด ณ วันที่ค้นหา (12-17 ตุลาคม)
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>340</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>238</td>
+          <td>-102</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>229</td>
+          <td>-111</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>221</td>
+          <td>-119</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>215</td>
+          <td>-125</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>201</td>
+          <td>-139</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>138</td>
+          <td>-202</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>97</td>
+          <td>-243</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>🇳🇿 Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>75</td>
+          <td>-265</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>🇫🇷 Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>41</td>
+          <td>-299</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.crash.net/f1/results/1107471/1/new-f1-championship-standings-after-singapore-grand-prix">Crash.net</a>, <a href="https://www.gpfans.com/en/f1-news/1091337/f1-standings-2026-latest-points-leaders-singapore-grand-prix/">GPFans</a>, <a href="https://f1-fansite.com/f1-results/f1-standings-2026-championship/">F1-Fansite</a> (ซึ่งยืนยันตรงกันว่าไม่มีการแข่งขันใหม่ตั้งแต่ Singapore GP)</div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">
+      ✅ ไม่มีการเปลี่ยนแปลงจากสัปดาห์ก่อนเช่นกัน
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>578</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>444</td>
+          <td>-134</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>McLaren</td>
+          <td>339</td>
+          <td>-239</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Red Bull Racing</td>
+          <td>318</td>
+          <td>-260</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Racing Bulls</td>
+          <td>113</td>
+          <td>-465</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Alpine</td>
+          <td>68</td>
+          <td>-510</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Haas F1 Team</td>
+          <td>30</td>
+          <td>-548</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Audi</td>
+          <td>23</td>
+          <td>-555</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Williams</td>
+          <td>12</td>
+          <td>-566</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Aston Martin</td>
+          <td>7</td>
+          <td>-571</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Cadillac</td>
+          <td>0</td>
+          <td>-578</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://f1-fansite.com/f1-results/f1-standings-2026-championship/">F1-Fansite</a> ("Mercedes lead the Constructors' Championship with 578 points... 134 points clear of Ferrari"), ตรวจสอบไขว้กับตัวเลขที่ยืนยันแล้วในรายงานสัปดาห์ก่อนจาก Sports Illustrated (SI.com)</div>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญประจำสัปดาห์</h2>
+
+    <h3>Driver Market / Team News — อนาคตของ Fred Vasseur ที่ Ferrari</h3>
+    <p><span class="label rumor">⚠️ Rumor</span> ความไม่แน่นอนเกี่ยวกับอนาคตของ Fred Vasseur ในตำแหน่งหัวหน้าทีม Ferrari ยังคงเป็นประเด็นร้อนต่อเนื่อง หลัง Christian Horner (อดีตหัวหน้าทีม Red Bull) ให้สัมภาษณ์ว่าการนำทีม Ferrari จะเป็น "งานในฝัน" ของเขา ซึ่งจุดกระแสเก็งข่าวให้ลุกลามมากขึ้น ที่งานแถลงข่าวก่อน Bahrain GP in Malaysia (ต้นเดือนตุลาคม) Vasseur ยืนยันว่าความสัมพันธ์กับ CEO Benedetto Vigna และประธานบริหาร John Elkann "เป็นความสัมพันธ์ที่ดีมาก ติดต่อกันทุกวัน" และ Ferrari ออกแถลงการณ์สนับสนุนเขาอย่างเป็นทางการ อย่างไรก็ตาม Vigna ยังไม่ยืนยันชัดเจนว่า Vasseur จะอยู่ต่อในปี 2027 หรือไม่ โดยสื่อหลายสำนักรายงานแตกต่างกัน — บางแหล่งระบุว่ามีการเตรียมแผนส่งต่อตำแหน่งแบบ "stage-managed exit" ขณะที่ Vasseur ยังมีสัญญาที่ระบุว่าคลุมถึงปีหน้า แต่ไม่มีใครในฝ่ายบริหาร Ferrari ยืนยันต่อสาธารณะอย่างเป็นทางการว่าเขาจะทำงานต่อหลังสิ้นปี 2026</p>
+    <div class="source">⚠️ ที่มา (รายงานขัดแย้งกัน — cross-checked): <a href="https://www.planetf1.com/news/ferrari-benedetto-vigna-fred-vasseur-2027-future">PlanetF1</a> ("Ferrari CEO addresses Fred Vasseur rumours but leaves key question unanswered"), <a href="https://www.f1oversteer.com/news/sources-up-and-down-the-paddock-say-fred-vasseur-will-step-back-from-ferrari-role-at-end-of-2026/">F1oversteer</a>, <a href="https://bernama.com/en/sports/news.php?id=2614673">Bernama</a>, <a href="https://www.automoto.it/formula1/f1-ferrari-vigna-conferma-vasseur-smentita-horner-gp-bahrain.html">Automoto.it</a></div>
+
+    <h3>Technical Updates — Mercedes W17</h3>
+    <p>Mercedes ยังคงงุนงงกับอัปเกรดแชสซี W17 ชุดใหญ่ที่นำมาใช้ตั้งแต่ Bahrain GP in Malaysia ซึ่งคาดว่าจะเพิ่มความเร็วราว 0.3 วินาทีต่อรอบ แต่ผลจริงในสนามกลับไม่ตรงกับผลจำลอง (simulation) ของทีม Toto Wolff ระบุว่ารถมี drag สูงผิดปกติ เสียเวลาบนทางตรง และมีอาการ understeer ในโค้งความเร็วต่ำ ที่ Singapore GP ทีมถึงกับแยกสเปครถของนักแข่งทั้งสองคน — Russell ใช้สเปคเก่า (Azerbaijan-spec) ส่วน Antonelli ยังคงใช้อัปเกรดจาก Malaysia ผลลัพธ์ยังสรุปไม่ได้ชัดเจน (inconclusive) และ Andrew Shovlin ผู้อำนวยการฝ่ายวิศวกรรมยอมรับว่ายังไม่เข้าใจสาเหตุที่อัปเกรดไม่ให้ผลตามคาด โดย Wolff คาดว่าทั้งสองคันจะใช้สเปคอัปเกรดที่ United States GP และยืนยันว่ารถรุ่นใหม่ต้องการปรัชญาการเซ็ตอัพที่แตกต่างจากรถรุ่นก่อนอย่างสิ้นเชิง</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.autosport.com/f1/news/why-mercedes-upgrade-is-still-a-big-question-mark/10861516/">Autosport</a>, <a href="https://www.planetf1.com/news/mercedes-w17-upgrade-2026-bahrain-grand-prix-malaysia">PlanetF1</a>, <a href="https://www.gpblog.com/en/news/mercedes-left-puzzled-after-old-package-outshines-new-in-singapore">GPblog</a>, <a href="https://racer.com/2026/10/12/wolff-impressed-with-antonelli-maturity-amid-upgrade-struggles">Racer.com</a></div>
+
+    <h3>FIA & Regulations</h3>
+    <p>❓ ไม่พบคำตัดสินหรือ technical directive ใหม่จาก FIA ที่ยืนยันได้ชัดเจนภายใน 7 วันที่ผ่านมา (11-18 ตุลาคม)</p>
+
+    <h3>Penalties</h3>
+    <p>❓ ไม่มีบทลงโทษใหม่ในสัปดาห์นี้ เนื่องจากไม่มีการแข่งขัน</p>
+  </section>
+
+  <section>
+    <h2>📈 วิเคราะห์ผลงานทีม</h2>
+
+    <div class="team-section">
+      <strong>Red Bull Racing</strong> — ยังคงมีโมเมนตัมดีที่สุดของฤดูกาลหลังชนะติดต่อกัน 2 สนาม (Bahrain GP in Malaysia และ Singapore GP) โดย Verstappen คว้าทั้งโพลและชัยชนะที่ Singapore ทีมอยู่อันดับ 4 ผู้สร้างรถด้วย 318 คะแนน ไล่จี้ McLaren ที่อันดับ 3 ห่างกันเพียง 21 คะแนน เตรียมมุ่งหน้าสู่ United States GP ที่ Verstappen เป็นแชมป์เก่าจากปี 2025
+    </div>
+    <div class="team-section">
+      <strong>Mercedes</strong> — นำตารางผู้สร้างรถอย่างมั่นคงด้วย 578 คะแนน แต่สัปดาห์นี้ข่าวหลักคือความกังวลเรื่องอัปเกรด W17 ที่ยังไม่ได้ผลตามคาด Antonelli ยังคงนำแชมป์ชิปผู้ขับขี่ 102 คะแนนเหนือ Russell และมีโอกาสคว้าแชมป์โลกครั้งแรกได้ที่ Austin หากผลงานเป็นไปตามเงื่อนไขที่กำหนด แม้ Wolff เองจะมองว่าโอกาสนี้ "ไม่น่าจะเกิดขึ้นได้ง่าย ๆ"
+    </div>
+    <div class="team-section">
+      <strong>Ferrari</strong> — นอกสนามเป็นข่าวหลักของทีมในสัปดาห์นี้ ด้วยความไม่แน่นอนเรื่องอนาคตของหัวหน้าทีม Fred Vasseur ที่ยังไม่มีการยืนยันสัญญาต่อปี 2027 อย่างเป็นทางการ แม้ผู้บริหารจะออกแถลงการณ์สนับสนุนต่อเนื่อง ทีมยังคงอันดับ 2 ผู้สร้างรถด้วย 444 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>McLaren</strong> — ไม่มีข่าวเฉพาะทีมใหม่ที่ยืนยันได้ในสัปดาห์นี้ ยังคงอันดับ 3 ผู้สร้างรถด้วย 339 คะแนน แต่ถูก Red Bull ไล่จี้ใกล้ขึ้นเรื่อย ๆ เหลือช่องว่างเพียง 21 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Aston Martin, Williams, Alpine, Haas, Racing Bulls, Audi, Cadillac</strong> — ❓ ไม่พบข่าวเฉพาะทีมที่ยืนยันได้ชัดเจนสำหรับสัปดาห์นี้ (11-18 ตุลาคม) เนื่องจากไม่มีการแข่งขันและเป็นช่วงสัปดาห์พัก
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติ</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>ชัยชนะสะสมฤดูกาลนี้ (Antonelli):</strong> 8 ชัยชนะ</div>
+      <div class="stat-card"><strong>ผู้นำแชมป์ชิปผู้ขับขี่:</strong> Kimi Antonelli — นำ Russell 102 คะแนน</div>
+      <div class="stat-card"><strong>ผู้นำแชมป์ชิปผู้สร้างรถ:</strong> Mercedes — นำ Ferrari 134 คะแนน</div>
+      <div class="stat-card"><strong>โมเมนตัมปัจจุบัน:</strong> Red Bull ชนะติดต่อกัน 2 สนามล่าสุด</div>
+    </div>
+    <p class="note">❓ ไม่มีสถิติใหม่จากการแข่งขันในสัปดาห์นี้ เนื่องจากเป็นสัปดาห์พักระหว่างสนาม</p>
+  </section>
+
+  <section>
+    <h2>📅 การแข่งขันครั้งถัดไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่ (ICT)</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>24 ต.ค. 2026</td>
+          <td>Practice 1</td>
+          <td>00:30 – 01:30</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>24 ต.ค. 2026</td>
+          <td>Practice 2</td>
+          <td>04:00 – 05:00</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>25 ต.ค. 2026</td>
+          <td>Practice 3</td>
+          <td>00:30 – 01:30</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>25 ต.ค. 2026</td>
+          <td>Qualifying</td>
+          <td>04:00 – 05:00</td>
+          <td>❓</td>
+        </tr>
+        <tr class="highlight">
+          <td>26 ต.ค. 2026</td>
+          <td>Race</td>
+          <td>03:00</td>
+          <td>❓</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">⏰ เวลา ICT แปลงจากเวลาท้องถิ่น Central Time (Austin, Texas) ซึ่งเป็นเวลาที่แหล่งข้อมูลระบุตรงกัน (FP1 12:30-13:30 น., Qualifying 16:00-17:00 น., Race 15:00 น. ตามเวลา CT) ในสหรัฐอเมริกาถ่ายทอดทาง ABC/ESPN — ❓ ไม่พบข้อมูลช่องทางถ่ายทอดสดในประเทศไทยที่ยืนยันได้ในรอบการค้นหานี้ ควรตรวจสอบกับผู้ให้บริการถ่ายทอดสดในไทยอีกครั้งก่อนการแข่งขัน</p>
+
+    <h3>รายละเอียดสนาม</h3>
+    <ul>
+      <li><strong>Circuit:</strong> Circuit of the Americas (COTA)</li>
+      <li><strong>Country:</strong> สหรัฐอเมริกา (Austin, Texas)</li>
+      <li><strong>Circuit Length:</strong> 5.513 กม. (20 โค้ง พร้อมระดับความสูงต่างกันถึง 41 เมตร)</li>
+      <li><strong>Number of Laps:</strong> 56 รอบ</li>
+      <li><strong>Lap Record:</strong> 1:36.169 — Charles Leclerc (2019)</li>
+      <li><strong>รูปแบบสุดสัปดาห์:</strong> ไม่มี Sprint — ใช้รูปแบบ Grand Prix ปกติ</li>
+    </ul>
+
+    <h3>Preview</h3>
+    <p>United States Grand Prix 2026 เป็นรอบที่ 19 ของฤดูกาล และเป็นสุดสัปดาห์ที่ไม่มีรูปแบบ Sprint Max Verstappen เป็นแชมป์เก่าของสนามนี้จากปี 2025 (นำหน้า Norris และ Leclerc) และเดินหน้าสานต่อโมเมนตัมจากชัยชนะติดต่อกัน 2 สนามล่าสุด ขณะที่ Antonelli มีโอกาสคว้าแชมป์โลกครั้งแรกได้เร็วที่สุดในสนามนี้ หากเขาชนะการแข่งขัน (ทำคะแนนรวมเป็น 365 คะแนน) และ Russell จบอันดับ 9 หรือต่ำกว่า (ทำคะแนนไม่เกิน 2 คะแนน) พร้อมกับ Hamilton จบอันดับ 5 หรือต่ำกว่า (ทำคะแนนไม่เกิน 10 คะแนน) — หากทำไม่ได้ตามเงื่อนไขนี้ จะต้องรอลุ้นต่อที่ Mexico Grand Prix Toto Wolff หัวหน้าทีม Mercedes เองมองว่าเงื่อนไขนี้ "ไม่น่าจะเกิดขึ้นได้ง่าย ๆ" แม้จะยอมรับว่าแชมป์อยู่ใกล้แค่เอื้อม</p>
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/formula-1-msc-cruises-united-states-grand-prix-2026.2u6li2pzNhPzL3TSYaagrm">Formula1.com</a>, <a href="https://www.the-race.com/formula-1/what-time-is-f1-this-weekend-2026-grand-prix-start-times/">The Race</a>, <a href="https://www.gpblog.com/en/analysis/this-is-how-kimi-antonelli-could-become-the-youngest-f1-world-champion-of-all-time-in-austin">GPblog</a>, <a href="https://www.scmp.com/sport/formula-one-f1/article/3370570/kimi-antonelli-dares-dream-historic-formula-1-title-after-singapore-gp-podium">South China Morning Post</a></div>
+  </section>
+
+  <section>
+    <h2>💬 คำกล่าวประจำสัปดาห์</h2>
+    <div class="quote">
+      "For sure... I know it's very close, I know it's there, but I just need to make sure that I keep doing the best I can."
+      <div class="source">— Kimi Antonelli (Mercedes) ตอบคำถามว่ากล้าฝันถึงแชมป์โลกครั้งแรกที่ Austin หรือไม่</div>
+    </div>
+    <div class="quote">
+      "[The scenario] probably needs the other two — George and Lewis — to retire, and him winning... not a likely scenario."
+      <div class="source">— Toto Wolff (Mercedes) ประเมินโอกาสที่ Antonelli จะคว้าแชมป์โลกได้ที่ Austin</div>
+    </div>
+    <div class="quote">
+      "The relationship that I have with my bosses, Benedetto and John, is a very good one. We are in daily contact."
+      <div class="source">— Fred Vasseur (Ferrari) ยืนยันความสัมพันธ์กับผู้บริหาร Ferrari ท่ามกลางกระแสข่าวอนาคตของตำแหน่ง</div>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.scmp.com/sport/formula-one-f1/article/3370570/kimi-antonelli-dares-dream-historic-formula-1-title-after-singapore-gp-podium">South China Morning Post</a>, <a href="https://www.flashscore.co.uk/news/auto-racing-singapore-grand-prix-formula-1-i-know-it-s-very-close-antonelli-daring-to-dream-of-historic-formula-1-title/pGILsyyR/">Flashscore</a>, <a href="https://bernama.com/en/sports/news.php?id=2614673">Bernama</a></div>
+  </section>
+
+  <section>
+    <h2>🔍 วิเคราะห์แชมป์ชิป</h2>
+    <p><strong>Drivers Championship:</strong> Antonelli ยังคงนำ Russell 102 คะแนนโดยไม่มีการเปลี่ยนแปลงในสัปดาห์พักนี้ จุดสนใจหลักอยู่ที่ United States GP ซึ่งเป็นสนามแรกที่ Antonelli มีโอกาสทางคณิตศาสตร์ที่จะคว้าแชมป์โลกได้ แม้เงื่อนไขจะค่อนข้างยากตามที่ Wolff ประเมิน หากทำไม่สำเร็จ จะต้องรอลุ้นต่อที่ Mexico Grand Prix</p>
+    <p><strong>Constructors Championship:</strong> Mercedes นำ Ferrari 134 คะแนนอย่างมั่นคง ขณะที่การไล่จี้อันดับ 3 ระหว่าง McLaren (339) และ Red Bull (318) ยังคงเป็นประเด็นน่าติดตาม ด้วยช่องว่างเพียง 21 คะแนน และ Red Bull กำลังมีฟอร์มที่ดีที่สุดของฤดูกาล</p>
+    <p><strong>Midfield Battle:</strong> Racing Bulls ยังคงนำกลุ่มกลางตารางด้วย 113 คะแนน ไม่มีพัฒนาการใหม่ในสัปดาห์นี้เนื่องจากไม่มีการแข่งขัน</p>
+    <p><strong>Momentum:</strong> Red Bull และ Verstappen ยังคงรักษาโมเมนตัมที่ดีที่สุดของฤดูกาลต่อเนื่องจากชัยชนะ 2 สนามติดต่อกัน ส่วน Mercedes เผชิญความไม่แน่นอนด้านเทคนิคจากอัปเกรด W17 ที่ยังไม่ได้ผล ทั้งที่ยังนำแชมป์ชิปทั้งสองประเภท</p>
+    <p><strong>Teams to Watch:</strong> จับตา Ferrari ว่าความไม่แน่นอนเรื่องอนาคตของ Vasseur จะส่งผลกระทบต่อสมาธิของทีมในช่วงโค้งสุดท้ายของฤดูกาลหรือไม่ และจับตาว่า Mercedes จะแก้ปัญหาอัปเกรด W17 ได้ทันก่อน Austin หรือไม่</p>
+  </section>
+
+  <section>
+    <h2>📊 สรุปตัวเลขด่วน</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix:</strong> ไม่มีการแข่งขันในสัปดาห์นี้</div>
+      <div class="stat-card"><strong>Sprint:</strong> ไม่มี</div>
+      <div class="stat-card"><strong>Pole Position:</strong> ไม่มี (สัปดาห์พัก)</div>
+      <div class="stat-card"><strong>Fastest Lap:</strong> ไม่มี (สัปดาห์พัก)</div>
+      <div class="stat-card"><strong>FIA Decisions:</strong> ❓ ไม่พบในสัปดาห์นี้</div>
+      <div class="stat-card"><strong>Penalties:</strong> ไม่มี</div>
+      <div class="stat-card"><strong>Driver Transfers:</strong> ไม่มีการประกาศใหม่ (มีเพียงข่าวลือเรื่องอนาคตของ Vasseur ที่ไม่ใช่นักแข่ง)</div>
+      <div class="stat-card"><strong>Technical Updates:</strong> 1 กรณี (Mercedes W17 — ยังไม่ได้ข้อสรุป)</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ควรจับตาต่อไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ประเด็น</th>
+          <th>เหตุผล</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>โอกาสคว้าแชมป์โลกของ Antonelli ที่ Austin</td>
+          <td>United States GP เป็นสนามแรกที่ Antonelli มีโอกาสทางคณิตศาสตร์คว้าแชมป์โลกได้ หากผลงานเป็นไปตามเงื่อนไขที่กำหนด</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>อนาคตของ Fred Vasseur ที่ Ferrari</td>
+          <td>ยังไม่มีการยืนยันสัญญาต่อปี 2027 อย่างเป็นทางการ ท่ามกลางกระแสข่าวลือเรื่องแผนส่งต่อตำแหน่ง</td>
+          <td>⚠️</td>
+        </tr>
+        <tr>
+          <td>การแก้ปัญหาอัปเกรด W17 ของ Mercedes</td>
+          <td>ทีมยังไม่เข้าใจสาเหตุที่อัปเกรดไม่ได้ผลตามคาด และวางแผนใช้สเปคอัปเกรดกับรถทั้งสองคันที่ Austin</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>การไล่จี้อันดับ 3 ผู้สร้างรถระหว่าง McLaren และ Red Bull</td>
+          <td>ช่องว่างเหลือเพียง 21 คะแนน และ Red Bull มีโมเมนตัมดีกว่าในขณะนี้</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>Official</h3>
+    <p><a href="https://www.formula1.com/en/latest/article/formula-1-msc-cruises-united-states-grand-prix-2026.2u6li2pzNhPzL3TSYaagrm">Formula1.com</a> (เข้าถึงผ่านผลการค้นหาเป็นหลัก เนื่องจากการเปิดหน้าเว็บโดยตรงยังไม่สำเร็จในรอบนี้ — ดูหมายเหตุข้อจำกัดด้านล่าง), FIA.com (เช่นเดียวกัน)</p>
+
+    <h3>Motorsport Media</h3>
+    <p><a href="https://www.autosport.com/f1/">Autosport</a>, <a href="https://www.planetf1.com/">PlanetF1</a>, <a href="https://www.crash.net/f1">Crash.net</a>, <a href="https://www.gpfans.com/">GPFans</a>, <a href="https://www.gpblog.com/">GPblog</a>, <a href="https://racer.com/">Racer.com</a>, <a href="https://f1-fansite.com/">F1-Fansite</a>, <a href="https://www.scmp.com/sport/formula-one-f1">South China Morning Post</a>, <a href="https://www.flashscore.co.uk/">Flashscore</a>, <a href="https://bernama.com/">Bernama</a>, <a href="https://www.automoto.it/formula1/">Automoto.it</a>, <a href="https://www.f1oversteer.com/">F1oversteer</a>, <a href="https://www.the-race.com/formula-1/">The Race</a></p>
+
+    <h3>Team Communications</h3>
+    <p>ไม่พบแถลงการณ์อย่างเป็นทางการจากทีมโดยตรงที่เข้าถึงได้ในรอบการค้นหานี้ นอกเหนือจากคำพูดของ Fred Vasseur และ Toto Wolff ที่อ้างอิงผ่านสื่อข้างต้น</p>
+  </section>
+
+  <section>
+    <h2>⚠️ หมายเหตุข้อจำกัดของข้อมูล</h2>
+    <div class="warn-box">
+      <p><strong>UNCERTAIN:</strong> ในรอบการรวบรวมข้อมูลนี้ ไม่สามารถเข้าถึงโดเมน <code>formula1.com</code>, <code>fia.com</code>, <code>motorsportweek.com</code>, <code>racingnews365.com</code> ผ่านการเปิดหน้าเว็บโดยตรงได้เลย (DNS resolution ล้มเหลว — "getaddrinfo ENOTFOUND" ในทุกโดเมนที่ทดลอง) จึงต้องอาศัยผลลัพธ์จากการค้นหาเว็บ (WebSearch) ซึ่งดึงเนื้อหาผ่านสรุปผลการค้นหาแทนการอ่านหน้าเว็บเต็มรูปแบบตามขั้นตอน Network Access Resilience ข้อมูลหลัก เช่น คะแนนสะสม (ไม่เปลี่ยนแปลงจากสัปดาห์ก่อน) และเงื่อนไขการคว้าแชมป์ของ Antonelli ได้ตรวจสอบไขว้จากหลายแหล่งข่าวซึ่งสอดคล้องกันสูง อย่างไรก็ตาม บางหัวข้อ เช่น รายละเอียดคำพูดที่แน่ชัดของ Verstappen เกี่ยวกับโมเมนตัมของ Red Bull ในสัปดาห์นี้ และข่าว FIA/Technical Directive ใหม่ ไม่สามารถยืนยันได้ชัดเจนในรอบนี้ จึงงดแสดงหรือระบุเป็นข้อมูลไม่ครบตามหลักเกณฑ์ของรายงาน นอกจากนี้ สถานะอนาคตของ Fred Vasseur ยังมีรายงานขัดแย้งกันระหว่างแหล่งข่าว จึงระบุเป็น ⚠️ Rumor ตามหลักเกณฑ์ ผู้อ่านที่ต้องการความแม่นยำสูงสุดควรตรวจสอบซ้ำจาก formula1.com และ fia.com โดยตรง</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔮 แนวโน้มสัปดาห์ถัดไป</h2>
+    <div class="summary-box">
+      <p>สัปดาห์หน้าคือ United States Grand Prix ที่ Circuit of the Americas (23-25 ตุลาคม) ซึ่งเป็นสนามที่มีความสำคัญเชิงประวัติศาสตร์ เพราะเป็นโอกาสแรกที่ Kimi Antonelli อาจคว้าแชมป์โลกผู้ขับขี่ครั้งแรกในอาชีพได้ หากผลงานเป็นไปตามเงื่อนไขทางคณิตศาสตร์ที่กำหนด แม้ Toto Wolff จะประเมินว่าโอกาสนี้ไม่ง่าย ในอีกด้านหนึ่ง Red Bull และ Verstappen เดินหน้าด้วยโมเมนตัมที่ดีที่สุดของฤดูกาลหลังชนะติดต่อกัน 2 สนาม และ Verstappen เป็นแชมป์เก่าของสนามนี้ด้วย ทำให้การต่อสู้อันดับ 3 ผู้สร้างรถระหว่าง McLaren และ Red Bull น่าจะสูสียิ่งขึ้น นอกสนาม ควรติดตามว่า Mercedes จะแก้ปัญหาอัปเกรด W17 ได้ทันหรือไม่ก่อนนำสเปคใหม่มาใช้กับรถทั้งสองคัน และว่าความไม่แน่นอนเรื่องอนาคตของ Fred Vasseur ที่ Ferrari จะได้ข้อสรุปอย่างเป็นทางการเมื่อใด</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly F1 Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 18 ตุลาคม 2026 เวลา ICT (GMT+7)</p>
+  </footer>
+</div>
+</body>
+</html>
