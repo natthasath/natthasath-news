@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Premier League Report — Week 42, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#9A5B12; --warn-bg:rgba(154,91,18,0.10); --warn-line:rgba(154,91,18,0.30);
+  --rumor:#8A3B5A;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.12);
+    --warn:#E0A855; --warn-bg:rgba(224,168,85,0.10); --warn-line:rgba(224,168,85,0.30);
+    --rumor:#D98FB2;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:6px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; padding-top:2px; }
+h3{ font-size:16.5px; font-weight:700; margin:20px 0 8px; color:var(--ink); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:30px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:72ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:70ch; }
+ul li ul{ margin-top:8px; }
+
+.callout{ background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px; padding:16px 18px; margin:0 0 18px; }
+.callout p{ margin:0; max-width:none; color:var(--ink); }
+.callout p + p{ margin-top:8px; }
+.callout .label{ font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--warn); text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.note{ font-size:14px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:12px 14px; margin:10px 0 16px; max-width:none; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 14px; border:1px solid var(--line); border-radius:10px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px; }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td a, th a{ white-space:nowrap; }
+
+.badge{ display:inline-block; font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:600; padding:2px 8px; border-radius:999px; white-space:nowrap; }
+.badge-official{ background:var(--accent-soft); color:var(--accent); }
+.badge-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-rumor{ background:rgba(138,59,90,0.12); color:var(--rumor); }
+.badge-cont{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-pending{ background:rgba(154,91,18,0.12); color:var(--warn); border:1px solid var(--warn-line); }
+
+.subhead{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin:18px 0 8px; }
+.subhead:first-child{ margin-top:0; }
+
+.club-block{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px dashed var(--line); }
+.club-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.club-block h3{ margin-top:0; }
+.club-block p{ margin-bottom:6px; }
+
+.src-list{ list-style:none; padding:0; margin:0 0 14px; }
+.src-list li{ margin-bottom:6px; font-size:14.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 42, 2026</p>
+    <h1>⚽ Weekly Premier League Report — Week 42</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 12 – 18 ตุลาคม 2026 (ICT)</span>
+      <span><b>Category:</b> Football</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="note">หมายเหตุขอบเขต: รายงานฉบับนี้รวม 3 คู่สุดท้ายของ Matchweek 6 ที่แข่งวันอาทิตย์ที่ 11 ต.ค. (ยังไม่สิ้นสุดตอนจัดทำรายงานสัปดาห์ก่อนจึงไม่ได้รายงาน) เนื่องจากอยู่ในกรอบย้อนหลัง 7 วันจากวันที่จัดทำรายงานนี้ (18 ต.ค.) รวมกับผลการแข่งขัน Matchweek 7 วันเสาร์ที่ 17 ต.ค. ส่วนคู่ของวันอาทิตย์ที่ 18 ต.ค. (Leeds United vs Manchester United, Nottingham Forest vs Arsenal, AFC Bournemouth vs Sunderland) <b>ยังไม่สิ้นสุด ณ เวลาจัดทำรายงานนี้</b> จึงไม่นำผลมารายงาน และ Tottenham Hotspur vs Coventry City (19 ต.ค.) อยู่นอกกรอบ 7 วันจึงย้ายไปอยู่ในส่วนโปรแกรมสัปดาห์หน้า</div>
+    <ul>
+      <li>Manchester City เก็บชัยชนะครบ 7 นัดจาก 7 นัดแรกของฤดูกาล หลังถล่ม Liverpool 3-0 ที่แอนฟีลด์ (11 ต.ค.) และเอาชนะ Ipswich Town 3-2 ที่เอติฮัด (17 ต.ค.) ขยับเป็น 21 แต้ม ทิ้งอันดับ 2 ห่าง 6 แต้ม <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Erling Haaland ยิง 2 ประตูในเกมพบ Liverpool (65') และยิงอีก 2 ประตูในเกมพบ Ipswich (34', 69') รวมเป็น 8 ประตูในฤดูกาลนี้ นำตารางดาวซัลโวอย่างชัดเจน <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Chelsea เอาชนะ Everton 2-0 ด้วย 2 ประตูของ Pedro Neto คว้าคลีนชีตแรกในรอบ 23 นัดลีก และขยับเข้าสู่ท็อป 4 ขณะที่ Everton แพ้นัดแรกของฤดูกาล <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Liverpool พลิกกลับมาเอาชนะ Brentford 2-1 ที่ Gtech Community Stadium จากประตูชัยของ Alexander Isak ในเกมที่ Brentford เหลือ 9 คนหลังโดนไล่ออก 2 ใบ (Yarmoliuk, Janelt) — ก่อนหน้านี้ Liverpool แพ้ Man City 0-3 เป็นความพ่ายแพ้นัดแรกของฤดูกาลหลัง Ryan Gravenberch โดนไล่ออกจากสนาม <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Álvaro Arbeloa คว้าชัยชนะนัดแรกในตำแหน่งผู้จัดการทีมกับ Fulham ด้วยผลชนะ Hull City 1-0 จากประตูของ Alex Iwobi ช่วยให้ทีมหลุดโซนตกชั้น คลี่คลายแรงกดดันที่สะสมมาตั้งแต่สัปดาห์ก่อน <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 ตารางคะแนน Top 6</h2>
+    <div class="note">Arsenal, Brighton &amp; Hove Albion และ Manchester United มีนัดที่ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน (พบ Nottingham Forest, Crystal Palace และ Leeds United ตามลำดับ) สถิติของทั้ง 3 ทีมจึงยังเป็นตัวเลขจาก 6 นัดเดิมก่อนสัปดาห์นี้ ยังไม่รวมผลนัดที่กำลังแข่งอยู่ Liverpool มีเพียง 1 นัดที่แพ้ตลอดฤดูกาล (แพ้ Manchester City) ทำให้คำนวณสถิติ W-D-L ของ Liverpool ได้จากจำนวนแต้มรวมและจำนวนนัดแพ้ที่ยืนยันแล้ว</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Club</th><th>Played</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>Source</th></tr>
+      <tr><td>1</td><td>Manchester City</td><td>7</td><td>7</td><td>0</td><td>0</td><td>21</td><td><a href="https://www.worldfootball.net/competition/co91/england-premier-league/results-and-standings/" target="_blank" rel="noopener">worldfootball.net</a></td></tr>
+      <tr><td>2*</td><td>Arsenal</td><td>6</td><td>5</td><td>0</td><td>1</td><td>15</td><td><a href="https://www.worldfootball.net/competition/co91/england-premier-league/results-and-standings/" target="_blank" rel="noopener">worldfootball.net (ก่อนนัดพบ Forest)</a></td></tr>
+      <tr><td>3*</td><td>Brighton &amp; Hove Albion</td><td>6</td><td>4</td><td>1</td><td>1</td><td>13</td><td><a href="https://www.worldfootball.net/competition/co91/england-premier-league/results-and-standings/" target="_blank" rel="noopener">worldfootball.net (ก่อนนัดพบ Crystal Palace)</a></td></tr>
+      <tr><td>3*</td><td>Chelsea</td><td>7</td><td>4</td><td>1</td><td>2</td><td>13</td><td><a href="https://www.espn.com/soccer/story/_/id/50200250/everton-chelsea-live-commentary-score-updates-result-premier-league-2026-27" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>3*</td><td>Manchester United</td><td>6</td><td>4</td><td>1</td><td>1</td><td>13</td><td><a href="https://www.worldfootball.net/competition/co91/england-premier-league/results-and-standings/" target="_blank" rel="noopener">worldfootball.net (ก่อนนัดพบ Leeds)</a></td></tr>
+      <tr><td>6</td><td>Liverpool</td><td>7</td><td>3</td><td>3</td><td>1</td><td>12</td><td><a href="https://www.liverpoolfc.com/news/brentford-liverpool-premier-league-match-report" target="_blank" rel="noopener">Liverpool FC</a> / <a href="https://www.nbcsports.com/soccer/news/premier-league-table-for-2026-27-season" target="_blank" rel="noopener">NBC Sports</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">ตรวจสอบ Consistency แล้ว: Played = W+D+L และ Points = W×3+D ถูกต้องครบทุกทีมในตาราง เครื่องหมาย * หมายถึงอันดับที่แต้มเท่ากันและยังไม่สามารถยืนยัน Goal Difference ที่ใช้จัดลำดับได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ สถิติ W-D-L ของ Liverpool คำนวณจากแต้มรวม 12 แต้ม/7 นัด ร่วมกับข้อเท็จจริงที่ยืนยันแล้วว่า Liverpool แพ้เพียง 1 นัดในฤดูกาลนี้ (แพ้ Manchester City 0-3) จึงได้ 3W-3D-1L โดยไม่มีทางเลือกอื่นที่สอดคล้องกับแต้มรวมและจำนวนนัดแพ้นี้</p>
+  </section>
+
+  <section>
+    <h2>⚽ ผลการแข่งขันสำคัญ</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th class="wrap">Summary</th><th>Source</th></tr>
+      <tr><td>11 ต.ค.</td><td>Liverpool</td><td>0-3</td><td>Manchester City</td><td class="wrap">สกอร์เสมอ 0-0 ครึ่งแรก ก่อน Ryan Gravenberch โดนไล่ออกจากสนาม (ใบเหลืองที่ 2) นาที 62 จากนั้น Haaland 65', Doku 68' และ Cherki 78' ยิงให้ City ชนะขาด — ความพ่ายแพ้นัดแรกของ Liverpool ในฤดูกาลนี้</td><td><a href="https://www.outlookindia.com/sports/football/liverpool-vs-manchester-city-english-premier-league-2026-27-matchday-6-anfield-in-pics" target="_blank" rel="noopener">Outlook India</a> / <a href="https://www.liverpoolfc.com/news/u21s-match-report-liverpool-suffer-first-loss-2026-manchester-city" target="_blank" rel="noopener">Liverpool FC</a></td></tr>
+      <tr><td>11 ต.ค.</td><td>Crystal Palace</td><td>3-1</td><td>Nottingham Forest</td><td class="wrap">Ndoye 3' ยิงนำให้ Forest ก่อน Kamada 41' ตีเสมอ, Lerma (ช่วงทดเวลาครึ่งแรก) และ Pino 59' พลิกชัยชนะให้ Palace ในเกมที่ Oliver Glasner กลับมาเยือน Selhurst Park ครั้งแรกในฐานะกุนซือ Forest</td><td><a href="https://www.skysports.com/football/crystal-palace-vs-nottingham-forest/559498" target="_blank" rel="noopener">Sky Sports</a> / <a href="https://www.flashscore.co.uk/news/football-premier-league-crystal-palace-come-from-behind-to-stun-nottingham-forest-on-glasner-s-return/IVB0vtEj/" target="_blank" rel="noopener">Flashscore</a></td></tr>
+      <tr><td>11 ต.ค.</td><td>Hull City</td><td>2-2</td><td>Everton</td><td class="wrap">Gelhardt 48' นำให้ Hull ก่อน Dewsbury-Hall 55' และ Barry 68' พลิกนำให้ Everton แต่ Belloumi ตีเสมอช่วงท้ายเกม (74' ตามรายงานส่วนใหญ่) — Everton รักษาสถิติไม่แพ้ไว้ได้</td><td><a href="https://www.skysports.com/football/hull-city-vs-everton/559499" target="_blank" rel="noopener">Sky Sports</a> / <a href="https://www.beinsports.com/en-us/soccer/premier-league/articles/hull-city-2-2-everton-belloumi-equaliser-caps-entertaining-draw-2026-10-11" target="_blank" rel="noopener">beIN Sports</a></td></tr>
+      <tr><td>17 ต.ค.</td><td>Everton</td><td>0-2</td><td>Chelsea</td><td class="wrap">Pedro Neto ยิง 2 ประตู (46', 90') ช่วยให้ Chelsea คว้าคลีนชีตแรกในรอบ 23 นัดลีก และเป็นความพ่ายแพ้นัดแรกของ Everton ในฤดูกาลนี้</td><td><a href="https://www.espn.com/soccer/story/_/id/50200250/everton-chelsea-live-commentary-score-updates-result-premier-league-2026-27" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.chelseafc.com/en/match/everton-vs-chelsea-english-premier-league-2026-10-17" target="_blank" rel="noopener">Chelsea FC</a></td></tr>
+      <tr><td>17 ต.ค.</td><td>Manchester City</td><td>3-2</td><td>Ipswich Town</td><td class="wrap">Foden ยิงนำ, Maeda ตีเสมอให้ Ipswich, Haaland ยิง 2 ประตู (34', 69') พา City นำ 3-1 ก่อน VAR ตัดสินล้ำหน้าปฏิเสธประตูที่ 3 ของ Haaland แล้ว Flemming ยิงจุดโทษช่วงทดเวลาให้ Ipswich เป็น 3-2 City รักษาชัยชนะไว้ได้</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879259/ipswich-town-manchester-city" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.news24.com/sport/soccer/english-premier-league/live-premier-league-manchester-city-v-ipswich-town-20261017-0822" target="_blank" rel="noopener">News24</a></td></tr>
+      <tr><td>17 ต.ค.</td><td>Newcastle United</td><td>0-1</td><td>Aston Villa</td><td class="wrap">Johan Manzambi โหม่งประตูเดียวของเกมในนาทีที่ 36 ช่วยให้ Villa เอาชนะเยือนที่ St James' Park</td><td><a href="https://www.espn.com/soccer/report/_/gameId/401879258" target="_blank" rel="noopener">ESPN</a> / <a href="https://theanalyst.com/articles/newcastle-vs-aston-villa-stats-premier-league-10-2026" target="_blank" rel="noopener">The Analyst</a></td></tr>
+      <tr><td>17 ต.ค.</td><td>Fulham</td><td>1-0</td><td>Hull City</td><td class="wrap">Alex Iwobi ยิงประตูเดียวของเกมช่วงต้นครึ่งแรก (ราว 33'-34') ช่วยให้ Álvaro Arbeloa คว้าชัยชนะนัดแรกในตำแหน่งผู้จัดการทีม และพา Fulham หลุดโซนตกชั้น Ryan Sessegnon โดนไล่ออกจากสนามช่วงทดเวลา</td><td><a href="https://www.skysports.com/football/news/13598860/fulham-1-0-hull-city-alvaro-arbeloa-earns-first-premier-league-win-as-cottagers-climb-out-of-relegation-zone" target="_blank" rel="noopener">Sky Sports</a> / <a href="https://www.espn.com/soccer/match?gameId=401878770" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>17 ต.ค.</td><td>Brentford</td><td>1-2</td><td>Liverpool</td><td class="wrap">Lewis-Potter ยิงนำให้ Brentford ก่อน Yehor Yarmoliuk โดนไล่ออก (ใบแดงตรงจาก VAR ช่วงทดเวลาครึ่งแรก) จากนั้น Víctor Muñoz ตีเสมอให้ Liverpool และ Alexander Isak ยิงประตูชัยราวนาทีที่ 70 ก่อน Vitaly Janelt โดนไล่ออกใบที่ 2 ช่วงทดเวลาทำให้ Brentford เหลือ 9 คน</td><td><a href="https://www.espn.com/soccer/report/_/gameId/401879262" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.liverpoolfc.com/news/brentford-liverpool-premier-league-match-report" target="_blank" rel="noopener">Liverpool FC</a> / <a href="https://www.skysports.com/football/news/13598754/brentford-1-2-liverpool-alexander-isak-scores-winner-as-yehor-yarmoliuk-and-vitaly-janelt-sent-off-for-bees" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+    </table>
+    </div>
+    <div class="note"><b>ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน</b> — อีก 3 คู่ของวันอาทิตย์ที่ 18 ต.ค. (Leeds United vs Manchester United ซึ่งครึ่งแรกจบลง 0-1 จากประตูของ Bryan Mbeumo, Nottingham Forest vs Arsenal, และ AFC Bournemouth vs Sunderland ซึ่งครึ่งแรกจบลง 1-0 จากประตูของ Tavernier หลัง Danso ของ Sunderland โดนไล่ออก) ยังดำเนินอยู่หรือยังไม่เริ่มแข่ง ณ ช่วงเวลารวบรวมข้อมูล จึงไม่นำผลมารายงานในฉบับนี้ตามกฎห้ามใช้ผลที่ยังไม่สิ้นสุด <span class="badge badge-pending">❓ ยังยืนยันไม่ได้</span></div>
+  </section>
+
+  <section>
+    <h2>🥇 ดาวซัลโว Top 5</h2>
+    <div class="note">Rayan Cherki และ Morgan Rogers อยู่ในอันดับ 4 ร่วมกันด้วยตัวเลขจากแหล่งข้อมูลที่อัปเดตล่าสุดก่อนนัดวันเสาร์ที่ 17 ต.ค. ไม่พบรายงานว่าทั้งสองคนยิงประตูเพิ่มในสัปดาห์นี้ จึงยังคงตัวเลขเดิม</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Player</th><th>Club</th><th>Goals</th><th>Assists</th><th>Source</th></tr>
+      <tr><td>1</td><td>Erling Haaland</td><td>Manchester City</td><td>8</td><td>–</td><td><a href="https://www.espn.com/soccer/match/_/gameId/401879259/ipswich-town-manchester-city" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>2*</td><td>João Pedro</td><td>Chelsea</td><td>5</td><td>–</td><td><a href="https://www.premierleague.com/en/news/4601011/premier-league-top-scorers-whos-in-golden-boot-race" target="_blank" rel="noopener">Premier League (ต่อเนื่อง)</a></td></tr>
+      <tr><td>2*</td><td>Alexander Isak</td><td>Liverpool</td><td>5</td><td>–</td><td><a href="https://www.liverpoolfc.com/news/brentford-liverpool-premier-league-match-report" target="_blank" rel="noopener">Liverpool FC</a></td></tr>
+      <tr><td>4*</td><td>Rayan Cherki</td><td>Manchester City</td><td>4</td><td>–</td><td><a href="https://www.premierleague.com/en/news/4601011/premier-league-top-scorers-whos-in-golden-boot-race" target="_blank" rel="noopener">Premier League (ต่อเนื่อง)</a></td></tr>
+      <tr><td>4*</td><td>Morgan Rogers</td><td>Aston Villa</td><td>4</td><td>–</td><td><a href="https://www.premierleague.com/en/news/4601011/premier-league-top-scorers-whos-in-golden-boot-race" target="_blank" rel="noopener">Premier League (ต่อเนื่อง)</a></td></tr>
+    </table>
+    </div>
+    <div class="note">Pedro Neto (Chelsea) ยิง 2 ประตูในนัดพบ Everton สัปดาห์นี้ แต่ไม่พบตัวเลขประตูสะสมทั้งฤดูกาลที่ยืนยันได้จากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ จึงไม่นำมาจัดอันดับในตารางนี้ แหล่งข้อมูลดาวซัลโวที่พบมีความขัดแย้งกันในบางตัวเลข (บทความหนึ่งระบุ Haaland 6 ประตู อีกบทความระบุ 8 ประตู) รายงานฉบับนี้เลือกใช้ตัวเลข 8 ประตูซึ่งคำนวณสอดคล้องกับผลประตูที่ยืนยันแล้วของ Haaland ในทั้ง 2 นัดของสัปดาห์นี้ (5 ประตูก่อนหน้า + 1 ประตูพบ Liverpool + 2 ประตูพบ Ipswich)</div>
+  </section>
+
+  <section>
+    <h2>🔥 ข่าวสำคัญ</h2>
+    <h3>Official</h3>
+    <ul>
+      <li>Chelsea FC ยืนยันว่าชัยชนะเหนือ Everton คือคลีนชีตแรกของทีมในพรีเมียร์ลีกในรอบ 23 นัด <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.chelseafc.com/en/match/everton-vs-chelsea-english-premier-league-2026-10-17" target="_blank" rel="noopener">Chelsea FC (Official)</a></li>
+      <li>Liverpool FC รายงานว่า Alexander Isak กลับมาจากอาการบาดเจ็บและยิงประตูชัยในเกมเยือน Brentford <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.liverpoolfc.com/news/brentford-liverpool-premier-league-match-report" target="_blank" rel="noopener">Liverpool FC (Official)</a></li>
+      <li>Ryan Gravenberch ต้องพักการลงเล่น 1 นัด (นัดพบ Brentford) จากการโดนไล่ออกในเกมพบ Manchester City <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.liverpoolfc.com/news/ryan-gravenberch-serve-premier-league-suspension-start-next-season" target="_blank" rel="noopener">Liverpool FC (Official)</a></li>
+    </ul>
+    <h3>Report</h3>
+    <ul>
+      <li>Manchester City เข้าใกล้การเป็นเพียง 1 ใน 3 ทีมในประวัติศาสตร์พรีเมียร์ลีกที่ชนะครบ 7 นัดแรกของฤดูกาล หลังเอาชนะ Ipswich Town <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.101greatgoals.com/?p=217053" target="_blank" rel="noopener">101 Great Goals</a></li>
+      <li>Álvaro Arbeloa คว้าชัยชนะนัดแรกในตำแหน่งผู้จัดการทีมที่ Fulham ช่วยคลายแรงกดดันที่สะสมมาตั้งแต่สัปดาห์ก่อน หลังทีมไร้ชัยชนะในลีกมาตลอดฤดูกาล <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.skysports.com/football/news/13598860/fulham-1-0-hull-city-alvaro-arbeloa-earns-first-premier-league-win-as-cottagers-climb-out-of-relegation-zone" target="_blank" rel="noopener">Sky Sports</a></li>
+      <li>Roberto De Zerbi ยังเผชิญแรงกดดันต่อเนื่องที่ Tottenham แม้ทีมเก็บแต้มแรกจากการเสมอ Manchester United เมื่อสัปดาห์ก่อน โดยสื่อระบุว่าสเปอร์สมีสถิติออกสตาร์ทที่แย่ที่สุดในรอบหลายฤดูกาลหลังใช้เงินเสริมทีมช่วงซัมเมอร์กว่า 400 ล้านปอนด์ <span class="badge badge-report">📰 รายงาน (ต่อเนื่อง)</span> — <a href="https://www.flashscore.com/news/de-zerbi-demands-reaction-from-tottenham-in-crunch-clash-with-man-utd/WE3ECeKE/" target="_blank" rel="noopener">Flashscore</a></li>
+    </ul>
+    <h3>Rumor</h3>
+    <ul>
+      <li>ไม่พบข่าวลือย้ายทีมใหม่ที่สามารถยืนยันแหล่งที่มาได้ชัดเจนภายในกรอบ 7 วันนี้ ข่าวความสนใจใน Noni Madueke จาก Atlético Madrid และ Juventus ที่สืบเนื่องจากสัปดาห์ก่อนไม่มีความคืบหน้าใหม่ที่ยืนยันได้ในรอบนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏥 Injury &amp; Suspension</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Club</th><th>Player</th><th>Status</th><th>Return</th><th>Source</th></tr>
+      <tr><td>Liverpool</td><td>Ryan Gravenberch</td><td>พักการลงเล่น 1 นัด จากใบแดง (ใบเหลือง 2 ใบ) ในเกมพบ Manchester City</td><td>พ้นโทษแบนแล้วหลังพักนัดพบ Brentford</td><td><a href="https://www.liverpoolfc.com/news/ryan-gravenberch-serve-premier-league-suspension-start-next-season" target="_blank" rel="noopener">Liverpool FC</a></td></tr>
+      <tr><td>Brentford</td><td>Vitaly Janelt</td><td>โดนไล่ออกจากสนาม (ใบเหลืองที่ 2) ในเกมพบ Liverpool ต้องพักการลงเล่นตามระเบียบสะสมใบเหลือง/ใบแดง</td><td>ยังไม่สามารถยืนยันจำนวนนัดที่ต้องพักจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้</td><td><a href="https://www.skysports.com/football/news/13598754/brentford-1-2-liverpool-alexander-isak-scores-winner-as-yehor-yarmoliuk-and-vitaly-janelt-sent-off-for-bees" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>Brentford</td><td>Yehor Yarmoliuk</td><td>โดนไล่ออกจากสนามด้วยใบแดงตรงจากการตัดสินของ VAR ในเกมพบ Liverpool</td><td>ยังไม่สามารถยืนยันจำนวนนัดที่ต้องพักจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้</td><td><a href="https://www.espn.com/soccer/report/_/gameId/401879262" target="_blank" rel="noopener">ESPN</a></td></tr>
+      <tr><td>Tottenham Hotspur</td><td>Rodrigo Bentancur</td><td>พักการลงเล่นจากใบแดงในเกมพบ Manchester United สัปดาห์ก่อน <span class="badge badge-cont">ต่อเนื่อง</span></td><td>พลาดลงเล่นเกมพบ Coventry City วันที่ 19 ต.ค.</td><td><a href="https://www.footballdream.in/blog/tottenham-hotspur-vs-coventry-city-gw7-premier-league-2026-27" target="_blank" rel="noopener">FootballDream</a></td></tr>
+      <tr><td>Tottenham Hotspur</td><td>Pedro Porro / Dejan Kulusevski</td><td>มีอาการบาดเจ็บต้นขา/เข่า เป็นผู้เล่นที่ต้องลุ้นความพร้อมก่อนเกมพบ Coventry City</td><td>ยังไม่มีการยืนยันความพร้อมอย่างเป็นทางการ ณ เวลาจัดทำรายงาน</td><td><a href="https://www.footballdream.in/blog/tottenham-hotspur-vs-coventry-city-gw7-premier-league-2026-27" target="_blank" rel="noopener">FootballDream</a></td></tr>
+    </table>
+    </div>
+    <div class="note">Alexander Isak (Liverpool) กลับมาจากอาการบาดเจ็บต้นขาที่ติดตามมาตั้งแต่สัปดาห์ก่อนได้สำเร็จ และลงเล่นยิงประตูชัยในนัดพบ Brentford ถือว่าหายกังวลเรื่องความพร้อมแล้ว ส่วน Erling Haaland ก็ลงเล่นได้ตามปกติทั้ง 2 นัดของสัปดาห์นี้หลังมีความไม่แน่นอนด้านฟิตเนสจากทีมชาติในสัปดาห์ก่อน พบรายงานจากแหล่งเดียวที่ไม่ได้รับการยืนยันซ้ำเกี่ยวกับผู้รักษาประตู Chelsea ได้รับบาดเจ็บในเกมพบ Everton จึงไม่นำมาระบุในตารางนี้เพื่อหลีกเลี่ยงการนำเสนอข้อมูลที่อาจไม่ถูกต้อง</div>
+  </section>
+
+  <section>
+    <h2>📈 Weekly Statistics</h2>
+    <ul>
+      <li><b>Most Goals (single match):</b> Manchester City 3-2 Ipswich Town รวม 5 ประตู เป็นนัดที่มีประตูมากที่สุดในสัปดาห์นี้ (จาก 8 นัดที่สิ้นสุดแล้ว)</li>
+      <li><b>Best Defence / Clean Sheets:</b> มี 4 คลีนชีตในสัปดาห์นี้ — Manchester City (เยือน Liverpool), Chelsea (เยือน Everton, คลีนชีตแรกในรอบ 23 นัดลีก), Aston Villa (เยือน Newcastle) และ Fulham (เหย้า พบ Hull City)</li>
+      <li><b>Player of the Week:</b> Erling Haaland (Manchester City) ยิงรวม 4 ประตูจาก 2 นัดในสัปดาห์นี้ (Liverpool และ Ipswich) ขยับเป็น 8 ประตู นำตารางดาวซัลโวอย่างชัดเจน และพาทีมรักษาสถิติชนะครบทุกนัดไว้ได้</li>
+    </ul>
+    <div class="note">ข้อมูล Possession และ Expected Goals (xG) ระดับลีกรวมทั้งสัปดาห์ยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ จึงไม่นำมาแสดง</div>
+  </section>
+
+  <section>
+    <h2>🔵 Big 6 Analysis</h2>
+    <div class="club-block">
+      <h3>Arsenal</h3>
+      <p><b>ฟอร์ม:</b> นัดเยือน Nottingham Forest วันที่ 18 ต.ค. ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน สถิติก่อนนัดนี้คือ 6 นัด 5W-0D-1L รวม 15 แต้ม อันดับ 2</p>
+      <p><b>จุดเด่น:</b> ยังไม่มีข้อมูลผลการแข่งขันใหม่ที่ยืนยันได้ในสัปดาห์นี้เนื่องจากนัดยังไม่จบ</p>
+      <p><b>จุดอ่อน:</b> ยังตามหลัง Manchester City ถึง 6 แต้มก่อนนัดนี้ หากไม่สามารถเก็บชัยชนะได้จะยิ่งถูกทิ้งห่างในศึกชิงแชมป์</p>
+    </div>
+    <div class="club-block">
+      <h3>Chelsea</h3>
+      <p><b>ฟอร์ม:</b> เอาชนะ Everton 2-0 ขยับเป็น 7 นัด 4W-1D-2L รวม 13 แต้ม เข้าสู่ท็อป 4</p>
+      <p><b>จุดเด่น:</b> Pedro Neto ยิง 2 ประตูในนัดเดียว และทีมคว้าคลีนชีตแรกในพรีเมียร์ลีกในรอบ 23 นัด สะท้อนเกมรับที่มั่นคงขึ้นอย่างเห็นได้ชัด</p>
+      <p><b>จุดอ่อน:</b> ยังมี 2 นัดที่แพ้ในฤดูกาลนี้ ความสม่ำเสมอในการรักษาคลีนชีตยังต้องพิสูจน์ต่อในนัดถัดไป</p>
+    </div>
+    <div class="club-block">
+      <h3>Liverpool</h3>
+      <p><b>ฟอร์ม:</b> แพ้ Manchester City 0-3 (11 ต.ค.) แล้วพลิกกลับมาชนะ Brentford 2-1 (17 ต.ค.) ขยับเป็น 7 นัด 3W-3D-1L รวม 12 แต้ม อันดับ 6</p>
+      <p><b>จุดเด่น:</b> Alexander Isak กลับมาจากอาการบาดเจ็บและยิงประตูชัยทันทีในนัดพบ Brentford แสดงถึงความลึกของแนวรุก</p>
+      <p><b>จุดอ่อน:</b> เสียความพ่ายแพ้นัดแรกของฤดูกาลให้ Manchester City แบบขาดลอย 0-3 พร้อมผู้เล่นโดนไล่ออก สะท้อนว่ายังไม่สามารถรับมือทีมระดับท็อปได้ดีพอ</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester City</h3>
+      <p><b>ฟอร์ม:</b> ชนะครบทั้ง 2 นัดของสัปดาห์นี้ (Liverpool 3-0, Ipswich Town 3-2) ขยับเป็น 7 นัด 7W-0D-0L รวม 21 แต้ม จ่าฝูงเดี่ยว</p>
+      <p><b>จุดเด่น:</b> Erling Haaland ยิงรวม 4 ประตูในสัปดาห์นี้ ทีมเข้าใกล้การเป็น 1 ใน 3 ทีมในประวัติศาสตร์พรีเมียร์ลีกที่ชนะครบ 7 นัดแรกของฤดูกาล</p>
+      <p><b>จุดอ่อน:</b> เกือบเสียแต้มให้ Ipswich Town ช่วงทดเวลาจากจุดโทษ แสดงให้เห็นว่าเกมรับยังมีช่องโหว่ในบางช่วงเกม แม้ผลงานโดยรวมจะยังสมบูรณ์แบบ</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester United</h3>
+      <p><b>ฟอร์ม:</b> นัดเยือน Leeds United วันที่ 18 ต.ค. ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน (ครึ่งแรกจบลง 0-1 จากประตูของ Bryan Mbeumo) สถิติก่อนนัดนี้คือ 6 นัด 4W-1D-1L รวม 13 แต้ม</p>
+      <p><b>จุดเด่น:</b> Bryan Mbeumo ยิงนำในครึ่งแรกของนัดล่าสุด ต่อเนื่องจากการเป็นตัวทำประตูสำคัญของทีมในสัปดาห์ก่อน</p>
+      <p><b>จุดอ่อน:</b> ผลการแข่งขันยังไม่สิ้นสุด ต้องติดตามว่าทีมจะรักษาความได้เปรียบในครึ่งแรกไว้ได้หรือไม่เมื่อเทียบกับการเสียประตูตีเสมอช่วงท้ายเกมในนัดก่อนหน้า</p>
+    </div>
+    <div class="club-block">
+      <h3>Tottenham Hotspur</h3>
+      <p><b>ฟอร์ม:</b> ไม่มีนัดแข่งขันภายในกรอบ 7 วันนี้ (นัดถัดไปพบ Coventry City คือวันที่ 19 ต.ค. ซึ่งอยู่นอกกรอบ) สถิติล่าสุดคือ 6 นัด ยังไม่ชนะเลย รวม 3 แต้ม อันดับที่ 18 ของตาราง</p>
+      <p><b>จุดเด่น:</b> ผลเสมอ Manchester United เมื่อสัปดาห์ก่อนเป็นแต้มแรกของฤดูกาลที่มาจากการไม่แพ้ แสดงถึงความเหนียวแน่นที่เริ่มกลับมา</p>
+      <p><b>จุดอ่อน:</b> Rodrigo Bentancur พักโทษแบนจากใบแดง และ Pedro Porro กับ Dejan Kulusevski เป็นผู้เล่นที่ต้องลุ้นความพร้อมก่อนเกมพบ Coventry City ซึ่งเป็นนัดสำคัญในการหาชัยชนะนัดแรกของฤดูกาล</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 Title Race</h2>
+    <p>Manchester City ทิ้งห่างคู่แข่งอย่างชัดเจนด้วยสถิติชนะครบ 7 นัด 21 แต้ม นำอันดับ 2 (ซึ่งยังรอผลนัดที่กำลังแข่งอยู่) ถึง 6 แต้ม หลังเก็บชัยชนะทั้งเหนือ Liverpool และ Ipswich Town ในสัปดาห์นี้ หาก Arsenal ไม่สามารถเอาชนะ Nottingham Forest ได้ ช่องว่างจะยิ่งห่างออกไปอีกตั้งแต่ช่วงต้นฤดูกาล</p>
+  </section>
+
+  <section>
+    <h2>🎯 Top 4 Race</h2>
+    <p>Chelsea ขยับเข้าสู่ท็อป 4 ได้สำเร็จหลังเอาชนะ Everton และเก็บคลีนชีตแรกในรอบ 23 นัด เข้าไปเกาะกลุ่มแต้มเท่ากับ Brighton &amp; Hove Albion และ Manchester United ที่ 13 แต้ม (แต้มเท่ากัน 3 ทีมแต่ลงเล่นไม่เท่ากัน) ขณะที่ Liverpool ขยับขึ้นมาเป็นอันดับ 6 ด้วย 12 แต้มหลังเอาชนะ Brentford ทำให้การแย่งโซนท็อป 4 คับคั่งขึ้นในช่วงกลางเดือนตุลาคมนี้</p>
+  </section>
+
+  <section>
+    <h2>⬇️ Relegation Battle</h2>
+    <p>Tottenham Hotspur ยังรั้งอันดับที่ 18 ด้วย 3 แต้มจาก 6 นัด ยังไม่ชนะเลยในฤดูกาลนี้ และยังไม่มีนัดแข่งขันใหม่ในกรอบ 7 วันนี้ ส่วน AFC Bournemouth ก็อยู่ในกลุ่มเสี่ยงเช่นกันจากสถิติก่อนหน้า แต่นัดล่าสุดที่พบ Sunderland ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน (ครึ่งแรกนำ 1-0) ข้อมูลตารางคะแนนช่วงล่างแบบละเอียดครบทุกทีมยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ จึงยังไม่สามารถระบุกลุ่มทีมเสี่ยงตกชั้นที่แท้จริงทั้งหมดได้นอกเหนือจากสองทีมนี้</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Week Fixtures</h2>
+    <div class="note">แสดงเฉพาะคู่ที่พบข้อมูลเวลาแข่งขันจากแหล่งข่าวสำหรับ Matchweek 8 (23-25 ต.ค. 2026) เวลาแข่งขันแปลงจาก BST เป็น ICT (+6 ชั่วโมง) แหล่งข้อมูลบางส่วนให้วันที่ของบางคู่ไม่ตรงกัน (บางแหล่งระบุว่า Crystal Palace vs Newcastle และ Sunderland vs Leeds แข่งวันเสาร์ที่ 24 ต.ค. แทนวันอาทิตย์ที่ 25 ต.ค.) จึงไม่นำ 2 คู่นี้มาแสดงในตารางเพื่อหลีกเลี่ยงการยืนยันวันที่ไม่ถูกต้อง รวมถึง Tottenham Hotspur vs Coventry City (19 ต.ค.) ซึ่งเป็นนัดที่อยู่นอกกรอบ 7 วันของรายงานสัปดาห์ก่อนแต่ใกล้เข้ามาที่สุด</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Time (ICT)</th><th>Home</th><th>VS</th><th>Away</th><th>Source</th></tr>
+      <tr><td>19 ต.ค.</td><td>02:00</td><td>Tottenham Hotspur</td><td>vs</td><td>Coventry City</td><td><a href="https://www.footballdream.in/blog/tottenham-hotspur-vs-coventry-city-gw7-premier-league-2026-27" target="_blank" rel="noopener">FootballDream</a></td></tr>
+      <tr><td>24 ต.ค.</td><td>02:00</td><td>Ipswich Town</td><td>vs</td><td>Nottingham Forest</td><td><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-8/" target="_blank" rel="noopener">Fifplay</a></td></tr>
+      <tr><td>24 ต.ค.</td><td>21:00</td><td>Arsenal</td><td>vs</td><td>Everton</td><td><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-8/" target="_blank" rel="noopener">Fifplay</a></td></tr>
+      <tr><td>24 ต.ค.</td><td>23:30</td><td>Chelsea</td><td>vs</td><td>Tottenham Hotspur</td><td><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-8/" target="_blank" rel="noopener">Fifplay</a></td></tr>
+      <tr><td>25 ต.ค.</td><td>20:00</td><td>Liverpool</td><td>vs</td><td>Brighton &amp; Hove Albion</td><td><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-8/" target="_blank" rel="noopener">Fifplay</a></td></tr>
+      <tr><td>25 ต.ค.</td><td>20:00</td><td>Manchester United</td><td>vs</td><td>AFC Bournemouth</td><td><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-8/" target="_blank" rel="noopener">Fifplay</a></td></tr>
+    </table>
+    </div>
+    <ul>
+      <li><b>Chelsea vs Tottenham Hotspur (24 ต.ค., 23:30 ICT)</b> — Chelsea ที่กำลังมีฟอร์มดีขึ้นเรื่อย ๆ และเพิ่งคว้าคลีนชีตแรกในรอบ 23 นัด เจอ Tottenham ที่ยังไร้ชัยชนะในลีก ทั้งสองทีมมีผู้จัดการทีมที่เผชิญแรงกดดันสูง</li>
+      <li><b>Liverpool vs Brighton &amp; Hove Albion (25 ต.ค., 20:00 ICT)</b> — Liverpool ที่กำลังมีกำลังใจจากชัยชนะเหนือ Brentford เจอ Brighton ที่กำลังรอผลนัดพบ Crystal Palace ก่อนหน้านี้</li>
+      <li><b>Arsenal vs Everton (24 ต.ค., 21:00 ICT)</b> — Arsenal ต้องการกลับมาเก็บ 3 แต้มเพื่อลดช่องว่างกับ Manchester City หลังนัดพบ Nottingham Forest ของสัปดาห์นี้ ขณะที่ Everton หวังฟื้นตัวหลังแพ้นัดแรกของฤดูกาลให้ Chelsea</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <ul>
+      <li><b>Matches:</b> 8 นัด (เฉพาะนัดที่สิ้นสุดแล้วในกรอบ 7 วันนี้ จากทั้งหมด 11 นัดที่อยู่ในกรอบ — อีก 3 นัดของวันที่ 18 ต.ค. ยังไม่สิ้นสุด)</li>
+      <li><b>Goals:</b> รวม 23 ประตูจาก 8 นัดที่สิ้นสุดแล้ว (เฉลี่ย 2.88 ประตู/นัด)</li>
+      <li><b>Clean Sheets:</b> 4 คลีนชีต (Manchester City, Chelsea, Aston Villa, Fulham)</li>
+      <li><b>Red Cards:</b> 3 ใบที่ยืนยันได้จากนัดที่สิ้นสุดแล้ว (Ryan Gravenberch - Liverpool, Yehor Yarmoliuk และ Vitaly Janelt - Brentford)</li>
+      <li><b>Yellow Cards:</b> ไม่สามารถยืนยันได้ครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้</li>
+      <li><b>Penalties:</b> 1 ลูก (Zian Flemming ยิงให้ Ipswich Town ในเกมพบ Manchester City ช่วงทดเวลา)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>โปรแกรมสำคัญ:</b> ผลการแข่งขัน Leeds United vs Manchester United, Nottingham Forest vs Arsenal และ AFC Bournemouth vs Sunderland ของวันที่ 18 ต.ค. ซึ่งยังไม่สิ้นสุด ณ เวลาจัดทำรายงานนี้ และจะมีผลโดยตรงต่อตารางคะแนนช่วงบนและช่วงล่าง</li>
+      <li><b>ข่าวย้ายทีม:</b> ความคืบหน้าของสถานการณ์ Noni Madueke กับความสนใจจาก Atlético Madrid และ Juventus ก่อนหน้าต่างเดือนมกราคม ยังไม่มีความคืบหน้าใหม่</li>
+      <li><b>ผู้เล่นบาดเจ็บ:</b> สถานะความพร้อมของ Pedro Porro และ Dejan Kulusevski ของ Tottenham ก่อนเกมพบ Coventry City วันที่ 19 ต.ค.</li>
+      <li><b>ข่าวผู้จัดการทีม:</b> แรงกดดันต่อ Roberto De Zerbi ที่ Tottenham ยังสูงอยู่แม้เก็บแต้มแรกของฤดูกาล ขณะที่ Álvaro Arbeloa ที่ Fulham คลายความกดดันไปได้มากหลังชัยชนะนัดแรก</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul class="src-list">
+      <li><a href="https://www.chelseafc.com/en/match/everton-vs-chelsea-english-premier-league-2026-10-17" target="_blank" rel="noopener">Chelsea FC — Everton vs Chelsea match page</a></li>
+      <li><a href="https://www.liverpoolfc.com/news/brentford-liverpool-premier-league-match-report" target="_blank" rel="noopener">Liverpool FC — Brentford vs Liverpool match report</a></li>
+      <li><a href="https://www.liverpoolfc.com/news/u21s-match-report-liverpool-suffer-first-loss-2026-manchester-city" target="_blank" rel="noopener">Liverpool FC — First loss of 2026 vs Manchester City</a></li>
+      <li><a href="https://www.liverpoolfc.com/news/ryan-gravenberch-serve-premier-league-suspension-start-next-season" target="_blank" rel="noopener">Liverpool FC — Gravenberch suspension</a></li>
+    </ul>
+    <h3>Media</h3>
+    <ul class="src-list">
+      <li><a href="https://www.espn.com/soccer/story/_/id/50200250/everton-chelsea-live-commentary-score-updates-result-premier-league-2026-27" target="_blank" rel="noopener">ESPN — Everton 0-2 Chelsea</a></li>
+      <li><a href="https://www.espn.com/soccer/match/_/gameId/401879259/ipswich-town-manchester-city" target="_blank" rel="noopener">ESPN — Man City 3-2 Ipswich Town</a></li>
+      <li><a href="https://www.espn.com/soccer/report/_/gameId/401879258" target="_blank" rel="noopener">ESPN — Newcastle 0-1 Aston Villa</a></li>
+      <li><a href="https://www.espn.com/soccer/match?gameId=401878770" target="_blank" rel="noopener">ESPN — Fulham 1-0 Hull City</a></li>
+      <li><a href="https://www.espn.com/soccer/report/_/gameId/401879262" target="_blank" rel="noopener">ESPN — Brentford 1-2 Liverpool</a></li>
+      <li><a href="https://www.skysports.com/football/news/13598860/fulham-1-0-hull-city-alvaro-arbeloa-earns-first-premier-league-win-as-cottagers-climb-out-of-relegation-zone" target="_blank" rel="noopener">Sky Sports — Fulham 1-0 Hull City</a></li>
+      <li><a href="https://www.skysports.com/football/news/13598754/brentford-1-2-liverpool-alexander-isak-scores-winner-as-yehor-yarmoliuk-and-vitaly-janelt-sent-off-for-bees" target="_blank" rel="noopener">Sky Sports — Brentford 1-2 Liverpool</a></li>
+      <li><a href="https://www.skysports.com/football/crystal-palace-vs-nottingham-forest/559498" target="_blank" rel="noopener">Sky Sports — Crystal Palace 3-1 Nottingham Forest</a></li>
+      <li><a href="https://www.skysports.com/football/hull-city-vs-everton/559499" target="_blank" rel="noopener">Sky Sports — Hull City 2-2 Everton</a></li>
+      <li><a href="https://www.outlookindia.com/sports/football/liverpool-vs-manchester-city-english-premier-league-2026-27-matchday-6-anfield-in-pics" target="_blank" rel="noopener">Outlook India — Liverpool 0-3 Manchester City</a></li>
+      <li><a href="https://www.news24.com/sport/soccer/english-premier-league/live-premier-league-manchester-city-v-ipswich-town-20261017-0822" target="_blank" rel="noopener">News24 — Haaland stars in Man City win</a></li>
+      <li><a href="https://theanalyst.com/articles/newcastle-vs-aston-villa-stats-premier-league-10-2026" target="_blank" rel="noopener">The Analyst — Newcastle vs Aston Villa stats</a></li>
+      <li><a href="https://www.beinsports.com/en-us/soccer/premier-league/articles/hull-city-2-2-everton-belloumi-equaliser-caps-entertaining-draw-2026-10-11" target="_blank" rel="noopener">beIN Sports — Hull City 2-2 Everton</a></li>
+      <li><a href="https://www.flashscore.co.uk/news/football-premier-league-crystal-palace-come-from-behind-to-stun-nottingham-forest-on-glasner-s-return/IVB0vtEj/" target="_blank" rel="noopener">Flashscore — Crystal Palace comeback</a></li>
+      <li><a href="https://www.flashscore.com/news/de-zerbi-demands-reaction-from-tottenham-in-crunch-clash-with-man-utd/WE3ECeKE/" target="_blank" rel="noopener">Flashscore — De Zerbi pressure</a></li>
+      <li><a href="https://www.101greatgoals.com/?p=217053" target="_blank" rel="noopener">101 Great Goals — Man City GW7 preview/context</a></li>
+      <li><a href="https://www.footballdream.in/blog/tottenham-hotspur-vs-coventry-city-gw7-premier-league-2026-27" target="_blank" rel="noopener">FootballDream — Tottenham vs Coventry preview</a></li>
+      <li><a href="https://www.fifplay.com/premier-league-2026-2027-matchday-8/" target="_blank" rel="noopener">Fifplay — Matchday 8 fixtures</a></li>
+      <li><a href="https://www.nbcsports.com/soccer/live/leeds-vs-manchester-united-live-updates-score-goals-highlights-stats-2026-october-18" target="_blank" rel="noopener">NBC Sports — Leeds vs Man United live (ยังไม่สิ้นสุด)</a></li>
+      <li><a href="https://sports.yahoo.com/articles/man-utd-leeds-bournemouth-face-123700862.html" target="_blank" rel="noopener">Yahoo Sports — Bournemouth vs Sunderland live (ยังไม่สิ้นสุด)</a></li>
+    </ul>
+    <h3>Statistics</h3>
+    <ul class="src-list">
+      <li><a href="https://www.worldfootball.net/competition/co91/england-premier-league/results-and-standings/" target="_blank" rel="noopener">worldfootball.net — Premier League 2026/2027 table</a></li>
+      <li><a href="https://www.nbcsports.com/soccer/news/premier-league-table-for-2026-27-season" target="_blank" rel="noopener">NBC Sports — Premier League table</a></li>
+      <li><a href="https://www.premierleague.com/en/news/4601011/premier-league-top-scorers-whos-in-golden-boot-race" target="_blank" rel="noopener">Premier League — Golden Boot race</a></li>
+    </ul>
+    <div class="note"><b>UNCERTAIN:</b> premierleague.com, skysports.com, bbc.com, espn.com, nbcsports.com และ google.com ไม่สามารถเข้าถึงได้โดยตรงผ่าน WebFetch ในสภาพแวดล้อมนี้ตลอดการจัดทำรายงานนี้ (ล้มเหลวด้วย DNS resolution error กับทุกโดเมนที่ลองแม้กระทั่งโดเมนทดสอบทั่วไปอย่าง google.com บ่งชี้ว่าเป็นปัญหาของเครื่องมือเอง ไม่ใช่การปฏิเสธจากเว็บไซต์ปลายทาง) จึงใช้ผลค้นหา (WebSearch) แทนตามลำดับการแก้ปัญหาที่กำหนดไว้ตลอดการจัดทำรายงานฉบับนี้ และอ้างอิง URL ที่พบจากผลค้นหาโดยตรง<br><br>ระหว่างการค้นคว้าพบรายงานจากแหล่งเดียวที่ไม่ได้รับการยืนยันซ้ำว่า Brentford ชนะ Liverpool 3-2 (ตรงข้ามกับผลที่ยืนยันแล้วจากหลายแหล่งคือ Brentford 1-2 Liverpool) ตรวจสอบพบว่าแหล่งนั้นเป็นรายงานการแข่งขันคนละนัดจากฤดูกาลก่อนหน้าที่ไม่เกี่ยวข้องกับสัปดาห์นี้ จึงไม่นำมาใช้ นอกจากนี้ยังพบตัวเลขดาวซัลโวของ Haaland ที่ไม่ตรงกันระหว่างแหล่งข้อมูล (6 ประตู กับ 8 ประตู) ได้อธิบายการเลือกใช้ตัวเลขไว้ในส่วนดาวซัลโวแล้ว ส่วนรายงานฉบับเดียวที่ระบุว่าผู้รักษาประตู Chelsea ได้รับบาดเจ็บสาหัสในนัดพบ Everton ไม่สามารถยืนยันซ้ำได้จากแหล่งอื่น จึงไม่นำมาระบุในรายงานนี้</div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Premier League Report · จัดทำโดย Claude Code Routine · ข้อมูลทั้งหมดอ้างอิงจากแหล่งข่าวที่ระบุไว้ข้างต้น หากมีข้อมูลใดไม่สามารถยืนยันได้ จะระบุข้อจำกัดไว้อย่างชัดเจนแทนการคาดเดา</p>
+  </footer>
+</div>
+</body>
+</html>
