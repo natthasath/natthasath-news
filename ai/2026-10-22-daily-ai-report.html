@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-10-22</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 22 ตุลาคม 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-10-22</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 22 ต.ค. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูลที่สำคัญ:</b> ในรอบนี้เข้าถึง anthropic.com, github.com (รวมหน้าย่อย releases/trending) และ platform.claude.com ได้โดยตรงตามปกติ แต่เข้าถึงโดเมนสำคัญอื่น ๆ ไม่ได้อีกครั้งแม้ลองซ้ำตามขั้นตอน Network Access Resilience แล้ว (ล้มเหลวแบบ DNS resolution) ได้แก่ openai.com, blog.google, deepmind.google, ai.meta.com, huggingface.co, arxiv.org, paperswithcode.com, news.ycombinator.com และโดเมนอื่นในกลุ่มเดียวกัน ได้ใช้ WebSearch แบบ site-specific และคำค้นทั่วไปเป็นทางเลือกตามขั้นตอนที่ 2 แต่ผลค้นหาส่วนใหญ่มาจากเว็บไซต์รวมข่าว/อักกริเกเตอร์คุณภาพต่ำที่ตรวจสอบย้อนกลับกับแหล่งทางการไม่ได้ครบถ้วน ไม่ระบุวันที่ชัดเจน หรือมีข้อมูลขัดแย้งกันเอง (เช่น สถานะโมเดล GPT-6/GPT-6.1 Astra ของ OpenAI) จึง<b>ไม่นำมาแสดงในรายงาน</b>ตามหลักการห้ามสร้างข้อมูลขึ้นเองและห้ามสรุปเกินกว่าแหล่งข้อมูลระบุ ตรวจสอบ anthropic.com/news โดยตรงแล้วพบประกาศใหม่หนึ่งรายการในกรอบ 24 ชั่วโมงล่าสุด (ดูหัวข้อ Company News) และพบอัปเดตที่ยืนยันได้จาก GitHub releases โดยตรงหลายรายการ (ดูหัวข้อ Technical Updates) <b>UNCERTAIN:</b> โดเมน openai.com, blog.google, deepmind.google, ai.meta.com, news.microsoft.com, nvidianews.nvidia.com, aws.amazon.com, huggingface.co, arxiv.org, paperswithcode.com, techcrunch.com, theverge.com, venturebeat.com, news.ycombinator.com และ reddit.com เข้าถึงไม่ได้ติดต่อกันมาตั้งแต่อย่างน้อยรอบวันที่ 1, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 18, 19, 20, 21 และ 22 ต.ค. 2569 (เกิน 3 วันทำการติดต่อกันแล้ว) ควรตรวจสอบการตั้งค่า network access ของสภาพแวดล้อมนี้โดยเร็ว
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>รอบรายงานนี้ยังเข้าถึงโดเมนข่าวบริษัท/สื่อส่วนใหญ่ไม่ได้โดยตรงอีกครั้ง มีเพียง Anthropic Newsroom, GitHub และ Claude Platform Docs ที่เปิดอ่านได้ตามปกติ ข่าวหลักของวันนี้คือ Anthropic ประกาศบริจาคมาตรฐาน Agent Skills ให้กับ Agentic AI Foundation (AAIF) ภายใต้ Linux Foundation ซึ่งก่อตั้งร่วมกับ Block และ OpenAI ต่อเนื่องจากการบริจาค Model Context Protocol (MCP) ก่อนหน้านี้ ด้านเทคนิค Claude Code ออกเวอร์ชันใหม่สองรุ่นต่อเนื่อง (v2.1.307 และ v2.1.308) โดย v2.1.307 เพิ่มคำสั่งย้าย API เวอร์ชัน, อีเวนต์ observability สำหรับ tool call ที่ถูกสกัดกั้น และตัวเลือกควบคุมการรีวิวโค้ดอัตโนมัติ ส่วน GitHub Trending วันนี้มีโปรเจกต์โอเพนซอร์สของ Anthropic เองเข้าอันดับใหม่ (anthropics/knowledge-work-plugins) ร่วมกับเครื่องมือ AI agent ที่ติดอันดับต่อเนื่องจากรอบก่อน ผู้อ่านควรทราบว่าการไม่พบข่าวโมเดลใหม่จากผู้พัฒนารายใหญ่รายอื่น งานวิจัยที่ยืนยันผู้แต่งได้ครบ หรือผลเบนช์มาร์กใหม่ในรอบนี้ เป็นผลจากข้อจำกัดการเข้าถึงข้อมูล ไม่ใช่ข้อบ่งชี้ว่าไม่มีความเคลื่อนไหวในอุตสาหกรรม</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ไม่พบการเปิดตัวโมเดล AI ใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วนตาม Validation Rules เนื่องจากโดเมนทางการของผู้พัฒนาโมเดลหลัก (OpenAI, Google DeepMind, Meta, Hugging Face, xAI, DeepSeek) เข้าถึงไม่ได้ในรอบนี้ (ดูหมายเหตุข้อจำกัดข้อมูลด้านบน) และหน้า Anthropic Newsroom ที่เข้าถึงได้ไม่มีประกาศโมเดลใหม่ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">ไม่สามารถเข้าถึง arxiv.org, huggingface.co/papers และ paperswithcode.com ได้โดยตรงในรอบนี้ (ลองซ้ำแล้วตามขั้นตอน Network Access Resilience) ผลค้นหาสำรองไม่พบเปเปอร์ใหม่ที่ระบุชื่อผู้แต่ง (Authors) และหมายเลข arXiv/DOI ครบตามเกณฑ์ Validation Rules ของหมวดนี้ในกรอบ 24 ชั่วโมงล่าสุด จึงไม่นำมาแสดงในหมวดนี้สำหรับรอบวันนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars (today)</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>anthropics/knowledge-work-plugins</td>
+          <td>~303</td>
+          <td>Python</td>
+          <td>ปลั๊กอินโอเพนซอร์สสำหรับผู้ใช้งานออฟฟิศที่ใช้งาน Claude Cowork เปิดตัวโดย Anthropic เอง</td>
+          <td>✅ <a href="https://github.com/anthropics/knowledge-work-plugins">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>cloudflare/security-audit-skill</td>
+          <td>~2,979</td>
+          <td>JavaScript</td>
+          <td>สกิลสำหรับ coding agent ให้ตรวจสอบความปลอดภัยแบบหลายขั้นตอน พร้อมผลตรวจที่ยืนยันได้ <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/cloudflare/security-audit-skill">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>DietrichGebert/ponytail</td>
+          <td>~1,949</td>
+          <td>JavaScript</td>
+          <td>พรอมต์สำหรับ AI agent ให้เลือกเขียนโค้ดแบบง่ายที่สุด หลีกเลี่ยงการเขียนโค้ดที่ไม่จำเป็น <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/DietrichGebert/ponytail">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>Graphify-Labs/graphify</td>
+          <td>~1,407</td>
+          <td>Python</td>
+          <td>แปลงโค้ดเบส เอกสาร สคีมา และ PDF เป็นกราฟความรู้ที่ค้นหาได้ สำหรับ Claude Code และ agent อื่น <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/Graphify-Labs/graphify">GitHub (official repo)</a></td>
+        </tr>
+        <tr>
+          <td>luongnv89/claude-howto</td>
+          <td>~370</td>
+          <td>-</td>
+          <td>คู่มือใช้งาน Claude Code แบบมีภาพประกอบและตัวอย่างจริง <span class="badge-warn">ต่อเนื่อง</span></td>
+          <td>✅ <a href="https://github.com/luongnv89/claude-howto">GitHub (official repo)</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ตัวเลขดาวเป็นจำนวนที่เพิ่มขึ้น "วันนี้" ตามที่หน้า GitHub Trending รายงาน ไม่ใช่ยอดดาวสะสมทั้งหมดของโปรเจกต์ รายการที่ไม่เกี่ยวข้องกับ AI โดยตรงหรือไม่มีความใหม่เฉพาะวันนี้ (เช่น php/php-src, supabase, fastapi) ถูกคัดออกจากตารางหลักเพื่อความกระชับ รายการที่มีเครื่องหมาย "ต่อเนื่อง" คือโปรเจกต์ที่ติดอันดับ Trending ต่อเนื่องจากรอบรายงานก่อนหน้า</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบเครื่องมือหรือแอปใหม่ (นอกเหนือจากโปรเจกต์โอเพนซอร์สในหัวข้อ Open Source) ที่ยืนยันวันเปิดตัว ราคา และแหล่งอ้างอิงอยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วนตาม Validation Rules</p>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+        <tr>
+          <td>Claude Code</td>
+          <td>ออกเวอร์ชัน v2.1.308 (22 ต.ค. 2569) เน้นแก้บั๊กและเพิ่มความเสถียรของการใช้งานโดยรวม (release notes ไม่ได้แยกรายละเอียดเป็นข้อ ๆ)</td>
+          <td>✅ <a href="https://github.com/anthropics/claude-code/releases">GitHub — anthropics/claude-code releases</a></td>
+        </tr>
+        <tr>
+          <td>Claude Code</td>
+          <td>ออกเวอร์ชัน v2.1.307 (21 ต.ค. 2569) เพิ่มคำสั่ง <code>/claude-api api-version</code> เพื่อย้ายโค้ดไปใช้ Claude API เวอร์ชัน 2026-10-21, เพิ่มอีเวนต์ OpenTelemetry <code>claude_code.safety_event</code> สำหรับทุก tool call ที่ถูก permission rule, auto mode, safety check, hook หรือ sandbox สกัดกั้น/ถามยืนยัน/ส่งกลับ, เพิ่มคำสั่ง <code>@claude review stop</code> (รวมถึง <code>off</code> และ <code>pause</code>) สำหรับควบคุม Code Review; แก้บั๊ก model-not-found เมื่อตั้ง <code>CLAUDE_CODE_DISABLE_1M_CONTEXT</code> พร้อม alias <code>[1m]</code> เช่น <code>opus[1m]</code>, แก้บั๊ก HTTP MCP tool call ถูกส่งซ้ำสองครั้งเมื่อการเชื่อมต่อปิดกลางคัน (ตอนนี้รีทรายเฉพาะ tool ที่ read-only หรือ idempotent), เพิ่มเวลารอยืนยันของ <code>setModel()</code> ใน Agent SDK จาก 5 เป็น 15 วินาที; และเปลี่ยนให้ self-hosted runner checkout hook หยุดทำงานหลัง 30 นาทีเป็นค่าเริ่มต้น (ปรับได้ด้วย <code>--checkout-hook-timeout-min</code>)</td>
+          <td>✅ <a href="https://github.com/anthropics/claude-code/releases">GitHub — anthropics/claude-code releases</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+
+    <h3>OpenAI</h3>
+    <p class="note">ไม่สามารถเข้าถึง openai.com โดยตรงได้ในรอบนี้ และไม่พบข่าวจากแหล่งสำรองที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วน</p>
+
+    <h3>Anthropic</h3>
+    <p class="note">ตรวจสอบ anthropic.com/news โดยตรงแล้วพบประกาศใหม่หนึ่งรายการในกรอบ 24 ชั่วโมงล่าสุด: "Donating Agent Skills to the Agentic AI Foundation" (22 ต.ค. 2569) — Anthropic บริจาคมาตรฐานเปิด Agent Skills (รวมชื่อ โลโก้ องค์กร GitHub และโดเมน agentskills.io) ให้กับ Agentic AI Foundation (AAIF) ภายใต้ Linux Foundation ซึ่ง Anthropic ร่วมก่อตั้งกับ Block และ OpenAI และเคยบริจาค Model Context Protocol (MCP) ไว้ก่อนหน้านี้ เป้าหมายคือให้มาตรฐานนี้เปิดกว้าง ขับเคลื่อนโดยชุมชน และเป็นกลางต่อผู้ให้บริการ โดยระบุว่ามีแพลตฟอร์ม agent กว่า 70 แห่ง (เช่น ChatGPT, Cursor, GitHub Copilot, VS Code) นำ Agent Skills ไปใช้ตั้งแต่เดือนธันวาคม 2568 วิศวกรจาก Anthropic, Google และ OpenAI จะร่วมดูแลมาตรฐานนี้ในฐานะบุคคล โดยมี David Soria Parra และ Mahesh Murag เป็น Lead Maintainers ✅ <a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation">Anthropic — Donating Agent Skills to the Agentic AI Foundation</a></p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่สามารถเข้าถึง blog.google และ deepmind.google โดยตรงได้ในรอบนี้ และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วนจากแหล่งสำรอง</p>
+
+    <h3>Meta</h3>
+    <p class="note">ไม่สามารถเข้าถึง ai.meta.com โดยตรงได้ในรอบนี้ และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วนจากแหล่งสำรอง</p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่สามารถเข้าถึง news.microsoft.com โดยตรงได้ในรอบนี้ และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วน</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่สามารถเข้าถึง aws.amazon.com โดยตรงได้ในรอบนี้ และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วน</p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">ไม่สามารถเข้าถึง nvidianews.nvidia.com โดยตรงได้ในรอบนี้ และไม่พบข่าวใหม่เฉพาะเจาะจงที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดได้ครบถ้วน</p>
+
+    <h3>Startup</h3>
+    <p class="note">ไม่พบข่าวใหม่เฉพาะเจาะจงจากสตาร์ทอัพที่ยืนยันแหล่งที่มาได้ครบอย่างน้อย 2 แหล่งในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ ผลค้นหาด้านเงินทุน (funding round) ที่พบเป็นข้อมูลจากเว็บรวมข่าวที่ตรวจสอบย้อนกลับไม่ได้ครบถ้วนหรือไม่ระบุวันที่ จึงไม่นำมาแสดง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>Agent:</b> Claude Code v2.1.307 (21 ต.ค. 2569) และ v2.1.308 (22 ต.ค. 2569) — ดูรายละเอียดในหัวข้อ Tools &amp; Apps ✅ <a href="https://github.com/anthropics/claude-code/releases">GitHub — anthropics/claude-code releases</a></li>
+      <li><b>MCP / Agent:</b> Anthropic บริจาคมาตรฐาน Agent Skills ให้ Agentic AI Foundation ภายใต้ Linux Foundation ต่อเนื่องจากการบริจาค Model Context Protocol (MCP) ก่อนหน้านี้ — ดูรายละเอียดในหัวข้อ Company News ✅ <a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation">Anthropic — Donating Agent Skills to the Agentic AI Foundation</a></li>
+      <li><b>API:</b> ตรวจสอบหน้า Claude Platform API release notes แล้ว ยังไม่มีรายการใหม่ที่ลงวันที่ 22 ต.ค. 2569 รายการล่าสุดยังคงเป็น API เวอร์ชัน 2026-10-21 ที่ออกเมื่อวันก่อน <span class="badge-warn">ต่อเนื่อง</span> ✅ <a href="https://platform.claude.com/docs/en/release-notes/api">Claude Platform — API release notes</a></li>
+      <li><b>MCP (spec):</b> ตรวจสอบหน้า releases ของ Model Context Protocol spec แล้ว ยังไม่มีรีลีสใหม่ในกรอบ 24 ชั่วโมงล่าสุด (เวอร์ชันล่าสุดคงเป็น 2026-07-28) ✅ <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/releases">GitHub — modelcontextprotocol releases</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <p class="note">ไม่พบข่าวด้าน Investment, Acquisition หรือ Regulation ใหม่ที่ยืนยันแหล่งที่มาได้ครบอย่างน้อย 2 แหล่ง (โดยมีอย่างน้อยหนึ่งแหล่งเป็น Official) ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ ข่าวลือเรื่องกำหนดการ IPO ของ Anthropic ยังคงเป็นประเด็นต่อเนื่องจากรอบก่อนหน้า แต่รายงานจากสื่อแต่ละแห่งให้รายละเอียด (มูลค่าบริษัท กำหนดเวลายื่น S-1) ที่ขัดแย้งกัน โดยไม่มีแหล่งข้อมูลทางการจาก Anthropic ยืนยัน จึงไม่นำมาแสดงเป็นข่าวยืนยันในรอบนี้ <span class="badge-warn">ต่อเนื่อง</span></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ระบุ Model, Score และ Source ได้ครบถ้วนตาม Validation Rules ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ จึงไม่นำมาแสดงในตารางนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <ul>
+      <li><b>Trending (GitHub):</b> เครื่องมือ AI agent และสกิลสำหรับ coding agent ยังคงครองพื้นที่ GitHub Trending อย่างต่อเนื่อง วันนี้มีปลั๊กอินโอเพนซอร์สของ Anthropic เอง (knowledge-work-plugins) เข้าอันดับใหม่ ร่วมกับ security-audit-skill, ponytail และ graphify ที่ติดอันดับต่อเนื่อง (ดูหัวข้อ Open Source) 🔥 <a href="https://github.com/trending">GitHub Trending</a></li>
+      <li><b>Tutorials / Events:</b> ไม่พบทูทอเรียลหรืออีเวนต์ใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชั่วโมงล่าสุดของวันนี้ได้ครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ (ไม่สามารถเข้าถึง news.ycombinator.com และ reddit.com เพื่อตรวจสอบแนวโน้มชุมชนเพิ่มเติมได้)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. รักษาความพกพาข้ามแพลตฟอร์มของ Agent Skills ผ่านธรรมาภิบาลแบบเปิด (Agentic AI Foundation)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมที่สร้าง Agent Skills ไว้ใช้กับแพลตฟอร์มหนึ่ง (เช่น Claude) ต้องการความมั่นใจว่ามาตรฐานจะยังคงเปิดและใช้ข้ามแพลตฟอร์มอื่นได้ต่อไป ไม่ผูกติดกับผู้ให้บริการรายเดียว</dd>
+        <dt>วิธีใช้</dt><dd>ติดตามการพัฒนามาตรฐาน Agent Skills ผ่านช่องทางของ Agentic AI Foundation ภายใต้ Linux Foundation ซึ่งมีวิศวกรจาก Anthropic, Google และ OpenAI ร่วมดูแล</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงที่สกิลที่สร้างไว้จะใช้ไม่ได้กับแพลตฟอร์มอื่นในอนาคต เนื่องจากมีผู้พัฒนาหลักหลายรายร่วมดูแลมาตรฐานนี้ร่วมกัน</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. ตรวจสอบ tool call ที่ถูกสกัดกั้นในระบบ production ด้วย safety_event OTel (Claude Code v2.1.307)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมที่รัน Claude Code ในสภาพแวดล้อม production ต้องการเห็นภาพรวมว่า permission rule, auto mode, safety check, hook หรือ sandbox สกัดกั้นหรือถามยืนยัน tool call ใดบ้าง เพื่อตรวจสอบความปลอดภัยและพฤติกรรม agent</dd>
+        <dt>วิธีใช้</dt><dd>เปิดรับอีเวนต์ OpenTelemetry <code>claude_code.safety_event</code> ที่ยิงทุกครั้งที่มีการสกัดกั้น/ถามยืนยัน/ส่งกลับ tool call แล้วนำเข้าระบบ observability ที่ใช้งานอยู่</dd>
+        <dt>ประโยชน์</dt><dd>เห็นแนวโน้มการสกัดกั้นของ agent ได้แบบรวมศูนย์ ช่วยปรับ permission rule หรือ hook ให้เหมาะสมโดยไม่ต้องไล่ดู log รายเซสชัน</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. ควบคุมจังหวะการรีวิวโค้ดอัตโนมัติด้วย @claude review stop/pause (Claude Code v2.1.307)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมที่ใช้ Code Review อัตโนมัติของ Claude บน PR บางครั้งต้องการหยุดหรือพักการรีวิวชั่วคราว เช่น ระหว่างแก้ไขโค้ดจำนวนมากที่ยังไม่พร้อมให้ตรวจ</dd>
+        <dt>วิธีใช้</dt><dd>คอมเมนต์ <code>@claude review stop</code> (หรือ <code>off</code>, <code>pause</code>) บน PR เพื่อควบคุมว่าจะให้ Claude รีวิวโค้ดต่อหรือไม่</dd>
+        <dt>ประโยชน์</dt><dd>ลดคอมเมนต์รีวิวที่ไม่จำเป็นระหว่างพัฒนา และให้ทีมควบคุมจังหวะการรีวิวได้เองโดยไม่ต้องปิดระบบทั้งหมด</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. ป้องกันผลข้างเคียงซ้ำจาก MCP tool call ที่ถูกรีทราย (Claude Code v2.1.307)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>เมื่อการเชื่อมต่อ HTTP MCP ขาดกลางคัน ระบบเดิมอาจส่ง tool call ซ้ำสองครั้ง ซึ่งเสี่ยงต่อผลข้างเคียงซ้ำ (เช่น สร้างข้อมูลซ้ำ) หาก tool นั้นไม่ idempotent</dd>
+        <dt>วิธีใช้</dt><dd>อัปเดต Claude Code เป็น v2.1.307 ขึ้นไป ซึ่งจะรีทรายเฉพาะ tool call ที่เป็น read-only หรือ idempotent เท่านั้นเมื่อการเชื่อมต่อขาดกลางคัน</dd>
+        <dt>ประโยชน์</dt><dd>ลดความเสี่ยงที่ MCP tool ที่มีผลข้างเคียง (เช่น เขียนข้อมูล ส่งข้อความ) จะถูกเรียกซ้ำโดยไม่ได้ตั้งใจ</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>5. ตรวจสอบความปลอดภัยของโค้ดเบสหลายขั้นตอนด้วย security-audit-skill (Cloudflare)</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมพัฒนาที่ใช้ coding agent ต้องการขั้นตอนตรวจสอบความปลอดภัยที่เป็นมาตรฐานและให้ผลตรวจที่ตรวจสอบย้อนกลับได้ ไม่ใช่แค่คำแนะนำทั่วไปจาก agent</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้งสกิล cloudflare/security-audit-skill เพื่อให้ coding agent รันการตรวจสอบความปลอดภัยแบบหลายขั้นตอนพร้อมผลลัพธ์ที่มีโครงสร้างตรวจสอบได้</dd>
+        <dt>ประโยชน์</dt><dd>ได้กระบวนการตรวจสอบความปลอดภัยที่ทำซ้ำได้และยืนยันผลได้ ลดความเสี่ยงที่ agent จะมองข้ามช่องโหว่สำคัญ</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">GitHub Projects</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>โดเมนแหล่งข้อมูล Tier 1/2 ส่วนใหญ่ (OpenAI, Google/DeepMind, Meta, Microsoft, Amazon, NVIDIA, Hugging Face, arXiv, Papers with Code, สื่อเทคโนโลยีหลัก ๆ เกือบทั้งหมด, Hacker News, Reddit) เข้าถึงโดยตรงไม่ได้ติดต่อกันมาแล้วอย่างน้อย 16 รอบรายงานนับตั้งแต่ 1 ต.ค. 2569</dd>
+        <dt>เหตุผล</dt><dd>หากสถานการณ์นี้ดำเนินต่อไป คุณภาพและความครบถ้วนของรายงานรายวันจะลดลงอย่างมีนัยสำคัญ โดยเฉพาะหมวด AI Models, Research, Benchmark และ Industry ที่ต้องพึ่งพาแหล่งข้อมูลเหล่านี้เป็นหลัก ควรตรวจสอบการตั้งค่า network egress ของสภาพแวดล้อมนี้โดยเร็ว</dd>
+        <dt>Source</dt><dd>ผลการทดสอบเข้าถึงโดเมนด้วย WebFetch ในรอบรายงานต่อเนื่องตั้งแต่ 1–22 ต.ค. 2569 (internal diagnostic)</dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>Anthropic บริจาคมาตรฐาน Agent Skills ให้กับ Agentic AI Foundation ภายใต้ Linux Foundation ซึ่งมี Block, OpenAI และวิศวกรจาก Google ร่วมดูแล ต่อเนื่องจากการบริจาค MCP ก่อนหน้านี้</dd>
+        <dt>เหตุผล</dt><dd>เป็นสัญญาณว่ามาตรฐานสำคัญของระบบ AI agent (ทั้ง MCP และ Agent Skills) กำลังย้ายไปอยู่ภายใต้ธรรมาภิบาลแบบเปิดร่วมกันของผู้พัฒนารายใหญ่หลายราย ควรติดตามว่าจะมีมาตรฐานอื่นตามมาอีกหรือไม่ และจะกระทบทิศทางการพัฒนาของ Agent Skills อย่างไรเมื่อไม่ได้อยู่ภายใต้ Anthropic เพียงผู้เดียว</dd>
+        <dt>Source</dt><dd><a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation">Anthropic — Donating Agent Skills to the Agentic AI Foundation</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news">Anthropic — Newsroom</a></li>
+          <li><a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation">Anthropic — Donating Agent Skills to the Agentic AI Foundation</a></li>
+          <li><a href="https://platform.claude.com/docs/en/release-notes/api">Claude Platform — API release notes</a></li>
+          <li><a href="https://github.com/anthropics/claude-code/releases">GitHub — anthropics/claude-code releases</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/modelcontextprotocol/releases">GitHub — modelcontextprotocol releases</a></li>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://github.com/anthropics/knowledge-work-plugins">GitHub — anthropics/knowledge-work-plugins</a></li>
+          <li><a href="https://github.com/cloudflare/security-audit-skill">GitHub — cloudflare/security-audit-skill</a></li>
+          <li><a href="https://github.com/DietrichGebert/ponytail">GitHub — DietrichGebert/ponytail</a></li>
+          <li><a href="https://github.com/Graphify-Labs/graphify">GitHub — Graphify-Labs/graphify</a></li>
+          <li><a href="https://github.com/luongnv89/claude-howto">GitHub — luongnv89/claude-howto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:0;border:none;background:none;">ไม่มีแหล่งข้อมูลงานวิจัยใหม่ที่ยืนยันผู้แต่งได้ครบในรอบนี้</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:0;border:none;background:none;">ไม่สามารถเข้าถึงสื่อ Tier 2 ได้โดยตรงในรอบนี้ (ดูหมายเหตุข้อจำกัดข้อมูล)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 22 ต.ค. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
