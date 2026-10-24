@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 Weekly Software Releases Report - Week 43</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27, 32, 39, 0.14);
+  --line-strong: rgba(27, 32, 39, 0.28);
+  --accent: #0F7A73;
+  --critical: #D92B2B;
+  --high: #FF6B35;
+  --medium: #FFA500;
+  --low: #4CAF50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231, 230, 224, 0.14);
+    --line-strong: rgba(231, 230, 224, 0.26);
+    --accent: #3FBDAF;
+    --critical: #FF6B6B;
+    --high: #FF8C42;
+    --medium: #FFB84D;
+    --low: #81C784;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.page { max-width: 1200px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topstrip {
+  display: flex; justify-content: space-between; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-faint);
+}
+
+.masthead { padding: 44px 0 30px; border-bottom: 1px solid var(--line-strong); }
+.kicker {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+  font-size: 15px; color: var(--accent); margin: 0 0 14px;
+}
+.kicker::before { content: "◆ "; font-size: 11px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 800; margin: 0 0 16px; }
+h2 {
+  font-size: 24px; font-weight: 700; margin: 36px 0 20px; color: var(--ink);
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; color: var(--ink-soft); }
+
+.meta-row { display: flex; gap: 20px; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+
+.executive-summary {
+  background: var(--surface); border-left: 4px solid var(--accent);
+  padding: 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8;
+}
+
+.dashboard {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.dashboard-item {
+  background: var(--surface); padding: 16px; border-radius: 4px;
+  border-top: 3px solid var(--accent); text-align: center;
+}
+.dashboard-item-value { font-size: 32px; font-weight: 700; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.dashboard-item-label {
+  font-size: 12px; color: var(--ink-faint); margin-top: 8px;
+  text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--surface); }
+th {
+  background: var(--surface-2); color: var(--ink); padding: 12px; text-align: left;
+  font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--line-strong);
+}
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.label {
+  display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 11px;
+  font-weight: 600; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-major { background: rgba(15, 122, 115, 0.2); color: var(--accent); }
+.label-minor { background: rgba(15, 122, 115, 0.1); color: var(--ink-soft); }
+.label-patch { background: rgba(217, 43, 43, 0.1); color: var(--ink-soft); }
+.label-security { background: rgba(217, 43, 43, 0.2); color: var(--critical); }
+.label-lts { background: rgba(255, 165, 0, 0.15); color: var(--medium); }
+.label-rc { background: rgba(156, 39, 176, 0.15); color: var(--ink-soft); }
+.label-beta { background: rgba(63, 81, 181, 0.15); color: var(--ink-soft); }
+.label-eol { background: rgba(217, 43, 43, 0.15); color: var(--critical); }
+
+.severity-critical { color: var(--critical); font-weight: 600; }
+.severity-high { color: var(--high); font-weight: 600; }
+.severity-medium { color: var(--medium); font-weight: 600; }
+.severity-low { color: var(--low); font-weight: 600; }
+
+.source-badge {
+  display: inline-block; padding: 3px 6px; background: var(--surface-2);
+  border-radius: 2px; font-size: 10px; font-family: "JetBrains Mono", monospace; color: var(--ink-faint);
+}
+
+.note {
+  background: var(--surface); border-left: 4px solid var(--medium); padding: 12px;
+  margin: 12px 0; border-radius: 2px; font-size: 13px; color: var(--ink-soft);
+}
+.empty-note {
+  background: var(--surface); border: 1px dashed var(--line-strong); padding: 12px 16px;
+  margin: 12px 0; border-radius: 4px; font-size: 13.5px; color: var(--ink-soft); font-style: italic;
+}
+.highlight-box { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; margin: 12px 0; border-radius: 4px; }
+
+footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-strong); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+.two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest</p>
+    <h1>💻 Weekly Software Releases Report</h1>
+    <div class="meta-row">
+      <span><b>Week:</b> 43</span>
+      <span><b>Period:</b> October 18 – 24, 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="executive-summary">
+      <p>สัปดาห์นี้ (18–24 ต.ค. 2569) เรื่องใหญ่ที่สุดคือเหตุการณ์กุญแจเข้ารหัสของ Intermediate CA ของ eMudhra/emSign จำนวน 8 ชุดถูกเปิดเผยว่าหลุดรั่ว (CVE-2026-111943) ซึ่งส่งผลกระทบเป็นลูกโซ่ให้ Go ออกแพตช์ฉุกเฉิน (1.27.3/1.26.10) บล็อกความน่าเชื่อถือของ CA เหล่านั้นในระดับ Toolchain ตามด้วย Docker Engine, Docker Compose, Terraform และ Argo CD ที่ต้องอัปเดต Go Runtime ตามเพื่อปิดช่องโหว่เดียวกัน ขณะที่ Node.js และ Python ก็ออก Security Release แยกกันในวันเดียวกัน (21 ต.ค.) เพื่อตัดความเชื่อถือ CA ชุดนี้เช่นกัน พร้อมแก้ไขช่องโหว่อื่นรวมกันอีกหลายรายการ (Node.js 10 CVE รวม Brotli Decoder Out-of-bounds Write ที่เสี่ยง RCE)</p>
+      <p>เรื่องใหญ่คู่กันคือ PHP ออกแพตช์ฉุกเฉินนอกรอบที่ถูกเรียกว่า "PHP2Shell" แก้ไขช่องโหว่ Critical 2 รายการ (CVE-2026-109618, CVE-2026-109619, CVSS v4.0 9.2) ที่ไม่ต้องยืนยันตัวตนก็โจมตีได้บนเกือบทุกรูปแบบการรันเว็บด้วย PHP นอกจากนี้ยังมีรายงาน (ยังไม่ยืนยันสมบูรณ์) ว่า GitLab ออกแพตช์ฉุกเฉินแก้ไขช่องโหว่ Critical CVSS เต็ม 10.0 อีกครั้ง (CVE-2026-110264) แต่ไม่สามารถยืนยันหมายเลขเวอร์ชันที่แก้ไขจริงจาก docs.gitlab.com ได้โดยตรงในรอบตรวจสอบนี้ ด้าน Oracle ออก Critical Patch Update ประจำเดือน ต.ค. (รวมกับ MySQL 26.10/9.7.4/8.4.13) และ Ubuntu ออกชุด USN 10 รายการครอบคลุม zlib, OpenVPN, Tornado, c-ares, poppler, Ghostscript และการถอนความเชื่อถือ Root CA ที่ถูกเพิกถอน 2 ชุดผ่าน NSS</p>
+      <p>ด้าน Software Release ทั่วไป: Terraform v1.17.0 เข้าสู่ GA ของ Policy Feature พร้อม Breaking Change ในฟังก์ชัน <code>log</code>/<code>pow</code>, Vue ออก RC ตัวที่ 13 ของสาย 3.6, Spring Boot ออก RC1 ของสาย 4.2 พร้อมแพตช์ 4.1.2/4.0.9, FastAPI ออกต่อเนื่อง 10 เวอร์ชันในรอบสัปดาห์เดียว (รวม Breaking Change ใน 0.160.0), Traefik แก้ไขช่องโหว่ High Severity ของ ForwardAuth ที่หลุดข้อมูลยืนยันตัว NTLM/Negotiate ข้าม Client, Google Cloud SDK ออกเวอร์ชัน 590.0.0 พร้อม Breaking Change (ถอด Component บางส่วน) และ GitHub CLI/Actions Runner/Gradle/Composer/pip ต่างออกอัปเดตของตนเองในสัปดาห์นี้</p>
+      <p><strong>ประเด็นสำคัญ:</strong> ทีมที่ใช้งาน PHP ในรูปแบบใดก็ตาม (PHP-FPM, mod_php, php-cgi, FrankenPHP, LiteSpeed) ควรอัปเกรดเป็น 8.5.12/8.4.27/8.3.36/8.2.35 โดยเร็วที่สุดเนื่องจากมีรายงานความพยายามโจมตีแล้วก่อนมีแพตช์ครบทุกฝ่าย ทีมที่ Build Binary ด้วย Go, ใช้ Docker/Docker Compose, Terraform หรือ Argo CD ควร Rebuild/อัปเดตเป็นเวอร์ชันล่าสุดเพื่อตัดความเชื่อถือ CA ที่ถูกเพิกถอน (การอัปเดต OS Root Store เพียงอย่างเดียวไม่เพียงพอ) ทีมที่ใช้ GitLab Self-managed ควรตรวจสอบ Advisory ของ GitLab โดยตรงเนื่องจากข้อมูล CVE-2026-110264 ยังมีความไม่แน่นอนด้านแหล่งที่มา และทีมที่ใช้ Ivanti Connect Secure ควรทราบว่ายังมีช่องโหว่ Privilege Escalation ตัวที่ 3 ในชุดการโจมตีเดิมที่ยังไม่มี CVE และไม่มีแพตช์</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">33</div>
+        <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">9</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">15</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Go</strong></td>
+          <td>1.27.3 / 1.26.10</td>
+          <td><span class="label label-security">🔒 Security Release</span> แก้ไข <code>crypto/x509</code> ให้ปฏิเสธ Certificate Chain ที่อ้างอิง Intermediate CA ของ eMudhra/emSign ที่ถูกเพิกถอน 8 ชุด (CVE-2026-111943) เนื่องจาก Go บังคับรายการบล็อกไว้ใน Toolchain เอง การอัปเดต Root Store ของ OS เพียงอย่างเดียวจึงไม่เพียงพอ ต้อง Rebuild Binary ด้วย Go เวอร์ชันนี้ <strong>หมายเหตุความขัดแย้ง:</strong> ระดับความรุนแรงรายงานไม่ตรงกัน — Red Hat ระบุ Medium (CVSS 6.8) ขณะที่ Oracle ระบุเบื้องต้นเป็น High (CVSS 8.1)</td>
+          <td>Oct 19–20, 2026</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://github.com/golang/go/issues/82345" class="source-badge">github.com/golang/go (issue 82345)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>26.12.1 (Current) / 24.22.1 "Krypton" (LTS) / 22.23.4 "Jod" (LTS)</td>
+          <td><span class="label label-security">🔒 Security Release</span> แก้ไข 10 CVE ทุกสายที่ยังรองรับ เด่นที่สุดคือ CVE-2026-111497 (Brotli Decoder เขียนข้อมูลเกินขอบเขต เสี่ยง RCE) นอกจากนี้ยังมี CVE-2026-105482/105483/106069/106072 (TLS/DNS Hostname Bypass หลายรูปแบบ), CVE-2026-105481 (Keep-alive Socket Response Smuggling), CVE-2026-106074 (Entropy Caching ของ randomUUID/randomInt ใน Snapshot/SEA) และ CVE-2026-106070/106071/106073 พร้อมอัปเดต CA Store ตัดความเชื่อถือ Intermediate CA ของ eMudhra ชุดเดียวกับ Go/Python</td>
+          <td>Oct 21, 2026</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://nodejs.org/en/blog/vulnerability/october-2026-security-releases" class="source-badge">nodejs.org (security blog)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Python</strong></td>
+          <td>3.15.1 / 3.14.9 / 3.13.17</td>
+          <td><span class="label label-security">🔒 Security Release</span> ออกนอกรอบฉุกเฉินเพื่ออัปเกรด pip ที่ฝังมากับตัวติดตั้งเป็น 26.2.2 ซึ่งดึง certifi 2026.10.19 มาตัดความเชื่อถือ Intermediate CA ของ eMudhra/emSign ชุดเดียวกัน ทีมงาน Python ระบุว่าปกติจะไม่อัปเดต pip ใน Security-only Release แต่ทำเป็นกรณีพิเศษเพราะ pip มี Certificate Store ของตัวเอง การอัปเดต OS เพียงอย่างเดียวจึงไม่ช่วยกับ Virtualenv ที่สร้างไว้ก่อนหน้า</td>
+          <td>Oct 21, 2026</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://www.python.org/downloads/release/python-3149/" class="source-badge">python.org/downloads</a></td>
+        </tr>
+        <tr>
+          <td><strong>PHP</strong></td>
+          <td>8.5.12 / 8.4.27 / 8.3.36 / 8.2.35</td>
+          <td><span class="label label-security">🔒 Security Release</span> แพตช์ฉุกเฉินนอกรอบที่สื่อเรียกว่า "PHP2Shell" แก้ไขช่องโหว่ Critical 2 รายการที่ไม่ต้องยืนยันตัวตน: CVE-2026-109618 (Out-of-memory Corruption) และ CVE-2026-109619 (Use-after-free จากสถานะค้างข้าม Request เมื่อ Request จบแบบผิดปกติ) ทั้งสองรายการ CVSS v4.0 9.2 กระทบ PHP-FPM, mod_php, php-cgi, FrankenPHP และ LiteSpeed (mod_php เสี่ยงที่สุดเพราะโจมตีได้ก่อนโค้ดแอปพลิเคชันรัน) มีรายงานรายละเอียด/PoC หลุดก่อนประกาศและความพยายามโจมตีบางส่วน (ยังไม่อยู่ใน CISA KEV ขณะรายงาน) ผลสแกนของ Bitsight พบมีเพียงประมาณ 1/3 ของ PHP ที่ตรวจพบอัปเดตแล้ว</td>
+          <td>Oct 21, 2026, 14:00 UTC</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://www.php.net/" class="source-badge">php.net (news archive)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Java / Oracle JDK</strong></td>
+          <td>ชุด Oracle CPU ต.ค. 2569 (รายงานหมายเลขเวอร์ชันไม่ตรงกันระหว่างแหล่งข่าว — ดูหมายเหตุ)</td>
+          <td><span class="label label-security">🔒 Security Release</span> Oracle ออก Critical Patch Update ประจำไตรมาสซึ่งรวมส่วนของ Java SE ไว้ด้วย <strong>หมายเหตุความขัดแย้งของข้อมูล:</strong> comss.ru และ pcwelt.de ระบุชุดเวอร์ชัน 27.0.1 / 25.0.5 / 21.0.13 / 17.0.21 / 11.0.33 / 8u511 ขณะที่ประกาศของ IPA (ญี่ปุ่น) ลงวันที่ 21 ต.ค. อ้างอิง CPU เดือนนี้แต่ระบุชุดเวอร์ชันที่เก่ากว่า (25.0.4.1 / 21.0.12.1 / 17.0.20.1 / 11.0.32.1 / 8u503) ไม่สามารถเข้าถึง oracle.com/security-alerts หรือ openjdk.org โดยตรงเพื่อยืนยันได้ในรอบตรวจสอบนี้ จึงไม่ยืนยันหมายเลขเวอร์ชัน/CVE รายตัว — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน</td>
+          <td>Oct 20–21, 2026</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://www.oracle.com/security-alerts/cpuoct2026.html" class="source-badge">oracle.com/security-alerts (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ในช่วง 18–24 ต.ค. 2569 ของ .NET (ล่าสุดคือ Security Release รวม RC2 ของ .NET 11 เมื่อ 13 ต.ค. 2569 ก่อนช่วงเวลานี้) และ Rust (ล่าสุด 1.99.1 เมื่อ 16 ต.ค. 2569) ส่วนการอัปเดต Crate <code>webpki-roots</code> (v1.0.10) ที่เกี่ยวข้องกับเหตุการณ์ CA เดียวกันเป็น Crate ของบุคคลที่สาม ไม่ใช่ Release ของ Rust Toolchain เอง จึงไม่นับเป็น Release ของ Rust ในรายงานนี้</div>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Framework</th><th>Version</th><th>Highlights</th><th>Migration</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vue</strong></td>
+          <td>3.6.0-rc.13</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> RC ตัวที่ 13 ของสาย 3.6 ที่ยังไม่ GA (Stable ล่าสุดยังเป็น 3.5.44 เมื่อ 13 ต.ค. 2569 ก่อนช่วงเวลานี้)</td>
+          <td>เป็น Pre-release ยังไม่มี Migration Guide ฉบับสมบูรณ์จนกว่าจะถึง Stable</td>
+          <td><a href="https://github.com/vuejs/core/releases" class="source-badge">github.com/vuejs</a></td>
+        </tr>
+        <tr>
+          <td><strong>Laravel</strong></td>
+          <td>Framework v13.38.0 (+ v12.70.1)</td>
+          <td><span class="label label-minor">🔹 Minor</span> v13.38.0 (20 ต.ค.) เพิ่ม Middleware <code>PreventStaleDatabaseReads</code> พร้อมแก้บั๊กหลายรายการ ส่วน v12.70.1 (21 ต.ค.) มีรายการแก้ไขเดียวคือ "Prevent escaping from bypassing protection" ซึ่งคำอธิบายบอกใบ้ถึงการแก้ไขด้านความปลอดภัย แต่ Release Note ไม่ได้ระบุคำว่า Security และไม่พบ CVE ID ที่เกี่ยวข้อง จึงไม่จัดเป็น Security Release ตามเกณฑ์ของรายงานนี้</td>
+          <td>ไม่มีการระบุ Breaking Change</td>
+          <td><a href="https://github.com/laravel/framework/releases/tag/v12.70.1" class="source-badge">github.com/laravel</a></td>
+        </tr>
+        <tr>
+          <td><strong>FastAPI</strong></td>
+          <td>0.157.0 – 0.162.0 (10 เวอร์ชันย่อย)</td>
+          <td><span class="label label-minor">🔹 Minor</span> ออกต่อเนื่อง 10 เวอร์ชันในรอบ 3 วัน เพิ่มการรองรับรวม/รวมแบบ Optional ของ Query, Header, Cookie และ Form Parameter/Body ที่เป็น Pydantic Model กลุ่ม พร้อมแก้ไข OpenAPI Schema ของ Nullable Form Union และ Media Type ของ Form เวอร์ชันสุดท้ายในช่วงนี้ (0.162.0, 23 ต.ค.) ปรับให้ Boolean Form Field ที่ไม่ได้ส่งมาใช้ค่า Default ของ Pydantic หรือ Error แทนการ Default เป็น <code>False</code> แบบเดิม</td>
+          <td><strong>มี Breaking Change:</strong> 0.160.0 (22 ต.ค.) เปลี่ยนวิธีใช้ค่า <code>extra</code> ของ Parameter Model กับ Field ข้างเคียง — ระบุไว้ชัดเจนใน Release Note ว่าเป็น Breaking Change</td>
+          <td><a href="https://github.com/fastapi/fastapi/releases" class="source-badge">github.com/fastapi</a></td>
+        </tr>
+        <tr>
+          <td><strong>Spring Boot</strong></td>
+          <td>v4.2.0-RC1 (+ v4.1.2 / v4.0.9)</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> RC1 ของสาย 4.2 ยังไม่ GA ส่วน v4.1.2/v4.0.9 (22 ต.ค., Patch) แก้บั๊กประมาณ 45 รายการ ครอบคลุม OAuth2/JWT, SameSite ของ Session Cookie, การ Parse Service Connection ของ Docker Compose (MongoDB/Elasticsearch/RabbitMQ/MariaDB/SQL Server), Graceful Shutdown และเพิ่ม Enum รองรับ Java 27 พร้อมอัปเดต Dependency (Spring Framework 7.0.10, Spring Security 7.1.2, Tomcat 11.0.27, Netty 4.2.19 ฯลฯ) ไม่พบ CVE ID ใน Release Note</td>
+          <td>ไม่มีการระบุ Breaking Change สำหรับ v4.1.2/v4.0.9</td>
+          <td><a href="https://github.com/spring-projects/spring-boot/releases/tag/v4.1.2" class="source-badge">github.com/spring-projects</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ React (ล่าสุด 19.3.1/19.2.9/19.1.10/19.0.9 เมื่อ 14 ต.ค. 2569), Angular (ล่าสุด 22.2.3 เมื่อ 14 ต.ค. 2569) และ Django (ล่าสุด 6.1.2/6.0.9/5.2.18 เมื่อ 6 ต.ค. 2569) ในช่วง 18–24 ต.ค. 2569</div>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps &amp; CI/CD</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Docker Engine</strong></td>
+          <td>v29.9.2</td>
+          <td><span class="label label-security">🔒 Security Release</span> อัปเดต Go Runtime เพื่อปิดช่องโหว่ CVE-2026-111943 (ดูหัวข้อ Programming Languages) ปฏิเสธ Certificate Chain ที่อ้างอิง Intermediate CA ของ eMudhra ที่ถูกเพิกถอน</td>
+          <td>Containers</td>
+          <td><a href="https://github.com/moby/moby/releases" class="source-badge">github.com/moby</a></td>
+        </tr>
+        <tr>
+          <td><strong>Docker Compose</strong></td>
+          <td>v5.6.1</td>
+          <td><span class="label label-security">🔒 Security Release</span> อัปเดต Go Toolchain เป็น 1.26.10 แก้ไข CVE-2026-111943 เช่นเดียวกับ Docker Engine</td>
+          <td>Containers</td>
+          <td><a href="https://github.com/docker/compose/releases" class="source-badge">github.com/docker</a></td>
+        </tr>
+        <tr>
+          <td><strong>Jenkins</strong></td>
+          <td>2.587 (Weekly)</td>
+          <td><span class="label label-minor">🔹 Minor</span> อัปเดตรายสัปดาห์ตามรอบปกติ ปรับปรุงข้อความช่วยเหลือของ <code>quiet-down -block</code>, Error ที่กระชับขึ้นเมื่อ Form Field ตรวจสอบไม่ผ่าน และคงสี ANSI ใน Console ขณะหยุด Output ชั่วคราว</td>
+          <td>CI/CD</td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases" class="source-badge">github.com/jenkinsci</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitLab</strong></td>
+          <td>เวอร์ชันที่แก้ไขยังไม่ยืนยัน (ดูหมายเหตุ)</td>
+          <td><span class="label label-security">🔒 Security Release</span> <strong>UNCERTAIN:</strong> พบรายงานจากสื่อ (securityonline.info, konfirmity.com) ว่า GitLab ออกแพตช์ฉุกเฉินแก้ไขช่องโหว่ Critical CVSS เต็ม 10.0 (CVE-2026-110264 — ไม่ต้องยืนยันตัวตน, RCE ผ่าน Integer Overflow ใน Onigmo Regex Engine) เมื่อ 21 ต.ค. 2569 พร้อม CVE-2026-15723 (High, CVSS 8.2, LDAP Account Takeover) แต่ docs.gitlab.com/about.gitlab.com เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ทั้งคู่ และทีมวิจัยอีกส่วนที่ตรวจสอบหมวด DevOps แยกกันไม่พบ Release ของ GitLab ในช่วงเวลานี้ (พบเพียง Critical Patch ก่อนหน้าเมื่อ 12 ต.ค. และกำหนดรอบถัดไป 28 ต.ค. ซึ่งอยู่นอกช่วงเวลา) <strong>ควรตรวจสอบกับ GitLab โดยตรงก่อนอัปเกรด</strong> ไม่สามารถยืนยันหมายเลขเวอร์ชันที่แก้ไขได้ในรอบตรวจสอบนี้</td>
+          <td>CI/CD (Security)</td>
+          <td><a href="https://securityonline.info/" class="source-badge">securityonline.info (ไม่ยืนยันกับ Official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Argo CD</strong></td>
+          <td>v3.5.6 / v3.4.12 / v3.3.17 / v3.3.18</td>
+          <td><span class="label label-patch">🩹 Patch</span> แก้บั๊ก gRPC SRV Lookup, คืนการ Fetch Repo ผ่าน SSH ด้วย SOCKS5 Proxy, แก้ Server-side Diff ที่ติด Field ซึ่งถูกลบโดยผู้จัดการ Field อื่น พร้อมอัปเดต Go เป็น 1.26.10 (ปิด CVE-2026-111943 เช่นเดียวกับ Docker/Terraform)</td>
+          <td>GitOps/CD</td>
+          <td><a href="https://github.com/argoproj/argo-cd/releases" class="source-badge">github.com/argoproj</a></td>
+        </tr>
+        <tr>
+          <td><strong>Argo CD</strong></td>
+          <td>v3.6.0-rc4</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> RC ตัวที่ 4 ของสาย 3.6 ที่กำลังพัฒนา ยังไม่ GA</td>
+          <td>GitOps/CD</td>
+          <td><a href="https://github.com/argoproj/argo-cd/releases" class="source-badge">github.com/argoproj</a></td>
+        </tr>
+        <tr>
+          <td><strong>Terraform</strong></td>
+          <td>v1.17.0</td>
+          <td><span class="label label-minor">🔹 Minor</span> เพิ่มการใช้ Variables/Locals ใน Provider Requirements, ตัวเลือก Plan <code>-minimal-refresh</code>, Terraform Policy เข้าสู่ GA (ไม่ต้องใช้ Experimental Flag อีกต่อไป) และเพิ่ม Field <code>format_version</code> ใน Version JSON Output Build ด้วย Go 1.26.10 ซึ่งปิด CVE-2026-111943 ไปด้วย <strong>มี Breaking Change:</strong> ฟังก์ชัน <code>log</code>/<code>pow</code> จะ Error เมื่อผลลัพธ์เป็น ±Infinity (เดิมปล่อยผ่านแบบไม่มี Error), <code>terraform query -policies</code> ปฏิเสธ Path ที่ไม่ใช่ Directory, และ Diagnostic การ Renew ของ Ephemeral Resource จะถูกแสดงออกมา (อาจเผย Warning ที่เดิมถูกซ่อนไว้)</td>
+          <td>IaC</td>
+          <td><a href="https://github.com/hashicorp/terraform/releases" class="source-badge">github.com/hashicorp</a></td>
+        </tr>
+        <tr>
+          <td><strong>Terraform</strong></td>
+          <td>v1.16.7</td>
+          <td><span class="label label-patch">🩹 Patch</span> แก้ไข Panic ใน <code>command/test</code> เมื่อใช้ค่า Schema ที่เลิกใช้แล้ว พร้อมอัปเดต Go 1.26.10 เช่นเดียวกับ v1.17.0</td>
+          <td>IaC</td>
+          <td><a href="https://github.com/hashicorp/terraform/releases" class="source-badge">github.com/hashicorp</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitHub Actions Runner</strong></td>
+          <td>v2.338.1</td>
+          <td><span class="label label-patch">🩹 Patch</span> ย้ายงานภายในไปใช้ Node 24, อัปเดต Docker เป็น v29.8.2, Buildx เป็น v0.37.2 และ .NET SDK เป็น 8.0.425 พร้อมรองรับ Self-repository Reference รูปแบบ <code>$/</code> ใน Action Manifest</td>
+          <td>CI/CD</td>
+          <td><a href="https://github.com/actions/runner/releases" class="source-badge">github.com/actions</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release เสถียรใหม่ของ Kubernetes (ล่าสุด v1.37.1/v1.36.5/v1.35.9/v1.34.12 เมื่อ 23 ก.ย. 2569, Pre-release v1.38.0-alpha.2 เมื่อ 7 ต.ค. 2569) และ Ansible Core (Stable ล่าสุด 2.21.5 เมื่อ 5 ต.ค. 2569; RC แรกของ 2.22 ออกไปแล้วเมื่อ 13 ต.ค. 2569 ก่อนช่วงเวลานี้ กำหนด GA จริงประมาณ 2 พ.ย. 2569 ดู "สิ่งที่ต้องติดตาม") ในช่วง 18–24 ต.ค. 2569</div>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Database</th><th>Version</th><th>Features</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>MySQL</strong></td>
+          <td>26.10 (Innovation) / 9.7.4 LTS / 8.4.13 LTS</td>
+          <td>เพิ่ม Component "Health Monitor" ให้กับ MySQL Community Edition (เดิมมีเฉพาะ HeatWave) สำหรับตรวจสอบ Disk/Memory/CPU/Process ผ่าน Performance Schema พร้อมพยากรณ์พื้นที่ Disk ที่จะเหลือ (รองรับเต็มรูปแบบบน Linux เท่านั้น ส่วน macOS ได้ Metric พื้นฐาน และยังไม่รองรับ Windows) ออกพร้อมกับ Oracle Critical Patch Update ประจำเดือน ต.ค. 2569 <strong>UNCERTAIN:</strong> แหล่งข่าวรองระบุว่า CPU รอบนี้แก้ไขช่องโหว่ MySQL 98 รายการ (29 รายการโจมตีได้โดยไม่ต้องยืนยันตัวตน, สูงสุด CVSS 9.8) แต่ไม่สามารถเข้าถึง oracle.com/security-alerts เพื่อยืนยัน CVE ID รายตัวได้โดยตรงในรอบตรวจสอบนี้ จึงไม่จัดเป็น Security Release ตามเกณฑ์ของรายงานนี้ (ไม่มี CVE ID ยืนยัน)</td>
+          <td><span class="label label-minor">🔹 Minor</span></td>
+          <td><a href="https://blogs.oracle.com/mysql/" class="source-badge">blogs.oracle.com/mysql (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันได้ในช่วงนี้สำหรับ PostgreSQL (RC1 ของสาย 19 ออกไปแล้วเมื่อ 15 ต.ค. 2569 ก่อนช่วงเวลานี้), MariaDB (ล่าสุด Q3 2026 Maintenance Batch เมื่อ 24 ส.ค. 2569), SQL Server (พบความขัดแย้งของวันที่ประกาศ KB5126967 ระหว่าง 13–16 ต.ค. ซึ่งอยู่นอกช่วงเวลานี้ไม่ว่ากรณีใด), MongoDB (ล่าสุด GA 8.2.11 เมื่อ 11 มิ.ย. 2569), Redis (ล่าสุด 8.10.2/8.8.3/8.6.7/8.4.7/8.2.10 เมื่อ 17 ก.ย. 2569), Cassandra, Elasticsearch (ล่าสุด 9.5.5/9.4.8/8.19.23 เมื่อ 6 ต.ค. 2569), AWS RDS/Aurora, Azure SQL และ Google Cloud SQL ที่มีวันที่ประกาศยืนยันได้ชัดเจนอยู่ในช่วง 18–24 ต.ค. 2569</div>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>OS</th><th>Version</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>ชุด USN รวมถึง: USN-8954-1 (zlib), USN-8953-1 (OpenVPN), USN-8952-1 (Tornado), USN-8951-1 (c-ares), USN-8950-1 (poppler), USN-8949-1 (Ghostscript), USN-8947-1 (NSS), USN-8948-2 (PHP Legacy), USN-8890-2 / USN-8930-2 (Re-spin สำหรับ 26.10)</td>
+          <td><span class="label label-security">🔒 Security Release</span></td>
+          <td>แพตช์ความปลอดภัยชุดใหญ่ (21–22 ต.ค. 2569) ครอบคลุม zlib (CVE-2026-85091, Heap Buffer Overflow เสี่ยง DoS/RCE), OpenVPN (CVE-2026-84790, ปลอมตัวเป็นผู้ใช้ที่ยืนยันตัวตนแล้วผ่าน Certificate Subject ที่จัดการผิด), Tornado (6 CVE รวมเก่า/ใหม่), c-ares (4 CVE, DNS Resource Exhaustion), poppler (CVE-2026-107705), Ghostscript (2 CVE + 1 ที่ยังไม่มีหมายเลข) และ USN-8947-1 ที่ถอนความเชื่อถือ Root CA ที่ถูกเพิกถอน 2 ชุดผ่าน NSS (emSign ECC Root CA - G3 และ Comodo AAA Services) ซึ่งเป็นการอัปเดต Trust Store ไม่ใช่การแก้ไข CVE จึงไม่จัดเป็น Security Release ในแถวนี้โดยเฉพาะ ส่วน USN-8948-2 เป็น Backport ของแพตช์ PHP2Shell (ดูหัวข้อ Programming Languages) ให้กับ Ubuntu รุ่นเก่า 14.04–20.04 (Ubuntu Pro Legacy)</td>
+          <td><a href="https://ubuntu.com/security/notices" class="source-badge">ubuntu.com/security</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Advisory ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 18–24 ต.ค. 2569 สำหรับ Debian (DSA ล่าสุดที่ยืนยันได้คือ DSA-6566-1 เมื่อ 16 ต.ค. 2569 ก่อนช่วงเวลานี้), RHEL, Rocky Linux และ AlmaLinux (Errata ล่าสุดที่พบคือช่วง 13–16 ต.ค. 2569) เนื่องจากหลายโดเมน (debian.org, security-tracker.debian.org, access.redhat.com, errata.rockylinux.org, errata.almalinux.org) เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน และไม่พบการอัปเดตความปลอดภัยนอกรอบใหม่ของ Microsoft (Windows Server/10/11) ในช่วงนี้ เนื่องจาก Patch Tuesday เดือน ต.ค. 2569 ออกไปแล้วเมื่อ 13 ต.ค. 2569 (รายงานไปแล้วในสัปดาห์ก่อนหน้า)</div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ VMware/Broadcom ESXi/vSphere/vCenter (VMSA ล่าสุดคือ VMSA-2026-0007 เมื่อ 3 ก.ย. 2569), Proxmox VE (ล่าสุด 9.2 เมื่อ 21 พ.ค. 2569), Hyper-V (ไม่มี Advisory เฉพาะแยกจาก Patch Tuesday ของ Windows ซึ่งอยู่นอกช่วงเวลานี้) และ KVM/QEMU (ล่าสุด 10.2.1 เมื่อ 12 ก.พ. 2569) ในช่วง 18–24 ต.ค. 2569</div>
+  </section>
+
+  <section>
+    <h2>🌐 Network &amp; Security</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Traefik Proxy</strong></td>
+          <td>v3.7.16 / v2.11.60</td>
+          <td><span class="label label-patch">🩹 Patch</span> แก้ไขช่องโหว่ High Severity ตาม Advisory GHSA-hrpp-p4fc-wwf8 (ยังไม่มี CVE ID ขณะตรวจสอบ จึงไม่จัดเป็น Security Release ตามเกณฑ์ของรายงานนี้) ที่ ForwardAuth ใช้ Connection Pool ร่วมกับ Auth Server ทำให้ข้อมูลยืนยันตัวแบบ NTLM/Negotiate หลุดข้าม Client ได้ พร้อมเพิ่มการรองรับ NTLM และ Kerberos Authentication ให้กับ ForwardAuth และการเชื่อมต่อกับ ingress-nginx auth-url</td>
+          <td>Reverse Proxy</td>
+          <td><a href="https://github.com/traefik/traefik/security/advisories" class="source-badge">github.com/traefik (advisories)</a></td>
+        </tr>
+        <tr>
+          <td><strong>OpenVAS Scanner (Greenbone)</strong></td>
+          <td>v23.52.1 / v23.52.2 / v23.52.3</td>
+          <td><span class="label label-patch">🩹 Patch</span> v23.52.1 ปรับ Dependency ตาม Dependabot Alert, v23.52.2 แก้ไขการ Buffer ของ JSON Response แบบ Streaming และ v23.52.3 แก้ไขการทดสอบโจมตีแบบ Parallel-host ที่ใช้วิธี Spawn ไม่ถูกต้อง ไม่มี CVE ID ติดกับทั้ง 3 เวอร์ชันนี้</td>
+          <td>Security Scanner</td>
+          <td><a href="https://github.com/greenbone/openvas-scanner/releases" class="source-badge">github.com/greenbone</a></td>
+        </tr>
+        <tr>
+          <td><strong>Metasploit Framework</strong></td>
+          <td>6.5.8</td>
+          <td><span class="label label-patch">🩹 Patch</span> Rapid7 แท็กเวอร์ชันบน GitHub เมื่อ 22 ต.ค. 2569 ไม่พบ Release Notes/บล็อก "Wrap-Up" ที่ระบุรายละเอียดโมดูลใหม่อย่างเป็นทางการเฉพาะเวอร์ชันนี้ในรอบตรวจสอบนี้ (บล็อก Wrap-Up ล่าสุดที่พบหยุดอยู่ที่ 9 ต.ค. 2569)</td>
+          <td>Security Tool</td>
+          <td><a href="https://github.com/rapid7/metasploit-framework/releases/tag/6.5.8" class="source-badge">github.com/rapid7</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ HAProxy, WireGuard, pfSense, OPNsense (ล่าสุด 26.7.7 เมื่อ 13 ต.ค. 2569), Nmap (ล่าสุด 7.992 เมื่อ 12 ต.ค. 2569) และ Wireshark (ล่าสุด 4.6.9/4.4.19 เมื่อ 23 ก.ย. 2569) ในช่วงเวลานี้ ส่วน Nessus มีรายงานจากแหล่งที่ไม่ใช่ Official (tech-insider.org) เท่านั้นว่าออกเวอร์ชัน 10.12.5 เมื่อ 1 ต.ค. 2569 (ก่อนช่วงเวลานี้อยู่แล้ว) และไม่สามารถยืนยัน TNS-2026-26 Advisory กับ docs.tenable.com ได้โดยตรง จึงไม่นำมาแสดง สำหรับ Ivanti Connect Secure มีรายงานต่อเนื่องจากสัปดาห์ก่อนว่าช่องโหว่ Privilege Escalation ตัวที่ 3 ในชุดการโจมตีเดิม (CVE-2026-104935) ยังไม่มี CVE ID และยังไม่มีแพตช์ — ดูหัวข้อ "สิ่งที่ต้องติดตาม"</div>
+  </section>
+
+  <section>
+    <h2>☁ Cloud &amp; Infrastructure</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Platform</th><th>Update</th><th>Impact</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Google Cloud</strong></td>
+          <td>Cloud SDK 590.0.0 (20 ต.ค.), GKE Fleet Management Security Fix (20 ต.ค.), Apigee X Maintenance (20 ต.ค.), Model Armor เข้าสู่ GA (21 ต.ค.), Cloud Billing SKU Attributes เข้าสู่ Preview (21 ต.ค.)</td>
+          <td>Cloud SDK 590.0.0 <strong>มี Breaking Change:</strong> ถอด Component <code>gcloud-man-pages</code> และ Component App Engine gRPC/Cloud Build Local Builder ด้าน GKE แก้ไขปัญหาด้าน Security ที่อาจทำให้มีการเปลี่ยนค่า Configuration ของ Cluster ที่ลงทะเบียนใน Fleet โดยไม่ได้รับอนุญาต (Rollout ให้ทุก Region แล้ว ไม่ต้องดำเนินการเพิ่มเติม ไม่พบ CVE ID ระบุ) Model Armor เพิ่ม Organization Policy บังคับ Filter ด้าน Responsible AI/Prompt Injection เข้าสู่ GA แล้ว</td>
+          <td><a href="https://cloud.google.com/release-notes" class="source-badge">cloud.google.com/release-notes (เข้าถึงไม่ได้โดยตรง — ยืนยันผ่าน Mirror หลายภาษา)</a></td>
+        </tr>
+        <tr>
+          <td><strong>AWS</strong></td>
+          <td>AWS Weekly Roundup 19 ต.ค. 2569 — เปิดตัว AWS Lambda Web Functions และ Amazon S3 บน Vercel Marketplace</td>
+          <td>Lambda Web Functions เป็นรูปแบบใหม่ของ Lambda ที่รัน Web Application แบบ HTTP มาตรฐานได้โดยไม่ต้องเขียนใหม่เป็น Event Handler <strong>UNCERTAIN:</strong> ไม่สามารถยืนยันข้ามกับหน้า AWS What's New แยกรายฟีเจอร์ได้เนื่องจาก aws.amazon.com/new เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ใช้วันที่จากหัวข้อ/URL ของ Blog Post เท่านั้น</td>
+          <td><a href="https://aws.amazon.com/blogs/aws/aws-weekly-roundup-aws-lambda-web-functions-amazon-s3-on-the-vercel-marketplace-and-more-october-19-2026/" class="source-badge">aws.amazon.com/blogs/aws</a></td>
+        </tr>
+        <tr>
+          <td><strong>Pulumi</strong></td>
+          <td>v3.272.0 (22 ต.ค.) / v3.271.0 (21 ต.ค.)</td>
+          <td><span class="label label-minor">🔹 Minor</span> v3.272.0 เพิ่ม Error Provider Protocol ชนิด <code>AwaitError</code>, ย่อการแสดง Policy Exception ซ้ำใน CLI และเพิ่มคำสั่ง <code>pulumi env change-request</code> ส่วน v3.271.0 เพิ่ม Field <code>id</code> ใน <code>ReadResourceResponse</code>, รูปแบบ Config เวอร์ชัน 2 ของ Policy Pack และเพิ่มคำสั่ง <code>state</code>/<code>env</code> ให้ Automation API ไม่พบ Breaking Change ในสองเวอร์ชันนี้</td>
+          <td><a href="https://github.com/pulumi/pulumi/releases" class="source-badge">github.com/pulumi</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบประกาศที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 18–24 ต.ค. 2569 จาก Azure Updates (azure.microsoft.com เข้าถึงไม่ได้โดยตรง และ Newsletter/Message Center Mirror ล่าสุดที่พบคือต้นเดือน ต.ค.) และ AWS CloudFormation (ล่าสุดที่ยืนยันได้คือ "Contract tests v2 for resource types" เมื่อ 2 ก.ย. 2569) ในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools &amp; IDE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>VS Code</strong></td>
+          <td>1.143.1 / 1.143.0</td>
+          <td><span class="label label-patch">🩹 Patch</span> ออกต่อเนื่อง 2 เวอร์ชันเมื่อ 22 ต.ค. 2569 รายละเอียด Release Note ฉบับเต็มไม่สามารถดึงได้ครบถ้วนเนื่องจาก code.visualstudio.com/updates เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ (หน้า GitHub Releases เองไม่มีคำอธิบายแนบมา)</td>
+          <td><a href="https://github.com/microsoft/vscode/releases" class="source-badge">github.com/microsoft</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitHub CLI</strong></td>
+          <td>v2.103.2 / v2.103.1 / v2.103.0 / v2.102.1</td>
+          <td><span class="label label-patch">🩹 Patch</span> v2.103.0 (21 ต.ค., Minor) เพิ่ม Preview ของ OAuth Token ที่หมดอายุ/ต่ออายุอัตโนมัติ และคำสั่ง Issue-artifact แบบ Preview ส่วน v2.103.1/v2.103.2 (23 ต.ค.) แก้ไขคำเตือนของ Skill-install, คำแนะนำของ Auth-login และ v2.102.1 (20 ต.ค.) อัปเดต Go Toolchain/<code>golang.org/x/net</code></td>
+          <td><a href="https://github.com/cli/cli/releases" class="source-badge">github.com/cli</a></td>
+        </tr>
+        <tr>
+          <td><strong>pip</strong></td>
+          <td>26.2.2</td>
+          <td><span class="label label-patch">🩹 Patch</span> ออกเมื่อ 20 ต.ค. 2569 ไม่สามารถดึงรายละเอียด Changelog ฉบับเต็มได้เนื่องจาก pip.pypa.io เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ (ยืนยันหมายเลขเวอร์ชัน/วันที่ได้จาก pypi.org โดยตรง)</td>
+          <td><a href="https://pypi.org/project/pip/#history" class="source-badge">pypi.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Gradle</strong></td>
+          <td>9.8.2</td>
+          <td><span class="label label-minor">🔹 Minor</span> ออกเมื่อ 19 ต.ค. 2569 เพิ่มการรองรับ Java 27, การใช้ Maven Mirror Settings ซ้ำ และแสดง Location ของ Problem ใน Build Output ชัดเจนขึ้น ไม่มี Breaking Change ระบุ (อ้างอิง Upgrade Guide มาตรฐานของ Gradle 9.x)</td>
+          <td><a href="https://github.com/gradle/gradle/releases" class="source-badge">github.com/gradle</a></td>
+        </tr>
+        <tr>
+          <td><strong>Composer</strong></td>
+          <td>2.11.0-RC1</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> Build ทดสอบของ Composer 2.11 ที่กำลังพัฒนา ยังไม่ GA (Stable ล่าสุดยังเป็น 2.10.3/2.2.30 เมื่อ 27 ส.ค. 2569)</td>
+          <td><a href="https://github.com/composer/composer/releases" class="source-badge">github.com/composer</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ JetBrains IDEs (Build EAP ล่าสุดที่พบคือ WebStorm 2026.3 EAP Build 263.7031.26 เมื่อ 15 ต.ค. 2569 ก่อนช่วงเวลานี้), Eclipse IDE (Release Train ล่าสุดคือ 2026-09), Git/git-scm (Tag ล่าสุด v2.56.0 เมื่อ 28 ก.ย. 2569), npm (ล่าสุด v12.2.1/v11.21.1 เมื่อ 15 ต.ค. 2569) และ Apache Maven (ล่าสุด 3.10.0 เมื่อ 1 ต.ค. 2569; Maven 4.0.0-rc-7 เมื่อ 24 ก.ย. 2569 ยังไม่ GA) ในช่วง 18–24 ต.ค. 2569 ที่ยืนยันได้</div>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <div class="empty-note">ไม่พบ Release ต้นทาง (Upstream) ใหม่ของ Nginx (ล่าสุด 1.31.7/1.30.6 เมื่อ 14 ต.ค. 2569), Apache HTTP Server (ล่าสุด 2.4.69 เมื่อ 1 ต.ค. 2569) และ Caddy (ล่าสุด v2.11.7 เมื่อ 3 ต.ค. 2569) ในช่วง 18–24 ต.ค. 2569 ส่วน IIS ไม่มี Errata เฉพาะแยกจาก Patch Tuesday ของ Microsoft ซึ่งอยู่นอกช่วงเวลานี้ (ดูหัวข้อ Operating Systems)</div>
+  </section>
+
+  <section>
+    <h2>🔒 Security &amp; CVE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>PHP</strong></td>
+          <td>CVE-2026-109618<br>CVE-2026-109619</td>
+          <td><span class="severity-critical">Critical (CVSS v4.0 9.2)</span> — <em>ไม่ต้องยืนยันตัวตน, RCE ("PHP2Shell")</em></td>
+          <td>8.5.12 / 8.4.27 / 8.3.36 / 8.2.35</td>
+          <td><a href="https://www.php.net/" class="source-badge">php.net</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitLab (CE/EE)</strong></td>
+          <td>CVE-2026-110264</td>
+          <td><span class="severity-critical">Critical (CVSS 10.0)</span> — <em>ไม่ต้องยืนยันตัวตน, RCE — ยังไม่ยืนยันสมบูรณ์ (UNCERTAIN)</em></td>
+          <td>ยังไม่ยืนยันหมายเลขเวอร์ชัน — ดูหัวข้อ DevOps &amp; CI/CD</td>
+          <td><a href="https://securityonline.info/" class="source-badge">securityonline.info (ไม่ยืนยันกับ Official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>CVE-2026-111497 (+ 9 CVE อื่น — ดูหัวข้อ Programming Languages)</td>
+          <td><span class="severity-high">High</span> — <em>Brotli Decoder เขียนข้อมูลเกินขอบเขต (Out-of-bounds Write), เสี่ยง RCE</em></td>
+          <td>26.12.1 / 24.22.1 / 22.23.4</td>
+          <td><a href="https://nodejs.org/en/blog/vulnerability/october-2026-security-releases" class="source-badge">nodejs.org</a></td>
+        </tr>
+        <tr>
+          <td><strong>Go</strong> (+ Docker Engine, Docker Compose, Terraform, Argo CD ที่ Build ตาม)</td>
+          <td>CVE-2026-111943</td>
+          <td><span class="severity-high">High (CVSS 8.1 ตาม Oracle)</span> / <span class="severity-medium">Medium (CVSS 6.8 ตาม Red Hat)</span> — <em>ความรุนแรงรายงานไม่ตรงกัน</em> — Trust Bypass จาก Intermediate CA ที่ถูกเพิกถอน</td>
+          <td>Go 1.27.3 / 1.26.10</td>
+          <td><a href="https://github.com/golang/go/issues/82345" class="source-badge">github.com/golang/go</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">หมายเหตุ: Python 3.15.1/3.14.9/3.13.17 ก็เป็น Security Release ที่เกี่ยวข้องกับเหตุการณ์ CA เดียวกัน (ดูหัวข้อ Programming Languages) แต่เป็นการอัปเดต pip/certifi ไม่มี CVE ID แยกของตัวเอง จึงไม่แสดงเป็นแถวในตารางนี้ Ubuntu USN ชุดใหญ่สัปดาห์นี้ (zlib CVE-2026-85091, OpenVPN CVE-2026-84790, Tornado/c-ares/poppler/Ghostscript หลาย CVE — ดูหัวข้อ Operating Systems) มี CVE ID จริงแต่ยังไม่ได้ดึง CVSS รายตัวจาก NVD เนื่องจาก nvd.nist.gov เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ จึงไม่นำเข้าตารางหลักเพื่อเลี่ยงการคาดเดา เช่นเดียวกับ Oracle CPU เดือนนี้ (รวม Java SE และ MySQL) ที่รายงานว่ามี CVSS สูงสุด 9.8 ใน Oracle APEX จากแหล่งข่าวรอง แต่ไม่พบ CVE ID รายตัวที่ยืนยันได้จาก oracle.com โดยตรง และ Cisco Snort 3 Hardening Release (CVE-2026-20043, CVE-2026-20356, ประกาศผ่าน cyber.gc.ca AV26-1073 เมื่อ 21 ต.ค.) ที่ยังไม่พบ CVSS ยืนยันชัดเจน (NVD ระบุสถานะ "awaiting analysis") <strong>UNCERTAIN:</strong> nvd.nist.gov, cisa.gov, oracle.com/security-alerts, docs.gitlab.com, about.gitlab.com, docs.tenable.com, wireshark.org เข้าถึงไม่ได้โดยตรงในสัปดาห์นี้ ข้อมูลที่เกี่ยวข้องผ่านการยืนยันข้ามแหล่งด้วย WebSearch และแหล่งข้อมูล Official/Government CERT ที่เข้าถึงได้แทนตามนโยบาย Network Access Resilience ของรายงานนี้ ระดับความรุนแรงของ CVE-2026-111943 (Go) มีรายงานแตกต่างกันระหว่าง Red Hat และ Oracle ตามที่ระบุไว้ในตาราง</div>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Breaking Change</th><th>Migration Guide</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Terraform</strong></td>
+          <td>v1.17.0</td>
+          <td>ฟังก์ชัน <code>log</code>/<code>pow</code> จะ Error เมื่อผลลัพธ์เป็น ±Infinity (เดิมปล่อยผ่านแบบไม่มี Error); <code>terraform query -policies</code> ปฏิเสธ Path ที่ไม่ใช่ Directory; Diagnostic การ Renew ของ Ephemeral Resource จะถูกแสดงออกมาแล้ว</td>
+          <td>ตรวจสอบ Configuration ที่ใช้ <code>log</code>/<code>pow</code> กับค่าที่อาจเป็น Infinity ก่อนอัปเกรด และตรวจสอบ Script ที่เรียก <code>terraform query -policies</code> ด้วย Path ที่ไม่ใช่ Directory</td>
+          <td><a href="https://github.com/hashicorp/terraform/releases" class="source-badge">github.com/hashicorp</a></td>
+        </tr>
+        <tr>
+          <td><strong>FastAPI</strong></td>
+          <td>0.160.0</td>
+          <td>เปลี่ยนวิธีใช้ค่า <code>extra</code> ของ Parameter Model กับ Field ข้างเคียง</td>
+          <td>ตรวจสอบโค้ดที่ใช้ Parameter Model แบบ Group (Query/Header/Cookie/Form) ร่วมกับการตั้งค่า <code>extra</code> ก่อนอัปเกรดเป็น 0.160.0 ขึ้นไป</td>
+          <td><a href="https://github.com/fastapi/fastapi/releases" class="source-badge">github.com/fastapi</a></td>
+        </tr>
+        <tr>
+          <td><strong>Go</strong> (+ Docker, Docker Compose, Terraform, Argo CD ที่ Build ด้วย Go เวอร์ชันนี้)</td>
+          <td>1.27.3 / 1.26.10</td>
+          <td>แอปพลิเคชันที่เชื่อมต่อผ่าน Certificate Chain ที่อ้างอิง Intermediate CA ของ eMudhra ที่ถูกเพิกถอน 8 ชุด จะ TLS Verification ล้มเหลวทันทีหลัง Rebuild/อัปเดต</td>
+          <td>ตรวจสอบว่า Certificate ที่ใช้งานไม่ได้ Chain ผ่าน CA ที่ถูกเพิกถอน หากใช่ต้องเปลี่ยน Certificate ก่อน Rebuild Binary ด้วย Go เวอร์ชันนี้</td>
+          <td><a href="https://github.com/golang/go/issues/82345" class="source-badge">github.com/golang/go</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Cloud SDK</strong></td>
+          <td>590.0.0</td>
+          <td>ถอด Component <code>gcloud-man-pages</code>, ถอด Component App Engine gRPC และ Cloud Build Local Builder</td>
+          <td>ตรวจสอบ Pipeline/Script ที่พึ่งพา Man Pages ของ gcloud หรือใช้ App Engine gRPC/Cloud Build Local Builder ก่อนอัปเดตเป็น 590.0.0</td>
+          <td><a href="https://cloud.google.com/release-notes" class="source-badge">cloud.google.com/release-notes</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="empty-note">ไม่พบประกาศ End of Life ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 18–24 ต.ค. 2569 (Windows Server 2012/2012 R2 และ Windows Server 2022 รายงานไปแล้วในสัปดาห์ก่อนหน้า วันที่ 13 ต.ค. 2569) Node.js 24 "Krypton" เปลี่ยนจาก Active LTS เป็น Maintenance LTS เมื่อ 20 ต.ค. 2569 ซึ่งอยู่ในช่วงเวลานี้ แต่ยังไม่ถึงจุด End of Life จริง (กำหนด EOL สมบูรณ์คือ 30 เม.ย. 2571) จึงนำไปแสดงไว้ในหัวข้อ "สิ่งที่ต้องติดตาม" แทนเพื่อไม่ให้จัดประเภทผิด</div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <div class="highlight-box">
+      <ul>
+        <li><strong>GitLab CVE-2026-110264</strong> — รายงาน Critical CVSS 10.0 ที่ยังไม่สามารถยืนยันกับ docs.gitlab.com ได้โดยตรง ทีมที่ใช้ GitLab Self-managed ควรตรวจสอบ Advisory ของ GitLab โดยตรงและติดตามการยืนยันในรอบตรวจสอบถัดไป</li>
+        <li><strong>Node.js 24 "Krypton"</strong> — เปลี่ยนสถานะจาก Active LTS เป็น Maintenance LTS เมื่อ 20 ต.ค. 2569 (จะได้รับเฉพาะ Critical Bug Fix และ Security Update จนถึง EOL สมบูรณ์ 30 เม.ย. 2571) ทีมควรวางแผนย้ายไปยัง Node.js 26 ซึ่งมีกำหนดเข้าสู่ LTS ประมาณ 28 ต.ค. 2569</li>
+        <li><strong>Ivanti Connect Secure</strong> — ช่องโหว่ Privilege Escalation ตัวที่ 3 ในชุดการโจมตีเดิม (ร่วมกับ CVE-2026-104935 ที่รายงานไปแล้วสัปดาห์ก่อน) ยังไม่มี CVE ID และยังไม่มีแพตช์ Ivanti ระบุว่าจะออกแพตช์ "ในอีกไม่กี่สัปดาห์ข้างหน้า"</li>
+        <li><strong>Jenkins LTS ถัดไป</strong> — RC ของ LTS รุ่นถัดไป (2.580.2) ออกไปแล้วก่อนช่วงเวลานี้ (15 ต.ค. 2569) ยังไม่พบวันที่ออกจริงที่ยืนยันได้ในรอบตรวจสอบนี้</li>
+        <li><strong>Ansible Core 2.22.0</strong> — มีกำหนด GA ประมาณ 2 พ.ย. 2569 ตาม Roadmap ของทีมพัฒนา (RC1 ออกไปแล้วเมื่อ 13 ต.ค. 2569 ก่อนช่วงเวลานี้)</li>
+        <li><strong>PostgreSQL 19 GA</strong> — เลื่อนจากกำหนดเดิมไปเป็น 19 พ.ย. 2569 โดยจะมี RC2 ในวันที่ 12 พ.ย. 2569 ก่อนเข้าสู่ Stable (รายงานไปแล้วในสัปดาห์ก่อนหน้า)</li>
+        <li><strong>Vue 3.6.0 / Spring Boot 4.2.0 / Composer 2.11.0 / Argo CD 3.6.0</strong> — ทั้งหมดยังอยู่ในสถานะ Release Candidate ณ สิ้นสุดช่วงเวลารายงานนี้ ยังไม่มีกำหนด GA ที่ยืนยันได้ชัดเจน</li>
+        <li><strong>Oracle Java SE / MySQL CPU ต.ค. 2569</strong> — ตัวเลขเวอร์ชันและจำนวน CVE ที่แก้ไขมีรายงานไม่ตรงกันระหว่างแหล่งข่าวรอง ควรตรวจสอบกับ oracle.com/security-alerts โดยตรงเมื่อเข้าถึงได้เพื่อยืนยันก่อนวางแผนอัปเดต</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">33</div>
+        <div class="dashboard-item-label">Total Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">9</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">15</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">4</div>
+        <div class="dashboard-item-label">New CVEs</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <div class="two-column">
+      <div>
+        <h3>Official</h3>
+        <ul>
+          <li><a href="https://github.com/golang/go/issues/82345">github.com/golang/go — Go 1.27.3/1.26.10</a></li>
+          <li><a href="https://nodejs.org/en/blog/vulnerability/october-2026-security-releases">nodejs.org — Node.js October 2026 Security Releases</a></li>
+          <li><a href="https://www.python.org/downloads/release/python-3149/">python.org — Python 3.14.9</a></li>
+          <li><a href="https://www.php.net/">php.net — PHP 8.5.12/8.4.27/8.3.36/8.2.35</a></li>
+          <li><a href="https://github.com/vuejs/core/releases">github.com/vuejs/core</a></li>
+          <li><a href="https://github.com/laravel/framework/releases/tag/v12.70.1">github.com/laravel/framework</a></li>
+          <li><a href="https://github.com/fastapi/fastapi/releases">github.com/fastapi/fastapi</a></li>
+          <li><a href="https://github.com/spring-projects/spring-boot/releases/tag/v4.1.2">github.com/spring-projects/spring-boot</a></li>
+          <li><a href="https://github.com/moby/moby/releases">github.com/moby/moby — Docker Engine v29.9.2</a></li>
+          <li><a href="https://github.com/docker/compose/releases">github.com/docker/compose v5.6.1</a></li>
+          <li><a href="https://github.com/jenkinsci/jenkins/releases">github.com/jenkinsci/jenkins</a></li>
+          <li><a href="https://github.com/argoproj/argo-cd/releases">github.com/argoproj/argo-cd</a></li>
+          <li><a href="https://github.com/hashicorp/terraform/releases">github.com/hashicorp/terraform</a></li>
+          <li><a href="https://github.com/actions/runner/releases">github.com/actions/runner</a></li>
+          <li><a href="https://blogs.oracle.com/mysql/">blogs.oracle.com/mysql — MySQL 26.10</a></li>
+          <li><a href="https://ubuntu.com/security/notices">ubuntu.com/security/notices</a></li>
+          <li><a href="https://github.com/traefik/traefik/security/advisories">github.com/traefik/traefik (security advisories)</a></li>
+          <li><a href="https://github.com/greenbone/openvas-scanner/releases">github.com/greenbone/openvas-scanner</a></li>
+          <li><a href="https://github.com/rapid7/metasploit-framework/releases/tag/6.5.8">github.com/rapid7/metasploit-framework</a></li>
+          <li><a href="https://cloud.google.com/release-notes">cloud.google.com/release-notes</a></li>
+          <li><a href="https://aws.amazon.com/blogs/aws/aws-weekly-roundup-aws-lambda-web-functions-amazon-s3-on-the-vercel-marketplace-and-more-october-19-2026/">aws.amazon.com/blogs/aws — Weekly Roundup Oct 19, 2026</a></li>
+          <li><a href="https://github.com/pulumi/pulumi/releases">github.com/pulumi/pulumi</a></li>
+          <li><a href="https://github.com/microsoft/vscode/releases">github.com/microsoft/vscode</a></li>
+          <li><a href="https://github.com/cli/cli/releases">github.com/cli/cli</a></li>
+          <li><a href="https://pypi.org/project/pip/#history">pypi.org — pip 26.2.2</a></li>
+          <li><a href="https://github.com/gradle/gradle/releases">github.com/gradle/gradle</a></li>
+          <li><a href="https://github.com/composer/composer/releases">github.com/composer/composer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Security Advisory</h3>
+        <ul>
+          <li><a href="https://securityonline.info/">securityonline.info — GitLab CVE-2026-110264 (ไม่ยืนยันกับ Official)</a></li>
+          <li><a href="https://cyber.gc.ca/en/alerts-advisories/cisco-security-advisory-av26-1073">cyber.gc.ca (AV26-1073) — Cisco Snort 3 Hardening</a></li>
+          <li><a href="https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html">thehackernews.com — Ivanti third flaw follow-up</a></li>
+          <li><a href="https://www.oracle.com/security-alerts/cpuoct2026.html">oracle.com/security-alerts — October 2026 CPU (เข้าถึงไม่ได้โดยตรง)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Trusted Media</h3>
+        <ul>
+          <li><a href="https://www.bleepingcomputer.com/news/security/php-ships-emergency-patches-for-critical-php2shell-flaws">bleepingcomputer.com — PHP2Shell emergency patches</a></li>
+          <li><a href="https://securityonline.info/">securityonline.info — GitLab CVE-2026-110264 coverage</a></li>
+          <li><a href="https://comss.ru/">comss.ru — Oracle Java SE CPU version list</a></li>
+          <li><a href="https://www.pcwelt.de/">pcwelt.de — MySQL/Java CPU coverage</a></li>
+          <li><a href="https://www.ipa.go.jp/">ipa.go.jp — Oracle CPU Java SE advisory (ชุดเวอร์ชันขัดแย้งกับ comss.ru/pcwelt.de)</a></li>
+          <li><a href="https://socradar.io/blog/cve-2026-104935-ivanti-connect-secure/">socradar.io — Ivanti attack-chain update</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Release Notes</h3>
+        <ul>
+          <li><a href="https://endoflife.date/nodejs">endoflife.date — Node.js 24 Active LTS → Maintenance</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">UNCERTAIN: หลายโดเมนเข้าถึงไม่ได้ในสัปดาห์นี้ผ่าน Network Proxy ของ Session นี้ แม้ลองใหม่ตามนโยบาย Network Access Resilience แล้ว ได้แก่ nvd.nist.gov, cisa.gov, oracle.com/security-alerts (403), openjdk.org, go.dev, python.org/docs.python.org/discuss.python.org (บางหน้า), docs.gitlab.com, about.gitlab.com, jenkins.io, code.visualstudio.com, jetbrains.com, git-scm.com, pip.pypa.io, docs.tenable.com, wireshark.org, haproxy.org, pfsense.org, opnsense.org, debian.org/security-tracker.debian.org, access.redhat.com, errata.rockylinux.org, errata.almalinux.org, learn.microsoft.com, aws.amazon.com/new, azure.microsoft.com, docs.cloud.google.com/cloud.google.com (บางหน้า), postgresql.org, dev.mysql.com, blogs.oracle.com (บางหน้า) — ข้อมูลที่เกี่ยวข้องได้ผ่านการยืนยันข้ามแหล่งด้วย WebSearch, GitHub Releases/Tags หรือแหล่งข้อมูล Official/Government CERT อื่นที่เข้าถึงได้แทนตามนโยบาย Network Access Resilience ของรายงานนี้ รายการที่ไม่สามารถยืนยันได้จริงจึงถูกงดแสดงเฉพาะส่วนนั้น ไม่ได้งดแสดงทั้งหมวด ความรุนแรงของ CVE-2026-111943 (Go), หมายเลขเวอร์ชันที่แก้ไขของ GitLab CVE-2026-110264 และชุดเวอร์ชันของ Oracle CPU เดือนนี้ (Java SE) มีความแตกต่างกันระหว่างแหล่งข่าวตามที่ระบุไว้ในแต่ละหัวข้อ</div>
+  </section>
+
+  <footer>
+    Generated for natthasath-news · Weekly Software Releases Report · Week 43, 2026 · Data window: Oct 18 – 24, 2026 (ICT)
+  </footer>
+</div>
+</body>
+</html>
