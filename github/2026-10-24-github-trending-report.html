@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly GitHub Trending Report — Week 43, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#B5502A; --warn-soft:rgba(181,80,42,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14);
+    --warn:#E08A63; --warn-soft:rgba(224,138,99,0.14);
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:980px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+h2{ font-size:22px; font-weight:800; margin:48px 0 16px; padding-top:8px; border-top:1px solid var(--line-strong); display:flex; align-items:center; gap:10px; }
+h2:first-of-type{ border-top:none; }
+h3{ font-size:17px; font-weight:700; margin:26px 0 10px; color:var(--ink); }
+p{ margin:0 0 14px; color:var(--ink-soft); }
+ul, ol{ padding-left:22px; color:var(--ink-soft); }
+li{ margin-bottom:6px; }
+strong{ color:var(--ink); }
+code{ font-family:"JetBrains Mono",monospace; font-size:0.9em; background:var(--surface-2); padding:1px 5px; border-radius:4px; }
+
+.summary-box{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:8px; }
+.summary-box p{ margin:0; color:var(--ink); }
+
+.tablewrap{ overflow-x:auto; margin:14px 0 22px; border:1px solid var(--line); border-radius:10px; }
+table{ width:100%; border-collapse:collapse; font-size:14px; background:var(--surface); min-width:640px; }
+thead th{ text-align:left; font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-faint); padding:12px 14px; border-bottom:1px solid var(--line-strong); background:var(--surface-2); white-space:nowrap; }
+tbody td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ color:var(--ink); font-weight:600; }
+tbody td a{ text-decoration:none; }
+tbody td a:hover{ text-decoration:underline; }
+
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.card-title{ font-weight:700; font-size:15.5px; color:var(--ink); margin-bottom:4px; }
+.card-title a{ text-decoration:none; }
+.card-meta{ font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); margin-bottom:10px; }
+.card p{ margin:0 0 8px; font-size:14.5px; }
+.card ul{ margin:6px 0 0; font-size:14px; }
+
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; background:var(--accent-soft); color:var(--accent); margin-right:6px; }
+.badge.warn{ background:var(--warn-soft); color:var(--warn); }
+
+.note-box{ background:var(--warn-soft); border:1px solid rgba(181,80,42,0.28); border-radius:10px; padding:14px 18px; margin:14px 0; font-size:14px; color:var(--ink); }
+.note-box strong{ color:var(--warn); }
+
+.legend-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px 20px; font-size:14px; }
+.legend-grid div{ display:flex; gap:8px; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin:16px 0; }
+.stat-tile{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+.stat-num{ font-family:"JetBrains Mono",monospace; font-size:24px; font-weight:700; color:var(--accent); }
+.stat-label{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer a{ color:var(--ink-faint); }
+
+@media (max-width:640px){
+  h1{ font-size:26px; }
+  h2{ font-size:19px; }
+  .meta-row{ gap:10px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest · Week 43</p>
+    <h1>⭐ Weekly GitHub Trending Open Source Report</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 18 – 24 ต.ค. 2026 (ICT)</span>
+      <span><b>หมวด:</b> GitHub Open Source</span>
+      <span><b>เผยแพร่:</b> 24 ต.ค. 2026</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้เรื่องเด่นที่สุดไม่ใช่ repository เดียวแต่เป็นเหตุการณ์ด้านความปลอดภัยที่กระทบทั้ง ecosystem cloud-native: private key ของ intermediate CA 8 ตัวที่ดำเนินการโดย <strong>eMudhra</strong> รั่วไหล ทำให้ Mozilla, Google, Apple และ Microsoft ต้องบล็อก CA ดังกล่าวในเบราว์เซอร์/ระบบปฏิบัติการของตน และผลักให้โครงการ cloud-native ใหญ่อย่าง <code>cilium</code>, <code>trivy</code>, <code>opentofu</code>, <code>argo-cd</code>, <code>cert-manager</code>, <code>prometheus</code> และ <code>moby</code> ออก security patch ตอบสนองพร้อมกันในช่วง 20–23 ต.ค. ฝั่ง AI coding agent ยังแข่งกันดุเดือดต่อเนื่อง โดย <strong>Claude Code</strong> ปล่อย 10 เวอร์ชันในสัปดาห์เดียวรวมถึง v2.1.309 ที่แก้ช่องโหว่ sandbox escape ที่สำคัญ ขณะที่ <strong>Gemini CLI</strong> และ <strong>Cline</strong> ก็ปล่อยหลายเวอร์ชันเช่นกัน ด้าน AI/LLM infrastructure <code>vllm</code> ปล่อย v0.32.0 ที่ตัด Python 3.10 ออก และ <code>duckdb</code> ปล่อย major version 2.0 "Cyanoptera" โครงการ <code>morluto/rea</code> ยังติด Trending ต่อเนื่องจากสัปดาห์ก่อนแต่ยอดดาวที่ปรากฏ (~374,800 ★) ขัดแย้งกับจำนวน commit ที่มีเพียง 5,287 ครั้ง จึงควรตีความด้วยความระมัดระวังอย่างยิ่ง</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Top Trending Repositories</h2>
+    <p>เรียงตามความสำคัญและผลกระทบต่อ Developer Community ยืนยันทุกรายการผ่านหน้า Repository/Releases ของ GitHub โดยตรง ตัวเลขดาวแสดงเฉพาะรายการที่ยืนยันได้จริง ส่วนรายการที่ไม่สามารถยืนยันได้ระบุว่า "ไม่มีข้อมูล" แทนการประมาณ</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Owner</th><th>Language</th><th>Stars</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/cilium/cilium">cilium</a> 🔒☁️</td><td>cilium</td><td>Go</td><td>ไม่มีข้อมูล</td><td>Cloud Native Networking/Security</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/aquasecurity/trivy">trivy</a> 🔒</td><td>aquasecurity</td><td>Go</td><td>ไม่มีข้อมูล</td><td>Vulnerability Scanner</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/opentofu/opentofu">opentofu</a> ☁️✅</td><td>opentofu (Linux Foundation)</td><td>Go</td><td>ไม่มีข้อมูล</td><td>Infrastructure as Code</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/argoproj/argo-cd">argo-cd</a> ☁️</td><td>argoproj</td><td>Go</td><td>ไม่มีข้อมูล</td><td>GitOps / CD</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/cert-manager/cert-manager">cert-manager</a> 🔒☁️</td><td>cert-manager</td><td>Go</td><td>ไม่มีข้อมูล</td><td>TLS Certificate Automation</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/prometheus/prometheus">prometheus</a> ☁️</td><td>prometheus</td><td>Go</td><td>ไม่มีข้อมูล</td><td>Observability</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/moby/moby">moby (Docker Engine)</a> ☁️</td><td>moby</td><td>Go</td><td>ไม่มีข้อมูล</td><td>Container Runtime</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/anthropics/claude-code">claude-code</a> 🚀🤖✅</td><td>anthropics</td><td>ไม่มีข้อมูล</td><td>ไม่มีข้อมูล</td><td>AI Coding Agent</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/google-gemini/gemini-cli">gemini-cli</a> 🚀🤖✅</td><td>google-gemini</td><td>ไม่มีข้อมูล</td><td>ไม่มีข้อมูล</td><td>AI Coding Agent</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/cline/cline">cline</a> 🚀🤖</td><td>cline</td><td>TypeScript</td><td>ไม่มีข้อมูล</td><td>AI Coding Agent</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/vllm-project/vllm">vllm</a> ⚠️🤖</td><td>vllm-project</td><td>Python</td><td>ไม่มีข้อมูล</td><td>LLM Inference Engine</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/duckdb/duckdb">duckdb</a> ⚠️🗄️</td><td>duckdb</td><td>C++</td><td>42,500</td><td>Analytical Database</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/sst/opencode">opencode</a> 🤖</td><td>sst</td><td>TypeScript</td><td>220,900</td><td>AI Coding Agent</td><td>GitHub Repository</td></tr>
+          <tr><td><a href="https://github.com/fastapi/fastapi">fastapi</a> ⚠️🌐</td><td>fastapi</td><td>Python</td><td>104,100</td><td>Backend Framework</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/morluto/rea">rea</a> 🔥🧠</td><td>morluto</td><td>ไม่มีข้อมูล</td><td>374,800 (ดูหมายเหตุ)</td><td>AI Reverse Engineering (MCP)</td><td>GitHub Repository + aitoolly.com</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔒☁️ <a href="https://github.com/cilium/cilium">cilium/cilium</a></div>
+      <div class="card-meta">Go · Apache-2.0 · v1.20.4 / v1.19.10 / v1.18.16 — 23 ต.ค. 2026</div>
+      <p>eBPF-based networking, observability และ security สำหรับ Kubernetes ปล่อย patch พร้อมกันถึง 3 สายเวอร์ชันในวันเดียวเพื่ออัปเกรด Go เป็น 1.26.10 รับมือกับผลกระทบของเหตุการณ์ eMudhra CA compromise (ดูรายละเอียดในหมวด Security) สะท้อนว่าโครงการ cloud-native ขนาดใหญ่ต้องประสานการตอบสนองเหตุการณ์ supply-chain/PKI พร้อมกันทั้งวงการ</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️🤖 <a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></div>
+      <div class="card-meta">Python · Apache-2.0 · v0.32.0 — 18 ต.ค. 2026 · 814 commits จาก 363 contributors (121 คนใหม่)</div>
+      <p>LLM inference/serving engine ที่เน้น throughput สูง เพิ่ม endpoint <code>POST /v1/systemone</code> สำหรับ structured decisions, ขยายการรองรับ low-precision KV cache, อัปเดต Model Runner V2, startup เร็วขึ้น, เพิ่มโมเดลใหม่ EmbeddingGemma 2 และ MiniCPM-V 4.7 พร้อมแก้ไขช่องโหว่ความปลอดภัย <strong>⚠️ Breaking change: ตัด Python 3.10 ออกจากรายการที่รองรับ</strong></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚠️🗄️ <a href="https://github.com/duckdb/duckdb">duckdb/duckdb</a></div>
+      <div class="card-meta">C++ · MIT · 42,500 ★ · v2.0.0 "Cyanoptera" — 21 ต.ค. 2026 (major version)</div>
+      <p>ฐานข้อมูลวิเคราะห์แบบ embedded ประสิทธิภาพสูง ปล่อย major version 2.0 เพิ่ม <code>MERGE INTO</code>, <code>RETURNING</code> ใน trigger, <code>AFTER INSERT FOR EACH ROW</code> trigger, async Parquet writes และรองรับ Spark SQL dialect การขึ้น major version จาก 1.x เป็น 2.0 มักสื่อถึง breaking change แม้หน้า release จะไม่ได้แสดงรายการแยกไว้ชัดเจน ผู้ใช้ควรตรวจสอบ release notes ฉบับเต็มก่อนอัปเกรด production</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥🧠 <a href="https://github.com/morluto/rea">morluto/rea</a></div>
+      <div class="card-meta">MIT · ~374,800 ★ · ~93,700 forks · 5,287 commits</div>
+      <p>MCP server ให้ AI agent ทำ reverse engineering native binary/แอปได้ ยืนยันจากหน้า GitHub Repository โดยตรง 2 ครั้งอิสระ และสื่อ aitoolly.com รายงานว่าติด GitHub Trending ต่อเนื่องตั้งแต่ประมาณ 9–15 ต.ค. <strong>หมายเหตุสำคัญ:</strong> ยอดดาว/fork ที่แสดง (~374,800 ★ / ~93,700 forks) ขัดแย้งอย่างมากกับจำนวน commit ที่มีเพียง 5,287 ครั้งและไม่มี release/contributor section ที่มองเห็นได้ ซึ่งผิดปกติเมื่อเทียบกับ pattern การเติบโตแบบ organic ทั่วไป อาจเป็นปัญหาการแสดงผลของหน้าเว็บหรือการปั่นดาว ผู้อ่านควรตีความตัวเลขนี้ด้วยความระมัดระวัง (ดูหมวด Watch List)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🤖 AI &amp; LLM</h2>
+
+    <div class="card">
+      <div class="card-title">⚠️ <a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></div>
+      <div class="card-meta">Python · Apache-2.0 · v0.32.0 (18 ต.ค.)</div>
+      <p>ดูรายละเอียดเต็มในหมวด Top Trending — ปล่อย major feature release พร้อม breaking change ตัด Python 3.10</p>
+    </div>
+
+    <p><strong>Comfy-Org/ComfyUI</strong> (GPL-3.0, 142,400 ★, 6,217 commits) โมดูล GUI/node editor สำหรับ diffusion model ยังมีฐานผู้ใช้ใหญ่และ commit สม่ำเสมอ แต่ไม่สามารถยืนยัน release หรือกิจกรรมที่ตกอยู่ในกรอบ 18–24 ต.ค. โดยเฉพาะได้จากรอบการค้นคว้านี้ <strong>debpalash/VoiceStudio</strong> (AGPL-3.0, 83,800 ★, 4,734 commits) ทางเลือกโอเพนซอร์สของ ElevenLabs ที่รันในเครื่องทั้งหมด รองรับ 646 ภาษา ก็อยู่ในสถานะเดียวกัน — ฐานใหญ่และยัง active แต่ไม่พบหลักฐานกิจกรรมเฉพาะในสัปดาห์นี้ที่ยืนยันได้ จึงไม่นำมาจัดเป็น "trending สัปดาห์นี้" แบบเต็มรูปแบบ</p>
+
+    <p><strong>ข้อสังเกตหมวด AI:</strong> ไม่พบการเปิดตัวโมเดลภาษาพื้นฐานตัวใหม่จากผู้ให้บริการรายใหญ่ที่ยืนยันแหล่งที่มาได้ชัดเจนในกรอบ 7 วันนี้ กิจกรรมเด่นของหมวดนี้กระจุกอยู่ที่ infrastructure/inference engine (vllm) มากกว่าโมเดลใหม่</p>
+  </section>
+
+  <section>
+    <h2>🧠 MCP &amp; AI Agents</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/modelcontextprotocol/servers">modelcontextprotocol/servers</a></div>
+      <div class="card-meta">Apache-2.0 (ส่วนใหม่) / MIT (legacy) · 91,500 ★ · 11,900 forks · 4,765 commits</div>
+      <p>คอลเลกชัน MCP server ทางการจากองค์กร Model Context Protocol เอง เป็น reference implementation หลักที่ผู้พัฒนา MCP server รายอื่นใช้อ้างอิง ยืนยันข้อมูลจากหน้า GitHub Repository โดยตรง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀✅ <a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></div>
+      <div class="card-meta">10 เวอร์ชันในสัปดาห์นี้ (15–23 ต.ค.) · ล่าสุด v2.1.310 (23 ต.ค.)</div>
+      <p>v2.1.310 เพิ่มเครื่องมือ Monitor และ plugin monitor บน Bedrock/Vertex/Foundry ส่วน <strong>v2.1.309 (22 ต.ค.) เป็น security/permission release ที่สำคัญ</strong> แก้ไขช่องโหว่ sandboxed Bash ที่สามารถหลุดออกจาก sandbox ผ่าน shell startup file, ปัญหาไฟล์ config ของ MCP ที่ sandboxed command แก้ไขได้ และช่องว่างในการตรวจสอบสิทธิ์ Bash หลายจุด ผู้ใช้ที่พึ่งพา sandbox ของ Claude Code ควรอัปเดตทันที</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀✅ <a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></div>
+      <div class="card-meta">9 release/nightly ในสัปดาห์นี้ (17–24 ต.ค.) · เวอร์ชัน stable ล่าสุด v0.65.0 (20 ต.ค.)</div>
+      <p>v0.65.0 บังคับใช้ read-only workspace setting ใน folder ที่ไม่น่าเชื่อถือ, ปรับ OAuth ให้สอดคล้องกับ RFC 9207, เพิ่ม custom OTLP telemetry header ส่วน nightly build ต่อเนื่องจนถึง 24 ต.ค. มีการแก้ character-width ภาษาไทย/ลาว และเพิ่ม flag <code>--list-models</code></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀 <a href="https://github.com/cline/cline">cline/cline</a></div>
+      <div class="card-meta">TypeScript · Apache-2.0 · 10 release ในสัปดาห์นี้ (13–17 ต.ค.) · CLI v3.0.73 / Desktop v0.0.48 / SDK v0.0.95 (17 ต.ค.)</div>
+      <p>autonomous AI coding agent แก้ไขปัญหา GPT-6/Azure, เปิดตัว Cline Cloud sessions (รัน task แบบ sandbox บน repo/branch GitHub จากระยะไกล), ปรับปรุง plugin sandboxing ครั้งใหญ่ (ยกเลิกโหมด <code>in_process</code>) และมีการสลับโมเดลเริ่มต้นไปมา (Gemini 4 Argon → กลับมาเป็น Claude Sonnet 5.5)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/sst/opencode">sst/opencode</a></div>
+      <div class="card-meta">TypeScript · MIT · 220,900 ★ · 29,500 forks</div>
+      <p>AI coding agent แบบ open-source ที่เป็นกลางทางโมเดล รองรับผู้ให้บริการ LLM กว่า 75 เจ้า วางตำแหน่งเป็นทางเลือกโอเพนซอร์สของ Claude Code <strong>หมายเหตุแก้ไขข้อมูลผิดพลาด:</strong> เจ้าของ repository ที่ถูกต้องคือ <code>sst</code> ไม่ใช่ owner อื่นตามที่เคยปรากฏใน trending snapshot บางแหล่งซึ่งไม่ตรงกับข้อมูลจริงบนหน้า GitHub</p>
+    </div>
+
+    <p><strong>K-Dense-AI/scientific-agent-skills</strong> (MIT, 54,300 ★, 4,800 forks, 761 commits) ชุด agent skill 177 รายการสำหรับงานวิจัยวิทยาศาสตร์ ยังอยู่ในสถานะพัฒนาต่อเนื่อง (README อ้างอิงเวอร์ชัน v2.72.0) แต่ไม่พบวันที่ release ที่ยืนยันตกในกรอบสัปดาห์นี้โดยตรง</p>
+
+    <div class="note-box">
+      <strong>สถานะ MCP Specification:</strong> ไม่พบการอัปเดตสเปก MCP ฉบับใหม่ในกรอบ 7 วันนี้ สเปกล่าสุดยังคงเป็นฉบับ 2026-07-28 ยืนยันจาก blog.modelcontextprotocol.io และ ppc.land (2 แหล่งอิสระ) roadmap ล่าสุดที่เผยแพร่เมื่อ 22 ส.ค. 2026 ระบุทิศทางในอนาคตเรื่อง agent identity, progressive discovery, HTTP transport และ long-running task แต่ยังไม่มีการปล่อยจริงในสัปดาห์นี้
+    </div>
+  </section>
+
+  <section>
+    <h2>⚙️ Developer Tools</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Language</th><th>License</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/anthropics/claude-plugins-official">anthropics/claude-plugins-official</a></td><td>ไม่มีข้อมูล</td><td>Apache-2.0</td><td>44,200</td><td>4,632 commits สะสม — ไดเรกทอรี Claude Code plugin ทางการที่ Anthropic ดูแลเอง ยังมีกิจกรรมต่อเนื่อง</td></tr>
+          <tr><td><a href="https://github.com/oven-sh/bun">oven-sh/bun</a></td><td>ไม่มีข้อมูล</td><td>ไม่มีข้อมูล</td><td>ไม่มีข้อมูล</td><td>v1.4.4 (22 ต.ค., 39 contributors) — JS/TS runtime เน้นความเร็ว ยังไม่พบ changelog เนื้อหาเต็มบนหน้า release</td></tr>
+          <tr><td><a href="https://github.com/modelcontextprotocol/servers">modelcontextprotocol/servers</a></td><td>ไม่มีข้อมูล</td><td>Apache-2.0/MIT</td><td>91,500</td><td>ดูรายละเอียดในหมวด MCP &amp; AI Agents</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>☁️ Cloud Native &amp; DevOps</h2>
+
+    <div class="card">
+      <div class="card-title">🔒 <a href="https://github.com/opentofu/opentofu">opentofu/opentofu</a></div>
+      <div class="card-meta">Go · MPL-2.0 · v1.13.2 / v1.12.9 — 21 ต.ค. 2026</div>
+      <p>ทางเลือกโอเพนซอร์สของ Terraform ที่ดูแลโดย Linux Foundation ปล่อย patch กรองใบรับรองระดับ intermediate ที่ถูกเพิกถอนจากเหตุการณ์ eMudhra CA compromise พร้อมแก้บั๊ก HTTP/2 CPU DoS ใน <code>tofu init</code></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔒 <a href="https://github.com/argoproj/argo-cd">argoproj/argo-cd</a></div>
+      <div class="card-meta">Go · Apache-2.0 · v3.3.18 — 22 ต.ค. 2026</div>
+      <p>เครื่องมือ GitOps continuous delivery สำหรับ Kubernetes ปล่อย security fix ตอบสนองเหตุการณ์ eMudhra CA compromise โดยตรง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔒 <a href="https://github.com/cert-manager/cert-manager">cert-manager/cert-manager</a></div>
+      <div class="card-meta">Go · Apache-2.0 · v1.21.3 — 23 ต.ค. 2026</div>
+      <p>เครื่องมือจัดการใบรับรอง TLS อัตโนมัติใน Kubernetes ลบความเชื่อถือ (distrust) ต่อ eMudhra CA ที่ถูกเพิกถอนออกโดยตรง พร้อมอัปเกรด Go เป็น 1.26.10</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">☁️ <a href="https://github.com/prometheus/prometheus">prometheus/prometheus</a></div>
+      <div class="card-meta">Go · Apache-2.0 · v3.15.1 / v3.13.5 — 21 ต.ค. 2026</div>
+      <p>ระบบ monitoring และ time-series database ปล่อย patch distrust CA ที่ถูกเพิกถอน พร้อมแก้ช่องโหว่ HTTP/2 ใน <code>x/net</code></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">☁️ <a href="https://github.com/moby/moby">moby/moby (Docker Engine)</a></div>
+      <div class="card-meta">Go · Apache-2.0 · v29.9.2 — 20 ต.ค. 2026</div>
+      <p>container runtime หลักของ Docker อัปเดต Go runtime เพื่อบล็อก certificate chain ที่ใช้ CA ที่ถูกเพิกถอน ซึ่งอาจกระทบการตรวจสอบ TLS กับ registry บางแห่งที่ยังใช้ certificate เดิม ผู้ดูแลระบบควรตรวจสอบ registry ที่ใช้งานก่อนอัปเกรด</p>
+    </div>
+
+    <p><strong>istio/istio</strong> (Go, Apache-2.0) ปล่อย patch release พร้อมกัน 3 สาย (v1.31.3 / v1.30.7 / v1.29.10, 22 ต.ค.) แต่ไม่พบรายละเอียดการเปลี่ยนแปลงเฉพาะในหน้า release ส่วน <strong>kubernetes/kubernetes</strong> ยังไม่มี stable release ใหม่ในกรอบสัปดาห์นี้ (เวอร์ชันล่าสุดที่ยืนยันได้คือ v1.38.0-alpha.2 เมื่อ 7 ต.ค. ซึ่งอยู่นอกกรอบ 7 วัน)</p>
+  </section>
+
+  <section>
+    <h2>🔒 Security</h2>
+
+    <div class="card">
+      <div class="card-title">⚠️🔒 eMudhra Intermediate CA Compromise</div>
+      <div class="card-meta">เผยแพร่/ตอบสนอง 17–23 ต.ค. 2026 · ยืนยันจาก 5 แหล่งข่าวอิสระ</div>
+      <p>private key ของ intermediate CA จำนวน 8 ตัวที่ดำเนินการโดย eMudhra (ผู้ให้บริการ digital trust จากอินเดีย) ถูกคำนวณย้อนกลับได้ สาเหตุหลักมาจาก script ที่สร้าง key แบบ P-384 ผิดพลาดจนได้ key ที่อ่อนแอ Mozilla และ Google บล็อกใน Firefox/Chrome ตั้งแต่ 17 ต.ค. ตามด้วย Apple (19 ต.ค.) และ Microsoft (20 ต.ค.) เหตุการณ์นี้ส่งผลกระทบเป็นลูกโซ่ไปยังโครงการ cloud-native จำนวนมากที่ต้องปล่อย patch distrust CA นี้ในสัปดาห์เดียวกัน (ดูหมวด Cloud Native &amp; DevOps: <code>cilium</code>, <code>opentofu</code>, <code>argo-cd</code>, <code>cert-manager</code>, <code>prometheus</code>, <code>moby</code>)</p>
+      <p><strong>แหล่งอ้างอิง:</strong> <a href="https://thehackernews.com/2026/10/eight-emudhra-ca-keys-compromised.html">The Hacker News</a>, <a href="https://www.csoonline.com/article/4238338/google-mozilla-revoke-emudhra-intermediates-after-private-key-compromise.html">CSOonline</a>, Dark Reading, SecurityWeek, InfoQ</p>
+      <p><strong>ข้อมูลที่ขัดแย้งกันเล็กน้อย:</strong> บางแหล่ง (CSOonline) ระบุว่า Chrome ไม่จำเป็นต้องบล็อก certificate chain ที่ build ผ่าน intermediate ที่ถูกจำกัดไว้เฉพาะงาน code-signing เนื่องจาก TLS verifier ไม่ใช้ path นั้น ขณะที่ SecurityWeek เขียนว่าเบราว์เซอร์ "บล็อก" โดยรวม ความแตกต่างนี้น่าจะมาจากการอธิบายขอบเขตทางเทคนิคที่ต่างกัน ไม่ใช่ข้อมูลที่ขัดแย้งโดยตรง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/aquasecurity/trivy">aquasecurity/trivy</a></div>
+      <div class="card-meta">Go · Apache-2.0 · v0.76.1 — 21 ต.ค. 2026</div>
+      <p>vulnerability/misconfiguration scanner แบบ all-in-one ปล่อย patch mitigate ผลกระทบจาก eMudhra CA compromise พร้อมอัปเกรดเป็น Go 1.27.3</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/falcosecurity/falco">falcosecurity/falco</a></div>
+      <div class="card-meta">C++ · Apache-2.0 · v0.45.1 — 19 ต.ค. 2026</div>
+      <p>เครื่องมือ runtime security ของ CNCF แก้ปัญหา packaging บน kernel รุ่นเก่าและ metrics race condition หมายเหตุ: breaking change ขนาดใหญ่ของการเปลี่ยนวิธี evaluate raw bytes ใน rule condition เกิดขึ้นใน v0.45.0 (21 ก.ย.) ซึ่งอยู่นอกกรอบ 7 วันนี้ แต่ยังส่งผลต่อผู้ใช้ที่อัปเกรดช้า</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🗄️ Database</h2>
+
+    <div class="card">
+      <div class="card-title">⚠️ <a href="https://github.com/duckdb/duckdb">duckdb/duckdb</a></div>
+      <div class="card-meta">C++ · MIT · 42,500 ★ · v2.0.0 "Cyanoptera" — 21 ต.ค. 2026</div>
+      <p>ดูรายละเอียดเต็มในหมวด Top Trending — ฐานข้อมูลวิเคราะห์แบบ embedded ปล่อย major version 2.0</p>
+    </div>
+
+    <p><strong>ClickHouse/ClickHouse</strong> ปล่อย stable/LTS build ต่อเนื่อง 3 ครั้งในสัปดาห์นี้ (v26.9.25.15-stable 22 ต.ค., v26.3.60.2-lts 23 ต.ค., v26.10.2.103-stable 24 ต.ค.) แสดงถึงกิจกรรม maintenance ที่สูงมาก แต่หน้า release ไม่มี changelog เนื้อหาให้สรุปรายละเอียดเพิ่มเติม</p>
+
+    <div class="note-box">
+      <strong>ข้อจำกัดของข้อมูล:</strong> <code>pola-rs/polars</code> ปล่อย major version 2.0.0 (มี breaking change เรื่อง SQL window function และ deprecate <code>cut</code>/<code>qcut</code>) แต่วันที่ปล่อยจริงคือ 6 ต.ค. 2026 ซึ่งอยู่นอกกรอบ 7 วันของรายงานนี้ จึงไม่นำมานับเป็นรายการ trending สัปดาห์นี้ (ดูหมวด Watch List)
+    </div>
+  </section>
+
+  <section>
+    <h2>🌐 Web Frameworks</h2>
+
+    <div class="card">
+      <div class="card-title">⚠️ <a href="https://github.com/fastapi/fastapi">fastapi/fastapi</a></div>
+      <div class="card-meta">Python · MIT · 104,100 ★ · v0.162.0 — 23 ต.ค. 2026</div>
+      <p>เฟรมเวิร์ก Python ประสิทธิภาพสูงสำหรับสร้าง REST API ออก release ย่อยต่อเนื่อง 5 ครั้งในสัปดาห์นี้ (0.159.1 → 0.162.0, 21–23 ต.ค.) <strong>⚠️ Breaking change ใน v0.162.0:</strong> ฟอร์มฟิลด์ประเภท <code>bool</code>/<code>bool | None</code> ที่ไม่ส่งค่ามา จะใช้ค่า default ที่ประกาศไว้หรือ raise error แทนการ default เป็น <code>False</code> อัตโนมัติแบบเดิม</p>
+    </div>
+
+    <p><strong>n8n-io/n8n</strong> (Sustainable Use License/fair-code, 208,400 ★) แพลตฟอร์ม workflow automation พร้อมฟีเจอร์ AI ในตัว ปล่อย release ต่อเนื่องแทบทุกวันในสัปดาห์นี้ (รวม n8n@2.44.6 ที่ 22 ต.ค. และ n8n@1.123.87 ที่ 23 ต.ค.) ไม่พบหลักฐานกิจกรรมในกรอบ 7 วันนี้ที่ยืนยันได้สำหรับ Next.js, Vite หรือ Svelte (release ล่าสุดของ Svelte คือ 5.57.2 เมื่อ 6 ต.ค. ซึ่งอยู่นอกกรอบเวลา)</p>
+  </section>
+
+  <section>
+    <h2>📱 Mobile</h2>
+    <p><strong>expo/expo</strong> ปล่อย patch release หลายตัวในวันที่ 23 ต.ค. (<code>expo@58.0.19</code>, <code>patch-project@58.0.17</code>, <code>expo-widgets@58.0.23</code>) แต่เป็นการอัปเดต dependency เป็นหลัก ไม่มีฟีเจอร์ใหญ่ ไม่มีโครงการเด่นในสัปดาห์นี้สำหรับ Flutter/React Native (ข้อมูล release ของ <code>flutter/flutter</code> ที่ดึงได้ในรอบการค้นคว้านี้แสดงวันที่ไม่สอดคล้องกับปีปัจจุบัน จึงไม่นำมาแสดงเพื่อความถูกต้อง — ดูหมายเหตุใน Sources)</p>
+  </section>
+
+  <section>
+    <h2>📦 New Releases</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Project</th><th>Version</th><th>Release Date</th><th>Highlights</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></td><td>v2.1.309</td><td>22 ต.ค. 2026</td><td>แก้ช่องโหว่ sandbox escape ผ่าน shell startup file, MCP config ถูกแก้ไขได้จาก sandboxed command, ช่องว่างตรวจสอบสิทธิ์ Bash</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></td><td>v0.65.0</td><td>20 ต.ค. 2026</td><td>บังคับ read-only workspace ใน folder ที่ไม่น่าเชื่อถือ, OAuth RFC 9207, custom OTLP telemetry header</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/cline/cline">cline/cline</a></td><td>CLI v3.0.73 / Desktop v0.0.48</td><td>17 ต.ค. 2026</td><td>Cline Cloud sessions, ปรับปรุง plugin sandboxing, แก้ปัญหา GPT-6/Azure</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></td><td>v0.32.0</td><td>18 ต.ค. 2026</td><td>endpoint ใหม่, low-precision KV cache, Model Runner V2, ⚠️ ตัด Python 3.10</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/duckdb/duckdb">duckdb/duckdb</a></td><td>v2.0.0</td><td>21 ต.ค. 2026</td><td>major version: MERGE INTO, trigger ใหม่, async Parquet writes</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/fastapi/fastapi">fastapi/fastapi</a></td><td>v0.162.0</td><td>23 ต.ค. 2026</td><td>⚠️ เปลี่ยนพฤติกรรม default ของ bool form field</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/cilium/cilium">cilium/cilium</a></td><td>v1.20.4 / v1.19.10 / v1.18.16</td><td>23 ต.ค. 2026</td><td>อัปเกรด Go 1.26.10 ตอบสนอง eMudhra CA compromise</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/aquasecurity/trivy">aquasecurity/trivy</a></td><td>v0.76.1</td><td>21 ต.ค. 2026</td><td>mitigate eMudhra CA compromise, อัปเกรด Go 1.27.3</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/opentofu/opentofu">opentofu/opentofu</a></td><td>v1.13.2 / v1.12.9</td><td>21 ต.ค. 2026</td><td>กรอง certificate ที่ถูกเพิกถอน, แก้ HTTP/2 DoS ใน tofu init</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/argoproj/argo-cd">argoproj/argo-cd</a></td><td>v3.3.18</td><td>22 ต.ค. 2026</td><td>security fix สำหรับ eMudhra CA compromise</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/cert-manager/cert-manager">cert-manager/cert-manager</a></td><td>v1.21.3</td><td>23 ต.ค. 2026</td><td>ลบความเชื่อถือ eMudhra CA, อัปเกรด Go 1.26.10</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/prometheus/prometheus">prometheus/prometheus</a></td><td>v3.15.1 / v3.13.5</td><td>21 ต.ค. 2026</td><td>distrust CA ที่ถูกเพิกถอน, แก้ช่องโหว่ HTTP/2</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/moby/moby">moby/moby</a></td><td>v29.9.2</td><td>20 ต.ค. 2026</td><td>บล็อก certificate chain ที่ใช้ CA ที่ถูกเพิกถอน</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/falcosecurity/falco">falcosecurity/falco</a></td><td>v0.45.1</td><td>19 ต.ค. 2026</td><td>แก้ packaging บน kernel เก่า, metrics race condition</td><td>GitHub Releases</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><em>หมายเหตุ: Claude Code และ Gemini CLI ปล่อยหลายเวอร์ชันในสัปดาห์นี้ ตารางด้านบนแสดงเฉพาะเวอร์ชันที่มีการเปลี่ยนแปลงสำคัญที่สุด n8n, bun และ ClickHouse ก็ปล่อย release ต่อเนื่องในสัปดาห์นี้แต่ไม่มี changelog เนื้อหาให้สรุปเพิ่มเติม ดูหมวดที่เกี่ยวข้องด้านบน</em></p>
+  </section>
+
+  <section>
+    <h2>🔥 Viral This Week</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars Growth</th><th>Fork Growth</th><th>เหตุผล</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/morluto/rea">morluto/rea</a></td><td>ไม่สามารถยืนยันตัวเลขที่แน่นอนได้</td><td>ไม่สามารถยืนยันตัวเลขที่แน่นอนได้</td><td>ยังติด Trending ต่อเนื่องจากสัปดาห์ก่อนตามรายงานของ aitoolly.com แต่ยอดดาวรวม (~374,800 ★) ขัดแย้งกับจำนวน commit (5,287 ครั้ง) อย่างมาก จึงไม่นำตัวเลข growth มาแสดงเพื่อหลีกเลี่ยงการให้ข้อมูลที่อาจผิดพลาด</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box">
+      <strong>ข้อจำกัดของข้อมูล:</strong> หน้า GitHub Trending ที่เข้าถึงได้ในรอบการค้นคว้านี้พบว่าให้ข้อมูล owner และตัวเลขดาว/การเติบโตที่ fabricated ปนกับของจริง (ยืนยันจากกรณี <code>opencode</code> ที่ระบุ owner ผิดในสัปดาห์ก่อน) ทีมจัดทำรายงานจึงเลือกยืนยันเฉพาะผ่านหน้า Repository/Releases ของ GitHub โดยตรง ซึ่งไม่แสดงตัวเลข star growth แบบ week-over-week ทำให้ไม่สามารถนำเสนอรายการอื่นในหมวดนี้ได้โดยไม่เสี่ยงต่อการสร้างข้อมูลเท็จ
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Fastest Growing Projects</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้ที่สามารถยืนยันตัวเลข stars growth ที่แม่นยำได้จากแหล่งข้อมูลที่เข้าถึงได้ในรอบการค้นคว้านี้ (ดูข้อจำกัดของข้อมูลในหมวด Viral This Week) กิจกรรมเด่นของสัปดาห์นี้วัดได้ชัดเจนกว่าจากความถี่ของ release/security patch มากกว่ายอดดาวที่เพิ่มขึ้น</p>
+  </section>
+
+  <section>
+    <h2>💎 Hidden Gems</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/modelcontextprotocol/python-sdk">modelcontextprotocol/python-sdk</a></div>
+      <p><strong>จุดเด่น:</strong> SDK ภาษา Python ทางการสำหรับสร้าง MCP server/client เป็น infrastructure พื้นฐานที่ MCP server อื่น ๆ ส่วนใหญ่ต้องพึ่งพา<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ถูกบดบังด้วย agent tooling ที่หวือหวากว่า ทั้งที่เป็นรากฐานของ ecosystem MCP ทั้งหมด<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่กำลังสร้าง MCP server/client ของตัวเองด้วย Python<br>
+      <strong>Source:</strong> GitHub Repository + Releases</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a></div>
+      <p><strong>จุดเด่น:</strong> agent skill 177 รายการสำหรับงานวิจัยวิทยาศาสตร์ ครอบคลุมชีววิทยา เคมี การแพทย์ และฟิสิกส์<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> เป็นคอลเลกชัน agent skill เฉพาะทางวิทยาศาสตร์ที่ใหญ่ที่สุดที่ยืนยันได้ในรอบนี้ แต่ยังไม่เป็นที่รู้จักในวงกว้างเท่า coding-agent tool ทั่วไป<br>
+      <strong>เหมาะกับใคร:</strong> นักวิจัยและทีม R&amp;D ที่ต้องการให้ coding agent ช่วยงานวิทยาศาสตร์ที่มีขั้นตอนตรวจสอบเฉพาะทาง<br>
+      <strong>Source:</strong> GitHub Repository</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/falcosecurity/falco">falcosecurity/falco</a></div>
+      <p><strong>จุดเด่น:</strong> เครื่องมือ runtime security ของ CNCF ที่ตรวจจับพฤติกรรมผิดปกติในระดับ kernel/container<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ได้รับความสนใจน้อยกว่าเครื่องมือ cloud-native security ตัวใหญ่อย่าง Trivy หรือ Cilium ทั้งที่ทำหน้าที่เฉพาะทางสำคัญคล้ายกัน และยังมีการดูแลอย่างสม่ำเสมอ<br>
+      <strong>เหมาะกับใคร:</strong> ทีม platform/security ที่ต้องการ runtime threat detection สำหรับ Kubernetes<br>
+      <strong>Source:</strong> GitHub Releases</p>
+    </div>
+
+    <div class="note-box">
+      <strong>หมายเหตุ:</strong> รายงานนี้นำเสนอเพียง 3 รายการที่ทีมจัดทำสามารถยืนยันความถูกต้องของทั้ง "เป็นโครงการจริง" และ "ยังไม่เป็นที่รู้จักในวงกว้างเทียบกับผลกระทบ" ได้พร้อมกันในสัปดาห์นี้ ไม่ขอเพิ่มรายการที่ยังยืนยันไม่ได้เพียงเพื่อให้ครบ 5 รายการตามโครงรายงาน
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠 Developer Recommendations</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/cline/cline">cline/cline</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> autonomous AI coding agent ใน VS Code/CLI/Desktop รองรับหลายผู้ให้บริการโมเดล<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการ coding assistant แบบเปิดที่ไม่ผูกกับผู้ให้บริการเดียว<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (ติดตั้งผ่าน extension/npm)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ออก release ถี่มากในสัปดาห์นี้พร้อมฟีเจอร์ Cloud sessions ใหม่<br>
+      GitHub: <a href="https://github.com/cline/cline">github.com/cline/cline</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> AI agent บน terminal อย่างเป็นทางการจาก Google<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการ CLI agent ที่ผูกกับ Gemini โดยตรงและใช้ฟรี<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง (ต้องตั้งค่า OAuth/gcloud)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ปล่อย release ต่อเนื่องและเสริมความปลอดภัยของ workspace ที่ไม่น่าเชื่อถือใน v0.65.0<br>
+      GitHub: <a href="https://github.com/google-gemini/gemini-cli">github.com/google-gemini/gemini-cli</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/sst/opencode">sst/opencode</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> AI coding agent แบบเปิดที่รองรับโมเดลกว่า 75 ผู้ให้บริการ<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการ UX คล้าย Claude Code แต่ไม่ต้องการผูกกับผู้ให้บริการเดียว<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (npm/Homebrew)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ฐานผู้ใช้ใหญ่ (220,900 ★) และเป็นกลางทางโมเดลอย่างแท้จริง<br>
+      GitHub: <a href="https://github.com/sst/opencode">github.com/sst/opencode</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/cert-manager/cert-manager">cert-manager/cert-manager</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> จัดการใบรับรอง TLS อัตโนมัติใน Kubernetes<br>
+      <strong>เหมาะกับใคร:</strong> platform/DevOps engineer ที่ดูแลคลัสเตอร์ Kubernetes<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ปล่อย patch ตอบสนองเหตุการณ์ eMudhra CA compromise อย่างรวดเร็ว สะท้อนความเอาใจใส่ด้านความปลอดภัย<br>
+      GitHub: <a href="https://github.com/cert-manager/cert-manager">github.com/cert-manager/cert-manager</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/aquasecurity/trivy">aquasecurity/trivy</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> scanner ช่องโหว่และ misconfiguration แบบ all-in-one<br>
+      <strong>เหมาะกับใคร:</strong> ทีม DevSecOps ทุกระดับ<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> อัปเดตความปลอดภัยสม่ำเสมอและใช้งานได้ฟรี<br>
+      GitHub: <a href="https://github.com/aquasecurity/trivy">github.com/aquasecurity/trivy</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/opentofu/opentofu">opentofu/opentofu</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> Infrastructure as Code แบบ open-source ทดแทน Terraform<br>
+      <strong>เหมาะกับใคร:</strong> ทีม Infra ที่ต้องการทางเลือกที่ดูแลโดย Linux Foundation<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ตอบสนอง security incident ได้รวดเร็วและมี community ดูแลต่อเนื่อง<br>
+      GitHub: <a href="https://github.com/opentofu/opentofu">github.com/opentofu/opentofu</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/fastapi/fastapi">fastapi/fastapi</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> สร้าง REST API ด้วย Python ประสิทธิภาพสูง<br>
+      <strong>เหมาะกับใคร:</strong> backend developer ทุกระดับ<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย<br>
+      <strong>เหตุผลที่แนะนำ:</strong> มี breaking change ใหม่ใน v0.162.0 ที่นักพัฒนาควรรู้ก่อนอัปเกรด<br>
+      GitHub: <a href="https://github.com/fastapi/fastapi">github.com/fastapi/fastapi</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/duckdb/duckdb">duckdb/duckdb</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ฐานข้อมูลวิเคราะห์แบบ embedded/in-process สำหรับ data engineering<br>
+      <strong>เหมาะกับใคร:</strong> data engineer/analyst<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (pip install)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เพิ่งปล่อย major version 2.0 พร้อมฟีเจอร์ SQL ใหม่หลายรายการ<br>
+      GitHub: <a href="https://github.com/duckdb/duckdb">github.com/duckdb/duckdb</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/n8n-io/n8n">n8n-io/n8n</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> workflow automation พร้อมฟีเจอร์ AI ในตัว<br>
+      <strong>เหมาะกับใคร:</strong> ทีม ops/no-code builder<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่ายถึงปานกลาง (self-host หรือ cloud)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ออก release ต่อเนื่องแทบทุกวันในสัปดาห์นี้<br>
+      GitHub: <a href="https://github.com/n8n-io/n8n">github.com/n8n-io/n8n</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Company Adoption</h2>
+    <ul>
+      <li><strong>Anthropic:</strong> ปล่อย Claude Code ต่อเนื่อง 10 เวอร์ชันในกรอบสัปดาห์นี้ (15–23 ต.ค.) รวมถึง security release v2.1.309 ที่สำคัญ พร้อมดูแล <code>claude-plugins-official</code> ที่ยังมีกิจกรรมต่อเนื่อง</li>
+      <li><strong>Google:</strong> ปล่อย Gemini CLI ต่อเนื่อง 9 release/nightly พร้อมเสริมความปลอดภัยของ workspace ที่ไม่น่าเชื่อถือใน v0.65.0</li>
+      <li><strong>Mozilla, Google (Chrome), Apple, Microsoft:</strong> ร่วมกันบล็อก intermediate CA ของ eMudhra ในเบราว์เซอร์/ระบบปฏิบัติการของตนหลังพบ private key compromise ซึ่งเป็นการประสานงานข้ามบริษัทที่ส่งผลกระทบโดยตรงต่อโครงการ cloud-native open source จำนวนมาก (ไม่ใช่การสนับสนุนโครงการโดยตรง แต่เป็นการกระทำของบริษัทใหญ่ที่ผลักให้วงการ open source ต้องตอบสนองพร้อมกัน)</li>
+      <li><strong>Linux Foundation:</strong> ดูแล <code>opentofu/opentofu</code> ที่ปล่อย security patch ตอบสนองเหตุการณ์ eMudhra ได้รวดเร็ว</li>
+    </ul>
+    <p>ไม่พบสัญญาณการสนับสนุนหรือการนำไปใช้งานที่ยืนยันได้ชัดเจนจาก Meta, AWS หรือ CNCF (ในฐานะองค์กร ไม่ใช่โครงการย่อย) ต่อโครงการใดในกรอบ 7 วันนี้โดยเฉพาะจากรอบการค้นคว้านี้</p>
+  </section>
+
+  <section>
+    <h2>⚠️ Breaking Changes</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/vllm-project/vllm/releases">vllm-project/vllm v0.32.0</a></div>
+      <div class="card-meta">เผยแพร่ 18 ต.ค. 2026</div>
+      <ul>
+        <li><strong>Breaking:</strong> ตัดการรองรับ Python 3.10 ออกทั้งหมด</li>
+        <li><strong>ผลกระทบ:</strong> ผู้ใช้ที่ยังรันบน Python 3.10 ต้องอัปเกรด interpreter ก่อนอัปเดต vllm เป็นเวอร์ชันนี้</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/fastapi/fastapi/releases">fastapi/fastapi v0.162.0</a></div>
+      <div class="card-meta">เผยแพร่ 23 ต.ค. 2026</div>
+      <ul>
+        <li><strong>Breaking:</strong> ฟอร์มฟิลด์ประเภท <code>bool</code>/<code>bool | None</code> ที่ไม่ส่งค่ามา จะใช้ค่า default ที่ประกาศไว้หรือ raise error แทนการ default เป็น <code>False</code> อัตโนมัติแบบเดิม</li>
+        <li><strong>ผลกระทบ:</strong> กระทบ endpoint ที่รับ form data แบบ boolean และพึ่งพาพฤติกรรม default เดิมโดยไม่ได้ประกาศ default ไว้ชัดเจน</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/duckdb/duckdb/releases">duckdb/duckdb v2.0.0 "Cyanoptera"</a></div>
+      <div class="card-meta">เผยแพร่ 21 ต.ค. 2026</div>
+      <ul>
+        <li><strong>Major version bump:</strong> จาก 1.x เป็น 2.0 มักสื่อถึง breaking change แม้หน้า release จะไม่ได้แสดงรายการแยกไว้ชัดเจนในรอบการค้นคว้านี้</li>
+        <li><strong>คำแนะนำ:</strong> ผู้ใช้ production ควรตรวจสอบ release notes ฉบับเต็มและทดสอบใน staging ก่อนอัปเกรด</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Top Categories</h2>
+    <ol>
+      <li>Cloud Native Security / Incident Response (cilium, trivy, opentofu, argo-cd, cert-manager, prometheus, moby ตอบสนอง eMudhra CA compromise)</li>
+      <li>AI Coding Agents / CLI (claude-code, gemini-cli, cline, opencode)</li>
+      <li>AI/LLM Inference Infrastructure (vllm)</li>
+      <li>MCP Servers &amp; Agent Tooling (modelcontextprotocol/servers, rea)</li>
+      <li>Database / Data Engineering (duckdb, clickhouse)</li>
+      <li>Backend Frameworks / Workflow Automation (fastapi, n8n)</li>
+      <li>Security Tooling (trivy, falco)</li>
+      <li>Developer Tools / Plugins (claude-plugins-official, bun)</li>
+      <li>Infrastructure as Code (opentofu)</li>
+      <li>Mobile (expo, ระดับกิจกรรมต่ำ)</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-num">15</div><div class="stat-label">New Trending Repositories</div></div>
+      <div class="stat-tile"><div class="stat-num">13</div><div class="stat-label">New Releases</div></div>
+      <div class="stat-tile"><div class="stat-num">6</div><div class="stat-label">AI Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">2</div><div class="stat-label">MCP Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Agent Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">2</div><div class="stat-label">CLI Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">7</div><div class="stat-label">Cloud Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">3</div><div class="stat-label">Security Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">3</div><div class="stat-label">Hidden Gems</div></div>
+      <div class="stat-tile"><div class="stat-num">3</div><div class="stat-label">Breaking Releases</div></div>
+    </div>
+    <p><em>หมายเหตุ: ตัวเลขข้างต้นนับจากรายการที่ทีมจัดทำรายงานยืนยันแหล่งที่มาได้และนำมาแสดงในรายงานฉบับนี้เท่านั้น ไม่ใช่ตัวเลขรวมทั้งหมดของ GitHub Trending ในสัปดาห์นี้</em></p>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>เหตุผล</th><th>สิ่งที่ต้องติดตาม</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>eMudhra CA Compromise (ecosystem-wide)</td><td>กระทบโครงการ cloud-native จำนวนมากพร้อมกัน</td><td>ว่าจะมีโครงการอื่นที่ยังไม่ patch ได้รับผลกระทบเพิ่มหรือไม่ และ root cause ฉบับเต็มของ eMudhra จะเปิดเผยอย่างไร</td><td>The Hacker News, CSOonline, InfoQ</td></tr>
+          <tr><td><a href="https://github.com/morluto/rea">morluto/rea</a></td><td>ยอดดาวรวม (~374,800 ★) ขัดแย้งกับจำนวน commit (5,287 ครั้ง) อย่างมาก</td><td>ว่า GitHub หรือชุมชนจะตรวจสอบ/ยืนยันความถูกต้องของตัวเลขนี้หรือไม่</td><td>GitHub Repository + aitoolly.com</td></tr>
+          <tr><td><a href="https://github.com/duckdb/duckdb">duckdb/duckdb</a></td><td>ปล่อย major version 2.0 ที่อาจมี breaking change ยังไม่ระบุครบ</td><td>release notes ฉบับเต็มและ migration guide ที่อาจตามมา</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/pola-rs/polars">pola-rs/polars</a></td><td>ปล่อย major version 2.0.0 เมื่อ 6 ต.ค. (นอกกรอบสัปดาห์นี้เล็กน้อย) พร้อม breaking change เรื่อง SQL window function</td><td>ปฏิกิริยาของชุมชนและ ecosystem ที่พึ่งพา Polars ในสัปดาห์ถัดไป</td><td>GitHub Releases</td></tr>
+          <tr><td>MCP Specification</td><td>roadmap เดือน ส.ค. 2026 ระบุทิศทาง agent identity/HTTP transport ที่ยังไม่ปล่อยจริง</td><td>ว่าสเปกฉบับใหม่จะปล่อยเมื่อใด</td><td>blog.modelcontextprotocol.io</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>GitHub</h3>
+    <p>GitHub Repository และ Releases pages ของทุก repository ที่อ้างอิงในรายงานนี้ (ยืนยันโดยตรง ไม่พึ่งพาการ scrape หน้า GitHub Trending เนื่องจากพบว่าหน้าดังกล่าวให้ข้อมูล owner/ตัวเลขดาวที่ fabricated ปนกับของจริงในรอบการค้นคว้าก่อนหน้า): cilium/cilium, aquasecurity/trivy, opentofu/opentofu, argoproj/argo-cd, cert-manager/cert-manager, prometheus/prometheus, moby/moby, istio/istio, falcosecurity/falco, kubernetes/kubernetes, anthropics/claude-code, google-gemini/gemini-cli, cline/cline, sst/opencode, vllm-project/vllm, Comfy-Org/ComfyUI, debpalash/VoiceStudio, modelcontextprotocol/servers, modelcontextprotocol/python-sdk, anthropics/claude-plugins-official, K-Dense-AI/scientific-agent-skills, morluto/rea, oven-sh/bun, fastapi/fastapi, n8n-io/n8n, duckdb/duckdb, ClickHouse/ClickHouse, pola-rs/polars, sveltejs/svelte, expo/expo</p>
+    <h3>Official Documentation</h3>
+    <p>blog.modelcontextprotocol.io (สถานะ MCP spec), README ของ morluto/rea และ K-Dense-AI/scientific-agent-skills</p>
+    <h3>Community (Trend Only)</h3>
+    <p>aitoolly.com ใช้ยืนยันว่า morluto/rea ติด GitHub Trending ต่อเนื่องหลายวัน · The Hacker News, CSOonline, Dark Reading, SecurityWeek, InfoQ ใช้ยืนยันเหตุการณ์ eMudhra CA compromise แบบ cross-validate 5 แหล่งอิสระ</p>
+    <p><em>UNCERTAIN: ไม่สามารถเข้าถึง ossinsight.io, gittrend.io, hn.algolia.com และ news.ycombinator.com ได้จาก sandbox ของรอบการค้นคว้านี้ (ยืนยันแล้วว่าเป็นปัญหาการเข้าถึงเครือข่ายซ้ำหลายรอบ ไม่ใช่ปัญหาชั่วคราว) จึงไม่มีข้อมูล cross-validation จาก Tier 3 (Hacker News/Reddit) สำหรับรายงานฉบับนี้ นอกจากนี้ข้อมูล release ของ flutter/flutter ที่ดึงได้แสดงวันที่ไม่สอดคล้องกับปีปัจจุบัน (2026) จึงไม่นำมาใช้ในรายงาน</em></p>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="legend-grid">
+      <div><span class="badge">✅</span> Official</div>
+      <div><span class="badge">⭐</span> Trending</div>
+      <div><span class="badge">🚀</span> Fast Growing</div>
+      <div><span class="badge">🔥</span> Viral</div>
+      <div><span class="badge">🤖</span> AI</div>
+      <div><span class="badge">🧠</span> MCP / Agent</div>
+      <div><span class="badge">☁️</span> Cloud Native</div>
+      <div><span class="badge">🔒</span> Security</div>
+      <div><span class="badge">📦</span> New Release</div>
+      <div><span class="badge warn">⚠️</span> Breaking Change</div>
+      <div><span class="badge">💎</span> Hidden Gem</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>สรุปแนวโน้ม Ecosystem</h2>
+    <p>สัปดาห์นี้แสดงให้เห็นว่า open source ecosystem ไม่ได้ขับเคลื่อนด้วยกระแส "ฮิต" บน Trending เพียงอย่างเดียว แต่ยังเปราะบางต่อเหตุการณ์ด้าน supply-chain/PKI ระดับโครงสร้างพื้นฐาน เหตุการณ์ eMudhra CA compromise แสดงให้เห็นว่าโครงการ cloud-native ขนาดใหญ่ตั้งแต่ networking (<code>cilium</code>) ไปจนถึง GitOps (<code>argo-cd</code>) security scanning (<code>trivy</code>) และ container runtime (<code>moby</code>) ล้วนต้องพึ่งพา chain of trust เดียวกัน และต้องประสานการตอบสนองพร้อมกันเมื่อ CA ตัวใดตัวหนึ่งมีปัญหา ขณะเดียวกันการแข่งขันในหมวด AI coding agent ระหว่าง Anthropic (Claude Code), Google (Gemini CLI) และผู้เล่นโอเพนซอร์สอย่าง Cline และ opencode ยังดุเดือดต่อเนื่อง โดยความถี่ของ security/permission patch ใน Claude Code สัปดาห์นี้ชี้ให้เห็นว่าความปลอดภัยของ sandbox เป็นจุดที่ทุกผู้พัฒนา agent ต้องให้ความสำคัญมากขึ้น กรณีของ <code>morluto/rea</code> ที่ตัวเลขดาวขัดแย้งกับกิจกรรมจริงอย่างมากเป็นเครื่องเตือนซ้ำจากสัปดาห์ก่อนว่า GitHub stars ไม่ควรใช้เป็นตัวชี้วัดคุณภาพหรือความน่าเชื่อถือเพียงอย่างเดียว สัปดาห์ถัดไปควรจับตา 1) ผลกระทบระยะยาวของ eMudhra CA compromise ต่อ registry และ supply chain อื่น ๆ ที่ยังไม่ patch 2) migration guide ฉบับเต็มของ DuckDB 2.0 และ 3) ว่า MCP specification ฉบับใหม่ตาม roadmap เดือนสิงหาคมจะเริ่มปล่อยจริงเมื่อใด</p>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly GitHub Trending Report · 24 ต.ค. 2026 · ข้อมูลอ้างอิงจากแหล่งที่ระบุไว้ในหมวด Sources เท่านั้น ตัวเลขดาว/fork เป็น snapshot ณ เวลาที่เข้าถึงและอาจเปลี่ยนแปลงได้</p>
+  </footer>
+</div>
+</body>
+</html>
