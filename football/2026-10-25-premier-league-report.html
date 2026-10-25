@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Premier League Report — Week 43, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#9A5B12; --warn-bg:rgba(154,91,18,0.10); --warn-line:rgba(154,91,18,0.30);
+  --rumor:#8A3B5A;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.12);
+    --warn:#E0A855; --warn-bg:rgba(224,168,85,0.10); --warn-line:rgba(224,168,85,0.30);
+    --rumor:#D98FB2;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:6px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; padding-top:2px; }
+h3{ font-size:16.5px; font-weight:700; margin:20px 0 8px; color:var(--ink); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:30px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:72ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:70ch; }
+ul li ul{ margin-top:8px; }
+
+.callout{ background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px; padding:16px 18px; margin:0 0 18px; }
+.callout p{ margin:0; max-width:none; color:var(--ink); }
+.callout p + p{ margin-top:8px; }
+.callout .label{ font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--warn); text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.note{ font-size:14px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:12px 14px; margin:10px 0 16px; max-width:none; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 14px; border:1px solid var(--line); border-radius:10px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px; }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td a, th a{ white-space:nowrap; }
+
+.badge{ display:inline-block; font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:600; padding:2px 8px; border-radius:999px; white-space:nowrap; }
+.badge-official{ background:var(--accent-soft); color:var(--accent); }
+.badge-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-rumor{ background:rgba(138,59,90,0.12); color:var(--rumor); }
+.badge-cont{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-pending{ background:rgba(154,91,18,0.12); color:var(--warn); border:1px solid var(--warn-line); }
+
+.subhead{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin:18px 0 8px; }
+.subhead:first-child{ margin-top:0; }
+
+.club-block{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px dashed var(--line); }
+.club-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.club-block h3{ margin-top:0; }
+.club-block p{ margin-bottom:6px; }
+
+.src-list{ list-style:none; padding:0; margin:0 0 14px; }
+.src-list li{ margin-bottom:6px; font-size:14.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 43, 2026</p>
+    <h1>⚽ Weekly Premier League Report — Week 43</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 18 – 25 ตุลาคม 2026 (ICT)</span>
+      <span><b>Category:</b> Football</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="note">หมายเหตุขอบเขต: รายงานฉบับนี้รวมผลจริงของ 3 คู่ที่ยังไม่สิ้นสุดในรายงานสัปดาห์ก่อน (Leeds United vs Manchester United, Nottingham Forest vs Arsenal, AFC Bournemouth vs Sunderland จากวันที่ 18 ต.ค.) และ Tottenham Hotspur vs Coventry City (19 ต.ค.) ซึ่งอยู่นอกกรอบของสัปดาห์ก่อน รวมกับผลการแข่งขัน Matchweek 8 เฉพาะนัดที่สิ้นสุดแล้ว (23-24 ต.ค.) ส่วนนัดวันอาทิตย์ที่ 25 ต.ค. จำนวน 5 คู่ (Liverpool vs Brighton, Manchester United vs AFC Bournemouth, Crystal Palace vs Newcastle, Sunderland vs Leeds United, Hull City vs Brentford) <b>ยังอยู่ระหว่างแข่งขันหรือยังไม่สิ้นสุด ณ เวลาจัดทำรายงานนี้</b> จึงไม่นำผลมารายงานในฉบับนี้ตามกฎห้ามใช้ผลที่ยังไม่สิ้นสุด และย้ายไปแสดงในส่วนโปรแกรมสัปดาห์หน้าแทน</div>
+    <ul>
+      <li>Manchester City แพ้นัดแรกของฤดูกาล 1-2 ที่ Villa Park หลัง Nicolas Jackson ยิง 2 ประตู (6', 60') ให้ Aston Villa ขณะที่ Erling Haaland ตีไล่ตีเสมอได้เพียง 1 ประตู (52') ปิดสถิติไร้พ่าย 7 นัดแรกของฤดูกาลลง <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Arsenal ไล่ตีเสมอ Manchester City ขึ้นมาอยู่ที่ 21 แต้มเท่ากัน หลังเอาชนะทั้ง Nottingham Forest 1-0 (ประตู Noni Madueke, 18 ต.ค.) และ Everton 2-0 (ประตู Konsa, Gabriel, 24 ต.ค.) ในสัปดาห์นี้ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Tottenham Hotspur พลิกฟอร์มคว้า 2 ชัยชนะติดต่อกันเป็นครั้งแรกของฤดูกาล — เอาชนะ Coventry City 3-1 (19 ต.ค., ชัยชนะนัดแรกของฤดูกาล) และเอาชนะ Chelsea 0-2 ที่ Stamford Bridge (24 ต.ค., ชนะที่นั่นครั้งแรกนับจากเมษายน 2018) โดย Cole Palmer ของ Chelsea โดนไล่ออกจากสนาม <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>AFC Bournemouth คว้าชัยชนะนัดแรกของฤดูกาลด้วยการเอาชนะ Sunderland 2-0 (18 ต.ค.) หลัง Kevin Danso ของ Sunderland โดนไล่ออกจากสนามในนาทีที่ 17 <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Fulham ของ Álvaro Arbeloa เก็บชัยชนะติดต่อกันเป็นนัดที่ 2 ด้วยการเอาชนะ Coventry City 1-0 จากประตูของ Oscar Bobb (ประตูแรกในพรีเมียร์ลีกให้สโมสร) ช่วยลดแรงกดดันต่อตำแหน่งผู้จัดการทีมได้มาก <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 ตารางคะแนน Top 6</h2>
+    <div class="note">Brighton &amp; Hove Albion, Manchester United และ Liverpool มีนัดที่ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน (พบ Liverpool, Bournemouth และ Brighton ตามลำดับ ในวันที่ 25 ต.ค.) สถิติของทั้ง 3 ทีมจึงยังเป็นตัวเลขจาก 7 นัดเดิมก่อนสัปดาห์นี้ Manchester City และ Arsenal มีแต้มและสถิติ W-D-L เท่ากันพอดี (7W-0D-1L, 21 แต้ม, 8 นัด) ไม่สามารถยืนยันผลต่างประตู (Goal Difference) ที่ใช้จัดอันดับระหว่างทั้งสองทีมได้จากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ จึงจัดเรียงตามลำดับตัวอักษร/ความได้เปรียบของทีมจ่าฝูงเดิมโดยใช้เครื่องหมาย * กำกับทั้งคู่</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Club</th><th>Played</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>Source</th></tr>
+      <tr><td>1*</td><td>Manchester City</td><td>8</td><td>7</td><td>0</td><td>1</td><td>21</td><td><a href="https://www.101greatgoals.com/football/premier-league/aston-villa-manchester-city-result-report-goals/" target="_blank" rel="noopener">101 Great Goals</a></td></tr>
+      <tr><td>1*</td><td>Arsenal</td><td>8</td><td>7</td><td>0</td><td>1</td><td>21</td><td><a href="https://arseblog.news/2026/10/report-arsenal-2-0-everton-inc-goals-2/" target="_blank" rel="noopener">Arseblog News</a></td></tr>
+      <tr><td>3</td><td>Brighton &amp; Hove Albion</td><td>7</td><td>5</td><td>1</td><td>1</td><td>16</td><td><a href="https://www.soccerway.com/match/t8xcEZ7K" target="_blank" rel="noopener">Soccerway (ก่อนนัดพบ Liverpool)</a></td></tr>
+      <tr><td>4</td><td>Manchester United</td><td>7</td><td>4</td><td>2</td><td>1</td><td>14</td><td><a href="https://www.aljazeera.com/sports/2026/10/18/manchester-united-held-at-leeds-despite-improved-performance-under-carrick" target="_blank" rel="noopener">Al Jazeera (ก่อนนัดพบ Bournemouth)</a></td></tr>
+      <tr><td>5</td><td>Chelsea</td><td>8</td><td>4</td><td>1</td><td>3</td><td>13</td><td><a href="https://www.skysports.com/football/chelsea-vs-tottenham-hotspur/report/559516" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>6</td><td>Liverpool</td><td>7</td><td>3</td><td>3</td><td>1</td><td>12</td><td><a href="https://www.soccerway.com/match/t8xcEZ7K" target="_blank" rel="noopener">Soccerway (ก่อนนัดพบ Brighton)</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">ตรวจสอบ Consistency แล้ว: Played = W+D+L และ Points = W×3+D ถูกต้องครบทุกทีมในตาราง</p>
+  </section>
+
+  <section>
+    <h2>⚽ ผลการแข่งขันสำคัญ</h2>
+    <div class="note">ผล 4 คู่แรกในตารางนี้ (18-19 ต.ค.) เป็นผลจริงที่สิ้นสุดแล้วของนัดที่รายงานสัปดาห์ก่อนระบุว่า "ยังไม่สิ้นสุด" หรือ "อยู่นอกกรอบ" — นำมารายงานในฉบับนี้เนื่องจากอยู่ในกรอบย้อนหลัง 7 วันจากวันที่จัดทำรายงาน (25 ต.ค.)</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th class="wrap">Summary</th><th>Source</th></tr>
+      <tr><td>18 ต.ค.</td><td>Leeds United</td><td>1-1</td><td>Manchester United</td><td class="wrap">Bryan Mbeumo ยิงนำให้ United นาที 35 จากแดนขวาของ Tielemans ก่อน Dominic Calvert-Lewin ตีเสมอให้ Leeds นาที 51 ทั้งสองทีมไม่สามารถหาประตูชัยในครึ่งหลังได้ Manchester United ยังคงไร้ชัยชนะในลีกต่อเนื่องภายใต้ผู้จัดการทีม Michael Carrick</td><td><a href="https://www.aljazeera.com/sports/2026/10/18/manchester-united-held-at-leeds-despite-improved-performance-under-carrick" target="_blank" rel="noopener">Al Jazeera</a> / <a href="https://www.leedsunited.com/en/news/leeds-united-draw-1-1-with-manchester-united-at-elland-road" target="_blank" rel="noopener">Leeds United (Official)</a></td></tr>
+      <tr><td>18 ต.ค.</td><td>Nottingham Forest</td><td>0-1</td><td>Arsenal</td><td class="wrap">Noni Madueke ซึ่งลงเป็นตัวสำรองในครึ่งหลัง ยิงประตูชัยเพียงลูกเดียวของเกมในนาทีที่ 80 (บางแหล่งระบุ 81) จากลูกยิงที่กระดอนปราการโหม่งของ Forest เข้าประตู Chris Wood มีโอกาสตีเสมอช่วงท้ายเกมแต่ถูกสกัดออกไปเหนือเส้นประตู</td><td><a href="https://www.vavel.com/en-us/soccer/2026/10/18/1275853-nottingham-arsenal-live-score.html" target="_blank" rel="noopener">VAVEL</a> / <a href="https://www.outlookindia.com/sports/football/nottingham-forest-vs-arsenal-premier-league-2026-27-matchday-7-city-ground-in-pics" target="_blank" rel="noopener">Outlook India</a></td></tr>
+      <tr><td>18 ต.ค.</td><td>AFC Bournemouth</td><td>2-0</td><td>Sunderland</td><td class="wrap">Marcus Tavernier ยิงนำนาที 6 ก่อน Kevin Danso ของ Sunderland โดนไล่ออกจากสนามนาที 17 ด้วยข้อหาทำฟาวล์ตัดโอกาสทำประตู (DOGSO) ซึ่ง VAR ยืนยันคำตัดสิน จากนั้น Evanilson ยิงเพิ่มนาที 48 เป็นชัยชนะนัดแรกของฤดูกาลของ Bournemouth</td><td><a href="https://www.skysports.com/football/bmouth-vs-sunderland/report/559504" target="_blank" rel="noopener">Sky Sports</a> / <a href="https://www.sportsmole.co.uk/football/sunderland/news/sunderland-receive-danso-var-verdict-as-premier-league-explain-red-card_607169.html" target="_blank" rel="noopener">Sports Mole</a></td></tr>
+      <tr><td>19 ต.ค.</td><td>Tottenham Hotspur</td><td>3-1</td><td>Coventry City</td><td class="wrap">ชัยชนะนัดแรกของฤดูกาลของ Tottenham โดย Omar Marmoush และ Ben Davies (ช่วงทดเวลา) เป็นผู้ยิง 2 ประตูที่ยืนยันตรงกันจากหลายแหล่ง ส่วนประตูเปิดสกอร์ของสเปอร์สมีความขัดแย้งระหว่างแหล่งข่าว (ดูหมายเหตุด้านล่าง) Jack Rudoni ตีเสมอให้ Coventry ในนาทีที่ 48-49 ก่อนสเปอร์สกลับมานำอีกครั้ง Dejan Kulusevski ลงเป็นตัวสำรองในเกมนี้ นับเป็นนัดแข่งขันแรกของเขาในรอบ 526 วัน</td><td><a href="https://www.flashscore.com/news/tottenham-battle-past-coventry-to-finally-claim-their-first-league-win-of-the-season/QNcio5LH/" target="_blank" rel="noopener">Flashscore</a> / <a href="https://www.lbc.co.uk/article/tottenham-coventry-premier-league-maddison-winner-5Hjdk8J_2/" target="_blank" rel="noopener">LBC</a> / <a href="https://www.vavel.com/en-us/soccer/2026/10/19/1275751-tottenham-vs-coventry-city-live-score-premier-league.html" target="_blank" rel="noopener">VAVEL</a></td></tr>
+      <tr><td>23 ต.ค.</td><td>Ipswich Town</td><td>1-1</td><td>Nottingham Forest</td><td class="wrap">Neco Williams ยิงนำให้ Forest ก่อน Julio Enciso ตีเสมอให้ Ipswich ก่อนจบครึ่งแรก ทั้งสองทีมแบ่งแต้มกันไปในนัดเปิดสังเวียน Matchweek 8</td><td><a href="https://www.flashscore.co.uk/news/football-premier-league-live-scores-results-gameweek-8/xW89dAD7/" target="_blank" rel="noopener">Flashscore</a> / <a href="https://www.worldfootball.net/competition/co91/england-premier-league/results-and-standings/" target="_blank" rel="noopener">worldfootball.net</a></td></tr>
+      <tr><td>24 ต.ค.</td><td>Aston Villa</td><td>2-1</td><td>Manchester City</td><td class="wrap">Nicolas Jackson ยิง 2 ประตู (6', 60') ให้ Aston Villa พลิกเอาชนะ Manchester City ได้สำเร็จ แม้ Erling Haaland จะตีไล่ตีเสมอได้ 1 ประตูในนาทีที่ 52 ผลการแข่งขันนี้ปิดสถิติไร้พ่าย/ชนะครบ 7 นัดแรกของฤดูกาลของ City ลง</td><td><a href="https://www.101greatgoals.com/football/premier-league/aston-villa-manchester-city-result-report-goals/" target="_blank" rel="noopener">101 Great Goals</a> / <a href="https://fplzone.com/fpl-aston-villa-2-1-man-city-gw8-review" target="_blank" rel="noopener">FPL Zone</a></td></tr>
+      <tr><td>24 ต.ค.</td><td>Chelsea</td><td>0-2</td><td>Tottenham Hotspur</td><td class="wrap">Mike Penders ผู้รักษาประตู Chelsea ทำประตูเข้าประตูตัวเองในนาทีที่ 77 จากลูกเตะมุมของ Mateus Fernandes ก่อน Mathys Tel ยิงเพิ่มในนาทีที่ 87 Cole Palmer โดนไล่ออกจากสนามด้วยใบเหลืองใบที่สองในนาทีที่ 80 เป็นชัยชนะนัดแรกของ Tottenham ที่ Stamford Bridge นับตั้งแต่เดือนเมษายน 2018</td><td><a href="https://www.skysports.com/football/chelsea-vs-tottenham-hotspur/report/559516" target="_blank" rel="noopener">Sky Sports</a> / <a href="https://www.vavel.com/en-us/soccer/2026/10/24/1276619-chelsea-vs-tottenham-live-score-premier-league.html" target="_blank" rel="noopener">VAVEL</a></td></tr>
+      <tr><td>24 ต.ค.</td><td>Arsenal</td><td>2-0</td><td>Everton</td><td class="wrap">Konsa ยิงนำนาที 7 และ Gabriel ยิงเพิ่มนาที 68 ช่วยให้ Arsenal เอาชนะ Everton และไล่ตีเสมอ Manchester City ขึ้นมาอยู่ที่ 21 แต้มเท่ากันบนตารางคะแนน</td><td><a href="https://www.skysports.com/football/video/13603221/arsenal-2-0-everton-premier-league-highlights" target="_blank" rel="noopener">Sky Sports</a> / <a href="https://arseblog.news/2026/10/report-arsenal-2-0-everton-inc-goals-2/" target="_blank" rel="noopener">Arseblog News</a></td></tr>
+      <tr><td>24 ต.ค.</td><td>Coventry City</td><td>0-1</td><td>Fulham</td><td class="wrap">Oscar Bobb ยิงประตูเดียวของเกมในนาทีที่ 80 ซึ่งเป็นประตูแรกของเขาในพรีเมียร์ลีกให้ Fulham เป็นชัยชนะติดต่อกันนัดที่สองของ Álvaro Arbeloa ช่วยลดแรงกดดันต่อตำแหน่งผู้จัดการทีมได้มาก</td><td><a href="https://www.espn.com/soccer/report/_/gameId/401879255" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.vavel.com/en-us/soccer/2026/10/24/1276542-coventry-city-vs-fulham-live-score-premier-league.html" target="_blank" rel="noopener">VAVEL</a></td></tr>
+    </table>
+    </div>
+    <div class="note">เกิดความขัดแย้งระหว่างแหล่งข่าวเรื่องผู้ยิงประตูเปิดสกอร์ของ Tottenham ในเกมพบ Coventry City — บางแหล่ง (karlobag.eu) ระบุว่า James Maddison เป็นผู้ยิงประตูแรกในนาทีที่ 14 ขณะที่อีกแหล่ง (VAVEL live blog) ระบุว่า Mohammed Kudus ยิงประตูแรกในนาทีที่ 13 ทั้งสองแหล่งเห็นพ้องกันเรื่องผลสกอร์รวม 3-1 และประตูของ Marmoush/Davies จึงนำผลสกอร์มารายงานแต่ระบุความขัดแย้งนี้ไว้ตรงนี้แทนการเลือกใช้ค่าใดค่าหนึ่งโดยไม่อธิบาย</div>
+    <div class="note"><b>ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน</b> — 5 คู่ของวันอาทิตย์ที่ 25 ต.ค. (Liverpool vs Brighton &amp; Hove Albion, Manchester United vs AFC Bournemouth, Crystal Palace vs Newcastle United, Sunderland vs Leeds United, Hull City vs Brentford) ยังดำเนินอยู่หรือยังไม่เริ่มแข่ง ณ ช่วงเวลารวบรวมข้อมูล จึงไม่นำผลมารายงานในฉบับนี้ตามกฎห้ามใช้ผลที่ยังไม่สิ้นสุด <span class="badge badge-pending">❓ ยังยืนยันไม่ได้</span></div>
+  </section>
+
+  <section>
+    <h2>🥇 ดาวซัลโว Top 5</h2>
+    <div class="note">João Pedro, Alexander Isak, Rayan Cherki และ Morgan Rogers ไม่มีประตูเพิ่มที่ยืนยันได้ในสัปดาห์นี้ (Liverpool ของ Isak มีนัดที่ยังไม่สิ้นสุด) จึงคงตัวเลขเดิมจากสัปดาห์ก่อน Nicolas Jackson (Aston Villa) ยิง 2 ประตูในเกมพบ Manchester City ทำให้ประตูสะสมในพรีเมียร์ลีกของเขาขยับเป็น 4 ประตู เท่ากับ Cherki และ Rogers แต่ไม่ได้นำมาจัดอันดับร่วมในตารางนี้เนื่องจากไม่สามารถยืนยันยอดรวมที่แน่นอนได้จากแหล่งข้อมูลที่เข้าถึงได้ครบถ้วนในรอบนี้ (แหล่งข้อมูลระบุตัวเลขก่อนนัดนี้ไม่ตรงกัน)</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Player</th><th>Club</th><th>Goals</th><th>Assists</th><th>Source</th></tr>
+      <tr><td>1</td><td>Erling Haaland</td><td>Manchester City</td><td>9</td><td>–</td><td><a href="https://www.soccernews.com/english-premier-league/golden-boot/" target="_blank" rel="noopener">SoccerNews</a> / <a href="https://fplzone.com/fpl-aston-villa-2-1-man-city-gw8-review" target="_blank" rel="noopener">FPL Zone</a></td></tr>
+      <tr><td>2*</td><td>João Pedro</td><td>Chelsea</td><td>5</td><td>–</td><td><a href="https://www.premierleague.com/en/news/4601011/premier-league-top-scorers-whos-in-golden-boot-race" target="_blank" rel="noopener">Premier League (ต่อเนื่อง)</a></td></tr>
+      <tr><td>2*</td><td>Alexander Isak</td><td>Liverpool</td><td>5</td><td>–</td><td><a href="https://www.liverpoolfc.com/news/brentford-liverpool-premier-league-match-report" target="_blank" rel="noopener">Liverpool FC (ต่อเนื่อง)</a></td></tr>
+      <tr><td>4*</td><td>Rayan Cherki</td><td>Manchester City</td><td>4</td><td>–</td><td><a href="https://www.premierleague.com/en/news/4601011/premier-league-top-scorers-whos-in-golden-boot-race" target="_blank" rel="noopener">Premier League (ต่อเนื่อง)</a></td></tr>
+      <tr><td>4*</td><td>Morgan Rogers</td><td>Aston Villa</td><td>4</td><td>–</td><td><a href="https://www.premierleague.com/en/news/4601011/premier-league-top-scorers-whos-in-golden-boot-race" target="_blank" rel="noopener">Premier League (ต่อเนื่อง)</a></td></tr>
+    </table>
+    </div>
+    <div class="note">Haaland มีประตูยืนยัน 8 ลูกจากข้อมูลอัปเดตล่าสุดวันที่ 21 ต.ค. (ก่อนนัดพบ Aston Villa) และยิงเพิ่มอีก 1 ลูกในนาทีที่ 52 ของเกมพบ Villa (24 ต.ค.) รวมเป็น 9 ประตู ซึ่งคำนวณจากผลประตูที่ยืนยันแล้วของนัดนั้น</div>
+  </section>
+
+  <section>
+    <h2>🔥 ข่าวสำคัญ</h2>
+    <h3>Official</h3>
+    <ul>
+      <li>Liverpool FC ยืนยันว่านัดพบ Brighton &amp; Hove Albion ถูกเลื่อนจากวันเสาร์ที่ 24 ต.ค. เป็นวันอาทิตย์ที่ 25 ต.ค. เวลา 14:00 GMT เนื่องจาก Brighton ผ่านเข้ารอบแข่งขัน UEFA Conference League <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.liverpoolfc.com/news/liverpool-v-brighton-hove-albion-premier-league-fixture-rescheduled?amp=1" target="_blank" rel="noopener">Liverpool FC (Official)</a></li>
+      <li>Brentford FC ยืนยันว่านัดพบ Hull City ถูกเลื่อนจากวันเสาร์ที่ 24 ต.ค. เป็นวันอาทิตย์ที่ 25 ต.ค. เวลา 14:00 น. (เวลาท้องถิ่น) เพื่อถ่ายทอดสดทาง Sky Sports <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.brentfordfc.com/en/news/first-team-hull-city-v-brentford-premier-league-sky-sports-october-2026" target="_blank" rel="noopener">Brentford FC (Official)</a></li>
+      <li>Leeds United ยืนยันผลเสมอ 1-1 กับ Manchester United พร้อมรายงานประตูของ Calvert-Lewin ในนาทีที่ 51 <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.leedsunited.com/en/news/leeds-united-draw-1-1-with-manchester-united-at-elland-road" target="_blank" rel="noopener">Leeds United (Official)</a></li>
+    </ul>
+    <h3>Report</h3>
+    <ul>
+      <li>สื่อหลายแห่งรายงานว่าแรงกดดันต่อ Roberto De Zerbi ที่ Tottenham คลี่คลายลงมากหลังทีมเก็บ 2 ชัยชนะติดต่อกันเป็นครั้งแรกของฤดูกาล (พบ Coventry City และ Chelsea) <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.sportsmole.co.uk/football/man-utd/sack-race/news/carrick-de-zerbi-arbeloa--the-top-favorites-in-the-premier-league-sack-race_606954.html" target="_blank" rel="noopener">Sports Mole</a></li>
+      <li>Michael Carrick ผู้จัดการทีม Manchester United ยังเผชิญแรงกดดันต่อเนื่อง แม้ทีมจะเล่นได้ดีขึ้นในนัดเสมอกับ Leeds United แต่ยังไม่สามารถเก็บชัยชนะในลีกได้ <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.aljazeera.com/sports/2026/10/18/manchester-united-held-at-leeds-despite-improved-performance-under-carrick" target="_blank" rel="noopener">Al Jazeera</a> / <a href="https://www.sportsmole.co.uk/football/man-utd/sack-race/news/carrick-de-zerbi-arbeloa--the-top-favorites-in-the-premier-league-sack-race_606954.html" target="_blank" rel="noopener">Sports Mole</a></li>
+      <li>Álvaro Arbeloa ที่ Fulham เก็บชัยชนะติดต่อกันเป็นนัดที่สอง (พบ Hull City และ Coventry City) ช่วยลดความเสี่ยงต่อตำแหน่งผู้จัดการทีมที่สื่อระบุว่าอาจตกอยู่ในอันตรายหากไม่ทำผลงานได้ภายในสิ้นเดือนตุลาคม <span class="badge badge-report">📰 รายงาน (ต่อเนื่อง)</span> — <a href="https://www.sportsmole.co.uk/football/man-utd/sack-race/news/carrick-de-zerbi-arbeloa--the-top-favorites-in-the-premier-league-sack-race_606954.html" target="_blank" rel="noopener">Sports Mole</a></li>
+      <li>Dejan Kulusevski กลับมาลงเล่นเป็นตัวสำรองให้ Tottenham ในเกมพบ Coventry City ซึ่งเป็นนัดแข่งขันแรกของเขาในรอบ 526 วันหลังบาดเจ็บยาวนาน <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.canberratimes.com.au/story/9371580/maddisons-dream-return-helps-spurs-to-long-awaited-win/" target="_blank" rel="noopener">Canberra Times</a></li>
+    </ul>
+    <h3>Rumor</h3>
+    <ul>
+      <li>ไม่พบข่าวลือย้ายทีมใหม่ที่สามารถยืนยันแหล่งที่มาได้ชัดเจนภายในกรอบ 7 วันนี้จากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏥 Injury &amp; Suspension</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Club</th><th>Player</th><th>Status</th><th>Return</th><th>Source</th></tr>
+      <tr><td>Chelsea</td><td>Cole Palmer</td><td>โดนไล่ออกจากสนามด้วยใบเหลืองใบที่สองในนาทีที่ 80 เกมพบ Tottenham Hotspur</td><td>ตามกฎมาตรฐานของ FA การโดนไล่ออกจากใบเหลือง 2 ใบมักส่งผลให้พักการลงเล่น 1 นัด แต่ยังไม่สามารถยืนยันจำนวนนัดที่ต้องพักจากแถลงการณ์ทางการของสโมสรหรือ Premier League ในรอบนี้</td><td><a href="https://www.skysports.com/football/chelsea-vs-tottenham-hotspur/report/559516" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>Sunderland</td><td>Kevin Danso</td><td>โดนไล่ออกจากสนามในนาทีที่ 17 เกมพบ Bournemouth ด้วยข้อหาทำฟาวล์ตัดโอกาสทำประตู (DOGSO) ซึ่ง VAR ยืนยันคำตัดสินของผู้ตัดสิน</td><td>ยังไม่สามารถยืนยันจำนวนนัดที่ต้องพักจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้</td><td><a href="https://www.sportsmole.co.uk/football/sunderland/news/sunderland-receive-danso-var-verdict-as-premier-league-explain-red-card_607169.html" target="_blank" rel="noopener">Sports Mole</a></td></tr>
+      <tr><td>Tottenham Hotspur</td><td>James Maddison</td><td>ถูกเปลี่ยนตัวออกเนื่องจากอาการบาดเจ็บช่วงต้นครึ่งหลังของเกมพบ Chelsea</td><td>ยังไม่มีแถลงการณ์ทางการระบุชนิดและความรุนแรงของการบาดเจ็บ หรือกำหนดเวลากลับมาลงเล่น ณ เวลาจัดทำรายงานนี้</td><td><a href="https://www.skysports.com/football/chelsea-vs-tottenham-hotspur/report/559516" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+    </table>
+    </div>
+    <div class="note">ข่าวดี: Dejan Kulusevski (Tottenham) กลับมาลงเล่นเป็นตัวสำรองในเกมพบ Coventry City ได้สำเร็จ หลังพักรักษาอาการบาดเจ็บยาวนานถึง 526 วัน ถือเป็นการกลับมาที่สำคัญสำหรับทีม Vitaly Janelt และ Yehor Yarmoliuk ของ Brentford ซึ่งโดนไล่ออกจากสนามในสัปดาห์ก่อนได้พ้นโทษแบนไปแล้วก่อนเข้าสู่สัปดาห์นี้</div>
+  </section>
+
+  <section>
+    <h2>📈 Weekly Statistics</h2>
+    <ul>
+      <li><b>Most Goals (single match):</b> Tottenham Hotspur 3-1 Coventry City รวม 4 ประตู เป็นนัดที่มีประตูมากที่สุดในสัปดาห์นี้ (จาก 9 นัดที่สิ้นสุดแล้ว)</li>
+      <li><b>Best Defence / Clean Sheets:</b> Arsenal เก็บคลีนชีตได้ทั้ง 2 นัดของสัปดาห์นี้ (พบ Nottingham Forest และ Everton) มากที่สุดในสัปดาห์นี้ รองลงมาคือ Bournemouth, Tottenham Hotspur และ Fulham ที่เก็บคลีนชีตได้ 1 นัด</li>
+      <li><b>Player of the Week:</b> Nicolas Jackson (Aston Villa) ยิง 2 ประตูในเกมพบ Manchester City ช่วยปิดสถิติไร้พ่าย/ชนะครบ 7 นัดแรกของฤดูกาลของ City ลง ถือเป็นผลงานที่มีนัยสำคัญต่อศึกชิงแชมป์มากที่สุดในสัปดาห์นี้</li>
+    </ul>
+    <div class="note">ข้อมูล Possession และ Expected Goals (xG) ระดับลีกรวมทั้งสัปดาห์ยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ จึงไม่นำมาแสดง</div>
+  </section>
+
+  <section>
+    <h2>🔵 Big 6 Analysis</h2>
+    <div class="club-block">
+      <h3>Arsenal</h3>
+      <p><b>ฟอร์ม:</b> ชนะครบทั้ง 2 นัดของสัปดาห์นี้ (Nottingham Forest 1-0 เยือน, Everton 2-0 เหย้า) ขยับเป็น 8 นัด 7W-0D-1L รวม 21 แต้ม ไล่ตีเสมอ Manchester City ขึ้นมาอยู่อันดับ 1 ร่วม</p>
+      <p><b>จุดเด่น:</b> เก็บคลีนชีตได้ทั้ง 2 นัดของสัปดาห์นี้ สะท้อนความมั่นคงของเกมรับ และมีตัวสำรองอย่าง Noni Madueke ที่พร้อมสร้างความแตกต่างได้ (ยิงประตูชัยพบ Forest)</p>
+      <p><b>จุดอ่อน:</b> ประตูชัยในนัดพบ Forest มาจากตัวสำรองที่ลงเล่นเพียงครึ่งหลัง สื่อบางส่วนมองว่าเกมรุกของตัวจริงชุดแรกยังไม่คมกริบเท่าที่ควรเมื่อเจอทีมที่เล่นเกมรับลึก</p>
+    </div>
+    <div class="club-block">
+      <h3>Chelsea</h3>
+      <p><b>ฟอร์ม:</b> แพ้ Tottenham Hotspur 0-2 ที่บ้าน ขยับเป็น 8 นัด 4W-1D-3L รวม 13 แต้ม หลุดจากโซนท็อป 4 ไปอยู่อันดับ 5</p>
+      <p><b>จุดเด่น:</b> ยังมีผู้เล่นแนวรุกที่ยิงประตูสม่ำเสมออย่าง João Pedro (5 ประตูสะสม) ที่ยังรักษาตำแหน่งในกลุ่มดาวซัลโว Top 5 ของลีกไว้ได้</p>
+      <p><b>จุดอ่อน:</b> ผู้รักษาประตู Mike Penders ทำประตูเข้าประตูตัวเองเป็นประตูแรกที่เสียในเกมพบ Tottenham และ Cole Palmer โดนไล่ออกจากสนาม สะท้อนปัญหาด้านวินัยและความผิดพลาดของผู้เล่นใหม่ในตำแหน่งสำคัญ</p>
+    </div>
+    <div class="club-block">
+      <h3>Liverpool</h3>
+      <p><b>ฟอร์ม:</b> นัดเหย้าพบ Brighton &amp; Hove Albion วันที่ 25 ต.ค. ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน สถิติก่อนนัดนี้คือ 7 นัด 3W-3D-1L รวม 12 แต้ม อันดับ 6</p>
+      <p><b>จุดเด่น:</b> Alexander Isak ยังรักษาตำแหน่งในกลุ่มดาวซัลโว Top 5 ของลีกไว้ได้ด้วย 5 ประตูสะสม แสดงถึงความคมในแนวรุกที่ต่อเนื่อง</p>
+      <p><b>จุดอ่อน:</b> ไม่มีนัดแข่งขันที่สิ้นสุดแล้วในกรอบ 7 วันนี้ให้วิเคราะห์ผลงานล่าสุด และทีมอยู่ห่างจากอันดับ 3 (Brighton, 16 แต้ม) ถึง 4 แต้มก่อนนัดนี้</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester City</h3>
+      <p><b>ฟอร์ม:</b> แพ้ Aston Villa 1-2 ที่ Villa Park (24 ต.ค.) ขยับเป็น 8 นัด 7W-0D-1L รวม 21 แต้ม เสียสถิติไร้พ่าย/ชนะครบ 7 นัดแรกของฤดูกาลไปในที่สุด</p>
+      <p><b>จุดเด่น:</b> Erling Haaland ยังคงยิงประตูต่อเนื่อง (1 ประตูพบ Villa) ขยับเป็น 9 ประตูสะสม นำตารางดาวซัลโวอย่างชัดเจน</p>
+      <p><b>จุดอ่อน:</b> เสียความพ่ายแพ้นัดแรกของฤดูกาลให้ Nicolas Jackson ที่ยิง 2 ประตู สะท้อนช่องโหว่ในเกมรับที่ยังไม่ถูกทดสอบมาก่อนในฤดูกาลนี้</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester United</h3>
+      <p><b>ฟอร์ม:</b> เสมอ Leeds United 1-1 ที่ Elland Road (18 ต.ค.) ขยับเป็น 7 นัด 4W-2D-1L รวม 14 แต้ม นัดเยือน AFC Bournemouth วันที่ 25 ต.ค. ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน</p>
+      <p><b>จุดเด่น:</b> Bryan Mbeumo ยังคงเป็นตัวทำประตูสำคัญของทีมต่อเนื่อง ยิงนำให้ทีมในเกมพบ Leeds</p>
+      <p><b>จุดอ่อน:</b> ยังไม่สามารถเก็บชัยชนะในลีกได้ตามรายงานของสื่อหลายแห่ง ผู้จัดการทีม Michael Carrick ยังเผชิญแรงกดดันต่อเนื่องแม้ทีมจะเล่นได้ดีขึ้นในบางช่วงของเกม</p>
+    </div>
+    <div class="club-block">
+      <h3>Tottenham Hotspur</h3>
+      <p><b>ฟอร์ม:</b> เก็บ 2 ชัยชนะติดต่อกันเป็นครั้งแรกของฤดูกาล — ชนะ Coventry City 3-1 (19 ต.ค.) และชนะ Chelsea 0-2 เยือน (24 ต.ค.) ขยับเป็น 8 นัด รวม 9 แต้ม พ้นจากโซนท้ายตารางที่เคยอยู่มาตลอดฤดูกาล</p>
+      <p><b>จุดเด่น:</b> ฟอร์มพลิกกลับมาอย่างชัดเจนในรอบสัปดาห์นี้ พร้อมการกลับมาของ Dejan Kulusevski หลังบาดเจ็บยาวนาน 526 วัน และชนะที่ Stamford Bridge ได้เป็นครั้งแรกนับจากปี 2018</p>
+      <p><b>จุดอ่อน:</b> James Maddison ต้องถูกเปลี่ยนตัวออกเนื่องจากอาการบาดเจ็บในเกมพบ Chelsea ซึ่งยังไม่มีการยืนยันความรุนแรง และทีมยังมีแต้มสะสมต่ำกว่าคู่แข่งในกลุ่ม Big 6 อื่น ๆ อย่างมาก</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 Title Race</h2>
+    <p>ศึกชิงแชมป์พลิกผันอย่างมากในสัปดาห์นี้ หลัง Manchester City เสียความพ่ายแพ้นัดแรกของฤดูกาลให้ Aston Villa 1-2 ปิดสถิติไร้พ่าย/ชนะครบ 7 นัดแรกลง ขณะที่ Arsenal เก็บชัยชนะได้ครบทั้ง 2 นัดของสัปดาห์นี้ (พบ Nottingham Forest และ Everton) ทำให้ทั้งสองทีมมีแต้มเท่ากันที่ 21 แต้มพอดี จาก 8 นัด ด้วยสถิติ 7W-0D-1L เหมือนกัน ยังไม่สามารถยืนยันผลต่างประตู (Goal Difference) ซึ่งเป็นตัวตัดสินอันดับระหว่างทั้งสองทีมได้จากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ ทำให้ศึกชิงแชมป์เข้าสู่ช่วงสูสีที่สุดนับตั้งแต่เปิดฤดูกาล</p>
+  </section>
+
+  <section>
+    <h2>🎯 Top 4 Race</h2>
+    <p>Brighton &amp; Hove Albion (16 แต้ม) และ Manchester United (14 แต้ม) ยังครองโซนแชมเปียนส์ลีกอันดับ 3 และ 4 ตามลำดับก่อนนัดวันอาทิตย์ ขณะที่ Chelsea หลุดจากโซนท็อป 4 ไปอยู่อันดับ 5 ด้วย 13 แต้ม หลังแพ้ Tottenham Hotspur และ Liverpool รั้งอันดับ 6 ด้วย 12 แต้ม ช่องว่างระหว่างอันดับ 3 ถึง 6 อยู่ที่เพียง 4 แต้ม ทำให้การแย่งโซนท็อป 4 ยังคับคั่งมาก และผลการแข่งขันวันอาทิตย์ที่ 25 ต.ค. ของทั้ง Liverpool (พบ Brighton) และ Manchester United (พบ Bournemouth) จะมีผลสำคัญต่อการจัดลำดับใหม่ทันทีที่ทราบผล</p>
+  </section>
+
+  <section>
+    <h2>⬇️ Relegation Battle</h2>
+    <p>Sunderland แพ้ติดต่อกันเป็นนัดที่ 4 (2-0 ให้ Bournemouth พร้อมเหลือ 10 คนจากใบแดงของ Danso) และมีนัดพบ Leeds United ในวันอาทิตย์ที่ 25 ต.ค. ที่ยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน ส่วน Coventry City แพ้ติดต่อกัน 2 นัด (1-3 ให้ Tottenham Hotspur และ 0-1 ให้ Fulham) ยังอยู่ในกลุ่มเสี่ยงตกชั้น ขณะที่ Tottenham Hotspur ซึ่งเคยรั้งท้ายตารางมาตลอดฤดูกาล ขยับหลุดจากโซนวิกฤตได้หลังเก็บ 2 ชัยชนะติดต่อกันในสัปดาห์นี้ ข้อมูลตารางคะแนนช่วงล่างแบบละเอียดครบทุกทีมยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งที่เข้าถึงได้ในรอบนี้ จึงยังไม่สามารถระบุอันดับที่แน่นอนของทุกทีมในโซนเสี่ยงตกชั้นได้</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Week Fixtures</h2>
+    <div class="note">ตารางนี้แสดงนัดที่เหลือของ Matchweek 8 ซึ่งยังไม่สิ้นสุด ณ เวลาจัดทำรายงาน (จะมีผลสรุปในรายงานสัปดาห์ถัดไป) ทุกนัดแข่งขันในวันอาทิตย์ที่ 25 ต.ค. 2026 ซึ่งเป็นวันที่สหราชอาณาจักรปรับเวลาฤดูหนาว (เปลี่ยนจาก BST เป็น GMT ในช่วงเช้าของวันนี้) ดังนั้นเวลาแข่งขันช่วงบ่าย-เย็นของวันนี้จึงอยู่ในเขตเวลา GMT แล้ว การแปลงเป็น ICT ในตารางนี้ใช้สูตร GMT+7 ชั่วโมง</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Time (ICT)</th><th>Home</th><th>VS</th><th>Away</th><th>Source</th></tr>
+      <tr><td>25 ต.ค.</td><td>21:00</td><td>Liverpool</td><td>vs</td><td>Brighton &amp; Hove Albion</td><td><a href="https://www.liverpoolfc.com/news/liverpool-v-brighton-hove-albion-premier-league-fixture-rescheduled?amp=1" target="_blank" rel="noopener">Liverpool FC (Official)</a></td></tr>
+      <tr><td>25 ต.ค.</td><td>21:00</td><td>Manchester United</td><td>vs</td><td>AFC Bournemouth</td><td><a href="https://www.footballwebpages.co.uk/premier-league/20261025" target="_blank" rel="noopener">Football Web Pages</a></td></tr>
+      <tr><td>25 ต.ค.</td><td>21:00</td><td>Crystal Palace</td><td>vs</td><td>Newcastle United</td><td><a href="https://www.footballwebpages.co.uk/premier-league/20261025" target="_blank" rel="noopener">Football Web Pages</a></td></tr>
+      <tr><td>25 ต.ค.</td><td>21:00</td><td>Hull City</td><td>vs</td><td>Brentford</td><td><a href="https://www.brentfordfc.com/en/news/first-team-hull-city-v-brentford-premier-league-sky-sports-october-2026" target="_blank" rel="noopener">Brentford FC (Official)</a></td></tr>
+      <tr><td>25 ต.ค.</td><td>23:30</td><td>Sunderland</td><td>vs</td><td>Leeds United</td><td><a href="https://www.footballwebpages.co.uk/premier-league/20261025" target="_blank" rel="noopener">Football Web Pages</a></td></tr>
+    </table>
+    </div>
+    <ul>
+      <li><b>Liverpool vs Brighton &amp; Hove Albion (25 ต.ค., 21:00 ICT)</b> — Brighton มาด้วยฟอร์มร้อนแรง 5 นัดหลังสุด (W-W-W-W-D) รวมถึงการถล่ม Crystal Palace 5-0 ขณะที่ Liverpool ต้องการชัยชนะเพื่อไล่ตามกลุ่มท็อป 4 ที่กำลังคับคั่ง</li>
+      <li><b>Manchester United vs AFC Bournemouth (25 ต.ค., 21:00 ICT)</b> — Manchester United ยังไร้ชัยชนะในลีกต่อเนื่องและต้องการผลงานที่ดีขึ้นเพื่อลดแรงกดดันต่อ Michael Carrick ขณะที่ Bournemouth มาด้วยความมั่นใจหลังคว้าชัยชนะนัดแรกของฤดูกาลเหนือ Sunderland</li>
+      <li><b>Sunderland vs Leeds United (25 ต.ค., 23:30 ICT)</b> — นัดปิดสัปดาห์ของ Matchweek 8 ระหว่างสองทีมที่กำลังเผชิญความเสี่ยงโซนท้ายตาราง หลัง Sunderland แพ้ติดต่อกันหลายนัดและ Leeds เพิ่งเสมอกับ Manchester United</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <ul>
+      <li><b>Matches:</b> 9 นัด (เฉพาะนัดที่สิ้นสุดแล้วในกรอบ 7 วันนี้ จากทั้งหมด 14 นัดที่อยู่ในกรอบ — อีก 5 นัดของวันที่ 25 ต.ค. ยังไม่สิ้นสุด)</li>
+      <li><b>Goals:</b> รวม 19 ประตูจาก 9 นัดที่สิ้นสุดแล้ว (เฉลี่ย 2.11 ประตู/นัด)</li>
+      <li><b>Clean Sheets:</b> 5 ครั้ง (Arsenal 2 ครั้ง, Bournemouth, Tottenham Hotspur และ Fulham 1 ครั้งต่อทีม)</li>
+      <li><b>Red Cards:</b> 2 ใบที่ยืนยันได้จากนัดที่สิ้นสุดแล้ว (Kevin Danso - Sunderland, Cole Palmer - Chelsea)</li>
+      <li><b>Yellow Cards:</b> ไม่สามารถยืนยันได้ครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้</li>
+      <li><b>Penalties:</b> ไม่พบจุดโทษที่ยืนยันได้ในสัปดาห์นี้จากนัดที่สิ้นสุดแล้ว (มีจังหวะที่ VAR ปฏิเสธจุดโทษให้ Fulham ในเกมพบ Coventry City แต่ไม่มีการให้จุดโทษเกิดขึ้นจริง)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>โปรแกรมสำคัญ:</b> ผลการแข่งขัน 5 คู่ของวันที่ 25 ต.ค. (Liverpool vs Brighton, Manchester United vs Bournemouth, Crystal Palace vs Newcastle, Sunderland vs Leeds, Hull City vs Brentford) ซึ่งยังไม่สิ้นสุด ณ เวลาจัดทำรายงานนี้ และจะมีผลโดยตรงต่อตารางคะแนนช่วงบนและช่วงล่าง</li>
+      <li><b>ศึกชิงแชมป์:</b> ผลต่างประตู (Goal Difference) ระหว่าง Manchester City และ Arsenal ที่มีแต้มเท่ากันพอดีที่ 21 แต้ม ซึ่งจะเป็นตัวตัดสินอันดับ 1 ของตาราง</li>
+      <li><b>วินัยผู้เล่น:</b> จำนวนนัดที่ Cole Palmer (Chelsea) และ Kevin Danso (Sunderland) ต้องพักจากใบแดง รวมถึงความรุนแรงของอาการบาดเจ็บของ James Maddison (Tottenham)</li>
+      <li><b>ข่าวผู้จัดการทีม:</b> แรงกดดันต่อ Michael Carrick ที่ Manchester United ยังคงสูงอยู่ ขณะที่ Roberto De Zerbi (Tottenham) และ Álvaro Arbeloa (Fulham) คลายความกดดันไปได้มากหลัง 2 ชัยชนะติดต่อกัน</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul class="src-list">
+      <li><a href="https://www.liverpoolfc.com/news/liverpool-v-brighton-hove-albion-premier-league-fixture-rescheduled?amp=1" target="_blank" rel="noopener">Liverpool FC — Liverpool v Brighton fixture rescheduled</a></li>
+      <li><a href="https://www.brentfordfc.com/en/news/first-team-hull-city-v-brentford-premier-league-sky-sports-october-2026" target="_blank" rel="noopener">Brentford FC — Hull City v Brentford fixture moved</a></li>
+      <li><a href="https://www.leedsunited.com/en/news/leeds-united-draw-1-1-with-manchester-united-at-elland-road" target="_blank" rel="noopener">Leeds United — Draw 1-1 with Manchester United</a></li>
+      <li><a href="https://www.chelseafc.com/en/video/pl-full-match-chelsea-vs-spurs-or-2026-27" target="_blank" rel="noopener">Chelsea FC — Full match Chelsea vs Spurs</a></li>
+    </ul>
+    <h3>Media</h3>
+    <ul class="src-list">
+      <li><a href="https://www.aljazeera.com/sports/2026/10/18/manchester-united-held-at-leeds-despite-improved-performance-under-carrick" target="_blank" rel="noopener">Al Jazeera — Manchester United held at Leeds</a></li>
+      <li><a href="https://www.vavel.com/en-us/soccer/2026/10/18/1275853-nottingham-arsenal-live-score.html" target="_blank" rel="noopener">VAVEL — Nottingham Forest 0-1 Arsenal</a></li>
+      <li><a href="https://www.outlookindia.com/sports/football/nottingham-forest-vs-arsenal-premier-league-2026-27-matchday-7-city-ground-in-pics" target="_blank" rel="noopener">Outlook India — Forest vs Arsenal</a></li>
+      <li><a href="https://www.skysports.com/football/bmouth-vs-sunderland/report/559504" target="_blank" rel="noopener">Sky Sports — Bournemouth 2-0 Sunderland</a></li>
+      <li><a href="https://www.sportsmole.co.uk/football/sunderland/news/sunderland-receive-danso-var-verdict-as-premier-league-explain-red-card_607169.html" target="_blank" rel="noopener">Sports Mole — Danso VAR verdict</a></li>
+      <li><a href="https://www.flashscore.com/news/tottenham-battle-past-coventry-to-finally-claim-their-first-league-win-of-the-season/QNcio5LH/" target="_blank" rel="noopener">Flashscore — Tottenham 3-1 Coventry City</a></li>
+      <li><a href="https://www.lbc.co.uk/article/tottenham-coventry-premier-league-maddison-winner-5Hjdk8J_2/" target="_blank" rel="noopener">LBC — Tottenham vs Coventry</a></li>
+      <li><a href="https://www.vavel.com/en-us/soccer/2026/10/19/1275751-tottenham-vs-coventry-city-live-score-premier-league.html" target="_blank" rel="noopener">VAVEL — Tottenham vs Coventry live score</a></li>
+      <li><a href="https://www.canberratimes.com.au/story/9371580/maddisons-dream-return-helps-spurs-to-long-awaited-win/" target="_blank" rel="noopener">Canberra Times — Maddison's dream return</a></li>
+      <li><a href="https://www.flashscore.co.uk/news/football-premier-league-live-scores-results-gameweek-8/xW89dAD7/" target="_blank" rel="noopener">Flashscore — Gameweek 8 live scores hub</a></li>
+      <li><a href="https://www.101greatgoals.com/football/premier-league/aston-villa-manchester-city-result-report-goals/" target="_blank" rel="noopener">101 Great Goals — Aston Villa 2-1 Manchester City</a></li>
+      <li><a href="https://fplzone.com/fpl-aston-villa-2-1-man-city-gw8-review" target="_blank" rel="noopener">FPL Zone — Aston Villa 2-1 Man City review</a></li>
+      <li><a href="https://www.skysports.com/football/chelsea-vs-tottenham-hotspur/report/559516" target="_blank" rel="noopener">Sky Sports — Chelsea 0-2 Tottenham</a></li>
+      <li><a href="https://www.vavel.com/en-us/soccer/2026/10/24/1276619-chelsea-vs-tottenham-live-score-premier-league.html" target="_blank" rel="noopener">VAVEL — Chelsea vs Tottenham live score</a></li>
+      <li><a href="https://www.skysports.com/football/video/13603221/arsenal-2-0-everton-premier-league-highlights" target="_blank" rel="noopener">Sky Sports — Arsenal 2-0 Everton highlights</a></li>
+      <li><a href="https://arseblog.news/2026/10/report-arsenal-2-0-everton-inc-goals-2/" target="_blank" rel="noopener">Arseblog News — Arsenal 2-0 Everton report</a></li>
+      <li><a href="https://www.espn.com/soccer/report/_/gameId/401879255" target="_blank" rel="noopener">ESPN — Coventry City 0-1 Fulham</a></li>
+      <li><a href="https://www.vavel.com/en-us/soccer/2026/10/24/1276542-coventry-city-vs-fulham-live-score-premier-league.html" target="_blank" rel="noopener">VAVEL — Coventry City vs Fulham</a></li>
+      <li><a href="https://www.sportsmole.co.uk/football/man-utd/sack-race/news/carrick-de-zerbi-arbeloa--the-top-favorites-in-the-premier-league-sack-race_606954.html" target="_blank" rel="noopener">Sports Mole — Premier League sack race</a></li>
+      <li><a href="https://www.footballwebpages.co.uk/premier-league/20261025" target="_blank" rel="noopener">Football Web Pages — Matchweek 8 Sunday fixtures</a></li>
+    </ul>
+    <h3>Statistics</h3>
+    <ul class="src-list">
+      <li><a href="https://www.worldfootball.net/competition/co91/england-premier-league/results-and-standings/" target="_blank" rel="noopener">worldfootball.net — Premier League 2026/2027 table</a></li>
+      <li><a href="https://www.soccerway.com/match/t8xcEZ7K" target="_blank" rel="noopener">Soccerway — Liverpool vs Brighton pre-match standings</a></li>
+      <li><a href="https://www.soccernews.com/english-premier-league/golden-boot/" target="_blank" rel="noopener">SoccerNews — Golden Boot race</a></li>
+      <li><a href="https://www.premierleague.com/en/news/4601011/premier-league-top-scorers-whos-in-golden-boot-race" target="_blank" rel="noopener">Premier League — Golden Boot race</a></li>
+    </ul>
+    <div class="note"><b>UNCERTAIN:</b> เครื่องมือ WebFetch ในสภาพแวดล้อมนี้ไม่สามารถเข้าถึงโดเมนใด ๆ ได้เลยตลอดการจัดทำรายงานนี้ (ล้มเหลวด้วย DNS resolution error แม้กระทั่งกับโดเมนทดสอบทั่วไปอย่าง example.com บ่งชี้ว่าเป็นปัญหาของเครื่องมือเองในสภาพแวดล้อมนี้ ไม่ใช่การปฏิเสธจากเว็บไซต์ปลายทางใดโดยเฉพาะ) จึงใช้ผลค้นหา (WebSearch) แทนตามลำดับการแก้ปัญหาที่กำหนดไว้ตลอดการจัดทำรายงานฉบับนี้ และอ้างอิง URL ที่พบจากผลค้นหาโดยตรง<br><br>ไม่สามารถยืนยันผลต่างประตู (Goal Difference) ที่แน่นอนของ Manchester City และ Arsenal ซึ่งมีแต้มและสถิติ W-D-L เท่ากันพอดี จึงจัดอันดับทั้งคู่ด้วยเครื่องหมาย * ในตารางคะแนนแทนการเดาอันดับที่แน่นอน เกิดความขัดแย้งระหว่างแหล่งข่าวเรื่องผู้ยิงประตูเปิดสกอร์ของ Tottenham ในเกมพบ Coventry City (Maddison นาที 14 ตามแหล่งหนึ่ง เทียบกับ Kudus นาที 13 ตามอีกแหล่ง) ได้อธิบายความขัดแย้งนี้ไว้ในส่วนผลการแข่งขันแล้ว จำนวนนัดที่ต้องพักจากใบแดงของ Cole Palmer และ Kevin Danso ไม่สามารถยืนยันได้จากแถลงการณ์ทางการในรอบนี้ และยอดประตูสะสมที่แน่นอนของ Nicolas Jackson ก่อนนัดพบ Manchester City ก็มีแหล่งข้อมูลระบุไม่ตรงกัน จึงไม่นำตัวเลขของเขามาจัดอันดับในตารางดาวซัลโว Top 5</div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Premier League Report · จัดทำโดย Claude Code Routine · ข้อมูลทั้งหมดอ้างอิงจากแหล่งข่าวที่ระบุไว้ข้างต้น หากมีข้อมูลใดไม่สามารถยืนยันได้ จะระบุข้อจำกัดไว้อย่างชัดเจนแทนการคาดเดา</p>
+  </footer>
+</div>
+</body>
+</html>
