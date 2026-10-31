@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 Weekly Software Releases Report - Week 44</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27, 32, 39, 0.14);
+  --line-strong: rgba(27, 32, 39, 0.28);
+  --accent: #0F7A73;
+  --critical: #D92B2B;
+  --high: #FF6B35;
+  --medium: #FFA500;
+  --low: #4CAF50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231, 230, 224, 0.14);
+    --line-strong: rgba(231, 230, 224, 0.26);
+    --accent: #3FBDAF;
+    --critical: #FF6B6B;
+    --high: #FF8C42;
+    --medium: #FFB84D;
+    --low: #81C784;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.page { max-width: 1200px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topstrip {
+  display: flex; justify-content: space-between; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-faint);
+}
+
+.masthead { padding: 44px 0 30px; border-bottom: 1px solid var(--line-strong); }
+.kicker {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+  font-size: 15px; color: var(--accent); margin: 0 0 14px;
+}
+.kicker::before { content: "◆ "; font-size: 11px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 800; margin: 0 0 16px; }
+h2 {
+  font-size: 24px; font-weight: 700; margin: 36px 0 20px; color: var(--ink);
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; color: var(--ink-soft); }
+
+.meta-row { display: flex; gap: 20px; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+
+.executive-summary {
+  background: var(--surface); border-left: 4px solid var(--accent);
+  padding: 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8;
+}
+
+.dashboard {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.dashboard-item {
+  background: var(--surface); padding: 16px; border-radius: 4px;
+  border-top: 3px solid var(--accent); text-align: center;
+}
+.dashboard-item-value { font-size: 32px; font-weight: 700; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.dashboard-item-label {
+  font-size: 12px; color: var(--ink-faint); margin-top: 8px;
+  text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--surface); }
+th {
+  background: var(--surface-2); color: var(--ink); padding: 12px; text-align: left;
+  font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--line-strong);
+}
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.label {
+  display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 11px;
+  font-weight: 600; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-major { background: rgba(15, 122, 115, 0.2); color: var(--accent); }
+.label-minor { background: rgba(15, 122, 115, 0.1); color: var(--ink-soft); }
+.label-patch { background: rgba(217, 43, 43, 0.1); color: var(--ink-soft); }
+.label-security { background: rgba(217, 43, 43, 0.2); color: var(--critical); }
+.label-lts { background: rgba(255, 165, 0, 0.15); color: var(--medium); }
+.label-rc { background: rgba(156, 39, 176, 0.15); color: var(--ink-soft); }
+.label-beta { background: rgba(63, 81, 181, 0.15); color: var(--ink-soft); }
+.label-eol { background: rgba(217, 43, 43, 0.15); color: var(--critical); }
+
+.severity-critical { color: var(--critical); font-weight: 600; }
+.severity-high { color: var(--high); font-weight: 600; }
+.severity-medium { color: var(--medium); font-weight: 600; }
+.severity-low { color: var(--low); font-weight: 600; }
+
+.source-badge {
+  display: inline-block; padding: 3px 6px; background: var(--surface-2);
+  border-radius: 2px; font-size: 10px; font-family: "JetBrains Mono", monospace; color: var(--ink-faint);
+}
+
+.note {
+  background: var(--surface); border-left: 4px solid var(--medium); padding: 12px;
+  margin: 12px 0; border-radius: 2px; font-size: 13px; color: var(--ink-soft);
+}
+.empty-note {
+  background: var(--surface); border: 1px dashed var(--line-strong); padding: 12px 16px;
+  margin: 12px 0; border-radius: 4px; font-size: 13.5px; color: var(--ink-soft); font-style: italic;
+}
+.highlight-box { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; margin: 12px 0; border-radius: 4px; }
+
+footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-strong); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+.two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest</p>
+    <h1>💻 Weekly Software Releases Report</h1>
+    <div class="meta-row">
+      <span><b>Week:</b> 44</span>
+      <span><b>Period:</b> October 25 – 31, 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="executive-summary">
+      <p>สัปดาห์นี้ (25–31 ต.ค. 2569) เงียบกว่าสัปดาห์ก่อนหน้าอย่างชัดเจน (ไม่มีเหตุการณ์ระดับ eMudhra CA/PHP2Shell) โดยเรื่องสำคัญที่สุดคือ Microsoft ออกแพตช์ .NET นอกรอบ (Out-of-band) เมื่อ 25 ต.ค. 2569 สำหรับ .NET 8.0.33 / 9.0.22 / 10.0.14 (GA) และ .NET 11.0 RC3 เพื่อแก้ไข CVE-2026-111497 (Brotli Decoder เขียนข้อมูลเกินขอบเขต) และ CVE-2026-114148 (สิทธิ์เจ้าของไฟล์ของ Tarball บน Linux) พร้อมออกแพตช์ซ้ำสำหรับ CVE-2026-70197 และ CVE-2026-102870 ที่แพตช์เมื่อ 13 ต.ค. 2569 แก้ไขไม่สมบูรณ์</p>
+      <p>ด้านอื่น Node.js เลื่อน v26.13.0 "Lithium" เข้าสู่ Active LTS อย่างเป็นทางการเมื่อ 28 ต.ค. 2569 พร้อม v24.22.2 "Krypton" (LTS Patch ปกติ ไม่มี CVE) และเปิด Alpha Channel แรกของ v27.0.0 ในวันถัดมา (29 ต.ค.) Kubernetes ออกชุด Patch Release พร้อมกันทุกสาย (v1.37.2, v1.36.6, v1.35.10, v1.34.13) และ Pre-release v1.38.0-alpha.3 ทั้งหมดเมื่อ 28 ต.ค. 2569 เช่นเดียวกับ Jenkins ที่ออก Weekly 2.588 และ LTS 2.580.2 ในวันเดียวกัน โดย LTS Changelog ร่างระบุว่ามี "การแก้ไขด้านความปลอดภัยหลายรายการ" แต่ไม่สามารถยืนยันหมายเลข CVE ได้โดยตรงจาก jenkins.io ในรอบตรวจสอบนี้</p>
+      <p>ด้าน Cloud: Google Cloud ทยอยปล่อย Google SecOps SOAR Release 6.3.104 ให้ภูมิภาคกลุ่มแรกเมื่อ 25 ต.ค. 2569 และ Azure SDK รอบเดือน ต.ค. 2569 มีรายงาน (ยังไม่ยืนยันกับ azure.github.io โดยตรง) ว่า Cosmos DB Client สำหรับ Rust เข้าสู่ GA (1.0.0) เป็นภาษาแรก ส่วน AWS Weekly Roundup ฉบับ 26 ต.ค. 2569 มีเพียงหัวข้อข่าวที่ดึงได้ (Amazon Polly Generative Engine, TorchNeuron สำหรับ Trainium) โดยไม่สามารถยืนยันรายละเอียดฉบับเต็มได้ในรอบตรวจสอบนี้</p>
+      <p><strong>ประเด็นสำคัญ:</strong> ทีมที่ใช้ .NET ร่วมกับฟีเจอร์ Decompression (Request Decompression, HttpClient Response Decompression, System.IO.Compression Brotli API) ควรอัปเดตเป็น 8.0.33/9.0.22/10.0.14 โดยเร็ว และต้อง Rebuild/Republish Self-contained App หรือ Container Image ใหม่ เนื่องจาก Host Runtime ที่ใหม่กว่าไม่ได้อัปเดต Runtime ที่ Bundle มากับแอปโดยอัตโนมัติ ทีมที่ใช้ Jenkins LTS ควรตรวจสอบ Advisory ทางการที่ jenkins.io โดยตรงก่อนสรุปว่าไม่มีช่องโหว่ร้ายแรง เนื่องจากรายงานนี้ไม่สามารถยืนยันรายละเอียด CVE ของ 2.580.2 ได้ และทีมที่วางแผนอัปเกรด PostgreSQL ควรทราบว่า GA ของสาย 19 เลื่อนไปเป็น 19 พ.ย. 2569 (รายงานไปแล้วในสัปดาห์ก่อนหน้า) ไม่ใช่ปลาย ต.ค. ตามกำหนดเดิม</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">11</div>
+        <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">1</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">6</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>.NET</strong></td>
+          <td>8.0.33 / 9.0.22 / 10.0.14 (GA) / 11.0 RC3</td>
+          <td><span class="label label-security">🔒 Security Release</span> ออกนอกรอบ (Out-of-band) แก้ไข CVE-2026-111497 (Brotli Decoder เขียนข้อมูลเกินขอบเขต กระทบแอปที่เปิดใช้ Request Decompression, HttpClient Response Decompression อัตโนมัติ หรือเรียกใช้ <code>System.IO.Compression</code> Brotli API โดยตรง — ไม่กระทบ .NET Framework) และ CVE-2026-114148 (สิทธิ์เจ้าของไฟล์ของ Tarball บน Linux ผิดพลาด อาจให้ผู้ใช้ Local ยกระดับสิทธิ์ได้ กระทบ Source-build Tarball ของ .NET 10/11 และกระทบ ASP.NET Core Tarball Install ด้วยสำหรับ .NET 8/9) พร้อมออกแพตช์ซ้ำของ CVE-2026-70197 (SocketAsyncEventArgs Memory Corruption บน Windows) และ CVE-2026-102870 (Blazor WebAssembly Debugger RCE) เนื่องจากแพตช์เมื่อ 13 ต.ค. 2569 แก้ไขไม่สมบูรณ์ ผู้ใช้ Self-contained App/Container ต้อง Rebuild/Republish ใหม่ และผู้ที่ใช้ .NET 11 RC2 ควรย้ายไป RC3</td>
+          <td>Oct 25, 2026</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td><a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-october-2026-servicing-updates/" class="source-badge">devblogs.microsoft.com (เข้าถึงไม่ได้โดยตรง — ยืนยันผ่าน WebSearch/Support KB)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>26.13.0 "Lithium" (LTS Promotion) / 24.22.2 "Krypton" (LTS Patch)</td>
+          <td><span class="label label-lts">⭐ LTS</span> v26.13.0 คือการเปลี่ยนสถานะสาย 26.x จาก Current เข้าสู่ Active LTS อย่างเป็นทางการ (รับ Security Update/Stability ต่อเนื่องถึงเม.ย. 2572) โดยไม่มีการเปลี่ยนแปลงโค้ดเพิ่มจาก 26.12.1 ส่วน v24.22.2 เป็น LTS Patch ปกติ (รวม V8 Backport และแก้ไข Stream) ไม่มีการระบุ CVE ในทั้งสองเวอร์ชันนี้</td>
+          <td>Oct 28, 2026</td>
+          <td><span class="label label-lts">⭐ LTS</span></td>
+          <td><a href="https://github.com/nodejs/node/releases" class="source-badge">github.com/nodejs/node (releases)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>27.0.0-alpha.0.0.0</td>
+          <td><span class="label label-beta">⚙ Beta</span> เปิด Alpha Channel แรกของสาย 27 ตาม Release Cadence ใหม่ (ปีละ 1 Major และทุก Major จะเป็น LTS) มีการเปลี่ยนแปลงระดับ SEMVER-MAJOR จำนวนมาก รวม V8 15.6 และ OpenSSL 4.1.0 เป็น Pre-release ยังไม่พร้อมใช้งานจริง</td>
+          <td>Oct 29, 2026</td>
+          <td><span class="label label-beta">⚙ Beta</span></td>
+          <td><a href="https://github.com/nodejs/node/releases" class="source-badge">github.com/nodejs/node (releases)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 สำหรับ PHP (ล่าสุดคือแพตช์ฉุกเฉิน "PHP2Shell" 8.5.12/8.4.27/8.3.36/8.2.35 เมื่อ 21 ต.ค. 2569 ก่อนช่วงเวลานี้), Python (3.15.0 Final ออกไปแล้วเมื่อ 9 ต.ค. 2569 ก่อนช่วงเวลานี้), Go (1.27.3/1.26.10 ออกไปแล้วเมื่อ 19–20 ต.ค. 2569 รายงานไปแล้วในสัปดาห์ก่อนหน้า) และ Rust (ไม่สามารถยืนยันเวอร์ชันล่าสุด ณ ช่วงเวลานี้จาก blog.rust-lang.org ได้โดยตรงในรอบตรวจสอบนี้)</div>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 สำหรับ React, Vue (3.6.0 ยังเป็น RC ณ สิ้นสัปดาห์ก่อนหน้า), Angular, Django, Laravel, FastAPI และ Spring Boot (4.2.0 ยังเป็น RC1 ณ สิ้นสัปดาห์ก่อนหน้า) เนื่องจากไม่พบประกาศ Release ใหม่จาก Official Release Notes/GitHub Releases ของแต่ละโครงการในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps &amp; CI/CD</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kubernetes</strong></td>
+          <td>v1.37.2 / v1.36.6 / v1.35.10 / v1.34.13</td>
+          <td><span class="label label-patch">🩹 Patch</span> ชุด Patch Release ประจำรอบของทุกสายที่ยังรองรับ ออกพร้อมกันตามกำหนดการ Cherry-pick Deadline (9 ต.ค.) และ Target Date (13 ต.ค. ตามเอกสาร แต่ Tag จริงบน GitHub ออก 28 ต.ค. 2569) ไม่พบคำอธิบาย Release Note แนบมากับ Tag ในรอบตรวจสอบนี้</td>
+          <td>Container Orchestration</td>
+          <td><a href="https://github.com/kubernetes/kubernetes/releases" class="source-badge">github.com/kubernetes/kubernetes</a></td>
+        </tr>
+        <tr>
+          <td><strong>Kubernetes</strong></td>
+          <td>v1.38.0-alpha.3</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> Alpha ตัวที่ 3 ของสาย 1.38 ที่กำลังพัฒนา ยังไม่ GA</td>
+          <td>Container Orchestration</td>
+          <td><a href="https://github.com/kubernetes/kubernetes/releases" class="source-badge">github.com/kubernetes/kubernetes</a></td>
+        </tr>
+        <tr>
+          <td><strong>Jenkins</strong></td>
+          <td>2.588 (Weekly)</td>
+          <td><span class="label label-minor">🔹 Minor</span> อัปเดตรายสัปดาห์ตามรอบปกติ</td>
+          <td>CI/CD</td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases" class="source-badge">github.com/jenkinsci/jenkins</a></td>
+        </tr>
+        <tr>
+          <td><strong>Jenkins</strong></td>
+          <td>2.580.2 (LTS)</td>
+          <td><span class="label label-patch">🩹 Patch</span> <strong>UNCERTAIN:</strong> Changelog ฉบับร่างใน GitHub ระบุว่ามี "การแก้ไขด้านความปลอดภัยหลายรายการ" และหน่วยงาน Saudi NCA รายงานแยกต่างหากเมื่อ 28 ต.ค. 2569 ว่า Jenkins ออกอัปเดตความปลอดภัยแก้ไขช่องโหว่หลายรายการ แต่ไม่สามารถเข้าถึง jenkins.io/security/advisories โดยตรงเพื่อยืนยันหมายเลข CVE/ระดับความรุนแรงรายตัวได้ในรอบตรวจสอบนี้ จึงไม่จัดเป็น Security Release ตามเกณฑ์ของรายงานนี้ (ไม่มี CVE ID ยืนยัน) — ควรตรวจสอบ Advisory ทางการก่อนประเมินความเร่งด่วน</td>
+          <td>CI/CD</td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases" class="source-badge">github.com/jenkinsci/jenkins (เข้าถึง jenkins.io ไม่ได้โดยตรง)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 สำหรับ Docker/Docker Compose (ล่าสุด v29.9.2/v5.6.1 เมื่อ 19–20 ต.ค. 2569 ก่อนช่วงเวลานี้), GitLab (Critical Patch ล่าสุดที่ยืนยันได้คือ 19.5.1/19.4.3/19.3.6/19.2.9/19.1.9/19.0.10/18.11.13 เมื่อ 21 ต.ค. 2569 ก่อนช่วงเวลานี้ ไม่พบ Release ใหม่ในช่วงนี้จาก docs.gitlab.com ที่เข้าถึงได้), GitHub Actions, Terraform, Argo CD และ Ansible Core (2.22.0 ยังไม่ GA ในช่วงเวลานี้ — ดู "สิ่งที่ต้องติดตาม")</div>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 สำหรับ PostgreSQL (GA ของสาย 19 เลื่อนไปเป็น 19 พ.ย. 2569 — ดู "สิ่งที่ต้องติดตาม"), MySQL, MariaDB, SQL Server, MongoDB, Redis (พบเพียง Maintenance Release ของ Redis Software for Kubernetes 8.2.0-19 และ 7.8.6-22 ซึ่งเป็น Container Image/Operator Build ไม่ใช่ Release ของ Redis Server เอง จึงไม่นำมาแสดงเป็น Release หลัก), Cassandra, Elasticsearch, AWS RDS/Aurora, Azure SQL และ Google Cloud SQL ในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="empty-note">ไม่พบ Advisory/Release ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 สำหรับ Ubuntu, Debian, RHEL, Rocky Linux, AlmaLinux และ Windows Server เนื่องจากหลายโดเมน (ubuntu.com/security — หน้าล่าสุดที่เข้าถึงได้หยุดที่ 12 ต.ค. 2569, debian.org/security, access.redhat.com, errata.rockylinux.org, errata.almalinux.org) ไม่แสดงรายการใหม่ในช่วงนี้ผ่านการค้นหาที่เข้าถึงได้ในรอบตรวจสอบนี้ แม้ได้ลองสลับไปใช้ WebSearch ตามนโยบาย Network Access Resilience แล้ว — ดูหมายเหตุ UNCERTAIN ท้ายรายงาน</div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ VMware/Broadcom ESXi/vSphere/vCenter (VMSA ล่าสุดที่ยืนยันได้คือ VMSA-2026-0007 เมื่อ 3 ก.ย. 2569), Proxmox VE, Hyper-V และ KVM/QEMU ในช่วง 25–31 ต.ค. 2569</div>
+  </section>
+
+  <section>
+    <h2>🌐 Network &amp; Security</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 สำหรับ Nginx, Apache, HAProxy, Traefik (ล่าสุด v3.7.16/v2.11.60 เมื่อ 20 ต.ค. 2569 ก่อนช่วงเวลานี้), Caddy, WireGuard, pfSense, OPNsense, Nmap, Wireshark, Nessus, OpenVAS (ล่าสุด v23.52.3 เมื่อ 22 ต.ค. 2569 ก่อนช่วงเวลานี้) และ Metasploit Framework ในช่วงเวลานี้ ไม่พบรายงานแคมเปญโจมตี Supply Chain ของ npm รายใหม่ในช่วงเวลานี้เช่นกัน (แคมเปญล่าสุดที่พบคือช่วงพ.ค.–ส.ค. 2569 ก่อนหน้านี้มาก)</div>
+  </section>
+
+  <section>
+    <h2>☁ Cloud &amp; Infrastructure</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Platform</th><th>Update</th><th>Impact</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Google Cloud</strong></td>
+          <td>Google SecOps SOAR Release 6.3.104 (ทยอยปล่อยให้ภูมิภาคกลุ่มแรก) และเพิ่มการย่อขนาดรูปภาพแบบ Inline ใน Case Wall Comments</td>
+          <td>เป็น Feature/Maintenance Release ของผลิตภัณฑ์ Security Operations ไม่พบ Breaking Change หรือ CVE ที่เกี่ยวข้อง การ Rollout เป็นแบบทยอยตามภูมิภาค ทีมที่ใช้งานควรตรวจสอบสถานะ Rollout ในภูมิภาคของตนก่อนคาดหวังฟีเจอร์ใหม่</td>
+          <td><a href="https://cloud.google.com/release-notes" class="source-badge">cloud.google.com/release-notes (เข้าถึงไม่ได้โดยตรง — ยืนยันผ่าน WebSearch)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Azure</strong></td>
+          <td>Azure SDK รอบเดือน ต.ค. 2569 — รายงานว่า Cosmos DB Client สำหรับ Rust เข้าสู่ GA (1.0.0)</td>
+          <td><span class="label label-major">🚀 Major</span> (เฉพาะ Component) <strong>UNCERTAIN:</strong> ข้อมูลมาจากแหล่งข่าวรอง (warp2search.net) ที่อ้างอิง azure.github.io/azure-sdk/releases/2026-10 ซึ่งเข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ รายงานระบุว่าเป็น SDK ภาษา Rust ตัวแรกที่เข้าสู่ 1.0.0 สำหรับ Cosmos DB พร้อม Azure Identity ที่ปรับปรุงด้าน Security แต่ไม่สามารถยืนยันวันที่แน่ชัดและรายละเอียดทั้งหมดกับ Official Source ได้โดยตรง</td>
+          <td><a href="https://azure.github.io/azure-sdk/releases/2026-10/dotnet.html" class="source-badge">azure.github.io (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>AWS</strong></td>
+          <td>AWS Weekly Roundup 26 ต.ค. 2569</td>
+          <td><strong>UNCERTAIN:</strong> ดึงได้เฉพาะหัวข้อข่าว (Amazon Polly Generative Engine, TorchNeuron สำหรับ AWS Trainium) จากดัชนีค้นหา ไม่สามารถเข้าถึง aws.amazon.com/blogs/aws โดยตรงเพื่อยืนยันรายละเอียดฉบับเต็มหรือรายการฟีเจอร์ทั้งหมดได้ในรอบตรวจสอบนี้</td>
+          <td><a href="https://aws.amazon.com/blogs/aws/" class="source-badge">aws.amazon.com/blogs/aws (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบประกาศที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 จาก AWS CloudFormation, Pulumi และ AWS/Azure/Google Cloud ในหมวด Infrastructure-as-Code อื่นที่นอกเหนือจากที่แสดงไว้ข้างต้น</div>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools &amp; IDE</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 สำหรับ VS Code, JetBrains IDE, Eclipse, Git (ล่าสุด 2.52 เมื่อ 17 พ.ย. 2568 — นอกช่วงเวลามาก), GitHub CLI, npm, pip, Composer, Maven และ Gradle เนื่องจากไม่พบ Release Note/Changelog ที่ระบุวันที่ชัดเจนอยู่ในช่วงเวลานี้ (หมายเหตุ: GitHub Universe 2026 จัดขึ้น 28–29 ต.ค. 2569 ที่ Fort Mason Center, San Francisco แต่เป็นงาน Conference ไม่ใช่ Software Release จึงไม่นำมาแสดงในตารางนี้)</div>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 สำหรับ Nginx, Apache, Caddy และ IIS</div>
+  </section>
+
+  <section>
+    <h2>🔒 Security &amp; CVE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>.NET</strong></td>
+          <td>CVE-2026-111497 (Brotli OOB Write)</td>
+          <td><span class="severity-high">High</span></td>
+          <td>8.0.33 / 9.0.22 / 10.0.14 / 11.0 RC3</td>
+          <td><a href="https://devblogs.microsoft.com/dotnet/?p=61101" class="source-badge">devblogs.microsoft.com (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>.NET</strong></td>
+          <td>CVE-2026-114148 (Linux Tarball Ownership)</td>
+          <td><span class="severity-medium">Medium</span></td>
+          <td>8.0.33 / 9.0.22 / 10.0.14 / 11.0 RC3</td>
+          <td><a href="https://devblogs.microsoft.com/dotnet/?p=61101" class="source-badge">devblogs.microsoft.com (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>.NET</strong></td>
+          <td>CVE-2026-70197 (SocketAsyncEventArgs, แพตช์ซ้ำ) / CVE-2026-102870 (Blazor WASM Debugger RCE, แพตช์ซ้ำ)</td>
+          <td><span class="severity-high">High</span></td>
+          <td>8.0.33 / 9.0.22 / 10.0.14 / 11.0 RC3</td>
+          <td><a href="https://devblogs.microsoft.com/dotnet/?p=61101" class="source-badge">devblogs.microsoft.com (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">Jenkins LTS 2.580.2 (28 ต.ค. 2569) มีรายงานว่าแก้ไขช่องโหว่ด้านความปลอดภัยหลายรายการ (ดูหัวข้อ DevOps &amp; CI/CD) แต่ไม่สามารถยืนยันหมายเลข CVE/ความรุนแรงรายตัวได้จาก jenkins.io ในรอบตรวจสอบนี้ จึงไม่นำมาแสดงในตารางนี้ตามเกณฑ์ของรายงาน (ต้องมี CVE ID ยืนยัน) — ไม่พบ CVE ใหม่ของ PHP, Python, Go, GitLab หรือ Ubuntu/Debian/RHEL ที่ยืนยันวันที่อยู่ในช่วง 25–31 ต.ค. 2569</div>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="empty-note">ไม่พบ Breaking Change ใหม่ที่ยืนยันได้จาก Official Documentation ในช่วง 25–31 ต.ค. 2569 — การเปลี่ยนแปลงระดับ SEMVER-MAJOR ของ Node.js 27.0.0-alpha.0.0.0 ยังอยู่ในสถานะ Pre-release (Alpha) และยังไม่มี Migration Guide ฉบับสมบูรณ์จนกว่าจะเข้าใกล้ Stable จึงไม่นำมาจัดเป็น Breaking Change ของ Release ที่ใช้งานจริงในตารางนี้</div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="empty-note">ไม่พบประกาศ End of Life ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 25–31 ต.ค. 2569 (PostgreSQL 14 มีกำหนด EOL 12 พ.ย. 2569 และ Docker Engine 25.0 มีกำหนด EOL 4 ธ.ค. 2569 แต่ทั้งสองยังไม่ถึงวันที่ EOL จริงในช่วงเวลานี้ จึงนำไปแสดงไว้ในหัวข้อ "สิ่งที่ต้องติดตาม" แทนเพื่อไม่ให้จัดประเภทผิด)</div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <div class="highlight-box">
+      <ul>
+        <li><strong>PostgreSQL 19 GA</strong> — เลื่อนจากกำหนดเดิมเป็น 19 พ.ย. 2569 โดยจะมี RC2 ในวันที่ 12 พ.ย. 2569 ก่อนเข้าสู่ Stable (รายงานไปแล้วในสัปดาห์ก่อนหน้า ยังไม่มีการเปลี่ยนแปลงกำหนดการเพิ่มเติมในช่วงเวลานี้)</li>
+        <li><strong>PostgreSQL 14 End of Life</strong> — มีกำหนด EOL วันที่ 12 พ.ย. 2569 ทีมที่ยังใช้ PostgreSQL 14 ควรวางแผน Upgrade เป็น 18 หรือรอ 19 ก่อนถึงกำหนด</li>
+        <li><strong>Docker Engine 25.0 End of Life</strong> — มีกำหนด EOL วันที่ 4 ธ.ค. 2569 ทีมที่ยังใช้สาย 25.x ควรวางแผนย้ายไปสาย 29.x</li>
+        <li><strong>Node.js 27 Alpha Channel</strong> — เปิด Alpha แรกเมื่อ 29 ต.ค. 2569 ตาม Release Cadence ใหม่ (ปีละ 1 Major ทุกตัวเป็น LTS) คาดว่าจะ Stable ประมาณ เม.ย. 2570 และเข้าสู่ LTS ประมาณ ต.ค. 2570</li>
+        <li><strong>Ansible Core 2.22.0</strong> — ยังไม่พบวันที่ GA ที่ยืนยันได้ในรอบตรวจสอบนี้ (มีเพียง Porting Guide บน Docs "devel" Branch) ทีมที่วางแผนอัปเกรดควรติดตามประกาศ GA อย่างเป็นทางการก่อน</li>
+        <li><strong>Jenkins LTS 2.580.2</strong> — ควรตรวจสอบ jenkins.io/security/advisories โดยตรงเพื่อยืนยันรายละเอียด CVE ของการแก้ไขด้านความปลอดภัยที่ระบุไว้ใน Changelog ฉบับร่าง ก่อนประเมินความเร่งด่วนในการอัปเดต</li>
+        <li><strong>GitLab</strong> — ไม่พบ Release ใหม่ในช่วงเวลานี้ แต่ตามรอบ Scheduled Release (สัปดาห์ที่ 2 และ 4 ของเดือน) อาจมี Release รอบปลายเดือนที่ยังไม่สามารถยืนยันได้จาก docs.gitlab.com ในรอบตรวจสอบนี้ ทีมที่ใช้ GitLab Self-managed ควรตรวจสอบ Release Page โดยตรง</li>
+        <li><strong>Azure SDK Cosmos DB (Rust) GA</strong> — รายงานจากแหล่งข่าวรองเท่านั้น ควรตรวจสอบ azure.github.io/azure-sdk/releases หรือ Microsoft Azure Updates โดยตรงเพื่อยืนยันก่อนนำไปใช้งานจริง</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">11</div>
+        <div class="dashboard-item-label">Total Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">1</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">6</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">2</div>
+        <div class="dashboard-item-label">New CVEs</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <div class="two-column">
+      <div>
+        <h3>Official</h3>
+        <ul>
+          <li><a href="https://github.com/nodejs/node/releases">github.com/nodejs/node — v26.13.0 "Lithium" / v24.22.2 "Krypton" / v27.0.0-alpha.0.0.0</a></li>
+          <li><a href="https://github.com/kubernetes/kubernetes/releases">github.com/kubernetes/kubernetes — v1.38.0-alpha.3 / v1.37.2 / v1.36.6 / v1.35.10 / v1.34.13</a></li>
+          <li><a href="https://github.com/jenkinsci/jenkins/releases">github.com/jenkinsci/jenkins — 2.588 (Weekly) / 2.580.2 (LTS)</a></li>
+          <li><a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-october-2026-servicing-updates/">devblogs.microsoft.com — .NET October 2026 Out-of-band Update (เข้าถึงไม่ได้โดยตรง)</a></li>
+          <li><a href="https://support.microsoft.com/help/5133966">support.microsoft.com/help/5133966 — .NET 10.0 Update (เข้าถึงไม่ได้โดยตรง)</a></li>
+          <li><a href="https://cloud.google.com/release-notes">cloud.google.com/release-notes — Google SecOps SOAR 6.3.104 (เข้าถึงไม่ได้โดยตรง)</a></li>
+          <li><a href="https://azure.github.io/azure-sdk/releases/2026-10/dotnet.html">azure.github.io/azure-sdk — October 2026 Release (เข้าถึงไม่ได้โดยตรง)</a></li>
+          <li><a href="https://aws.amazon.com/blogs/aws/">aws.amazon.com/blogs/aws — Weekly Roundup Oct 26, 2026 (เข้าถึงไม่ได้โดยตรง)</a></li>
+          <li><a href="https://www.postgresql.org/about/news/postgresql-19-rc-1-3409/">postgresql.org — PostgreSQL 19 RC1 / GA เลื่อนเป็น 19 พ.ย. 2569</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Security Advisory</h3>
+        <ul>
+          <li><a href="https://devblogs.microsoft.com/dotnet/?p=61101">devblogs.microsoft.com — CVE-2026-111497 / CVE-2026-114148 / CVE-2026-70197 / CVE-2026-102870 (เข้าถึงไม่ได้โดยตรง)</a></li>
+          <li><a href="https://nca.gov.sa/en/cert/8100/">nca.gov.sa — Jenkins Security Update Advisory, 28 ต.ค. 2569</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Trusted Media</h3>
+        <ul>
+          <li><a href="https://visualstudiomagazine.com/articles/2026/10/26/microsoft-issues-out-of-band--net-security-fixes-including-new-net-11-rc.aspx">visualstudiomagazine.com — .NET Out-of-band Security Fixes</a></li>
+          <li><a href="https://www.elevenforum.com/t/net-11-rc3-net-10-0-14-ga-net-9-0-22-and-net-8-0-33-oct-25-2026-out-of-band-updates.50401/">elevenforum.com — .NET 11 RC3 / 10.0.14 GA / 9.0.22 / 8.0.33</a></li>
+          <li><a href="https://www.devx.com/coding/nodejs-26-lts-new-features-release-date/">devx.com — Node.js 26 LTS Timeline</a></li>
+          <li><a href="https://www.warp2search.net/story/azure-sdk-october-2026-release-cosmos-db-for-rust-hits-ga-identity-security-hardened/">warp2search.net — Azure SDK October 2026, Cosmos DB for Rust GA</a></li>
+          <li><a href="https://aws-news.com/">aws-news.com — AWS Weekly Roundup Oct 26, 2026 (หัวข้อข่าวเท่านั้น)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Release Notes</h3>
+        <ul>
+          <li><a href="https://github.com/nodejs/node/releases/tag/v26.13.0">github.com/nodejs/node — v26.13.0 Release Note</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">UNCERTAIN: หลายโดเมนเข้าถึงไม่ได้โดยตรงผ่าน Network Proxy ของ Session นี้ในรอบตรวจสอบนี้ (ได้รับข้อผิดพลาดระดับ Network Policy ไม่ใช่การบล็อกจากเว็บไซต์ จึงสลับไปใช้ WebSearch ตามนโยบาย Network Access Resilience แทนทันที) ได้แก่ devblogs.microsoft.com, support.microsoft.com, curl.se, docs.gitlab.com, azure.github.io, docs.cloud.google.com/cloud.google.com (บางหน้า), www.jenkins.io, aws-news.com, debian.org/security, access.redhat.com, errata.rockylinux.org, errata.almalinux.org ข้อมูลที่เกี่ยวข้องได้ผ่านการยืนยันข้ามแหล่งด้วย WebSearch, GitHub Releases/Tags โดยตรง (github.com เข้าถึงได้ปกติ) หรือ Government CERT Advisory (nca.gov.sa) แทน รายการที่ไม่สามารถยืนยันได้จริงจึงถูกงดแสดงเฉพาะส่วนนั้น ไม่ได้งดแสดงทั้งหมวด หมายเลข CVE ของ Jenkins LTS 2.580.2 และรายละเอียดฉบับเต็มของ Azure SDK Cosmos DB (Rust) GA และ AWS Weekly Roundup 26 ต.ค. 2569 ยังไม่สามารถยืนยันกับ Official Source ได้โดยตรงตามที่ระบุไว้ในแต่ละหัวข้อ</div>
+  </section>
+
+  <footer>
+    Generated for natthasath-news · Weekly Software Releases Report · Week 44, 2026 · Data window: Oct 25 – 31, 2026 (ICT)
+  </footer>
+</div>
+</body>
+</html>
