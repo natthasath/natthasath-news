@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly GitHub Trending Report — Week 44, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#B5502A; --warn-soft:rgba(181,80,42,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14);
+    --warn:#E08A63; --warn-soft:rgba(224,138,99,0.14);
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:980px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+h2{ font-size:22px; font-weight:800; margin:48px 0 16px; padding-top:8px; border-top:1px solid var(--line-strong); display:flex; align-items:center; gap:10px; }
+h2:first-of-type{ border-top:none; }
+h3{ font-size:17px; font-weight:700; margin:26px 0 10px; color:var(--ink); }
+p{ margin:0 0 14px; color:var(--ink-soft); }
+ul, ol{ padding-left:22px; color:var(--ink-soft); }
+li{ margin-bottom:6px; }
+strong{ color:var(--ink); }
+code{ font-family:"JetBrains Mono",monospace; font-size:0.9em; background:var(--surface-2); padding:1px 5px; border-radius:4px; }
+
+.summary-box{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:8px; }
+.summary-box p{ margin:0; color:var(--ink); }
+
+.tablewrap{ overflow-x:auto; margin:14px 0 22px; border:1px solid var(--line); border-radius:10px; }
+table{ width:100%; border-collapse:collapse; font-size:14px; background:var(--surface); min-width:640px; }
+thead th{ text-align:left; font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-faint); padding:12px 14px; border-bottom:1px solid var(--line-strong); background:var(--surface-2); white-space:nowrap; }
+tbody td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ color:var(--ink); font-weight:600; }
+tbody td a{ text-decoration:none; }
+tbody td a:hover{ text-decoration:underline; }
+
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.card-title{ font-weight:700; font-size:15.5px; color:var(--ink); margin-bottom:4px; }
+.card-title a{ text-decoration:none; }
+.card-meta{ font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); margin-bottom:10px; }
+.card p{ margin:0 0 8px; font-size:14.5px; }
+.card ul{ margin:6px 0 0; font-size:14px; }
+
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; background:var(--accent-soft); color:var(--accent); margin-right:6px; }
+.badge.warn{ background:var(--warn-soft); color:var(--warn); }
+
+.note-box{ background:var(--warn-soft); border:1px solid rgba(181,80,42,0.28); border-radius:10px; padding:14px 18px; margin:14px 0; font-size:14px; color:var(--ink); }
+.note-box strong{ color:var(--warn); }
+
+.legend-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px 20px; font-size:14px; }
+.legend-grid div{ display:flex; gap:8px; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin:16px 0; }
+.stat-tile{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+.stat-num{ font-family:"JetBrains Mono",monospace; font-size:24px; font-weight:700; color:var(--accent); }
+.stat-label{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer a{ color:var(--ink-faint); }
+
+@media (max-width:640px){
+  h1{ font-size:26px; }
+  h2{ font-size:19px; }
+  .meta-row{ gap:10px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest · Week 44</p>
+    <h1>⭐ Weekly GitHub Trending Open Source Report</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 25 – 31 ต.ค. 2026 (ICT)</span>
+      <span><b>หมวด:</b> GitHub Open Source</span>
+      <span><b>เผยแพร่:</b> 31 ต.ค. 2026</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้หน้า GitHub Trending ถูกยึดครองโดยนิเวศ "Agent Skills" (ไฟล์ <code>SKILL.md</code>) อย่างท่วมท้น นำโดย <strong>cloudflare/security-audit-skill</strong> ที่ได้ดาวเพิ่ม 12,838 ดวงในสัปดาห์เดียว และ <strong>obra/superpowers</strong> ที่ทะลุ 309,000 ดาว พร้อมเครื่องมือสแกนความปลอดภัยของสกิลเกิดใหม่สองตัวพร้อมกัน (<strong>NVIDIA/SkillSpector</strong> และตัว security-audit-skill เอง) สะท้อนความกังวลเรื่อง supply chain ของสกิล AI agent ที่กำลังโตเร็วกว่าเครื่องมือตรวจสอบ ฝั่ง AI coding agent ยังแข่งกันดุเดือดต่อเนื่อง — Claude Code ปล่อย 5 เวอร์ชันในสัปดาห์นี้ (ล่าสุด v2.1.316) พร้อมประกาศเลิกใช้ Fast mode บน Opus 4.8 ภายใน 30 พ.ย., Gemini CLI ปล่อย v0.66.0 และ Cline ปรับ SDK จาก v0.0.95 กระโดดเป็น v0.2.0 พร้อมเปิดตัว Cloud Sessions เต็มรูปแบบ Kubernetes ปล่อย patch พร้อมกัน 4 สาย (v1.37.2/v1.36.6/v1.35.10/v1.34.13) ส่วนเหตุการณ์ที่น่าสังเกตคือ repository ที่เคยอยู่ภายใต้ <code>sst/opencode</code> ถูกย้ายไปอยู่ภายใต้องค์กร <strong>anomalyco</strong> โดยไม่มีคำประกาศที่ยืนยันได้ในรอบการค้นคว้านี้ และ <code>multica-ai/andrej-karpathy-skills</code> ที่มีอัตราส่วนดาว (227,000+) ต่อจำนวน commit (28 ครั้ง) สูงผิดปกติยังติด trending ต่อเนื่อง แม้เป็นโครงการที่เติบโตต่อเนื่องมาตั้งแต่กลางปีโดยไม่มีสัญญาณปั่นดาวใหม่ที่ยืนยันได้</p>
+    </div>
+    <div class="note-box">
+      <strong>ข้อจำกัดของข้อมูล:</strong> thehackernews.com ไม่สามารถเข้าถึงได้ในรอบการค้นคว้านี้ (ถูกจำกัดโดย network policy ของ session) ทีมจัดทำรายงานจึงใช้แหล่งสำรอง (SecurityWeek, Last Week in Cloud Native newsletter) แทน จึงไม่สามารถยืนยันเหตุการณ์ความปลอดภัยระดับใหญ่เทียบเท่ากรณี eMudhra CA ของสัปดาห์ก่อนได้ในกรอบ 7 วันนี้ — UNCERTAIN: thehackernews.com
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Top Trending Repositories</h2>
+    <p>เรียงตามความสำคัญและผลกระทบต่อ Developer Community ยืนยันผ่านหน้า GitHub Trending (weekly) และหน้า Repository/Releases โดยตรง</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Owner</th><th>Language</th><th>Stars (สัปดาห์นี้)</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/cloudflare/security-audit-skill">security-audit-skill</a> 🔥🔒✅</td><td>cloudflare</td><td>JavaScript (Node, zero-dep)</td><td>54,484 (+12,838)</td><td>AI Agent Skill / Security</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/obra/superpowers">superpowers</a> 🚀🧠</td><td>obra</td><td>ไม่มีข้อมูล (JS-based)</td><td>309,614 (+5,474)</td><td>Agent Skills Framework</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/pbakaus/impeccable">impeccable</a> 🚀🧠</td><td>pbakaus</td><td>Rust/TypeScript</td><td>97,474 (+11,323)</td><td>AI Agent Design Skill</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/NVIDIA/SkillSpector">SkillSpector</a> 🔒🧠✅</td><td>NVIDIA</td><td>Python</td><td>23,581 (+2,468)</td><td>Agent Skill Security Scanner</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/multica-ai/andrej-karpathy-skills">andrej-karpathy-skills</a> ⭐🧠</td><td>multica-ai</td><td>Markdown</td><td>227,048 (+4,178)</td><td>Claude Code Behavior Skill</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/anthropics/claude-code">claude-code</a> 🚀🤖✅</td><td>anthropics</td><td>ไม่มีข้อมูล</td><td>ไม่มีข้อมูล</td><td>AI Coding Agent</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/google-gemini/gemini-cli">gemini-cli</a> 🤖✅📦</td><td>google-gemini</td><td>TypeScript</td><td>108,645 (+1,204)</td><td>AI Coding Agent</td><td>GitHub Trending + Releases</td></tr>
+          <tr><td><a href="https://github.com/cline/cline">cline</a> 🚀🤖📦</td><td>cline</td><td>TypeScript</td><td>ไม่มีข้อมูล</td><td>AI Coding Agent</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/anomalyco/opencode">opencode</a> 🤖⚠️</td><td>anomalyco (เดิม sst)</td><td>TypeScript</td><td>223,405 (+3,106)</td><td>AI Coding Agent</td><td>GitHub Repository</td></tr>
+          <tr><td><a href="https://github.com/debpalash/VoiceStudio">VoiceStudio</a> 🔥🤖</td><td>debpalash</td><td>ไม่มีข้อมูล (Electron/JS)</td><td>96,081 (+12,910)</td><td>Open-Source Voice AI</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/HKUDS/DeepTutor">DeepTutor</a> 🚀🤖📦</td><td>HKUDS</td><td>Python/Next.js</td><td>52,086 (+9,440)</td><td>AI Learning Agent</td><td>GitHub Trending + Releases</td></tr>
+          <tr><td><a href="https://github.com/kubernetes/kubernetes">kubernetes</a> ☁️📦</td><td>kubernetes</td><td>Go</td><td>ไม่มีข้อมูล</td><td>Container Orchestration</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/JetBrains/thinkrail">thinkrail</a> 🔥🧠✅</td><td>JetBrains</td><td>TypeScript (สันนิษฐาน)</td><td>6,691 (+5,495)</td><td>Agentic IDE</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/makecindy/cindy">cindy</a> 🔥🤖</td><td>makecindy</td><td>ไม่มีข้อมูล</td><td>8,749 (+5,366)</td><td>AI Agent (out-of-box)</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/anthropics/sandbox-runtime">sandbox-runtime</a> 🔒🧠✅</td><td>anthropics</td><td>TypeScript/Rust/C</td><td>6,886 (+1,093)</td><td>Agent Sandboxing</td><td>GitHub Trending + Repository</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥🔒✅ <a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></div>
+      <div class="card-meta">MIT · 54.5k ★ (+12,838 สัปดาห์นี้) · 3.5k forks · 14 commits บน main</div>
+      <p>สกิลสำหรับ coding agent (Claude Code, Codex) ให้ทำ security audit แบบ 6 เฟส: สำรวจ, ล่าช่องโหว่แบบ coverage-led, ตรวจสอบ candidate อย่างอิสระ, output แบบ JSON schema, verify ซ้ำ และสรุปผล เป็น "เมล็ดพันธุ์" ของ vulnerability-discovery harness ภายในของ Cloudflare เอง ต้องรันผ่าน OS-enforced sandbox ก่อนแตะ target code จริง เป็นตัวอย่างชัดของเทรนด์ใหญ่สัปดาห์นี้: บริษัทเทคโนโลยีใหญ่เริ่มเผยแพร่ "สกิล" ของ agent ตัวเองเป็นโอเพนซอร์ส</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🤖⚠️ <a href="https://github.com/anomalyco/opencode">anomalyco/opencode</a></div>
+      <div class="card-meta">TypeScript · MIT · 223.4k ★ (+3,106) · 30.0k forks</div>
+      <p>AI coding agent โอเพนซอร์สที่เป็นกลางทางโมเดล รองรับผู้ให้บริการกว่า 75 เจ้า <strong>หมายเหตุสำคัญ:</strong> การเข้าถึง <code>github.com/sst/opencode</code> (ที่รายงานสัปดาห์ก่อนยืนยันว่าเป็น owner ที่ถูกต้อง) ในรอบการค้นคว้านี้ redirect ไปยัง <code>github.com/anomalyco/opencode</code> แสดงว่า repository ถูกโอน/เปลี่ยนชื่อองค์กรจาก <code>sst</code> เป็น <code>anomalyco</code> ทีมจัดทำรายงานไม่พบประกาศทางการที่อธิบายสาเหตุการเปลี่ยนแปลงนี้ในรอบการค้นคว้า จึงนำมาแสดงเป็นข้อเท็จจริงที่สังเกตได้ ไม่ใช่ข้อสรุปเชิงเหตุผล (ดูหมวด Watch List)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⭐🧠 <a href="https://github.com/multica-ai/andrej-karpathy-skills">multica-ai/andrej-karpathy-skills</a></div>
+      <div class="card-meta">MIT · 227.0k ★ (+4,178 สัปดาห์นี้) · 22.7k forks · 28 commits บน main</div>
+      <p>ไฟล์ <code>CLAUDE.md</code> เดียวที่ถอดหลักการ 4 ข้อ (Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution) จากข้อสังเกตของ Andrej Karpathy เรื่องข้อผิดพลาดการเขียนโค้ดของ LLM ที่โพสต์บน X ปลายปี 2025 ผู้พัฒนาจริงคือทีม multica-ai/Forrest Chang ไม่ใช่ Karpathy เอง โครงการนี้ไม่ใหม่ (มีมาตั้งแต่กลางปี 2026 และเคยมีดาว 82,000 → 189,000 ในรายงานสื่อก่อนหน้า) <strong>ข้อสังเกตด้านข้อมูล:</strong> อัตราส่วนดาว (227,000+) ต่อจำนวน commit (28 ครั้ง) สูงผิดปกติมากเมื่อเทียบกับโครงการทั่วไป แต่เนื่องจากมีหลักฐานการเติบโตต่อเนื่องเป็นขั้นบันไดตลอดหลายเดือนจากหลายแหล่งข่าวอิสระ จึงต่างจากกรณี <code>morluto/rea</code> ในสัปดาห์ก่อนที่ไม่มีประวัติยืนยันได้ อย่างไรก็ตามตัวเลขนี้ควรตีความด้วยความระมัดระวัง เนื่องจากไฟล์เนื้อหามีเพียงไม่กี่หน้า</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥🧠✅ <a href="https://github.com/JetBrains/thinkrail">JetBrains/thinkrail</a></div>
+      <div class="card-meta">Apache-2.0 · 6.7k ★ (+5,495 สัปดาห์นี้ = เติบโต ~82%) · 362 forks</div>
+      <p>IDE แบบ desktop/บราวเซอร์ที่ปรับตัวเองรอบ coding agent ชื่อ <code>pi</code> รองรับ git worktree workspace หลายชุดให้ agent ทำงานพร้อมกัน พร้อม editor, terminal, diff ในตัว และระบบ <code>SPEC.md</code> graph ที่ agent อ่าน/แก้ไขได้ เป็นสัญญาณว่า JetBrains กำลังเข้าสู่สมรภูมิ "agentic IDE" อย่างเป็นทางการ แข่งกับ Cursor, Windsurf และเครื่องมือ agent-first อื่น ๆ</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🤖 AI &amp; LLM</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></div>
+      <div class="card-meta">Python · Apache-2.0 · 95.9k ★ (+729) · v0.33.0rc0–rc3 (26–31 ต.ค., ยังเป็น release candidate)</div>
+      <p>LLM inference/serving engine ยังไม่ปล่อย v0.33.0 เวอร์ชัน stable ในกรอบสัปดาห์นี้ มีเพียง release candidate 4 ตัว (rc0–rc3) ทยอยออกทุก 2 วัน สะท้อนว่ากำลังเข้าใกล้การปล่อยเวอร์ชันเต็ม — ควรติดตามต่อสัปดาห์หน้า (ดู Watch List)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀🤖📦 <a href="https://github.com/HKUDS/DeepTutor">HKUDS/DeepTutor</a></div>
+      <div class="card-meta">Python/Next.js · Apache-2.0 · 52.1k ★ (+9,440) · v1.7.0 — 28 ต.ค. 2026</div>
+      <p>ระบบ agent-based lifelong tutoring โอเพนซอร์ส รวม Chat, Quiz, Research, Visualize, Solve, Mastery Path ไว้ในที่เดียว v1.7.0 เพิ่มการติดตั้งแบบ modular, learning workspace ที่ปรับปรุงใหม่, block notebook ชื่อ Dito, วิดีโอบทเรียนพากย์เสียง และ checkpoint การสร้าง embedding ที่ resume ได้ ติดตั้งผ่าน <code>pip install -U "deeptutor[full]"</code></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥🤖 <a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></div>
+      <div class="card-meta">AGPL-3.0 · 96.1k ★ (+12,910 สัปดาห์นี้) · 10.6k forks · 6,370 commits</div>
+      <p>ทางเลือกโอเพนซอร์สของ ElevenLabs ที่รันในเครื่องทั้งหมด รองรับ voice cloning, video dubbing, voice design และ transcription 646 ภาษา รองรับ macOS/Windows/Linux/Docker/Android/iOS(preview) ยังเป็นโครงการที่เติบโตเร็วที่สุดในหมวด AI เสียงต่อเนื่องจากสัปดาห์ก่อน</p>
+    </div>
+
+    <p><strong>sgl-project/sglang</strong> (38,316 ★, +763 สัปดาห์นี้) เฟรมเวิร์ก serving LLM/multimodal ยังมีกิจกรรมสม่ำเสมอแต่ไม่พบ release ใหม่ในกรอบ 7 วันนี้ <strong>infiniflow/ragflow</strong> (93,235 ★, +508) RAG engine ที่มี agent capability ก็อยู่ในสถานะเดียวกัน</p>
+  </section>
+
+  <section>
+    <h2>🧠 MCP &amp; AI Agents</h2>
+
+    <div class="card">
+      <div class="card-title">🚀✅ <a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></div>
+      <div class="card-meta">5 เวอร์ชันในสัปดาห์นี้ (26–31 ต.ค.) · ล่าสุด v2.1.316 (31 ต.ค.)</div>
+      <p><strong>v2.1.316:</strong> เพิ่มการตั้งค่าปิดคีย์เวิร์ด <code>ultrathink</code>, กำหนด effort level ของ subagent, และ <strong>ประกาศเลิกใช้ (deprecate) Fast mode บน Opus 4.8 จะถูกถอดออกวันที่ 30 พ.ย. 2026</strong> แนะนำให้ย้ายไป Opus 5.5 แทนเพื่อคงความเร็ว <strong>v2.1.314:</strong> เพิ่มการบล็อก Write/Edit/NotebookEdit ไม่ให้แก้ไฟล์นอก working directory ได้ (เสริมความปลอดภัย) และรองรับ idle compaction ใน VS Code/Desktop <strong>v2.1.312/v2.1.311:</strong> แก้บั๊ก sandboxing, subagent MCP access และปัญหา startup freeze หลายรายการ</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅📦 <a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></div>
+      <div class="card-meta">TypeScript · 108.6k ★ (+1,204) · v0.66.0 — 27 ต.ค. 2026 · nightly build ต่อเนื่องทุกวัน</div>
+      <p>v0.66.0 เป็นเวอร์ชัน stable ล่าสุด ส่วน nightly build (v0.67.0-nightly) ทยอยออกแทบทุกวันตลอดสัปดาห์ (24, 25, 27, 28, 30, 31 ต.ค.) <strong>หมายเหตุ:</strong> npm package ของ Gemini CLI ระบุว่า backend แบบ hosted สำหรับผู้ใช้ฟรี/Google AI Pro/Ultra ถูกแทนที่ด้วย Antigravity CLI ตั้งแต่ 18 มิ.ย. 2026 — ตัวโปรเจกต์โอเพนซอร์สยังพัฒนาต่อเนื่อง แต่ผู้ใช้ควรตรวจสอบนโยบายการเข้าถึง backend ของตนเอง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀📦 <a href="https://github.com/cline/cline">cline/cline</a></div>
+      <div class="card-meta">TypeScript · Apache-2.0 · CLI v3.0.74 / Desktop v0.0.49 / SDK v0.2.0 — 26 ต.ค. 2026</div>
+      <p>SDK กระโดดเวอร์ชันจาก v0.0.95 เป็น <strong>v0.2.0</strong> (เปลี่ยนให้ reattach เข้า live session แทนการแทนที่ runtime เดิม) Desktop v0.0.49 เพิ่มปุ่ม Changes สำหรับดู diff รายรอบ/รายเซสชัน, panel ไฟล์โปรเจกต์, terminal ในตัว, การตั้ง keybinding และหน้าตั้งค่า local model ส่วน CLI v3.0.74 ให้ attach เข้า task ที่รันอยู่ใน Cline app อื่นได้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔒🧠✅ <a href="https://github.com/anthropics/sandbox-runtime">anthropics/sandbox-runtime</a></div>
+      <div class="card-meta">Apache-2.0 · 6.9k ★ (+1,093) · 888 commits · beta research preview</div>
+      <p><code>srt</code> เครื่องมือ sandbox ระดับ OS สำหรับ Claude Code และ agent workload อื่น จำกัดสิทธิ์ filesystem/network โดยไม่ต้องใช้ container — ใช้ <code>sandbox-exec</code> บน macOS, <code>bubblewrap</code> บน Linux และ user account แยกบน Windows (alpha) ค่าเริ่มต้นปิดการเข้าถึงเครือข่าย/เขียนไฟล์ทั้งหมดจนกว่าจะอนุญาต ติดตั้งผ่าน <code>npm install -g @anthropic-ai/sandbox-runtime</code></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔒🧠✅ <a href="https://github.com/NVIDIA/SkillSpector">NVIDIA/SkillSpector</a></div>
+      <div class="card-meta">Python · Apache-2.0 · 23.6k ★ (+2,468) · scanner สำหรับ Claude Code / Codex CLI / MCP</div>
+      <p>สแกนความปลอดภัยของ "Agent Skill" ก่อนติดตั้ง ตรวจ 71 pattern ช่องโหว่ใน 17 หมวด (prompt injection, data exfiltration, supply-chain risk) ให้คะแนนความเสี่ยง 0–100 พร้อม output แบบ terminal/JSON/Markdown/SARIF และรันเป็น MCP server ให้ agent เรียกใช้เพื่อ gate การติดตั้งสกิลอื่นได้ เปิดตัวพร้อมกับ cloudflare/security-audit-skill ในสัปดาห์เดียวกัน — สัญญาณชัดว่าวงการเริ่มสร้างเครื่องมือตรวจสอบ supply chain ของสกิล agent อย่างจริงจัง</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅ <a href="https://github.com/aws/agent-toolkit-for-aws">aws/agent-toolkit-for-aws</a></div>
+      <div class="card-meta">Apache-2.0 · 3.4k ★ (+412) · MCP server + skills + plugin ทางการจาก AWS</div>
+      <p>ชุด MCP server, skill และ plugin ที่ AWS สนับสนุนเองสำหรับให้ agent (Claude Code, Codex, Cursor, Devin, Kiro) ทำงานกับบริการ AWS ได้ เป็นผู้สืบทอดของ AWS Labs MCP servers เดิม รองรับ guardrail และ sandboxed script execution ในตัว</p>
+    </div>
+
+    <p><strong>obra/superpowers</strong> (MIT, 309.6k ★, +5,474, 686 commits) เฟรมเวิร์กสกิลและ methodology การพัฒนาซอฟต์แวร์แบบ agentic รองรับ Claude Code, Codex, Cursor, Gemini CLI และ OpenCode <strong>pbakaus/impeccable</strong> (Apache-2.0, 97.5k ★, +11,323, 2,601 commits) ชุด "design vocabulary" ที่ตรวจจับ UI แบบ "AI slop" ด้วย 62 กฎ ทั้งสองยืนยันกิจกรรมจาก GitHub Trending โดยตรง 2 แหล่งอิสระ (overall + language-filtered trending)</p>
+
+    <div class="note-box">
+      <strong>สถานะ MCP Specification:</strong> ไม่พบการอัปเดตสเปก MCP ฉบับใหม่ในกรอบ 7 วันนี้ กิจกรรมฝั่ง MCP สัปดาห์นี้กระจุกอยู่ที่ MCP server/toolkit จากบริษัทใหญ่ (AWS) และเครื่องมือตรวจสอบความปลอดภัยสกิลที่รันเป็น MCP server (SkillSpector) มากกว่าการเปลี่ยนแปลงตัวสเปกเอง
+    </div>
+  </section>
+
+  <section>
+    <h2>⚙️ Developer Tools</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Language</th><th>License</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/github/gh-aw">github/gh-aw</a></td><td>Go (สันนิษฐาน)</td><td>MIT</td><td>5,537 (+93)</td><td>GitHub Agentic Workflows — รัน AI agent ผ่าน GitHub Actions แบบ sandbox; เวอร์ชัน 0.83.3–0.85.3 ถูก retire หลังพบช่องโหว่ความปลอดภัย</td></tr>
+          <tr><td><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></td><td>ไม่มีข้อมูล</td><td>ไม่มีข้อมูล</td><td>106,765 (+3,518)</td><td>เก็บ context ของ coding agent ให้ต่อเนื่องข้ามเซสชัน ยังไม่พบ release ใหม่ในกรอบนี้</td></tr>
+          <tr><td><a href="https://github.com/langfuse/langfuse">langfuse/langfuse</a></td><td>TypeScript</td><td>ไม่มีข้อมูล</td><td>36,781 (+509)</td><td>แพลตฟอร์ม LLM observability/eval โอเพนซอร์ส กิจกรรมสม่ำเสมอ</td></tr>
+          <tr><td><a href="https://github.com/microsoft/skill-recorder">microsoft/skill-recorder</a></td><td>TypeScript (สันนิษฐาน)</td><td>ไม่มีข้อมูล</td><td>5,584 (+1,320)</td><td>แอป desktop บันทึก session งานแล้วแปลงเป็นสกิล/automation ที่ใช้ซ้ำได้ — Microsoft เข้าสู่ตลาด agent skill tooling</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>remotion-dev/remotion</strong> (TypeScript, 69,218 ★, +2,507) เครื่องมือสร้างวิดีโอแบบ programmatic ด้วย React และ <strong>gitroomhq/postiz-app</strong> (TypeScript, 40,261 ★, +2,615) เครื่องมือจัดตารางโซเชียลมีเดียที่ขับเคลื่อนด้วย AI agent ยังมีฐานผู้ใช้ใหญ่ต่อเนื่อง แต่ไม่พบ release ใหม่ที่ยืนยันได้ในกรอบสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>☁️ Cloud Native &amp; DevOps</h2>
+
+    <div class="card">
+      <div class="card-title">☁️ <a href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a></div>
+      <div class="card-meta">Go · Apache-2.0 · v1.37.2 / v1.36.6 / v1.35.10 / v1.34.13 — 28 ต.ค. 2026 · v1.38.0-alpha.3 (pre-release)</div>
+      <p>ปล่อย patch พร้อมกัน 4 สายเวอร์ชันในวันเดียว อัปเกรด Go เป็น 1.26.10 แก้บั๊ก DRA taint eviction ที่ pod ใช้ extended resource แบบ DRA ไม่ถูก evict ตามที่ควร, แก้ Job reconciliation ที่ Job ใหม่สืบ pending expectation ของ Job เก่าที่ถูกลบไปแล้วแบบผิดพลาด, เพิ่มขีดจำกัด request header เป็น 16384 ค่า (ป้องกัน HTTP 431 กับผู้ใช้ที่มีกว่า 500 กลุ่ม) และแก้ regression ของ kube-proxy ที่พยายามตั้งค่า <code>nf_conntrack_max</code> โดยไม่มีสิทธิ์</p>
+    </div>
+
+    <p><strong>docker/compose</strong> (Go, 38,533 ★, +133) และ <strong>cloudflare/cloudflared</strong> (Go, 16,361 ★, +141) ยังมีกิจกรรมสม่ำเสมอแต่ไม่พบ release เด่นในกรอบสัปดาห์นี้ <strong>cilium/cilium</strong> ปล่อย patch ล่าสุด (v1.20.4/v1.19.10/v1.18.16) เมื่อ 23 ต.ค. ซึ่งอยู่นอกกรอบ 7 วันของรายงานนี้ (ดูรายงานสัปดาห์ก่อน) จึงไม่มีกิจกรรมเด่นใหม่ของ cilium ในสัปดาห์นี้ที่ยืนยันได้</p>
+  </section>
+
+  <section>
+    <h2>🔒 Security</h2>
+
+    <div class="card">
+      <div class="card-title">🔒🧠 <a href="https://github.com/NVIDIA/SkillSpector">NVIDIA/SkillSpector</a> &amp; <a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></div>
+      <div class="card-meta">เปิดตัว/ติด Trending พร้อมกันในสัปดาห์นี้</div>
+      <p>ดูรายละเอียดเต็มในหมวด MCP &amp; AI Agents — การที่บริษัทใหญ่สองเจ้า (NVIDIA, Cloudflare) ปล่อยเครื่องมือ "ตรวจสอบความปลอดภัยของ Agent Skill" พร้อมกันในสัปดาห์เดียว สะท้อนว่าความกังวลเรื่อง supply chain ของไฟล์ <code>SKILL.md</code> ที่แพร่หลายอย่างรวดเร็ว (ดูหมวด Top Trending) กำลังกลายเป็นประเด็นความปลอดภัยกระแสหลัก</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/SnailSploit/Claude-Red">SnailSploit/Claude-Red</a></div>
+      <div class="card-meta">9,968 ★ (+1,691) · ชุดสกิล offensive security สำหรับ Claude</div>
+      <p>คอลเลกชันสกิล offensive security ที่คัดสรรไว้สำหรับใช้กับ Claude โดยเฉพาะ เป็นตัวอย่างอีกด้านของเทรนด์ agent-skill — เครื่องมือเดียวกันที่ช่วย audit ความปลอดภัยได้ก็สามารถถูกแพ็กเกจเป็นชุดเครื่องมือโจมตีได้เช่นกัน ทีมความปลอดภัยควรติดตามการใช้งานสกิลประเภทนี้ในองค์กรของตน</p>
+    </div>
+
+    <p><strong>github/gh-aw</strong> ระบุในหน้า repository ว่าเวอร์ชัน <code>&gt;=0.83.3, &lt;0.85.4</code> ถูก retire หลังพบช่องโหว่ความปลอดภัย (ไม่พบวันที่ patch แน่ชัดในกรอบสัปดาห์นี้จากหน้าที่เข้าถึงได้ — ควรตรวจสอบ security advisory ของ repository โดยตรงก่อนใช้งานเวอร์ชันเก่า) ด้านแคมเปญ supply-chain บน npm ที่ชื่อ <strong>Shai-Hulud</strong> ซึ่งยังถูกอ้างถึงว่าเป็นภัยต่อเนื่องของปี 2026 ในงาน Open Source Summit Europe เดือนนี้ ทีมจัดทำรายงานไม่พบหลักฐานคลื่นการโจมตีใหม่ที่ยืนยันได้เฉพาะในกรอบ 25–31 ต.ค. จึงไม่นำมาระบุเป็นเหตุการณ์ใหม่ของสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>🗄️ Database</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้ที่ยืนยันได้ <strong>duckdb/duckdb</strong> ปล่อย major version 2.0.0 "Cyanoptera" และ <strong>ClickHouse/ClickHouse</strong> ปล่อย build ต่อเนื่อง แต่ทั้งสองเกิดขึ้นก่อนวันที่ 24 ต.ค. ซึ่งอยู่นอกกรอบ 7 วันของรายงานนี้ (ดูรายงานสัปดาห์ก่อน) ทีมจัดทำรายงานไม่พบ release ใหม่ของฐานข้อมูลหลักที่ตกในกรอบ 25–31 ต.ค. จากการค้นคว้ารอบนี้</p>
+  </section>
+
+  <section>
+    <h2>🌐 Web Frameworks</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้ที่ยืนยันได้ <strong>fastapi/fastapi</strong> ปล่อย v0.162.0 (breaking change เรื่อง default ของ boolean form field) เมื่อ 23 ต.ค. ซึ่งอยู่นอกกรอบ 7 วันนี้เพียงหนึ่งวัน (ดูรายงานสัปดาห์ก่อน) <strong>remotion-dev/remotion</strong> และ <strong>gitroomhq/postiz-app</strong> ยังติด Trending ต่อเนื่องแต่จัดอยู่ในหมวด Developer Tools ด้านบนเนื่องจากเป็นเครื่องมือเฉพาะทางมากกว่าเฟรมเวิร์กเว็บทั่วไป</p>
+  </section>
+
+  <section>
+    <h2>📱 Mobile</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้สำหรับ Flutter, React Native หรือ Expo ที่ยืนยันกิจกรรมสำคัญในกรอบ 25–31 ต.ค. ได้จากรอบการค้นคว้านี้</p>
+  </section>
+
+  <section>
+    <h2>📦 New Releases</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Project</th><th>Version</th><th>Release Date</th><th>Highlights</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></td><td>v2.1.316</td><td>31 ต.ค. 2026</td><td>⚠️ ประกาศเลิกใช้ Fast mode บน Opus 4.8 (ถอดออก 30 พ.ย.), ตั้งค่า effort level ของ subagent</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></td><td>v2.1.314</td><td>30 ต.ค. 2026</td><td>⚠️ บล็อก Write/Edit/NotebookEdit ไม่ให้แก้ไฟล์นอก working directory, idle compaction ใน VS Code</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/cline/cline">cline/cline</a></td><td>SDK v0.2.0 / Desktop v0.0.49 / CLI v3.0.74</td><td>26 ต.ค. 2026</td><td>⚠️ SDK กระโดดเวอร์ชันจาก 0.0.95, reattach live session, เปิดตัว Cloud Sessions เต็มรูปแบบ</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></td><td>v0.66.0</td><td>27 ต.ค. 2026</td><td>เวอร์ชัน stable ล่าสุด พร้อม nightly build ต่อเนื่องทุกวัน</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a></td><td>v1.37.2 / v1.36.6 / v1.35.10 / v1.34.13</td><td>28 ต.ค. 2026</td><td>อัปเกรด Go 1.26.10, แก้ DRA taint eviction, Job reconciliation, request header limit</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/HKUDS/DeepTutor">HKUDS/DeepTutor</a></td><td>v1.7.0</td><td>28 ต.ค. 2026</td><td>modular install, learning workspace ใหม่, block notebook Dito, วิดีโอบทเรียนพากย์เสียง</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></td><td>v0.33.0rc0–rc3</td><td>26–31 ต.ค. 2026</td><td>release candidate ของเวอร์ชัน stable ถัดไป ยังไม่ปล่อยจริง</td><td>GitHub Tags</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><em>หมายเหตุ: Claude Code และ Gemini CLI ปล่อยหลายเวอร์ชัน/nightly build ในสัปดาห์นี้ ตารางด้านบนแสดงเฉพาะเวอร์ชันที่มีการเปลี่ยนแปลงสำคัญที่สุด</em></p>
+  </section>
+
+  <section>
+    <h2>🔥 Viral This Week</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars Growth</th><th>Fork Growth</th><th>เหตุผล</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></td><td>+12,838 (23.5% ของยอดรวม)</td><td>ไม่มีข้อมูลที่ยืนยันได้</td><td>Cloudflare เปิดสกิล security audit ของตัวเองเป็นโอเพนซอร์ส ตรงกับความสนใจเรื่อง agent skill security ที่พุ่งขึ้นทั้งสัปดาห์</td></tr>
+          <tr><td><a href="https://github.com/JetBrains/thinkrail">JetBrains/thinkrail</a></td><td>+5,495 (~82% ของยอดรวม)</td><td>ไม่มีข้อมูลที่ยืนยันได้</td><td>JetBrains เข้าตลาด agentic IDE อย่างเป็นทางการ อัตราเติบโตสูงสุดในกลุ่มที่ยืนยันได้สัปดาห์นี้</td></tr>
+          <tr><td><a href="https://github.com/makecindy/cindy">makecindy/cindy</a></td><td>+5,366 (~61% ของยอดรวม)</td><td>ไม่มีข้อมูลที่ยืนยันได้</td><td>AI agent แบบ "ใช้งานได้ทันที" เกิดใหม่ ติด Trending ทั้งในหน้า overall และ TypeScript</td></tr>
+          <tr><td><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></td><td>+12,910 (13.4% ของยอดรวม)</td><td>ไม่มีข้อมูลที่ยืนยันได้</td><td>ทางเลือกโอเพนซอร์สของ ElevenLabs ยังเติบโตต่อเนื่องเป็นสัปดาห์ที่สองติดต่อกัน</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box">
+      <strong>ข้อจำกัดของข้อมูล:</strong> หน้า GitHub Trending ไม่แสดงตัวเลข fork growth แบบ week-over-week แยกจากยอดรวม ตัวเลข "Stars Growth" ข้างต้นคือยอดดาวที่หน้า Trending ระบุว่าได้รับในสัปดาห์นี้โดยตรง ไม่ใช่การประมาณจากส่วนต่างยอดรวม 2 ช่วงเวลา
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Fastest Growing Projects</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars</th><th>Growth (สัปดาห์นี้)</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/JetBrains/thinkrail">JetBrains/thinkrail</a></td><td>6,691</td><td>+5,495 (~82%)</td><td>Agentic IDE</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/nightly-labs/openbot">nightly-labs/openbot</a></td><td>4,284</td><td>+3,410 (~80%)</td><td>AI Teammate Workspace</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/makecindy/cindy">makecindy/cindy</a></td><td>8,749</td><td>+5,366 (~61%)</td><td>AI Agent</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/Renhuai123/ziwei-doushu">Renhuai123/ziwei-doushu</a></td><td>11,653</td><td>+4,382 (~38%)</td><td>Niche Calculation Engine</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></td><td>54,484</td><td>+12,838 (~24%)</td><td>Agent Skill / Security</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>คำนวณเป็น % จากยอดดาวรวม ณ ปัจจุบันเทียบกับดาวที่เพิ่มในสัปดาห์นี้ที่ GitHub Trending ระบุไว้โดยตรง — ใช้บอกอัตราการเติบโตเชิงสัมพัทธ์ ไม่ใช่ขนาดสัมบูรณ์</p>
+  </section>
+
+  <section>
+    <h2>💎 Hidden Gems</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/anthropics/sandbox-runtime">anthropics/sandbox-runtime</a></div>
+      <p><strong>จุดเด่น:</strong> sandbox ระดับ OS ที่ไม่ต้องใช้ container ครอบคลุม macOS/Linux/Windows(alpha) ใช้ native primitive ของแต่ละระบบ<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> เป็น infrastructure ความปลอดภัยพื้นฐานที่ Claude Code ใช้จริง แต่ถูกบดบังด้วยสกิลที่หวือหวากว่าในสัปดาห์นี้<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการรัน agent/MCP server/คำสั่งที่ไม่น่าเชื่อถือแบบจำกัดสิทธิ์โดยไม่พึ่ง Docker<br>
+      <strong>Source:</strong> GitHub Trending + Repository</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/github/gh-aw">github/gh-aw</a></div>
+      <p><strong>จุดเด่น:</strong> เขียน workflow อัตโนมัติที่ขับเคลื่อนด้วย AI agent เป็นไฟล์ Markdown + YAML แล้วคอมไพล์เป็น GitHub Actions workflow มาตรฐาน<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ออกแบบให้ agent job เป็น read-only และ sandbox โดย default พร้อมระบบ "safe-outputs" ที่คุม permission การเขียนกลับ GitHub อย่างเข้มงวด — ตัวอย่างที่ดีของการออกแบบ agent automation อย่างปลอดภัย<br>
+      <strong>เหมาะกับใคร:</strong> ทีม platform/DevOps ที่ต้องการให้ agent ทำงานอัตโนมัติใน CI/CD โดยควบคุมความเสี่ยงได้<br>
+      <strong>Source:</strong> GitHub Repository</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/aws/agent-toolkit-for-aws">aws/agent-toolkit-for-aws</a></div>
+      <p><strong>จุดเด่น:</strong> MCP server, skill และ plugin ทางการจาก AWS ครบชุดสำหรับให้ agent ทำงานกับบริการ AWS<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> เป็นผู้สืบทอดของ AWS Labs MCP servers เดิม แต่ยังมีผู้ติดตามน้อย (3.4k ★) เทียบกับความสำคัญในฐานะ toolkit ทางการของผู้ให้บริการ cloud รายใหญ่<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ใช้ Claude Code, Codex, Cursor หรือ Kiro ทำงานกับ AWS เป็นประจำ<br>
+      <strong>Source:</strong> GitHub Trending + Repository</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/chaitin/SafeLine">chaitin/SafeLine</a></div>
+      <p><strong>จุดเด่น:</strong> web application firewall และ reverse proxy แบบ self-hosted<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> ได้รับความสนใจน้อยกว่าเครื่องมือ security ฝั่ง agent ที่กำลังมาแรงในสัปดาห์นี้ ทั้งที่ทำหน้าที่ป้องกันระดับ network/application ที่จำเป็นไม่น้อยกว่ากัน<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ต้องการ WAF โอเพนซอร์สสำหรับ self-host โดยไม่ต้องพึ่งบริการ cloud WAF<br>
+      <strong>Source:</strong> GitHub Trending</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/NVIDIA/SkillSpector">NVIDIA/SkillSpector</a></div>
+      <p><strong>จุดเด่น:</strong> สแกนช่องโหว่ของ "Agent Skill" ก่อนติดตั้ง ครอบคลุม 71 pattern ใน 17 หมวด<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> แม้มาจากแบรนด์ใหญ่อย่าง NVIDIA แต่ยังไม่เป็นที่รู้จักเท่าที่ควรเมื่อเทียบกับความเสี่ยง supply chain ของสกิล agent ที่กำลังโตเร็วมากในสัปดาห์นี้ (ดู Top Trending)<br>
+      <strong>เหมาะกับใคร:</strong> ทีมความปลอดภัยและนักพัฒนาที่ติดตั้งสกิล Claude Code/MCP จากแหล่งที่ไม่รู้จักบ่อย ๆ<br>
+      <strong>Source:</strong> GitHub Trending + Repository</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠 Developer Recommendations</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/NVIDIA/SkillSpector">NVIDIA/SkillSpector</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> สแกนความปลอดภัยของ Agent Skill ก่อนติดตั้ง<br>
+      <strong>เหมาะกับใคร:</strong> ใครก็ตามที่ติดตั้งสกิล Claude Code/Codex จากแหล่งนอกบริษัท<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (pip install, มี CLI พร้อมใช้)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> นิเวศสกิลโตเร็วมากในสัปดาห์นี้ เครื่องมือตรวจสอบก่อนติดตั้งจึงจำเป็นขึ้นเรื่อย ๆ<br>
+      GitHub: <a href="https://github.com/NVIDIA/SkillSpector">github.com/NVIDIA/SkillSpector</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/anthropics/sandbox-runtime">anthropics/sandbox-runtime</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> sandbox ระดับ OS จำกัด filesystem/network ของ process agent โดยไม่ใช้ container<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่รัน MCP server หรือสกิลที่ไม่น่าเชื่อถือ 100%<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย–ปานกลาง (npm install -g แต่ต้องตั้งค่า allowlist เอง)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ตอบโจทย์ความกังวลเรื่อง supply chain ของสกิลที่เป็นประเด็นหลักสัปดาห์นี้โดยตรง<br>
+      GitHub: <a href="https://github.com/anthropics/sandbox-runtime">github.com/anthropics/sandbox-runtime</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ตรวจจับ "AI slop" ใน UI ที่ coding agent สร้าง พร้อมคำสั่งปรับปรุงดีไซน์<br>
+      <strong>เหมาะกับใคร:</strong> ทีม frontend ที่ใช้ Claude Code/Cursor/Codex สร้าง UI เป็นประจำ<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (ติดตั้งเป็นสกิล/CLI)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ดาวเพิ่มกว่า 11,000 ในสัปดาห์เดียว สะท้อนความต้องการจริงของตลาด<br>
+      GitHub: <a href="https://github.com/pbakaus/impeccable">github.com/pbakaus/impeccable</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/cline/cline">cline/cline</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> autonomous AI coding agent ใน VS Code/CLI/Desktop รองรับหลายผู้ให้บริการโมเดล<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการ coding assistant แบบเปิดที่ไม่ผูกกับผู้ให้บริการเดียว<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (ติดตั้งผ่าน extension/npm)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เปิดตัว Cloud Sessions เต็มรูปแบบและอัปเดต SDK ครั้งใหญ่ในสัปดาห์นี้<br>
+      GitHub: <a href="https://github.com/cline/cline">github.com/cline/cline</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/aws/agent-toolkit-for-aws">aws/agent-toolkit-for-aws</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> MCP server/skill/plugin ทางการให้ agent ทำงานกับ AWS<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ deploy งานบน AWS และใช้ agent ช่วยพัฒนา<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง (ต้องตั้งค่า credential AWS)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เป็น toolkit ทางการที่ AWS ดูแลต่อเนื่อง ลดความเสี่ยงจากสกิลไม่ทราบที่มา<br>
+      GitHub: <a href="https://github.com/aws/agent-toolkit-for-aws">github.com/aws/agent-toolkit-for-aws</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> voice cloning, dubbing วิดีโอ และ transcription แบบรันในเครื่องทั้งหมด<br>
+      <strong>เหมาะกับใคร:</strong> ครีเอเตอร์/ทีมที่ต้องการทางเลือกโอเพนซอร์สของ ElevenLabs โดยไม่ส่งข้อมูลเสียงออกนอกเครื่อง<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย–ปานกลาง (มี Docker/แอปสำหรับทุกแพลตฟอร์ม)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เติบโตเร็วต่อเนื่อง 2 สัปดาห์ติด รองรับ 646 ภาษา<br>
+      GitHub: <a href="https://github.com/debpalash/VoiceStudio">github.com/debpalash/VoiceStudio</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Company Adoption</h2>
+    <ul>
+      <li><strong>Anthropic:</strong> <code>claude-code</code> (5 release ในสัปดาห์นี้), <code>sandbox-runtime</code>, <code>skills</code>, <code>knowledge-work-plugins</code> — ขยาย ecosystem สกิล/ความปลอดภัยของ agent ต่อเนื่อง</li>
+      <li><strong>Cloudflare:</strong> เปิด <code>security-audit-skill</code> เป็นโอเพนซอร์ส พร้อม <code>cloudflared</code> ที่ยังมีกิจกรรมสม่ำเสมอ</li>
+      <li><strong>NVIDIA:</strong> เปิด <code>SkillSpector</code> เครื่องมือสแกนความปลอดภัยของ agent skill</li>
+      <li><strong>AWS:</strong> เปิด <code>agent-toolkit-for-aws</code> อย่างเป็นทางการ ต่อจาก AWS Labs MCP servers เดิม</li>
+      <li><strong>Google:</strong> <code>gemini-cli</code> ปล่อย v0.66.0 และ nightly build ต่อเนื่อง</li>
+      <li><strong>Microsoft:</strong> เปิด <code>skill-recorder</code> เข้าสู่ตลาด agent skill tooling</li>
+      <li><strong>JetBrains:</strong> เปิด <code>thinkrail</code> agentic IDE ใหม่ เติบโตเร็วที่สุดในสัปดาห์นี้ (+82%)</li>
+      <li><strong>Docker:</strong> <code>compose</code> ยังมีกิจกรรมต่อเนื่อง</li>
+      <li><strong>CNCF/Kubernetes:</strong> ปล่อย patch พร้อมกัน 4 สายเวอร์ชันในสัปดาห์นี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>⚠️ Breaking Changes</h2>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/anthropics/claude-code">anthropics/claude-code v2.1.316</a></div>
+      <p>Fast mode บน Opus 4.8 ถูกประกาศเลิกใช้ และจะถูกถอดออกจริงวันที่ 30 พ.ย. 2026 — ผู้ใช้ควร migrate ไป Opus 5.5 ก่อนกำหนด เพื่อคงความเร็วในการตอบสนอง <strong>Migration guide:</strong> ไม่พบ guide แบบละเอียดในรอบการค้นคว้านี้ นอกจากคำแนะนำให้เปลี่ยนไปใช้ Opus 5.5</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/anthropics/claude-code">anthropics/claude-code v2.1.314</a></div>
+      <p>Write, Edit และ NotebookEdit ถูกบล็อกไม่ให้แก้ไฟล์ที่อยู่นอก working directory ได้โดยอัตโนมัติ — เป็นการเสริมความปลอดภัยที่อาจกระทบ workflow ที่พึ่งพาการแก้ไฟล์นอก working directory โดยตรงมาก่อน</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/cline/cline">cline/cline SDK v0.2.0</a></div>
+      <p>SDK กระโดดจาก v0.0.95 เป็น v0.2.0 พร้อมเปลี่ยนพฤติกรรมให้ reattach เข้า live session แทนการแทนที่ runtime เดิม การเปลี่ยนเลขเวอร์ชันแบบกระโดดนี้มักสื่อถึง breaking API change แต่ทีมจัดทำรายงานไม่พบ migration guide โดยละเอียดในหน้า release ที่เข้าถึงได้ — ผู้ใช้ SDK ควรตรวจสอบ release note ฉบับเต็มก่อนอัปเกรด</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Top Categories</h2>
+    <ol>
+      <li>AI Agent Skills (<code>SKILL.md</code> ecosystem)</li>
+      <li>AI Coding Agents / CLI</li>
+      <li>Agent Skill Security / Supply Chain</li>
+      <li>MCP Servers &amp; Toolkits</li>
+      <li>Cloud Native / Kubernetes</li>
+      <li>Agentic IDE</li>
+      <li>Open-Source Voice/Media AI</li>
+      <li>Developer Productivity Tools</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-num">35+</div><div class="stat-label">New Trending Repositories</div></div>
+      <div class="stat-tile"><div class="stat-num">7</div><div class="stat-label">New Releases</div></div>
+      <div class="stat-tile"><div class="stat-num">6</div><div class="stat-label">AI Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">2</div><div class="stat-label">MCP Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">20+</div><div class="stat-label">Agent/Skill Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">3</div><div class="stat-label">CLI Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">4</div><div class="stat-label">Cloud Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">6</div><div class="stat-label">Security Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Hidden Gems</div></div>
+      <div class="stat-tile"><div class="stat-num">3</div><div class="stat-label">Breaking Releases</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>เหตุผล</th><th>สิ่งที่ต้องติดตาม</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></td><td>อยู่ระหว่าง release candidate (rc0–rc3) ของ v0.33.0</td><td>วันที่ปล่อยเวอร์ชัน stable และรายการ breaking change ฉบับเต็ม</td><td>GitHub Tags</td></tr>
+          <tr><td><a href="https://github.com/anomalyco/opencode">anomalyco/opencode</a></td><td>repository ถูกย้ายจาก org <code>sst</code> มาเป็น <code>anomalyco</code> โดยไม่มีประกาศที่ยืนยันได้</td><td>คำประกาศทางการเรื่องการเปลี่ยน org และผลกระทบต่อผู้ใช้/แพ็กเกจที่พึ่งพา owner เดิม</td><td>GitHub Repository</td></tr>
+          <tr><td>Agent Skill Security Tooling (<a href="https://github.com/NVIDIA/SkillSpector">SkillSpector</a>, <a href="https://github.com/cloudflare/security-audit-skill">security-audit-skill</a>)</td><td>สองบริษัทใหญ่เปิดเครื่องมือตรวจสอบสกิล agent พร้อมกันในสัปดาห์เดียว</td><td>อัตราการนำไปใช้จริงและว่าจะมีมาตรฐานกลางสำหรับตรวจสอบสกิลเกิดขึ้นหรือไม่</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/JetBrains/thinkrail">JetBrains/thinkrail</a> &amp; <a href="https://github.com/makecindy/cindy">makecindy/cindy</a></td><td>agentic IDE/agent เกิดใหม่เติบโตเร็วที่สุดในสัปดาห์นี้</td><td>การเติบโตจะต่อเนื่องหรือเป็นกระแสชั่วคราว</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>GitHub</h3>
+    <p>github.com/trending (overall, Python, TypeScript, Go — weekly), github.com/anthropics/claude-code (Releases + CHANGELOG.md), github.com/google-gemini/gemini-cli/releases, github.com/cline/cline/releases, github.com/vllm-project/vllm (releases + tags), github.com/kubernetes/kubernetes/releases + CHANGELOG-1.37.md, github.com/cilium/cilium/releases, github.com/duckdb/duckdb/releases, github.com/fastapi/fastapi/releases และหน้า repository โดยตรงของแต่ละโครงการที่กล่าวถึงในรายงาน</p>
+    <h3>Official Documentation</h3>
+    <p>raw.githubusercontent.com (CHANGELOG.md ฉบับดิบของ claude-code และ kubernetes), npm package page ของ @google/gemini-cli</p>
+    <h3>Community (Trend Only)</h3>
+    <p>Last Week in Cloud Native newsletter (buttondown.com/lwcn — ใช้เป็นบริบทเท่านั้น ข้อมูลเก่ากว่ากรอบสัปดาห์นี้), SecurityWeek topic page, บทความวิเคราะห์โครงการ andrej-karpathy-skills จากหลายสื่อ (mer.vin, levelup.gitconnected.com) ใช้เพื่อยืนยันประวัติความเป็นมาของโครงการเท่านั้น</p>
+    <p><strong>UNCERTAIN:</strong> thehackernews.com, bleepingcomputer.com — ไม่สามารถเข้าถึงได้ในรอบการค้นคว้านี้ (network policy ของ session)</p>
+  </section>
+
+  <section>
+    <h2>🏷️ Labels</h2>
+    <div class="legend-grid">
+      <div>✅ <span>Official</span></div>
+      <div>⭐ <span>Trending</span></div>
+      <div>🚀 <span>Fast Growing</span></div>
+      <div>🔥 <span>Viral</span></div>
+      <div>🤖 <span>AI</span></div>
+      <div>🧠 <span>MCP / Agent</span></div>
+      <div>☁️ <span>Cloud Native</span></div>
+      <div>🔒 <span>Security</span></div>
+      <div>📦 <span>New Release</span></div>
+      <div>⚠️ <span>Breaking Change</span></div>
+      <div>💎 <span>Hidden Gem</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔮 สรุปแนวโน้มและสิ่งที่ควรจับตาสัปดาห์หน้า</h2>
+    <p>สัปดาห์นี้แสดงให้เห็นชัดว่า "Agent Skills" (<code>SKILL.md</code>) ได้กลายเป็นหน่วยพื้นฐานใหม่ของนิเวศ AI coding agent ไปแล้ว แทนที่จะเป็นแค่ plugin หรือ MCP server เพียงอย่างเดียว การที่บริษัทใหญ่อย่าง Cloudflare, NVIDIA, Microsoft และ AWS ต่างออกเครื่องมือหรือสกิลของตัวเองในกรอบเวลาใกล้เคียงกัน บ่งชี้ว่าตลาดกำลังเคลื่อนไปสู่ขั้นที่ต้องมีมาตรฐานด้านความปลอดภัยและการตรวจสอบ supply chain ของสกิลอย่างจริงจัง ไม่ต่างจากที่เคยเกิดกับ npm/PyPI package มาก่อน ฝั่ง AI coding agent หลัก (Claude Code, Gemini CLI, Cline) ยังคงแข่งกันด้วยความเร็วของ release และฟีเจอร์ cloud/sandboxing มากกว่าการแข่งโมเดลภาษาใหม่ สัปดาห์หน้าควรจับตาว่า vLLM จะปล่อย v0.33.0 เวอร์ชัน stable หรือไม่ การเปลี่ยนแปลงความเป็นเจ้าของของ opencode จาก sst ไปเป็น anomalyco จะมีคำอธิบายทางการหรือไม่ และกระแส agentic IDE ใหม่จาก JetBrains และผู้เล่นเล็กอย่าง cindy จะรักษาอัตราเติบโตนี้ไว้ได้นานเพียงใด</p>
+  </section>
+
+  <footer>
+    <p>natthasath-news · Weekly GitHub Trending Open Source Report · ข้อมูลทั้งหมดอ้างอิงจากแหล่งที่ระบุไว้ในหมวด Sources ณ วันที่เผยแพร่รายงาน อาจมีการเปลี่ยนแปลงภายหลัง</p>
+  </footer>
+</div>
+</body>
+</html>
