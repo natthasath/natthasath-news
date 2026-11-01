@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Bangkok Sales & Events Report — 1 Nov 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{ --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3; --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F; --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28); --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12); --warn:#B4590E; }
+@media (prefers-color-scheme: dark){ :root{ --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B; --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D; --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26); --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14); --warn:#E0A458; } }
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:1080px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:8px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+h2{ font-size:22px; font-weight:700; margin:36px 0 14px; padding-top:8px; }
+h3{ font-size:17px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:20px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 14px; max-width:78ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:74ch; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 18px; border:1px solid var(--line); border-radius:8px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; background:var(--surface); font-size:14.5px; }
+caption{ caption-side:top; text-align:left; padding:8px 12px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+th{ background:var(--surface-2); font-weight:600; font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.02em; white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+td a{ word-break:break-word; }
+
+.badge{ display:inline-block; font-size:12px; padding:1px 7px; border-radius:20px; background:var(--accent-soft); color:var(--accent); font-weight:600; margin-right:4px; }
+.note{ background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:6px; padding:12px 16px; font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; }
+.limit{ border-left-color:var(--warn); }
+.empty{ font-style:italic; color:var(--ink-faint); }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin:0 0 18px; }
+.stat{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+.deal{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin-bottom:12px; }
+.deal h4{ margin:0 0 6px; font-size:15.5px; }
+.deal .meta{ font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-faint); margin-top:6px; }
+
+.legend{ display:flex; flex-wrap:wrap; gap:10px 18px; font-size:13.5px; color:var(--ink-soft); }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 44, 2026</p>
+    <h1>🛍 Weekly Bangkok Sales & Events Report</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 1 Nov 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 25 ต.ค.–1 พ.ย. (ย้อนหลัง) / ถึง 15 พ.ย. 2569 (ล่วงหน้า)</span>
+      <span><b>Region:</b> กรุงเทพฯ และปริมณฑล</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>สัปดาห์นี้เป็นวันสุดท้ายของสองงานใหญ่ที่จัดต่อเนื่องจากสัปดาห์ก่อนคือ Book Expo Thailand 2026 และ gamescom asia x Thailand Game Show 2026 ที่ QSNCC ซึ่งทั้งคู่ปิดฉากวันนี้ (1 พ.ย.) ขณะที่ Bangkok Art Biennale 2026 ยังจัดต่อเนื่องทั่วเมืองไปจนถึงปลายเดือนกุมภาพันธ์ 2570 ฝั่งแคมเปญห้างยังเดินหน้าต่อเนื่องทั้ง ICONSIAM "Infinite Wonders" ครบรอบ 8 ปี (ใกล้ครบกำหนด 9 พ.ย.) และ EM District "SHOPAHOLIC"/"CRAZY DELICIOUS" (ถึง 26 พ.ย.) มองไปข้างหน้าช่วง 5–8 พ.ย. จะมีงาน Amazing Thailand Grand Diwali Festival 2026 ที่ริเวอร์พาร์ค ไอคอนสยาม คู่กับงานแสดงสินค้า B2B Bangkok Ad & Sign Expo/Pack & Label Expo ที่ IMPACT เมืองทองธานี แต่ยังไม่พบประกาศทางการของแคมเปญ 11.11 จาก Shopee/Lazada/TikTok Shop ทั้งที่เหลือเวลาไม่ถึง 2 สัปดาห์ และยังไม่พบประกาศแคมเปญปลายปี (Countdown/Magical Celebration) ของห้างใหญ่สำหรับฤดูกาล 2569–2570</p>
+  </section>
+
+  <section>
+    <h2>🎪 งานที่กำลังจัด</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>เวลา</th><th>ไฮไลท์</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">🔥</span>Book Expo Thailand 2026 (31st National Book Expo)</td>
+          <td>ฮอลล์ 5–7 ชั้น LG, ศูนย์การประชุมแห่งชาติสิริกิติ์ (QSNCC)</td>
+          <td>23 ต.ค.–1 พ.ย. 2569 <b>(วันสุดท้ายวันนี้)</b></td>
+          <td>10:00–21:00 น. (ตามประกาศผู้จัด)</td>
+          <td>จัดโดยสมาคมผู้จัดพิมพ์และผู้จำหน่ายหนังสือแห่งประเทศไทย (PUBAT) เข้าชมฟรี ธีม "Unread Messages" รวม 7 โซนหนังสือ</td>
+          <td><a href="https://www.timeout.com/bangkok/news/book-expo-thailand-2026-queen-sirikit-centre-090926" target="_blank" rel="noopener">Time Out Bangkok</a>, <a href="https://www.businesseventsthailand.com/tceb-event-preview/31st-national-book-expo-thailand/" target="_blank" rel="noopener">TCEB</a>, <a href="https://thailand.go.th/event-detail/54th-national-book-fair--24th-bangkok-international-book-fair-2026" target="_blank" rel="noopener">thailand.go.th (TAT)</a> ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🔥</span>gamescom asia x Thailand Game Show 2026</td>
+          <td>ฮอลล์ 1–4 ชั้น G (Entertainment Zone) + Plenary Hall (Business Area), QSNCC</td>
+          <td>29 ต.ค.–1 พ.ย. 2569 <b>(วันสุดท้ายวันนี้สำหรับโซนบันเทิง)</b></td>
+          <td>ตามประกาศผู้จัด</td>
+          <td>IT/Gaming Exhibition — พื้นที่จัดงานกว่า 35,000 ตร.ม. (+20% จากปีก่อน) มอบรางวัล Lifetime Achievement ให้ John Romero</td>
+          <td><a href="https://80.lv/articles/gamescom-asia-x-thailand-game-show-2026-unveils-major-lineup" target="_blank" rel="noopener">80.lv</a>, <a href="https://www.qsncc.com/en/whats-on/event-calendar/gamescom-asia-x-thailand-game-show-2026" target="_blank" rel="noopener">QSNCC (official)</a>, <a href="https://www.businesseventsthailand.com/tceb-event-preview/gamescom-asia-x-thailand-game-show-2026/" target="_blank" rel="noopener">TCEB</a> ✅</td>
+        </tr>
+        <tr>
+          <td><span class="badge">🔄</span>Bangkok Art Biennale 2026 (BAB 2026, ครั้งที่ 5)</td>
+          <td>ทั่วเมือง — วัดอรุณฯ, วัดโพธิ์, BACC, One Bangkok และอีกหลายจุด</td>
+          <td>29 ต.ค. 2569 – 28 ก.พ. 2570</td>
+          <td>ตามจุดจัดแสดงแต่ละแห่ง</td>
+          <td>Exhibition — นิทรรศการศิลปะร่วมสมัยทั่วเมือง ธีม "Angels and Mara"</td>
+          <td><a href="https://www.thailand.go.th/event-detail/bangkok-art-biennale-2026-bab-2026" target="_blank" rel="noopener">thailand.go.th (TAT)</a>, <a href="https://www.tatnews.org/?p=88749" target="_blank" rel="noopener">TAT News</a> ✅</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">งานที่จบไปแล้วก่อนวันนี้และตัดออกจากรายงาน: World Travel & Culture Expo 2026 ร่วมกับ TAAPE 2026 และ Thailand Billiards Expo 2026 ที่ IMPACT เมืองทองธานี (ปิด 31 ต.ค.), MBK Education Plus และ ASEAN Shopping Festival 2026 (ปิด 31 ต.ค.)</div>
+  </section>
+
+  <section>
+    <h2>📅 งานที่กำลังจะมาถึง (7–14 วัน)</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>ประเภท</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Amazing Thailand Grand Diwali Festival 2026 (ICONSIAM edition) <span class="badge">❓</span></td>
+          <td>River Park ชั้น G, ICONSIAM</td>
+          <td>6–8 พ.ย. 2569 (ส่วนหนึ่งของเทศกาลทั่วประเทศ 3–29 พ.ย. 2569 ครอบคลุมกรุงเทพฯ พัทยา ภูเก็ต)</td>
+          <td>Lifestyle/Cultural Shopping Event — จัดร่วมกับสถานเอกอัครราชทูตอินเดียประจำประเทศไทย ฉลองวาระ 80 ปีความสัมพันธ์ทางการทูตไทย–อินเดีย เข้าชมฟรี</td>
+          <td><a href="https://www.thaipost.net/economy-news/1096930/" target="_blank" rel="noopener">Thai Post</a>, <a href="https://www.thansettakij.com/social-biz/672449" target="_blank" rel="noopener">Thansettakij</a> ❓ (ยืนยันข้ามแหล่งข่าวแล้ว แต่ยังไม่พบประกาศซ้ำจากเว็บไซต์ทางการ iconsiam.com ในรอบนี้ — เว็บไซต์เข้าถึงไม่ได้ในสิ่งแวดล้อมนี้)</td>
+        </tr>
+        <tr>
+          <td>Bangkok Ad & Sign Expo 2026 / Bangkok Pack & Label Expo 2026</td>
+          <td>ฮอลล์ 6–7, IMPACT Exhibition Center เมืองทองธานี, นนทบุรี</td>
+          <td>5–8 พ.ย. 2569</td>
+          <td>Trade Fair (B2B) — งานแสดงสินค้าป้ายโฆษณา/สื่อ Out-of-Home และบรรจุภัณฑ์/ฉลากสินค้า จัดร่วมกัน 2 งานบนพื้นที่กว่า 10,000 ตร.ม. เข้าชมฟรี (กลุ่มเป้าหมายหลักคือผู้ประกอบการ)</td>
+          <td><a href="https://www.businesseventsthailand.com/tceb-event-preview/bangkok-ad-sign-expo-2026/" target="_blank" rel="noopener">TCEB</a>, IMPACT Event Calendar (ผ่าน WebSearch — เว็บไซต์ impact.co.th เข้าถึงไม่ได้ในสิ่งแวดล้อมนี้) ✅</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">หมายเหตุ: Thailand Smart City Expo 2026 (18–20 พ.ย., QSNCC) และ Life Expo 2026 (27–29 พ.ย.) อยู่นอกกรอบเวลา 7–14 วันของรายงานนี้เล็กน้อย ดู Watch List</div>
+  </section>
+
+  <section>
+    <h2>💸 โปรโมชันตามหมวด</h2>
+
+    <h3>💻 Electronics & IT</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ — ดู gamescom asia x Thailand Game Show 2026 ในหมวดงานที่กำลังจัด (วันสุดท้ายวันนี้)</p>
+
+    <h3>👕 Fashion</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>🛋 Home & Furniture</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>🍜 Food & Beverage</h3>
+    <p style="max-width:78ch;">ดูรายละเอียด EM District "CRAZY DELICIOUS" ในหมวดโปรโมชันศูนย์การค้า</p>
+
+    <h3>💄 Health & Beauty</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>🎁 Other</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้ — ดู Amazing Thailand Grand Diwali Festival 2026 ในหมวดงานที่กำลังจะมาถึง</p>
+  </section>
+
+  <section>
+    <h2>🏬 โปรโมชันศูนย์การค้า</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>ศูนย์การค้า</th><th>สาขา</th><th>โปรโมชัน</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>ICONSIAM <span class="badge">🔄</span></td><td>ICONSIAM / ICS / Siam Takashimaya</td><td>"Infinite Wonders" 8th Anniversary — ลุ้นรางวัล SIAM Gift Card และทองคำแท่ง มูลค่ารวมกว่า 10 ล้านบาทตลอดแคมเปญ <b>(ใกล้ครบกำหนด)</b></td><td>21 ก.ย.–9 พ.ย. 2569</td><td><a href="https://www.brandbuffet.in.th/2026/08/the-8th-anniversary-iconsiam/" target="_blank" rel="noopener">Brand Buffet</a>, marketeeronline.co, naewna.com ✅</td></tr>
+        <tr><td>EM District (EmSphere/EmQuartier/EMPORIUM) <span class="badge">🔄</span></td><td>ทั้ง 3 ศูนย์</td><td>"SHOPAHOLIC" — สิทธิประโยชน์การช้อปปิ้งร่วมกับบัตร ttb และ Krungsri รวมมูลค่าคูปองสูงสุด 36,000 บาท</td><td>1 ต.ค.–26 พ.ย. 2569</td><td><a href="https://marketeeronline.co/archives/492089" target="_blank" rel="noopener">Marketeer</a>, <a href="https://www.naewna.com/n/?p=109125" target="_blank" rel="noopener">แนวหน้า</a>, brandbuffet.in.th ✅</td></tr>
+        <tr><td>EM District (EmSphere/EmQuartier/EMPORIUM) <span class="badge">🔄</span></td><td>ทั้ง 3 ศูนย์</td><td>"CRAZY DELICIOUS" — โปรโมชันร้านอาหารร่วมกับบัตร Krungsri</td><td>1 ต.ค.–26 พ.ย. 2569</td><td><a href="https://marketeeronline.co/archives/492089" target="_blank" rel="noopener">Marketeer</a>, naewna.com ✅</td></tr>
+        <tr><td>EmSphere <span class="badge">🔄</span></td><td>EmSphere</td><td>M Point Universe — แคมเปญสะสมคะแนน/สิทธิพิเศษ <b>(ใกล้ครบกำหนด)</b></td><td>1 ต.ค.–5 พ.ย. 2569</td><td><a href="https://emsphere.co.th/promotion-m-point-universe-2026/" target="_blank" rel="noopener">EmSphere (official)</a> ❓ (สืบทอดการยืนยันจากรายงานสัปดาห์ก่อน ยังไม่เปิดหน้าตรงได้ซ้ำในรอบนี้)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty">CentralWorld, Siam Paragon/Center/Discovery, MBK Center, Terminal 21, The Mall, Robinson, Central, Big C, Lotus's, Makro: ไม่พบโปรโมชันใหม่ที่ระบุวันที่ชัดเจนและยืนยันแหล่งที่มาได้เพิ่มเติมในสัปดาห์นี้ — ควรตรวจสอบ Facebook/LINE OA ของแต่ละห้างโดยตรง</p>
+  </section>
+
+  <section>
+    <h2>🛒 E-Commerce Campaigns</h2>
+    <p class="empty">ไม่มีข้อมูลสำคัญที่ยืนยันได้ในสัปดาห์นี้ — ยังไม่พบประกาศทางการของแคมเปญ 11.11 ปี 2569 จาก Shopee, Lazada หรือ TikTok Shop ประเทศไทย ทั้งที่วันที่ 11 พ.ย. อยู่ในกรอบเวลารายงานนี้แล้ว ผลการค้นหาพบเพียงข่าว/ข้อมูลของแคมเปญปีก่อน ๆ (เช่น Lazada 11.11 ปี 2020, TikTok Shop 11.11 ที่ไม่ระบุปีชัดเจน) ซึ่งไม่ผ่านเกณฑ์การตรวจสอบของรายงานนี้ — ดู Watch List</p>
+  </section>
+
+  <section>
+    <h2>📰 Brand News</h2>
+
+    <h3>New Store</h3>
+    <p style="max-width:78ch;">ไม่มีข้อมูลสำคัญใหม่ในสัปดาห์นี้ — TSUTAYA BOOKSTORE สาขาแรกในไทยที่ One Bangkok มีกำหนดเปิด 20 ต.ค. 2569 ตามประกาศ แต่ยังไม่พบข่าวยืนยันการเปิดให้บริการจริง (ผ่านมาแล้ว 12 วัน) ดู Watch List</p>
+
+    <h3>Campaign</h3>
+    <p>ดูรายละเอียด ICONSIAM Infinite Wonders 8th Anniversary และ EM District SHOPAHOLIC/CRAZY DELICIOUS ในหมวดโปรโมชันศูนย์การค้าข้างต้น</p>
+
+    <h3>Seasonal Promotion</h3>
+    <p>ดูรายละเอียด Amazing Thailand Grand Diwali Festival 2026 (ICONSIAM, 6–8 พ.ย.) ในหมวดงานที่กำลังจะมาถึง</p>
+
+    <h3>Limited-Time Sale</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญเพิ่มเติมในช่วงสัปดาห์นี้ นอกเหนือจากที่ระบุในหมวดงานที่กำลังจัดและโปรโมชันศูนย์การค้า</p>
+
+    <h3>Product Launch</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงกรอบเวลารายงานนี้ — Pokémon Center Bangkok ที่ CentralWorld ยังคงกำหนดเปิดเดือนธันวาคม 2569 (ยืนยัน Shaymin เป็น Pokémon สัญลักษณ์ตามข่าวเดือนกันยายน 2569) อยู่นอกกรอบเวลา 7–14 วันของรายงานนี้ ดู Watch List</p>
+  </section>
+
+  <section>
+    <h2>📍 แนะนำตามพื้นที่</h2>
+    <ul>
+      <li><b>กรุงเทพฯ ชั้นใน:</b> Book Expo Thailand 2026 (QSNCC, วันสุดท้ายวันนี้), gamescom asia x Thailand Game Show 2026 (QSNCC, วันสุดท้ายวันนี้), Bangkok Art Biennale 2026 (ทั่วเมือง, ต่อเนื่องถึง ก.พ. 2570), ICONSIAM Infinite Wonders 8th Anniversary (ถึง 9 พ.ย.), Amazing Thailand Grand Diwali Festival 2026 ที่ไอคอนสยาม (6–8 พ.ย.), EM District SHOPAHOLIC/CRAZY DELICIOUS/M Point Universe</li>
+      <li><b>กรุงเทพฯ เหนือ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>กรุงเทพฯ ตะวันออก:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>กรุงเทพฯ ตะวันตก:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นนทบุรี:</b> Bangkok Ad & Sign Expo 2026 / Bangkok Pack & Label Expo 2026 ที่ IMPACT เมืองทองธานี (5–8 พ.ย. 2569)</li>
+      <li><b>ปทุมธานี:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรปราการ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรสาคร:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นครปฐม:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💡 Best Deals</h2>
+    <div class="deal">
+      <h4>📖 Book Expo Thailand 2026 (31st National Book Expo)</h4>
+      <p style="margin:0;">งานหนังสือประจำปีที่ QSNCC เข้าชมฟรี ธีม "Unread Messages" รวม 7 โซนหนังสือ วันนี้เป็นวันสุดท้ายของงาน เหมาะสำหรับคอหนังสือที่ยังไม่ได้ไป</p>
+      <div class="meta">ระยะเวลา: 23 ต.ค.–1 พ.ย. 2569 · Source: Time Out Bangkok, TCEB, thailand.go.th</div>
+    </div>
+    <div class="deal">
+      <h4>👑 ICONSIAM "Infinite Wonders" 8th Anniversary</h4>
+      <p style="margin:0;">แคมเปญฉลองครบรอบ 8 ปีของ ICONSIAM ลุ้นรางวัล SIAM Gift Card และทองคำแท่งมูลค่ารวมกว่า 10 ล้านบาท เหลือเวลาอีกราวสัปดาห์เดียวก่อนครบกำหนด</p>
+      <div class="meta">ระยะเวลา: 21 ก.ย.–9 พ.ย. 2569 · Source: Brand Buffet, marketeeronline.co, naewna.com</div>
+    </div>
+    <div class="deal">
+      <h4>🛍 EM District "SHOPAHOLIC" & "CRAZY DELICIOUS"</h4>
+      <p style="margin:0;">แคมเปญรวมช้อปปิ้ง-ดินนิ่งที่ Emporium, EmQuartier และ EmSphere มูลค่าคูปองรวมสูงสุด 36,000 บาท ร่วมกับบัตร ttb และ Krungsri เหลือเวลาอีกเกือบ 4 สัปดาห์</p>
+      <div class="meta">ระยะเวลา: 1 ต.ค.–26 พ.ย. 2569 · Source: Marketeer, แนวหน้า, Brand Buffet</div>
+    </div>
+    <div class="deal">
+      <h4>🪔 Amazing Thailand Grand Diwali Festival 2026 (ICONSIAM)</h4>
+      <p style="margin:0;">งานเทศกาลวัฒนธรรมอินเดีย-ไทยที่ River Park ไอคอนสยาม เข้าชมฟรี ฉลอง 80 ปีความสัมพันธ์ทางการทูตไทย-อินเดีย เหมาะสำหรับครอบครัวและผู้สนใจวัฒนธรรม</p>
+      <div class="meta">ระยะเวลา: 6–8 พ.ย. 2569 · Source: Thai Post, Thansettakij</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📅 Event Calendar</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>วันที่</th><th>งาน</th><th>สถานที่</th><th>ประเภท</th></tr></thead>
+      <tbody>
+        <tr><td>21 ก.ย.–9 พ.ย.</td><td>ICONSIAM Infinite Wonders 8th Anniversary 🔄</td><td>ICONSIAM</td><td>Mall Promotion</td></tr>
+        <tr><td>1 ต.ค.–26 พ.ย.</td><td>EM District SHOPAHOLIC / CRAZY DELICIOUS 🔄</td><td>Emporium, EmQuartier, EmSphere</td><td>Mall Promotion</td></tr>
+        <tr><td>1 ต.ค.–5 พ.ย.</td><td>EmSphere M Point Universe 🔄</td><td>EmSphere</td><td>Mall Promotion</td></tr>
+        <tr><td>23 ต.ค.–1 พ.ย.</td><td>Book Expo Thailand 2026 (31st)</td><td>QSNCC</td><td>Book Fair</td></tr>
+        <tr><td>29 ต.ค.–1 พ.ย.</td><td>gamescom asia x Thailand Game Show 2026</td><td>QSNCC</td><td>IT/Gaming Exhibition</td></tr>
+        <tr><td>เริ่ม 29 ต.ค. (ถึง 28 ก.พ. 2570)</td><td>Bangkok Art Biennale 2026 (BAB 2026) 🔄</td><td>ทั่วเมือง</td><td>Exhibition</td></tr>
+        <tr><td>5–8 พ.ย.</td><td>Bangkok Ad & Sign Expo 2026 / Pack & Label Expo 2026</td><td>IMPACT เมืองทองธานี</td><td>Trade Fair</td></tr>
+        <tr><td>6–8 พ.ย.</td><td>Amazing Thailand Grand Diwali Festival 2026 (ICONSIAM edition)</td><td>ICONSIAM</td><td>Lifestyle/Cultural Event</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">3</div><div class="lbl">Events</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Exhibitions</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Trade Fairs</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Promotions</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Mall Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Brand Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">E-Commerce Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New Store Openings</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <ul>
+      <li><b>แคมเปญ 11.11 ของ Shopee / Lazada / TikTok Shop ในตลาดไทย</b> — ยังไม่พบประกาศทางการสำหรับปี 2569 ทั้งที่เหลือเวลาไม่ถึง 2 สัปดาห์ก่อนวันที่ 11 พ.ย. ซึ่งอยู่ในกรอบเวลารายงานถัดไป ควรตรวจสอบกับ shopee.co.th, lazada.co.th และ tiktok.com/th โดยตรงด่วนในสัปดาห์หน้า</li>
+      <li><b>แคมเปญปลายปี/เทศกาลฤดูกาล (Countdown / Magical Celebration) ของห้างใหญ่</b> — ICONSIAM, Siam Paragon/Siam Center/Siam Discovery และ CentralWorld ยังไม่มีประกาศสำหรับฤดูกาล 2569–2570 ในรอบนี้ ทั้งที่ปีก่อนหน้าเริ่มประกาศและเริ่มแคมเปญตั้งแต่กลางเดือนพฤศจิกายน ควรติดตามใกล้ชิดในสัปดาห์หน้า</li>
+      <li><b>TSUTAYA BOOKSTORE ที่ One Bangkok</b> — มีกำหนดเปิดสาขาแรกในไทยวันที่ 20 ต.ค. 2569 แต่ยังไม่พบข่าวยืนยันว่าเปิดให้บริการจริงตามกำหนด (ผ่านมาแล้ว 12 วัน) ควรตรวจสอบสถานะล่าสุด</li>
+      <li><b>Pokémon Center Bangkok (CentralWorld)</b> — ยืนยันกำหนดเปิดเดือนธันวาคม 2569 พร้อม Shaymin เป็น Pokémon สัญลักษณ์ (สาขานอกญี่ปุ่นที่ใหญ่ที่สุด) ยังไม่มีวันที่แน่นอน ใกล้เข้าสู่กรอบเวลารายงานหลักแล้ว ควรติดตามใกล้ชิด</li>
+      <li><b>Thailand Smart City Expo 2026 (18–20 พ.ย., QSNCC) และ Life Expo 2026 (27–29 พ.ย.)</b> — อยู่นอกกรอบเวลา 7–14 วันของรายงานนี้เล็กน้อย ควรนำเข้ารายงานหลักในสัปดาห์หน้า</li>
+      <li><b>EmSphere M Point Universe</b> — ใกล้ครบกำหนด 5 พ.ย. 2569 ควรตรวจสอบว่ามีการขยายเวลาหรือเปลี่ยนแปลงเงื่อนไขหรือไม่ เนื่องจากยืนยันซ้ำจากเว็บไซต์ทางการไม่ได้ต่อเนื่องหลายสัปดาห์แล้ว</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <p>qsncc.com, thailand.go.th (TAT), tatnews.org</p>
+    <h3>Event Platforms</h3>
+    <p>businesseventsthailand.com (TCEB) (ไม่พบรายการเพิ่มเติมจาก Eventpop/Ticketmelon ที่เข้าถึงได้ตรงในกรอบเวลานี้ — ใช้ WebSearch แทนตามขั้นตอนสำรอง)</p>
+    <h3>Trusted Sources</h3>
+    <p>Time Out Bangkok, Thai Post (thaipost.net), Thansettakij, Marketeer, Brand Buffet, แนวหน้า (naewna.com), Khaosod English, 80.lv</p>
+    <h3>Community (Verification Only)</h3>
+    <p>mitihoon.com</p>
+    <div class="note limit">
+      <b>ข้อจำกัดของข้อมูล:</b> เว็บไซต์ทางการของห้าง/ผู้จัดงานหลายแห่งเข้าถึงโดยตรงไม่ได้ในสิ่งแวดล้อมของรอบเก็บข้อมูลนี้ (iconsiam.com, onesiam.com, impact.co.th) จึงใช้ WebSearch แทนตามขั้นตอนสำรอง รายการ Amazing Thailand Grand Diwali Festival 2026 ที่ ICONSIAM ยืนยันได้จาก 2 แหล่งข่าวอิสระ (Thai Post, Thansettakij) แต่ยังไม่มีแหล่งทางการยืนยันซ้ำ จึงมีเครื่องหมาย ❓ ประกอบ ส่วน EmSphere M Point Universe สืบทอดการยืนยันจากรายงานสัปดาห์ก่อนต่อเนื่องหลายรอบแล้วและยังยืนยันซ้ำไม่ได้ในรอบนี้ ไม่พบโปรโมชันใหม่ที่ยืนยันได้ที่ CentralWorld, Siam Paragon/Center/Discovery, MBK Center, Terminal 21 และห้างค้าปลีกขนาดใหญ่ (Big C, Lotus's, Makro) ในสัปดาห์นี้ และไม่พบประกาศทางการของแคมเปญ 11.11 หรือแคมเปญปลายปีของห้างใหญ่สำหรับฤดูกาล 2569–2570 ดูรายละเอียดใน Watch List<br><br>
+      <b>UNCERTAIN:</b> iconsiam.com, onesiam.com, impact.co.th, centralworld.co.th — ไม่สามารถเปิดหน้าเว็บโดยตรงได้ในรอบเก็บข้อมูลนี้ (DNS/network resolution error ของสิ่งแวดล้อมนี้) ใช้ผลค้นหาแทน ควรมีการตรวจสอบซ้ำผ่านการเปิดหน้าเว็บโดยตรงในรอบถัดไปหากเป็นไปได้
+    </div>
+  </section>
+
+  <section>
+    <h2>🔎 แนวโน้มสัปดาห์นี้</h2>
+    <p>สัปดาห์นี้เป็นจุดเปลี่ยนจากพีคใหญ่ปลายเดือนตุลาคมสู่ช่วงสั้น ๆ ก่อนเข้าสู่ไฮซีซั่นปลายปี Book Expo Thailand 2026 และ gamescom asia x Thailand Game Show 2026 ปิดฉากพร้อมกันในวันนี้ (1 พ.ย.) ขณะที่ Bangkok Art Biennale 2026 ยังจัดต่อเนื่องยาวไปจนถึงเดือนกุมภาพันธ์ 2570 สะท้อนการลงทุนระยะยาวของเมืองในกิจกรรมเชิงวัฒนธรรมมากกว่ากิจกรรมระยะสั้น แคมเปญห้างใหญ่ยังคงรูปแบบข้ามเดือนต่อเนื่องเช่นเดิม ทั้ง ICONSIAM Infinite Wonders และ EM District SHOPAHOLIC/CRAZY DELICIOUS ซึ่งใกล้ครบกำหนดในช่วงต้นถึงปลายเดือนพฤศจิกายน มองไปข้างหน้า งาน Amazing Thailand Grand Diwali Festival 2026 ที่ไอคอนสยาม (6–8 พ.ย.) จะเป็นจุดเด่นด้านวัฒนธรรมและการท่องเที่ยวเชิงพาณิชย์ ส่วนฝั่ง B2B จะมี Bangkok Ad & Sign Expo/Pack & Label Expo ที่ IMPACT จัดคู่กัน จุดที่ควรติดตามใกล้ชิดเป็นพิเศษคือยังไม่มีสัญญาณแคมเปญ 11.11 จากอีคอมเมิร์ซรายใหญ่ (Shopee, Lazada, TikTok Shop) ทั้งที่ใกล้ถึงวันจริงมากแล้ว และยังไม่มีประกาศแคมเปญปลายปี/เทศกาลฤดูกาลของห้างใหญ่สำหรับปี 2569–2570 ซึ่งทั้งสองประเด็นนี้มักเป็นแรงขับเคลื่อนการบริโภคสำคัญของไตรมาสสุดท้ายของปี และควรปรากฏชัดเจนขึ้นในรายงานสัปดาห์ถัดไป</p>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="legend">
+      <span>✅ Official</span>
+      <span>🎪 Event</span>
+      <span>🛍 Promotion</span>
+      <span>🏬 Shopping Mall</span>
+      <span>🛒 E-Commerce</span>
+      <span>🔄 Continuing Event</span>
+      <span>🔥 Popular Event</span>
+      <span>❓ Information Incomplete</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Bangkok Sales & Events Report · 1 Nov 2026 (Week 44)</p>
+    <p><a href="/">Back to Home</a> · <a href="./">Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>
