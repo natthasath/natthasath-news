@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 1 พฤศจิกายน 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 26 ตุลาคม – 1 พฤศจิกายน 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 44</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>🏁 สัปดาห์นี้ Kimi Antonelli (Mercedes) คว้าชัยชนะใน United States Grand Prix ที่ Austin (26 ตุลาคม) เป็นชัยชนะที่ 9 ของฤดูกาล นำ Charles Leclerc (Ferrari) และ Max Verstappen (Red Bull Racing) ขึ้นโพเดียม ส่งผลให้ Antonelli นำตารางคะแนนผู้ขับขี่ด้วย 365 คะแนน ทิ้งห่าง George Russell เพื่อนร่วมทีม 123 คะแนน และ Lewis Hamilton 124 คะแนน แต่ยังไม่สามารถปิดแชมป์โลกได้ในสนามนี้ ต่อมาในสุดสัปดาห์ Mexico City Grand Prix (30 ต.ค. – 1 พ.ย.) ผล Qualifying (31 ตุลาคม) สร้างเซอร์ไพรส์ครั้งใหญ่เมื่อ Lewis Hamilton คว้าโพลแรกให้ Ferrari ในการควอลิฟายกรังด์ปรีซ์ปกติ เอาชนะ George Russell ไปเพียง 0.009 วินาที โดย Antonelli ทำได้อันดับ 5 ซึ่งเพียงพอให้เขามีสิทธิ์ลุ้นคว้าแชมป์โลกครั้งแรกได้ทันทีหากจบอันดับ 9 หรือดีกว่าในการแข่งขัน Race ที่จะจัดขึ้นวันที่ 1 พฤศจิกายน ซึ่ง<strong>ยังไม่จบการแข่งขัน ณ เวลาที่จัดทำรายงานนี้</strong> จึงยังไม่มีผล Race หรือการเปลี่ยนแปลงตารางคะแนนจาก Mexico City ให้รายงานในรอบนี้</p>
+    </div>
+    <div class="note">🔄 ข่าวต่อเนื่อง: โอกาสคว้าแชมป์โลกครั้งแรกของ Kimi Antonelli เป็นประเด็นต่อเนื่องจากสัปดาห์ก่อน ซึ่งเลื่อนจาก United States GP มาสู่ Mexico City GP ในสัปดาห์นี้</div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">
+      ✅ ตารางคะแนนนี้เป็นข้อมูลหลังจบ United States Grand Prix (26 ตุลาคม) — การแข่งขัน Mexico City Grand Prix ยังไม่จบ ณ เวลาที่จัดทำรายงาน จึงยังไม่มีการเปลี่ยนแปลงคะแนนเพิ่มเติม
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>365</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>242</td>
+          <td>-123</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>241</td>
+          <td>-124</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>236</td>
+          <td>-129</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>233</td>
+          <td>-132</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>211</td>
+          <td>-154</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>144</td>
+          <td>-221</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>105</td>
+          <td>-260</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>🇳🇿 Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>77</td>
+          <td>-288</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>🇫🇷 Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>42</td>
+          <td>-323</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา (cross-checked จากผลการแข่งขันและคะแนนสะสมที่สอดคล้องกัน): <a href="https://www.formula1.com/en/latest/article/antonelli-surges-to-dominant-victory-in-united-states-grand-prix-ahead-of-leclerc-and-verstappen.6kmBQv9FNTW7LzkDj8S34j">Formula1.com</a> (ผลการแข่งขันและอันดับโพเดียม), <a href="https://www.karmactive.com/antonelli-wins-2026-us-grand-prix-f1-championship/">Karmactive</a>, <a href="https://depor.com/en/us-live/who-won-the-f1-united-states-grand-prix-2026-full-race-results-standings-nnda-nnrt-noticia/">Depor</a>, <a href="https://www.si.com/onsi/f1/news/f1-standings-and-results-after-the-2026-united-states-grand-prix">Sports Illustrated (SI.com)</a>, <a href="https://www.foxsports.com.mx/2026/10/25/gp-de-estados-unidos-2026-de-f1-asi-va-en-el-ranking-de-pilotos-y-campeonato-de-constructores-con-checo-perez/">Fox Sports México</a> — ตัวเลขคะแนนของแต่ละผู้ขับขี่สอดคล้องกันเมื่อคำนวณจากคะแนนที่ได้รับในการแข่งขัน (Antonelli +25, Leclerc +18, Verstappen +15, Hamilton +12, Norris +10, Hadjar +8, Piastri +6, Russell +4, Lawson +2, Gasly +1) บวกกับคะแนนสะสมก่อนหน้าจากรายงานสัปดาห์ที่แล้ว</div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">
+      ❓ ยืนยันได้ชัดเจนเฉพาะ 4 อันดับแรก — อันดับที่ 5 ลงไปมีตัวเลขขัดแย้งกันระหว่างแหล่งข้อมูล จึงงดแสดงอันดับ 5-11 ในรอบนี้ (ดูหมายเหตุข้อจำกัดท้ายรายงาน)
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>607</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>474</td>
+          <td>-133</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Red Bull Racing</td>
+          <td>355</td>
+          <td>-252</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>McLaren</td>
+          <td>355</td>
+          <td>-252</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.crash.net/f1/results/1108507/1/new-f1-championship-standings-after-united-states-grand-prix">Crash.net</a> ("New F1 championship standings after the United States Grand Prix"), ESPN Constructors Table — ทั้งสองแหล่งยืนยันตรงกันว่า Mercedes นำ Ferrari 133 คะแนน และ Red Bull Racing กับ McLaren คะแนนเท่ากันที่อันดับ 3</div>
+  </section>
+
+  <section>
+    <h2>🏁 ผลการแข่งขัน — United States Grand Prix (Circuit of the Americas, Austin)</h2>
+    <div class="note">✅ จัดขึ้นวันที่ 26 ตุลาคม 2026 เวลาประมาณ 03:00-05:00 น. ICT — ผลตรงกันจากหลายแหล่งข้อมูลอิสระ รวมถึง Formula1.com</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Driver</th>
+          <th>Team</th>
+          <th>Time / Status</th>
+          <th>Points</th>
+          <th>Fastest Lap</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>ชนะ (จากตำแหน่งโพล)</td>
+          <td>25</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>+13.078s</td>
+          <td>18</td>
+          <td>🏆</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>+17.485s</td>
+          <td>15</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>แซง Norris ขึ้น P4 ที่รอบ 51</td>
+          <td>12</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>—</td>
+          <td>10</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>หลุดจากกริดเริ่ม P3</td>
+          <td>8</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>—</td>
+          <td>6</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>รับโทษปรับเวลา 5 วินาที</td>
+          <td>4</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>🇳🇿 Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>—</td>
+          <td>2</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>🇫🇷 Pierre Gasly</td>
+          <td>Alpine</td>
+          <td>—</td>
+          <td>1</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>สรุป: เกิดเหตุการณ์หลายอย่างในรอบแรกของการแข่งขัน — Carlos Sainz ถูกบีบเข้าชนกำแพง, Oliver Bearman ปะทะกับ Pierre Gasly จนต้องออกจากการแข่งขัน, และ George Russell ปะทะกับ Oscar Piastri ที่โค้ง 12/13 ซึ่งสจ๊วตตัดสินว่า Russell ได้เปรียบจากการออกนอกแทร็ก จึงได้รับโทษปรับเวลา 5 วินาที (ลดจากบทลงโทษมาตรฐาน 10 วินาที เนื่องจากเป็นอุบัติเหตุในรอบแรก) ทำให้ Russell หลุดจากตำแหน่งบนโพเดียมมาจบที่ P8 ด้าน Franco Colapinto ออกจากการแข่งขันที่รอบ 38 และ Valtteri Bottas (Cadillac) ออกจากการแข่งขันเนื่องจากปัญหาเครื่องยนต์/กำลังขับ (รายงานจำนวนรอบที่ออกไม่ตรงกันระหว่างแหล่งข้อมูล คือรอบ 48 และ 51) Charles Leclerc ทำเวลาต่อรอบเร็วที่สุดของการแข่งขัน ซึ่งเป็น Fastest Lap ครั้งที่ 4 ของฤดูกาลของเขา ไม่พบข้อมูลยืนยันเรื่อง Safety Car หรือ Driver of the Day จากแหล่งข้อมูลที่ตรวจสอบได้ในรอบนี้</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.formula1.com/en/latest/article/antonelli-surges-to-dominant-victory-in-united-states-grand-prix-ahead-of-leclerc-and-verstappen.6kmBQv9FNTW7LzkDj8S34j">Formula1.com</a> ("Antonelli surges to dominant victory in United States Grand Prix ahead of Leclerc and Verstappen"), <a href="https://www.si.com/onsi/f1/news/f1-standings-and-results-after-the-2026-united-states-grand-prix">Sports Illustrated (SI.com)</a>, <a href="https://www.planetf1.com/news/f1-results-united-states-grand-prix-2026-race">PlanetF1</a>, <a href="https://www.silverstone.co.uk/news/f1-2026-united-states-grand-prix-results-antonelli-dominates-austin">Silverstone.co.uk</a>, <a href="https://www.planetf1.com/news/united-states-grand-prix-2026-george-russell-fia-penalty">PlanetF1 (โทษของ Russell)</a>, <a href="https://www.gpblog.com/en/news/fia-stewards-reveals-why-russell-escaped-a-harsher-punishment-at-us-gp">GPblog</a>, <a href="https://gmauthority.com/blog/2026/10/only-one-cadillac-f1-car-finished-2026-u-s-grand-prix/">GM Authority</a> (ปัญหาของ Bottas)</div>
+  </section>
+
+  <section>
+    <h2>⏱ Qualifying — Mexico City Grand Prix</h2>
+    <div class="note">✅ จัดขึ้นวันที่ 31 ตุลาคม 2026 เวลา 15:00 น. ตามเวลาท้องถิ่น Mexico City (ประมาณ 05:00 น. วันที่ 1 พฤศจิกายน ICT) ที่ Autódromo Hermanos Rodríguez — ผลตรงกันจากหลายแหล่งข้อมูลอิสระรวมถึง Formula1.com</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Driver</th>
+          <th>Team</th>
+          <th>Q3 Time</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>1:16.514</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>+0.009s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇳🇿 Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>บันทึก: Hamilton คว้าโพลที่ 105 ในอาชีพ และเป็นโพลแรกของเขากับ Ferrari ในเซสชันควอลิฟายกรังด์ปรีซ์แบบปกติ (ครั้งก่อนที่เคยคว้าโพลให้ Ferrari คือ Sprint Qualifying ที่จีน) เอาชนะ Russell ไปเพียง 0.009 วินาที นับเป็นโพลแรกของ Hamilton ในรูปแบบนี้นับตั้งแต่ Hungarian GP ปี 2023 ขณะที่ยังขับให้ Mercedes ด้าน Max Verstappen ซึ่งทำเวลาได้อันดับ 4 มีรายงานว่าได้รับโทษปรับกริดสตาร์ท 1 ตำแหน่ง ทำให้กริดสตาร์มจริงของ Antonelli ขยับขึ้นมาเป็น P4 แทน Verstappen — อย่างไรก็ตาม <strong>ไม่สามารถยืนยันเหตุผลของโทษปรับกริดนี้ได้อย่างชัดเจน</strong>จากแหล่งข้อมูลที่ตรวจสอบได้ในรอบนี้ และกริดสตาร์ทตำแหน่งที่ 9 เป็นต้นไปก็ยังไม่สามารถยืนยันได้ครบถ้วน (ดูหมายเหตุข้อจำกัดท้ายรายงาน) ผลควอลิฟายนี้ทำให้ Antonelli อยู่ในสถานะที่ดีมากสำหรับการคว้าแชมป์โลก เนื่องจากกติการะบุว่าเขาต้องการเพียงจบอันดับ 9 หรือดีกว่าในการแข่งขัน Race เพื่อปิดแชมป์โลกได้ทันที</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.formula1.com/en/latest/article/hamilton-clinches-first-pole-with-ferrari-in-qualifying-at-the-mexico-city-gp.4GffzFhlnOxOjbHHMc0AJI">Formula1.com</a> ("Lewis Hamilton clinches first pole with Ferrari in Qualifying at the Mexico City Grand Prix"), <a href="https://www.skysports.com/f1/news/13606015/mexico-city-gp-qualifying-lewis-hamilton-claims-first-pole-position-for-ferrari-by-edging-out-mercedes-george-russell">Sky Sports F1</a>, <a href="https://www.motorsport.com/f1/news/f1-mexico-gp-quali-report/10870286/">Motorsport.com</a>, <a href="https://www.autosport.com/f1/news/f1-mexico-gp-lewis-hamilton-beats-george-russell-and-charles-leclerc-to-pole/10870295/">Autosport</a>, <a href="https://www.planetf1.com/news/f1-results-mexico-city-grand-prix-2026-qualifying">PlanetF1</a>, <a href="https://sundayguardianlive.com/sports/f1-mexico-city-gp-2026-qualifying-results-lewis-hamilton-takes-first-ferrari-pole-as-kimi-antonelli-qualifies-fifth-check-full-grid-315152/">Sunday Guardian Live</a></div>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญประจำสัปดาห์</h2>
+
+    <h3>Penalties — โทษปรับเวลาของ Russell ที่ Austin</h3>
+    <p>George Russell ได้รับโทษปรับเวลา 5 วินาทีจากอุบัติเหตุรอบแรกกับ Oscar Piastri ที่ United States GP โดยสจ๊วตระบุว่า Russell ออกนอกแทร็กและได้เปรียบจากการกระทำดังกล่าว บทลงโทษมาตรฐานสำหรับกรณีนี้คือ 10 วินาที แต่ลดลงเหลือ 5 วินาที เนื่องจากเป็นอุบัติเหตุในรอบแรกของการแข่งขัน ส่งผลให้ Russell หลุดจากตำแหน่งบนโพเดียมมาจบที่ P8 Russell เรียกโทษนี้ว่า "ค่อนข้างไร้สาระ" (a bit ridiculous) ขณะที่ Toto Wolff หัวหน้าทีม Mercedes ก็แสดงความไม่พอใจต่อการตัดสินของสจ๊วตเช่นกัน</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.planetf1.com/news/united-states-grand-prix-2026-george-russell-fia-penalty">PlanetF1</a> ("FIA explains mitigating circumstances behind Russell US GP penalty decision"), <a href="https://www.planetf1.com/news/george-russell-fia-penalty-f1-2026-united-states-grand-prix">PlanetF1</a> (ปฏิกิริยาของ Russell), <a href="https://www.gpblog.com/en/news/fia-stewards-reveals-why-russell-escaped-a-harsher-punishment-at-us-gp">GPblog</a></div>
+
+    <h3>Penalties / Steward Decisions — โทษปรับกริดของ Verstappen ที่ Mexico City</h3>
+    <p>❓ หลายแหล่งข้อมูลรายงานตรงกันว่า Max Verstappen ได้รับโทษปรับกริดสตาร์ท 1 ตำแหน่งสำหรับการแข่งขัน Mexico City GP ซึ่งทำให้ Antonelli ขยับขึ้นมาเป็น P4 ในกริดสตาร์ทจริง แต่ไม่พบแหล่งข้อมูลใดระบุเหตุผลของโทษนี้อย่างชัดเจนในรอบการค้นหานี้ จึงงดสรุปสาเหตุ และควรตรวจสอบประกาศทางการของ FIA ก่อนการแข่งขันอีกครั้ง</p>
+
+    <h3>Driver Market / Team News</h3>
+    <p>❓ ไม่พบข่าวการย้ายทีมหรือสัญญานักแข่งใหม่ที่ยืนยันได้ภายใน 7 วันที่ผ่านมา (26 ตุลาคม - 1 พฤศจิกายน) ประเด็นอนาคตของหัวหน้าทีม Fred Vasseur ที่ Ferrari ซึ่งเป็นข่าวต่อเนื่องจากสัปดาห์ก่อน ไม่มีพัฒนาการใหม่ที่ยืนยันได้ในรอบการค้นหานี้ จึงไม่นำมารายงานซ้ำ</p>
+
+    <h3>Technical Updates</h3>
+    <p>❓ ไม่พบรายละเอียดอัปเกรดเทคนิคของทีมต่าง ๆ สำหรับ Mexico City GP 2026 ที่ยืนยันได้ชัดเจนจากแหล่งข้อมูลที่ตรวจสอบได้ในรอบนี้ (มีเพียงรายงานเชิงคาดการณ์ก่อนหน้าว่า Ferrari วางแผนนำอัปเกรดเพิ่มเติมมาใช้ต่อจาก United States GP แต่ไม่มีรายละเอียดที่ยืนยันแล้วสำหรับสนาม Mexico City) จึงงดแสดงรายละเอียดในหัวข้อนี้</p>
+
+    <h3>FIA & Regulations</h3>
+    <p>❓ ไม่พบ Technical Directive หรือการตัดสินด้านกฎข้อบังคับใหม่จาก FIA ที่ยืนยันได้ชัดเจนภายใน 7 วันที่ผ่านมา นอกเหนือจากการตัดสินโทษปรับรายบุคคลที่ US GP และ Mexico City GP ตามที่รายงานไว้ข้างต้น</p>
+  </section>
+
+  <section>
+    <h2>📈 วิเคราะห์ผลงานทีม</h2>
+
+    <div class="team-section">
+      <strong>Mercedes</strong> — Antonelli คว้าชัยชนะที่ Austin เป็นครั้งที่ 9 ของฤดูกาล และขยายช่องว่างนำ Russell เพื่อนร่วมทีมเป็น 123 คะแนน ที่ Mexico City ทีมทำได้ดีในการควอลิฟาย (Russell P2 ห่างโพลเพียง 0.009 วินาที, Antonelli P5→P4) ทีมยังคงนำตารางผู้สร้างรถอย่างห่างไกลด้วย 607 คะแนน นำ Ferrari 133 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Ferrari</strong> — Leclerc ขึ้นโพเดียมอันดับ 2 พร้อม Fastest Lap ที่ Austin ขณะที่ Hamilton แซง Norris ขึ้นมาจบ P4 สัปดาห์นี้ Ferrari สร้างเซอร์ไพรส์ด้วยการคว้าโพลแรกของทีมในการควอลิฟายกรังด์ปรีซ์ปกติที่ Mexico City โดย Hamilton เอาชนะ Russell เพียง 0.009 วินาที และ Leclerc ทำอันดับ 3 แสดงถึงฟอร์มที่แข็งแกร่งขึ้นในช่วงปลายฤดูกาล ทีมยังคงอันดับ 2 ผู้สร้างรถด้วย 474 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Red Bull Racing</strong> — Verstappen ขึ้นโพเดียมอันดับ 3 ที่ Austin แต่ที่ Mexico City ทำได้เพียงอันดับ 4 ในควอลิฟาย และมีรายงานว่าได้รับโทษปรับกริด 1 ตำแหน่ง (เหตุผลยังไม่ยืนยัน) ด้าน Hadjar หลุดจากกริดเริ่ม P3 มาจบ P6 ที่ Austin ทีมยังคงอันดับ 3 ผู้สร้างรถเท่ากับ McLaren ที่ 355 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>McLaren</strong> — Norris ถูก Hamilton แซงขึ้นมาจบ P5 ที่ Austin ขณะที่ Piastri จบ P7 ทีมควอลิฟายได้เพียง P6 (Norris) ที่ Mexico City ทีมยังคงอันดับ 3 ผู้สร้างรถเท่ากับ Red Bull ที่ 355 คะแนน และยังคงถูกไล่จี้อย่างใกล้ชิด
+    </div>
+    <div class="team-section">
+      <strong>Racing Bulls</strong> — Lawson ทำแต้มได้ที่ P9 ในการแข่งขัน Austin และควอลิฟายได้ P8 ที่ Mexico City ด้วยคะแนนรวม 77 คะแนนสำหรับ Lawson ในตารางผู้ขับขี่
+    </div>
+    <div class="team-section">
+      <strong>Alpine</strong> — Gasly ทำแต้มได้ 1 คะแนนจาก P10 ที่ Austin ทำให้คะแนนรวมของเขาขยับเป็น 42 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Aston Martin, Williams, Haas, Audi, Cadillac</strong> — ❓ ไม่พบข่าวเฉพาะทีมที่ยืนยันได้ชัดเจนสำหรับสัปดาห์นี้ นอกเหนือจากรายงานว่า Valtteri Bottas (Cadillac) ออกจากการแข่งขัน United States GP กลางทางเนื่องจากปัญหาด้านเครื่องยนต์/กำลังขับ (รายละเอียดจำนวนรอบที่ออกยังไม่ตรงกันระหว่างแหล่งข้อมูล)
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติ</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>ชัยชนะสะสมฤดูกาลนี้ (Antonelli):</strong> 9 ชัยชนะ (หลัง Austin)</div>
+      <div class="stat-card"><strong>Fastest Lap ที่ Austin:</strong> Charles Leclerc — ครั้งที่ 4 ของฤดูกาล</div>
+      <div class="stat-card"><strong>โพลที่ Mexico City:</strong> Lewis Hamilton — โพลที่ 105 ในอาชีพ, โพลแรกให้ Ferrari ในควอลิฟายกรังด์ปรีซ์ปกติ</div>
+      <div class="stat-card"><strong>ผู้นำแชมป์ชิปผู้ขับขี่:</strong> Kimi Antonelli — นำ Russell 123 คะแนน</div>
+      <div class="stat-card"><strong>ผู้นำแชมป์ชิปผู้สร้างรถ:</strong> Mercedes — นำ Ferrari 133 คะแนน</div>
+    </div>
+    <p class="note">❓ สถิติจากผล Race ของ Mexico City GP (ชัยชนะ, Podium, DNF) ยังไม่มีให้รายงาน เนื่องจากการแข่งขันยังไม่จบ ณ เวลาที่จัดทำรายงานนี้</p>
+  </section>
+
+  <section>
+    <h2>📅 การแข่งขันครั้งถัดไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่ (ICT)</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>2 พ.ย. 2026</td>
+          <td>Race — Mexico City Grand Prix (ยังไม่จบ)</td>
+          <td>ประมาณ 03:00 น.</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>6-8 พ.ย. 2026</td>
+          <td>São Paulo Grand Prix (รอบที่ 20, Interlagos)</td>
+          <td>Race: 9 พ.ย. ประมาณ 00:00 น. (14:00 น. BRT วันที่ 8 พ.ย.)</td>
+          <td>❓</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">❓ เวลา Race ของ Mexico City GP คำนวณจากเวลาท้องถิ่น Mexico City ประมาณ 14:00 น. (UTC-6) วันที่ 1 พฤศจิกายน ซึ่งตรงกับเวลาประมาณ 03:00 น. ICT วันที่ 2 พฤศจิกายน — ยังไม่สามารถยืนยันเวลาถ่ายทอดสดที่แน่นอนได้ในรอบนี้ ควรตรวจสอบตารางเวลาทางการอีกครั้งใกล้วันแข่ง</p>
+
+    <h3>รายละเอียดสนาม São Paulo Grand Prix</h3>
+    <ul>
+      <li><strong>Circuit:</strong> Autódromo José Carlos Pace (Interlagos)</li>
+      <li><strong>Country:</strong> บราซิล (São Paulo)</li>
+      <li><strong>รูปแบบสุดสัปดาห์:</strong> ไม่มี Sprint ในปี 2026 (เป็นครั้งแรกที่ São Paulo ไม่มีรูปแบบ Sprint ตามปฏิทิน Sprint ปี 2026 ของ FIA)</li>
+    </ul>
+
+    <h3>Preview</h3>
+    <p>หากผลการแข่งขัน Mexico City GP เป็นไปตามเงื่อนไขที่กำหนด (Antonelli จบอันดับ 9 หรือดีกว่า) เขาจะคว้าแชมป์โลกผู้ขับขี่ครั้งแรกได้ทันที และจะกลายเป็นแชมป์โลกที่อายุน้อยที่สุดในประวัติศาสตร์ F1 รวมถึงเป็นนักแข่งอิตาเลียนคนแรกที่คว้าแชมป์โลกนับตั้งแต่ Alberto Ascari ในปี 1953 หากยังไม่ปิดแชมป์ได้ การลุ้นจะเลื่อนไปต่อที่ São Paulo Grand Prix ซึ่งเป็นรอบที่ไม่มี Sprint ในปีนี้</p>
+    <div class="source">✅ ที่มา: <a href="https://www.crash.net/f1/news/1107507/1/how-Kimi-Antonelli-can-become-F1-world-champon-at-Mexico-City-Grand-Prix">Crash.net</a> ("How Kimi Antonelli can become F1 world champion at the Mexico City Grand Prix"), <a href="https://f1.newsauto.it/en/formula-1/2026-formula-1-world-championship-calendar-12913">F1.newsauto.it</a> (ปฏิทินฤดูกาล 2026), <a href="https://www.gazetasp.com.br/automotor/gp-de-sao-paulo-nao-tera-corrida-sprint-na-temporada-de-2026/">Gazeta SP</a> (ยืนยันไม่มี Sprint ที่ São Paulo)</div>
+  </section>
+
+  <section>
+    <h2>💬 คำกล่าวประจำสัปดาห์</h2>
+    <div class="quote">
+      "It was the result we needed."
+      <div class="source">— Kimi Antonelli (Mercedes) หลังคว้าชัยชนะที่ Austin พร้อมหวังปิดแชมป์โลก "เร็ว ๆ นี้"</div>
+    </div>
+    <div class="quote">
+      "A bit ridiculous."
+      <div class="source">— George Russell (Mercedes) ให้ความเห็นต่อโทษปรับเวลา 5 วินาทีที่ได้รับหลังอุบัติเหตุรอบแรกกับ Piastri ที่ Austin</div>
+    </div>
+    <div class="quote">
+      "Everything went wrong."
+      <div class="source">— Isack Hadjar (Red Bull Racing) อธิบายปัญหาที่ทำให้เขาหลุดจากกริดเริ่ม P3 มาจบเพียง P6 ที่ United States GP</div>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/it-was-the-result-we-needed-antonelli-hoping-to-win-title-very-soon-after-perfect-us-gp.3pukItI57EWP9AtzrExMek">Formula1.com</a> (Antonelli), <a href="https://www.planetf1.com/news/george-russell-fia-penalty-f1-2026-united-states-grand-prix">PlanetF1</a> (Russell), <a href="https://www.formula1.com/en/video/everything-went-wrong-hadjar-explains-issues-that-hampered-him-in-us-grand-prix.1880066903364548959">Formula1.com</a> (Hadjar)</div>
+  </section>
+
+  <section>
+    <h2>🔍 วิเคราะห์แชมป์ชิป</h2>
+    <p><strong>Drivers Championship:</strong> Antonelli ขยายช่องว่างนำ Russell เป็น 123 คะแนน และนำ Hamilton 124 คะแนน หลังชัยชนะที่ Austin กติกาคณิตศาสตร์ระบุว่าเขาต้องการเพียงจบอันดับ 9 หรือดีกว่าที่ Mexico City เพื่อปิดแชมป์โลกครั้งแรกได้ทันที โดยไม่ขึ้นกับผลของคู่แข่งเลย ผลควอลิฟายที่เขาทำได้ P5 (ขยับเป็น P4 หลังโทษของ Verstappen) ถือว่าอยู่ในตำแหน่งที่ดีมากสำหรับเงื่อนไขนี้</p>
+    <p><strong>Constructors Championship:</strong> Mercedes นำ Ferrari อย่างห่างไกลที่ 133 คะแนน ขณะที่ McLaren และ Red Bull Racing คะแนนเท่ากันที่อันดับ 3 (355 คะแนน) ทำให้การไล่จี้อันดับ 3 ยังเป็นประเด็นสูสีที่ต้องติดตามต่อในสนามที่เหลือของฤดูกาล</p>
+    <p><strong>Midfield Battle:</strong> Lawson (Racing Bulls) และ Gasly (Alpine) ยังคงทำแต้มได้อย่างต่อเนื่องในกลุ่มกลางตาราง แต่ยังไม่มีข้อมูลคะแนนทีมที่ยืนยันได้ครบถ้วนสำหรับการจัดอันดับกลุ่มกลางตารางในรอบนี้</p>
+    <p><strong>Teams to Watch:</strong> จับตา Ferrari ว่าจะสามารถแปลงโพลแรกที่ Mexico City ให้เป็นชัยชนะได้หรือไม่ หลังสร้างเซอร์ไพรส์ในควอลิฟาย และจับตาว่า Antonelli จะปิดแชมป์โลกได้ทันทีในสนามนี้หรือต้องเลื่อนไปลุ้นต่อที่ São Paulo</p>
+  </section>
+
+  <section>
+    <h2>📊 สรุปตัวเลขด่วน</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix:</strong> United States GP (จบแล้ว) + Mexico City GP (ยังไม่จบ)</div>
+      <div class="stat-card"><strong>Sprint:</strong> ไม่มี</div>
+      <div class="stat-card"><strong>Pole Position:</strong> Antonelli (Austin), Hamilton (Mexico City)</div>
+      <div class="stat-card"><strong>Fastest Lap:</strong> Charles Leclerc (Austin)</div>
+      <div class="stat-card"><strong>FIA Decisions:</strong> ไม่พบ Technical Directive ใหม่ในรอบนี้</div>
+      <div class="stat-card"><strong>Penalties:</strong> Russell (5s, Austin), Verstappen (กริด -1 ตำแหน่ง, Mexico City — เหตุผล ❓)</div>
+      <div class="stat-card"><strong>Driver Transfers:</strong> ไม่มีการประกาศใหม่ในสัปดาห์นี้</div>
+      <div class="stat-card"><strong>Technical Updates:</strong> ❓ ไม่มีรายละเอียดที่ยืนยันได้สำหรับ Mexico City GP</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ควรจับตาต่อไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ประเด็น</th>
+          <th>เหตุผล</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ผล Race ของ Mexico City GP และโอกาสคว้าแชมป์โลกของ Antonelli</td>
+          <td>Race จัดขึ้น 1-2 พ.ย. ซึ่งอยู่นอกช่วงเวลาของรายงานนี้ หากจบอันดับ 9 หรือดีกว่า Antonelli จะปิดแชมป์โลกได้ทันที</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Ferrari จะแปลงโพลแรกที่ Mexico City เป็นชัยชนะได้หรือไม่</td>
+          <td>เป็นโพลแรกของทีมในควอลิฟายกรังด์ปรีซ์ปกติ ต้องติดตามผลจริงในการแข่งขัน</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>การไล่จี้อันดับ 3 ผู้สร้างรถระหว่าง McLaren และ Red Bull Racing</td>
+          <td>คะแนนเท่ากันพอดีที่ 355 คะแนน ทำให้ทุกสนามที่เหลือมีผลต่ออันดับ</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>เหตุผลโทษปรับกริดของ Verstappen ที่ Mexico City</td>
+          <td>ยังไม่สามารถยืนยันสาเหตุที่แน่นอนได้ในรอบการค้นหานี้</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>รูปแบบสุดสัปดาห์ São Paulo GP ที่ไม่มี Sprint เป็นครั้งแรก</td>
+          <td>อาจส่งผลต่อกลยุทธ์ทีมกลางตารางที่เคยอาศัยแต้ม Sprint สะสมคะแนน</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>Official</h3>
+    <p><a href="https://www.formula1.com/en/latest/article/antonelli-surges-to-dominant-victory-in-united-states-grand-prix-ahead-of-leclerc-and-verstappen.6kmBQv9FNTW7LzkDj8S34j">Formula1.com</a> (เข้าถึงผ่านผลการค้นหาเว็บเป็นหลัก เนื่องจากการเปิดหน้าเว็บโดยตรงยังไม่สำเร็จในรอบนี้ — ดูหมายเหตุข้อจำกัดด้านล่าง), FIA.com</p>
+
+    <h3>Motorsport Media</h3>
+    <p><a href="https://www.si.com/onsi/f1/">Sports Illustrated (SI.com)</a>, <a href="https://www.planetf1.com/">PlanetF1</a>, <a href="https://www.skysports.com/f1">Sky Sports F1</a>, <a href="https://www.motorsport.com/f1/">Motorsport.com</a>, <a href="https://www.autosport.com/f1/">Autosport</a>, <a href="https://www.crash.net/f1">Crash.net</a>, <a href="https://www.gpblog.com/">GPblog</a>, <a href="https://www.silverstone.co.uk/">Silverstone.co.uk</a>, <a href="https://depor.com/">Depor</a>, <a href="https://www.karmactive.com/">Karmactive</a>, <a href="https://gmauthority.com/">GM Authority</a>, <a href="https://sundayguardianlive.com/">Sunday Guardian Live</a>, <a href="https://www.foxsports.com.mx/">Fox Sports México</a></p>
+
+    <h3>Team Communications</h3>
+    <p>ไม่พบแถลงการณ์อย่างเป็นทางการจากทีมโดยตรงที่เข้าถึงได้ในรอบการค้นหานี้ นอกเหนือจากคำพูดของนักแข่งที่อ้างอิงผ่านสื่อข้างต้น</p>
+  </section>
+
+  <section>
+    <h2>⚠️ หมายเหตุข้อจำกัดของข้อมูล</h2>
+    <div class="warn-box">
+      <p><strong>UNCERTAIN:</strong> ในรอบการรวบรวมข้อมูลนี้ ไม่สามารถเข้าถึงโดเมน <code>formula1.com</code>, <code>fia.com</code>, <code>racingnews365.com</code>, <code>crash.net</code>, <code>skysports.com</code> และโดเมนอื่น ๆ ของสื่อ F1 ผ่านการเปิดหน้าเว็บโดยตรง (WebFetch) ได้เลยในรอบนี้ ("getaddrinfo ENOTFOUND" ในทุกโดเมนที่ทดลอง แม้ลองซ้ำแล้ว) จึงต้องอาศัยผลลัพธ์จากการค้นหาเว็บ (WebSearch) แทนตลอดทั้งรายงาน ตามขั้นตอน Network Access Resilience ข้อมูลหลักของ United States GP (ผลการแข่งขัน, คะแนนสะสม) และ Mexico City GP Qualifying (อันดับ 1-8) ได้ตรวจสอบไขว้จากแหล่งข่าวอิสระหลายแหล่งซึ่งสอดคล้องกันสูง รวมถึงยืนยันด้วยการคำนวณคะแนนสะสมที่ตรงกัน อย่างไรก็ตาม มีข้อจำกัดดังนี้: (1) ตารางผู้สร้างรถอันดับ 5 ลงไป (Racing Bulls, Alpine, Haas, Audi, Williams, Aston Martin, Cadillac) มีตัวเลขขัดแย้งกันระหว่างแหล่งข้อมูล จึงงดแสดง (2) กริดสตาร์ทของ Mexico City GP ตำแหน่งที่ 9 เป็นต้นไปยังไม่สามารถยืนยันได้ (3) เหตุผลของโทษปรับกริดของ Verstappen ที่ Mexico City ไม่สามารถยืนยันได้ (4) จำนวนรอบที่ Bottas ออกจากการแข่งขัน Austin มีรายงานไม่ตรงกัน (รอบ 48 และ 51) (5) ผลการแข่งขัน Mexico City GP Race ยังไม่มี เนื่องจากยังไม่จบ ณ เวลาที่จัดทำรายงาน ผู้อ่านที่ต้องการผลล่าสุดควรตรวจสอบจาก formula1.com และ fia.com โดยตรงหลังจบการแข่งขัน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔮 แนวโน้มสัปดาห์ถัดไป</h2>
+    <div class="summary-box">
+      <p>ผลการแข่งขัน Mexico City Grand Prix ซึ่งจะจบลงในช่วงเช้าของวันที่ 2 พฤศจิกายน (ICT) จะเป็นตัวกำหนดว่า Kimi Antonelli จะคว้าแชมป์โลกผู้ขับขี่ครั้งแรกได้ทันทีหรือไม่ — เขาต้องการเพียงจบอันดับ 9 หรือดีกว่าเท่านั้น หากยังไม่ปิดแชมป์ได้ การลุ้นจะเลื่อนไปต่อที่ São Paulo Grand Prix (6-8 พฤศจิกายน) ซึ่งเป็นครั้งแรกที่สนามนี้ไม่มีรูปแบบ Sprint ตามปฏิทินปี 2026 นอกสนามควรติดตามว่า Ferrari จะสามารถแปลงโพลแรกในควอลิฟายกรังด์ปรีซ์ปกติที่ Mexico City ให้เป็นผลงานจริงในการแข่งขันได้หรือไม่ รวมถึงการไล่จี้อันดับ 3 ผู้สร้างรถที่สูสีเท่ากันพอดีระหว่าง McLaren และ Red Bull Racing ที่ 355 คะแนน ซึ่งทุกสนามที่เหลือของฤดูกาลจะมีผลต่อการชี้ขาด</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly F1 Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 1 พฤศจิกายน 2026 เวลา ICT (GMT+7)</p>
+  </footer>
+</div>
+</body>
+</html>
