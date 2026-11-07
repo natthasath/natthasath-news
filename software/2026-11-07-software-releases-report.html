@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 Weekly Software Releases Report - Week 45</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27, 32, 39, 0.14);
+  --line-strong: rgba(27, 32, 39, 0.28);
+  --accent: #0F7A73;
+  --critical: #D92B2B;
+  --high: #FF6B35;
+  --medium: #FFA500;
+  --low: #4CAF50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231, 230, 224, 0.14);
+    --line-strong: rgba(231, 230, 224, 0.26);
+    --accent: #3FBDAF;
+    --critical: #FF6B6B;
+    --high: #FF8C42;
+    --medium: #FFB84D;
+    --low: #81C784;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.page { max-width: 1200px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topstrip {
+  display: flex; justify-content: space-between; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-faint);
+}
+
+.masthead { padding: 44px 0 30px; border-bottom: 1px solid var(--line-strong); }
+.kicker {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+  font-size: 15px; color: var(--accent); margin: 0 0 14px;
+}
+.kicker::before { content: "◆ "; font-size: 11px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 800; margin: 0 0 16px; }
+h2 {
+  font-size: 24px; font-weight: 700; margin: 36px 0 20px; color: var(--ink);
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; color: var(--ink-soft); }
+
+.meta-row { display: flex; gap: 20px; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+
+.executive-summary {
+  background: var(--surface); border-left: 4px solid var(--accent);
+  padding: 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8;
+}
+
+.dashboard {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.dashboard-item {
+  background: var(--surface); padding: 16px; border-radius: 4px;
+  border-top: 3px solid var(--accent); text-align: center;
+}
+.dashboard-item-value { font-size: 32px; font-weight: 700; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.dashboard-item-label {
+  font-size: 12px; color: var(--ink-faint); margin-top: 8px;
+  text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--surface); }
+th {
+  background: var(--surface-2); color: var(--ink); padding: 12px; text-align: left;
+  font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--line-strong);
+}
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.label {
+  display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 11px;
+  font-weight: 600; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-major { background: rgba(15, 122, 115, 0.2); color: var(--accent); }
+.label-minor { background: rgba(15, 122, 115, 0.1); color: var(--ink-soft); }
+.label-patch { background: rgba(217, 43, 43, 0.1); color: var(--ink-soft); }
+.label-security { background: rgba(217, 43, 43, 0.2); color: var(--critical); }
+.label-lts { background: rgba(255, 165, 0, 0.15); color: var(--medium); }
+.label-rc { background: rgba(156, 39, 176, 0.15); color: var(--ink-soft); }
+.label-beta { background: rgba(63, 81, 181, 0.15); color: var(--ink-soft); }
+.label-eol { background: rgba(217, 43, 43, 0.15); color: var(--critical); }
+
+.severity-critical { color: var(--critical); font-weight: 600; }
+.severity-high { color: var(--high); font-weight: 600; }
+.severity-medium { color: var(--medium); font-weight: 600; }
+.severity-low { color: var(--low); font-weight: 600; }
+
+.source-badge {
+  display: inline-block; padding: 3px 6px; background: var(--surface-2);
+  border-radius: 2px; font-size: 10px; font-family: "JetBrains Mono", monospace; color: var(--ink-faint);
+}
+
+.note {
+  background: var(--surface); border-left: 4px solid var(--medium); padding: 12px;
+  margin: 12px 0; border-radius: 2px; font-size: 13px; color: var(--ink-soft);
+}
+.empty-note {
+  background: var(--surface); border: 1px dashed var(--line-strong); padding: 12px 16px;
+  margin: 12px 0; border-radius: 4px; font-size: 13.5px; color: var(--ink-soft); font-style: italic;
+}
+.highlight-box { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; margin: 12px 0; border-radius: 4px; }
+
+footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-strong); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+.two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest</p>
+    <h1>💻 Weekly Software Releases Report</h1>
+    <div class="meta-row">
+      <span><b>Week:</b> 45</span>
+      <span><b>Period:</b> November 1 – 7, 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="executive-summary">
+      <p>สัปดาห์นี้ (1–7 พ.ย. 2569) เป็นสัปดาห์ที่เงียบด้าน Major Release แต่มีความเคลื่อนไหวสำคัญด้านความปลอดภัยและ End of Life หลายรายการ โดยเหตุการณ์ที่กระทบผู้ใช้กว้างที่สุดคือ Google เปิดตัว Chrome 157 บน Stable Channel เมื่อ 3 พ.ย. 2569 (157.0.8103.38/.39) แก้ไขช่องโหว่ความปลอดภัยรวม 213 รายการ โดย 7 รายการจัดเป็น Critical (รวม CVE-2026-121156 และ CVE-2026-121247 ซึ่งเป็น Buffer Overflow ใน Dawn/WebGPU Engine) พร้อมอัปเดต Extended Stable เป็น 156.0.8078.88 (55 Security Fixes, 3 Critical) ในวันเดียวกัน — ข้อมูลนี้ยืนยันผ่าน WebSearch เนื่องจาก chromereleases.googleblog.com เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้</p>
+      <p>ด้าน Container Orchestration: Kubernetes เปิด Pre-release ตัวแรกของสาย 1.38 คือ <strong>v1.38.0-beta.0</strong> เมื่อ 6 พ.ย. 2569 ตามกำหนดการพัฒนาปกติ ยังไม่ใช่ Stable และไม่พร้อมใช้งานจริง ด้าน End of Life มี 2 รายการที่ถึงกำหนดจริงในสัปดาห์นี้ ได้แก่ <strong>OpenSSL 3.6</strong> (สาย Non-LTS) สิ้นสุดการสนับสนุนเมื่อ 1 พ.ย. 2569 และ <strong>Ruby on Rails 8.0.x</strong> สิ้นสุดการรับแพตช์ความปลอดภัยเมื่อ 7 พ.ย. 2569 (วันนี้) ตามประกาศทางการของทีม Rails เมื่อ 29 ต.ค. 2568</p>
+      <p>สำหรับ Programming Languages, Frameworks, Database, Operating System, Virtualization, Web Server และ Cloud Platform หลัก (Python, Go, Rust, PHP, Node.js, React, Django, PostgreSQL, MySQL, Redis, Ubuntu, RHEL, Debian, VMware, Nginx, Docker, GitLab, AWS/Azure/GCP) ไม่พบ Release หรือ Security Advisory ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 จาก Official Source ที่เข้าถึงได้ในรอบตรวจสอบนี้ (ดูรายละเอียดในแต่ละหมวด)</p>
+      <p><strong>ประเด็นสำคัญ:</strong> ทีมที่ใช้ Chrome/Chromium-based Browser ในองค์กรควรเร่งอัปเดตเป็น 157.0.8103.38+ โดยเร็วเนื่องจากมี Critical CVE หลายรายการ ทีมที่ใช้ OpenSSL 3.6 ควรวางแผนย้ายไปสาย 3.5 LTS (รองรับถึง เม.ย. 2573) หรือ 4.0 (รองรับถึง พ.ค. 2570) ทันทีเนื่องจากหมดการสนับสนุนแล้ว และทีมที่ใช้ Rails 8.0.x ควรอัปเกรดเป็น 8.1 (รับแพตช์ความปลอดภัยถึง ต.ค. 2570) เนื่องจากไม่มีแพตช์ความปลอดภัยใหม่อีกต่อไปนับจากวันนี้ นอกจากนี้ควรเตรียมตัวสำหรับวันที่ 10 พ.ย. 2569 ซึ่งเป็น Patch Tuesday และวันที่ .NET 8/.NET 9/PowerShell 7.4-7.5 จะครบกำหนด End of Life พร้อมกัน (ดู "สิ่งที่ต้องติดตาม")</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">4</div>
+        <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">1</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">2</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 สำหรับ Python (ล่าสุดคือ 3.15.2/3.14.10/3.13.18/3.12.16/3.11.18 เมื่อ 30 ต.ค. 2569 ก่อนช่วงเวลานี้), Node.js (ล่าสุดคือ v26.13.0 "Lithium"/v24.22.2 "Krypton" เมื่อ 28 ต.ค. 2569 และ v27.0.0-alpha.0.0.0 เมื่อ 29 ต.ค. 2569 ทั้งหมดก่อนช่วงเวลานี้ รายงานไปแล้วในสัปดาห์ก่อนหน้า), Go (ล่าสุดคือ 1.27.x/1.26.x Microsoft Build เมื่อ ก.ย. 2569 ก่อนช่วงเวลานี้มาก), Rust (ล่าสุดคือ 1.99.1 เมื่อ 16 ต.ค. 2569 ก่อนช่วงเวลานี้), Java/.NET และ PHP (8.6.0 อยู่ระหว่าง Release Candidate มีกำหนด GA 19 พ.ย. 2569 ยังไม่ถึงกำหนดในช่วงเวลานี้ — ดู "สิ่งที่ต้องติดตาม") เนื่องจากไม่พบประกาศ Release ใหม่จาก Official Release Notes/GitHub Releases ของแต่ละโครงการในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ React, Vue, Angular, Django, Laravel, FastAPI และ Spring Boot ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 สำหรับ Ruby on Rails ไม่มี Release ใหม่ แต่ Rails 8.0.x ครบกำหนด End of Life (Security) ในสัปดาห์นี้ — ดูรายละเอียดในหัวข้อ "📦 End of Life (EOL)"</div>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps &amp; CI/CD</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kubernetes</strong></td>
+          <td>v1.38.0-beta.0</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> Pre-release ตัวแรก (Beta) ของสาย 1.38 ที่กำลังพัฒนา ยังไม่ GA และยังไม่พร้อมใช้งานจริง หน้า Release บน GitHub ไม่มี Release Note แนบมาโดยตรง (ชี้ให้ไปดู CHANGELOG-1.38.md) และ Tag นี้ตามหลัง master อยู่ 136 Commits ณ เวลาที่ตรวจสอบ</td>
+          <td>Container Orchestration</td>
+          <td><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.38.0-beta.0" class="source-badge">github.com/kubernetes/kubernetes (releases)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 สำหรับ Jenkins (ล่าสุดคือ Weekly 2.588 / LTS 2.580.2 เมื่อ 28 ต.ค. 2569 ก่อนช่วงเวลานี้), Docker/Docker Compose, GitLab (Security Release ล่าสุดที่ยืนยันได้คือ 29 ก.ค. 2569 ก่อนหน้านี้มาก — ไม่พบรอบ Scheduled Release ใหม่ในช่วงเวลานี้จากแหล่งที่เข้าถึงได้), GitHub Actions, Terraform, ArgoCD และ Ansible Core ในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 สำหรับ PostgreSQL, MySQL, MariaDB, SQL Server, MongoDB, Redis, Cassandra, Elasticsearch, AWS RDS/Aurora, Azure SQL และ Google Cloud SQL (PostgreSQL 19 RC2 และ PostgreSQL 14 End of Life มีกำหนด 12 พ.ย. 2569 และ PostgreSQL 19 GA มีกำหนด 19 พ.ย. 2569 ซึ่งยังไม่ถึงกำหนดในช่วงเวลานี้ — ดู "สิ่งที่ต้องติดตาม")</div>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="empty-note">ไม่พบ Advisory/Release ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 สำหรับ Ubuntu, Debian, RHEL, Rocky Linux, AlmaLinux และ Windows Server จากแหล่งที่เข้าถึงได้ในรอบตรวจสอบนี้ พบเพียงรายงานจาก Canadian Centre for Cyber Security (AV26-1111, ลงวันที่ 2 พ.ย. 2569) ที่ระบุว่า Red Hat Build of Keycloak มีช่องโหว่ (อ้างอิงข้อมูล ณ 30 ต.ค. 2569) แต่ไม่สามารถยืนยัน CVE ID รายตัวหรือ Patch Version ที่ชัดเจนได้จากแหล่งที่เข้าถึงได้ในรอบตรวจสอบนี้ จึงไม่นำมาจัดเป็น Security Release ตามเกณฑ์ของรายงานนี้ — ควรตรวจสอบ access.redhat.com/security โดยตรง (ดู UNCERTAIN ท้ายรายงาน)</div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ VMware/Broadcom ESXi/vSphere/vCenter (VMSA ล่าสุดที่ยืนยันได้คือ VMSA-2026-0006 เมื่อ 29 ก.ค. 2569 ก่อนช่วงเวลานี้มาก), Proxmox VE, Hyper-V และ KVM/QEMU ในช่วง 1–7 พ.ย. 2569</div>
+  </section>
+
+  <section>
+    <h2>🌐 Network &amp; Security</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 สำหรับ Nginx, Apache, HAProxy (ล่าสุดคือ 3.4.7 เมื่อ 14 ต.ค. 2569 ก่อนช่วงเวลานี้), Traefik, Caddy, WireGuard, pfSense, OPNsense, Nmap, Wireshark (ล่าสุดที่ยืนยันได้คือ 4.6.4/4.4.14 เมื่อ 25 ก.พ. 2569 ไม่พบวันที่แน่ชัดของ 4.6.5 ที่อยู่ในช่วงเวลานี้), Nessus, OpenVAS และ Metasploit Framework ในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>☁ Cloud &amp; Infrastructure</h2>
+    <div class="empty-note">ไม่พบประกาศที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 จาก AWS What's New, Azure Updates, Google Cloud Release Notes, AWS CloudFormation, Pulumi และ Terraform จากแหล่งที่เข้าถึงได้ในรอบตรวจสอบนี้ (รายการล่าสุดที่ยืนยันได้จาก Google Cloud Release Notes คือการเพิ่ม Apigee API hub Preview Plugin เมื่อ 23 ก.ย. 2569 ก่อนช่วงเวลานี้มาก)</div>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools &amp; IDE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Google Chrome</strong></td>
+          <td>157.0.8103.38/.39 (Stable) / 156.0.8078.88 (Extended Stable)</td>
+          <td><span class="label label-security">🔒 Security Release</span> อัปเดต Stable Channel สำหรับ Windows/Mac/Linux/Android แก้ไขช่องโหว่ความปลอดภัยรวม 213 รายการ (7 Critical, 77 High, 75 Medium, 54 Low) รวม CVE-2026-121156 และ CVE-2026-121247 (Buffer Overflow ใน Dawn/WebGPU Engine), CVE-2026-121229 (Memory Corruption ใน ANGLE), CVE-2026-121246 (Use-after-free ใน WebGL) และ CVE-2026-121035 (Use-after-free ใน Prerender) Google ยังไม่ยืนยันว่ามีช่องโหว่ใดถูกโจมตีจริง (ไม่อยู่ใน Known Exploited) Extended Stable อัปเดตเป็น 156.0.8078.88 ในวันเดียวกัน แก้ไข 55 รายการ (3 Critical) <strong>UNCERTAIN:</strong> ยืนยันผ่าน WebSearch เนื่องจาก chromereleases.googleblog.com เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ควรตรวจสอบประกาศทางการอีกครั้งก่อนอ้างอิงหมายเลข CVE แบบเป็นทางการ</td>
+          <td><a href="https://chromereleases.googleblog.com/" class="source-badge">chromereleases.googleblog.com (เข้าถึงไม่ได้โดยตรง — ยืนยันผ่าน WebSearch)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 สำหรับ VS Code (ล่าสุดคือ 1.107 เมื่อ พ.ย. 2568 — เป็นข่าวปีก่อน ไม่เกี่ยวข้องกับช่วงเวลานี้), JetBrains IDE, Eclipse, Git, GitHub CLI, npm, pip, Composer, Maven และ Gradle ในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 1–7 พ.ย. 2569 สำหรับ Nginx, Apache, Caddy และ IIS</div>
+  </section>
+
+  <section>
+    <h2>🔒 Security &amp; CVE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Google Chrome</strong></td>
+          <td>CVE-2026-121156 (Dawn/WebGPU Buffer Overflow)</td>
+          <td><span class="severity-critical">Critical</span></td>
+          <td>157.0.8103.38/.39</td>
+          <td><a href="https://chromereleases.googleblog.com/" class="source-badge">chromereleases.googleblog.com (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Chrome</strong></td>
+          <td>CVE-2026-121247 (Dawn/WebGPU Buffer Overflow)</td>
+          <td><span class="severity-critical">Critical</span></td>
+          <td>157.0.8103.38/.39</td>
+          <td><a href="https://chromereleases.googleblog.com/" class="source-badge">chromereleases.googleblog.com (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Chrome</strong></td>
+          <td>CVE-2026-121229 (ANGLE Memory Corruption)</td>
+          <td><span class="severity-critical">Critical</span></td>
+          <td>157.0.8103.38/.39</td>
+          <td><a href="https://chromereleases.googleblog.com/" class="source-badge">chromereleases.googleblog.com (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Chrome</strong></td>
+          <td>CVE-2026-121246 (WebGL Use-after-free)</td>
+          <td><span class="severity-critical">Critical</span></td>
+          <td>157.0.8103.38/.39</td>
+          <td><a href="https://chromereleases.googleblog.com/" class="source-badge">chromereleases.googleblog.com (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Chrome</strong></td>
+          <td>CVE-2026-121035 (Prerender Use-after-free)</td>
+          <td><span class="severity-critical">Critical</span></td>
+          <td>157.0.8103.38/.39</td>
+          <td><a href="https://chromereleases.googleblog.com/" class="source-badge">chromereleases.googleblog.com (เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">Chrome 157 มี Critical CVE รวม 7 รายการ แต่ยืนยันหมายเลข CVE ที่ชัดเจนได้เพียง 5 รายการข้างต้นจากแหล่งข่าวรอง (ยังไม่สามารถเข้าถึง Official Advisory ของ Google โดยตรงเพื่อยืนยันอีก 2 รายการที่เหลือในรอบตรวจสอบนี้) ไม่พบ CVE ใหม่ของ .NET, Jenkins, GitLab, Ubuntu, Debian หรือ RHEL ที่ยืนยันทั้ง CVE ID และ Patch Version ได้ชัดเจนในช่วง 1–7 พ.ย. 2569 (ดูหมายเหตุ Red Hat Build of Keycloak ในหัวข้อ Operating Systems และ UNCERTAIN ท้ายรายงาน)</div>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="empty-note">ไม่พบ Breaking Change ใหม่ที่ยืนยันได้จาก Official Documentation ในช่วง 1–7 พ.ย. 2569</div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>EOL Date</th><th>Replacement</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>OpenSSL 3.6</strong> <span class="label label-eol">⛔ End of Life</span></td>
+          <td>Nov 1, 2026</td>
+          <td>OpenSSL 3.5 LTS (รองรับถึง เม.ย. 2573) หรือ OpenSSL 4.0 (รองรับถึง พ.ค. 2570)</td>
+          <td><a href="https://openssl-library.org/policies/releasestrat/index.html" class="source-badge">openssl-library.org (เข้าถึงไม่ได้โดยตรง — ยืนยันผ่าน WebSearch)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ruby on Rails 8.0.x</strong> <span class="label label-eol">⛔ End of Life</span></td>
+          <td>Nov 7, 2026</td>
+          <td>Ruby on Rails 8.1 (รับแพตช์ความปลอดภัยถึง 10 ต.ค. 2570)</td>
+          <td><a href="https://rubyonrails.org/2025/10/29/new-rails-releases-and-end-of-support-announcement" class="source-badge">rubyonrails.org — ประกาศ 29 ต.ค. 2568</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">OpenSSL 3.6 เป็นสาย Non-LTS (รองรับ 13 เดือน) สิ้นสุดการสนับสนุนตามกำหนดการปกติ ไม่ใช่การแก้ไขฉุกเฉิน ส่วน Rails 8.0.x สิ้นสุดการรับแพตช์ความปลอดภัยในวันนี้ (7 พ.ย. 2569) ตามประกาศขยายเวลา 6 เดือนจากกำหนดเดิม เนื่องจาก Rails 8.1 ออกช้ากว่า 6 เดือนหลัง 8.0</div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <div class="highlight-box">
+      <ul>
+        <li><strong>Microsoft Patch Tuesday พฤศจิกายน 2569</strong> — มีกำหนด 10 พ.ย. 2569 ยังไม่ประกาศรายละเอียด CVE ณ เวลาที่จัดทำรายงานนี้ (7 พ.ย. 2569)</li>
+        <li><strong>.NET 8 / .NET 9 End of Life</strong> — มีกำหนด 10 พ.ย. 2569 (ตรงกับ Patch Tuesday) ทีมที่ยังใช้ .NET 8/9 ควรวางแผนอัปเกรดเป็น .NET 10 LTS โดยเร็ว</li>
+        <li><strong>PowerShell 7.4 / 7.5 End of Life</strong> — มีกำหนด 10 พ.ย. 2569 เช่นเดียวกัน</li>
+        <li><strong>PostgreSQL 19 Release Candidate 2 และ PostgreSQL 14 End of Life</strong> — ทั้งสองมีกำหนดวันที่ 12 พ.ย. 2569 ทีมที่ยังใช้ PostgreSQL 14 ควรวางแผนอัปเกรดเป็น 18 หรือรอ 19 ก่อนถึงกำหนด</li>
+        <li><strong>PostgreSQL 19 GA</strong> — มีกำหนด 19 พ.ย. 2569 (อาจเลื่อนได้หากพบปัญหาใน RC2)</li>
+        <li><strong>PHP 8.6.0 GA</strong> — มีกำหนด 19 พ.ย. 2569 ตาม Timetable ทางการ ยังมีความเสี่ยงเลื่อนหากพบ Blocking Bug ใน RC รอบสุดท้าย</li>
+        <li><strong>Kubernetes v1.38.0</strong> — อยู่ระหว่าง Beta (v1.38.0-beta.0 ออก 6 พ.ย. 2569) ควรติดตาม Release Note ฉบับสมบูรณ์เมื่อเข้าใกล้ GA</li>
+        <li><strong>Red Hat Build of Keycloak Advisory (AV26-1111)</strong> — รายงานจาก Canadian Centre for Cyber Security เมื่อ 2 พ.ย. 2569 ยังไม่สามารถยืนยัน CVE ID และ Patch Version ที่ชัดเจนได้ ควรตรวจสอบ access.redhat.com/security โดยตรง</li>
+        <li><strong>Microsoft Exchange Server 2016/2019 ESU</strong> — โปรแกรม Extended Security Update สิ้นสุดแล้วเมื่อ 31 ต.ค. 2569 (ก่อนช่วงเวลาของรายงานนี้ 1 วัน) และ Microsoft ยืนยันว่าจะไม่มี Period ถัดไป ทีมที่ยังใช้ Exchange 2016/2019 ควรเร่งย้ายไปเวอร์ชันที่รองรับ เนื่องจากจะไม่ได้รับแพตช์ความปลอดภัยอีกต่อไป</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">4</div>
+        <div class="dashboard-item-label">Total Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">1</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">5</div>
+        <div class="dashboard-item-label">New CVEs</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">2</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <div class="two-column">
+      <div>
+        <h3>Official</h3>
+        <ul>
+          <li><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.38.0-beta.0">github.com/kubernetes/kubernetes — v1.38.0-beta.0</a></li>
+          <li><a href="https://rubyonrails.org/2025/10/29/new-rails-releases-and-end-of-support-announcement">rubyonrails.org — Rails 8.0 End of Support Announcement</a></li>
+          <li><a href="https://openssl-library.org/policies/releasestrat/index.html">openssl-library.org — Release Strategy (เข้าถึงไม่ได้โดยตรง)</a></li>
+          <li><a href="https://chromereleases.googleblog.com/">chromereleases.googleblog.com — Chrome 157 Stable (เข้าถึงไม่ได้โดยตรง)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Release Notes</h3>
+        <ul>
+          <li><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.38.md">github.com/kubernetes/kubernetes — CHANGELOG-1.38.md</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Security Advisory</h3>
+        <ul>
+          <li><a href="https://www.cyber.gc.ca/en/alerts-advisories/red-hat-security-advisory-av26-1111">cyber.gc.ca — Red Hat Security Advisory AV26-1111, 2 พ.ย. 2569</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Trusted Media</h3>
+        <ul>
+          <li><a href="https://smartscope.blog/en/blog/chrome-157-stable-released-213-security-fixes-7-2026/">smartscope.blog — Chrome 157 Stable Released, 213 Security Fixes, 7 Critical</a></li>
+          <li><a href="https://securityonline.info/chrome-157-security-update/">securityonline.info — Chrome 157 Security Update</a></li>
+          <li><a href="https://endoflife.ai/article-november-10-2026">endoflife.ai — November 10, 2026: Four Support Clocks Run Out on One Patch Tuesday</a></li>
+          <li><a href="https://safeguard.sh/resources/blog/openssl-3-4-3-6-end-of-life-october-november-2026">safeguard.sh — OpenSSL 3.4/3.6 End of Life October/November 2026</a></li>
+          <li><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-2016-and-2019-esu-program-ends-in-october/">bleepingcomputer.com — Exchange 2016/2019 ESU Program Ends in October</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">UNCERTAIN: โดเมนต่อไปนี้เข้าถึงไม่ได้โดยตรงผ่าน Network Proxy ของ Session นี้ในรอบตรวจสอบนี้ (ได้รับข้อผิดพลาดระดับ Network Policy เช่น ENOTFOUND ไม่ใช่การบล็อกจากเว็บไซต์) ได้แก่ <code>nvd.nist.gov</code>, <code>chromereleases.googleblog.com</code>, <code>openssl-library.org</code> (บางหน้า), <code>ubuntu.com/security</code>, <code>debian.org/security</code>, <code>access.redhat.com</code>, <code>jenkins.io</code>, <code>docs.gitlab.com</code>, <code>aws.amazon.com/blogs/aws</code>, <code>cloud.google.com/release-notes</code> จึงสลับไปใช้ WebSearch ตามนโยบาย Network Access Resilience แทนทันที ข้อมูลที่เกี่ยวข้องได้ผ่านการยืนยันข้ามแหล่งด้วย WebSearch, GitHub Releases โดยตรง (github.com เข้าถึงได้ปกติ) หรือ Government CERT Advisory (cyber.gc.ca) แทน รายการที่ไม่สามารถยืนยันได้จริงจากหลายแหล่งพร้อมกัน เช่น หมายเลข CVE ที่ครบ 7 รายการของ Chrome 157 (ยืนยันได้เพียง 5 รายการ) และรายละเอียด CVE ของ Red Hat Build of Keycloak (AV26-1111) จึงถูกงดแสดงเฉพาะส่วนที่ยืนยันไม่ได้ ไม่ได้งดแสดงทั้งหมวด</div>
+  </section>
+
+  <footer>
+    Generated for natthasath-news · Weekly Software Releases Report · Week 45, 2026 · Data window: Nov 1 – 7, 2026 (ICT)
+  </footer>
+</div>
+</body>
+</html>
