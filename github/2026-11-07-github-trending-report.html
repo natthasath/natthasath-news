@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly GitHub Trending Report — Week 45, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#B5502A; --warn-soft:rgba(181,80,42,0.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14);
+    --warn:#E08A63; --warn-soft:rgba(224,138,99,0.14);
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:980px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(28px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+h2{ font-size:22px; font-weight:800; margin:48px 0 16px; padding-top:8px; border-top:1px solid var(--line-strong); display:flex; align-items:center; gap:10px; }
+h2:first-of-type{ border-top:none; }
+h3{ font-size:17px; font-weight:700; margin:26px 0 10px; color:var(--ink); }
+p{ margin:0 0 14px; color:var(--ink-soft); }
+ul, ol{ padding-left:22px; color:var(--ink-soft); }
+li{ margin-bottom:6px; }
+strong{ color:var(--ink); }
+code{ font-family:"JetBrains Mono",monospace; font-size:0.9em; background:var(--surface-2); padding:1px 5px; border-radius:4px; }
+
+.summary-box{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:8px; }
+.summary-box p{ margin:0; color:var(--ink); }
+
+.tablewrap{ overflow-x:auto; margin:14px 0 22px; border:1px solid var(--line); border-radius:10px; }
+table{ width:100%; border-collapse:collapse; font-size:14px; background:var(--surface); min-width:640px; }
+thead th{ text-align:left; font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-faint); padding:12px 14px; border-bottom:1px solid var(--line-strong); background:var(--surface-2); white-space:nowrap; }
+tbody td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody td:first-child{ color:var(--ink); font-weight:600; }
+tbody td a{ text-decoration:none; }
+tbody td a:hover{ text-decoration:underline; }
+
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.card-title{ font-weight:700; font-size:15.5px; color:var(--ink); margin-bottom:4px; }
+.card-title a{ text-decoration:none; }
+.card-meta{ font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); margin-bottom:10px; }
+.card p{ margin:0 0 8px; font-size:14.5px; }
+.card ul{ margin:6px 0 0; font-size:14px; }
+
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; background:var(--accent-soft); color:var(--accent); margin-right:6px; }
+.badge.warn{ background:var(--warn-soft); color:var(--warn); }
+
+.note-box{ background:var(--warn-soft); border:1px solid rgba(181,80,42,0.28); border-radius:10px; padding:14px 18px; margin:14px 0; font-size:14px; color:var(--ink); }
+.note-box strong{ color:var(--warn); }
+
+.legend-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px 20px; font-size:14px; }
+.legend-grid div{ display:flex; gap:8px; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin:16px 0; }
+.stat-tile{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+.stat-num{ font-family:"JetBrains Mono",monospace; font-size:24px; font-weight:700; color:var(--accent); }
+.stat-label{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer a{ color:var(--ink-faint); }
+
+@media (max-width:640px){
+  h1{ font-size:26px; }
+  h2{ font-size:19px; }
+  .meta-row{ gap:10px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest · Week 45</p>
+    <h1>⭐ Weekly GitHub Trending Open Source Report</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 1 – 7 พ.ย. 2026 (ICT)</span>
+      <span><b>หมวด:</b> GitHub Open Source</span>
+      <span><b>เผยแพร่:</b> 7 พ.ย. 2026</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="summary-box">
+      <p>สัปดาห์นี้หน้า GitHub Trending ยังถูกครองโดยเครื่องมือรอบ "AI coding agent" อย่างต่อเนื่อง นำโดย <strong>thedotmack/claude-mem</strong> ที่ให้ agent มีความจำข้ามเซสชัน (+8,726 ดาว) และ <strong>pingdotgg/t3code</strong> ที่เป็น "agent harness control surface" ควบคุม Claude Code/Codex/Cursor จากมือถือ/เว็บ/เดสก์ท็อป ซึ่งมีอัตราดาวเพิ่มสูงสุดของสัปดาห์ (+16,782 หรือ ~33% ของยอดรวม) ฝั่งบริษัทใหญ่ยังแข่งปล่อยเวอร์ชันต่อเนื่อง — Claude Code ปล่อย 4 เวอร์ชัน (v2.1.316–v2.1.319) พร้อมยืนยันการเลิกใช้ Fast mode บน Opus 4.8 ภายใน 30 พ.ย., Gemini CLI ปล่อย v0.67.0 stable และ OpenAI Codex ปล่อย v0.167.0 พร้อมฟีเจอร์ agent command center ส่วน Kubernetes ยังอยู่ในขั้น beta (v1.38.0-beta.0) ไม่มี patch ใหม่ในกรอบสัปดาห์นี้ ที่น่าสังเกตคือ <strong>NVIDIA/auto-ontology</strong> เติบโตแบบไวรัล (+8,035 ดาว จากฐาน ~1,400 ดาว หรือเพิ่มขึ้นกว่า 500%) ซึ่งเป็นอัตราเติบโตเชิงสัมพัทธ์สูงสุดของสัปดาห์ แม้ไม่มีรายงานเหตุการณ์ด้านความปลอดภัยขนาดใหญ่ใหม่ที่ยืนยันได้ในกรอบ 7 วันนี้</p>
+    </div>
+    <div class="note-box">
+      <strong>ข้อจำกัดของข้อมูล:</strong> ไม่พบรายงานเหตุการณ์ด้านความปลอดภัย (เช่น แคมเปญ supply-chain บน npm ครั้งใหม่) หรือการอัปเดตสเปก MCP ฉบับใหม่ ที่ยืนยันได้จากแหล่งข่าวว่าเกิดขึ้นในกรอบ 1–7 พ.ย. 2026 โดยเฉพาะในรอบการค้นคว้านี้ — ทีมจัดทำรายงานจึงไม่นำเหตุการณ์เก่ากว่ากรอบสัปดาห์มาแสดงเป็นข่าวใหม่ หน้า Hacker News แบบรายสัปดาห์ (community tier) ก็ไม่สามารถยืนยันรายการที่ตรงกรอบวันที่นี้ได้เช่นกัน จึงใช้ GitHub Trending/Releases เป็นหลักฐานหลักของรายงานฉบับนี้</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Top Trending Repositories</h2>
+    <p>เรียงตามความสำคัญและผลกระทบต่อ Developer Community ยืนยันผ่านหน้า GitHub Trending (weekly, รวมทุกภาษา + แยกตามภาษา) และหน้า Repository/Releases โดยตรง</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Owner</th><th>Language</th><th>Stars (สัปดาห์นี้)</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/thedotmack/claude-mem">claude-mem</a> 🚀🧠</td><td>thedotmack</td><td>TypeScript</td><td>114,153 (+8,726)</td><td>Agent Memory</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/pingdotgg/t3code">t3code</a> 🔥🤖</td><td>pingdotgg</td><td>ไม่มีข้อมูล</td><td>50,215 (+16,782)</td><td>Agent Harness Control Surface</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/anthropics/skills">skills</a> 🧠✅</td><td>anthropics</td><td>Python</td><td>188,283 (+3,159)</td><td>Agent Skills (Official)</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/github/spec-kit">spec-kit</a> ⚙️✅</td><td>github</td><td>ไม่มีข้อมูล</td><td>148,263 (+4,202)</td><td>Spec-Driven Development Toolkit</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/obra/superpowers">superpowers</a> ⭐🧠</td><td>obra</td><td>Shell</td><td>313,756 (+4,577)</td><td>Agent Skills Framework</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/multica-ai/andrej-karpathy-skills">andrej-karpathy-skills</a> ⭐🧠</td><td>multica-ai</td><td>Markdown</td><td>230,385 (+3,671)</td><td>Claude Code Behavior Skill</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/pbakaus/impeccable">impeccable</a> 🚀🧠</td><td>pbakaus</td><td>Rust</td><td>105,014 (+8,172)</td><td>AI Agent Design Skill</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/D4Vinci/Scrapling">Scrapling</a> 🚀⚙️</td><td>D4Vinci</td><td>Python</td><td>98,988 (+8,372)</td><td>Web Scraping Framework</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/Nutlope/hallmark">hallmark</a> 🚀🧠</td><td>Nutlope</td><td>CSS</td><td>49,803 (+6,900)</td><td>AI Agent Design Skill</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/NVIDIA/auto-ontology">auto-ontology</a> 🔥✅</td><td>NVIDIA</td><td>Python</td><td>9,423 (+8,035)</td><td>Agent Semantic/Ontology Layer</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/anthropics/claude-code">claude-code</a> 🤖✅📦</td><td>anthropics</td><td>ไม่มีข้อมูล</td><td>ไม่มีข้อมูล</td><td>AI Coding Agent</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/google-gemini/gemini-cli">gemini-cli</a> 🤖✅📦</td><td>google-gemini</td><td>TypeScript</td><td>ไม่มีข้อมูล</td><td>AI Coding Agent</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/openai/codex">codex</a> 🤖✅📦</td><td>openai</td><td>Rust</td><td>133,513 (+1,930)</td><td>AI Coding Agent</td><td>GitHub Trending + Releases</td></tr>
+          <tr><td><a href="https://github.com/Donchitos/Claude-Code-Game-Studios">Claude-Code-Game-Studios</a> 🔥🤖</td><td>Donchitos</td><td>Shell</td><td>36,234 (+6,018)</td><td>Claude Code Multi-Agent Workflow</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/HKUDS/DeepTutor">DeepTutor</a> 🚀🤖</td><td>HKUDS</td><td>Python</td><td>56,113 (+4,588)</td><td>AI Learning Agent</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/max-sixty/worktrunk">worktrunk</a> ⚙️🧠</td><td>max-sixty</td><td>Rust</td><td>11,843 (+2,184)</td><td>Git Worktree CLI for Agents</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/kubernetes/kubernetes">kubernetes</a> ☁️📦</td><td>kubernetes</td><td>Go</td><td>128,880 (+708)</td><td>Container Orchestration</td><td>GitHub Trending + Releases</td></tr>
+          <tr><td><a href="https://github.com/agentgateway/agentgateway">agentgateway</a> 🧠🔒</td><td>agentgateway</td><td>Rust</td><td>6,007 (+180)</td><td>Agentic Proxy / MCP Gateway</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀🧠 <a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></div>
+      <div class="card-meta">TypeScript · Apache-2.0 · 114.2k ★ (+8,726 สัปดาห์นี้) · 9.9k forks · 3,987 commits บน main</div>
+      <p>เครื่องมือบันทึกและสรุปสิ่งที่ agent (Claude Code, Codex, Cursor, OpenCode) ทำในแต่ละเซสชันด้วย AI แล้วบดอัดใส่กลับเข้าเซสชันถัดไป แก้ปัญหา context หายเมื่อเริ่มเซสชันใหม่ ยังไม่พบ release ใหม่ที่ระบุเวอร์ชันชัดเจนในกรอบสัปดาห์นี้จากหน้าที่เข้าถึงได้ แต่หน้า badge แสดงเวอร์ชัน 15.11.0</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥🤖 <a href="https://github.com/pingdotgg/t3code">pingdotgg/t3code</a></div>
+      <div class="card-meta">MIT · 50.2k ★ (+16,782 สัปดาห์นี้ = เติบโต ~33%) · 9.8k forks</div>
+      <p>"Agent harness control surface" ให้ควบคุม coding agent (Claude Code, Codex, Cursor, Grok Build, OpenCode, Google Antigravity, fx) จากแอปมือถือ เว็บ หรือ Electron desktop ของทีม Theo (T3 Stack) เป็นรายการที่มีอัตราดาวเพิ่มสัมพัทธ์สูงสุดอันดับสองของสัปดาห์ รองจาก NVIDIA/auto-ontology เท่านั้น</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚙️✅ <a href="https://github.com/github/spec-kit">github/spec-kit</a></div>
+      <div class="card-meta">MIT · 148.3k ★ (+4,202 สัปดาห์นี้) · 13.3k forks</div>
+      <p>ทูลคิตทางการจาก GitHub สำหรับ Spec-Driven Development (SDD) ให้ coding agent ทำงานตามกระบวนการที่มีโครงสร้าง มี template และบันทึกผลลัพธ์ รองรับการขยายด้วย preset/extension/workflow เช่นการแก้บั๊กและประเมินไอเดีย เป็นตัวอย่าง Company Adoption ที่ชัดเจนของ GitHub เองในพื้นที่ agentic development</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥✅ <a href="https://github.com/NVIDIA/auto-ontology">NVIDIA/auto-ontology</a></div>
+      <div class="card-meta">Python · Apache-2.0 · 9.4k ★ (+8,035 สัปดาห์นี้ ≈ เติบโต 500%+ จากฐานเดิม) · 747 forks</div>
+      <p>เฟรมเวิร์ก Python สำหรับสร้าง "semantic, graph-based reasoning layer" ครอบข้อมูลองค์กร ให้ agent เข้าถึงผ่าน MCP, CLI และ API เป็นโครงการที่ยังไม่เปิดรับ external contribution แต่มีอัตราดาวเพิ่มสัมพัทธ์สูงสุดของสัปดาห์นี้ (ดู Viral This Week) ยังไม่มีข้อมูล release version ที่ยืนยันได้จากหน้า Releases ของ repository</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🤖 AI &amp; LLM</h2>
+
+    <div class="card">
+      <div class="card-title">🚀 <a href="https://github.com/HKUDS/DeepTutor">HKUDS/DeepTutor</a></div>
+      <div class="card-meta">Python · Apache-2.0 · 56.1k ★ (+4,588 สัปดาห์นี้)</div>
+      <p>ระบบ agent-based lifelong tutoring โอเพนซอร์สที่ยังติด Trending ต่อเนื่องจากสัปดาห์ก่อน (ดูรายงานสัปดาห์ที่แล้วสำหรับ v1.7.0) ไม่พบ release version ใหม่ที่ยืนยันได้ในกรอบ 1–7 พ.ย. จากหน้าที่เข้าถึงได้ในรอบการค้นคว้านี้</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀 <a href="https://github.com/calesthio/OpenMontage">calesthio/OpenMontage</a></div>
+      <div class="card-meta">Python · 77.9k ★ (+4,405 สัปดาห์นี้)</div>
+      <p>ระบบผลิตวิดีโอแบบ agentic ที่มี 12 pipeline และเครื่องมือกว่า 100 รายการ ยังเติบโตต่อเนื่องเป็นสัปดาห์ที่สอง สะท้อนความสนใจด้าน AI video generation ที่ขยายจากแชตบอตไปสู่เครื่องมือผลิตเนื้อหาเต็มรูปแบบ</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀 <a href="https://github.com/D4Vinci/Scrapling">D4Vinci/Scrapling</a></div>
+      <div class="card-meta">Python · 99.0k ★ (+8,372 สัปดาห์นี้)</div>
+      <p>เฟรมเวิร์ก web scraping ตั้งแต่ request เดี่ยวไปจนถึง crawl ขนาดใหญ่ ไม่ใช่ agent โดยตรงแต่เป็นส่วนประกอบพื้นฐานที่ coding agent และระบบ RAG จำนวนมากเรียกใช้ดึงข้อมูลจากเว็บ เป็นหนึ่งในโครงการที่ไม่มีคำว่า "agent" ในชื่อแต่เติบโตเร็วที่สุดของสัปดาห์</p>
+    </div>
+
+    <p><strong>shiyu-coder/Kronos</strong> (Python, 47,120 ★, +2,984) โมเดลพื้นฐานสำหรับข้อมูลตลาดการเงินยังติด Trending ต่อเนื่อง และ <strong>infiniflow/ragflow</strong> (93,707 ★, +540) RAG engine แบบ agent-native ยังมีกิจกรรมสม่ำเสมอ แต่ไม่พบ release ใหม่ของทั้งสองในกรอบ 7 วันนี้</p>
+  </section>
+
+  <section>
+    <h2>🧠 MCP &amp; AI Agents</h2>
+
+    <div class="card">
+      <div class="card-title">🤖✅ <a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></div>
+      <div class="card-meta">4 เวอร์ชันในสัปดาห์นี้ (31 ต.ค. – 6 พ.ย.) · ล่าสุด v2.1.319 (6 พ.ย., Latest)</div>
+      <p><strong>v2.1.319:</strong> ปรับ auto mode เบื้องหลัง gateway (<code>CLAUDE_CODE_AUTO_MODE_SERVER</code>), ให้ MCP task ทำงานเป็น background โดย default พร้อม flag <code>CLAUDE_CODE_DISABLE_MCP_TASK_BACKGROUND</code> สำหรับปิด, เพิ่ม <code>permissions.denyInsteadOfPrompting</code> และคำสั่ง <code>/claude-api latency-optimize</code> <strong>v2.1.318:</strong> เพิ่มฟิลด์ <code>loginExpiresAt</code> ใน <code>claude auth status</code> และเตือนก่อนหมดอายุ sign-in 10 วัน, หยุดติดตั้ง/อัปเดต IDE extension จาก terminal ของ IDE, subagent ย้าย shell command ไป background หลัง 3 นาที <strong>v2.1.317:</strong> เพิ่มคำเตือนใน <code>/schedule</code> เมื่อ cloud task ได้ connector ที่ไม่ได้ขอ และถอด stub "file unchanged" ของ Read tool ออก <strong>v2.1.316:</strong> ประกาศเลิกใช้ (deprecate) Fast mode บน Opus 4.8 โดยจะถอดออกวันที่ 30 พ.ย. 2026 (ดู Breaking Changes)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅📦 <a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></div>
+      <div class="card-meta">TypeScript · v0.67.0 stable (4 พ.ย., Latest) · nightly build ต่อเนื่องทุกวันถึง 4 พ.ย.</div>
+      <p>v0.67.0 เพิ่มคำสั่ง <code>models</code> และ flag <code>--list-models</code>, เชื่อม IDE companion เข้ากับ container sandbox, และจัดหมวดข้อผิดพลาด spending-cap ของโปรเจกต์เป็น terminal quota error ฝั่ง nightly (v0.67.0-nightly) ยังปล่อยต่อเนื่องแทบทุกวันพร้อมแก้บั๊ก path บน Windows, การตัด emoji แบบปลอดภัย, และการนับเวลาถอยหลัง rate-limit 429</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🤖✅📦 <a href="https://github.com/openai/codex">openai/codex</a></div>
+      <div class="card-meta">Rust · 133.5k ★ (+1,930 สัปดาห์นี้) · v0.167.0 stable (6 พ.ย., Latest)</div>
+      <p>v0.167.0 เพิ่ม agent command center (<code>codex agents --no-daemon</code>), สลับ backend ที่เชื่อมต่อไว้จาก session picker ได้ทันที, ดูภาพตัวอย่างใน composer, รองรับการตั้งค่า Google Cloud Vertex AI, ตั้งค่า system proxy แบบ opt-in และรีวิว patch แบบ inline ตอนขออนุมัติ มีเวอร์ชัน alpha ปล่อยถี่มากในสัปดาห์นี้ (0.168.x, 0.169.0-alpha.2) แต่ยังไม่มีรายละเอียดเปลี่ยนแปลงที่เผยแพร่</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🧠🔒 <a href="https://github.com/agentgateway/agentgateway">agentgateway/agentgateway</a></div>
+      <div class="card-meta">Rust · 6.0k ★ (+180 สัปดาห์นี้)</div>
+      <p>Agentic proxy สำหรับ AI agent และ MCP server ติด Trending ในหมวด Rust สะท้อนความต้องการ infrastructure ชั้น gateway/routing สำหรับ MCP ที่เพิ่มขึ้น แม้ไม่พบการอัปเดตสเปก MCP ฉบับใหม่ในกรอบสัปดาห์นี้</p>
+    </div>
+
+    <p><strong>obra/superpowers</strong> (Shell, 313,756 ★, +4,577) และ <strong>multica-ai/andrej-karpathy-skills</strong> (Markdown, 230,385 ★, +3,671) ยังติด Trending ต่อเนื่องจากสัปดาห์ก่อนในฐานะเฟรมเวิร์ก/ไฟล์ปรับพฤติกรรม agent ที่ได้รับความนิยมสูงสุดต่อเนื่อง <strong>max-sixty/worktrunk</strong> (Rust, 11,843 ★, +2,184) เครื่องมือจัดการ git worktree สำหรับรัน agent หลายตัวพร้อมกัน เป็นอีกสัญญาณของเทรนด์ "multi-agent parallel workflow"</p>
+
+    <div class="note-box">
+      <strong>สถานะ MCP Specification:</strong> ไม่พบการอัปเดตสเปก MCP ฉบับใหม่ในกรอบ 7 วันนี้ (สเปกล่าสุดที่ยืนยันได้จากแหล่งข่าวคือฉบับ 2026-07-28) กิจกรรมฝั่ง MCP สัปดาห์นี้กระจุกอยู่ที่ชั้น gateway/proxy (agentgateway) และเครื่องมือ harness ควบคุม agent (t3code) มากกว่าการเปลี่ยนแปลงตัวสเปกเอง
+    </div>
+  </section>
+
+  <section>
+    <h2>⚙️ Developer Tools</h2>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Language</th><th>License</th><th>Stars</th><th>กิจกรรมในกรอบ 7 วัน</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/max-sixty/worktrunk">max-sixty/worktrunk</a></td><td>Rust</td><td>ไม่มีข้อมูล</td><td>11,843 (+2,184)</td><td>CLI จัดการ git worktree สำหรับ parallel AI agent workflow</td></tr>
+          <tr><td><a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs/graphify</a></td><td>ไม่มีข้อมูล</td><td>ไม่มีข้อมูล</td><td>143,675 (+4,281)</td><td>สร้าง knowledge graph ที่ query ได้จากโค้ด เอกสาร และ schema</td></tr>
+          <tr><td><a href="https://github.com/blader/humanizer">blader/humanizer</a></td><td>ไม่มีข้อมูล</td><td>ไม่มีข้อมูล</td><td>65,748 (+2,981)</td><td>Agent skill ลบร่องรอยข้อความที่ AI เขียน</td></tr>
+          <tr><td><a href="https://github.com/herdrdev/herdr">herdrdev/herdr</a></td><td>Rust</td><td>ไม่มีข้อมูล</td><td>48,832 (+1,661)</td><td>Runtime สำหรับรัน coding agent</td></tr>
+          <tr><td><a href="https://github.com/astral-sh/ruff">astral-sh/ruff</a></td><td>Rust</td><td>MIT</td><td>50,770 (+369)</td><td>Python linter/formatter ความเร็วสูง กิจกรรมสม่ำเสมอ</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>vercel-labs/agent-browser</strong> (Rust, 46,351 ★, +1,404) CLI อัตโนมัติเบราว์เซอร์สำหรับ AI agent และ <strong>cjpais/Handy</strong> (Rust, 37,854 ★, +2,677) แอป speech-to-text แบบออฟไลน์ยังมีฐานผู้ใช้เติบโตต่อเนื่อง แต่ไม่พบ release เด่นใหม่ในกรอบสัปดาห์นี้ที่ยืนยันได้</p>
+  </section>
+
+  <section>
+    <h2>☁️ Cloud Native &amp; DevOps</h2>
+
+    <div class="card">
+      <div class="card-title">☁️ <a href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a></div>
+      <div class="card-meta">Go · Apache-2.0 · v1.38.0-beta.0 — 6 พ.ย. 2026 (pre-release)</div>
+      <p>ในกรอบ 1–7 พ.ย. มีเพียงเวอร์ชัน pre-release ของสาย 1.38 (beta.0) ออกมา ยังไม่มี release note โดยละเอียดที่เผยแพร่บนหน้า Releases ณ เวลาค้นคว้า ส่วน patch 4 สาย (v1.37.2/v1.36.6/v1.35.10/v1.34.13) ที่ออกเมื่อ 28 ต.ค. อยู่นอกกรอบ 7 วันของรายงานนี้ (ดูรายงานสัปดาห์ก่อน) จึงไม่มี patch ใหม่ของ Kubernetes ที่ยืนยันได้ในกรอบสัปดาห์นี้</p>
+    </div>
+
+    <p><strong>netbirdio/netbird</strong> (30,751 ★, +395) เครือข่าย Zero Trust ที่เชื่อมคน เครื่องจักร และ AI agent ผ่าน WireGuard ยังติด Trending ในหมวด Go <strong>docker/compose</strong> (38,631 ★, +146) และ <strong>moby/moby</strong> (72,354 ★, +205) ยังมีกิจกรรมสม่ำเสมอแต่ไม่พบ release เด่นในกรอบสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>🔒 Security</h2>
+    <p>ไม่มีโครงการเด่นด้านความปลอดภัยที่เปิดตัวใหม่หรือมีเหตุการณ์สำคัญยืนยันได้ในกรอบ 1–7 พ.ย. 2026 จากรอบการค้นคว้านี้ <strong>netbirdio/netbird</strong> (Zero Trust networking) และ <strong>CarterPerez-dev/Cybersecurity-Projects</strong> (Go, 9,302 ★, +561, คอลเลกชันโปรเจกต์ความปลอดภัย 70 รายการสำหรับฝึกฝน) ยังติด Trending ต่อเนื่องในฐานะเครื่องมือ/แหล่งเรียนรู้ด้านความปลอดภัย แต่ไม่ใช่ข่าวเหตุการณ์ใหม่</p>
+    <div class="note-box">
+      <strong>ข้อจำกัดของข้อมูล:</strong> การค้นหาแคมเปญ supply-chain บน npm และ GitHub Advisory Database แบบ critical สำหรับกรอบวันที่ 1–7 พ.ย. 2026 โดยเฉพาะ ไม่พบผลลัพธ์ที่ยืนยันวันที่ตรงกรอบนี้ได้จากแหล่งข่าวที่เข้าถึงได้ในรอบการค้นคว้า จึงไม่นำเหตุการณ์เก่ากว่ากรอบ (เช่น แคมเปญปี 2025 หรือต้นปี 2026) มาแสดงเป็นข่าวใหม่ของสัปดาห์นี้
+    </div>
+  </section>
+
+  <section>
+    <h2>🗄️ Database</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้ที่ยืนยันได้ ไม่พบ release ใหม่ของฐานข้อมูลหลัก (DuckDB, ClickHouse, PostgreSQL ฯลฯ) ที่ตกในกรอบ 1–7 พ.ย. 2026 จากการค้นคว้ารอบนี้ — ข่าวล่าสุดที่ยืนยันได้ (DuckDB 2.0 preview, ClickHouse 26.8) อยู่นอกกรอบสัปดาห์นี้ทั้งหมด (ช่วงกลางปีถึงปลายเดือน ส.ค. 2026)</p>
+  </section>
+
+  <section>
+    <h2>🌐 Web Frameworks</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้ที่ยืนยันได้ <strong>denoland/deno</strong> (108,904 ★, +280) และ <strong>nushell/nushell</strong> (41,033 ★, +220) ยังติด Trending ในหมวด Rust ด้วยกิจกรรมสม่ำเสมอ แต่ไม่พบ release ที่มีการเปลี่ยนแปลงสำคัญในกรอบสัปดาห์นี้ที่ยืนยันได้</p>
+  </section>
+
+  <section>
+    <h2>📱 Mobile</h2>
+    <p>ไม่มีโครงการเด่นในสัปดาห์นี้สำหรับ Flutter, React Native หรือ Expo ที่ยืนยันกิจกรรมสำคัญในกรอบ 1–7 พ.ย. ได้ หมวด Swift และ Kotlin ที่ติด Trending ส่วนใหญ่เป็นแอประดับ niche (เครื่องเล่นเพลง, ตัวจัดการแอป, ยูทิลิตีเดสก์ท็อป) เช่น <strong>apple/coreai-models</strong> (Swift, 2,290 ★, +52) ที่ Apple เผยแพร่ recipe สำหรับ export โมเดล AI บนอุปกรณ์ แต่ยังมีขนาดเล็กเกินกว่าจะถือเป็นโครงการเด่นระดับเฟรมเวิร์กมือถือของสัปดาห์นี้</p>
+  </section>
+
+  <section>
+    <h2>📦 New Releases</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Project</th><th>Version</th><th>Release Date</th><th>Highlights</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></td><td>v2.1.319</td><td>6 พ.ย. 2026</td><td>MCP task background by default, <code>permissions.denyInsteadOfPrompting</code>, <code>/claude-api latency-optimize</code></td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></td><td>v2.1.318</td><td>4 พ.ย. 2026</td><td><code>loginExpiresAt</code> ใน auth status, หยุดอัปเดต IDE extension จาก IDE terminal</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></td><td>v2.1.317</td><td>3 พ.ย. 2026</td><td>เตือน connector ที่ไม่ได้ขอใน <code>/schedule</code>, ถอด Read tool stub</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></td><td>v2.1.316</td><td>31 ต.ค. 2026</td><td>⚠️ ประกาศเลิกใช้ Fast mode บน Opus 4.8 (ถอดออก 30 พ.ย.)</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a></td><td>v0.67.0</td><td>4 พ.ย. 2026</td><td>คำสั่ง <code>models</code>/<code>--list-models</code>, เชื่อม IDE companion กับ container sandbox</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/openai/codex">openai/codex</a></td><td>v0.167.0</td><td>6 พ.ย. 2026</td><td>Agent command center, สลับ backend จาก session picker, Vertex AI setup</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a></td><td>v1.38.0-beta.0</td><td>6 พ.ย. 2026</td><td>Pre-release ของสาย 1.38 ยังไม่มี release note โดยละเอียดเผยแพร่</td><td>GitHub Releases</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><em>หมายเหตุ: Claude Code, Gemini CLI และ Codex ปล่อยหลายเวอร์ชัน/nightly/alpha build ในสัปดาห์นี้ ตารางด้านบนแสดงเฉพาะเวอร์ชัน stable/สำคัญที่สุดของแต่ละวัน</em></p>
+  </section>
+
+  <section>
+    <h2>🔥 Viral This Week</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars Growth</th><th>Fork Growth</th><th>เหตุผล</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/NVIDIA/auto-ontology">NVIDIA/auto-ontology</a></td><td>+8,035 (≈500%+ จากฐานเดิม)</td><td>ไม่มีข้อมูลที่ยืนยันได้</td><td>NVIDIA เปิดเฟรมเวิร์ก semantic/graph reasoning layer สำหรับ agent อัตราเติบโตสัมพัทธ์สูงสุดของสัปดาห์ แม้ฐานดาวยังเล็ก</td></tr>
+          <tr><td><a href="https://github.com/pingdotgg/t3code">pingdotgg/t3code</a></td><td>+16,782 (~33% ของยอดรวม)</td><td>ไม่มีข้อมูลที่ยืนยันได้</td><td>เปิดตัวแอปควบคุม coding agent จากมือถือ/เว็บของทีม T3 Stack ที่มีฐานผู้ติดตามอยู่แล้ว</td></tr>
+          <tr><td><a href="https://github.com/milind-soni/OpenMausBot">milind-soni/OpenMausBot</a></td><td>+6,395 (~40% ของยอดรวม)</td><td>ไม่มีข้อมูลที่ยืนยันได้</td><td>ทางเลือกโอเพนซอร์สของ Grok Bot พร้อม virtual machine ให้ bot ใช้งาน เกิดใหม่และติด Trending ทันที</td></tr>
+          <tr><td><a href="https://github.com/Donchitos/Claude-Code-Game-Studios">Donchitos/Claude-Code-Game-Studios</a></td><td>+6,018 (~17% ของยอดรวม)</td><td>ไม่มีข้อมูลที่ยืนยันได้</td><td>ชุด 49 agent และ 72 workflow skill แปลง Claude Code เป็นสตูดิโอเกม ตอบโจทย์ความสนใจ multi-agent workflow</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box">
+      <strong>ข้อจำกัดของข้อมูล:</strong> หน้า GitHub Trending ไม่แสดงตัวเลข fork growth แบบ week-over-week แยกจากยอดรวม ตัวเลข "Stars Growth" ข้างต้นคือยอดดาวที่หน้า Trending ระบุว่าได้รับในสัปดาห์นี้โดยตรง
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Fastest Growing Projects</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>Stars</th><th>Growth (สัปดาห์นี้)</th><th>Category</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/NVIDIA/auto-ontology">NVIDIA/auto-ontology</a></td><td>9,423</td><td>+8,035 (≈500%+)</td><td>Agent Semantic Layer</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/pingdotgg/t3code">pingdotgg/t3code</a></td><td>50,215</td><td>+16,782 (~33%)</td><td>Agent Harness</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/milind-soni/OpenMausBot">milind-soni/OpenMausBot</a></td><td>15,964</td><td>+6,395 (~40%)</td><td>Open-source Chat Bot</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/nightly-labs/openbot">nightly-labs/openbot</a></td><td>6,134</td><td>+1,808 (~29%)</td><td>AI Teammate Workspace</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/D4Vinci/Scrapling">D4Vinci/Scrapling</a></td><td>98,988</td><td>+8,372 (~8%)</td><td>Web Scraping Framework</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>คำนวณเป็น % จากยอดดาวรวม ณ ปัจจุบันเทียบกับดาวที่เพิ่มในสัปดาห์นี้ที่ GitHub Trending ระบุไว้โดยตรง — ใช้บอกอัตราการเติบโตเชิงสัมพัทธ์ ไม่ใช่ขนาดสัมบูรณ์</p>
+  </section>
+
+  <section>
+    <h2>💎 Hidden Gems</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/NVIDIA/auto-ontology">NVIDIA/auto-ontology</a></div>
+      <p><strong>จุดเด่น:</strong> เฟรมเวิร์ก Python สร้าง semantic/graph-based reasoning layer เหนือข้อมูลองค์กร เข้าถึงผ่าน MCP, CLI และ API<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> มาจากแบรนด์ใหญ่ (NVIDIA) แต่ยังมีฐานดาวเล็ก (9.4k) เทียบกับอัตราเติบโตที่สูงที่สุดของสัปดาห์นี้<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ต้องการให้ agent เข้าใจโครงสร้างข้อมูลองค์กรแบบมี context มากกว่าการค้นแบบ keyword/embedding ล้วน<br>
+      <strong>Source:</strong> GitHub Trending + Repository</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/agentgateway/agentgateway">agentgateway/agentgateway</a></div>
+      <p><strong>จุดเด่น:</strong> Agentic proxy สำหรับ AI agent และ MCP server เขียนด้วย Rust<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> โครงสร้าง infrastructure ชั้น gateway/routing ของ MCP ยังมีผู้รู้จักน้อย (6k ★) ทั้งที่จำเป็นขึ้นเรื่อย ๆ เมื่อองค์กรรัน MCP server จำนวนมาก<br>
+      <strong>เหมาะกับใคร:</strong> ทีม platform ที่ต้องบริหารจัดการ MCP server หลายตัวให้ agent เรียกใช้อย่างปลอดภัยและมีสังเกตการณ์ (observability)<br>
+      <strong>Source:</strong> GitHub Trending</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/herdrdev/herdr">herdrdev/herdr</a></div>
+      <p><strong>จุดเด่น:</strong> Runtime สำหรับรัน coding agent เขียนด้วย Rust<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> มีฐานดาวแล้ว 48.8k แต่ยังไม่ค่อยถูกพูดถึงนอกหน้า Trending เมื่อเทียบกับ harness ชื่อดังกว่าอย่าง t3code หรือ orca<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ต้องการควบคุม runtime ของ agent ระดับต่ำ (low-level) มากกว่าการใช้ harness สำเร็จรูป<br>
+      <strong>Source:</strong> GitHub Trending</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/anomalyco/hex">anomalyco/hex</a></div>
+      <p><strong>จุดเด่น:</strong> เครื่องมือ voice dictation แบบโลคัลสำหรับ Mac/Windows/Linux กดปุ่มค้าง พูด แล้ว paste ข้อความอัตโนมัติ<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> พัฒนาโดยองค์กร anomalyco เดียวกับที่ดูแล opencode (เดิมชื่อ sst/opencode ตามที่รายงานสัปดาห์ก่อนระบุไว้) ยังมีฐานดาวเล็ก (5.6k) เทียบกับโครงการอื่นในองค์กร<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่อยากสั่งงาน coding agent ด้วยเสียงแทนการพิมพ์<br>
+      <strong>Source:</strong> GitHub Repository</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/osaurus-ai/osaurus">osaurus-ai/osaurus</a></div>
+      <p><strong>จุดเด่น:</strong> Harness รัน AI agent แบบ native บน macOS พร้อมความจำที่คงอยู่ข้ามเซสชัน (persistent memory) เขียนด้วย Swift<br>
+      <strong>เหตุผลที่น่าสนใจ:</strong> แก้ปัญหาเดียวกับ claude-mem (agent memory) แต่ทำในระดับ OS-native สำหรับ macOS โดยเฉพาะ และยังเป็นที่รู้จักน้อยกว่ามาก (8.1k ★)<br>
+      <strong>เหมาะกับใคร:</strong> ผู้ใช้ macOS ที่ต้องการ agent harness แบบ native ไม่ต้องพึ่งเว็บแอปหรือ Electron<br>
+      <strong>Source:</strong> GitHub Trending</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠 Developer Recommendations</h2>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/anthropics/skills">anthropics/skills</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> คลัง Agent Skills ทางการจาก Anthropic สำหรับ Claude Code<br>
+      <strong>เหมาะกับใคร:</strong> ผู้ใช้ Claude Code ทุกระดับที่ต้องการสกิลที่ผ่านการตรวจสอบจากผู้ผลิตโดยตรง<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (ติดตั้งผ่านระบบ skill ของ Claude Code)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เป็นแหล่งสกิลที่น่าเชื่อถือที่สุดในนิเวศที่กำลังเติบโตเร็วและมีความเสี่ยง supply chain<br>
+      GitHub: <a href="https://github.com/anthropics/skills">github.com/anthropics/skills</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/github/spec-kit">github/spec-kit</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ทูลคิต Spec-Driven Development ให้ coding agent ทำงานตามกระบวนการที่มีโครงสร้างและตรวจสอบได้<br>
+      <strong>เหมาะกับใคร:</strong> ทีมที่ใช้ agent เขียนโค้ดจริงจังและต้องการลดความสุ่มของผลลัพธ์<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ปานกลาง (ต้องปรับ workflow ทีม)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ทูลทางการจาก GitHub เอง รองรับการขยายด้วย preset/extension<br>
+      GitHub: <a href="https://github.com/github/spec-kit">github.com/github/spec-kit</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ให้ coding agent มีความจำข้ามเซสชันด้วยการบดอัดและ reinject context<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่ทำโปรเจกต์ยาวต่อเนื่องหลายวันกับ agent ตัวเดียว<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย–ปานกลาง (ติดตั้งเป็น hook/plugin)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เป็นโครงการที่เติบโตเร็วและแก้ pain point ที่พบบ่อยที่สุดของผู้ใช้ coding agent<br>
+      GitHub: <a href="https://github.com/thedotmack/claude-mem">github.com/thedotmack/claude-mem</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/max-sixty/worktrunk">max-sixty/worktrunk</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> CLI จัดการ git worktree ออกแบบมาเพื่อรัน AI agent หลายตัวแบบขนาน<br>
+      <strong>เหมาะกับใคร:</strong> นักพัฒนาที่รัน Claude Code/Codex หลาย session พร้อมกันบนโปรเจกต์เดียว<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (CLI เดี่ยว ไม่ต้องตั้งค่ามาก)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ตอบโจทย์ workflow "multi-agent parallel" ที่กำลังเป็นที่นิยมโดยตรง<br>
+      GitHub: <a href="https://github.com/max-sixty/worktrunk">github.com/max-sixty/worktrunk</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> ตรวจจับ "AI slop" ใน UI ที่ coding agent สร้าง พร้อมคำสั่งปรับปรุงดีไซน์<br>
+      <strong>เหมาะกับใคร:</strong> ทีม frontend ที่ใช้ Claude Code/Cursor/Codex สร้าง UI เป็นประจำ<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (ติดตั้งเป็นสกิล/CLI)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> ดาวเพิ่มกว่า 8,000 ในสัปดาห์เดียว สะท้อนความต้องการจริงของตลาด<br>
+      GitHub: <a href="https://github.com/pbakaus/impeccable">github.com/pbakaus/impeccable</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://github.com/D4Vinci/Scrapling">D4Vinci/Scrapling</a></div>
+      <p><strong>ใช้ทำอะไร:</strong> เฟรมเวิร์ก web scraping ตั้งแต่ request เดี่ยวถึง crawl ขนาดใหญ่<br>
+      <strong>เหมาะกับใคร:</strong> ทีม data engineering/RAG ที่ต้องดึงข้อมูลจากเว็บมาป้อน pipeline<br>
+      <strong>ความยากในการเริ่มต้น:</strong> ง่าย (<code>pip install</code>)<br>
+      <strong>เหตุผลที่แนะนำ:</strong> เติบโตเร็วและเป็นส่วนประกอบพื้นฐานที่ใช้ซ้ำได้กว้าง<br>
+      GitHub: <a href="https://github.com/D4Vinci/Scrapling">github.com/D4Vinci/Scrapling</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏢 Company Adoption</h2>
+    <p><strong>Anthropic</strong> — <a href="https://github.com/anthropics/skills">anthropics/skills</a> (188.3k ★, +3,159) คลัง Agent Skills ทางการ และ <a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a> ปล่อย 4 เวอร์ชันในสัปดาห์นี้ <strong>GitHub</strong> — <a href="https://github.com/github/spec-kit">github/spec-kit</a> (148.3k ★, +4,202) ทูลคิต Spec-Driven Development ทางการ <strong>NVIDIA</strong> — <a href="https://github.com/NVIDIA/auto-ontology">NVIDIA/auto-ontology</a> (9.4k ★, +8,035) เฟรมเวิร์ก semantic layer สำหรับ agent ที่เพิ่งเปิดตัวและเติบโตไวรัล <strong>OpenAI</strong> — <a href="https://github.com/openai/codex">openai/codex</a> ปล่อย v0.167.0 พร้อม agent command center <strong>Apple</strong> — <a href="https://github.com/apple/coreai-models">apple/coreai-models</a> เผยแพร่ recipe/runtime สำหรับโมเดล AI บนอุปกรณ์ (2.3k ★, +52) <strong>Google</strong> — <a href="https://github.com/google-gemini/gemini-cli">google-gemini/gemini-cli</a> ปล่อย v0.67.0 stable</p>
+  </section>
+
+  <section>
+    <h2>⚠️ Breaking Changes</h2>
+    <div class="card">
+      <div class="card-title">⚠️ <a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a> v2.1.316</div>
+      <div class="card-meta">31 ต.ค. 2026 · Deprecation Notice</div>
+      <p>ประกาศเลิกใช้ (deprecate) Fast mode บน Opus 4.8 โดยจะถอดฟีเจอร์นี้ออกจริงในวันที่ 30 พ.ย. 2026 — ผู้ใช้ที่พึ่งพาความเร็วของ Fast mode ควรวางแผนย้ายไปใช้รุ่นอื่น (เช่น Opus 5.5) ก่อนถึงกำหนดถอดออก มิฉะนั้นการตั้งค่าที่อ้างอิง Fast mode บน Opus 4.8 จะใช้งานไม่ได้หลังวันดังกล่าว ไม่มี Breaking Change หรือ Migration Guide ระดับ major อื่นที่ยืนยันได้จากโครงการในรายงานฉบับนี้ในกรอบ 7 วันนี้</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Top Categories</h2>
+    <ol>
+      <li>AI Agents / Agent Harness &amp; Memory (claude-mem, t3code, herdr, osaurus)</li>
+      <li>Agent Skills Ecosystem (anthropics/skills, superpowers, impeccable, hallmark, humanizer)</li>
+      <li>Developer Productivity / Spec-Driven Development (spec-kit, worktrunk, graphify)</li>
+      <li>MCP &amp; Agent Infrastructure (agentgateway)</li>
+      <li>AI / Data &amp; Web Scraping (Scrapling, auto-ontology)</li>
+      <li>Cloud Native (kubernetes, netbird)</li>
+      <li>CLI Tools (codex, ruff, nushell)</li>
+      <li>Security (Cybersecurity-Projects, netbird)</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-num">18</div><div class="stat-label">New Trending Repositories</div></div>
+      <div class="stat-tile"><div class="stat-num">7</div><div class="stat-label">New Releases</div></div>
+      <div class="stat-tile"><div class="stat-num">7</div><div class="stat-label">AI Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">1</div><div class="stat-label">MCP Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">6</div><div class="stat-label">Agent Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">1</div><div class="stat-label">CLI Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">1</div><div class="stat-label">Cloud Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">2</div><div class="stat-label">Security Projects</div></div>
+      <div class="stat-tile"><div class="stat-num">5</div><div class="stat-label">Hidden Gems</div></div>
+      <div class="stat-tile"><div class="stat-num">1</div><div class="stat-label">Breaking Releases</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Repository</th><th>เหตุผล</th><th>สิ่งที่ต้องติดตาม</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/NVIDIA/auto-ontology">NVIDIA/auto-ontology</a></td><td>เติบโตไวรัล 500%+ ในสัปดาห์เดียวจากฐานดาวเล็ก</td><td>จะเติบโตต่อเนื่องหรือเป็นการพุ่งครั้งเดียว และจะมี release version แรกเมื่อใด</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a></td><td>อยู่ระหว่างขั้น beta ของสาย v1.38</td><td>วันเปิดตัว v1.38.0 stable และรายละเอียด breaking change ที่อาจมาพร้อมเวอร์ชันใหม่</td><td>GitHub Releases</td></tr>
+          <tr><td><a href="https://github.com/pingdotgg/t3code">pingdotgg/t3code</a></td><td>เป็น harness ควบคุม agent ข้ามหลายแพลตฟอร์มที่เพิ่งมาแรง</td><td>จำนวนผู้ให้บริการ agent ที่รองรับเพิ่มขึ้นหรือไม่ และฟีเจอร์ความปลอดภัยของการควบคุมจากมือถือ</td><td>GitHub Trending</td></tr>
+          <tr><td><a href="https://github.com/agentgateway/agentgateway">agentgateway/agentgateway</a></td><td>Infrastructure ชั้น gateway ของ MCP ที่ยังเล็กแต่จำเป็นขึ้นเรื่อย ๆ</td><td>การสนับสนุนจากผู้ให้บริการ cloud ใหญ่ หรือการรวมเข้ากับสเปก MCP ฉบับถัดไป</td><td>GitHub Trending</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>GitHub</h3>
+    <p>github.com/trending (weekly, overall + Python/TypeScript/Go/Rust/Swift/Kotlin), github.com/anthropics/claude-code/releases, github.com/google-gemini/gemini-cli/releases, github.com/openai/codex/releases, github.com/kubernetes/kubernetes/releases, github.com/cline/cline/releases และหน้า Repository ของแต่ละโครงการที่อ้างอิงในรายงาน</p>
+    <h3>Official Documentation</h3>
+    <p>ไม่มีการอ้างอิงเอกสารทางการเพิ่มเติมนอกเหนือจากหน้า GitHub Repository/Releases ในรอบการค้นคว้านี้</p>
+    <h3>Community (Trend Only)</h3>
+    <p>ผลการค้นหา Hacker News และข่าวความปลอดภัยทั่วไป ใช้เพื่อตรวจสอบแนวโน้มเท่านั้น ไม่พบรายการที่ยืนยันวันที่ตรงกรอบ 1–7 พ.ย. 2026 ได้ จึงไม่นำมาอ้างอิงเป็นแหล่งหลักในรายงานฉบับนี้</p>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="legend-grid">
+      <div><span class="badge">✅</span> Official</div>
+      <div><span class="badge">⭐</span> Trending</div>
+      <div><span class="badge">🚀</span> Fast Growing</div>
+      <div><span class="badge">🔥</span> Viral</div>
+      <div><span class="badge">🤖</span> AI</div>
+      <div><span class="badge">🧠</span> MCP / Agent</div>
+      <div><span class="badge">☁️</span> Cloud Native</div>
+      <div><span class="badge">🔒</span> Security</div>
+      <div><span class="badge">📦</span> New Release</div>
+      <div><span class="badge warn">⚠️</span> Breaking Change</div>
+      <div><span class="badge">💎</span> Hidden Gem</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>สรุปแนวโน้ม Open Source Ecosystem</h2>
+    <p>สัปดาห์นี้ยืนยันว่าทิศทางหลักของ GitHub Trending ยังเป็น "agent tooling layer" มากกว่าโมเดลหรือแอปพลิเคชันปลายทาง — ตั้งแต่ความจำข้ามเซสชัน (claude-mem, osaurus) harness ควบคุม agent หลายแพลตฟอร์ม (t3code, orca) runtime รัน agent (herdr) ไปจนถึง gateway/proxy สำหรับ MCP (agentgateway) บริษัทใหญ่ (Anthropic, GitHub, NVIDIA, OpenAI) ยังเปิดเครื่องมือ/ทูลคิตของตัวเองเป็นโอเพนซอร์สต่อเนื่อง สะท้อนว่าโครงสร้างพื้นฐานรอบ coding agent กำลังถูกสร้างขึ้นพร้อม ๆ กันจากหลายทิศทางโดยยังไม่มีมาตรฐานกลางที่ชัดเจน สัปดาห์หน้าควรติดตามว่า Kubernetes v1.38.0 จะ stable เมื่อใด NVIDIA/auto-ontology จะรักษาอัตราเติบโตต่อเนื่องหรือไม่ และจะมีการอัปเดตสเปก MCP ฉบับใหม่ที่กระทบ gateway/proxy อย่าง agentgateway หรือไม่</p>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly GitHub Trending Report · สร้างโดย Claude Code</p>
+  </footer>
+</div>
+</body>
+</html>
