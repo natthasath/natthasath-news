@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-11-08</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 8 พฤศจิกายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-11-08</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 9 พ.ย. 2569 03:08 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูลที่สำคัญ:</b> ในรอบนี้เข้าถึง anthropic.com, github.com (รวมหน้า Trending), raw.githubusercontent.com และ registry.npmjs.org ได้ตามปกติ แต่โดเมนสำคัญอื่น ๆ ยังเข้าถึงไม่ได้ซ้ำอีกครั้งแม้ลองใหม่ตามขั้นตอน Network Access Resilience แล้ว ได้แก่ openai.com, blog.google, deepmind.google, ai.meta.com, blogs.nvidia.com, mistral.ai, huggingface.co, arxiv.org, techcrunch.com, venturebeat.com, theverge.com, news.ycombinator.com, reddit.com และ paperswithcode.com โดยทั้งหมดล้มเหลวด้วย DNS resolution error (ENOTFOUND) เช่นเดิม ได้ลอง WebSearch แบบ site-specific และคำค้นทั่วไปเป็นทางเลือกตามขั้นตอนที่ 2 แล้ว (รวมถึงข่าวโมเดลใหม่ ข่าวบริษัท การระดมทุน AI และงานวิจัย) แต่ผลค้นหาส่วนใหญ่เป็นเว็บอักกริเกเตอร์/บล็อกสรุปรายเดือนที่ไม่สามารถตรวจสอบย้อนกลับกับแหล่งทางการได้ ไม่มีวันที่ชัดเจนในกรอบ 24 ชม. นี้ หรือขัดแย้งกันเองระหว่างฉบับ จึงไม่นำข้อมูลเหล่านั้นมาแสดงตามหลักการห้ามคาดเดา <b>UNCERTAIN:</b> โดเมนข้างต้นเข้าถึงไม่ได้ติดต่อกันมาตั้งแต่อย่างน้อยรอบ 1 ต.ค. – 8 พ.ย. 2569 (เกิน 1 เดือนติดต่อกันแล้ว) ควรตรวจสอบการตั้งค่า network egress/DNS ของสภาพแวดล้อมนี้โดยเร็ว</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>Anthropic Newsroom ยังไม่มีประกาศข่าวใหม่ในรอบ 24 ชม. นี้ (ล่าสุดยังเป็น "AI for Science expands to foundations and research institutions" เมื่อ 28 ต.ค. 2569) <span class="badge">ต่อเนื่อง</span> แต่ Claude Code (CLI) อัปเดตเวอร์ชันจาก v2.1.318 เป็น <b>v2.1.319</b> โดยมีการเปลี่ยนแปลงด้าน Auto mode, การย้าย MCP task ไปทำงานพื้นหลัง, การเพิ่ม permission setting ใหม่ และคำสั่ง slash command เพิ่มเติม (ยืนยันผ่าน npm registry และ CHANGELOG.md ของ anthropics/claude-code) <span class="badge">✅ Official</span> GitHub Trending วันนี้มีโปรเจกต์ AI/agent ติดอันดับหลายรายการ ทั้งที่ติดต่อเนื่องอย่าง vercel-labs/agent-browser และ anthropics/skills และโปรเจกต์ใหม่อย่าง dsx-ai-factory/nvke (จัดการ Kubernetes บน GPU NVIDIA) และ meta/astryx (ดีไซน์ซิสเทมสำหรับงาน agent-built UI) <span class="badge">✅ Official</span> MCP (Model Context Protocol) ยังไม่มีสเปกเวอร์ชันใหม่เผยแพร่ (ล่าสุดยังเป็นฉบับ 28 ก.ค. 2569) <span class="badge">ต่อเนื่อง</span> ไม่พบการเปิดตัวโมเดล AI ใหม่ งานวิจัยที่ยืนยันแหล่งที่มาได้ครบ หรือผลเบนช์มาร์กใหม่ที่ผ่านเกณฑ์ Validation Rules ในรอบนี้ เนื่องจากโดเมนข่าว/วิจัยหลักส่วนใหญ่ยังเข้าถึงไม่ได้ด้วย DNS error ต่อเนื่องมานานกว่า 1 เดือนแล้ว</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ไม่พบการเปิดตัวโมเดล AI ใหม่ที่ยืนยันแหล่งทางการได้ครบถ้วนตาม Validation Rules ในรอบ 24 ชั่วโมงนี้ หน้า Anthropic Newsroom ที่เข้าถึงได้ไม่มีประกาศโมเดลใหม่ในช่วงนี้ <span class="badge">ต่อเนื่อง</span> และไม่สามารถเข้าถึง openai.com, blog.google, deepmind.google, ai.meta.com, mistral.ai ได้ในรอบนี้เพื่อตรวจสอบประกาศโมเดลใหม่จากค่ายอื่น WebSearch สำรองพบเพียงบล็อกสรุปรายเดือนและตลาดคาดการณ์ (prediction market) ที่ขัดแย้งกันเองและไม่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">ไม่สามารถเข้าถึง arxiv.org, huggingface.co/papers และ paperswithcode.com ได้ในรอบนี้ (ล้มเหลวด้วย DNS error ทั้งหมด แม้ลองใหม่ตามขั้นตอนที่ 1 แล้ว) จึงไม่พบเปเปอร์ใหม่ที่ระบุชื่อผู้แต่ง (Authors) และหมายเลข arXiv/DOI ครบตามเกณฑ์ Validation Rules ของหมวดนี้ในรอบนี้ ลองค้นหาผ่าน WebSearch แบบ site-specific แล้วแต่ไม่พบผลลัพธ์ที่ยืนยันวันที่หรือเนื้อหาในกรอบ 24 ชม. นี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <p>ข้อมูลจาก GitHub Trending (เข้าถึงได้โดยตรง) ประจำวันที่ 8 พ.ย. 2569 มีโปรเจกต์ที่เกี่ยวข้องกับ AI/ML ติดอันดับหลายรายการ ดาวที่แสดงเป็นดาวรวมทั้งหมด ตัวเลขในวงเล็บคือดาวที่ได้รับ "วันนี้" ตามหน้า Trending</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>anthropics/skills</td>
+          <td>189,465 (+793)</td>
+          <td>Python</td>
+          <td>Public repository ทางการของ Anthropic สำหรับ Agent Skills ครอบคลุมตัวอย่าง skill ด้านงานสร้างสรรค์ ดีไซน์ เทคนิค และงานองค์กร</td>
+          <td>✅ <a href="https://github.com/anthropics/skills">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>vercel-labs/agent-browser</td>
+          <td>47,473 (+812)</td>
+          <td>Rust</td>
+          <td>Browser automation CLI สำหรับ AI agent เขียนด้วย Rust ให้ agent อ่านหน้าเว็บเป็น text snapshot พร้อม element ref และสั่งงานทีละคำสั่ง</td>
+          <td>✅ <a href="https://github.com/vercel-labs/agent-browser">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>meta/astryx</td>
+          <td>16,256 (+863)</td>
+          <td>TypeScript</td>
+          <td>ดีไซน์ซิสเทมโอเพนซอร์สของ Meta ที่ปรับแต่งได้ มีคอมโพเนนต์กว่า 150 ชิ้น รองรับ theming และสร้างบน React 19+ กับ StyleX</td>
+          <td>✅ <a href="https://github.com/meta/astryx">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>anthropics/claude-quickstarts</td>
+          <td>19,339 (+28)</td>
+          <td>Python</td>
+          <td>โปรเจกต์ตัวอย่างสำหรับสร้างแอปพลิเคชันด้วย Claude API แบบใช้งานได้จริงอย่างรวดเร็ว</td>
+          <td>✅ <a href="https://github.com/anthropics/claude-quickstarts">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>google-deepmind/mujoco</td>
+          <td>16,321 (+26)</td>
+          <td>C++</td>
+          <td>Physics simulator สำหรับงานหลาย joint/contact ที่ใช้ในงานวิจัยหุ่นยนต์และ reinforcement learning</td>
+          <td>✅ <a href="https://github.com/google-deepmind/mujoco">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>dsx-ai-factory/nvke</td>
+          <td>788 (+345)</td>
+          <td>Go</td>
+          <td>NVIDIA Kubernetes Engine — management plane สำหรับรัน managed Kubernetes บนโครงสร้าง GPU NVIDIA ของตัวเอง อยู่ในสถานะ preview ยังไม่พร้อมใช้งานจริง</td>
+          <td>✅ <a href="https://github.com/dsx-ai-factory/nvke">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>milind-soni/OpenMausBot</td>
+          <td>18,073 (+1,437)</td>
+          <td>TypeScript</td>
+          <td>ทางเลือกโอเพนซอร์สของ Grok Bot พร้อม virtual machine ที่ตัวบอทสามารถใช้งานได้</td>
+          <td>✅ <a href="https://github.com/milind-soni/OpenMausBot">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>ranxianglei/billion-context</td>
+          <td>5,048 (+460)</td>
+          <td>TypeScript</td>
+          <td>Plugin บีบอัด context สำหรับเซสชันยาว ช่วยประหยัด token และรองรับ model ที่มี context window เล็ก</td>
+          <td>✅ <a href="https://github.com/ranxianglei/billion-context">GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ไม่นำรายการที่ไม่เกี่ยวข้องกับ AI/ML โดยตรงมานับในสถิติหมวดนี้ ได้แก่ sherlock-project/sherlock (เครื่องมือค้นหาบัญชีโซเชียลมีเดียจาก username) ที่ติด GitHub Trending วันนี้ด้วย</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบการเปิดตัวแอป/เครื่องมือ AI เชิงพาณิชย์ใหม่ที่ยืนยันแหล่งทางการได้ในรอบ 24 ชม. นี้ นอกเหนือจากโปรเจกต์โอเพนซอร์สที่แสดงไว้แล้วในหมวด Open Source ด้านบน</p>
+    <h3>Updates</h3>
+    <table>
+      <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+      <tr>
+        <td>Claude Code (CLI)</td>
+        <td>อัปเดตเป็น <b>v2.1.319</b> จาก v2.1.318 — เพิ่มการตรวจสอบ Auto mode เมื่อปิด telemetry/feature flag, ย้าย MCP task ไปทำงานพื้นหลังอัตโนมัติในเทอร์มินัล, เพิ่ม setting <code>permissions.denyInsteadOfPrompting</code>, เพิ่มคำสั่ง <code>/claude-api latency-optimize</code> และ <code>/tasks</code>, เพิ่มตัวเลือก pooled group budget ให้ Claude apps gateway และแก้บัคหลายรายการ</td>
+        <td>✅ <a href="https://registry.npmjs.org/@anthropic-ai/claude-code">npm registry</a> · <a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">CHANGELOG.md</a></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+    <h3>Anthropic</h3>
+    <p class="note">ไม่พบประกาศข่าวใหม่จาก Anthropic Newsroom ในรอบ 24 ชม. นี้ (ตรวจสอบหน้า anthropic.com/news โดยตรง) ข่าวล่าสุดคือ "AI for Science expands to foundations and research institutions" เมื่อ 28 ต.ค. 2569 ซึ่งอยู่นอกกรอบเวลาและรายงานไปแล้วในรอบก่อนหน้า <span class="badge">ต่อเนื่อง</span> การยื่นแบบ S-1 เพื่อ IPO เมื่อ 26 ต.ค. 2569 ก็ยังไม่มีอัปเดตใหม่ในรอบนี้ <span class="badge">ต่อเนื่อง</span> อย่างไรก็ตาม Claude Code (CLI) ซึ่งเป็นผลิตภัณฑ์ของ Anthropic มีการอัปเดตเวอร์ชันใหม่ในรอบนี้ (ดูหมวด Tools &amp; Apps และ Technical Updates) <span class="badge">✅ Official</span></p>
+
+    <h3>OpenAI</h3>
+    <p class="note">ไม่สามารถเข้าถึง openai.com ได้ในรอบนี้ (DNS error) ผลค้นหาสำรองไม่พบประกาศทางการใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ จึงไม่นำมาแสดง</p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่สามารถเข้าถึง blog.google และ deepmind.google ได้ในรอบนี้ และไม่พบข่าวที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้ อย่างไรก็ตาม GitHub org ทางการของ Google DeepMind เผยแพร่/อัปเดตโปรเจกต์โอเพนซอร์ส <code>mujoco</code> ซึ่งติดอันดับ GitHub Trending วันนี้ (ดูหมวด Open Source) <span class="badge">✅ Official</span></p>
+
+    <h3>Meta</h3>
+    <p class="note">ไม่สามารถเข้าถึง ai.meta.com ได้ในรอบนี้ อย่างไรก็ตาม GitHub org ทางการของ Meta เผยแพร่โปรเจกต์โอเพนซอร์ส <code>astryx</code> ซึ่งเป็นดีไซน์ซิสเทม และติดอันดับ GitHub Trending วันนี้ (ดูหมวด Open Source) <span class="badge">✅ Official</span></p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่พบข่าวประกาศใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่พบข่าวที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">ไม่สามารถเข้าถึง blogs.nvidia.com ได้ในรอบนี้ แต่พบโปรเจกต์ <code>dsx-ai-factory/nvke</code> ซึ่งใช้ชื่อ "NVIDIA Kubernetes Engine" ติดอันดับ GitHub Trending วันนี้ อย่างไรก็ตาม repository อยู่ภายใต้ org <code>dsx-ai-factory</code> ไม่ใช่ org ทางการของ NVIDIA จึงไม่สามารถยืนยันว่าเป็นผลิตภัณฑ์ทางการของ NVIDIA ได้ในรอบนี้ <span class="badge-warn">❓ Unverified</span></p>
+
+    <h3>Startup</h3>
+    <p class="note">ไม่พบข่าวระดมทุน/ดีลซื้อกิจการด้าน AI ของบริษัท startup รายใดที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชม. นี้หรือมีแหล่งทางการรองรับครบตามเกณฑ์ Cross Validation จึงไม่นำมาแสดงในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <p>Claude Code (CLI) ของ Anthropic อัปเดตจาก v2.1.318 เป็น <b>v2.1.319</b> ในรอบนี้ (ยืนยันผ่าน npm registry dist-tags: <code>latest = 2.1.319</code> และ CHANGELOG.md) <span class="badge">✅ Official</span> จุดเปลี่ยนหลักได้แก่</p>
+    <ul>
+      <li><b>Auto mode:</b> เมื่อปิด telemetry หรือ feature flag (รวมถึงหลัง LLM gateway) การตรวจสอบที่เซิร์ฟเวอร์ไม่สามารถยืนยันได้จะกลายเป็นคำขอ prompt/deny แทนการ fallback ไปใช้ classifier ภายในตัว โดยมี environment variable สำหรับคืนค่าพฤติกรรมเดิมได้</li>
+      <li><b>MCP tasks:</b> งานที่รันผ่าน MCP ในเทอร์มินัลจะถูกย้ายไปทำงานพื้นหลังทันที และ Claude จะได้รับแจ้งผลเมื่อเสร็จ มี variable ให้เลือกรอผลภายใน tool call แบบเดิมได้</li>
+      <li><b>Permissions:</b> เพิ่ม setting <code>permissions.denyInsteadOfPrompting</code> เพื่อปฏิเสธคำขอ tool ที่ต้องรอการอนุมัติโดยอัตโนมัติ ทำให้ turn ดำเนินต่อได้โดยไม่ต้องหยุดรอ</li>
+      <li><b>คำสั่งใหม่:</b> <code>/claude-api latency-optimize</code> สำหรับหาจุดที่โค้ด Claude API ทำงานช้า, <code>/tasks</code> สำหรับดู subagent ที่ทำงานเสร็จแล้วและเปิดกลับมาดูได้, <code>/usage</code> แสดงค่าใช้จ่ายสำหรับผู้ใช้ gateway บางราย</li>
+      <li><b>Claude apps gateway:</b> เพิ่มตัวเลือก pooled group budget, การแจ้งเตือนก่อน login หมดอายุแบบเลือกได้, JSON log output และคำเตือนตอนเริ่มระบบเพิ่มเติม</li>
+    </ul>
+    <p class="note">ไม่สามารถเข้าถึง modelcontextprotocol.io ได้โดยตรงในรอบนี้ แต่ตรวจสอบผ่าน GitHub releases ของ modelcontextprotocol/modelcontextprotocol ได้ (เข้าถึงผ่าน github.com) พบว่าเวอร์ชัน stable ล่าสุดยังเป็นฉบับ 28 ก.ค. 2569 ไม่มีเวอร์ชันใหม่เผยแพร่ในรอบนี้ <span class="badge">ต่อเนื่อง</span> ไม่พบอัปเดต API/SDK/Framework ใหม่รายการอื่นที่ยืนยันแหล่งทางการได้ในรอบ 24 ชม. นี้</p>
+    <p class="note">ข้อมูลจากรอบก่อนหน้า: การถอด fast mode ของ Opus 4.8 ยังมีกำหนดถอดออกจริงวันที่ 30 พ.ย. 2569 ตามเดิม (ดู Watch List) <span class="badge">ต่อเนื่อง</span></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p class="note">ไม่พบข่าวระดมทุน/การลงทุนด้าน AI รายการใหม่ที่ยืนยันแหล่งทางการได้ครบตามเกณฑ์ Cross Validation ในกรอบเวลานี้ ผลค้นหาสำรองพบเพียงรายงานสรุปรายเดือนของเดือน พ.ย. 2569 ที่ตัวเลขขัดแย้งกันเองระหว่างฉบับปรับปรุงต่างวัน (เช่น ยอดระดมทุนรวมที่รายงานต่างกันระหว่าง 207 ล้านดอลลาร์ กับ 3.3 พันล้านดอลลาร์สำหรับช่วงเวลาเดียวกัน) จึงไม่นำมาแสดงตามหลักการห้ามคาดเดาและห้ามสรุปเกินแหล่งข้อมูล</p>
+    <h3>Acquisition</h3>
+    <p class="note">ไม่พบข่าวควบรวม/เข้าซื้อกิจการด้าน AI ใหม่ที่ยืนยันแหล่งทางการได้ครบตามเกณฑ์ Cross Validation ในกรอบเวลานี้</p>
+    <h3>Regulation</h3>
+    <p class="note">ไม่พบข่าวด้านกฎระเบียบ AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+    <h3>Ethics</h3>
+    <p class="note">ไม่พบข่าวด้านจริยธรรม AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ระบุ Benchmark, Model, Score และ Source ครบถ้วนตาม Validation Rules ในกรอบเวลานี้ จึงไม่นำมาแสดง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <p>GitHub Trending วันนี้ยังคงมีคลัง <code>anthropics/skills</code> (ระบบนิเวศ Agent Skills) และเครื่องมือ browser-automation CLI <code>vercel-labs/agent-browser</code> จาก Vercel Labs ติดอันดับสูงต่อเนื่อง <span class="badge">🔥</span> นอกจากนี้มีโปรเจกต์ใหม่ที่น่าสนใจ ได้แก่ <code>meta/astryx</code> ดีไซน์ซิสเทมโอเพนซอร์สจาก Meta ที่เน้นรองรับงานสร้าง UI ด้วย agent, <code>dsx-ai-factory/nvke</code> สำหรับจัดการ Kubernetes บนโครงสร้าง GPU NVIDIA เอง และ <code>milind-soni/OpenMausBot</code> ทางเลือกโอเพนซอร์สของ Grok Bot (ดูตารางในหมวด Open Source)</p>
+    <h3>Tutorials</h3>
+    <p class="note">ไม่สามารถเข้าถึง news.ycombinator.com, hn.algolia.com และ reddit.com ได้ในรอบนี้ จึงไม่พบข้อมูลบทเรียน/tutorial ใหม่ที่ยืนยันได้ในกรอบเวลานี้</p>
+    <h3>Events</h3>
+    <p class="note">ไม่พบข่าวงานอีเวนต์ AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>vercel-labs/agent-browser — Browser automation CLI สำหรับ AI agent</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>AI agent ที่ต้องทำงานกับเว็บไซต์มักขาดวิธีที่เรียบง่ายและเสถียรในการอ่านหน้าเว็บและโต้ตอบกับองค์ประกอบบนหน้าแบบเป็นขั้นเป็นตอน</dd>
+        <dt>วิธีใช้</dt><dd>CLI ที่เขียนด้วย Rust ให้ agent อ่านหน้าเว็บเป็น text snapshot พร้อม element reference แล้วสั่งการทีละคำสั่งโดยตรวจสอบผลลัพธ์ได้ทันที</dd>
+        <dt>ประโยชน์</dt><dd>ลดความซับซ้อนของการต่อ agent เข้ากับเบราว์เซอร์ ทำให้ workflow ที่ต้องอ่าน/คลิก/กรอกข้อมูลบนเว็บทำงานได้แม่นยำและตรวจสอบย้อนกลับได้ง่ายขึ้น</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>dsx-ai-factory/nvke — Management plane สำหรับ Kubernetes บน GPU NVIDIA</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมที่ดูแลโครงสร้างพื้นฐาน GPU ของตัวเองต้องจัดการ cluster Kubernetes หลายชุดให้ลูกค้าภายใน/ภายนอกโดยไม่มี control plane ที่แยกจากกันอย่างชัดเจน</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้ง management plane ที่ให้ทีมแพลตฟอร์มสร้างและดูแล cluster สำหรับแต่ละลูกค้า โดยแต่ละ workload cluster มี control plane, etcd และ node pool ของตัวเอง (ปัจจุบันอยู่ในสถานะ preview)</dd>
+        <dt>ประโยชน์</dt><dd>ช่วยให้องค์กรที่มีโครงสร้าง GPU NVIDIA เป็นของตัวเองเปิดบริการ managed Kubernetes ให้ทีมงานหรือลูกค้าได้โดยไม่ต้องพึ่งพาผู้ให้บริการคลาวด์รายใหญ่</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>meta/astryx — ดีไซน์ซิสเทมที่พร้อมสำหรับงานสร้าง UI ด้วย agent</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมพัฒนาที่ให้ AI agent ช่วยสร้างหน้า UI มักขาดชุดคอมโพเนนต์มาตรฐานที่ปรับแต่งแบรนด์ได้และ agent นำไปใช้ซ้ำได้ง่าย</dd>
+        <dt>วิธีใช้</dt><dd>ชุดคอมโพเนนต์กว่า 150 ชิ้นที่ import เป็น CSS และ React component พร้อม type ใช้งานผ่าน CLI รองรับ theming ระดับแบรนด์และ dark mode สร้างบน React 19+ และ StyleX</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาที่ทีมหรือ agent ต้องสร้างคอมโพเนนต์ UI ใหม่ซ้ำ ๆ และช่วยให้ผลลัพธ์ของ agent ที่สร้าง UI มีความสอดคล้องกับแบรนด์มากขึ้น</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>Claude Code v2.1.319 — MCP task ทำงานพื้นหลังอัตโนมัติ</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งานที่เรียกผ่าน MCP ในเทอร์มินัลที่ใช้เวลานานทำให้ผู้ใช้ต้องรอโดยบล็อกการทำงานอื่นในเซสชัน</dd>
+        <dt>วิธีใช้</dt><dd>อัปเดต Claude Code ให้ย้ายงาน MCP ไปทำงานพื้นหลังทันทีในเทอร์มินัล และแจ้งผลลัพธ์ให้ Claude ทราบเมื่องานเสร็จสิ้น โดยยังมี environment variable ให้เลือกรอผลแบบเดิมได้หากต้องการ</dd>
+        <dt>ประโยชน์</dt><dd>ผู้ใช้ทำงานอื่นต่อได้ระหว่างรองาน MCP ที่ใช้เวลานาน ช่วยให้ workflow โดยรวมลื่นไหลขึ้นโดยไม่เสียความสามารถในการรอผลแบบเดิมสำหรับผู้ที่ต้องการ</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">GitHub Projects (AI-related trending)</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">API/CLI Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>การถอด fast mode ของ Opus 4.8 ออกจาก Claude Code/Claude apps gateway ในวันที่ 30 พ.ย. 2569</dd>
+        <dt>เหตุผล</dt><dd>CHANGELOG ประกาศเลิกใช้ (deprecate) ตั้งแต่ 30 ต.ค. 2569 และจะถอดออกจริงภายในไม่ถึง 1 เดือนจากนี้ หลังจากนั้นคำขอ fast mode บน Opus 4.8 จะคืน error โดยไม่ fallback ทีมที่ใช้ fast mode บน Opus 4.8 ควรวางแผนย้ายไปใช้ Opus 5.5 ก่อนกำหนด <span class="badge">ต่อเนื่อง</span></dd>
+        <dt>Source</dt><dd><a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">github.com/anthropics/claude-code — CHANGELOG.md</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>กำหนดการและราคา IPO ของ Anthropic (ticker ANT บน Nasdaq)</dd>
+        <dt>เหตุผล</dt><dd>แบบ S-1 ที่ยื่นเมื่อ 26 ต.ค. 2569 ยังไม่มีผลบังคับใช้ และยังไม่มีอัปเดตใหม่จาก anthropic.com/news เกี่ยวกับ IPO ในรอบนี้ ควรติดตามการแก้ไขแบบ S-1/A และประกาศช่วงราคาหุ้นจากบริษัทหรือ SEC EDGAR โดยตรง <span class="badge">ต่อเนื่อง</span></dd>
+        <dt>Source</dt><dd><a href="https://www.anthropic.com/news">anthropic.com/news</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>นโยบาย network egress/DNS ของสภาพแวดล้อมนี้ปฏิเสธการเข้าถึงโดเมนข่าว/วิจัย AI หลักต่อเนื่องมานานกว่า 1 เดือน</dd>
+        <dt>เหตุผล</dt><dd>โดเมนสำคัญ เช่น openai.com, blog.google, deepmind.google, ai.meta.com, blogs.nvidia.com, mistral.ai, huggingface.co, arxiv.org, techcrunch.com, venturebeat.com, theverge.com, news.ycombinator.com, reddit.com และ paperswithcode.com ล้มเหลวด้วย DNS resolution error (ENOTFOUND) ติดต่อกันมาตั้งแต่อย่างน้อย 1 ต.ค. 2569 ทำให้รายงานขาดข้อมูลในหลายหมวดอย่างต่อเนื่อง ควรตรวจสอบการตั้งค่า network egress ของสภาพแวดล้อมนี้โดยเร็ว <span class="badge-warn">UNCERTAIN</span></dd>
+        <dt>Source</dt><dd>บันทึกการเข้าถึงเครือข่ายภายในเซสชันนี้ (WebFetch error log)</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news">Anthropic Newsroom</a></li>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://github.com/anthropics/skills">github.com/anthropics/skills</a></li>
+          <li><a href="https://github.com/vercel-labs/agent-browser">github.com/vercel-labs/agent-browser</a></li>
+          <li><a href="https://github.com/meta/astryx">github.com/meta/astryx</a></li>
+          <li><a href="https://github.com/google-deepmind/mujoco">github.com/google-deepmind/mujoco</a></li>
+          <li><a href="https://registry.npmjs.org/@anthropic-ai/claude-code">npm registry — @anthropic-ai/claude-code (v2.1.319)</a></li>
+          <li><a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">GitHub — anthropics/claude-code CHANGELOG.md</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/modelcontextprotocol/releases">GitHub — modelcontextprotocol releases</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:0;border:none;background:none;">ไม่สามารถเข้าถึงแหล่งวิจัย Tier 1/สำรอง (arXiv, Hugging Face Papers, Papers with Code) ได้ในรอบนี้ (ดูหมายเหตุข้อจำกัดข้อมูล)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:0;border:none;background:none;">ไม่มีสื่อ Tier 2 ที่เข้าถึงได้และยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ในรอบนี้</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 8 พ.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
