@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 8 พฤศจิกายน 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 2 – 8 พฤศจิกายน 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 45</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>🏁 ข่าวต่อเนื่องจากสัปดาห์ก่อนได้บทสรุปแล้ว: Kimi Antonelli (Mercedes) จบอันดับ 3 ใน Mexico City Grand Prix (1 พฤศจิกายน) ซึ่งเพียงพอให้เขาคว้าแชมป์โลกผู้ขับขี่ F1 ประจำปี 2026 ได้ทันที กลายเป็นแชมป์โลกที่อายุน้อยที่สุดในประวัติศาสตร์ F1 (20 ปี 68 วัน) และเป็นนักแข่งอิตาเลียนคนแรกที่คว้าแชมป์โลกนับตั้งแต่ Alberto Ascari ในปี 1953 โดยการแข่งขันครั้งนี้ Max Verstappen (Red Bull Racing) คว้าชัยชนะ นำ Lewis Hamilton (Ferrari) และ Antonelli ขึ้นโพเดียม ต่อมาในสุดสัปดาห์ São Paulo Grand Prix ที่ Interlagos (6-8 พฤศจิกายน) Lando Norris (McLaren) คว้าตำแหน่งโพลในสภาพสนามเปียก ขณะที่ George Russell และ Charles Leclerc ได้รับโทษปรับกริดสตาร์ทจากการเปลี่ยนเครื่องยนต์เกินโควตาประจำฤดูกาล และ Mercedes มีโอกาสคว้าแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้หากทำคะแนนเหนือ Ferrari อย่างน้อย 3 คะแนนที่สนามนี้ <strong>ผลการแข่งขัน Race ของ São Paulo GP ยังไม่สามารถยืนยันได้จากแหล่งข้อมูลที่เข้าถึงได้ ณ เวลาที่จัดทำรายงานนี้</strong> จึงยังไม่มีผล Race หรือการเปลี่ยนแปลงตารางคะแนนจากสนามนี้ให้รายงานในรอบนี้</p>
+    </div>
+    <div class="note">🔄 ข่าวต่อเนื่อง: การลุ้นแชมป์โลกครั้งแรกของ Kimi Antonelli ที่ติดตามมาจากรายงานสัปดาห์ก่อน ได้บทสรุปแล้วที่ Mexico City Grand Prix ในสัปดาห์นี้</div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">
+      ✅ ตารางคะแนนนี้เป็นข้อมูลหลังจบ Mexico City Grand Prix (1 พฤศจิกายน, ปรับปรุงหลังโทษปรับที่ประกาศภายหลังการแข่งขัน) — การแข่งขัน São Paulo Grand Prix ยังไม่สามารถยืนยันผลได้ ณ เวลาที่จัดทำรายงาน จึงยังไม่มีการเปลี่ยนแปลงคะแนนเพิ่มเติมจากสนามนี้ ❓ อันดับที่ 9 ลงไปมีตัวเลขขัดแย้งกันระหว่างแหล่งข้อมูล จึงงดแสดง (ดูหมายเหตุข้อจำกัดท้ายรายงาน)
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli <span class="label">แชมป์โลก 2026</span></td>
+          <td>Mercedes</td>
+          <td>380</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>261</td>
+          <td>-119</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>259</td>
+          <td>-121</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>250</td>
+          <td>-130</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>245</td>
+          <td>-135</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>221</td>
+          <td>-159</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>144</td>
+          <td>-236</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Racing Bulls</td>
+          <td>107</td>
+          <td>-273</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Antonelli เข้ารอบ Mexico City GP โดยต้องการเพียงจบอันดับ 9 หรือดีกว่าเพื่อปิดแชมป์โลกได้ทันที ผลจบอันดับ 3 (ตามหลัง Verstappen 4.006 วินาที) ทำให้เขาคว้าแชมป์โลกได้ก่อนกำหนดถึง 4 สนามสุดท้ายของฤดูกาล ด้าน Verstappen ไต่อันดับ 2 แทน Hamilton และ Russell หลังชัยชนะที่ Mexico City เป็นครั้งแรกในฤดูกาลที่เขาขึ้นมาอยู่อันดับ 2</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.gpfans.com/en/f1-news/1092335/f1-points-standings-2026-max-verstappen-storms-past-lewis-hamilton-as-kimi-antonelli-champion/">GPFans</a> ("F1 Points Standings 2026: Max Verstappen storms past Lewis Hamilton as Kimi Antonelli champion", อ้างอิง ESPN F1 Standings), <a href="https://www.gpblog.com/en/news/f1-standings-antonelli-seals-drivers-title-with-mercedes-on-the-brink">GPblog</a> ("F1 Standings | Antonelli seals Drivers' title with Mercedes on the brink") — ตัวเลข Top 6 (380/261/259/250/245/221) ตรงกันทั้งสองแหล่ง; Piastri และ Hadjar อ้างอิงจาก GPFans เพียงแหล่งเดียวในรอบนี้</div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">✅ ข้อมูลหลังจบ Mexico City Grand Prix — ยืนยันตรงกันจาก 2 แหล่งข้อมูลอิสระ</div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes</td>
+          <td>630</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>504</td>
+          <td>-126</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Red Bull Racing</td>
+          <td>382</td>
+          <td>-248</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>McLaren</td>
+          <td>365</td>
+          <td>-265</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Racing Bulls</td>
+          <td>108</td>
+          <td>-522</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Alpine</td>
+          <td>69</td>
+          <td>-561</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Haas</td>
+          <td>31</td>
+          <td>-599</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Audi</td>
+          <td>27</td>
+          <td>-603</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Williams</td>
+          <td>12</td>
+          <td>-618</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Aston Martin</td>
+          <td>7</td>
+          <td>-623</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Cadillac</td>
+          <td>0</td>
+          <td>-630</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Mercedes นำ Ferrari 126 คะแนน และมีโอกาสคว้าแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้ทันทีที่ São Paulo GP หากทำคะแนนเหนือ Ferrari อย่างน้อย 3 คะแนนในสนามนี้ ซึ่งหากสำเร็จจะเป็นแชมป์โลกสมัยที่ 9 ของทีม เทียบเท่า Williams ในอันดับ 3 ของประวัติศาสตร์ผู้สร้างรถที่คว้าแชมป์โลกมากที่สุด ขณะที่การไล่จี้อันดับ 3 ระหว่าง Red Bull Racing และ McLaren ยังสูสีด้วยช่องว่างเพียง 17 คะแนน</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.crash.net/f1/results/1109260/1/new-f1-championship-standings-after-mexico-grand-prix">Crash.net</a> ("New F1 championship standings after the Mexico Grand Prix"), <a href="https://www.racefans.net/2026/11/01/2026-mexican-grand-prix-race-result-and-championship-points/">RaceFans</a> ("2026 Mexican Grand Prix race result and championship points") — ตัวเลขตรงกันทั้งสองแหล่ง, <a href="https://www.thestar.com.my/sport/motorsport/2026/11/05/motor-racing-mercedes-can-add-f1-constructors039-title-to-antonelli039s-crown">Reuters via The Star</a> (เงื่อนไขคว้าแชมป์ที่ São Paulo)</div>
+  </section>
+
+  <section>
+    <h2>🏁 ผลการแข่งขัน — Mexico City Grand Prix (Autódromo Hernándos Rodríguez) 🔄</h2>
+    <div class="note">✅ จัดขึ้นวันที่ 1 พฤศจิกายน 2026 เวลาประมาณ 03:00 น. ICT (14:00 น. ตามเวลาท้องถิ่น Mexico City วันที่ 1 พฤศจิกายน) — ข่าวต่อเนื่องจากรายงานสัปดาห์ก่อนซึ่งยังไม่จบ ณ เวลานั้น</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Driver</th>
+          <th>Team</th>
+          <th>Time / Status</th>
+          <th>Points</th>
+          <th>Fastest Lap</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>71 รอบ, 2:20:28.772</td>
+          <td>25</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>+0.799s</td>
+          <td>18</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇮🇹 Kimi Antonelli <span class="label">แชมป์โลก</span></td>
+          <td>Mercedes</td>
+          <td>+4.006s</td>
+          <td>15</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>+10.707s (รวมโทษปรับเวลา)</td>
+          <td>12</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>+11.778s</td>
+          <td>10</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>สรุป: Lewis Hamilton คว้าโพลและออกนำช่วงต้น แต่ Verstappen แซงขึ้นนำและควบคุมการแข่งขันจนถึงธงตาหมาก คว้าชัยชนะ ขณะที่ Charles Leclerc ซึ่งนำการแข่งขันในช่วงต้น ถูกปรับโทษจากการกระทำช่วงออกตัว ทำให้หลุดจากโพเดียมมาจบอันดับ 4 หลังจบการแข่งขัน FIA ออกโทษปรับเพิ่มเติมอีกหลายรายการ ได้แก่ Oscar Piastri ได้รับโทษปรับเวลา 10 วินาทีจากการชนกับ Arvid Lindblad ทำให้หลุดจากแต้ม (รายงานตำแหน่งจบไม่ตรงกันระหว่างแหล่งข้อมูล คือ P15 และ P16) ส่วน Pierre Gasly และ Franco Colapinto ของ Alpine ถูกปรับโทษจากการกระทำผิดกฎใบเหลือง ทำให้ทั้งคู่หลุดจากแต้มสะสม (Gasly จาก P7 เป็น P17, Colapinto จาก P9 เป็น P15) ผลที่สำคัญที่สุดของสนามนี้คือ Antonelli จบอันดับ 3 ซึ่งเพียงพอให้เขาคว้าแชมป์โลกผู้ขับขี่ประจำปี 2026 ได้ทันที ไม่พบข้อมูลยืนยันเรื่อง Safety Car หรือ Driver of the Day จากแหล่งข้อมูลที่ตรวจสอบได้ในรอบนี้</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.the-race.com/formula-1/f1-2026-mexican-grand-prix-race-result/">The Race</a> ("F1 2026 Mexican Grand Prix race result"), <a href="https://www.racefans.net/2026/11/01/2026-mexican-grand-prix-race-result-and-championship-points/">RaceFans</a>, <a href="https://www.gpfans.com/en/f1-news/1092345/f1-mexico-grand-prix-2026-results-final-classification-all-penalties-applied/">GPFans</a> ("Final classification with all late penalties applied"), <a href="https://www.crash.net/f1/results/1109251/1/formula-1-mexico-grand-prix-full-race-results">Crash.net</a>, <a href="https://www.formula1.com/en/latest/article/piastri-loses-p7-after-being-handed-post-race-penalty-at-mexico-city-gp.5dk3wHeak2yu7xWF0OhsRt">Formula1.com</a> (โทษของ Piastri), <a href="https://www.formula1.com/en/latest/article/alpines-gasly-and-colapinto-stripped-of-mexico-city-gp-points-after-post-race-penalties.2wLfobQHufuH1L1aMYPl7h">Formula1.com</a> (โทษของ Gasly/Colapinto), <a href="https://www.aljazeera.com/sports/2026/11/2/kimi-antonelli-becomes-formula-ones-youngest-world-champion-in-mexico-city">Al Jazeera</a> (แชมป์โลกของ Antonelli)</div>
+  </section>
+
+  <section>
+    <h2>⏱ Qualifying — São Paulo Grand Prix (Interlagos)</h2>
+    <div class="note">✅ จัดขึ้นวันที่ 7 พฤศจิกายน 2026 ในสภาพสนามเปียก ที่ Autódromo José Carlos Pace — ผลตรงกันจากหลายแหล่งข้อมูลอิสระ</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Driver</th>
+          <th>Team</th>
+          <th>Q3 Time</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>1:27.470</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇬🇧 George Russell <span class="label">กริด -5</span></td>
+          <td>Mercedes</td>
+          <td>+0.625s</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇮🇹 Kimi Antonelli</td>
+          <td>Mercedes</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇲🇨 Charles Leclerc <span class="label">กริด -10</span></td>
+          <td>Ferrari</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇳🇿 Liam Lawson</td>
+          <td>Racing Bulls</td>
+          <td>—</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Norris คว้าโพลที่ 3 ติดต่อกันที่ Interlagos ในสภาพสนามเปียกที่ท้าทาย ขณะที่ George Russell และ Charles Leclerc ซึ่งทำอันดับ 2 และ 4 ตามลำดับ ต่างต้องรับโทษปรับกริดสตาร์ทจากการเปลี่ยนเครื่องยนต์เกินโควตาที่กำหนดไว้ประจำฤดูกาล โดยเป็นโทษที่เกี่ยวกับกฎเครื่องยนต์ ไม่ใช่ความผิดจากการขับขี่: Leclerc รับโทษปรับกริด 10 ตำแหน่ง เนื่องจากเป็นเครื่องยนต์ลูกแรกที่เกินโควตาของทีม ส่วน Russell รับโทษปรับกริดที่ลดลงเหลือ 5 ตำแหน่ง เนื่องจากเป็นชิ้นส่วนที่เกินโควตาลูกที่สองของฤดูกาล ด้าน Lewis Hamilton ถูกปรับให้ไปออกตัวจากอันดับสุดท้ายของกริด หลังทีม Ferrari เปลี่ยนเครื่องยนต์เพิ่มเติมอีกครั้งหลังเซสชัน FP3 ขณะที่ Max Verstappen ก็มีรายงานว่าต้องรับโทษปรับกริดจากการเปลี่ยนเครื่องยนต์ครั้งใหญ่เช่นกัน ส่งผลให้กริดสตาร์ทจริงหลังปรับโทษแตกต่างจากผลควอลิฟายอย่างมาก</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.crash.net/f1/results/1109817/1/f1-brazil-grand-prix-full-qualifying-results">Crash.net</a> ("F1 Brazil Grand Prix: Full qualifying results"), <a href="https://www.skysports.com/f1/news/13609197/sao-paulo-gp-qualifying-lando-norris-claims-rain-hit-pole-in-wild-conditions-with-lewis-hamilton-max-verstappen-to-start-at-back">Sky Sports F1</a> ("Sao Paulo GP Qualifying: Lando Norris claims rain-hit pole"), <a href="https://www.planetf1.com/features/qualifying-winners-losers-2026-sao-paulo-gp">PlanetF1</a>, <a href="https://www.motorsport.com/f1/results/2026/sao-paulo-gp-661696/">Motorsport.com</a>, <a href="https://www.the-race.com/formula-1/f1-2026-brazilian-grand-prix-starting-grid-with-four-penalties-copy/">The Race</a> (รายละเอียดโทษปรับกริด), <a href="https://www.planetf1.com/news/brazilian-grand-prix-2026-penalty-fia">PlanetF1</a> ("Every grid penalty handed out by FIA stewards")</div>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญประจำสัปดาห์</h2>
+
+    <h3>FIA & Regulations / Penalties — โทษปรับเครื่องยนต์ที่ São Paulo</h3>
+    <p>FIA ออกโทษปรับกริดสตาร์ทจากกฎโควตาเครื่องยนต์ประจำฤดูกาลให้กับหลายทีมที่ São Paulo GP: Charles Leclerc (Ferrari) กริด -10 ตำแหน่ง, George Russell (Mercedes) กริด -5 ตำแหน่ง, Lewis Hamilton (Ferrari) ไปออกตัวจากท้ายกริดหลังเปลี่ยนเครื่องยนต์เพิ่มหลัง FP3 และ Max Verstappen (Red Bull Racing) ก็มีรายงานว่าต้องรับโทษปรับกริดจากสาเหตุเดียวกัน รวมเป็นโทษปรับกริดอย่างน้อย 5 รายการในสุดสัปดาห์นี้</p>
+    <div class="source">✅ ที่มา: <a href="https://www.the-race.com/formula-1/f1-2026-brazilian-grand-prix-starting-grid-with-four-penalties-copy/">The Race</a> ("F1 2026 Brazilian Grand Prix starting grid with five penalties"), <a href="https://www.planetf1.com/news/brazilian-grand-prix-2026-penalty-fia">PlanetF1</a></div>
+
+    <h3>Penalties — โทษปรับหลังการแข่งขันที่ Mexico City</h3>
+    <p>หลังจบการแข่งขัน Mexico City GP สจ๊วตออกโทษปรับย้อนหลังหลายรายการ: Oscar Piastri (McLaren) โทษปรับเวลา 10 วินาที จากการชนกับ Arvid Lindblad ทำให้หลุดจากแต้มสะสม และคู่นักแข่ง Alpine คือ Pierre Gasly กับ Franco Colapinto ถูกปรับโทษจากการกระทำผิดกฎใบเหลือง ทำให้ทั้งคู่ถูกริบแต้มที่ทำได้ในสนามนี้ ผลการแข่งขันมีการปรับเปลี่ยนถึง 2 ครั้งหลังจบการแข่งขัน</p>
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/piastri-loses-p7-after-being-handed-post-race-penalty-at-mexico-city-gp.5dk3wHeak2yu7xWF0OhsRt">Formula1.com</a>, <a href="https://www.formula1.com/en/latest/article/alpines-gasly-and-colapinto-stripped-of-mexico-city-gp-points-after-post-race-penalties.2wLfobQHufuH1L1aMYPl7h">Formula1.com</a>, <a href="https://racingnews365.com/adjusted-2026-f1-championship-standings-after-the-mexico-city-grand-prix-penalty">RacingNews365</a></div>
+
+    <h3>Team News / Technical Updates — อัปเกรดของ McLaren ที่ São Paulo</h3>
+    <p>McLaren นำชุดอัปเกรดใหม่มาใช้ที่ São Paulo GP รวมถึงปีกหลังใหม่ ซึ่งมีรายงานว่าแนวคิดปีกหน้าที่นำมาด้วยเป็นการทดสอบทิศทางการพัฒนาสำหรับรถปี 2027 ท่ามกลางความพยายามไล่จี้อันดับ 3 ผู้สร้างรถจาก Red Bull Racing ขณะที่ Mercedes ยังไม่ยืนยันว่าจะนำเครื่องยนต์รุ่นอัปเกรดมาใช้ในสนามนี้หรือไม่ หลังเลื่อนมาจาก United States GP และ Mexico City GP แล้ว (❓ แหล่งข้อมูลเกี่ยวกับสถานะเครื่องยนต์ของ Mercedes เป็นสื่อระดับรองที่ยังไม่ยืนยันไขว้ได้) ไม่พบรายงานอัปเกรดเฉพาะสนามที่ยืนยันได้สำหรับ Red Bull Racing และ Ferrari ในรอบการค้นหานี้</p>
+    <div class="source">✅ ที่มา: <a href="https://autosport.com/f1/news/mclaren-to-bring-upgrades-to-brazil-gp-with-f1-2027-in-mind/10871328">Autosport</a> ("McLaren to bring upgrades to Brazil GP with F1 2027 in mind"), <a href="https://www.crash.net/f1/news/1109304/1/mclarens-brazil-gp-upgrade-will-feature-first-look-2027-f1-car-development">Crash.net</a>, <a href="https://speedcafe.com/f1-upgrades-mclaren-introduce-new-wing-as-title-fight-heats-up/">Speedcafe</a></div>
+
+    <h3>Driver Market</h3>
+    <p>❓ ไม่พบข่าวการย้ายทีมหรือสัญญานักแข่งที่ยืนยันได้ใหม่ภายใน 7 วันที่ผ่านมา (2-8 พฤศจิกายน) จึงไม่นำมารายงานในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2>📈 วิเคราะห์ผลงานทีม</h2>
+
+    <div class="team-section">
+      <strong>Mercedes</strong> — คว้าแชมป์โลกผู้ขับขี่เป็นสมัยที่ 2 ติดต่อกันผ่าน Antonelli ที่ Mexico City และยังนำตารางผู้สร้างรถอย่างห่างไกลด้วย 630 คะแนน นำ Ferrari 126 คะแนน มีโอกาสปิดแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้ทันทีที่ São Paulo หากทำคะแนนเหนือ Ferrari 3 คะแนนขึ้นไป ด้าน Russell ควอลิฟายได้ P2 ที่ São Paulo แต่ต้องรับโทษปรับกริด 5 ตำแหน่งจากการเปลี่ยนเครื่องยนต์
+    </div>
+    <div class="team-section">
+      <strong>Ferrari</strong> — Hamilton ขึ้นโพเดียมอันดับ 2 ที่ Mexico City แต่ที่ São Paulo ทั้ง Hamilton และ Leclerc ต้องรับโทษปรับกริดจากการเปลี่ยนเครื่องยนต์ (Hamilton ไปท้ายกริด, Leclerc -10 ตำแหน่ง) ทำให้ลุ้นหนักในการป้องกันตำแหน่งอันดับ 2 ผู้สร้างรถจาก Mercedes
+    </div>
+    <div class="team-section">
+      <strong>Red Bull Racing</strong> — Verstappen คว้าชัยชนะที่ Mexico City ไต่ขึ้นมาอยู่อันดับ 2 ตารางผู้ขับขี่เป็นครั้งแรกในฤดูกาล แต่ที่ São Paulo มีรายงานว่าต้องรับโทษปรับกริดจากการเปลี่ยนเครื่องยนต์เช่นกัน ทีมยังคงอันดับ 3 ผู้สร้างรถด้วย 382 คะแนน นำ McLaren เพียง 17 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>McLaren</strong> — Norris จบอันดับ 5 ที่ Mexico City และคว้าโพลที่ 3 ติดต่อกันในสภาพเปียกที่ São Paulo ทีมนำชุดอัปเกรดใหม่มาใช้ในสนามนี้เพื่อไล่จี้ Red Bull Racing ในตารางผู้สร้างรถ (ห่างเพียง 17 คะแนน)
+    </div>
+    <div class="team-section">
+      <strong>Racing Bulls</strong> — Hadjar ขยับขึ้นมาอยู่อันดับ 8 ตารางผู้ขับขี่ด้วย 107 คะแนน ด้าน Lawson ควอลิฟายได้ P5 ที่ São Paulo
+    </div>
+    <div class="team-section">
+      <strong>Alpine</strong> — ทั้ง Gasly และ Colapinto ถูกริบแต้มที่ทำได้ใน Mexico City GP จากโทษปรับกฎใบเหลืองหลังจบการแข่งขัน ทำให้ทีมไม่ได้แต้มเพิ่มจากสนามนี้
+    </div>
+    <div class="team-section">
+      <strong>Aston Martin, Williams, Haas, Audi, Cadillac, Sauber</strong> — ❓ ไม่พบข่าวเฉพาะทีมที่ยืนยันได้ชัดเจนสำหรับสัปดาห์นี้
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติ</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>แชมป์โลกผู้ขับขี่ 2026:</strong> Kimi Antonelli (Mercedes) — อายุน้อยที่สุดในประวัติศาสตร์ F1 (20 ปี 68 วัน)</div>
+      <div class="stat-card"><strong>สถิติที่ถูกทำลาย:</strong> แชมป์โลกอายุน้อยที่สุดเดิมของ Sebastian Vettel (ปี 2010) — Antonelli เร็วกว่า 3 ปี 2 เดือน 4 วัน</div>
+      <div class="stat-card"><strong>นักแข่งอิตาเลียน:</strong> Antonelli เป็นแชมป์โลกอิตาเลียนคนแรกนับตั้งแต่ Alberto Ascari ในปี 1953 (73 ปี)</div>
+      <div class="stat-card"><strong>โพลที่ São Paulo:</strong> Lando Norris — โพลที่ 3 ติดต่อกันของเขาที่ Interlagos</div>
+      <div class="stat-card"><strong>แชมป์โลกผู้สร้างรถ (ลุ้น):</strong> Mercedes อาจคว้าแชมป์สมัยที่ 9 ได้ที่ São Paulo หากทำคะแนนเหนือ Ferrari 3 คะแนนขึ้นไป (เทียบเท่า Williams อันดับ 3 ตลอดกาล)</div>
+    </div>
+    <p class="note">❓ สถิติจากผล Race ของ São Paulo GP (ชัยชนะ, Podium, DNF) ยังไม่มีให้รายงาน เนื่องจากไม่สามารถยืนยันผลการแข่งขันได้ ณ เวลาที่จัดทำรายงานนี้</p>
+  </section>
+
+  <section>
+    <h2>📅 การแข่งขันครั้งถัดไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่ (ICT)</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>9 พ.ย. 2026 (คาดการณ์)</td>
+          <td>Race — São Paulo Grand Prix (ยังไม่ยืนยันผล)</td>
+          <td>ประมาณ 00:00-03:00 น.</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>19-21 พ.ย. 2026 (บางแหล่งระบุ 22 พ.ย.)</td>
+          <td>Las Vegas Grand Prix (Las Vegas Strip Circuit)</td>
+          <td>Race: ประมาณ 11:00-13:00 น. วันถัดไปตามเวลา ICT</td>
+          <td>❓</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">❓ แหล่งข้อมูลระบุวันแข่ง Las Vegas GP ไม่ตรงกัน บางแหล่งระบุ Race วันเสาร์ที่ 21 พฤศจิกายน เวลา 20:00-22:00 น. ตามเวลาท้องถิ่น Las Vegas (UTC-8) ขณะที่บางแหล่งระบุวันที่ 22 พฤศจิกายน จึงยังไม่สามารถยืนยันวันและเวลาที่แน่นอนได้ในรอบนี้ ควรตรวจสอบตารางเวลาทางการจาก formula1.com อีกครั้งใกล้วันแข่ง</p>
+
+    <h3>รายละเอียดสนาม Las Vegas Grand Prix</h3>
+    <ul>
+      <li><strong>Circuit:</strong> Las Vegas Strip Circuit</li>
+      <li><strong>Country:</strong> สหรัฐอเมริกา (Las Vegas, Nevada)</li>
+      <li><strong>Circuit Length:</strong> 6.201 กม.</li>
+      <li><strong>Number of Laps:</strong> 50 รอบ (รวม 309.958-310.050 กม. — ตัวเลขระยะทางรวมมีความคลาดเคลื่อนเล็กน้อยระหว่างแหล่งข้อมูล)</li>
+      <li><strong>Lap Record:</strong> 1:33.365 — Max Verstappen (2025)</li>
+    </ul>
+
+    <h3>Preview</h3>
+    <p>แม้แชมป์โลกผู้ขับขี่จะตัดสินไปแล้ว แต่ยังมีประเด็นให้ลุ้นต่อในสนามที่เหลือของฤดูกาล ได้แก่ การไล่จี้อันดับ 2 ตารางผู้ขับขี่ระหว่าง Verstappen, Hamilton, Russell และ Leclerc ที่คะแนนสูสีกันมาก (261/259/250/245) รวมถึงการต่อสู้เพื่ออันดับ 3 ผู้สร้างรถระหว่าง Red Bull Racing และ McLaren ที่ห่างกันเพียง 17 คะแนน และหากผล São Paulo GP ยืนยันว่า Mercedes ทำคะแนนเหนือ Ferrari ได้ 3 คะแนนขึ้นไป ทีมจะคว้าแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้ทันที</p>
+    <div class="source">✅ ที่มา: <a href="https://www.the-race.com/formula-1/f1-2026-calendar-when-is-next-race/">The Race</a> ("When is the next F1 race? Full 2026 F1 calendar"), <a href="https://www.crash.net/f1/news/1073119/1/2026-f1-calendar-full-race-schedule-revealed">Crash.net</a></div>
+  </section>
+
+  <section>
+    <h2>💬 คำกล่าวประจำสัปดาห์</h2>
+    <div class="quote">
+      "This moment will live forever."
+      <div class="source">— Kimi Antonelli (Mercedes) หลังคว้าแชมป์โลกผู้ขับขี่ครั้งแรกที่ Mexico City พร้อมกล่าวขอบคุณทีมและครอบครัว</div>
+    </div>
+    <div class="quote">
+      "He's done an insane job."
+      <div class="source">— Lando Norris (McLaren) ให้ความเห็นว่า Antonelli สมควรได้รับการยอมรับมากกว่านี้สำหรับฤดูกาลที่ผ่านมา</div>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/this-moment-will-live-forever-antonelli-shares-touching-reaction-to-incredible-world-championship-victory-in-mexico-city.zU8TYn4f00R4YcOAfOK1m">Formula1.com</a> (Antonelli), <a href="https://www.thestar.com.my/sport/motorsport/2026/11/02/motor-racing-norris-says-antonelli-deserves-more-credit-for-039insane-job039-this-season">Reuters via The Star</a> (Norris)</div>
+  </section>
+
+  <section>
+    <h2>🔍 วิเคราะห์แชมป์ชิป</h2>
+    <p><strong>Drivers Championship:</strong> Antonelli คว้าแชมป์โลกไปแล้วที่ Mexico City โดยยังเหลือการแข่งขันอีก 4 สนาม การลุ้นที่เหลือของฤดูกาลจึงเปลี่ยนไปที่การไล่จี้อันดับ 2 ซึ่งสูสีมากระหว่าง Verstappen (261), Hamilton (259), Russell (250) และ Leclerc (245)</p>
+    <p><strong>Constructors Championship:</strong> Mercedes นำ Ferrari 126 คะแนน และมีโอกาสปิดแชมป์โลกสมัยที่ 9 ได้ทันทีหากผล São Paulo GP ยืนยันว่าทำคะแนนเหนือ Ferrari 3 คะแนนขึ้นไป ขณะที่การไล่จี้อันดับ 3 ระหว่าง Red Bull Racing (382) และ McLaren (365) ยังสูสีด้วยช่องว่างเพียง 17 คะแนน</p>
+    <p><strong>Midfield Battle:</strong> Hadjar (Racing Bulls) ขยับขึ้นมาอยู่อันดับ 8 ด้วย 107 คะแนน ขณะที่ Alpine เสียแต้มสะสมไปจากโทษปรับหลังการแข่งขันที่ Mexico City ของทั้ง Gasly และ Colapinto</p>
+    <p><strong>Teams to Watch:</strong> จับตา Mercedes ว่าจะปิดแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้ที่ São Paulo หรือไม่ และจับตาการไล่จี้อันดับ 3 ผู้สร้างรถระหว่าง Red Bull Racing กับ McLaren ที่เหลือเวลาอีกเพียง 4 สนาม</p>
+  </section>
+
+  <section>
+    <h2>📊 สรุปตัวเลขด่วน</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix:</strong> Mexico City GP (จบแล้ว) + São Paulo GP (ยังไม่ยืนยันผล)</div>
+      <div class="stat-card"><strong>Sprint:</strong> ไม่มี</div>
+      <div class="stat-card"><strong>Pole Position:</strong> Hamilton (Mexico City), Norris (São Paulo)</div>
+      <div class="stat-card"><strong>Fastest Lap:</strong> ❓ ไม่พบข้อมูลยืนยันสำหรับ Mexico City GP</div>
+      <div class="stat-card"><strong>FIA Decisions:</strong> โทษปรับกริดจากเครื่องยนต์ (São Paulo), โทษปรับหลังการแข่งขัน (Mexico City)</div>
+      <div class="stat-card"><strong>Penalties:</strong> Leclerc (-10 กริด), Russell (-5 กริด), Hamilton (ท้ายกริด), Verstappen (กริด ❓), Piastri (10s), Gasly/Colapinto (ริบแต้ม)</div>
+      <div class="stat-card"><strong>Driver Transfers:</strong> ไม่มีข่าวใหม่ที่ยืนยันได้ในสัปดาห์นี้</div>
+      <div class="stat-card"><strong>Technical Updates:</strong> McLaren นำปีกหลังใหม่ + แนวคิดปีกหน้าสไตล์ปี 2027 มาใช้ที่ São Paulo</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ควรจับตาต่อไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ประเด็น</th>
+          <th>เหตุผล</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ผลการแข่งขัน Race ของ São Paulo GP</td>
+          <td>ยังไม่สามารถยืนยันผลได้จากแหล่งข้อมูลที่เข้าถึงได้ ณ เวลาที่จัดทำรายงานนี้ ควรตรวจสอบผลล่าสุดจาก formula1.com</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>Mercedes จะปิดแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้หรือไม่</td>
+          <td>ต้องทำคะแนนเหนือ Ferrari อย่างน้อย 3 คะแนนที่ São Paulo GP</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>การไล่จี้อันดับ 3 ผู้สร้างรถระหว่าง Red Bull Racing และ McLaren</td>
+          <td>ห่างกันเพียง 17 คะแนน เหลือการแข่งขันอีก 4 สนาม</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>การไล่จี้อันดับ 2 ผู้ขับขี่ระหว่าง Verstappen, Hamilton, Russell และ Leclerc</td>
+          <td>คะแนนสูสีกันมาก (261/259/250/245) หลังแชมป์โลกตัดสินไปแล้ว</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>วันและเวลาแข่งขัน Las Vegas Grand Prix ที่แน่นอน</td>
+          <td>แหล่งข้อมูลระบุวันแข่งไม่ตรงกัน (21 หรือ 22 พฤศจิกายน)</td>
+          <td>❓</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>Official</h3>
+    <p><a href="https://www.formula1.com/">Formula1.com</a> (เข้าถึงผ่านผลการค้นหาเว็บเป็นหลัก เนื่องจากการเปิดหน้าเว็บโดยตรงไม่สำเร็จในรอบนี้ — ดูหมายเหตุข้อจำกัดด้านล่าง), FIA.com</p>
+
+    <h3>Motorsport Media</h3>
+    <p><a href="https://www.the-race.com/">The Race</a>, <a href="https://www.crash.net/f1">Crash.net</a>, <a href="https://www.planetf1.com/">PlanetF1</a>, <a href="https://www.skysports.com/f1">Sky Sports F1</a>, <a href="https://www.motorsport.com/f1/">Motorsport.com</a>, <a href="https://autosport.com/f1/">Autosport</a>, <a href="https://www.racefans.net/">RaceFans</a>, <a href="https://www.gpfans.com/">GPFans</a>, <a href="https://www.gpblog.com/">GPblog</a>, <a href="https://racingnews365.com/">RacingNews365</a>, <a href="https://speedcafe.com/">Speedcafe</a>, <a href="https://www.aljazeera.com/">Al Jazeera</a>, <a href="https://www.thestar.com.my/">The Star (Reuters)</a></p>
+
+    <h3>Team Communications</h3>
+    <p>ไม่พบแถลงการณ์อย่างเป็นทางการจากทีมโดยตรงที่เข้าถึงได้ในรอบการค้นหานี้ นอกเหนือจากคำพูดของนักแข่งที่อ้างอิงผ่านสื่อข้างต้น</p>
+  </section>
+
+  <section>
+    <h2>⚠️ หมายเหตุข้อจำกัดของข้อมูล</h2>
+    <div class="warn-box">
+      <p><strong>UNCERTAIN:</strong> ในรอบการรวบรวมข้อมูลนี้ ไม่สามารถเข้าถึงโดเมน <code>formula1.com</code>, <code>skysports.com</code>, <code>motorsport.com</code> และ <code>en.wikipedia.org</code> ผ่านการเปิดหน้าเว็บโดยตรง (WebFetch) ได้เลย ("getaddrinfo ENOTFOUND" ในทุกโดเมนที่ทดลอง แม้ลองซ้ำแล้ว) จึงต้องอาศัยผลลัพธ์จากการค้นหาเว็บ (WebSearch) แทนตลอดทั้งรายงาน ตามขั้นตอน Network Access Resilience ข้อมูลหลักของ Mexico City GP (ผลการแข่งขัน Top 5, คะแนนสะสม Top 6) และ São Paulo GP Qualifying (Top 5 พร้อมโทษปรับกริด) ได้ตรวจสอบไขว้จากแหล่งข่าวอิสระหลายแหล่งซึ่งสอดคล้องกันสูง อย่างไรก็ตาม มีข้อจำกัดดังนี้: (1) ตารางผู้ขับขี่อันดับ 9 ลงไปมีตัวเลขขัดแย้งกันระหว่างแหล่งข้อมูล (เช่น Lawson รายงาน 77-83 คะแนนแตกต่างกันตามแหล่ง) จึงงดแสดง (2) <strong>ผลการแข่งขัน Race ของ São Paulo GP (8 พฤศจิกายน) ไม่สามารถยืนยันได้</strong> จากแหล่งข้อมูลที่เข้าถึงได้ในรอบการค้นหานี้ — เป็นไปได้ว่าการแข่งขันยังไม่จบ หรือผลยังไม่ถูกเผยแพร่ในแหล่งข่าวที่ตรวจสอบได้ ณ เวลาที่จัดทำรายงาน ผู้อ่านที่ต้องการผลล่าสุดควรตรวจสอบจาก formula1.com และ fia.com โดยตรง (3) ตำแหน่งจบของ Oscar Piastri ที่ Mexico City หลังโทษปรับมีรายงานไม่ตรงกัน (P15 หรือ P16) ระหว่างแหล่งข้อมูล (4) สถานะการนำเครื่องยนต์อัปเกรดของ Mercedes มาใช้ที่ São Paulo มาจากสื่อระดับรองเพียงแหล่งเดียว ยังไม่ยืนยันไขว้ได้ (5) วันและเวลาแข่งขัน Las Vegas Grand Prix (21 หรือ 22 พฤศจิกายน) มีรายงานขัดแย้งกันระหว่างแหล่งข้อมูล รวมถึงหน้าปฏิทินของ Formula1.com เอง</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔮 แนวโน้มสัปดาห์ถัดไป</h2>
+    <div class="summary-box">
+      <p>แชมป์โลกผู้ขับขี่ประจำปี 2026 ตัดสินไปแล้วที่ Kimi Antonelli แต่ São Paulo Grand Prix ยังมีเดิมพันสำคัญรออยู่ — ผลการแข่งขันที่ยังไม่ยืนยันในรอบนี้จะเป็นตัวบอกว่า Mercedes จะคว้าแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้ทันทีหรือต้องเลื่อนไปลุ้นต่อ ขณะที่ในสนามจะมีการไล่บี้แย่งตำแหน่งจากกริดสตาร์ทที่สับสนเนื่องจากโทษปรับเครื่องยนต์หลายรายการ (Hamilton และ Verstappen ออกจากท้ายกริด, Leclerc และ Russell ถูกปรับกริด) เมื่อฤดูกาลเดินทางต่อไปยัง Las Vegas Grand Prix ในอีกราว 2 สัปดาห์ ประเด็นที่ควรติดตามคือการไล่จี้อันดับ 2 ตารางผู้ขับขี่ที่สูสีมากระหว่าง Verstappen, Hamilton, Russell และ Leclerc รวมถึงการต่อสู้เพื่ออันดับ 3 ผู้สร้างรถระหว่าง Red Bull Racing และ McLaren ที่ห่างกันเพียง 17 คะแนน ซึ่งทุกสนามที่เหลือของฤดูกาลจะมีผลต่อการชี้ขาด</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly F1 Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 8 พฤศจิกายน 2026 เวลา ICT (GMT+7)</p>
+  </footer>
+</div>
+</body>
+</html>
