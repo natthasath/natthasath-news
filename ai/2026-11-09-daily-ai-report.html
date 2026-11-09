@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-11-09</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 9 พฤศจิกายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-11-09</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 10 พ.ย. 2569 03:09 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูลที่สำคัญ:</b> ในรอบนี้เข้าถึง anthropic.com, github.com (รวม GitHub Trending), raw.githubusercontent.com และ registry.npmjs.org ได้โดยตรงตามปกติ แต่โดเมนสำคัญอื่น ๆ ยังเข้าถึงไม่ได้โดยตรงแม้ลองใหม่ตามขั้นตอน Network Access Resilience แล้ว ได้แก่ openai.com, blog.google, deepmind.google, ai.meta.com, blogs.nvidia.com, mistral.ai, huggingface.co, arxiv.org, techcrunch.com, venturebeat.com, theverge.com, news.ycombinator.com, reddit.com และ paperswithcode.com ทั้งหมดล้มเหลวด้วย DNS resolution error (ENOTFOUND) เช่นเดิม ได้ใช้ WebSearch แบบ site-specific และคำค้นทั่วไปเป็นทางเลือกตามขั้นตอนที่ 2 ซึ่งคราวนี้ดึงเนื้อหาข่าวสำคัญ (การเปิดตัว Claude Fable 5.2/Mythos 5.2) ได้สำเร็จผ่านผลสรุปที่อ้างอิง CNBC, TechCrunch, MacRumors, TheNextWeb และ Yahoo Finance จึงนำมาแสดงพร้อมระบุแหล่งที่มา แต่ตัวเลขเบนช์มาร์กทั้งหมดในรอบนี้มาจากโพสต์ทางการของ Anthropic เท่านั้น (ยังไม่พบสื่อ/บุคคลที่สามยืนยันตัวเลขซ้ำอย่างเป็นอิสระในกรอบ 24 ชม. นี้) และไม่พบเปเปอร์วิจัยใหม่ที่ยืนยัน arXiv/DOI ได้เนื่องจาก arxiv.org และ huggingface.co/papers เข้าถึงไม่ได้ <b>UNCERTAIN:</b> โดเมนข้างต้น (openai.com, blog.google, deepmind.google, ai.meta.com, blogs.nvidia.com, mistral.ai, huggingface.co, arxiv.org, techcrunch.com, venturebeat.com, theverge.com, news.ycombinator.com, reddit.com, paperswithcode.com) เข้าถึงไม่ได้โดยตรงต่อเนื่องมาตั้งแต่อย่างน้อยรอบ 1 ต.ค. – 9 พ.ย. 2569 (เกิน 1 เดือนติดต่อกันแล้ว) ควรตรวจสอบการตั้งค่า network egress/DNS ของสภาพแวดล้อมนี้โดยเร็ว</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>Anthropic เปิดตัวโมเดลใหม่ <b>Claude Fable 5.2</b> (ให้ใช้งานทั่วไปแล้ว) และ <b>Claude Mythos 5.2</b> (จำกัดเฉพาะองค์กรที่ผ่านการตรวจสอบด้าน cyber/life sciences) เมื่อวันที่ 9 พ.ย. 2569 โดยอ้างว่าเร็วขึ้นถึง 30% จากรุ่น 5.1 และทำคะแนนเบนช์มาร์กหลายตัวเหนือ Opus 5.5 <span class="badge">✅ Official</span> ยืนยันซ้ำจาก CNBC, TechCrunch, MacRumors และ TheNextWeb ซึ่งรายงานว่าการเปิดตัวครั้งนี้เกิดขึ้นก่อนช่วง IPO ของ Anthropic และมาพร้อมข้อกังวลด้าน recursive self-improvement (RSI) จากรายงานของ METR <span class="badge">📰 Trusted Media</span> Claude Code (CLI) อัปเดตเป็น <b>v2.1.321</b> ตั้ง Fable 5.2 เป็นโมเดล default พร้อม context window 1M token และราคา 8/40 ดอลลาร์ต่อล้านโทเคน (input/output) <span class="badge">✅ Official</span> GitHub Trending วันนี้มีโปรเจกต์ AI/agent ติดอันดับจำนวนมาก ทั้งต่อเนื่องอย่าง anthropics/skills และใหม่อย่าง garrytan/gbrain, debpalash/VoiceStudio และ HKUDS/DeepTutor <span class="badge">✅ Official</span> ไม่พบงานวิจัยใหม่ที่ยืนยัน arXiv/DOI ได้ หรือข่าวระดมทุน/ควบรวมกิจการที่ยืนยันแหล่งทางการครบในกรอบเวลานี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Model</th><th>Company</th><th>Category</th><th>Status</th><th>Source</th></tr>
+        <tr>
+          <td>Claude Fable 5.2 (<code>claude-fable-5-2</code>)</td>
+          <td>Anthropic</td>
+          <td>Frontier LLM (general, coding/reasoning/vision)</td>
+          <td>เปิดให้ใช้งานทั่วไปแล้วบนทุกแพลตฟอร์ม (Claude apps, Claude Code, AWS, Google Cloud, Microsoft Azure/Foundry)</td>
+          <td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a> · 📰 <a href="https://www.cnbc.com/2026/11/09/anthropic-claude-fable-5-2-mythos-5-2.html">CNBC</a></td>
+        </tr>
+        <tr>
+          <td>Claude Mythos 5.2</td>
+          <td>Anthropic</td>
+          <td>Frontier LLM (โมเดลฐานเดียวกับ Fable 5.2 แต่ลด safeguard)</td>
+          <td>จำกัดเฉพาะองค์กรที่ผ่าน Cyber และ Life Sciences Verification Program</td>
+          <td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a> · 📰 <a href="https://www.macrumors.com/2026/11/09/anthropic-launches-claude-fable-5-2/">MacRumors</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">Fable 5.2 และ Mythos 5.2 เป็นโมเดลฐานเดียวกัน ต่างกันที่ระดับ safeguard ด้าน cybersecurity และ biology เท่านั้น ตามประกาศของ Anthropic เอง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">ไม่สามารถเข้าถึง arxiv.org และ huggingface.co/papers ได้ในรอบนี้ (ล้มเหลวด้วย DNS error ทั้งหมด แม้ลองใหม่ตามขั้นตอนที่ 1 แล้ว) การค้นหาสำรองผ่าน WebSearch พบเพียงบทความสรุปรายเดือน/รายสัปดาห์ของเดือน ต.ค.–พ.ย. 2569 ที่ไม่ระบุวันที่ตีพิมพ์ชัดเจนอยู่ในกรอบ 24 ชม. นี้ หรือไม่ระบุชื่อผู้แต่ง/หมายเลข arXiv ครบตามเกณฑ์ Validation Rules จึงไม่นำมาแสดงในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <p>ข้อมูลจาก GitHub Trending (เข้าถึงได้โดยตรง) ประจำวันที่ 9 พ.ย. 2569 ดาวที่แสดงเป็นดาวรวมทั้งหมด ตัวเลขในวงเล็บคือดาวที่ได้รับ "วันนี้" ตามหน้า Trending</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>anthropics/skills</td>
+          <td>190,736 (+1,052)</td>
+          <td>Python</td>
+          <td>Public repository ทางการของ Anthropic สำหรับ Agent Skills</td>
+          <td>✅ <a href="https://github.com/anthropics/skills">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>meta/astryx</td>
+          <td>19,534 (+3,324)</td>
+          <td>TypeScript</td>
+          <td>ดีไซน์ซิสเทมโอเพนซอร์สของ Meta ที่ปรับแต่งได้ รองรับงาน UI ที่สร้างด้วย agent</td>
+          <td>✅ <a href="https://github.com/meta/astryx">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>milind-soni/OpenMausBot</td>
+          <td>19,541 (+1,589)</td>
+          <td>TypeScript</td>
+          <td>ทางเลือกโอเพนซอร์สของ Grok Bot พร้อม virtual machine ที่บอทใช้งานได้</td>
+          <td>✅ <a href="https://github.com/milind-soni/OpenMausBot">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>debpalash/VoiceStudio</td>
+          <td>105,990 (+1,247)</td>
+          <td>Python</td>
+          <td>ทางเลือกโอเพนซอร์สของ ElevenLabs สำหรับ voice cloning, dubbing และ transcription</td>
+          <td>✅ <a href="https://github.com/debpalash/VoiceStudio">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>vercel-labs/agent-browser</td>
+          <td>48,357 (+914)</td>
+          <td>Rust</td>
+          <td>Browser automation CLI สำหรับ AI agent อ่านหน้าเว็บเป็น text snapshot พร้อม element ref</td>
+          <td>✅ <a href="https://github.com/vercel-labs/agent-browser">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>HKUDS/DeepTutor</td>
+          <td>57,562 (+784)</td>
+          <td>Python</td>
+          <td>ระบบ AI tutoring ที่ปรับการสอนให้เหมาะกับผู้เรียนรายบุคคลแบบต่อเนื่อง</td>
+          <td>✅ <a href="https://github.com/HKUDS/DeepTutor">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>google-deepmind/mujoco</td>
+          <td>16,850 (+579)</td>
+          <td>C++</td>
+          <td>Physics simulator สำหรับงานหลาย joint/contact ใช้ในงานวิจัยหุ่นยนต์และ reinforcement learning</td>
+          <td>✅ <a href="https://github.com/google-deepmind/mujoco">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>OpenBMB/VoxCPM</td>
+          <td>42,094 (+423)</td>
+          <td>Python</td>
+          <td>Tokenizer-free text-to-speech รองรับหลายภาษา, voice design และ voice cloning</td>
+          <td>✅ <a href="https://github.com/OpenBMB/VoxCPM">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>garrytan/gbrain</td>
+          <td>32,064 (+215)</td>
+          <td>TypeScript</td>
+          <td>"สมอง" สำหรับ agent แบบ opinionated ใช้กับ OpenClaw/Hermes</td>
+          <td>✅ <a href="https://github.com/garrytan/gbrain">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>anthropics/claude-plugins-official</td>
+          <td>46,605 (+129)</td>
+          <td>—</td>
+          <td>ไดเรกทอรีปลั๊กอิน Claude Code ที่ดูแลโดย Anthropic</td>
+          <td>✅ <a href="https://github.com/anthropics/claude-plugins-official">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>opensandbox-group/OpenSandbox</td>
+          <td>16,853 (+159)</td>
+          <td>—</td>
+          <td>Sandbox runtime สำหรับ AI agent</td>
+          <td>✅ <a href="https://github.com/opensandbox-group/OpenSandbox">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>neuml/txtai</td>
+          <td>13,232 (+83)</td>
+          <td>Python</td>
+          <td>All-in-one AI framework สำหรับ semantic search และ LLM workflow</td>
+          <td>✅ <a href="https://github.com/neuml/txtai">GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">ไม่นำรายการที่ไม่เกี่ยวข้องกับ AI/ML โดยตรงมานับในสถิติหมวดนี้ ได้แก่ sherlock-project/sherlock, soxoj/maigret (ค้นหาบัญชีโซเชียลมีเดีย), ruvnet/RuView (WiFi sensing), BigBodyCobain/Shadowbroker (OSINT dashboard) และ hummingbot/hummingbot (crypto trading bot) ที่ติด GitHub Trending วันนี้ด้วย</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบการเปิดตัวแอป/เครื่องมือ AI เชิงพาณิชย์ใหม่ (นอกเหนือจากตัวโมเดล Fable/Mythos 5.2 และโปรเจกต์โอเพนซอร์สที่แสดงไว้แล้วในหมวด AI Models และ Open Source ด้านบน) ที่ยืนยันแหล่งทางการได้ในรอบ 24 ชม. นี้</p>
+    <h3>Updates</h3>
+    <table>
+      <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+      <tr>
+        <td>Claude Code (CLI)</td>
+        <td>อัปเดตเป็น <b>v2.1.321</b> — เพิ่มการรองรับ Claude Fable 5.2 (<code>claude-fable-5-2</code>) และตั้งเป็นโมเดล default ตัวใหม่ รองรับ context window 1M token ราคา $8/$40 ต่อล้านโทเคน (input/output), เพิ่มแฟล็ก <code>--settings &lt;file&gt;</code> ให้ <code>claude remote-control</code>, และแก้บัคด้านความปลอดภัย (MCP OAuth ไม่ส่ง secret ไปยังโฮสต์อื่นหลัง redirect แล้ว)</td>
+        <td>✅ <a href="https://registry.npmjs.org/@anthropic-ai/claude-code">npm registry</a> · <a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">CHANGELOG.md</a></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+    <h3>Anthropic</h3>
+    <p>เปิดตัว <b>Claude Fable 5.2</b> และ <b>Claude Mythos 5.2</b> เมื่อ 9 พ.ย. 2569 (ดูรายละเอียดในหมวด AI Models, Benchmark และ Technical Updates) <span class="badge">✅ Official</span> สื่อหลายแห่ง (CNBC, TechCrunch, MacRumors, TheNextWeb, Yahoo Finance) รายงานตรงกันว่าการเปิดตัวครั้งนี้เกิดขึ้น "ก่อนช่วง IPO" ของ Anthropic ซึ่งยื่นแบบ S-1 ไปเมื่อ 26 ต.ค. 2569 <span class="badge">📰 Trusted Media</span> TechCrunch รายงานเพิ่มเติม (ผ่านผลค้นหาสรุป ยังไม่สามารถเข้าถึงหน้าเต็มได้โดยตรง) ว่าการเปิดตัวมาพร้อมข้อกังวลด้าน recursive self-improvement (RSI) โดยอ้างรายงานของ METR ที่ระบุว่าโมเดลภายในของ Anthropic เร่งความเร็วการวิจัยและพัฒนา AI ของบริษัทเองขึ้นประมาณ 2 เท่า แม้ยังมีความไม่แน่นอนอยู่มาก <span class="badge-warn">❓ รอตรวจสอบเพิ่มเติม</span> (ยังไม่สามารถอ่านบทความ TechCrunch ฉบับเต็มเพื่อยืนยันตัวเลขได้โดยตรงในรอบนี้)</p>
+
+    <h3>OpenAI</h3>
+    <p class="note">ไม่สามารถเข้าถึง openai.com ได้ในรอบนี้ (DNS error) ผลค้นหาสำรองไม่พบประกาศทางการใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ จึงไม่นำมาแสดง</p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่สามารถเข้าถึง blog.google และ deepmind.google ได้ในรอบนี้ ไม่พบข่าวประกาศใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้ อย่างไรก็ตาม GitHub org ทางการของ Google DeepMind มีโปรเจกต์ <code>mujoco</code> ติดอันดับ GitHub Trending ต่อเนื่องวันนี้ (ดูหมวด Open Source) <span class="badge">ต่อเนื่อง</span></p>
+
+    <h3>Meta</h3>
+    <p class="note">ไม่สามารถเข้าถึง ai.meta.com ได้ในรอบนี้ อย่างไรก็ตาม GitHub org ทางการของ Meta มีโปรเจกต์ดีไซน์ซิสเทม <code>astryx</code> ติดอันดับ GitHub Trending สูงต่อเนื่อง (ดูหมวด Open Source) <span class="badge">ต่อเนื่อง</span></p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่พบข่าวประกาศใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่พบข่าวที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้ Fable 5.2 ระบุว่าให้ใช้งานได้บน AWS ตั้งแต่วันเปิดตัว (ดูหมวด AI Models) <span class="badge">✅ Official</span></p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">ไม่สามารถเข้าถึง blogs.nvidia.com ได้ในรอบนี้ ไม่พบข่าวประกาศใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้ ผลค้นหาสำรองพบเพียงข่าวลือเรื่อง NVIDIA เจรจาลงทุนใน Perplexity ที่ไม่ระบุวันที่ชัดเจนและยังไม่มีแหล่งทางการยืนยัน จึงไม่นำมาแสดง</p>
+
+    <h3>Startup</h3>
+    <p class="note">ไม่พบข่าวระดมทุน/ดีลซื้อกิจการด้าน AI ของบริษัท startup รายใดที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชม. นี้หรือมีแหล่งทางการรองรับครบตามเกณฑ์ Cross Validation จึงไม่นำมาแสดงในรอบนี้ (ข่าวลือเรื่อง Anthropic–MatX และ EliseAI ที่พบจากการค้นหาไม่ระบุวันที่ชัดเจนและยังไม่ยืนยัน จึงตัดออก)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <p>Claude Code (CLI) อัปเดตจาก v2.1.319 เป็น <b>v2.1.321</b> ในรอบนี้ (ยืนยันผ่าน npm registry dist-tags: <code>latest = 2.1.321</code> และ CHANGELOG.md) <span class="badge">✅ Official</span> จุดเปลี่ยนหลักได้แก่</p>
+    <ul>
+      <li><b>โมเดล default ใหม่:</b> เพิ่มการรองรับ Claude Fable 5.2 (<code>claude-fable-5-2</code>) และตั้งเป็นโมเดล default ตัวใหม่ รองรับ context window 1,000,000 token ราคา $8 ต่อล้าน input token และ $40 ต่อล้าน output token</li>
+      <li><b>Remote control:</b> เพิ่มแฟล็ก <code>--settings &lt;file&gt;</code> ให้คำสั่ง <code>claude remote-control</code></li>
+      <li><b>ความปลอดภัย:</b> แก้บัคที่ MCP OAuth เคยส่ง secret ไปยังโฮสต์อื่นหลังการ redirect</li>
+    </ul>
+    <p class="note">ไม่สามารถเข้าถึง modelcontextprotocol.io ได้โดยตรงในรอบนี้ แต่ตรวจสอบผ่าน GitHub releases ของ modelcontextprotocol/modelcontextprotocol ได้ (เข้าถึงผ่าน github.com) พบว่าเวอร์ชัน stable ล่าสุดยังเป็นฉบับ 28 ก.ค. 2569 ไม่มีเวอร์ชันใหม่เผยแพร่ในรอบนี้ <span class="badge">ต่อเนื่อง</span> ไม่พบอัปเดต API/SDK/Framework ใหม่รายการอื่นที่ยืนยันแหล่งทางการได้ในรอบ 24 ชม. นี้</p>
+    <p class="note">ข้อมูลจากรอบก่อนหน้า: การถอด fast mode ของ Opus 4.8 ยังมีกำหนดถอดออกจริงวันที่ 30 พ.ย. 2569 ตามเดิม (ดู Watch List) <span class="badge">ต่อเนื่อง</span></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p class="note">ไม่พบข่าวระดมทุน/การลงทุนด้าน AI รายการใหม่ที่ยืนยันแหล่งทางการได้ครบตามเกณฑ์ Cross Validation ในกรอบเวลานี้ รายงานของ qz.com ที่ระบุว่า Anthropic "ลดราคา 20%" ควบคู่การเปิดตัว Fable/Mythos 5.2 ยังไม่สามารถตรวจสอบย้อนกลับกับราคารุ่น 5.1 ได้โดยตรงในรอบนี้ จึงระบุเป็นข้ออ้างของสื่อเพียงแหล่งเดียว <span class="badge-warn">❓ Unverified</span></p>
+    <h3>Acquisition</h3>
+    <p class="note">ไม่พบข่าวควบรวม/เข้าซื้อกิจการด้าน AI ใหม่ที่ยืนยันแหล่งทางการได้ครบตามเกณฑ์ Cross Validation ในกรอบเวลานี้</p>
+    <h3>Regulation</h3>
+    <p class="note">ไม่พบข่าวด้านกฎระเบียบ AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+    <h3>Ethics</h3>
+    <p>รายงานของ METR ที่อ้างถึงในข่าวการเปิดตัว Fable/Mythos 5.2 ระบุว่าโมเดลภายในของ Anthropic ช่วยเร่งความเร็วการพัฒนา AI ของบริษัทเองขึ้นประมาณ 1.9–2 เท่าตั้งแต่ ต.ค. 2568 โดยส่วนใหญ่มาจากการใช้งานแบบ assistive ไม่ใช่กระบวนการอัตโนมัติเต็มรูปแบบ มีรายงานจากบางสื่อว่า Anthropic มีสิทธิ์ตามสัญญาในการขอให้ปกปิดบางส่วนของรายงานฉบับเผยแพร่ ซึ่งยังไม่สามารถยืนยันกับเอกสารต้นฉบับของ METR ได้โดยตรงในรอบนี้ <span class="badge-warn">❓ Unverified (รอตรวจสอบกับเอกสารต้นฉบับ)</span></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ตัวเลขทั้งหมดด้านล่างมาจากโพสต์ประกาศทางการของ Anthropic เท่านั้น (self-reported) ยังไม่พบสื่อ/บุคคลที่สามยืนยันตัวเลขซ้ำอย่างเป็นอิสระในกรอบ 24 ชม. นี้ จึงไม่ผ่านเกณฑ์ Cross Validation แบบ 2 แหล่งอย่างสมบูรณ์ แสดงไว้เพื่อให้ตรวจสอบย้อนกลับได้ โดยระบุแหล่งที่มาชัดเจน</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Benchmark</th><th>Model</th><th>Score</th><th>Source</th></tr>
+        <tr><td>FrontierCode 2.0 (Xhigh effort)</td><td>Claude Fable 5.2</td><td>49.1%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>FrontierCode 2.0 (Xhigh effort)</td><td>Claude Opus 5.5</td><td>45.5%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>FrontierSWE v2</td><td>Claude Fable 5.2</td><td>69.9%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>FrontierSWE v2</td><td>Claude Opus 5.5</td><td>62.3%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>Terminal-Bench-Science 0.1</td><td>Claude Mythos 5.2</td><td>75.3%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>Terminal-Bench-Science 0.1</td><td>Claude Opus 5.5</td><td>58.7%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>Remote Labor Index</td><td>Claude Fable 5.2</td><td>41.3%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>Remote Labor Index</td><td>Claude Opus 5.5</td><td>21.3%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>Humanity's Last Exam (with tools)</td><td>Claude Fable 5.2</td><td>74.2%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>Humanity's Last Exam (with tools)</td><td>Claude Opus 5.5</td><td>67.7%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>CVE Rediscovery</td><td>Claude Mythos 5.2</td><td>89.6%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+        <tr><td>CVE Rediscovery (ไม่มี safeguard)</td><td>Claude Opus 5.5</td><td>81.3%</td><td>✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <p>GitHub Trending วันนี้มี <code>anthropics/skills</code> ติดอันดับสูงต่อเนื่อง และ <code>meta/astryx</code> ขึ้นเป็นโปรเจกต์ที่ได้ดาวมากที่สุดในวันนี้ (+3,324) <span class="badge">🔥</span> โปรเจกต์ใหม่ที่น่าสนใจ ได้แก่ <code>garrytan/gbrain</code> ("สมอง" สำหรับ agent แบบ opinionated), <code>debpalash/VoiceStudio</code> (ทางเลือกโอเพนซอร์สของ ElevenLabs) และ <code>HKUDS/DeepTutor</code> (ระบบติวเตอร์ AI ปรับตามผู้เรียน) (ดูตารางในหมวด Open Source)</p>
+    <h3>Tutorials</h3>
+    <p class="note">ไม่สามารถเข้าถึง news.ycombinator.com, hn.algolia.com และ reddit.com ได้ในรอบนี้ จึงไม่พบข้อมูลบทเรียน/tutorial ใหม่ที่ยืนยันได้ในกรอบเวลานี้</p>
+    <h3>Events</h3>
+    <p class="note">ไม่พบข่าวงานอีเวนต์ AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>Claude Fable 5.2 — ลดต้นทุนงาน coding เชิง agent ด้วยการเลือกระดับ effort</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมพัฒนาที่ใช้โมเดล frontier สำหรับงาน coding เชิง agent ที่ซับซ้อนต้องแบกรับต้นทุนสูงเมื่อต้องใช้ระดับความสามารถสูงสุดอย่างต่อเนื่อง</dd>
+        <dt>วิธีใช้</dt><dd>Anthropic ระบุว่า Fable 5.2 ที่ระดับ effort "High" ทำคะแนนใกล้เคียงกับ Opus 5.5 ที่ระดับ "Max" บนเบนช์มาร์ก FrontierCode 2.0 ด้วยต้นทุนต่อการทำงานประมาณครึ่งเดียว</dd>
+        <dt>ประโยชน์</dt><dd>ทีมที่ปรับระดับ effort ให้เหมาะกับงานสามารถควบคุมต้นทุนได้ดีขึ้นโดยไม่เสียคุณภาพงานมากนัก</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>Claude Mythos 5.2 — ค้นหาช่องโหว่ความปลอดภัยสำหรับองค์กรที่ผ่านการตรวจสอบ</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมวิจัยด้านความปลอดภัยไซเบอร์ต้องการโมเดลที่ไม่ถูกจำกัดด้วย safeguard ทั่วไปมากเกินไปในการช่วยค้นหาช่องโหว่ (vulnerability) อย่างมีประสิทธิภาพ</dd>
+        <dt>วิธีใช้</dt><dd>องค์กรที่ผ่าน Cyber Verification Program ของ Anthropic เข้าถึง Mythos 5.2 ซึ่งลด safeguard ด้าน cybersecurity ลง และตามการทดสอบภายในพบว่าค้นเจอช่องโหว่มากกว่า Opus 5.5 ถึง 10.2% บนชุดทดสอบ CVE Rediscovery</dd>
+        <dt>ประโยชน์</dt><dd>เร่งงานวิจัยด้าน offensive/defensive security ให้กับองค์กรที่ได้รับการตรวจสอบและควบคุมอย่างเหมาะสม</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>Claude Code v2.1.321 — context window 1M token เป็นค่า default</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>งานที่ต้องอ่าน/แก้โค้ดในคลังขนาดใหญ่มักถูกจำกัดด้วย context window ที่เล็กเกินไปของโมเดล default เดิม</dd>
+        <dt>วิธีใช้</dt><dd>Claude Code อัปเดตให้ใช้ Fable 5.2 เป็นโมเดล default ซึ่งรองรับ context window ถึง 1,000,000 token</dd>
+        <dt>ประโยชน์</dt><dd>นักพัฒนาทำงานกับโค้ดเบสขนาดใหญ่หรือบทสนทนายาวต่อเนื่องได้โดยไม่ต้องตัด context ทิ้งบ่อยเท่าเดิม</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>Fable 5.2 แบบ multi-agent — ช่วยงานพิสูจน์ทางคณิตศาสตร์เชิงฟอร์มัล</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การแปลงบทพิสูจน์ทางคณิตศาสตร์ที่ซับซ้อนให้อยู่ในรูปแบบที่ตรวจสอบได้ด้วยเครื่อง (formal verification) ใช้เวลานานมากหากทำด้วยทีมมนุษย์หรือ agent เดี่ยว</dd>
+        <dt>วิธีใช้</dt><dd>Anthropic รายงานว่าใช้ Fable 5.2 ประสานงานกันราว 1,000 agent เพื่อแปลงทฤษฎีบทสุดท้ายของแฟร์มาต์ (Fermat's Last Theorem) ให้อยู่ในรูปแบบฟอร์มัลสำเร็จภายใน 30 ชั่วโมง</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาจากที่ Anthropic เคยใช้ 11 วันในการฟอร์มัลไลซ์ครั้งแรก ลงมาเหลือเพียง 30 ชั่วโมง ชี้ให้เห็นศักยภาพของ agent หลายตัวทำงานพร้อมกันในงานวิจัยเชิงรูปแบบ</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">2</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">12</div><div class="lbl">GitHub Projects (AI-related trending)</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">API/CLI Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ข้อกังวลด้าน recursive self-improvement (RSI) ที่สื่อหยิบยกคู่กับการเปิดตัว Fable/Mythos 5.2 โดยอ้างรายงานของ METR</dd>
+        <dt>เหตุผล</dt><dd>รายงานระบุว่าโมเดลภายในของ Anthropic เร่งความเร็วการวิจัย/พัฒนา AI ของบริษัทเองขึ้นเกือบ 2 เท่า ซึ่งอาจกระทบต่อการควบคุมความเสี่ยงของโมเดลรุ่นต่อไป ควรติดตามเอกสารต้นฉบับของ METR และการตอบสนองของ Anthropic เพิ่มเติม <span class="badge-warn">❓ Unverified</span></dd>
+        <dt>Source</dt><dd>ผ่านผลสรุปการค้นหาที่อ้างอิง TechCrunch (ยังไม่สามารถเข้าถึงบทความฉบับเต็มได้โดยตรงในรอบนี้)</dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>การถอด fast mode ของ Opus 4.8 ออกจาก Claude Code/Claude apps gateway ในวันที่ 30 พ.ย. 2569</dd>
+        <dt>เหตุผล</dt><dd>CHANGELOG ประกาศเลิกใช้ (deprecate) ตั้งแต่ 30 ต.ค. 2569 และจะถอดออกจริงภายในไม่ถึง 1 เดือนจากนี้ หลังจากนั้นคำขอ fast mode บน Opus 4.8 จะคืน error โดยไม่ fallback ทีมที่ใช้ fast mode บน Opus 4.8 ควรวางแผนย้ายไปใช้ Opus 5.5 ก่อนกำหนด <span class="badge">ต่อเนื่อง</span></dd>
+        <dt>Source</dt><dd><a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">github.com/anthropics/claude-code — CHANGELOG.md</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>กำหนดการและราคา IPO ของ Anthropic (ticker ANT บน Nasdaq) ท่ามกลางการเปิดตัวโมเดลใหม่</dd>
+        <dt>เหตุผล</dt><dd>แบบ S-1 ที่ยื่นเมื่อ 26 ต.ค. 2569 ยังไม่มีผลบังคับใช้ สื่อหลายแห่งเชื่อมโยงการเปิดตัว Fable/Mythos 5.2 ว่าเกิดขึ้น "ก่อนช่วง IPO" ควรติดตามการแก้ไขแบบ S-1/A และประกาศช่วงราคาหุ้นจากบริษัทหรือ SEC EDGAR โดยตรง <span class="badge">ต่อเนื่อง</span></dd>
+        <dt>Source</dt><dd><a href="https://www.anthropic.com/news">anthropic.com/news</a> · 📰 <a href="https://www.cnbc.com/2026/11/09/anthropic-claude-fable-5-2-mythos-5-2.html">CNBC</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>นโยบาย network egress/DNS ของสภาพแวดล้อมนี้ปฏิเสธการเข้าถึงโดเมนข่าว/วิจัย AI หลักต่อเนื่องมานานกว่า 1 เดือน</dd>
+        <dt>เหตุผล</dt><dd>โดเมนสำคัญ เช่น openai.com, blog.google, deepmind.google, ai.meta.com, blogs.nvidia.com, mistral.ai, huggingface.co, arxiv.org, techcrunch.com, venturebeat.com, theverge.com, news.ycombinator.com, reddit.com และ paperswithcode.com ล้มเหลวด้วย DNS resolution error (ENOTFOUND) ติดต่อกันมาตั้งแต่อย่างน้อย 1 ต.ค. 2569 ทำให้รายงานต้องพึ่ง WebSearch สำรองและขาดการยืนยันตัวเลขเบนช์มาร์กแบบอิสระ ควรตรวจสอบการตั้งค่า network egress ของสภาพแวดล้อมนี้โดยเร็ว <span class="badge-warn">UNCERTAIN</span></dd>
+        <dt>Source</dt><dd>บันทึกการเข้าถึงเครือข่ายภายในเซสชันนี้ (WebFetch error log)</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Anthropic — Introducing Claude Fable 5.2 and Claude Mythos 5.2</a></li>
+          <li><a href="https://www.anthropic.com/news">Anthropic Newsroom</a></li>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://github.com/anthropics/skills">github.com/anthropics/skills</a></li>
+          <li><a href="https://github.com/meta/astryx">github.com/meta/astryx</a></li>
+          <li><a href="https://github.com/google-deepmind/mujoco">github.com/google-deepmind/mujoco</a></li>
+          <li><a href="https://registry.npmjs.org/@anthropic-ai/claude-code">npm registry — @anthropic-ai/claude-code (v2.1.321)</a></li>
+          <li><a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">GitHub — anthropics/claude-code CHANGELOG.md</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/modelcontextprotocol/releases">GitHub — modelcontextprotocol releases</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:0;border:none;background:none;">ไม่สามารถเข้าถึงแหล่งวิจัย Tier 1/สำรอง (arXiv, Hugging Face Papers, Papers with Code) ได้ในรอบนี้ (ดูหมายเหตุข้อจำกัดข้อมูล)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li>📰 <a href="https://www.cnbc.com/2026/11/09/anthropic-claude-fable-5-2-mythos-5-2.html">CNBC — Anthropic releases Claude Fable 5.2 and Claude Mythos 5.2 ahead of IPO</a></li>
+          <li>📰 <a href="https://www.macrumors.com/2026/11/09/anthropic-launches-claude-fable-5-2/">MacRumors — Anthropic Launches Claude Fable 5.2 and Mythos 5.2</a></li>
+          <li>📰 <a href="https://techcrunch.com/2026/11/09/anthropic-releases-new-mythos-and-fable-models-amid-rsi-concerns/">TechCrunch — Anthropic releases new Mythos and Fable models amid RSI concerns (เข้าถึงผ่านผลสรุปการค้นหา)</a></li>
+          <li>📰 <a href="https://thenextweb.com/news/claude-fable-5-2-mythos-5-2-anthropic-launch-price">TheNextWeb — Anthropic launches Claude Fable 5.2 and Mythos 5.2, and cuts Fable's price</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 9 พ.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
