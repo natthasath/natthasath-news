@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-11-11</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 11 พฤศจิกายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-11-11</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 11 พ.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูลที่สำคัญ:</b> ในรอบนี้เข้าถึง anthropic.com, github.com (รวม GitHub Trending) และ registry.npmjs.org ได้โดยตรงตามปกติ แต่โดเมนสำคัญอื่น ๆ ยังเข้าถึงไม่ได้โดยตรงแม้ลองใหม่ตามขั้นตอน Network Access Resilience แล้ว ได้แก่ openai.com, blog.google, deepmind.google, ai.meta.com, blogs.nvidia.com, huggingface.co, arxiv.org (รวมมิเรอร์ web3.arxiv.org), techcrunch.com และ raw.githubusercontent.com ยกเว้นไฟล์ CHANGELOG.md ของ claude-code ทั้งหมดล้มเหลวด้วย DNS resolution error (ENOTFOUND) เช่นเดิม ได้ใช้ WebSearch แบบ site-specific และคำค้นทั่วไปเป็นทางเลือกตามขั้นตอนที่ 2 แต่ส่วนใหญ่ได้เฉพาะข้อมูลสำรอง/อนุมานจากแหล่งรอง ไม่พบประกาศทางการใหม่ของบริษัทอื่นนอกจาก Anthropic ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ได้ และไม่พบงานวิจัยใหม่ที่ยืนยัน arXiv/DOI จากแหล่งทางการได้ <b>UNCERTAIN:</b> โดเมนข้างต้น (openai.com, blog.google, deepmind.google, ai.meta.com, blogs.nvidia.com, huggingface.co, arxiv.org, techcrunch.com, venturebeat.com, theverge.com, news.ycombinator.com, reddit.com, paperswithcode.com) เข้าถึงไม่ได้โดยตรงต่อเนื่องมาตั้งแต่อย่างน้อยรอบ 1 ต.ค. – 11 พ.ย. 2569 (เกิน 1 เดือนติดต่อกันแล้ว) ควรตรวจสอบการตั้งค่า network egress/DNS ของสภาพแวดล้อมนี้โดยเร็ว</p>
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ไม่พบประกาศทางการใหม่จาก Anthropic ในรอบ 24 ชม. นี้ (ตรวจสอบหน้า anthropic.com/news โดยตรงแล้วพบว่าช่อง 11 พ.ย. 2569 ยังไม่มีบทความ) ดังนั้นการเริ่ม <b>roadshow IPO</b> ที่ประกาศเมื่อ 10 พ.ย. 2569 (ช่วงราคา 70.00–78.00 ดอลลาร์/หุ้น) ยังเป็นประเด็นต่อเนื่องหลัก <span class="badge">ต่อเนื่อง</span> บน GitHub Trending วันนี้พบ <code>openai/codex-security</code> (official org ของ OpenAI) ติดอันดับเป็นครั้งแรกในรอบที่ติดตาม พร้อมโปรเจกต์ใหม่อย่าง <code>shadcn/improve</code>, <code>ZhuLinsen/daily_stock_analysis</code> (ระบบวิเคราะห์หุ้นด้วย LLM) และ <code>GoogleChrome/modern-web-guidance-src</code> (official org ของ Google) <span class="badge">✅ Official</span> ไม่พบการเปิดตัวโมเดลใหม่ งานวิจัยใหม่ที่ยืนยัน arXiv ได้ หรือข่าวบริษัทอื่น (OpenAI, Google, Meta, Microsoft, Amazon, NVIDIA) ที่ยืนยันแหล่งทางการครบในกรอบเวลานี้ เนื่องจากข้อจำกัดด้านการเข้าถึงเครือข่าย (ดูหมายเหตุด้านบน) Claude Code (CLI) ยังอยู่ที่เวอร์ชัน v2.1.322 เหมือนเมื่อวาน ไม่มีอัปเดตใหม่ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ไม่มีการเปิดตัวโมเดลใหม่ในรอบ 24 ชม. นี้ ตรวจสอบหน้าประกาศทางการของ Anthropic แล้วไม่พบบทความใหม่ และไม่สามารถเข้าถึง openai.com, blog.google, deepmind.google, ai.meta.com ได้เพื่อตรวจสอบบริษัทอื่น Claude Fable 5.2 และ Claude Mythos 5.2 ที่เปิดตัวเมื่อ 9 พ.ย. 2569 ยังเป็นสถานะล่าสุดที่ยืนยันได้ (ดูรายละเอียดเต็มในรายงานฉบับ 9 พ.ย. 2569) จึงไม่แสดงตารางซ้ำในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">ไม่สามารถเข้าถึง arxiv.org, มิเรอร์ web3.arxiv.org และ huggingface.co/papers ได้ในรอบนี้ (ล้มเหลวด้วย DNS error ทั้งหมด แม้ลองใหม่ตามขั้นตอนที่ 1 แล้ว) การค้นหาสำรองผ่าน WebSearch พบเพียงรายการจากเว็บอักกรีเกเตอร์บุคคลที่สาม (เช่น lmmarketcap.com) ที่อ้างหมายเลข arXiv ของเดือนนี้ แต่ไม่ได้ดึงมาจาก arxiv.org โดยตรงและไม่มีรายชื่อผู้แต่งครบตามเกณฑ์ Validation Rules จึงไม่นำมาแสดงในรอบนี้เพื่อป้องกันการใช้ข้อมูลที่ตรวจสอบย้อนกลับไม่ได้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <p>ข้อมูลจาก GitHub Trending (เข้าถึงได้โดยตรง) ประจำวันที่ 11 พ.ย. 2569 ดาวที่แสดงเป็นดาวรวมทั้งหมด ตัวเลขในวงเล็บคือดาวที่ได้รับ "วันนี้" ตามหน้า Trending</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>ZhuLinsen/daily_stock_analysis</td>
+          <td>70,074 (+429)</td>
+          <td>Python</td>
+          <td>ระบบวิเคราะห์หุ้นหลายตลาด (A-share, HK, US, JP, KR, TW) ด้วย LLM หลายผู้ให้บริการ (Gemini, Claude, OpenAI-compatible, DeepSeek, Qwen, Ollama) สร้างรายงานและส่งเข้าแชท/อีเมลอัตโนมัติ</td>
+          <td><a href="https://github.com/ZhuLinsen/daily_stock_analysis">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>addyosmani/agent-skills</td>
+          <td>115,808 (+788)</td>
+          <td>JavaScript</td>
+          <td>Skills ระดับ production สำหรับ AI coding agent</td>
+          <td>✅ <a href="https://github.com/addyosmani/agent-skills">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>vercel-labs/agent-browser</td>
+          <td>49,778 (+712)</td>
+          <td>Rust</td>
+          <td>Browser automation CLI สำหรับ AI agent อ่านหน้าเว็บเป็น text snapshot พร้อม element ref</td>
+          <td>✅ <a href="https://github.com/vercel-labs/agent-browser">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>meta/astryx</td>
+          <td>24,704 (+2,842)</td>
+          <td>TypeScript</td>
+          <td>ดีไซน์ซิสเทมโอเพนซอร์สของ Meta ที่ปรับแต่งได้ รองรับงาน UI ที่สร้างด้วย agent</td>
+          <td>✅ <a href="https://github.com/meta/astryx">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>openai/codex-security</td>
+          <td>11,612 (+20)</td>
+          <td>TypeScript</td>
+          <td>CLI และ TypeScript SDK ของ OpenAI สำหรับค้นหา ตรวจสอบ และแก้ช่องโหว่ความปลอดภัยในโค้ดด้วย Codex (เครื่องมือเปิดตัวตั้งแต่ มี.ค. 2569 กลับมาติดอันดับ Trending วันนี้)</td>
+          <td>✅ <a href="https://github.com/openai/codex-security">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>shadcn/improve</td>
+          <td>10,719 (+333)</td>
+          <td>Markdown (Agent Skill)</td>
+          <td>Agent skill ที่ใช้โมเดลตัวแรงตรวจสอบโค้ดเบสและเขียนแผนงานให้โมเดลที่ถูกกว่าไปดำเนินการต่อ</td>
+          <td><a href="https://github.com/shadcn/improve">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>homeassistant-ai/ha-mcp</td>
+          <td>7,212 (+640)</td>
+          <td>Python</td>
+          <td>ตั้งค่าและควบคุม Home Assistant ด้วย AI assistant ผ่าน MCP</td>
+          <td>✅ <a href="https://github.com/homeassistant-ai/ha-mcp">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>GoogleChrome/modern-web-guidance-src</td>
+          <td>1,642 (+133)</td>
+          <td>TypeScript (สันนิษฐาน)</td>
+          <td>ซอร์สโค้ดของ Modern Web Guidance — ชุด skill ที่ให้ความรู้ด้าน web platform/browser compatibility แก่ coding agent เพื่อผลักดันให้ใช้ API สมัยใหม่แทนโค้ดแบบเก่า</td>
+          <td>✅ <a href="https://github.com/GoogleChrome/modern-web-guidance-src">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>we-promise/sure</td>
+          <td>12,796 (+1,079)</td>
+          <td>Ruby</td>
+          <td>แอปจัดการเงินส่วนบุคคล</td>
+          <td><a href="https://github.com/we-promise/sure">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>TheAlgorithms/Java</td>
+          <td>66,957 (+108)</td>
+          <td>Java</td>
+          <td>คอลเลกชันอัลกอริทึมการศึกษาที่เขียนด้วย Java</td>
+          <td><a href="https://github.com/TheAlgorithms/Java">GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">we-promise/sure และ TheAlgorithms/Java ไม่ใช่โปรเจกต์ AI/ML โดยตรง แต่แสดงไว้เพื่อความครบถ้วนตามหน้า GitHub Trending วันนี้ ไม่นับรวมในสถิติ "GitHub Projects (AI-related trending)" ด้านล่าง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบการเปิดตัวแอป/เครื่องมือ AI เชิงพาณิชย์ใหม่ที่ยืนยันแหล่งทางการได้ในรอบ 24 ชม. นี้ <code>openai/codex-security</code> ที่ติดอันดับ GitHub Trending วันนี้เป็นเครื่องมือที่เปิดตัวไปแล้วตั้งแต่เดือน มี.ค. 2569 ไม่ใช่การเปิดตัวใหม่ (ดูหมวด Open Source)</p>
+    <h3>Updates</h3>
+    <p class="note">ไม่พบอัปเดตเครื่องมือ/แอปใหม่ที่ยืนยันแหล่งทางการได้ในรอบนี้ Claude Code (CLI) ยังอยู่ที่เวอร์ชัน v2.1.322 เท่าเดิม (ยืนยันผ่าน npm registry dist-tag <code>latest</code>) ไม่มีเวอร์ชันใหม่เผยแพร่ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+    <h3>Anthropic</h3>
+    <p>ไม่พบบทความใหม่บนหน้า anthropic.com/news ที่ลงวันที่ 11 พ.ย. 2569 (ตรวจสอบโดยตรงแล้ว) <b>roadshow สำหรับการเสนอขายหุ้น IPO</b> ที่เริ่มเมื่อ 10 พ.ย. 2569 จึงยังเป็นข่าวล่าสุด — ช่วงราคาขายหุ้นที่ประกาศไว้คือ 70.00–78.00 ดอลลาร์/หุ้น เสนอขายรวม 825 ล้านหุ้น จะจดทะเบียนที่ Nasdaq Global Select Market สัญลักษณ์ <b>ANT</b> แบบ S-1 ยังไม่มีผลบังคับใช้จาก SEC ณ เวลาที่ตรวจสอบ <span class="badge">ต่อเนื่อง</span> <span class="badge">✅ Official</span></p>
+
+    <h3>OpenAI</h3>
+    <p class="note">ไม่สามารถเข้าถึง openai.com ได้ในรอบนี้ (DNS error) ไม่พบประกาศทางการใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ อย่างไรก็ตาม GitHub org ทางการของ OpenAI มีโปรเจกต์ <code>codex-security</code> (เปิดตัวเดิมเมื่อ มี.ค. 2569) กลับมาติดอันดับ GitHub Trending วันนี้ (ดูหมวด Open Source) <span class="badge">ต่อเนื่อง</span></p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่สามารถเข้าถึง blog.google และ deepmind.google ได้ในรอบนี้ ผลค้นหาสำรองพบเพียงความเห็นที่อ้างถึง Pushmeet Kohli เกี่ยวกับความคืบหน้าด้านวิทยาศาสตร์ แต่ไม่มีวันที่หรือแหล่งทางการยืนยันชัดเจนในกรอบ 24 ชม. นี้ จึงไม่นำมาแสดง</p>
+
+    <h3>Meta</h3>
+    <p class="note">ไม่สามารถเข้าถึง ai.meta.com ได้ในรอบนี้ อย่างไรก็ตาม GitHub org ทางการของ Meta มีโปรเจกต์ดีไซน์ซิสเทม <code>astryx</code> ติดอันดับ GitHub Trending ต่อเนื่องเป็นวันที่ 2 โดยได้ดาวเพิ่มสูงสุดของวันนี้ (+2,842) (ดูหมวด Open Source) <span class="badge">ต่อเนื่อง</span></p>
+
+    <h3>Microsoft</h3>
+    <p class="note">ไม่พบข่าวประกาศใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่พบข่าวที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">ไม่สามารถเข้าถึง blogs.nvidia.com ได้ในรอบนี้ ไม่พบข่าวประกาศใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+
+    <h3>Startup</h3>
+    <p class="note">ไม่พบข่าวระดมทุน/ดีลซื้อกิจการด้าน AI ของบริษัท startup รายใดที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชม. นี้หรือมีแหล่งทางการรองรับครบตามเกณฑ์ Cross Validation จึงไม่นำมาแสดงในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <p class="note">Claude Code (CLI) ยังอยู่ที่เวอร์ชัน <b>v2.1.322</b> เท่าเดิมกับรายงานฉบับก่อนหน้า (ยืนยันผ่าน npm registry dist-tag <code>latest</code>) ไม่มีเวอร์ชันใหม่เผยแพร่ในรอบ 24 ชม. นี้ <span class="badge">ต่อเนื่อง</span></p>
+    <p class="note">ไม่สามารถเข้าถึง modelcontextprotocol.io ได้โดยตรงในรอบนี้ ผลค้นหาสำรองยังไม่พบเวอร์ชัน MCP spec ใหม่เกินกว่าฉบับ 28 ก.ค. 2569 <span class="badge">ต่อเนื่อง</span> ไม่พบอัปเดต API/SDK/Framework ใหม่รายการอื่นที่ยืนยันแหล่งทางการได้ในรอบนี้</p>
+    <p class="note">ข้อมูลจากรอบก่อนหน้า: การถอด fast mode ของ Opus 4.8 ยังมีกำหนดถอดออกจริงวันที่ 30 พ.ย. 2569 ตามเดิม (ดู Watch List) <span class="badge">ต่อเนื่อง</span></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p class="note">ไม่พบข่าวระดมทุน/การลงทุนด้าน AI รายการใหม่ที่ยืนยันแหล่งทางการได้ครบตามเกณฑ์ Cross Validation ในกรอบเวลานี้ นอกเหนือจากการเสนอขายหุ้น IPO ของ Anthropic ที่ยังดำเนินอยู่ (ดูหมวด Company News)</p>
+    <h3>Acquisition</h3>
+    <p class="note">ไม่พบข่าวควบรวม/เข้าซื้อกิจการด้าน AI ใหม่ที่ยืนยันแหล่งทางการได้ครบตามเกณฑ์ Cross Validation ในกรอบเวลานี้</p>
+    <h3>Regulation</h3>
+    <p class="note">ไม่พบข่าวด้านกฎระเบียบ AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+    <h3>Ethics</h3>
+    <p class="note">ไม่พบข่าวด้านจริยธรรม AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ระบุ Benchmark, Model, Score และ Source ครบตามเกณฑ์ Validation Rules ในกรอบ 24 ชม. นี้ จึงไม่แสดงตารางในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <p>GitHub Trending วันนี้ <code>openai/codex-security</code> (official org ของ OpenAI) ติดอันดับเป็นครั้งแรกในรอบที่ติดตาม แม้เป็นเครื่องมือที่เปิดตัวมาตั้งแต่ มี.ค. 2569 <span class="badge">🔥</span> โปรเจกต์ใหม่ที่น่าสนใจอีกรายการคือ <code>shadcn/improve</code> (agent skill สำหรับวางแผนงานให้โมเดลที่ถูกกว่าดำเนินการต่อ) และ <code>ZhuLinsen/daily_stock_analysis</code> (ระบบวิเคราะห์หุ้นด้วย LLM หลายผู้ให้บริการ) ด้าน <code>meta/astryx</code> ยังคงได้ดาวเพิ่มสูงสุดของวันนี้ต่อเนื่องเป็นวันที่ 2 (ดูตารางในหมวด Open Source)</p>
+    <h3>Tutorials</h3>
+    <p class="note">ไม่สามารถเข้าถึง news.ycombinator.com, hn.algolia.com และ reddit.com ได้ในรอบนี้ จึงไม่พบข้อมูลบทเรียน/tutorial ใหม่ที่ยืนยันได้ในกรอบเวลานี้</p>
+    <h3>Events</h3>
+    <p class="note">ไม่พบข่าวงานอีเวนต์ AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>shadcn/improve — ใช้โมเดลตัวแรงวางแผน ให้โมเดลที่ถูกกว่าลงมือทำ</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การใช้โมเดลภาษาตัวแรงที่สุดรันทุกขั้นตอนของงาน coding agent มีต้นทุนสูงเกินจำเป็น โดยเฉพาะงานที่การ "ลงมือทำ" ไม่ซับซ้อนเท่าการ "วางแผน"</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้งเป็น Agent Skill ให้โมเดลตัวแรงตรวจสอบโค้ดเบสทั้งหมดและเขียนแผนงานละเอียด จากนั้นส่งแผนให้โมเดลที่ถูกกว่าดำเนินการตามแผนนั้นต่อ</dd>
+        <dt>ประโยชน์</dt><dd>ลดต้นทุนการใช้ AI agent โดยยังคงคุณภาพของการตัดสินใจเชิงสถาปัตยกรรมไว้ที่โมเดลตัวแรง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>ZhuLinsen/daily_stock_analysis — รายงานวิเคราะห์หุ้นหลายตลาดด้วย LLM ส่งอัตโนมัติทุกวัน</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>นักลงทุนรายย่อยที่ติดตามหุ้นหลายตลาด (A-share, ฮ่องกง, สหรัฐฯ, ญี่ปุ่น, เกาหลี, ไต้หวัน) ต้องเสียเวลารวบรวมข่าวและข้อมูลตลาดเองทุกวัน</dd>
+        <dt>วิธีใช้</dt><dd>ระบบดึงข้อมูลตลาดและข่าวอัตโนมัติ ส่งให้ LLM (เลือกได้ทั้ง Gemini, Claude, OpenAI-compatible, DeepSeek, Qwen หรือ Ollama แบบรันในเครื่อง) สร้างรายงานสรุป แล้วส่งเข้าแชท/อีเมลตามตารางเวลาผ่าน GitHub Actions หรือ Docker</dd>
+        <dt>ประโยชน์</dt><dd>ได้รายงานวิเคราะห์หุ้นที่อัปเดตทุกวันโดยไม่ต้องรวบรวมข้อมูลเอง และเลือกผู้ให้บริการ LLM ได้ตามงบประมาณ/ความต้องการด้านความเป็นส่วนตัว</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>GoogleChrome/modern-web-guidance-src — ฝัง "ความรู้เว็บยุคใหม่" เข้า coding agent</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>Coding agent มักแนะนำโค้ดเว็บแบบเก่าหรือไม่รองรับ browser compatibility ล่าสุด เพราะข้อมูลฝึกฝนไม่อัปเดตตามมาตรฐานเว็บที่เปลี่ยนเร็ว</dd>
+        <dt>วิธีใช้</dt><dd>Google Chrome เผยแพร่ซอร์สโค้ดของชุด skill ที่ใช้ปรับแต่งและประเมินคำแนะนำ ให้ agent เลือกใช้ web platform API สมัยใหม่และตรวจสอบ compatibility ก่อนแนะนำโค้ด</dd>
+        <dt>ประโยชน์</dt><dd>นักพัฒนาที่ใช้ AI coding agent ได้โค้ดเว็บที่สอดคล้องกับมาตรฐานปัจจุบันมากขึ้น ลดความเสี่ยงจากการใช้ pattern ที่ล้าสมัย</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">GitHub Projects (AI-related trending)</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">API/CLI Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ช่วงราคาสุดท้ายและวันจดทะเบียนซื้อขายจริงของหุ้น Anthropic (ANT) บน Nasdaq</dd>
+        <dt>เหตุผล</dt><dd>แบบ S-1 ยังไม่มีผลบังคับใช้จาก SEC แม้ roadshow จะเริ่มไปแล้วตั้งแต่ 10 พ.ย. 2569 ช่วงราคาที่ประกาศ (70–78 ดอลลาร์/หุ้น) อาจเปลี่ยนแปลงได้ก่อนปิดการเสนอขายจริง ควรติดตามการแก้ไขแบบ S-1/A และประกาศราคาสุดท้ายจากบริษัทหรือ SEC EDGAR โดยตรง <span class="badge">ต่อเนื่อง</span></dd>
+        <dt>Source</dt><dd>✅ <a href="https://www.anthropic.com/news/roadshow-launch">anthropic.com/news/roadshow-launch</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>การถอด fast mode ของ Opus 4.8 ออกจาก Claude Code/Claude apps gateway ในวันที่ 30 พ.ย. 2569</dd>
+        <dt>เหตุผล</dt><dd>ประกาศเลิกใช้ (deprecate) ตั้งแต่ 30 ต.ค. 2569 และจะถอดออกจริงภายในไม่ถึง 3 สัปดาห์จากนี้ หลังจากนั้นคำขอ fast mode บน Opus 4.8 จะคืน error โดยไม่ fallback ทีมที่ใช้ fast mode บน Opus 4.8 ควรวางแผนย้ายไปใช้ Opus 5.5 หรือ Fable 5.2 ก่อนกำหนด <span class="badge">ต่อเนื่อง</span></dd>
+        <dt>Source</dt><dd><a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">github.com/anthropics/claude-code — CHANGELOG.md</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>นโยบาย network egress/DNS ของสภาพแวดล้อมนี้ปฏิเสธการเข้าถึงโดเมนข่าว/วิจัย AI หลักต่อเนื่องมานานกว่า 1 เดือน</dd>
+        <dt>เหตุผล</dt><dd>โดเมนสำคัญ เช่น openai.com, blog.google, deepmind.google, ai.meta.com, blogs.nvidia.com, huggingface.co, arxiv.org, techcrunch.com, venturebeat.com, theverge.com, news.ycombinator.com, reddit.com และ paperswithcode.com ล้มเหลวด้วย DNS resolution error (ENOTFOUND) ติดต่อกันมาตั้งแต่อย่างน้อย 1 ต.ค. 2569 ทำให้รายงานต้องพึ่ง WebSearch สำรองและขาดการยืนยันข่าวบริษัทคู่แข่งของ Anthropic อย่างเป็นอิสระ ควรตรวจสอบการตั้งค่า network egress ของสภาพแวดล้อมนี้โดยเร็ว <span class="badge-warn">UNCERTAIN</span></dd>
+        <dt>Source</dt><dd>บันทึกการเข้าถึงเครือข่ายภายในเซสชันนี้ (WebFetch error log)</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news/roadshow-launch">Anthropic — Anthropic launches roadshow for proposed initial public offering</a></li>
+          <li><a href="https://www.anthropic.com/news">Anthropic Newsroom</a></li>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://github.com/openai/codex-security">github.com/openai/codex-security</a></li>
+          <li><a href="https://github.com/meta/astryx">github.com/meta/astryx</a></li>
+          <li><a href="https://github.com/GoogleChrome/modern-web-guidance-src">github.com/GoogleChrome/modern-web-guidance-src</a></li>
+          <li><a href="https://github.com/vercel-labs/agent-browser">github.com/vercel-labs/agent-browser</a></li>
+          <li><a href="https://registry.npmjs.org/@anthropic-ai/claude-code">npm registry — @anthropic-ai/claude-code (v2.1.322)</a></li>
+          <li><a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">GitHub — anthropics/claude-code CHANGELOG.md</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:0;border:none;background:none;">ไม่สามารถเข้าถึงแหล่งวิจัย Tier 1/สำรอง (arXiv, Hugging Face Papers, Papers with Code) ได้ในรอบนี้ (ดูหมายเหตุข้อจำกัดข้อมูล)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:0;border:none;background:none;">ไม่มีข่าวจากสื่อ Tier 2 ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ได้ในรอบนี้ (เข้าถึง techcrunch.com, venturebeat.com, theverge.com ไม่ได้)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 11 พ.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
