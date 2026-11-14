@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 Weekly Software Releases Report - Week 46</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27, 32, 39, 0.14);
+  --line-strong: rgba(27, 32, 39, 0.28);
+  --accent: #0F7A73;
+  --critical: #D92B2B;
+  --high: #FF6B35;
+  --medium: #FFA500;
+  --low: #4CAF50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231, 230, 224, 0.14);
+    --line-strong: rgba(231, 230, 224, 0.26);
+    --accent: #3FBDAF;
+    --critical: #FF6B6B;
+    --high: #FF8C42;
+    --medium: #FFB84D;
+    --low: #81C784;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.page { max-width: 1200px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topstrip {
+  display: flex; justify-content: space-between; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-faint);
+}
+
+.masthead { padding: 44px 0 30px; border-bottom: 1px solid var(--line-strong); }
+.kicker {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+  font-size: 15px; color: var(--accent); margin: 0 0 14px;
+}
+.kicker::before { content: "◆ "; font-size: 11px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 800; margin: 0 0 16px; }
+h2 {
+  font-size: 24px; font-weight: 700; margin: 36px 0 20px; color: var(--ink);
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; color: var(--ink-soft); }
+
+.meta-row { display: flex; gap: 20px; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+
+.executive-summary {
+  background: var(--surface); border-left: 4px solid var(--accent);
+  padding: 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8;
+}
+
+.dashboard {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.dashboard-item {
+  background: var(--surface); padding: 16px; border-radius: 4px;
+  border-top: 3px solid var(--accent); text-align: center;
+}
+.dashboard-item-value { font-size: 32px; font-weight: 700; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.dashboard-item-label {
+  font-size: 12px; color: var(--ink-faint); margin-top: 8px;
+  text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--surface); }
+th {
+  background: var(--surface-2); color: var(--ink); padding: 12px; text-align: left;
+  font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--line-strong);
+}
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.label {
+  display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 11px;
+  font-weight: 600; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-major { background: rgba(15, 122, 115, 0.2); color: var(--accent); }
+.label-minor { background: rgba(15, 122, 115, 0.1); color: var(--ink-soft); }
+.label-patch { background: rgba(217, 43, 43, 0.1); color: var(--ink-soft); }
+.label-security { background: rgba(217, 43, 43, 0.2); color: var(--critical); }
+.label-lts { background: rgba(255, 165, 0, 0.15); color: var(--medium); }
+.label-rc { background: rgba(156, 39, 176, 0.15); color: var(--ink-soft); }
+.label-beta { background: rgba(63, 81, 181, 0.15); color: var(--ink-soft); }
+.label-eol { background: rgba(217, 43, 43, 0.15); color: var(--critical); }
+
+.severity-critical { color: var(--critical); font-weight: 600; }
+.severity-high { color: var(--high); font-weight: 600; }
+.severity-medium { color: var(--medium); font-weight: 600; }
+.severity-low { color: var(--low); font-weight: 600; }
+
+.source-badge {
+  display: inline-block; padding: 3px 6px; background: var(--surface-2);
+  border-radius: 2px; font-size: 10px; font-family: "JetBrains Mono", monospace; color: var(--ink-faint);
+}
+
+.note {
+  background: var(--surface); border-left: 4px solid var(--medium); padding: 12px;
+  margin: 12px 0; border-radius: 2px; font-size: 13px; color: var(--ink-soft);
+}
+.empty-note {
+  background: var(--surface); border: 1px dashed var(--line-strong); padding: 12px 16px;
+  margin: 12px 0; border-radius: 4px; font-size: 13.5px; color: var(--ink-soft); font-style: italic;
+}
+.highlight-box { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; margin: 12px 0; border-radius: 4px; }
+
+footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-strong); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+.two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest</p>
+    <h1>💻 Weekly Software Releases Report</h1>
+    <div class="meta-row">
+      <span><b>Week:</b> 46</span>
+      <span><b>Period:</b> November 8 – 14, 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="executive-summary">
+      <p>สัปดาห์นี้ (8–14 พ.ย. 2569) เป็นสัปดาห์ที่มีความเคลื่อนไหวด้านความปลอดภัยหนาแน่นที่สุดในรอบหลายสัปดาห์ ตรงกับ Microsoft Patch Tuesday ประจำเดือนพฤศจิกายน 2569 (10 พ.ย. 2569) ที่แก้ไขช่องโหว่รวมประมาณ 1,090 รายการ (63 Critical ตามแหล่งข่าวส่วนใหญ่ ตัวเลขแตกต่างกันเล็กน้อยระหว่างแหล่ง) โดยมี Zero-day ที่ถูกโจมตีจริงแล้วรวมอยู่ด้วยคือ <strong>CVE-2026-124194</strong> ในไมโครซอฟท์ Outlook ซึ่งขโมยค่า NTLMv2 Hash ของผู้ใช้ และถูกเพิ่มเข้า CISA Known Exploited Vulnerabilities Catalog ทันที</p>
+      <p>นอกจากนี้ยังมี Critical CVE อีกหลายรายการที่ควรเร่งแพตช์ ได้แก่ <strong>Apache HTTP Server 2.4.71</strong> (CVE-2026-119618, Race Condition ใน mod_http2 ที่อาจนำไปสู่ Remote Code Execution), <strong>GitLab 19.5.4 / 19.4.6 / 19.3.8</strong> (CVE-2026-105437, Heap Buffer Overflow ใน Git ที่ฝังมากับ GitLab ผ่าน Gitaly) และ <strong>Red Hat edk2 Firmware</strong> (CVE-2026-97631, Pre-boot Remote Code Execution ผ่าน RHSA-2026:96240)</p>
+      <p>ด้าน End of Life มีเหตุการณ์สำคัญชนกันในวันเดียว (10 พ.ย. 2569) ถึง 3 รายการ ได้แก่ <strong>.NET 8 / .NET 9</strong>, <strong>PowerShell 7.4 (LTS) / 7.5</strong> และ <strong>Windows 11 23H2 (Enterprise/Education)</strong> ที่หมดการสนับสนุนพร้อมกัน ส่วน Red Hat เปิดตัว <strong>RHEL 10.3 / RHEL 9.9</strong> (Minor Release) พร้อมฟีเจอร์ AI-assisted Troubleshooting เมื่อ 11 พ.ย. 2569 และ PostgreSQL ออก <strong>19 RC2</strong> พร้อมอัปเดต Non-19 ทุกสาย และประกาศ <strong>PostgreSQL 14 สิ้นสุดการสนับสนุน</strong> ในวันเดียวกัน (12 พ.ย. 2569)</p>
+      <p>ด้าน Programming Languages มีเพียง <strong>Node.js 26.13.1 "Lithium" (LTS)</strong> ที่ออก Security Release แก้ไข 16 CVE เมื่อ 11 พ.ย. 2569 ส่วน Python, Go, Rust, Java และ Frameworks หลัก (React, Vue, Angular, Django, Laravel, FastAPI, Spring Boot) ไม่พบ Release ใหม่ที่ยืนยันได้ในช่วงเวลานี้</p>
+      <p><strong>ประเด็นสำคัญ:</strong> ทีมที่ใช้ Outlook/Microsoft 365 Apps ควรเร่งติดตั้งแพตช์เดือน พ.ย. 2569 ทันทีเนื่องจากมี Zero-day ที่ถูกโจมตีจริง ทีมที่ใช้ Apache HTTP Server 2.4.55–2.4.70, GitLab รุ่นก่อน 19.3.8/19.4.6/19.5.4 และ RHEL ที่มี edk2 เวอร์ชันเก่าควรอัปเดตโดยเร็ว ทีมที่ยังใช้ .NET 8/9, PowerShell 7.4/7.5 หรือ Windows 11 23H2 รุ่น Enterprise/Education ควรวางแผนอัปเกรดทันทีเนื่องจากไม่ได้รับแพตช์ความปลอดภัยอีกต่อไป</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">11</div>
+        <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">5</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">4</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Node.js</strong></td>
+          <td>26.13.1 "Lithium" (LTS)</td>
+          <td><span class="label label-security">🔒 Security Release</span> แก้ไข 16 CVE แบ่งเป็น 7 High (CVE-2026-123863, -123864, -123865, -123866, -123872, -123874, -126051), 6 Medium (CVE-2026-123828, -123867, -123868, -123871, -123875, -123877) และ 3 Low (CVE-2026-123829, -123862, -123873) ส่วนใหญ่เกี่ยวกับ HTTP/2 และ TLS พร้อมอัปเดต Dependency: brotli 1.2.1, llhttp 9.4.4, sqlite 3.54.1, undici 8.12.4</td>
+          <td>Nov 11, 2026</td>
+          <td><span class="label label-security">Security</span></td>
+          <td><a href="https://nodejs.org/en/blog/release/v26.13.1" class="source-badge">nodejs.org/blog/release/v26.13.1</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 8–14 พ.ย. 2569 สำหรับ Python, Go, Rust และ Java/OpenJDK จาก Official Source ที่เข้าถึงได้ในรอบตรวจสอบนี้ ส่วน PHP 8.6.0 ยังอยู่ในสถานะ Release Candidate (มีรายงานจากสื่อรองว่า RC6 แท็กประมาณ 10 พ.ย. 2569 แต่ไม่สามารถยืนยันผ่าน php.net โดยตรงในรอบตรวจสอบนี้ จึงไม่นำมานับเป็น Release — ดู UNCERTAIN ท้ายรายงาน) GA ของ PHP 8.6.0 มีกำหนด 19 พ.ย. 2569 ยังไม่ถึงกำหนดในช่วงเวลานี้ (ดู "สิ่งที่ต้องติดตาม") สำหรับ .NET ในฐานะ Runtime ไม่มี Release ใหม่ แต่ .NET 8/9 สิ้นสุดการสนับสนุนในสัปดาห์นี้ — ดูรายละเอียดในหัวข้อ "📦 End of Life (EOL)"</div>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ของ React, Vue, Angular, Django, Laravel, FastAPI และ Spring Boot ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 8–14 พ.ย. 2569 (Django ออก Security Release 6.1.3/6.0.10/5.2.19 ไปแล้วเมื่อ 3 พ.ย. 2569 ซึ่งอยู่ก่อนช่วงเวลานี้ รายงานไปแล้วในสัปดาห์ก่อนหน้า) Spring Boot 4.2 ยังอยู่ที่ Milestone M2 (25 ก.ย. 2569) มีกำหนด GA 19 พ.ย. 2569 ยังไม่ถึงกำหนดในช่วงเวลานี้ — ดู "สิ่งที่ต้องติดตาม"</div>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps &amp; CI/CD</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GitLab</strong> CE/EE</td>
+          <td>19.5.4 / 19.4.6 / 19.3.8</td>
+          <td><span class="label label-security">🔒 Security Release</span> GitLab Critical Patch Release แก้ไข CVE-2026-105437 (Heap-based Buffer Overflow ใน Git ที่ฝังมากับ GitLab ซึ่งเข้าถึงได้ผ่าน Gitaly เมื่อประมวลผล Three-way Merge ที่สร้างขึ้นเป็นพิเศษ) GitLab จัดระดับความรุนแรงเป็น Critical กระทบทุกเวอร์ชันตั้งแต่ 16.2 ก่อน 19.3.8, 19.4 ก่อน 19.4.6 และ 19.5 ก่อน 19.5.4 แก้ไขแล้วบน GitLab.com และ GitLab Dedicated ผู้ใช้ Self-managed ที่ Compile เองต้องอัปเดต Git เป็น 2.56.1 ขึ้นไปหรือเวอร์ชันที่ Distro แพตช์แล้ว ยังไม่พบการโจมตีจริง ผู้รายงานคือนักวิจัยผ่าน HackerOne (taise)</td>
+          <td>Security / CI-CD Platform</td>
+          <td><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-4-released/" class="source-badge">docs.gitlab.com (เข้าถึงไม่ได้โดยตรง — ยืนยัน URL และเนื้อหาผ่าน WebSearch)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 8–14 พ.ย. 2569 สำหรับ Docker/Docker Engine (ล่าสุดคือ 29.9.3 เมื่อ 3 พ.ย. 2569 ก่อนช่วงเวลานี้), Kubernetes (v1.38.0-beta.0 ออกเมื่อ 4 พ.ย. 2569 ก่อนช่วงเวลานี้ ไม่พบ beta.1/rc ใหม่ในสัปดาห์นี้), Jenkins (Weekly 2.589 เมื่อ 1 พ.ย. 2569 ก่อนช่วงเวลานี้), GitHub Actions, Terraform (ล่าสุด 1.17.0 เมื่อ 21 ต.ค. 2569), ArgoCD (v3.6.1 เมื่อ 4 พ.ย. 2569 ก่อนช่วงเวลานี้) และ Ansible Core ในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Database</th><th>Version</th><th>Features</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>PostgreSQL</strong></td>
+          <td>19 RC2 (พร้อมอัปเดต 18.7 / 17.12 / 16.16 / 15.20 / 14.25)</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> Release Candidate ตัวที่สองของสาย 19 ออกพร้อมรอบ Update Release ตามกำหนดการของทุกสายที่รองรับ ปรับปรุง Logic การตัด Join ที่ไม่จำเป็นของ Planner (เปลี่ยนแปลงสำคัญสำหรับ Update Release) และแก้ไขปัญหา Index Corruption ที่อาจเกิดกับ GIN Index (แนะนำให้ Reindex หากได้รับผลกระทบ) GA ของ PostgreSQL 19 มีกำหนด 19 พ.ย. 2569 หากไม่พบปัญหาเพิ่มเติม</td>
+          <td>Relational</td>
+          <td><a href="https://www.postgresql.org/about/news/postgresql-19-rc-1-released-3409/" class="source-badge">postgresql.org (เข้าถึงไม่ได้โดยตรง — ยืนยันผ่าน WebSearch และเอกสาร Mailing List ของโครงการ)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 8–14 พ.ย. 2569 สำหรับ MySQL (ล่าสุด 9.7.4 เมื่อ 20 ต.ค. 2569), MariaDB, SQL Server, MongoDB, Redis (Redis OSS 8.12-RC1 เมื่อ ต.ค. 2569 ก่อนช่วงเวลานี้), Cassandra, Elasticsearch (Security Advisory ESA-2026-209 เมื่อ 3 พ.ย. 2569 ก่อนช่วงเวลานี้) และ Cloud Database (AWS RDS/Aurora, Azure SQL, Google Cloud SQL) ในช่วงเวลานี้ ส่วน PostgreSQL 14 สิ้นสุดการสนับสนุนในสัปดาห์นี้เช่นกัน — ดูรายละเอียดในหัวข้อ "📦 End of Life (EOL)"</div>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>OS</th><th>Version</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Red Hat Enterprise Linux</strong></td>
+          <td>RHEL 10.3 / RHEL 9.9</td>
+          <td><span class="label label-minor">🔹 Minor Release</span></td>
+          <td>ฟีเจอร์ AI-assisted Troubleshooting ผ่าน MCP Server สำหรับ RHEL (GA), Sealed Images สำหรับ Image Mode (เฉพาะ 10.3 ใช้ Secure Boot Key ยืนยันความสมบูรณ์ทางการเข้ารหัส), อัปเดต Linux Kernel เป็น 6.12, GCC Toolset 16 (GCC 16.2.1 / Binutils 2.46) และเส้นทางอัปเกรดผ่าน Leapp ใหม่ 9.9→10.3 และ 8.10→9.9</td>
+          <td><a href="https://developers.redhat.com/articles/2026/11/11/new-for-developers-in-rhel-10-3-and-9-9" class="source-badge">developers.redhat.com (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Red Hat Enterprise Linux</strong> (edk2 Firmware)</td>
+          <td>RHSA-2026:96240</td>
+          <td><span class="label label-security">🔒 Security Release</span></td>
+          <td>แก้ไข CVE-2026-97631 ช่องโหว่ Pre-boot Remote Code Execution ใน PXE Driver ของ edk2 (Firmware Package บน RHEL) จัดระดับ Critical โดย Red Hat</td>
+          <td><a href="https://access.redhat.com/errata/RHSA-2026:96240" class="source-badge">access.redhat.com/errata/RHSA-2026:96240 (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Windows Server</strong> / Microsoft 365 Apps</td>
+          <td>KB5131090 (Server 2022) และอื่นๆ ตามรอบ Patch Tuesday</td>
+          <td><span class="label label-security">🔒 Security Release</span></td>
+          <td>Microsoft Patch Tuesday พฤศจิกายน 2569 แก้ไขช่องโหว่รวมประมาณ 1,090–1,094 รายการ (ตัวเลขแตกต่างกันเล็กน้อยระหว่างแหล่งข่าว) 63 Critical รวมถึง Zero-day ที่ถูกโจมตีจริง CVE-2026-124194 ใน Outlook (ขโมย NTLMv2 Hash ผ่านไฟล์ที่สร้างขึ้นเป็นพิเศษ กระทบ Microsoft 365 Apps for Enterprise และ Office LTSC 2021/2024 แพตช์ผ่านการอัปเดต Office ไม่ใช่ Windows Cumulative Update เพียงอย่างเดียว) CISA เพิ่มเข้า Known Exploited Vulnerabilities Catalog ในวันเดียวกัน <strong>UNCERTAIN:</strong> msrc.microsoft.com เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ยืนยันผ่านสื่อความปลอดภัยที่น่าเชื่อถือหลายแหล่งแทน</td>
+          <td><a href="https://www.securityweek.com/exploited-outlook-zero-day-among-1094-flaws-patched-by-microsoft/" class="source-badge">securityweek.com (เข้าถึง msrc.microsoft.com โดยตรงไม่ได้)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Advisory/Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 8–14 พ.ย. 2569 สำหรับ Ubuntu (USN ที่พบจากแหล่งรองลงวันที่ก่อนช่วงเวลานี้), Debian (DSA-6602-1/6604-1/6607-1/6613-1 ลงวันที่ 2–6 พ.ย. 2569 ก่อนช่วงเวลานี้), Rocky Linux และ AlmaLinux ในช่วงเวลานี้ นอกจากนี้ Windows 11 23H2 รุ่น Enterprise/Education ครบกำหนด End of Servicing ในสัปดาห์นี้เช่นกัน — ดูรายละเอียดในหัวข้อ "📦 End of Life (EOL)"</div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <div class="empty-note">ไม่พบ Release หรือ Security Advisory ใหม่ของ VMware/Broadcom ESXi/vSphere/vCenter (VMSA ล่าสุดที่ยืนยันได้คือ VMSA-2026-0006 เมื่อ 29 ก.ค. 2569 ก่อนช่วงเวลานี้มาก), Proxmox VE (ล่าสุด 9.2 เมื่อ 21 พ.ค. 2569), Hyper-V และ KVM/QEMU ในช่วง 8–14 พ.ย. 2569</div>
+  </section>
+
+  <section>
+    <h2>🌐 Network &amp; Security</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Apache HTTP Server</strong></td>
+          <td>2.4.71</td>
+          <td><span class="label label-security">🔒 Security Release</span> แก้ไข CVE-2026-119618 (Critical, Race Condition/Heap Corruption ใน mod_http2 ที่อาจนำไปสู่ Remote Code Execution กระทบเวอร์ชัน 2.4.55–2.4.70 ยังไม่มี Workaround อย่างเป็นทางการ) และ CVE-2026-109163 (Low, One-byte Stack Buffer Overwrite ใน mod_vhost_alias) <strong>UNCERTAIN:</strong> httpd.apache.org เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ยืนยันเฉพาะผ่านสื่อความปลอดภัยรอง (2+ แหล่ง) ควรตรวจสอบ Official Announcement อีกครั้งก่อนอ้างอิงแบบเป็นทางการ</td>
+          <td>Web Server</td>
+          <td><a href="https://www.rescana.com/post/apache-httpd-mod-http2-cve-2026-119618-patch-now" class="source-badge">rescana.com / securityonline.info (เข้าถึง httpd.apache.org โดยตรงไม่ได้)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 8–14 พ.ย. 2569 สำหรับ Nginx (Mainline ล่าสุด 1.31.8 เมื่อ 21 ต.ค. 2569), HAProxy, Traefik (ล่าสุด v3.7.16 ประมาณ 21 ต.ค. 2569), Caddy, WireGuard, pfSense (26.11 ยังอยู่ระหว่างพัฒนา ยังไม่ Release) และ OPNsense (ล่าสุด 26.10 เมื่อ 28 ต.ค. 2569) รวมถึงเครื่องมือด้าน Security ได้แก่ Nmap, Wireshark, Nessus, OpenVAS และ Metasploit Framework (Metasploit Pro 5.1.0 ออกเมื่อ 3 พ.ย. 2569 ก่อนช่วงเวลานี้) ในช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>☁ Cloud &amp; Infrastructure</h2>
+    <div class="empty-note">ไม่พบประกาศที่ยืนยันทั้งรายละเอียดและวันที่แน่ชัดอยู่ในช่วง 8–14 พ.ย. 2569 จาก AWS What's New, Azure Updates, Google Cloud Release Notes, Pulumi และ AWS CloudFormation ที่สามารถเข้าถึงและยืนยันได้ครบถ้วนในรอบตรวจสอบนี้ พบเพียงหัวข้อบล็อก AWS Weekly Roundup ลงวันที่ 9 พ.ย. 2569 ("AgentCore Runtime V2, Amazon DynamoDB bulk put items, and more") และรายการ Google Cloud Apigee Edge UI Update ที่มีการอ้างถึงวันที่ 11 พ.ย. 2569 จากผลการค้นหา แต่ไม่สามารถเข้าถึง aws.amazon.com และ docs.cloud.google.com โดยตรงเพื่อยืนยันรายละเอียดระดับฟีเจอร์ได้ในรอบตรวจสอบนี้ จึงไม่นำมาแสดงเป็นรายการยืนยัน — ดู UNCERTAIN ท้ายรายงาน</div>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools &amp; IDE</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 8–14 พ.ย. 2569 สำหรับ VS Code (Stable ล่าสุดที่ยืนยันได้คือ 1.144 เมื่อ 28 ต.ค. 2569 ส่วน 1.146 เป็น Insiders เท่านั้น), JetBrains IDEs, Eclipse, Git (ล่าสุด 2.56 เมื่อ 28 ก.ย. 2569), npm (ล่าสุด 12.0.0 เมื่อ 8 ก.ค. 2569), pip, Composer, Maven และ Gradle ในช่วงเวลานี้ (GitLab มี Security Release ในสัปดาห์นี้ — ดูรายละเอียดในหัวข้อ "🔧 DevOps &amp; CI/CD")</div>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <div class="empty-note">Apache HTTP Server มี Security Release 2.4.71 ในสัปดาห์นี้ — ดูรายละเอียดเต็มในหัวข้อ "🌐 Network &amp; Security" ไม่พบ Release ใหม่สำหรับ Nginx, Caddy และ IIS ในช่วง 8–14 พ.ย. 2569</div>
+  </section>
+
+  <section>
+    <h2>🔒 Security &amp; CVE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Apache HTTP Server</strong></td>
+          <td>CVE-2026-119618 (mod_http2 Race Condition / RCE)</td>
+          <td><span class="severity-critical">Critical</span></td>
+          <td>2.4.71</td>
+          <td><a href="https://www.rescana.com/post/apache-httpd-mod-http2-cve-2026-119618-patch-now" class="source-badge">rescana.com (httpd.apache.org เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitLab</strong> CE/EE</td>
+          <td>CVE-2026-105437 (Heap Buffer Overflow ใน Git/Gitaly)</td>
+          <td><span class="severity-critical">Critical</span></td>
+          <td>19.5.4 / 19.4.6 / 19.3.8</td>
+          <td><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-4-released/" class="source-badge">docs.gitlab.com (เข้าถึงไม่ได้โดยตรง — ยืนยันผ่าน WebSearch)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Red Hat Enterprise Linux</strong> (edk2)</td>
+          <td>CVE-2026-97631 (Pre-boot RCE ใน PXE Driver)</td>
+          <td><span class="severity-critical">Critical</span></td>
+          <td>RHSA-2026:96240</td>
+          <td><a href="https://access.redhat.com/errata/RHSA-2026:96240" class="source-badge">access.redhat.com/errata (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Node.js</strong> 26.13.1</td>
+          <td>CVE-2026-123863 และอีก 6 รายการ (High: รวม 7 CVE ด้าน HTTP/2/TLS)</td>
+          <td><span class="severity-high">High</span></td>
+          <td>26.13.1</td>
+          <td><a href="https://nodejs.org/en/blog/release/v26.13.1" class="source-badge">nodejs.org/blog/release/v26.13.1 (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft Outlook</strong> / Microsoft 365 Apps</td>
+          <td>CVE-2026-124194 (Spoofing — ขโมย NTLMv2 Hash)</td>
+          <td><span class="severity-medium">Medium</span> (CVSS 6.5 ตาม Microsoft แต่เป็น Zero-day ที่ถูกโจมตีจริง อยู่ใน CISA KEV — ควรเร่งแพตช์ไม่ต่างจาก Critical)</td>
+          <td>อัปเดต Office พ.ย. 2569</td>
+          <td><a href="https://www.securityweek.com/exploited-outlook-zero-day-among-1094-flaws-patched-by-microsoft/" class="source-badge">securityweek.com (msrc.microsoft.com เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Node.js</strong> 26.13.1</td>
+          <td>CVE-2026-123828 และอีก 5 รายการ (Medium: รวม 6 CVE)</td>
+          <td><span class="severity-medium">Medium</span></td>
+          <td>26.13.1</td>
+          <td><a href="https://nodejs.org/en/blog/release/v26.13.1" class="source-badge">nodejs.org/blog/release/v26.13.1 (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Apache HTTP Server</strong></td>
+          <td>CVE-2026-109163 (mod_vhost_alias Stack Buffer Overwrite)</td>
+          <td><span class="severity-low">Low</span></td>
+          <td>2.4.71</td>
+          <td><a href="https://www.rescana.com/post/apache-httpd-mod-http2-cve-2026-119618-patch-now" class="source-badge">rescana.com (httpd.apache.org เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Node.js</strong> 26.13.1</td>
+          <td>CVE-2026-123829 และอีก 2 รายการ (Low: รวม 3 CVE)</td>
+          <td><span class="severity-low">Low</span></td>
+          <td>26.13.1</td>
+          <td><a href="https://nodejs.org/en/blog/release/v26.13.1" class="source-badge">nodejs.org/blog/release/v26.13.1 (official)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">รวม CVE ที่ยืนยันได้ในสัปดาห์นี้ 21 รายการ (5 รายการระบุหมายเลขเดี่ยวข้างต้น + 16 รายการของ Node.js 26.13.1) ไม่รวมตัวเลขรวม ~1,090 CVE ของ Microsoft Patch Tuesday ซึ่งส่วนใหญ่ไม่ได้ระบุหมายเลขแยกในแหล่งข่าวที่เข้าถึงได้ ไม่พบ CVE ใหม่ของ Jenkins, VMware, Ubuntu หรือ Debian ที่ยืนยันทั้ง CVE ID และ Patch Version ได้ชัดเจนในช่วง 8–14 พ.ย. 2569</div>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="empty-note">ไม่พบ Breaking Change ใหม่ที่ยืนยันได้จาก Official Documentation ในช่วง 8–14 พ.ย. 2569 การแก้ไข CVE-2026-105437 ของ GitLab เป็นการอัปเดต Git ที่ฝังมาภายใน ไม่มีผลกระทบต่อ API หรือ Workflow ของผู้ใช้โดยตรง</div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>EOL Date</th><th>Replacement</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>.NET 8 (LTS) / .NET 9 (STS)</strong> <span class="label label-eol">⛔ End of Life</span></td>
+          <td>Nov 10, 2026</td>
+          <td>.NET 10 LTS (รองรับถึง พ.ย. 2571)</td>
+          <td><a href="https://devblogs.microsoft.com/dotnet/dotnet-8-9-end-of-support/" class="source-badge">devblogs.microsoft.com (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>PowerShell 7.4 (LTS) / 7.5</strong> <span class="label label-eol">⛔ End of Life</span></td>
+          <td>Nov 10, 2026</td>
+          <td>PowerShell 7.6 LTS (รองรับถึง 14 พ.ย. 2571)</td>
+          <td><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle" class="source-badge">learn.microsoft.com (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Windows 11, version 23H2</strong> (Enterprise/Education) <span class="label label-eol">⛔ End of Servicing</span></td>
+          <td>Nov 10, 2026</td>
+          <td>Windows 11 25H2 หรือ 26H2</td>
+          <td><a href="https://support.microsoft.com/kb/5131087" class="source-badge">support.microsoft.com/kb/5131087 (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>PostgreSQL 14</strong> <span class="label label-eol">⛔ End of Life</span></td>
+          <td>Nov 12, 2026</td>
+          <td>PostgreSQL 17 / 18 หรือรอ PostgreSQL 19 GA (กำหนด 19 พ.ย. 2569)</td>
+          <td><a href="https://endoflife.ai/postgresql/14" class="source-badge">endoflife.ai (postgresql.org เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">PostgreSQL 14 ได้รับ Update Release สุดท้ายเป็นเวอร์ชัน 14.25 เมื่อ 12 พ.ย. 2569 ก่อนสิ้นสุดการสนับสนุนในวันเดียวกัน ส่วน .NET 9 สิ้นสุดวันที่เดียวกับ .NET 8 เนื่องจาก Microsoft ขยายระยะสนับสนุนสาย STS จาก 18 เดือนเป็น 24 เดือน Windows 11 23H2 รุ่น Home/Pro สิ้นสุดการสนับสนุนไปแล้วตั้งแต่ 11 พ.ย. 2568 (ก่อนหน้านี้ 1 ปี) เฉพาะรุ่น Enterprise/Education ที่สิ้นสุดในสัปดาห์นี้</div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <div class="highlight-box">
+      <ul>
+        <li><strong>PostgreSQL 19 GA</strong> — มีกำหนด 19 พ.ย. 2569 (อาจเลื่อนได้หากพบปัญหาเพิ่มเติมจาก RC2)</li>
+        <li><strong>PHP 8.6.0 GA</strong> — มีกำหนด 19 พ.ย. 2569 ตาม Timetable ทางการ มีรายงานจากสื่อรอง (ยังไม่ยืนยันผ่าน php.net) ว่า RC6 แท็กแล้วประมาณ 10 พ.ย. 2569</li>
+        <li><strong>Spring Boot 4.2 GA</strong> — มีกำหนด 19 พ.ย. 2569 ปัจจุบันอยู่ที่ Milestone M2</li>
+        <li><strong>Kubernetes v1.38.0</strong> — อยู่ระหว่าง Pre-release (beta.0 ออกแล้วก่อนสัปดาห์นี้) milestone ถัดไปคือ rc.0 ประมาณ 3 ธ.ค. 2569 และ GA ประมาณ 16 ธ.ค. 2569</li>
+        <li><strong>.NET 11</strong> — มีรายงานจากสื่อรองเพียงแหล่งเดียวและมีความไม่สอดคล้องกันของหมายเลขเวอร์ชัน (9.0.23 vs 9.0.24) เกี่ยวกับความเชื่อมโยงกับรอบอัปเดต 10 พ.ย. 2569 — ยังไม่ยืนยัน ควรตรวจสอบ devblogs.microsoft.com โดยตรงอีกครั้ง</li>
+        <li><strong>Angular 22.3</strong> — มีการคาดการณ์ว่าจะออกภายในเดือนพฤศจิกายน 2569 แต่ยังไม่พบวันที่ยืนยันแน่ชัด</li>
+        <li><strong>CISA KEV Deadline สำหรับ CVE-2026-124194</strong> — หน่วยงานรัฐบาลกลางสหรัฐฯ ต้องแพตช์ภายใน 24 พ.ย. 2569 องค์กรทั่วไปควรเร่งดำเนินการในแนวทางเดียวกัน</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">11</div>
+        <div class="dashboard-item-label">Total Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">5</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">21</div>
+        <div class="dashboard-item-label">New CVEs</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">4</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <div class="two-column">
+      <div>
+        <h3>Official</h3>
+        <ul>
+          <li><a href="https://nodejs.org/en/blog/release/v26.13.1">nodejs.org — Node.js 26.13.1 "Lithium" Release Notes</a></li>
+          <li><a href="https://developers.redhat.com/articles/2026/11/11/new-for-developers-in-rhel-10-3-and-9-9">developers.redhat.com — New for Developers in RHEL 10.3 and 9.9</a></li>
+          <li><a href="https://devblogs.microsoft.com/dotnet/dotnet-8-9-end-of-support/">devblogs.microsoft.com — .NET 8 &amp; .NET 9 End of Support</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle">learn.microsoft.com — PowerShell Support Lifecycle</a></li>
+          <li><a href="https://support.microsoft.com/kb/5131087">support.microsoft.com — KB5131087 (Windows 11 23H2 Final Update)</a></li>
+          <li><a href="https://access.redhat.com/errata/RHSA-2026:96240">access.redhat.com — RHSA-2026:96240 (edk2)</a></li>
+          <li><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-4-released/">docs.gitlab.com — GitLab Critical Patch Release 19.5.4 (เข้าถึงไม่ได้โดยตรง)</a></li>
+          <li><a href="https://www.postgresql.org/about/news/postgresql-19-rc-1-released-3409/">postgresql.org — PostgreSQL 19 RC1 Announcement (เข้าถึงไม่ได้โดยตรง)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Release Notes</h3>
+        <ul>
+          <li><a href="https://www.postgresql.org/message-id/attachment/208544/20261112updaterelease.md">postgresql.org — Draft Update Release Notes, Nov 12, 2026</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Security Advisory</h3>
+        <ul>
+          <li><a href="https://access.redhat.com/errata/RHSA-2026:96240">access.redhat.com — RHSA-2026:96240 (CVE-2026-97631)</a></li>
+          <li><a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-4-released/">docs.gitlab.com — CVE-2026-105437 (เข้าถึงไม่ได้โดยตรง)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Trusted Media</h3>
+        <ul>
+          <li><a href="https://www.securityweek.com/exploited-outlook-zero-day-among-1094-flaws-patched-by-microsoft/">securityweek.com — Exploited Outlook Zero-Day Among 1,094 Flaws Patched by Microsoft</a></li>
+          <li><a href="https://www.csoonline.com/article/4247015/november-2026-patch-tuesday-63-critical-microsoft-fixes-plus-an-outlook-zero-day-that-allows-theft-of-hashed-credentials.html">csoonline.com — November 2026 Patch Tuesday</a></li>
+          <li><a href="https://www.windowscentral.com/microsoft/windows-11/microsoft-confirms-final-security-update-kb5131087-for-windows-11-version-23h2-as-support-comes-to-an-end-after-3-years">windowscentral.com — Final Security Update KB5131087 for Windows 11 23H2</a></li>
+          <li><a href="https://www.thehackernews.com/2026/11/git-patches-flaw-that-lets-malicious.html">thehackernews.com — Git Patches Flaw via GitLab Update</a></li>
+          <li><a href="https://securityonline.info/apache-http-server-cve-2026-119618-rce-fixed/">securityonline.info — Apache HTTP Server CVE-2026-119618 RCE Fixed</a></li>
+          <li><a href="https://www.rescana.com/post/apache-httpd-mod-http2-cve-2026-119618-patch-now">rescana.com — Apache httpd mod_http2 CVE-2026-119618</a></li>
+          <li><a href="https://endoflife.ai/postgresql/14">endoflife.ai — PostgreSQL 14 End of Life</a></li>
+          <li><a href="https://www.herodevs.com/whitepaper/the-net-cliff-what-happens-when-net-8-and-net-9-stop-getting-patched">herodevs.com — The .NET Cliff: .NET 8/9 End of Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">UNCERTAIN: โดเมนต่อไปนี้เข้าถึงไม่ได้โดยตรงผ่าน Network Proxy ของ Session นี้ในรอบตรวจสอบนี้ (ได้รับข้อผิดพลาดระดับ Network Policy เช่น ENOTFOUND ไม่ใช่การบล็อกจากเว็บไซต์) ได้แก่ <code>www.postgresql.org</code>, <code>msrc.microsoft.com</code>, <code>docs.gitlab.com</code>, <code>httpd.apache.org</code>, <code>www.php.net</code>, <code>aws.amazon.com</code>, <code>azure.microsoft.com</code>, <code>docs.cloud.google.com</code>, <code>ubuntu.com/security</code>, <code>debian.org/security</code>, <code>www.jenkins.io</code> จึงสลับไปใช้ WebSearch ตามนโยบาย Network Access Resilience แทนทันที ข้อมูลที่เกี่ยวข้องได้ผ่านการยืนยันข้ามแหล่งด้วย WebSearch, GitHub/Vendor Blog โดยตรงที่เข้าถึงได้ (เช่น nodejs.org, developers.redhat.com, devblogs.microsoft.com, learn.microsoft.com, support.microsoft.com, access.redhat.com ซึ่งเข้าถึงได้ปกติ) หรือสื่อความปลอดภัยที่น่าเชื่อถือ (SecurityWeek, CSO Online, The Hacker News, securityonline.info) แทน รายการที่ไม่สามารถยืนยันรายละเอียดระดับฟีเจอร์ได้จริงจากหลายแหล่งพร้อมกัน เช่น AWS Weekly Roundup และ Google Cloud Apigee Edge Update และ .NET 11 ที่มาจากแหล่งเดียวที่มีความไม่สอดคล้องกัน จึงถูกงดแสดงเป็นรายการยืนยัน ไม่ได้งดแสดงทั้งหมวด</div>
+  </section>
+
+  <footer>
+    Generated for natthasath-news · Weekly Software Releases Report · Week 46, 2026 · Data window: Nov 8 – 14, 2026 (ICT)
+  </footer>
+</div>
+</body>
+</html>
