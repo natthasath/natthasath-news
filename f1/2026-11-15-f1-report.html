@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 15 พฤศจิกายน 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 9 – 15 พฤศจิกายน 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 46</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>🔄 ผลการแข่งขัน São Paulo Grand Prix (8 พฤศจิกายน) ที่ยังไม่สามารถยืนยันได้ในรายงานสัปดาห์ก่อน ขณะนี้ยืนยันได้แล้ว: Lando Norris (McLaren) คว้าชัยชนะในสภาพสนามเปียก-แห้งสลับกัน นำหน้า Max Verstappen ที่ไต่จากกริดท้าย (เริ่ม P21 หลังโทษปรับกริดจากเครื่องยนต์) ขึ้นมาจบอันดับ 2 และ Isack Hadjar จบอันดับ 3 ทำให้ Red Bull Racing คว้าดับเบิลโพเดียม ผลที่สำคัญที่สุดคือ Mercedes คว้าแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้สำเร็จจากผลงานของ George Russell (P4) และ Kimi Antonelli (P5) ขณะที่ Lewis Hamilton ลงแข่งกรังด์ปรีซ์ครั้งที่ 400 ในอาชีพที่สนามนี้แต่จบได้เพียงอันดับ 9 สัปดาห์นี้ไม่มีการแข่งขัน โดยทีมต่าง ๆ มุ่งเตรียมอัปเกรดสำหรับ Las Vegas Grand Prix (19-21 พฤศจิกายน) ซึ่ง McLaren และ Ferrari นำชุดอัปเกรดใหม่มาใช้เพื่อลุ้นอันดับ 3 ผู้สร้างรถระหว่าง Red Bull Racing และ McLaren ที่ยังห่างกันเพียง 17 คะแนน</p>
+    </div>
+    <div class="note">🔄 ข่าวต่อเนื่อง: ผลการแข่งขัน São Paulo Grand Prix ที่ยังไม่ยืนยันได้ในรายงานสัปดาห์ก่อน (8 พฤศจิกายน) ได้รับการยืนยันในรอบนี้แล้ว รวมถึงการคว้าแชมป์โลกผู้สร้างรถสมัยที่ 9 ของ Mercedes</div>
+  </section>
+
+  <section>
+    <h2>🏆 อันดับแชมป์ชิปผู้ขับขี่</h2>
+    <div class="note">✅ ข้อมูลหลังจบ São Paulo Grand Prix (8 พฤศจิกายน) — ตัวเลข Top 4 และ Norris ยืนยันตรงกันจากหลายแหล่งข้อมูลอิสระ ❓ ตัวเลขของ Charles Leclerc มีความขัดแย้งเล็กน้อยระหว่างแหล่งข้อมูล (ดูหมายเหตุข้อจำกัดท้ายรายงาน) สัปดาห์นี้ไม่มีการแข่งขัน จึงไม่มีการเปลี่ยนแปลงคะแนนเพิ่มเติมจากตารางนี้</div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ผู้ขับขี่</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇮🇹 Kimi Antonelli <span class="label">แชมป์โลก 2026</span></td>
+          <td>Mercedes</td>
+          <td>390</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇳🇱 Max Verstappen</td>
+          <td>Red Bull Racing</td>
+          <td>279</td>
+          <td>-111</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>262</td>
+          <td>-128</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇬🇧 Lewis Hamilton</td>
+          <td>Ferrari</td>
+          <td>261</td>
+          <td>-129</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇲🇨 Charles Leclerc</td>
+          <td>Ferrari</td>
+          <td>251</td>
+          <td>-139</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>246</td>
+          <td>-144</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>🇦🇺 Oscar Piastri</td>
+          <td>McLaren</td>
+          <td>152</td>
+          <td>-238</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>122</td>
+          <td>-268</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Russell แซง Hamilton ขึ้นมาอยู่อันดับ 3 เป็นครั้งแรกในฤดูกาล หลังจบอันดับ 4 ที่ São Paulo ขณะที่ Hamilton ตกไปอยู่อันดับ 4 แม้ยังมีคะแนนเพียง 1 คะแนนห่างกัน ด้าน Verstappen ยังคงอันดับ 2 โดยไล่บี้ Antonelli ไม่ทันแล้วหลังแชมป์โลกตัดสินไปที่ Mexico City ตั้งแต่สัปดาห์ก่อน กลุ่มไล่จี้อันดับ 2-5 ยังสูสีกันมาก (279/262/261/251) เหลือการแข่งขันอีก 3 สนามของฤดูกาล</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.si.com/onsi/f1/news/f1-standings-and-results-after-the-2026-brazilian-grand-prix">Sports Illustrated (si.com)</a> ("F1 Standings and Results after the 2026 Brazilian Grand Prix"), <a href="https://www.gpfans.com/en/f1-news/1092671/f1-standings-brazilian-grand-prix-hamilton-loses-ground-verstappen-mercedes-champions/">GPFans</a> ("F1 standings after Brazilian Grand Prix"), <a href="https://www.gpblog.com/en/news/world-championship-standings-after-the-brazilian-gp-verstappen-makes-major-gains-in-the-battle-for-p2">GPblog</a> — ตัวเลข Top 4 (390/279/262/261) ตรงกันทุกแหล่ง; Leclerc มีแหล่งข้อมูลหนึ่ง (<a href="https://www.racefans.net/2026/11/08/2026-brazilian-grand-prix-race-result-and-championship-points/">RaceFans</a>) รายงาน 249 คะแนนต่างจากแหล่งอื่นที่รายงาน 251</div>
+  </section>
+
+  <section>
+    <h2>🏎 อันดับแชมป์ชิปผู้สร้างรถ</h2>
+    <div class="note">✅ Mercedes คว้าแชมป์โลกผู้สร้างรถสมัยที่ 9 อย่างเป็นทางการที่ São Paulo Grand Prix — ยืนยันตรงกันจากหลายแหล่งข้อมูลอิสระ</div>
+    <table>
+      <thead>
+        <tr>
+          <th>อันดับ</th>
+          <th>ทีม</th>
+          <th>คะแนน</th>
+          <th>ความต่าง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>Mercedes <span class="label">แชมป์โลกผู้สร้างรถ 2026</span></td>
+          <td>652</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ferrari</td>
+          <td>512</td>
+          <td>-140</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Red Bull Racing</td>
+          <td>415</td>
+          <td>-237</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>McLaren</td>
+          <td>398</td>
+          <td>-254</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Racing Bulls</td>
+          <td>114</td>
+          <td>-538</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Alpine</td>
+          <td>69</td>
+          <td>-583</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Haas</td>
+          <td>31</td>
+          <td>-621</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Audi</td>
+          <td>28</td>
+          <td>-624</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Williams</td>
+          <td>12</td>
+          <td>-640</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Aston Martin</td>
+          <td>7</td>
+          <td>-645</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Cadillac</td>
+          <td>0</td>
+          <td>-652</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Mercedes ปิดแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้สำเร็จ (เท่ากับ Williams อันดับ 3 ตลอดกาล) และเป็นแชมป์โลกผู้สร้างรถสมัยแรกนับตั้งแต่ปี 2021 จากผลงาน P4-P5 ของ Russell และ Antonelli ที่ São Paulo ส่วนศึกอันดับ 3 ระหว่าง Red Bull Racing (415) และ McLaren (398) ยังสูสีด้วยช่องว่างเพียง 17 คะแนน ไม่เปลี่ยนแปลงจากสัปดาห์ก่อน เหลือ 3 สนามสุดท้ายของฤดูกาล</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.gpblog.com/en/news/f1-standings-mercedes-win-2026-constructors-championship-in-brazil">GPblog</a> ("F1 Standings | Mercedes win 2026 Constructors' championship in Brazil"), <a href="https://sports.yahoo.com/articles/f1-standings-results-2026-brazilian-190355074.html">Yahoo Sports / si.com</a>, <a href="https://www.autoevolution.com/news/mercedes-amg-wins-2026-formula-1-constructors-title-bringing-their-total-to-nine-278150.html">Autoevolution</a> — ตัวเลข Top 4 (652/512/415/398) ตรงกันในแหล่งข้อมูลหลัก; ❓ คะแนนรวมของ Ferrari (512) มีความคลาดเคลื่อนเล็กน้อยเมื่อเทียบกับผลรวมคะแนนรายบุคคลของ Hamilton และ Leclerc ที่ São Paulo (ดูหมายเหตุข้อจำกัดท้ายรายงาน)</div>
+  </section>
+
+  <section>
+    <h2>🏁 ผลการแข่งขัน — São Paulo Grand Prix (Autódromo José Carlos Pace) 🔄</h2>
+    <div class="note">✅ จัดขึ้นวันที่ 8 พฤศจิกายน 2026 ในสภาพสนามเปียก-แห้งสลับกัน — ข่าวต่อเนื่องจากรายงานสัปดาห์ก่อนซึ่งยังไม่สามารถยืนยันผลได้ ณ เวลานั้น ขณะนี้ยืนยันได้จากหลายแหล่งข้อมูลอิสระ</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Driver</th>
+          <th>Team</th>
+          <th>Time / Status</th>
+          <th>Points</th>
+          <th>Fastest Lap</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1</td>
+          <td>🇬🇧 Lando Norris</td>
+          <td>McLaren</td>
+          <td>1:35:23.504</td>
+          <td>25</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>🇳🇱 Max Verstappen <span class="label">สตาร์ท P21</span></td>
+          <td>Red Bull Racing</td>
+          <td>+14.602s</td>
+          <td>18</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>🇫🇷 Isack Hadjar</td>
+          <td>Red Bull Racing</td>
+          <td>+24.485s</td>
+          <td>15</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>🇬🇧 George Russell</td>
+          <td>Mercedes</td>
+          <td>—</td>
+          <td>12</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>🇮🇹 Kimi Antonelli <span class="label">แชมป์โลก</span> <span class="label">โทษปรับเวลา</span></td>
+          <td>Mercedes</td>
+          <td>—</td>
+          <td>10</td>
+          <td>🏆</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>🇬🇧 Lewis Hamilton <span class="label">400th GP</span></td>
+          <td>Ferrari</td>
+          <td>—</td>
+          <td>2</td>
+          <td></td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>สรุป: Norris คว้าโพลและควบคุมการแข่งขันได้ในสภาพสนามที่เปลี่ยนไปมาระหว่างเปียกและแห้ง คว้าชัยชนะและขยายคะแนนนำในการลุ้นแชมป์ของทีม จุดเด่นของสนามนี้คือ Max Verstappen ที่ออกตัวจากอันดับ 21 (หลังโทษปรับกริดจากการเปลี่ยนเครื่องยนต์) ไต่อันดับขึ้นมาจบอันดับ 2 ได้สำเร็จ ส่งผล Red Bull Racing คว้าดับเบิลโพเดียมเมื่อ Isack Hadjar จบอันดับ 3 ด้วย (มีรายงานว่าทีมสั่งให้ Hadjar ยอมให้ Verstappen แซงขึ้นอันดับ 2 ระหว่างการแข่งขัน) ด้าน Kimi Antonelli ทำเวลาต่อรอบเร็วที่สุด (fastest lap รางวัล DHL ครั้งที่ 8 ของฤดูกาล) แต่ได้รับโทษปรับเวลา 5 วินาทีจากการปล่อยรถออกจากพิตที่ไม่ปลอดภัย ทำให้จบอันดับ 5 ร่วมกับ Charles Leclerc ที่ได้รับโทษปรับเวลา 5 วินาทีจากการชนในสนามเช่นกัน Lewis Hamilton ลงแข่งกรังด์ปรีซ์ครั้งที่ 400 ในอาชีพที่สนามนี้ (เป็นนักแข่งที่ลงแข่งมากที่สุดอันดับ 2 ตลอดกาล รองจาก Fernando Alonso) แต่จบสุดสัปดาห์ที่ยากลำบากด้วยอันดับ 9 เท่านั้น ไม่พบข้อมูลยืนยัน Safety Car หรือ Driver of the Day ที่ชัดเจนสำหรับสนามนี้จากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้</p>
+    <div class="source">✅ ที่มา (cross-checked): <a href="https://www.silverstone.co.uk/news/f1-2026-sao-paulo-grand-prix-results-norris-dominates-tricky-conditions-interlagos">Silverstone.co.uk</a> ("F1 2026 São Paulo Grand Prix results"), <a href="https://www.f1-fansite.com/f1-result/race-results-2026-sao-paulo-f1-grand-prix-report/">F1-Fansite</a>, <a href="https://www.total-motorsport.com/sao-paulo-gp-results-2026-full-race-classification/">Total Motorsport</a>, <a href="https://en.wikipedia.org/wiki/2026_S%C3%A3o_Paulo_Grand_Prix">Wikipedia</a> (ผลการแข่งขัน), <a href="https://www.nst.com.my/amp/sports/motor-sports/2026/11/1573848/red-bull-boss-mekies-says-hadjar-delivered-his-best-race-brazil">New Straits Times (Reuters)</a> (คำสั่งทีมต่อ Hadjar), <a href="https://www.dailysabah.com/sports/motorsports/hamilton-hits-400-race-mark-amid-lingering-ferrari-discontent/amp">Daily Sabah</a> (Hamilton 400th GP)</div>
+    <div class="note">❓ ข้อมูลโทษปรับของ Antonelli และ Leclerc อ้างอิงจากสื่อระดับรองเท่านั้น (ไม่สามารถยืนยันไขว้กับ formula1.com/FIA.com ได้โดยตรงในรอบนี้ — ดูหมายเหตุข้อจำกัดท้ายรายงาน) ⚠️ การระบุทีมของ Isack Hadjar มีความขัดแย้งกันระหว่างแหล่งข้อมูล (บางแหล่งเรียก "Red Bull Ford double podium" ซึ่งอาจหมายถึงผู้ผลิตเครื่องยนต์ ไม่ใช่ทีม) รายงานนี้ใช้ Red Bull Racing ตามตัวเลขคะแนนผู้สร้างรถที่ยืนยันไขว้ได้ (ดูหมายเหตุข้อจำกัด)</div>
+  </section>
+
+  <section>
+    <h2>📰 ข่าวสำคัญประจำสัปดาห์</h2>
+
+    <h3>Technical Updates — อัปเกรดสำหรับ Las Vegas Grand Prix</h3>
+    <p>หลังจบ São Paulo GP ทีมต่าง ๆ มุ่งเตรียมอัปเกรดใหม่สำหรับ Las Vegas Grand Prix: Ferrari นำพื้นรถ (floor) เวอร์ชันใหม่มาใช้ ซึ่งมีรายงานว่าเป็นความพยายามครั้งสำคัญในการไล่บี้ McLaren ในศึกอันดับ รองจาก Mercedes ของตารางผู้สร้างรถ ขณะที่ McLaren นำชุดพัฒนาเพิ่มเติมมาใช้ต่อเนื่อง ซึ่งทีมหัวหน้า Andrea Stella ระบุว่าเป็นการวางพื้นฐานสำหรับการไล่ชิงแชมป์ในปี 2027 ด้าน Red Bull Racing ก็นำปีกหน้าเฉพาะสนามมาใช้เช่นกัน โดยมีรายงานว่า Red Bull และ McLaren เป็น 2 ใน 3 ทีมที่ยืนยันกับ FIA ว่าจะนำอัปเกรดเฉพาะสนามมาใช้ที่ Las Vegas สัปดาห์นี้ ร่วมกับ Mercedes และ Aston Martin ที่นำปีกหน้าเฉพาะสนามมาด้วย</p>
+    <div class="source">✅ ที่มา: <a href="https://racer.com/2026/11/11/more-new-mclaren-developments-for-las-vegas-gp-as-team-pushes-to-keep-momentum-building">Racer.com</a> ("More new McLaren developments for Las Vegas GP as team pushes to keep momentum building", 11 พฤศจิกายน 2026), <a href="https://racingnews365.com/mercedes-f1-rivals-strike-back-on-fiercely-fought-battleground">RacingNews365</a> (อัปเกรดพื้นรถของ Ferrari และปีกหน้าเฉพาะสนามของหลายทีม)</div>
+
+    <h3>Team News — Red Bull Racing ดับเบิลโพเดียมที่ São Paulo</h3>
+    <p>Laurent Mekies หัวหน้าทีม Red Bull Racing ยกย่องว่าผลงานของ Isack Hadjar ที่ São Paulo เป็น "การแข่งขันที่ดีที่สุด" ของเขาในฤดูกาลนี้ หลังจบอันดับ 3 ร่วมกับ Max Verstappen ที่ไต่จากอันดับ 21 ขึ้นมาจบอันดับ 2 ทำให้ทีมคว้าดับเบิลโพเดียม ซึ่งเป็นผลงานสำคัญในการรักษาอันดับ 3 ตารางผู้สร้างรถเหนือ McLaren ที่ยังห่างกันเพียง 17 คะแนน</p>
+    <div class="source">✅ ที่มา: <a href="https://www.nst.com.my/amp/sports/motor-sports/2026/11/1573848/red-bull-boss-mekies-says-hadjar-delivered-his-best-race-brazil">New Straits Times (Reuters)</a> ("Red Bull boss Mekies says Hadjar delivered his best race in Brazil"), <a href="https://racingnews365.com/isack-hadjar-reveals-near-red-bull-wipeout-disaster-before-brazil-podium">RacingNews365</a></p>
+
+    <h3>Calendar — ฤดูกาล 2026 เข้าสู่ช่วงสุดท้าย</h3>
+    <p>F1 ยืนยันเดินหน้าจัดการแข่งขัน 2 สนามสุดท้ายของฤดูกาลที่ Qatar และ Abu Dhabi ตามกำหนดการเดิม หลังเหลือการแข่งขันอีก 3 สนาม (Las Vegas, Qatar, Abu Dhabi) ก่อนปิดฤดูกาล 2026</p>
+    <div class="source">✅ ที่มา: <a href="https://www.gpfans.com/en/f1-news/1092781/f1-news-today-massive-decision-last-race-confirmed-fia-axed-driver-emotional-statement/">GPFans</a> ("F1 News Today")</div>
+
+    <h3>Driver Market / FIA & Regulations</h3>
+    <p>❓ ไม่พบข่าวการย้ายทีมหรือสัญญานักแข่งที่ยืนยันได้ใหม่ภายใน 7 วันที่ผ่านมา (9-15 พฤศจิกายน) และไม่พบเอกสารคำตัดสินใหม่จาก FIA ที่ยืนยันได้สำหรับช่วงเวลานี้ จึงไม่นำมารายงานในรอบนี้ (ข่าวลือเกี่ยวกับอนาคตของ Max Verstappen ในปี 2027 ที่พบระหว่างการค้นหายังไม่มีการยืนยันวันที่หรือความใหม่ของข้อมูลที่ชัดเจนในสัปดาห์นี้ จึงงดนำมารายงาน)</p>
+  </section>
+
+  <section>
+    <h2>📈 วิเคราะห์ผลงานทีม</h2>
+
+    <div class="team-section">
+      <strong>Mercedes</strong> — คว้าแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้สำเร็จที่ São Paulo จากผลงาน P4 ของ Russell และ P5 ของ Antonelli (ซึ่งรับโทษปรับเวลา 5 วินาที) ทีมครองทั้งแชมป์โลกผู้ขับขี่ (Antonelli) และผู้สร้างรถในฤดูกาลเดียวกัน นำ Ferrari 140 คะแนน
+    </div>
+    <div class="team-section">
+      <strong>Ferrari</strong> — สุดสัปดาห์ที่ยากลำบากที่ São Paulo: Leclerc ได้รับโทษปรับเวลาจากการชน จบอันดับ 5 ร่วม ส่วน Hamilton จบเพียงอันดับ 9 ในกรังด์ปรีซ์ครั้งที่ 400 ของเขา ทีมยังรักษาอันดับ 2 ผู้สร้างรถได้ (512 คะแนน) และนำชุดอัปเกรดพื้นรถใหม่มาใช้ที่ Las Vegas เพื่อพยายามไล่บี้ในสนามที่เหลือ
+    </div>
+    <div class="team-section">
+      <strong>Red Bull Racing</strong> — ผลงานเด่นประจำสัปดาห์: Verstappen ไต่จากกริด P21 ขึ้นมาจบอันดับ 2 และ Hadjar จบอันดับ 3 รวมเป็นดับเบิลโพเดียม ทำให้ทีมรักษาอันดับ 3 ผู้สร้างรถไว้ได้ (415 คะแนน) นำ McLaren 17 คะแนน เหลือ 3 สนามสุดท้ายของฤดูกาล
+    </div>
+    <div class="team-section">
+      <strong>McLaren</strong> — Norris คว้าชัยชนะที่ São Paulo ขยายคะแนนนำของทีม ส่วน Piastri จบอันดับ 6 ทีมยังคงอันดับ 4 ผู้สร้างรถ (398 คะแนน) และนำชุดพัฒนาต่อเนื่องมาใช้ที่ Las Vegas เพื่อไล่จี้ Red Bull Racing ในศึกอันดับ 3
+    </div>
+    <div class="team-section">
+      <strong>Red Bull Racing (Hadjar)</strong> — ดูหัวข้อ Red Bull Racing ด้านบน — หมายเหตุ: มีความขัดแย้งด้านการระบุทีมของ Hadjar ระหว่างแหล่งข้อมูล (ดูหมายเหตุข้อจำกัดท้ายรายงาน)
+    </div>
+    <div class="team-section">
+      <strong>Aston Martin, Williams, Haas, Audi, Alpine, Cadillac, Sauber</strong> — ❓ ไม่พบข่าวเฉพาะทีมที่ยืนยันได้ชัดเจนสำหรับสัปดาห์นี้ นอกเหนือจากการนำปีกหน้าเฉพาะสนามของ Aston Martin มาใช้ที่ Las Vegas ตามที่ระบุในหัวข้อ Technical Updates
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 สถิติ</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>แชมป์โลกผู้สร้างรถ 2026:</strong> Mercedes — สมัยที่ 9 (เท่ากับ Williams อันดับ 3 ตลอดกาล) สมัยแรกนับตั้งแต่ปี 2021</div>
+      <div class="stat-card"><strong>Hamilton 400 GP:</strong> ลงแข่งกรังด์ปรีซ์ครั้งที่ 400 ที่ São Paulo — มากเป็นอันดับ 2 ตลอดกาล รองจาก Fernando Alonso</div>
+      <div class="stat-card"><strong>Fastest Lap São Paulo:</strong> Kimi Antonelli — รางวัล DHL Fastest Lap ครั้งที่ 8 ของฤดูกาล</div>
+      <div class="stat-card"><strong>ดับเบิลโพเดียม Red Bull Racing:</strong> Verstappen (P2 จากกริด P21) และ Hadjar (P3) ที่ São Paulo</div>
+      <div class="stat-card"><strong>ศึกอันดับ 3 ผู้สร้างรถ:</strong> Red Bull Racing นำ McLaren เพียง 17 คะแนน ไม่เปลี่ยนแปลงจากสัปดาห์ก่อน</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📅 การแข่งขันครั้งถัดไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่ (ICT)</th>
+          <th>Session</th>
+          <th>เวลา (ICT)</th>
+          <th>ถ่ายทอดสด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>19-20 พ.ย. 2026</td>
+          <td>Practice / Qualifying — Las Vegas Grand Prix</td>
+          <td>❓ ไม่ยืนยัน (ดูหมายเหตุ)</td>
+          <td>❓</td>
+        </tr>
+        <tr class="highlight">
+          <td>21-22 พ.ย. 2026 (ตามเวลาท้องถิ่น 21 พ.ย. 20:00 น.)</td>
+          <td>Race — Las Vegas Grand Prix</td>
+          <td>ประมาณ 11:00-13:00 น. วันที่ 22 พ.ย. (ตามเวลา ICT)</td>
+          <td>❓</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">❓ แหล่งข้อมูลระบุวันและลำดับเซสชันไม่ตรงกัน บางแหล่งระบุว่าสุดสัปดาห์เริ่มวันพฤหัสบดีที่ 19 พฤศจิกายน (Practice) และวันศุกร์ที่ 20 พฤศจิกายน (Qualifying) ส่วนบางแหล่งระบุ Qualifying วันเสาร์ที่ 21 พฤศจิกายน และ Race วันอาทิตย์ที่ 22 พฤศจิกายน ขณะที่กำหนดการของ Formula1.com เองระบุ Race วันเสาร์ที่ 21 พฤศจิกายน เวลา 20:00 น. ตามเวลาท้องถิ่น Las Vegas (UTC-8) ซึ่งตรงกับเวลาประมาณ 11:00 น. วันที่ 22 พฤศจิกายน ตามเวลา ICT ควรตรวจสอบกำหนดการทางการล่าสุดจาก formula1.com ก่อนวันแข่งขัน</p>
+
+    <h3>รายละเอียดสนาม Las Vegas Grand Prix</h3>
+    <ul>
+      <li><strong>Circuit:</strong> Las Vegas Strip Circuit</li>
+      <li><strong>Country:</strong> สหรัฐอเมริกา (Las Vegas, Nevada)</li>
+      <li><strong>Circuit Length:</strong> 6.201 กม. (3.8 ไมล์)</li>
+      <li><strong>Number of Laps:</strong> 50 รอบ</li>
+      <li><strong>Lap Record:</strong> ❓ ไม่พบข้อมูลยืนยันใหม่ในรอบนี้</li>
+    </ul>
+
+    <h3>Preview</h3>
+    <p>แม้แชมป์โลกทั้งสองรายการ (ผู้ขับขี่และผู้สร้างรถ) จะตัดสินไปแล้วที่ Mexico City และ São Paulo ตามลำดับ แต่ยังมีประเด็นให้ลุ้นต่อในสนามที่เหลือของฤดูกาล ได้แก่ การไล่จี้อันดับ 3-5 ตารางผู้ขับขี่ที่สูสีมากระหว่าง Russell, Hamilton และ Leclerc (262/261/251) รวมถึงการต่อสู้เพื่ออันดับ 3 ผู้สร้างรถระหว่าง Red Bull Racing และ McLaren ที่ยังห่างกันเพียง 17 คะแนน ทั้ง Ferrari และ McLaren นำอัปเกรดใหม่มาใช้ที่ Las Vegas เพื่อพยายามพลิกสถานการณ์ในสนามที่เหลืออีก 3 สนามของฤดูกาล</p>
+    <div class="source">✅ ที่มา: <a href="https://www.formula1.com/en/latest/article/formula-1-heineken-las-vegas-grand-prix-2026.1qmWzcBwKK5hkTbYbhVC22">Formula1.com</a> (เข้าถึงผ่านผลการค้นหาเว็บ) ("Formula 1 Heineken Las Vegas Grand Prix 2026" — กำหนดการ Race วันเสาร์ 21 พ.ย. เวลา 20:00 น. ตามเวลาท้องถิ่น), <a href="https://www.aol.com/finance/formula-1s-title-contenders-prepare-175600778.html">AOL / Road & Track</a> (บทวิเคราะห์ก่อนเข้าสู่สนาม)</div>
+  </section>
+
+  <section>
+    <h2>💬 คำกล่าวประจำสัปดาห์</h2>
+    <div class="quote">
+      "It's my 400th race, which is kind of nuts."
+      <div class="source">— Lewis Hamilton (Ferrari) เมื่อครบรอบการลงแข่งกรังด์ปรีซ์ครั้งที่ 400 ในอาชีพที่ São Paulo</div>
+    </div>
+    <div class="quote">
+      "Unfortunately, once I got into P2, I couldn't really make any inroads. So we have to understand what went wrong there."
+      <div class="source">— Max Verstappen (Red Bull Racing) หลังไต่จากกริด P21 ขึ้นมาจบอันดับ 2 ที่ São Paulo</div>
+    </div>
+    <div class="source">✅ ที่มา: <a href="https://www.dailysabah.com/sports/motorsports/hamilton-hits-400-race-mark-amid-lingering-ferrari-discontent/amp">Daily Sabah</a> (Hamilton), <a href="https://www.planetf1.com/news/f1-2026-brazilian-gp-reaction-norris-verstappen-hadjar">PlanetF1</a> ("Brazilian GP: First reaction as Lando Norris wins 'very tough race' from storming Verstappen", Verstappen)</div>
+  </section>
+
+  <section>
+    <h2>🔍 วิเคราะห์แชมป์ชิป</h2>
+    <p><strong>Drivers Championship:</strong> แชมป์โลกตัดสินไปแล้วที่ Antonelli (390) ตั้งแต่ Mexico City แต่การไล่จี้ตำแหน่งรองยังสูสีมาก โดย Russell (262) แซง Hamilton (261) ขึ้นมาอยู่อันดับ 3 เป็นครั้งแรกในฤดูกาล ส่วน Leclerc (251) ยังมีลุ้นไล่ตามในสนามที่เหลือ</p>
+    <p><strong>Constructors Championship:</strong> Mercedes (652) ปิดแชมป์โลกผู้สร้างรถสมัยที่ 9 ได้สำเร็จที่ São Paulo นำ Ferrari (512) 140 คะแนน ขณะที่ศึกอันดับ 3 ระหว่าง Red Bull Racing (415) และ McLaren (398) ยังสูสีด้วยช่องว่างเพียง 17 คะแนน เหลือการแข่งขันอีก 3 สนามสุดท้ายของฤดูกาล</p>
+    <p><strong>Midfield Battle:</strong> ไม่มีการแข่งขันในสัปดาห์นี้ จึงไม่มีการเปลี่ยนแปลงอันดับกลางตาราง</p>
+    <p><strong>Teams to Watch:</strong> จับตา Ferrari และ McLaren ที่นำอัปเกรดใหม่มาใช้ที่ Las Vegas เพื่อพยายามไล่บี้ในศึกอันดับ 2 และอันดับ 3 ผู้สร้างรถตามลำดับ ในสนามที่เหลืออีกเพียง 3 สนามของฤดูกาล</p>
+  </section>
+
+  <section>
+    <h2>📊 สรุปตัวเลขด่วน</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>Grand Prix:</strong> ไม่มีการแข่งขันในสัปดาห์นี้ (São Paulo GP 8 พ.ย. ยืนยันผลแล้วในรอบนี้)</div>
+      <div class="stat-card"><strong>Sprint:</strong> ไม่มี</div>
+      <div class="stat-card"><strong>Pole Position:</strong> Lando Norris (São Paulo GP)</div>
+      <div class="stat-card"><strong>Fastest Lap:</strong> Kimi Antonelli (São Paulo GP)</div>
+      <div class="stat-card"><strong>FIA Decisions:</strong> โทษปรับเวลา 5 วินาทีให้ Antonelli (ปล่อยรถไม่ปลอดภัย) และ Leclerc (ชน) ที่ São Paulo</div>
+      <div class="stat-card"><strong>Penalties:</strong> Verstappen (กริด -30 จากเครื่องยนต์), Antonelli (5s), Leclerc (5s)</div>
+      <div class="stat-card"><strong>Driver Transfers:</strong> ไม่มีข่าวใหม่ที่ยืนยันได้ในสัปดาห์นี้</div>
+      <div class="stat-card"><strong>Technical Updates:</strong> Ferrari (พื้นรถใหม่), McLaren (ชุดพัฒนาต่อเนื่อง), Red Bull Racing, Mercedes, Aston Martin (ปีกหน้าเฉพาะสนาม) สำหรับ Las Vegas GP</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ควรจับตาต่อไป</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ประเด็น</th>
+          <th>เหตุผล</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ศึกอันดับ 3 ผู้สร้างรถระหว่าง Red Bull Racing และ McLaren</td>
+          <td>ห่างกันเพียง 17 คะแนน เหลือการแข่งขันอีก 3 สนาม ทั้งสองทีมนำอัปเกรดใหม่มาใช้ที่ Las Vegas</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>การไล่จี้อันดับ 3-5 ผู้ขับขี่ระหว่าง Russell, Hamilton และ Leclerc</td>
+          <td>คะแนนสูสีกันมาก (262/261/251)</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>วันและเวลาแข่งขัน Las Vegas Grand Prix ที่แน่นอน</td>
+          <td>แหล่งข้อมูลระบุลำดับเซสชันไม่ตรงกัน</td>
+          <td>❓</td>
+        </tr>
+        <tr>
+          <td>การระบุทีมของ Isack Hadjar (Red Bull Racing หรือ Racing Bulls)</td>
+          <td>แหล่งข้อมูลขัดแย้งกัน ควรตรวจสอบกับ formula1.com โดยตรง</td>
+          <td>❓</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📖 แหล่งข้อมูล</h2>
+    <h3>Official</h3>
+    <p><a href="https://www.formula1.com/">Formula1.com</a>, FIA.com (เข้าถึงผ่านผลการค้นหาเว็บเป็นหลัก เนื่องจากการเปิดหน้าเว็บโดยตรงไม่สำเร็จในรอบนี้ — ดูหมายเหตุข้อจำกัดด้านล่าง)</p>
+
+    <h3>Motorsport Media</h3>
+    <p><a href="https://www.si.com/">Sports Illustrated</a>, <a href="https://www.gpfans.com/">GPFans</a>, <a href="https://www.gpblog.com/">GPblog</a>, <a href="https://racingnews365.com/">RacingNews365</a>, <a href="https://www.planetf1.com/">PlanetF1</a>, <a href="https://www.silverstone.co.uk/">Silverstone.co.uk</a>, <a href="https://www.f1-fansite.com/">F1-Fansite</a>, <a href="https://www.total-motorsport.com/">Total Motorsport</a>, <a href="https://racer.com/">Racer.com</a>, <a href="https://www.racefans.net/">RaceFans</a>, <a href="https://www.nst.com.my/">New Straits Times (Reuters)</a>, <a href="https://www.dailysabah.com/">Daily Sabah</a>, <a href="https://www.autoevolution.com/">Autoevolution</a>, <a href="https://en.wikipedia.org/">Wikipedia</a></p>
+
+    <h3>Team Communications</h3>
+    <p>ไม่พบแถลงการณ์อย่างเป็นทางการจากทีมโดยตรงที่เข้าถึงได้ในรอบการค้นหานี้ นอกเหนือจากคำพูดของ Laurent Mekies (Red Bull Racing) และ Andrea Stella (McLaren) ที่อ้างอิงผ่านสื่อข้างต้น</p>
+  </section>
+
+  <section>
+    <h2>⚠️ หมายเหตุข้อจำกัดของข้อมูล</h2>
+    <div class="warn-box">
+      <p><strong>UNCERTAIN:</strong> ในรอบการรวบรวมข้อมูลนี้ ไม่สามารถเข้าถึงโดเมน <code>formula1.com</code>, <code>crash.net</code>, <code>planetf1.com</code> และ <code>gpblog.com</code> ผ่านการเปิดหน้าเว็บโดยตรง (WebFetch) ได้เลย ("getaddrinfo ENOTFOUND" ในทุกโดเมนที่ทดลอง) จึงต้องอาศัยผลลัพธ์จากการค้นหาเว็บ (WebSearch) แทนตลอดทั้งรายงาน ตามขั้นตอน Network Access Resilience ข้อมูลหลัก (ผลการแข่งขัน São Paulo GP, คะแนนสะสม Top 4) ได้ตรวจสอบไขว้จากแหล่งข่าวอิสระหลายแหล่งซึ่งสอดคล้องกันสูง อย่างไรก็ตาม มีข้อจำกัดดังนี้: (1) คะแนนของ Charles Leclerc มีความขัดแย้งระหว่างแหล่งข้อมูล (249 จาก RaceFans เทียบกับ 251 จากแหล่งอื่นส่วนใหญ่) และคะแนนรวมของทีม Ferrari (512 คะแนน) มีความคลาดเคลื่อนเล็กน้อย (ประมาณ 2 คะแนน) เมื่อเทียบกับผลรวมคะแนนรายบุคคลของ Hamilton (2) และ Leclerc (4) ที่ São Paulo ซึ่งคำนวณได้เพียง 510 คะแนน รายงานนี้เลือกแสดงตัวเลขที่มาจากแหล่งข้อมูลส่วนใหญ่ (251 และ 512) โดยไม่ได้สรุปสาเหตุของความคลาดเคลื่อนเอง (2) การระบุทีมของ Isack Hadjar มีความขัดแย้งกันระหว่างแหล่งข้อมูล — บางพาดหัวข่าวเขียนว่า "Red Bull Ford scores hard fought double podium" ซึ่งอาจหมายถึงผู้ผลิตเครื่องยนต์ Red Bull Ford Powertrains (ใช้ร่วมกันทั้ง Red Bull Racing และ Racing Bulls) ไม่ใช่ชื่อทีม ขณะที่อีกบทความหนึ่งเขียนถึง "Racing Bulls' double points" โดยจับคู่ Hadjar กับ Lawson แต่ตัวเลขคะแนนผู้สร้างรถของ Red Bull Racing ที่ยืนยันไขว้ได้ (415 คะแนน = เพิ่มขึ้น 33 คะแนนจากสัปดาห์ก่อน ตรงกับ 18+15 คะแนนของ Verstappen และ Hadjar) สนับสนุนว่า Hadjar อยู่ทีม Red Bull Racing รายงานนี้จึงเลือกใช้ Red Bull Racing ตามข้อมูลตัวเลขที่ยืนยันได้ แต่ควรตรวจสอบกับ formula1.com โดยตรงเพื่อความแน่ใจ (3) ไม่พบข้อมูลยืนยัน Safety Car หรือ Driver of the Day ที่ชัดเจนสำหรับ São Paulo GP 2026 จากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ (4) วันและลำดับเซสชันของ Las Vegas Grand Prix มีรายงานขัดแย้งกันระหว่างแหล่งข้อมูล (5) ไม่พบข่าว Driver Market หรือ FIA Decisions ใหม่ที่ยืนยันได้ภายในกรอบเวลา 7 วันของรายงานนี้ (9-15 พฤศจิกายน)</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔮 แนวโน้มสัปดาห์ถัดไป</h2>
+    <div class="summary-box">
+      <p>ด้วยแชมป์โลกทั้งผู้ขับขี่ (Antonelli) และผู้สร้างรถ (Mercedes) ตัดสินไปแล้ว ความสนใจของฤดูกาล 2026 ที่เหลืออีก 3 สนามจะอยู่ที่ศึกรองลงมา — การไล่จี้อันดับ 3 ผู้สร้างรถที่สูสีมากระหว่าง Red Bull Racing และ McLaren (ห่างกันเพียง 17 คะแนน) ซึ่งทั้งสองทีมต่างนำอัปเกรดใหม่มาใช้ที่ Las Vegas Grand Prix รวมถึงการไล่จี้อันดับ 3-5 ผู้ขับขี่ระหว่าง Russell, Hamilton และ Leclerc ที่คะแนนห่างกันไม่มาก Las Vegas Grand Prix (19-21 พฤศจิกายน) จะเป็นสนามถัดไปที่ควรติดตาม โดยเฉพาะผลของอัปเกรดใหม่จาก Ferrari และ McLaren รวมถึงสภาพสนามกลางคืนที่ท้าทายซึ่งเคยสร้างความยากลำบากให้หลายทีมในปีก่อน ๆ</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly F1 Report · สร้างโดยอัตโนมัติ · ข้อมูล ณ วันที่ 15 พฤศจิกายน 2026 เวลา ICT (GMT+7)</p>
+  </footer>
+</div>
+</body>
+</html>
