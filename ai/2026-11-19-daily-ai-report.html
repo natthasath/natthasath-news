@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-11-19</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 19 พฤศจิกายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-11-19</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 19 พ.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูลที่สำคัญ:</b> ตามขั้นตอน Network Access Resilience ได้ลองเข้าถึงโดยตรงซ้ำอีกครั้งในรอบนี้: <code>anthropic.com</code> และ <code>github.com</code> เข้าถึงได้ตามปกติ แต่ <code>openai.com</code>, <code>blog.google</code>, <code>deepmind.google</code>, <code>huggingface.co</code>, <code>arxiv.org</code> และ <code>nasdaqtrader.com</code> ยังล้มเหลวด้วย DNS resolution error (ENOTFOUND) แม้ลองใหม่แล้ว จึงใช้ WebSearch แบบ site-specific เป็นทางเลือกตามขั้นตอนที่ 2 แต่ดัชนีค้นหาของหลายแหล่งยังไม่อัปเดตราคา IPO สุดท้ายของ Anthropic หรือเนื้อหาประกาศทางการของ OpenAI/Google/Meta ในรอบ 24 ชม. นี้ ทำให้บางหัวข้อ (เช่น Research, Benchmark) ไม่สามารถยืนยันข้อมูลครบตามเกณฑ์ Validation Rules ได้ และข่าว Anthropic IPO pricing อ้างอิงจากแหล่งทางการเพียงแหล่งเดียว (anthropic.com) โดยยังไม่พบสื่อที่ยืนยันตัวเลขราคาสุดท้ายในดัชนีค้นหา ณ เวลาที่จัดทำรายงาน <b>UNCERTAIN:</b> โดเมน openai.com, blog.google, deepmind.google, huggingface.co, arxiv.org, ai.meta.com, modelcontextprotocol.io และ news.ycombinator.com เข้าถึงไม่ได้โดยตรงต่อเนื่องมาตั้งแต่อย่างน้อยรอบ 1 ต.ค. – 19 พ.ย. 2569 (เกิน 1.5 เดือนติดต่อกันแล้ว) ควรตรวจสอบการตั้งค่า network egress/DNS ของสภาพแวดล้อมนี้โดยเร็ว
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p><b>Anthropic</b> ประกาศราคา IPO สุดท้ายที่ 83.00 ดอลลาร์/หุ้น เมื่อ 18 พ.ย. 2569 สำหรับหุ้น Class A จำนวนรวม 980,000,000 หุ้น และมีกำหนดเริ่มซื้อขายบน Nasdaq Global Select Market ชื่อย่อ <b>ANT</b> ในวันนี้ (19 พ.ย. 2569) <span class="badge">✅ Official (anthropic.com)</span> <span class="badge-warn">❓ ยังไม่พบสื่อยืนยันตัวเลขนี้ในดัชนีค้นหา ณ เวลาจัดทำรายงาน</span> <span class="badge">ต่อเนื่อง</span> ด้าน <b>Microsoft</b> ยังอยู่ระหว่างงาน Ignite 2026 (17-20 พ.ย.) ซึ่ง Satya Nadella เปิดตัว Copilot Home แบบ GA พร้อมฟีเจอร์ Autopilot, Workspaces และ Copilot Code เมื่อ 17 พ.ย. <span class="badge">ต่อเนื่อง</span> <span class="badge-warn">📰 สื่อหลายแห่งรายงานตรงกัน</span> GitHub Trending ยังนำโดยโปรเจกต์ด้าน AI agent/skill เช่น <code>obra/superpowers</code> และ <code>elementalsouls/Claude-BugHunter</code> ส่วนหมวด Research และ Benchmark ไม่มีข้อมูลที่ยืนยันครบตามเกณฑ์ภายในกรอบเวลานี้ เนื่องจากไม่สามารถเข้าถึง arXiv, Hugging Face Papers และบอร์ดเบนช์มาร์กฉบับล่าสุดได้โดยตรง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ไม่พบการเปิดตัวโมเดล AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบ 24 ชม. นี้ anthropic.com/news ตรวจสอบโดยตรงแล้วไม่มีประกาศโมเดลใหม่นับจาก 9 พ.ย. 2569 (Claude Fable 5.2 / Claude Mythos 5.2) <span class="badge">ต่อเนื่อง</span> ไม่สามารถเข้าถึง openai.com, blog.google, deepmind.google และ ai.meta.com ได้โดยตรงหรือผ่านดัชนีค้นหาที่อัปเดตพอ เพื่อตรวจสอบความคืบหน้าของโมเดลรุ่นถัดไปของบริษัทเหล่านี้ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">ไม่สามารถเข้าถึง arxiv.org และ huggingface.co/papers ได้โดยตรงในรอบนี้ (DNS error ซ้ำแม้ลองใหม่ตามขั้นตอนที่ 1) การค้นหาสำรองผ่าน WebSearch (ขั้นตอนที่ 2) ไม่พบรายการบทความที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้พร้อมชื่อผู้แต่งและหมายเลข arXiv ครบถ้วนตามเกณฑ์ Validation Rules จึงไม่นำข้อมูลใดมาแสดงในหมวดนี้เพื่อป้องกันการใช้ข้อมูลที่ตรวจสอบย้อนกลับไม่ได้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <p>ข้อมูลจาก GitHub Trending (เข้าถึงได้โดยตรงผ่าน <code>github.com/trending</code>) ประจำวันที่ 19 พ.ย. 2569 ดาวที่แสดงเป็นดาวที่ได้รับ "วันนี้" ตามหน้า Trending เฉพาะโปรเจกต์ที่เกี่ยวข้องกับ AI/ML/agent เท่านั้น</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td>obra/superpowers</td>
+          <td>+2,029 วันนี้</td>
+          <td>Shell</td>
+          <td>เฟรมเวิร์ก agentic skills และวิธีการพัฒนาซอฟต์แวร์ ได้ดาวเพิ่มสูงสุดของวันนี้</td>
+          <td><a href="https://github.com/obra/superpowers">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>elementalsouls/Claude-BugHunter</td>
+          <td>+1,353 วันนี้</td>
+          <td>Python</td>
+          <td>ชุด Claude Code skills สำหรับล่าบั๊กและงาน red-team ภายนอก</td>
+          <td><a href="https://github.com/elementalsouls/Claude-BugHunter">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>mvanhorn/last30days-skill</td>
+          <td>+952 วันนี้</td>
+          <td>Python</td>
+          <td>Agent skill ที่ค้นคว้าหัวข้อข้าม Reddit/X/YouTube/HN/Polymarket และสรุปผลแบบมีแหล่งอ้างอิง</td>
+          <td><a href="https://github.com/mvanhorn/last30days-skill">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>HKUDS/CLI-Anything</td>
+          <td>+899 วันนี้</td>
+          <td>Python</td>
+          <td>เครื่องมือทำให้ซอฟต์แวร์รองรับ agent ผ่านอินเทอร์เฟซ CLI</td>
+          <td><a href="https://github.com/HKUDS/CLI-Anything">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>firecrawl/firecrawl</td>
+          <td>+795 วันนี้</td>
+          <td>TypeScript</td>
+          <td>โครงสร้างพื้นฐานความรู้สำหรับ agent ครอบคลุมการค้นหา สแครป และผู้ให้บริการข้อมูลกว่า 550 แหล่งผ่าน API เดียว</td>
+          <td><a href="https://github.com/firecrawl/firecrawl">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>cursor/plugins</td>
+          <td>+383 วันนี้</td>
+          <td>TypeScript</td>
+          <td>สเปกและ plugin ทางการของ Cursor</td>
+          <td>✅ <a href="https://github.com/cursor/plugins">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>google-labs-code/stitch-skills</td>
+          <td>+303 วันนี้</td>
+          <td>TypeScript</td>
+          <td>คลัง agent skills สำหรับ Stitch MCP server ใช้ร่วมกับ coding agent ได้หลายตัว</td>
+          <td>✅ <a href="https://github.com/google-labs-code/stitch-skills">GitHub (official org)</a></td>
+        </tr>
+        <tr>
+          <td>jingyaogong/minimind</td>
+          <td>+301 วันนี้</td>
+          <td>Python</td>
+          <td>เทรน LLM ขนาด 64M พารามิเตอร์ตั้งแต่ต้นภายในเวลาประมาณ 2 ชั่วโมง</td>
+          <td><a href="https://github.com/jingyaogong/minimind">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>openvinotoolkit/openvino</td>
+          <td>+246 วันนี้</td>
+          <td>C++</td>
+          <td>ชุดเครื่องมือโอเพนซอร์สสำหรับปรับแต่งและดีพลอย AI inference</td>
+          <td><a href="https://github.com/openvinotoolkit/openvino">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>zhouxiaoka/autoclip</td>
+          <td>+110 วันนี้</td>
+          <td>Python</td>
+          <td>เครื่องมือ AI โอเพนซอร์สที่ตัดวิดีโอยาวให้เป็นคลิปสั้นพร้อมคำบรรยาย</td>
+          <td><a href="https://github.com/zhouxiaoka/autoclip">GitHub</a></td>
+        </tr>
+        <tr>
+          <td>Tracer-Cloud/opensre</td>
+          <td>+25 วันนี้</td>
+          <td>Python</td>
+          <td>AI agent โอเพนซอร์สสำหรับความเสถียรของ CI/CD</td>
+          <td><a href="https://github.com/Tracer-Cloud/opensre">GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบการเปิดตัวแอป/เครื่องมือ AI เชิงพาณิชย์ใหม่ที่ยืนยันแหล่งทางการได้ในรอบ 24 ชม. นี้ โปรเจกต์โอเพนซอร์สที่เข้าใหม่บน GitHub Trending วันนี้ดูหมวด Open Source ด้านบน</p>
+    <h3>Updates</h3>
+    <p>Microsoft Ignite 2026 (17-20 พ.ย. 2569) เปิดตัว <b>Copilot Home</b> แบบ General Availability ผสาน Chat และ Cowork พร้อมความสามารถแก้ไขไฟล์ Word/Excel/PowerPoint ในแอป Copilot โดยตรง และเพิ่มฟีเจอร์ <b>Autopilot</b>, <b>Workspaces</b> (พื้นที่ทำงานร่วมกันระหว่างคนกับ agent) และ <b>Copilot Code</b> (สร้างแดชบอร์ด/แทรกเกอร์/แอปจากคำสั่งภาษาธรรมดา) ประกาศเมื่อ 17 พ.ย. 2569 <span class="badge">ต่อเนื่อง</span> <span class="badge-warn">📰 สื่อหลายแห่งรายงานตรงกัน ยังไม่พบ Book of News ทางการยืนยันรายละเอียดวิธีเปิดใช้งานครบ</span></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+    <h3>Anthropic</h3>
+    <p><b>ประกาศราคา IPO สุดท้าย</b> ("Anthropic prices initial public offering", anthropic.com/news, 18 พ.ย. 2569): ราคา 83.00 ดอลลาร์/หุ้น สำหรับหุ้น Class A รวม 980,000,000 หุ้น (Anthropic ขาย 956,351,354 หุ้น และผู้ถือหุ้นเดิมขาย 23,648,646 หุ้น) พร้อมสิทธิ์ underwriter ซื้อเพิ่มอีกไม่เกิน 147,000,000 หุ้นภายใน 30 วัน SEC ประกาศให้การจดทะเบียนมีผลเมื่อ 18 พ.ย. 2569 มีกำหนดเริ่มซื้อขายบน Nasdaq Global Select Market ชื่อย่อ <b>ANT</b> วันนี้ (19 พ.ย. 2569) และคาดปิดการขายวันที่ 20 พ.ย. 2569 ผู้จัดการการเสนอขายหลักคือ Goldman Sachs และ Morgan Stanley <span class="badge">✅ Official</span> <span class="badge-warn">❓ ยังไม่พบสื่อยืนยันตัวเลขราคา 83 ดอลลาร์นี้ในดัชนีค้นหา ณ เวลาจัดทำรายงาน (ดูหมายเหตุข้อจำกัดข้อมูล) ควรติดตามยืนยันซ้ำในรอบถัดไป</span> <span class="badge">ต่อเนื่อง</span></p>
+
+    <h3>OpenAI</h3>
+    <p class="note">ไม่สามารถเข้าถึง openai.com ได้โดยตรงในรอบนี้ (DNS error ซ้ำแม้ลองใหม่) และการค้นหาสำรองไม่พบประกาศทางการใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้</p>
+
+    <h3>Google DeepMind</h3>
+    <p class="note">ไม่สามารถเข้าถึง blog.google และ deepmind.google ได้โดยตรงในรอบนี้ (DNS error ซ้ำแม้ลองใหม่) ไม่พบข่าวใหม่ของ Google DeepMind ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้</p>
+
+    <h3>Meta</h3>
+    <p class="note">ไม่สามารถเข้าถึง ai.meta.com ได้โดยตรงในรอบนี้ ไม่พบข่าวใหม่ของ Meta ที่ยืนยันแหล่งทางการหรือวันที่อยู่ในกรอบ 24 ชม. นี้</p>
+
+    <h3>Microsoft</h3>
+    <p>Microsoft Ignite 2026 ยังดำเนินอยู่ (17-20 พ.ย. 2569 ที่ซานฟรานซิสโกและออนไลน์) โดยวันเปิดงาน (17 พ.ย.) Satya Nadella ประกาศ Copilot Home GA, Autopilot, Workspaces และ Copilot Code (รายละเอียดดูหมวด Tools &amp; Apps) <span class="badge">ต่อเนื่อง</span> <span class="badge-warn">📰 สื่อหลายแห่งรายงานตรงกัน</span> ยังไม่พบประกาศเพิ่มเติมที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. ล่าสุด (18-19 พ.ย.)</p>
+
+    <h3>Amazon</h3>
+    <p class="note">ไม่พบข่าวที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+
+    <h3>NVIDIA</h3>
+    <p class="note">ไม่พบข่าวใหม่ของ NVIDIA ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ นอกเหนือจากผลประกอบการไตรมาส 3 ปีงบประมาณ 2027 ที่ประกาศเมื่อ 17 พ.ย. 2569 ซึ่งรายงานฉบับก่อนหน้าได้นำเสนอรายละเอียดไปแล้ว <span class="badge">ต่อเนื่อง</span></p>
+
+    <h3>Startup</h3>
+    <p class="note">ไม่พบข่าวระดมทุน/ดีลซื้อกิจการด้าน AI ของบริษัท startup รายใดที่ยืนยันวันที่ประกาศอยู่ในกรอบ 24 ชม. นี้หรือมีแหล่งทางการรองรับครบตามเกณฑ์ Cross Validation ข่าวที่พบผ่านการค้นหา (เช่น ข่าวลือระดมทุนของ Reflection AI หรือ Instinct) ยังเป็นรายงานคาดการณ์จากนิวส์เลตเตอร์ที่ไม่มีแหล่งทางการยืนยัน จึงไม่นำมาแสดงในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <p class="note">ไม่สามารถเข้าถึง modelcontextprotocol.io ได้โดยตรงในรอบนี้ ไม่พบเวอร์ชันสเปก MCP ใหม่กว่าฉบับ 2026-07-28 ซึ่งเป็นสถานะต่อเนื่องจากรายงานฉบับก่อน ๆ <span class="badge">ต่อเนื่อง</span></p>
+    <p class="note">ไม่พบอัปเดต API/SDK/Framework ใหม่รายการอื่นที่ยืนยันแหล่งทางการได้ในรอบนี้ นอกเหนือจากโปรเจกต์โอเพนซอร์สด้าน agent/MCP ที่เข้าใหม่บน GitHub Trending วันนี้ (ดูหมวด Open Source) เช่น <code>cursor/plugins</code> และ <code>google-labs-code/stitch-skills</code></p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <h3>Investment</h3>
+    <p class="note">ไม่พบข่าวระดมทุน/การลงทุนด้าน AI รายการใหม่ที่ยืนยันแหล่งทางการได้ครบตามเกณฑ์ Cross Validation ในกรอบเวลานี้ นอกเหนือจากการเสนอขายหุ้น IPO ของ Anthropic ที่ดำเนินไปถึงขั้นกำหนดราคาสุดท้ายแล้ว (ดูหมวด Company News)</p>
+    <h3>Acquisition</h3>
+    <p class="note">ไม่พบข่าวควบรวม/เข้าซื้อกิจการด้าน AI ใหม่ที่ยืนยันแหล่งทางการได้ครบตามเกณฑ์ Cross Validation ในกรอบเวลานี้</p>
+    <h3>Regulation</h3>
+    <p class="note">ไม่พบความคืบหน้าใหม่ด้านการกำกับดูแล AI (เช่น ผลการประชุม EU AI Board หรือการบังคับใช้ EU AI Act) ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ รายงานฉบับก่อนหน้าระบุว่า EU AI Board มีกำหนดประชุมครั้งที่ 10 เมื่อ 18 พ.ย. แต่ยังไม่พบผลการประชุมที่ยืนยันทางการในรอบนี้ <span class="badge-warn">❓ รอผลการประชุม</span></p>
+    <h3>Ethics</h3>
+    <p class="note">ไม่พบข่าวด้านจริยธรรม AI ใหม่ที่ยืนยันแหล่งทางการได้ในกรอบเวลานี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">ไม่พบผลเบนช์มาร์กใหม่ที่ระบุ Benchmark, Model, Score และ Source ครบตามเกณฑ์ Validation Rules ภายในกรอบ 24 ชม. นี้ ตารางจัดอันดับที่พบผ่านการค้นหา (เช่น BenchLM November 2026 rankings) หยุดบันทึกข้อมูลตั้งแต่ 12 พ.ย. 2569 จึงอยู่นอกกรอบเวลาของรอบนี้ และไม่นำมาแสดงเป็นตารางเพื่อป้องกันความเข้าใจผิดว่าเป็นผลล่าสุด</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <p>GitHub Trending วันนี้เต็มไปด้วยโปรเจกต์ด้าน AI agent/skill เช่นเดิม <span class="badge">🔥</span> นำโดย <code>obra/superpowers</code> ที่ได้ดาวเพิ่มสูงสุด (+2,029) ตามด้วย <code>elementalsouls/Claude-BugHunter</code> (+1,353) และ <code>mvanhorn/last30days-skill</code> (+952) โปรเจกต์จาก official org ของบริษัทใหญ่ (Google, Cursor) ยังติดอันดับพร้อมกันหลายรายการ (ดูตารางในหมวด Open Source)</p>
+    <h3>Tutorials</h3>
+    <p class="note">ไม่สามารถเข้าถึง news.ycombinator.com และ reddit.com ได้โดยตรงในรอบนี้ จึงไม่พบข้อมูลบทเรียน/tutorial ใหม่ที่ยืนยันได้ในกรอบเวลานี้</p>
+    <h3>Events</h3>
+    <p>Microsoft Ignite 2026 ยังดำเนินอยู่ (17-20 พ.ย. 2569 ที่ซานฟรานซิสโกและออนไลน์) <span class="badge">ต่อเนื่อง</span> ยังไม่พบรายละเอียดงานอื่นใหม่ในกรอบ 24 ชม. นี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>obra/superpowers — เฟรมเวิร์ก agentic skills สำหรับพัฒนาซอฟต์แวร์</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมพัฒนาซอฟต์แวร์ที่ใช้ coding agent ขาดชุดวิธีการ (methodology) และ skill มาตรฐานที่ทำให้ agent ทำงานตามกระบวนการที่สอดคล้องกัน</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้งเฟรมเวิร์ก superpowers เพื่อให้ coding agent ใช้ชุด agentic skills และวิธีการพัฒนาซอฟต์แวร์ที่กำหนดไว้ล่วงหน้า</dd>
+        <dt>ประโยชน์</dt><dd>ทีมพัฒนาได้ผลลัพธ์จาก agent ที่สอดคล้องและคาดเดาได้มากขึ้น ลดความคลาดเคลื่อนระหว่างงานแต่ละครั้ง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>firecrawl/firecrawl — โครงสร้างพื้นฐานความรู้สำหรับ AI agent</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การสร้าง agent ที่ต้องค้นหาและดึงข้อมูลจากเว็บหรือแหล่งข้อมูลภายนอกจำนวนมากต้องเชื่อมต่อ API หลายแหล่งที่แตกต่างกัน</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ firecrawl เป็น API เดียวสำหรับการค้นหา สแครปเว็บ และเชื่อมต่อผู้ให้บริการข้อมูลกว่า 550 แหล่งให้กับ agent</dd>
+        <dt>ประโยชน์</dt><dd>นักพัฒนาสร้าง agent ที่เข้าถึงข้อมูลภายนอกได้เร็วขึ้นโดยไม่ต้องรวมระบบ API หลายตัวเอง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>mvanhorn/last30days-skill — agent skill ค้นคว้าแนวโน้มข้ามหลายแพลตฟอร์ม</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การติดตามแนวโน้มหรือประเด็นที่กำลังเป็นที่พูดถึงต้องไล่ดูหลายแพลตฟอร์ม (Reddit, X, YouTube, Hacker News, Polymarket) แยกกัน ทำให้เสียเวลา</dd>
+        <dt>วิธีใช้</dt><dd>ใช้ agent skill นี้สั่งให้ AI agent ค้นคว้าหัวข้อที่สนใจข้ามแพลตฟอร์มเหล่านั้นพร้อมกัน แล้วสรุปผลแบบมีแหล่งอ้างอิง</dd>
+        <dt>ประโยชน์</dt><dd>ผู้ใช้ได้ภาพรวมแนวโน้มที่ครอบคลุมหลายแหล่งในครั้งเดียว ประหยัดเวลาการติดตามข่าวและกระแสสังคม</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0</div><div class="lbl">Models Released</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers</div></div>
+      <div class="stat"><div class="num">11</div><div class="lbl">GitHub Projects (AI-related trending)</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Company Updates</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">API Updates</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ผลการซื้อขายวันแรกของหุ้น Anthropic (ANT) บน Nasdaq และการยืนยันราคา IPO สุดท้าย 83.00 ดอลลาร์/หุ้นจากสื่อ</dd>
+        <dt>เหตุผล</dt><dd>anthropic.com/news ยืนยันราคาสุดท้ายและวันเริ่มซื้อขาย (19 พ.ย. 2569) แล้ว แต่ยังไม่พบสื่อรายงานยืนยันตัวเลขนี้ในดัชนีค้นหา ณ เวลาจัดทำรายงาน และยังไม่มีข้อมูลผลการซื้อขายจริงวันแรก ควรติดตามราคาปิดตลาดและปฏิกิริยาสื่อในรอบถัดไป <span class="badge">ต่อเนื่อง</span></dd>
+        <dt>Source</dt><dd>✅ <a href="https://www.anthropic.com/news/anthropic-prices-initial-public-offering">anthropic.com/news/anthropic-prices-initial-public-offering</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ประกาศเพิ่มเติมจากงาน Microsoft Ignite 2026 ในวันที่เหลือ (18-20 พ.ย. 2569)</dd>
+        <dt>เหตุผล</dt><dd>งานยังดำเนินอยู่หลังวันเปิดงาน (17 พ.ย.) ที่มีประกาศ Copilot Home/Autopilot/Workspaces/Copilot Code แล้ว อาจมีรายละเอียดเพิ่มเติมจาก Book of News ทางการที่ยังตรวจสอบไม่ครบในรอบนี้</dd>
+        <dt>Source</dt><dd>📰 รายงานสื่อเทคโนโลยีหลายแห่ง</dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ผลการประชุม EU AI Board ครั้งที่ 10 (18 พ.ย. 2569) ที่ยังไม่มีผลลัพธ์ยืนยันทางการ</dd>
+        <dt>เหตุผล</dt><dd>รายงานฉบับก่อนหน้าระบุว่าการประชุมจัดขึ้นเมื่อ 18 พ.ย. แต่ยังไม่พบรายละเอียดวาระหรือผลลัพธ์ที่ยืนยันทางการจาก European Commission ในรอบนี้ด้วย <span class="badge-warn">❓ แหล่งข้อมูลรอง</span></dd>
+        <dt>Source</dt><dd>📰 รายงานสื่อกฎหมาย/เทคโนโลยีหลายแห่ง (ยังไม่พบวาระทางการจาก European Commission)</dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>นโยบาย network egress/DNS ของสภาพแวดล้อมนี้ปฏิเสธการเข้าถึงโดเมนข่าว/วิจัย AI หลักต่อเนื่องมานานกว่า 1.5 เดือน</dd>
+        <dt>เหตุผล</dt><dd>โดเมนสำคัญ เช่น openai.com, blog.google, deepmind.google, huggingface.co, arxiv.org, ai.meta.com, modelcontextprotocol.io, news.ycombinator.com และ nasdaqtrader.com ล้มเหลวด้วย DNS resolution error (ENOTFOUND) ติดต่อกันมาตั้งแต่อย่างน้อย 1 ต.ค. 2569 ทำให้รายงานต้องพึ่ง WebSearch สำรองซึ่งดัชนีค้นหาเองก็ล่าช้าตามข่าวจริงในหลายกรณี ควรตรวจสอบการตั้งค่า network egress ของสภาพแวดล้อมนี้โดยเร็ว <span class="badge-warn">UNCERTAIN</span></dd>
+        <dt>Source</dt><dd>บันทึกการเข้าถึงเครือข่ายภายในเซสชันนี้ (WebFetch error log)</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news/anthropic-prices-initial-public-offering">Anthropic — Anthropic prices initial public offering</a></li>
+          <li><a href="https://www.anthropic.com/news">Anthropic Newsroom</a></li>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+          <li><a href="https://github.com/obra/superpowers">github.com/obra/superpowers</a></li>
+          <li><a href="https://github.com/elementalsouls/Claude-BugHunter">github.com/elementalsouls/Claude-BugHunter</a></li>
+          <li><a href="https://github.com/cursor/plugins">github.com/cursor/plugins</a></li>
+          <li><a href="https://github.com/google-labs-code/stitch-skills">github.com/google-labs-code/stitch-skills</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="margin:0;padding:0;border:none;background:none;">ไม่สามารถเข้าถึงแหล่งวิจัย Tier 1 (arXiv, Hugging Face Papers) ได้ในรอบนี้ (ดูหมายเหตุข้อจำกัดข้อมูล)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li>rcpmag.com, constellationr.com, thenextweb.com — รายงานประกาศ Copilot Home/Autopilot/Workspaces/Copilot Code จากงาน Microsoft Ignite 2026 (17 พ.ย. 2569)</li>
+          <li>letsdatascience.com, rttnews.com — รายงานช่วงราคา IPO เดิม ($70-78) ของ Anthropic ก่อนประกาศราคาสุดท้าย</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending">GitHub Trending</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 19 พ.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
