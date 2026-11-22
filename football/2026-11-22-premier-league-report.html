@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Premier League Report — Week 47, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12);
+  --warn:#9A5B12; --warn-bg:rgba(154,91,18,0.10); --warn-line:rgba(154,91,18,0.30);
+  --rumor:#8A3B5A;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.12);
+    --warn:#E0A855; --warn-bg:rgba(224,168,85,0.10); --warn-line:rgba(224,168,85,0.30);
+    --rumor:#D98FB2;
+  }
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:6px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,36px); line-height:1.25; font-weight:800; margin:0 0 16px; }
+h2{ font-size:21px; font-weight:700; margin:0 0 14px; padding-top:2px; }
+h3{ font-size:16.5px; font-weight:700; margin:20px 0 8px; color:var(--ink); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:30px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 12px; max-width:72ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:70ch; }
+ul li ul{ margin-top:8px; }
+
+.callout{ background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px; padding:16px 18px; margin:0 0 18px; }
+.callout p{ margin:0; max-width:none; color:var(--ink); }
+.callout p + p{ margin-top:8px; }
+.callout .label{ font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--warn); text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.note{ font-size:14px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:12px 14px; margin:10px 0 16px; max-width:none; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 14px; border:1px solid var(--line); border-radius:10px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px; }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; }
+tr:last-child td{ border-bottom:none; }
+td.wrap, th.wrap{ white-space:normal; }
+td a, th a{ white-space:nowrap; }
+
+.badge{ display:inline-block; font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:600; padding:2px 8px; border-radius:999px; white-space:nowrap; }
+.badge-official{ background:var(--accent-soft); color:var(--accent); }
+.badge-report{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-rumor{ background:rgba(138,59,90,0.12); color:var(--rumor); }
+.badge-cont{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+.badge-pending{ background:rgba(154,91,18,0.12); color:var(--warn); border:1px solid var(--warn-line); }
+
+.subhead{ font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); margin:18px 0 8px; }
+.subhead:first-child{ margin-top:0; }
+
+.club-block{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px dashed var(--line); }
+.club-block:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.club-block h3{ margin-top:0; }
+.club-block p{ margin-bottom:6px; }
+
+.src-list{ list-style:none; padding:0; margin:0 0 14px; }
+.src-list li{ margin-bottom:6px; font-size:14.5px; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 47, 2026</p>
+    <h1>⚽ Weekly Premier League Report — Week 47</h1>
+    <div class="meta-row">
+      <span><b>ช่วงเวลา:</b> 15 – 22 พฤศจิกายน 2026 (ICT)</span>
+      <span><b>Category:</b> Football</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="note">หมายเหตุขอบเขต: Matchweek 11 ส่วนใหญ่ลงเล่นวันเสาร์ที่ 21 พ.ย. 2026 (7 คู่จบแล้ว) ยังเหลือ 2 คู่ที่กำหนดแข่งวันอาทิตย์ที่ 22 พ.ย. คือ Hull City พบ Brighton &amp; Hove Albion (14:00 GMT / 21:00 ICT) และ Liverpool พบ Manchester United (16:30 GMT / 23:30 ICT) ซึ่งยังไม่สิ้นสุดภายในกรอบเวลาจัดทำรายงานฉบับนี้ จึงไม่นำผลมาแสดง ตารางคะแนนและสถิติในรายงานนี้คือสถานะ ณ ก่อนสองนัดนี้จะจบ นอกจากนี้ Michael Carrick (Manchester United) และ Pierre Sage (Crystal Palace) ถูกปลดตั้งแต่วันที่ 12 พ.ย. ซึ่งอยู่นอกกรอบ 7 วันนี้ แต่ผู้จัดการทีมคนใหม่ทั้งสองเริ่มงาน/ลงสนามจริงภายในกรอบ 7 วันนี้ จึงนำมารายงานในฐานะข่าวที่มีความคืบหน้าใหม่</div>
+    <ul>
+      <li>Crystal Palace แต่งตั้ง Thomas Frank เป็นผู้จัดการทีมคนใหม่อย่างเป็นทางการเมื่อวันที่ 16 พ.ย. สัญญาจนถึงเดือนมิถุนายน 2029 แทน Pierre Sage ที่ถูกปลด แต่นัดแรกในตำแหน่งพ่ายแพ้ Coventry City 3-2 (21 พ.ย.) ทำให้ Palace แพ้ติดต่อกันเป็นนัดที่ 4 และยังคงรั้งบ๊วยตาราง <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Manchester United ยืนยัน Mauricio Pochettino เริ่มปฏิบัติหน้าที่หัวหน้าผู้ฝึกสอนคนใหม่อย่างเป็นทางการตั้งแต่วันที่ 18 พ.ย. (ประกาศแต่งตั้ง 13 พ.ย.) แทน Michael Carrick ที่ถูกปลด โดยนัดแรกในตำแหน่งคือการเยือน Liverpool ที่ Anfield วันที่ 22 พ.ย. ซึ่งยังไม่จบภายในกรอบเวลารายงานนี้ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>Leeds United เอาชนะ Chelsea ถึงถิ่น Stamford Bridge 4-1 (21 พ.ย.) ซึ่งเป็นชัยชนะนัดแรกของ Leeds ที่สนามนี้นับตั้งแต่ปี 1999 ขยับขึ้นมาอยู่อันดับ 6 ของตารางด้วย 17 แต้ม ขณะที่ Chelsea ร่วงไปอยู่อันดับ 8 ด้วย 16 แต้ม <span class="badge badge-report">📰 รายงาน</span></li>
+      <li>Arsenal เสียคะแนนให้ Newcastle United เสมอ 2-2 ที่ St. James' Park (21 พ.ย.) หลังขึ้นนำก่อนแต่ถูกไล่ตีเสมอ 2 ประตู โดย Noni Madueke ยิงตีเสมอนาทีที่ 78 ช่วยให้ยังรักษาอันดับ 1 ไว้ได้ด้วย 28 แต้ม แม้ David Raya ต้องออกจากสนามพร้อมอาการบาดเจ็บ <span class="badge badge-official">✅ ยืนยันแล้ว</span></li>
+      <li>AFC Bournemouth เอาชนะ Nottingham Forest 2-0 (21 พ.ย.) คว้าชัยชนะในลีกติดต่อกันเป็นนัดที่ 5 ขยับขึ้นมาเทียบเท่า Liverpool ที่ 18 แต้ม ครองโซนแชมเปียนส์ลีกร่วมกัน <span class="badge badge-report">📰 รายงาน</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📊 ตารางคะแนน Top 6</h2>
+    <div class="note">สถานะตาราง ณ ก่อนนัด Hull City - Brighton และ Liverpool - Manchester United จบ (ทั้งสองนัดยังไม่สิ้นสุดภายในกรอบเวลารายงานนี้) ข้อมูลตรวจสอบตรงกันจากอย่างน้อย 2 แหล่ง (Sky Sports, Fox Sports / Standings Today) และคำนวณยืนยันด้วยกฎ Points = W×3+D และ Played = W+D+L ถูกต้องครบทุกทีม</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Club</th><th>Played</th><th>W</th><th>D</th><th>L</th><th>Points</th><th>Source</th></tr>
+      <tr><td>1</td><td>Arsenal</td><td>11</td><td>9</td><td>1</td><td>1</td><td>28</td><td><a href="https://www.skysports.com/premier-league-table" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>2</td><td>Brighton &amp; Hove Albion</td><td>10</td><td>7</td><td>1</td><td>2</td><td>22</td><td><a href="https://www.skysports.com/premier-league-table" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>3</td><td>Manchester City</td><td>11</td><td>7</td><td>1</td><td>3</td><td>22</td><td><a href="https://www.skysports.com/premier-league-table" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+      <tr><td>4</td><td>AFC Bournemouth</td><td>11</td><td>5</td><td>3</td><td>3</td><td>18</td><td><a href="https://standingstoday.com/premier-league/table/" target="_blank" rel="noopener">Standings Today</a></td></tr>
+      <tr><td>5</td><td>Liverpool</td><td>10</td><td>5</td><td>3</td><td>2</td><td>18</td><td><a href="https://standingstoday.com/premier-league/table/" target="_blank" rel="noopener">Standings Today</a></td></tr>
+      <tr><td>6</td><td>Leeds United</td><td>11</td><td>4</td><td>5</td><td>2</td><td>17</td><td><a href="https://www.skysports.com/football/leeds-united-vs-tottenham-hotspur/table/559540" target="_blank" rel="noopener">Sky Sports</a></td></tr>
+    </table>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-soft);">ตรวจสอบ Consistency แล้ว: Played = W+D+L และ Points = W×3+D ถูกต้องครบทุกทีมในตาราง Brighton และ Liverpool ยังมีนัดค้าง (เยือน Hull City และ เหย้า Manchester United ตามลำดับ) ซึ่งหากชนะจะทำให้แซงขึ้นไปได้ Man City (22 แต้ม/11 นัด) อยู่อันดับ 3 ด้วยผลต่างประตูรองจาก Brighton แม้แต้มเท่ากัน ส่วน Chelsea และ Everton (16 แต้มเท่ากัน) อยู่นอกอันดับ Top 6 โดย Everton ยังเหนือกว่าด้วยผลต่างประตู (+2 ต่อ 0) แต่มีนัดค้างกับ Brentford ในวันที่ 23 พ.ย.</p>
+  </section>
+
+  <section>
+    <h2>⚽ ผลการแข่งขันสำคัญ</h2>
+    <div class="note">Matchweek 11 มีทั้งหมด 9 คู่ ในกรอบ 7 วันนี้จบแล้ว 7 คู่ (ทั้งหมดแข่งวันที่ 21 พ.ย. ตามเวลา ICT ยกเว้น Newcastle-Arsenal ที่ข้ามคืนเป็น 22 พ.ย. 00:30 ICT) ส่วน Hull City - Brighton และ Liverpool - Manchester United ยังไม่จบจึงไม่นำผลมาแสดง นัด Brentford พบ Everton ถูกเลื่อนจาก 21 พ.ย. ไปเป็น 23 พ.ย. (นอกกรอบ 7 วันนี้) เนื่องจากตารางถ่ายทอดสดของ Sky Sports</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th class="wrap">Summary</th><th>Source</th></tr>
+      <tr><td>21 พ.ย.</td><td>Chelsea</td><td>1-4</td><td>Leeds United</td><td class="wrap">Emmanuel Emegha ยิงนำ Chelsea นาทีที่ 25 ก่อน Noah Okafor ตีเสมอนาทีที่ 28 และยิงซ้ำนาทีที่ 58 ขณะที่ Dominic Calvert-Lewin สังหารจุดโทษนาทีที่ 53 และ Brenden Aaronson ปิดท้ายช่วงทดเวลาบาดเจ็บ เป็นชัยชนะนัดแรกของ Leeds ที่ Stamford Bridge นับตั้งแต่ปี 1999 ทำให้ Chelsea แพ้เป็นนัดที่ 3 ใน 4 นัดหลังสุด</td><td><a href="https://www.espn.com/soccer/report/_/gameId/401879236" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.tntsports.co.uk/football/premier-league/2026-2027/chelsea-leeds-united_mtc21883119/live-commentary.shtml" target="_blank" rel="noopener">TNT Sports</a></td></tr>
+      <tr><td>21 พ.ย.</td><td>Coventry City</td><td>3-2</td><td>Crystal Palace</td><td class="wrap">Taiwo Awoniyi ยิงนำ Coventry นาทีที่ 5 ก่อน Yéremy Pino ตีเสมอให้ Palace นาทีที่ 13 Tatsuhiro Sakamoto นำอีกครั้งนาทีที่ 30 และ Jørgen Strand Larsen ตีเสมอ 2-2 ช่วงทดเวลาครึ่งแรก ก่อนลูกยิงของ Thomas-Asante กระดอนเข้าประตูจาก Dwight McNeil (เข้าข่ายทำประตูเข้าประตูตัวเอง) นาทีที่ 85 เป็นนัดแรกของ Thomas Frank ในตำแหน่งผู้จัดการทีม Palace ซึ่งพ่ายแพ้ ทำให้ Palace แพ้ติดต่อกันเป็นนัดที่ 4 และยังรั้งบ๊วยตาราง</td><td><a href="https://www.espn.com/soccer/report/_/gameId/401879235" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.flashscore.com/news/premier-league-coventry-city-crystal-palace-report-november-21-2026/0UXJ9Qc5/" target="_blank" rel="noopener">Flashscore</a></td></tr>
+      <tr><td>21 พ.ย.</td><td>Manchester City</td><td>1-1</td><td>Fulham</td><td class="wrap">Rodrigo Muniz ยิงนำ Fulham นาทีที่ 16 ก่อน Elliot Anderson ตีเสมอให้ City นาทีที่ 57 Erling Haaland มีประตูที่ถูกตัดสินเป็นโมฆะช่วงนาทีที่ 25 จากจังหวะฟาวล์ผู้รักษาประตู Bernd Leno ผลเสมอครั้งนี้ยุติสถิติแพ้ติดต่อกัน 3 นัดของ City แต่ยังไร้ชัยชนะในลีกต่อเนื่องเป็นสัปดาห์ที่ 5</td><td><a href="https://www.espn.com/soccer/report/_/gameId/401879233" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.mancity.com/news/mens/manchester-city-v-fulham-premier-league-21-nov-match-report-63930859" target="_blank" rel="noopener">Man City FC (Official)</a></td></tr>
+      <tr><td>22 พ.ย.</td><td>Newcastle United</td><td>2-2</td><td>Arsenal</td><td class="wrap">Eberechi Eze ยิงนำ Arsenal นาทีที่ 33 ก่อน Harvey Barnes ตีเสมอให้ Newcastle นาทีที่ 49 และ Malick Thiaw นำอีกครั้งนาทีที่ 62 ก่อน Noni Madueke ตีเสมอนาทีที่ 78 ช่วยให้ Arsenal รักษาอันดับ 1 ไว้ได้ ผู้รักษาประตู David Raya ของ Arsenal ต้องออกจากสนามพร้อมอาการบาดเจ็บที่แขนในช่วงเกม</td><td><a href="https://theanalyst.com/articles/newcastle-vs-arsenal-stats-premier-league-11-2026" target="_blank" rel="noopener">The Analyst</a> / <a href="https://www.101greatgoals.com/football/premier-league/newcastle-arsenal-report-result-goals-madueke-goal-david-raya-injury/" target="_blank" rel="noopener">101 Great Goals</a></td></tr>
+      <tr><td>21 พ.ย.</td><td>AFC Bournemouth</td><td>2-0</td><td>Nottingham Forest</td><td class="wrap">Evanilson ยิงนำนาทีที่ 19 ก่อน Justin Kluivert ยิงเพิ่มนาทีที่ 45+3 จากการจ่ายของ Marcus Tavernier เป็นชัยชนะในลีกติดต่อกันนัดที่ 5 ของ Bournemouth ขยับขึ้นมาเทียบเท่า Liverpool ที่ 18 แต้ม ส่วน Forest ยังอยู่เหนือโซนตกชั้นด้วยผลต่างประตูเท่านั้น</td><td><a href="https://www.espn.co.uk/football/report/_/gameId/401879238" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.flashscore.co.za/news/premier-league-bournemouth-nottingham-forest-report-november-21-2026/MuvOihxK/" target="_blank" rel="noopener">Flashscore</a></td></tr>
+      <tr><td>21 พ.ย.</td><td>Tottenham Hotspur</td><td>2-0</td><td>Ipswich Town</td><td class="wrap">Luca Williams-Barnett ยิงนำนาทีที่ 15 จากลูกครอสของ Pedro Porro ก่อน Dominic Solanke ยิงเพิ่มนาทีที่ 52 เป็นชัยชนะในบ้านติดต่อกันนัดที่ 3 ของ Tottenham ภายใต้ Roberto De Zerbi</td><td><a href="https://www.espn.co.uk/football/match/_/gameId/401878754" target="_blank" rel="noopener">ESPN</a> / <a href="https://sportnewsafrica.com/en/news/tottenham-beat-ipswich-2-0-as-williams-barnett-scores-and-assists/" target="_blank" rel="noopener">Sport News Africa</a></td></tr>
+      <tr><td>21 พ.ย.</td><td>Aston Villa</td><td>0-0</td><td>Sunderland</td><td class="wrap">ไม่มีประตูเกิดขึ้นที่ Villa Park แม้ Villa จะครองเกมด้วย Expected Goals 0.98 ต่อ 0.26 ผู้รักษาประตู Sunderland เซฟได้ถึง 8 ครั้งช่วยให้ทีมรักษาแต้มได้ ผลเสมอทำให้ Sunderland ขยับเป็น 9 แต้ม ยังอยู่ในโซนตกชั้น</td><td><a href="https://www.espn.in/football/match/_/gameId/401878756" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.sofascore.com/news/aston-villa-0-0-sunderland-roefs-stars-in-stalemate" target="_blank" rel="noopener">Sofascore</a></td></tr>
+    </table>
+    </div>
+    <div class="note"><b>ยังไม่สิ้นสุด (ไม่นำผลมาแสดง):</b> Hull City พบ Brighton &amp; Hove Albion (22 พ.ย., 21:00 ICT) และ Liverpool พบ Manchester United (22 พ.ย., 23:30 ICT) — ทั้งสองนัดยังอยู่ระหว่างแข่งขันหรือยังไม่เริ่มในขณะจัดทำรายงานฉบับนี้ <span class="badge badge-pending">❓ ยังยืนยันไม่ได้</span></div>
+  </section>
+
+  <section>
+    <h2>🥇 ดาวซัลโว Top 5</h2>
+    <div class="note">Erling Haaland ไม่ได้ทำประตูในนัดพบ Fulham (มีประตูที่ถูกตัดสินเป็นโมฆะ) จึงคงตัวเลขเดิมที่ 9 ประตู นำเป็นอันดับ 1 Alexander Isak ยังไม่ได้ลงเล่นในสัปดาห์นี้ (นัดพบ Manchester United ยังไม่จบ) คงตัวเลขเดิมที่ 7 ประตู อันดับ 2 ส่วนอันดับ 3 มีนักเตะ 3 คนเท่ากันที่ 6 ประตู ไม่มีผู้ใดยิงเพิ่มในสัปดาห์นี้ที่ยืนยันได้จึงจัดอันดับร่วมกันด้วยเครื่องหมาย *</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Rank</th><th>Player</th><th>Club</th><th>Goals</th><th>Assists</th><th>Source</th></tr>
+      <tr><td>1</td><td>Erling Haaland</td><td>Manchester City</td><td>9</td><td>–</td><td><a href="https://www.allfootballapp.com/articles/6034597-premier-league-top-scorer-chart-erling" target="_blank" rel="noopener">AllFootballApp (Opta)</a></td></tr>
+      <tr><td>2</td><td>Alexander Isak</td><td>Liverpool</td><td>7</td><td>–</td><td><a href="https://www.allfootballapp.com/articles/6034597-premier-league-top-scorer-chart-erling" target="_blank" rel="noopener">AllFootballApp (Opta)</a></td></tr>
+      <tr><td>3*</td><td>Thierno Barry</td><td>Everton</td><td>6</td><td>–</td><td><a href="https://www.allfootballapp.com/articles/6034597-premier-league-top-scorer-chart-erling" target="_blank" rel="noopener">AllFootballApp (Opta)</a></td></tr>
+      <tr><td>3*</td><td>Evanilson</td><td>AFC Bournemouth</td><td>6</td><td>–</td><td><a href="https://www.allfootballapp.com/articles/6034597-premier-league-top-scorer-chart-erling" target="_blank" rel="noopener">AllFootballApp (Opta)</a></td></tr>
+      <tr><td>3*</td><td>Nicolas Jackson</td><td>Aston Villa</td><td>6</td><td>–</td><td><a href="https://www.allfootballapp.com/articles/6034597-premier-league-top-scorer-chart-erling" target="_blank" rel="noopener">AllFootballApp (Opta)</a></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔥 ข่าวสำคัญ</h2>
+    <h3>Official</h3>
+    <ul>
+      <li>Crystal Palace ประกาศแต่งตั้ง Thomas Frank เป็นผู้จัดการทีมคนใหม่อย่างเป็นทางการเมื่อวันที่ 16 พ.ย. 2026 สัญญาจนถึงเดือนมิถุนายน 2029 แทน Pierre Sage ที่ถูกปลดไปก่อนหน้านี้ <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://cpfc.co.uk/news/announcement/thomas-frank-appointed-crystal-palace-manager/" target="_blank" rel="noopener">Crystal Palace FC (Official)</a></li>
+      <li>Manchester United ยืนยัน Mauricio Pochettino เริ่มปฏิบัติหน้าที่หัวหน้าผู้ฝึกสอนตั้งแต่วันที่ 18 พ.ย. 2026 (ประกาศแต่งตั้งทางการ 13 พ.ย.) สัญญา 2 ปีครึ่ง <span class="badge badge-official">✅ ยืนยันแล้ว</span> — <a href="https://www.manutd.com/en/news/pochettino-and-staff-officially-start-work-at-man-united" target="_blank" rel="noopener">Manchester United (Official)</a></li>
+    </ul>
+    <h3>Report</h3>
+    <ul>
+      <li>สื่อรายงานว่า Leeds United เอาชนะ Chelsea 4-1 ที่ Stamford Bridge เป็นชัยชนะนัดแรกของ Leeds ที่สนามนี้นับตั้งแต่ปี 1999 <span class="badge badge-report">📰 รายงาน</span> — <a href="https://leedsunitedfcnews.co.uk/news/leeds-united-beat-chelsea-stamford-bridge-november-2026" target="_blank" rel="noopener">Leeds United FC News</a></li>
+      <li>สื่อรายงานว่า AFC Bournemouth คว้าชัยชนะในลีกติดต่อกันเป็นนัดที่ 5 หลังเอาชนะ Nottingham Forest ขยับขึ้นมาอยู่ในโซนแชมเปียนส์ลีกเทียบเท่า Liverpool <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.flashscore.co.za/news/premier-league-bournemouth-nottingham-forest-report-november-21-2026/MuvOihxK/" target="_blank" rel="noopener">Flashscore</a></li>
+      <li>สื่อรายงานว่า Thomas Frank แพ้นัดแรกในตำแหน่งผู้จัดการทีม Crystal Palace ขณะที่สตาฟฟ์ผู้ช่วยเดิม 3 คนของ Pierre Sage (Jamal Alioui, Damien Della Santa, Sandy Guichard) ได้ออกจากสโมสรไปพร้อมกับการเปลี่ยนแปลงนี้ <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.lbc.co.uk/news/sport/pierre-sage-sacked-as-palace-manager-after-less-than-5-months-in-role/" target="_blank" rel="noopener">LBC</a></li>
+      <li>Sky Sports รายงานว่า Dominic Calvert-Lewin มีแนวโน้มจะต่อสัญญาฉบับใหม่กับ Leeds United ขณะที่ Manchester United ซึ่งมีความสนใจในตัวเขายังไม่มีแผนเดินหน้าเจรจาต่อในขณะนี้ (รายงาน 18 พ.ย.) <span class="badge badge-report">📰 รายงาน</span> — <a href="https://www.3addedminutes.com/sport/football/manchester-united/leeds-united-aston-villa-flop-man-utd-chase-9330662" target="_blank" rel="noopener">3added Minutes</a></li>
+    </ul>
+    <h3>Rumor</h3>
+    <ul>
+      <li>สื่อบางแห่งรายงานว่าความสนใจของ Bayern Munich ในตัว Martin Ødegaard ของ Arsenal "น่าจับตา" แม้ยังไม่มีการเจรจาอย่างเป็นทางการเกิดขึ้น และหน้าต่างการย้ายทีมเดือนมกราคม 2027 ยังไม่เปิด <span class="badge badge-rumor">⚠️ ข่าวลือ</span> — <a href="https://fanbanter.co.uk/football-gossip-and-transfer-rumours-2-november-2026/" target="_blank" rel="noopener">Fan Banter</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏥 Injury &amp; Suspension</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Club</th><th>Player</th><th>Status</th><th>Return</th><th>Source</th></tr>
+      <tr><td>Sunderland</td><td>Granit Xhaka</td><td>บาดเจ็บกล้ามเนื้อน่อง (calf) ต้องพักยาวกว่าที่คาดการณ์ไว้เดิม พลาดนัดพบ Aston Villa (21 พ.ย.)</td><td>โค้ช Régis Le Bris ระบุว่ายังไม่มีกำหนดเวลาที่แน่นอน ต้องรอการประเมินเพิ่มเติม</td><td><a href="https://www.sunderlandecho.com/sport/football/sunderland-afc/sunderland-injury-latest-ballard-xhaka-diarra-9339409" target="_blank" rel="noopener">Sunderland Echo</a></td></tr>
+      <tr><td>Chelsea</td><td>João Pedro</td><td>บาดเจ็บต้นขา (thigh) ต่อเนื่อง ยังไม่กลับมาฝึกร่วมทีม พลาดนัดพบ Leeds United (21 พ.ย.)</td><td>มีแนวโน้มพลาดนัดพบ Nottingham Forest (27 พ.ย.) และเป็นผู้ที่น่าจะพลาดนัดพบ Crystal Palace (2 ธ.ค.) ตามการประเมินของโค้ช Xabi Alonso</td><td><a href="https://thefalse9.com/2026/11/joao-pedro-injury-update-not-training-leeds-20-november.html" target="_blank" rel="noopener">The False 9</a></td></tr>
+    </table>
+    </div>
+    <div class="note">David Raya ผู้รักษาประตู Arsenal ต้องออกจากสนามพร้อมอาการบาดเจ็บที่แขนซ้ายในนัดพบ Newcastle United (21 พ.ย.) แต่ยังไม่สามารถยืนยันความรุนแรงหรือกำหนดเวลากลับมาได้จากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ <span class="badge badge-pending">❓ ยังยืนยันไม่ได้</span></div>
+  </section>
+
+  <section>
+    <h2>📈 Weekly Statistics</h2>
+    <ul>
+      <li><b>Most Goals (single match):</b> Chelsea 1-4 Leeds United และ Coventry City 3-2 Crystal Palace ทำประตูรวมกันมากที่สุดในสัปดาห์นี้ที่ 5 ประตูต่อนัด</li>
+      <li><b>Best Defence / Clean Sheets:</b> Tottenham Hotspur (2-0 เหนือ Ipswich Town) และ AFC Bournemouth (2-0 เหนือ Nottingham Forest) เป็น 2 คลีนชีตของสัปดาห์นี้จาก 7 นัดที่สิ้นสุดแล้ว</li>
+      <li><b>Penalties:</b> มีจุดโทษสำเร็จ 1 ครั้งในสัปดาห์นี้ จาก Dominic Calvert-Lewin ของ Leeds United ในนัดพบ Chelsea</li>
+      <li><b>Red Cards:</b> ไม่มีใบแดงเกิดขึ้นใน 7 นัดที่สิ้นสุดแล้วของสัปดาห์นี้</li>
+      <li><b>Player of the Week:</b> Noah Okafor (Leeds United) ยิง 2 ประตูในเกมเยือนชนะ Chelsea 4-1 ที่ Stamford Bridge ซึ่งเป็นชัยชนะนัดแรกของ Leeds ที่สนามนี้ในรอบกว่า 25 ปี</li>
+    </ul>
+    <div class="note">ข้อมูล Possession และ Expected Goals (xG) ครบทุกนัด รวมถึงจำนวนใบเหลืองสะสม ยังไม่สามารถยืนยันได้ครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ จึงไม่นำมาแสดงทั้งหมด</div>
+  </section>
+
+  <section>
+    <h2>🔵 Big 6 Analysis</h2>
+    <div class="club-block">
+      <h3>Arsenal</h3>
+      <p><b>ฟอร์ม:</b> เสมอ Newcastle United 2-2 ที่ St. James' Park (21-22 พ.ย.) ขยับเป็น 11 นัด 9W-1D-1L รวม 28 แต้ม ยังคงเป็นจ่าฝูง นำห่างอันดับ 2-3 (Brighton, Manchester City ที่ 22 แต้ม) 6 แต้ม</p>
+      <p><b>จุดเด่น:</b> Noni Madueke ยิงตีเสมอนาทีที่ 78 ช่วยรักษาผลงานไม่แพ้ให้ต่อเนื่อง แพ้เพียงนัดเดียวจาก 11 นัดแรกของฤดูกาล</p>
+      <p><b>จุดอ่อน:</b> เสียความนำ 1-0 ให้ Newcastle ไล่ตีเสมอขึ้นเป็น 2-1 ก่อนต้องยิงตีเสมอในช่วงท้ายเกม นอกจากนี้ผู้รักษาประตู David Raya ต้องออกจากสนามพร้อมอาการบาดเจ็บที่แขน ซึ่งยังไม่ยืนยันความรุนแรง</p>
+    </div>
+    <div class="club-block">
+      <h3>Chelsea</h3>
+      <p><b>ฟอร์ม:</b> พ่ายแพ้ Leeds United 1-4 ที่บ้าน (21 พ.ย.) ขยับเป็น 11 นัด 5W-1D-5L รวม 16 แต้ม ร่วงลงมาอยู่อันดับ 8</p>
+      <p><b>จุดเด่น:</b> Emmanuel Emegha ยังทำประตูได้ต่อเนื่อง ขึ้นนำให้ทีมก่อนในนาทีที่ 25</p>
+      <p><b>จุดอ่อน:</b> แพ้เป็นนัดที่ 3 ใน 4 นัดหลังสุด เสียประตูมากถึง 4 ลูกในบ้าน รวมจุดโทษให้ Calvert-Lewin ขณะที่ João Pedro ยังบาดเจ็บต้นขาต่อเนื่องไม่ได้ร่วมทีม</p>
+    </div>
+    <div class="club-block">
+      <h3>Liverpool</h3>
+      <p><b>ฟอร์ม:</b> ยังไม่จบนัดในสัปดาห์นี้ (เยือน Manchester United ที่ Anfield กำหนด 22 พ.ย. 23:30 ICT ยังไม่สิ้นสุดภายในกรอบเวลารายงาน) <span class="badge badge-cont">ต่อเนื่อง</span> คงอยู่อันดับ 5 ด้วย 18 แต้มจาก 10 นัด (5W-3D-2L)</p>
+      <p><b>จุดเด่น:</b> Alexander Isak ยังรักษาอันดับ 2 ของตารางดาวซัลโวด้วย 7 ประตูสะสม</p>
+      <p><b>จุดอ่อน:</b> ไม่มีข้อมูลใหม่ในสัปดาห์นี้เนื่องจากยังไม่ลงเล่น ต้องรอผลนัดพบ Manchester United ที่กำลังจะจบลง</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester City</h3>
+      <p><b>ฟอร์ม:</b> เสมอ Fulham 1-1 ที่บ้าน (21 พ.ย.) ยุติสถิติแพ้ติดต่อกัน 3 นัดในลีก ขยับเป็น 11 นัด 7W-1D-3L รวม 22 แต้ม อันดับ 3</p>
+      <p><b>จุดเด่น:</b> Erling Haaland ยังนำตารางดาวซัลโวด้วย 9 ประตูสะสม แม้ประตูที่เขาทำได้ในนัดนี้ถูกตัดสินเป็นโมฆะจากจังหวะฟาวล์ผู้รักษาประตู</p>
+      <p><b>จุดอ่อน:</b> ยังไร้ชัยชนะในลีกต่อเนื่องเป็นสัปดาห์ที่ 5 แม้จะหยุดสถิติแพ้ได้สำเร็จ สะท้อนความไม่สม่ำเสมอของทีมในช่วงนี้</p>
+    </div>
+    <div class="club-block">
+      <h3>Manchester United</h3>
+      <p><b>ฟอร์ม:</b> Mauricio Pochettino เริ่มปฏิบัติหน้าที่หัวหน้าผู้ฝึกสอนคนใหม่อย่างเป็นทางการตั้งแต่วันที่ 18 พ.ย. สืบทอดจาก Michael Carrick ที่ถูกปลด นัดแรกในตำแหน่งคือเยือน Liverpool ที่ Anfield (22 พ.ย.) ซึ่งยังไม่จบภายในกรอบเวลารายงานนี้ ก่อนนัดนี้ทีมอยู่อันดับ 18 (โซนตกชั้น) ด้วย 8 แต้มจาก 10 นัด</p>
+      <p><b>จุดเด่น:</b> ได้ผู้จัดการทีมคนใหม่ที่มีประสบการณ์ระดับนานาชาติ (อดีตกุนซือทีมชาติสหรัฐฯ) เข้ามาเสริมความเชื่อมั่นให้แฟนบอลและนักเตะ</p>
+      <p><b>จุดอ่อน:</b> ยังอยู่ในโซนตกชั้นต่อเนื่อง และต้องพิสูจน์ฟอร์มทันทีในนัดเปิดตัวของผู้จัดการทีมคนใหม่กับคู่ปรับตลอดกาลในสนามเยือน</p>
+    </div>
+    <div class="club-block">
+      <h3>Tottenham Hotspur</h3>
+      <p><b>ฟอร์ม:</b> เอาชนะ Ipswich Town 2-0 ที่บ้าน (21 พ.ย.) เป็นชัยชนะในบ้านติดต่อกันนัดที่ 3 ภายใต้ Roberto De Zerbi ขยับเป็น 15 แต้ม (ข้อมูล ณ 21 พ.ย. จาก Sky Sports ไม่สามารถยืนยันจำนวนนัดที่ลงเล่นและสถิติแพ้-ชนะ-เสมอครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้)</p>
+      <p><b>จุดเด่น:</b> Luca Williams-Barnett ทำประตูและแอสซิสต์ในนัดนี้ De Zerbi ได้รับรางวัล Manager of the Month เดือนตุลาคม 2026 ต่อเนื่องจากฟอร์มที่ดีของทีม</p>
+      <p><b>จุดอ่อน:</b> De Zerbi ต้องดูเกมจากอัฒจันทร์เนื่องจากสะสมใบเหลืองครบกำหนดพักหน้าสนาม ไม่สามารถนั่งข้างสนามได้ในนัดนี้</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🏆 Title Race</h2>
+    <p>Arsenal ยังคงเป็นจ่าฝูงด้วย 28 แต้มจาก 11 นัด แม้จะเสียแต้มให้ Newcastle เสมอ 2-2 ในสัปดาห์นี้ นำห่างคู่ตาม Brighton &amp; Hove Albion และ Manchester City ที่มีแต้มเท่ากันที่ 22 แต้ม อยู่ 6 แต้ม อย่างไรก็ตาม Brighton ยังมีนัดค้าง (เยือน Hull City) ซึ่งหากเก็บ 3 แต้มได้จะลดช่องว่างเหลือ 3 แต้มทันที ทำให้ศึกชิงแชมป์ยังเปิดกว้างสำหรับทั้ง 3 ทีมบน</p>
+  </section>
+
+  <section>
+    <h2>🎯 Top 4 Race</h2>
+    <p>AFC Bournemouth ขยับขึ้นมาเทียบเท่า Liverpool ที่ 18 แต้ม ครองโซนแชมเปียนส์ลีกร่วมกันที่อันดับ 4-5 หลังคว้าชัยชนะติดต่อกันเป็นนัดที่ 5 ขณะที่ Leeds United ไล่จี้มาติดๆที่อันดับ 6 ด้วย 17 แต้ม ห่างเพียง 1 แต้ม หลังเอาชนะ Chelsea ถึงถิ่น ทำให้ Liverpool ต้องรอผลนัดพบ Manchester United ที่ยังไม่จบเพื่อยืนยันตำแหน่งในโซนท็อป 4 ต่อไป</p>
+  </section>
+
+  <section>
+    <h2>⬇️ Relegation Battle</h2>
+    <p>Crystal Palace ยังรั้งบ๊วยของตารางหลังพ่ายแพ้ Coventry City 3-2 ในนัดแรกของ Thomas Frank ทำให้แพ้ติดต่อกันเป็นนัดที่ 4 Sunderland ขยับเป็น 9 แต้มจากผลเสมอ Aston Villa แต่ยังอยู่ในกลุ่มเสี่ยงตกชั้น ส่วน Manchester United (8 แต้มจาก 10 นัดก่อนนัดนี้) กำลังเผชิญบททดสอบสำคัญกับ Pochettino คุมทีมนัดแรกในการเยือน Liverpool ซึ่งผลที่ออกมาจะมีผลสำคัญต่อโมเมนตัมในการลุ้นหนีโซนตกชั้นทันที</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Week Fixtures</h2>
+    <div class="note">Matchweek 12 จัดขึ้นระหว่างวันที่ 27-29 พ.ย. 2026 ตารางนี้แสดงเฉพาะคู่ที่ยืนยันวันและเวลาตรงกันจากอย่างน้อย 2 แหล่งข้อมูล (Premier League fixture amendment notice และ 101 Great Goals) เวลาทั้งหมดแปลงจาก GMT เป็น ICT (GMT+7) นัด Ipswich Town พบ Aston Villa และ Liverpool พบ Manchester United ชุดที่ 2 ที่บางแหล่งข้อมูลระบุเพิ่มเติม (Liverpool v Sunderland 19:30) ไม่พบการยืนยันจากแหล่งอื่น จึงไม่นำมาแสดง</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Date</th><th>Time (ICT)</th><th>Home</th><th>VS</th><th>Away</th><th>Source</th></tr>
+      <tr><td>28 พ.ย.</td><td>03:00</td><td>Nottingham Forest</td><td>vs</td><td>Chelsea</td><td><a href="https://www.premierleague.com/en/news/4725574/fixture-amendments-for-premier-league-matches-in-november" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>28 พ.ย.</td><td>22:00</td><td>Manchester United</td><td>vs</td><td>Brentford</td><td><a href="https://www.unitedinfocus.com/news/manchester-uniteds-first-3pm-kick-off-of-the-2026-27-season-has-now-officially-been-set/" target="_blank" rel="noopener">United In Focus</a></td></tr>
+      <tr><td>28 พ.ย.</td><td>22:00</td><td>Leeds United</td><td>vs</td><td>Coventry City</td><td><a href="https://www.101greatgoals.com/football/premier-league/football-on-tv-november-fixture-changes-matches-channels-live-online-streams-where-watch-kick-off-times-schedule/" target="_blank" rel="noopener">101 Great Goals</a></td></tr>
+      <tr><td>29 พ.ย.</td><td>00:30</td><td>Ipswich Town</td><td>vs</td><td>Aston Villa</td><td><a href="https://www.101greatgoals.com/football/premier-league/football-on-tv-november-fixture-changes-matches-channels-live-online-streams-where-watch-kick-off-times-schedule/" target="_blank" rel="noopener">101 Great Goals</a></td></tr>
+      <tr><td>29 พ.ย.</td><td>19:00</td><td>Everton</td><td>vs</td><td>Liverpool</td><td><a href="https://readeverton.com/everton-november-fixture-changes-liverpool-derby/" target="_blank" rel="noopener">Read Everton</a></td></tr>
+      <tr><td>29 พ.ย.</td><td>21:05</td><td>Brighton &amp; Hove Albion</td><td>vs</td><td>Newcastle United</td><td><a href="https://www.premierleague.com/en/news/4725574/fixture-amendments-for-premier-league-matches-in-november" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>29 พ.ย.</td><td>21:05</td><td>Crystal Palace</td><td>vs</td><td>Hull City</td><td><a href="https://www.premierleague.com/en/news/4725574/fixture-amendments-for-premier-league-matches-in-november" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>29 พ.ย.</td><td>21:05</td><td>Fulham</td><td>vs</td><td>AFC Bournemouth</td><td><a href="https://www.premierleague.com/en/news/4725574/fixture-amendments-for-premier-league-matches-in-november" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>29 พ.ย.</td><td>21:05</td><td>Sunderland</td><td>vs</td><td>Tottenham Hotspur</td><td><a href="https://www.premierleague.com/en/news/4725574/fixture-amendments-for-premier-league-matches-in-november" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+      <tr><td>29 พ.ย.</td><td>23:30</td><td>Arsenal</td><td>vs</td><td>Manchester City</td><td><a href="https://www.premierleague.com/en/news/4725574/fixture-amendments-for-premier-league-matches-in-november" target="_blank" rel="noopener">Premier League (Official)</a></td></tr>
+    </table>
+    </div>
+    <ul>
+      <li><b>Arsenal vs Manchester City (29 พ.ย., 23:30 ICT)</b> — นัดใหญ่ของสัปดาห์ระหว่างจ่าฝูงกับอันดับ 3 หาก Arsenal ชนะจะยืดช่องว่างนำห่างออกไปอีก แต่หากแพ้อาจเปิดโอกาสให้ City หรือ Brighton ไล่จี้ได้ทันที</li>
+      <li><b>Manchester United vs Brentford (28 พ.ย., 22:00 ICT)</b> — นัดเปิดตัวในบ้านนัดแรกของ Mauricio Pochettino ในตำแหน่งผู้จัดการทีม United ซึ่งยังอยู่ในโซนตกชั้น ถือเป็นบททดสอบสำคัญหลังผลนัดเยือน Liverpool</li>
+      <li><b>Everton vs Liverpool (29 พ.ย., 19:00 ICT)</b> — ดาร์บีเมอร์ซีย์ไซด์ ที่ Liverpool จะลงเล่นต่อจากนัดพบ Manchester United ทันที ขณะที่ Everton ยังมีนัดค้างกับ Brentford รอก่อนหน้านี้ (23 พ.ย.) ซึ่งจะมีผลต่อโมเมนตัมของทีมก่อนดาร์บีนี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📌 Quick Stats</h2>
+    <ul>
+      <li><b>Matches:</b> 7 นัด (เฉพาะนัดที่สิ้นสุดแล้วในกรอบ 7 วันนี้ จากทั้งหมด 9 นัดของ Matchweek 11)</li>
+      <li><b>Goals:</b> รวม 17 ประตูจาก 7 นัด (เฉลี่ย 2.43 ประตู/นัด)</li>
+      <li><b>Clean Sheets:</b> 2 ครั้ง (Tottenham Hotspur พบ Ipswich Town, AFC Bournemouth พบ Nottingham Forest)</li>
+      <li><b>Red Cards:</b> ไม่มีใบแดงเกิดขึ้นในสัปดาห์นี้</li>
+      <li><b>Yellow Cards:</b> ไม่สามารถยืนยันได้ครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้</li>
+      <li><b>Penalties:</b> 1 ครั้งที่ยิงสำเร็จจาก 7 นัด (Dominic Calvert-Lewin, Leeds United)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <ul>
+      <li><b>โปรแกรมสำคัญ:</b> ผลนัด Hull City พบ Brighton และ Liverpool พบ Manchester United (22 พ.ย.) ที่ยังไม่จบ รวมถึงนัดเปิดตัวในบ้านของ Pochettino กับ Brentford และดาร์บีเมอร์ซีย์ไซด์ Everton พบ Liverpool ในสัปดาห์หน้า</li>
+      <li><b>ศึกชิงแชมป์:</b> Arsenal จะสามารถรักษาช่องว่างนำห่างได้หรือไม่ในนัดใหญ่พบ Manchester City วันที่ 29 พ.ย. ขณะที่ Brighton มีนัดค้างที่อาจลดช่องว่างคะแนนได้ทันที</li>
+      <li><b>โซนตกชั้น:</b> ผลงานของ Manchester United ภายใต้ Pochettino ในนัดแรกที่ Anfield และความต่อเนื่องของฟอร์มตกต่ำของ Crystal Palace ภายใต้ Thomas Frank จะมีผลสำคัญต่อสถานการณ์โซนท้ายตาราง</li>
+      <li><b>ข่าวย้ายทีม:</b> ความเคลื่อนไหวก่อนเปิดหน้าต่างการย้ายทีมเดือนมกราคม 2027 ซึ่งยังไม่มีข่าวยืนยันที่ชัดเจนในสัปดาห์นี้ นอกจากรายงานเรื่องการต่อสัญญาของ Calvert-Lewin</li>
+      <li><b>อาการบาดเจ็บ:</b> กำหนดเวลากลับมาของ Granit Xhaka (Sunderland) และ João Pedro (Chelsea) ที่ยังไม่ได้รับการยืนยัน รวมถึงความรุนแรงของอาการบาดเจ็บของ David Raya (Arsenal)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <ul class="src-list">
+      <li><a href="https://cpfc.co.uk/news/announcement/thomas-frank-appointed-crystal-palace-manager/" target="_blank" rel="noopener">Crystal Palace FC — Thomas Frank appointed manager</a></li>
+      <li><a href="https://www.manutd.com/en/news/pochettino-and-staff-officially-start-work-at-man-united" target="_blank" rel="noopener">Manchester United — Pochettino and staff officially start work</a></li>
+      <li><a href="https://www.mancity.com/news/mens/manchester-city-v-fulham-premier-league-21-nov-match-report-63930859" target="_blank" rel="noopener">Manchester City FC — Match report: City v Fulham</a></li>
+      <li><a href="https://www.premierleague.com/en/news/4725574/fixture-amendments-for-premier-league-matches-in-november" target="_blank" rel="noopener">Premier League — Fixture amendments for November</a></li>
+    </ul>
+    <h3>Media</h3>
+    <ul class="src-list">
+      <li><a href="https://www.espn.com/soccer/report/_/gameId/401879236" target="_blank" rel="noopener">ESPN — Chelsea 1-4 Leeds United</a></li>
+      <li><a href="https://leedsunitedfcnews.co.uk/news/leeds-united-beat-chelsea-stamford-bridge-november-2026" target="_blank" rel="noopener">Leeds United FC News — Leeds beat Chelsea at Stamford Bridge</a></li>
+      <li><a href="https://www.espn.com/soccer/report/_/gameId/401879235" target="_blank" rel="noopener">ESPN — Coventry 3-2 Crystal Palace</a></li>
+      <li><a href="https://www.flashscore.com/news/premier-league-coventry-city-crystal-palace-report-november-21-2026/0UXJ9Qc5/" target="_blank" rel="noopener">Flashscore — Coventry 3-2 Crystal Palace, Frank's debut</a></li>
+      <li><a href="https://theanalyst.com/articles/newcastle-vs-arsenal-stats-premier-league-11-2026" target="_blank" rel="noopener">The Analyst — Newcastle 2-2 Arsenal</a></li>
+      <li><a href="https://www.101greatgoals.com/football/premier-league/newcastle-arsenal-report-result-goals-madueke-goal-david-raya-injury/" target="_blank" rel="noopener">101 Great Goals — Newcastle 2-2 Arsenal, Raya injury</a></li>
+      <li><a href="https://www.flashscore.co.za/news/premier-league-bournemouth-nottingham-forest-report-november-21-2026/MuvOihxK/" target="_blank" rel="noopener">Flashscore — Bournemouth 2-0 Nottingham Forest</a></li>
+      <li><a href="https://sportnewsafrica.com/en/news/tottenham-beat-ipswich-2-0-as-williams-barnett-scores-and-assists/" target="_blank" rel="noopener">Sport News Africa — Tottenham 2-0 Ipswich</a></li>
+      <li><a href="https://www.sofascore.com/news/aston-villa-0-0-sunderland-roefs-stars-in-stalemate" target="_blank" rel="noopener">Sofascore — Aston Villa 0-0 Sunderland</a></li>
+      <li><a href="https://www.sunderlandecho.com/sport/football/sunderland-afc/sunderland-injury-latest-ballard-xhaka-diarra-9339409" target="_blank" rel="noopener">Sunderland Echo — Xhaka injury update</a></li>
+      <li><a href="https://thefalse9.com/2026/11/joao-pedro-injury-update-not-training-leeds-20-november.html" target="_blank" rel="noopener">The False 9 — João Pedro injury update</a></li>
+      <li><a href="https://www.lbc.co.uk/news/sport/pierre-sage-sacked-as-palace-manager-after-less-than-5-months-in-role/" target="_blank" rel="noopener">LBC — Pierre Sage sacked, coaching staff departures</a></li>
+      <li><a href="https://www.3addedminutes.com/sport/football/manchester-united/leeds-united-aston-villa-flop-man-utd-chase-9330662" target="_blank" rel="noopener">3added Minutes — Calvert-Lewin contract talk</a></li>
+      <li><a href="https://fanbanter.co.uk/football-gossip-and-transfer-rumours-2-november-2026/" target="_blank" rel="noopener">Fan Banter — Transfer gossip roundup</a></li>
+      <li><a href="https://www.unitedinfocus.com/news/manchester-uniteds-first-3pm-kick-off-of-the-2026-27-season-has-now-officially-been-set/" target="_blank" rel="noopener">United In Focus — Man Utd v Brentford kick-off confirmed</a></li>
+      <li><a href="https://www.101greatgoals.com/football/premier-league/football-on-tv-november-fixture-changes-matches-channels-live-online-streams-where-watch-kick-off-times-schedule/" target="_blank" rel="noopener">101 Great Goals — November fixture changes on TV</a></li>
+      <li><a href="https://readeverton.com/everton-november-fixture-changes-liverpool-derby/" target="_blank" rel="noopener">Read Everton — Everton v Liverpool fixture change</a></li>
+    </ul>
+    <h3>Statistics</h3>
+    <ul class="src-list">
+      <li><a href="https://www.skysports.com/premier-league-table" target="_blank" rel="noopener">Sky Sports — Premier League table</a></li>
+      <li><a href="https://standingstoday.com/premier-league/table/" target="_blank" rel="noopener">Standings Today — Premier League table 2026-27</a></li>
+      <li><a href="https://www.skysports.com/football/leeds-united-vs-tottenham-hotspur/table/559540" target="_blank" rel="noopener">Sky Sports — Leeds United table snapshot</a></li>
+      <li><a href="https://www.allfootballapp.com/articles/6034597-premier-league-top-scorer-chart-erling" target="_blank" rel="noopener">AllFootballApp — Top scorer chart (Opta)</a></li>
+    </ul>
+    <div class="note"><b>UNCERTAIN:</b> www.footballwebpages.co.uk, www.bbc.com และ www.premierleague.com (บางหน้า) ไม่สามารถเข้าถึงได้โดยตรงผ่านเครื่องมือ WebFetch ในสภาพแวดล้อมนี้ (DNS resolution error / network policy ของสภาพแวดล้อมนี้ ไม่ใช่การปฏิเสธจากเว็บไซต์ปลายทางโดยเฉพาะ สอดคล้องกับข้อจำกัดที่พบในรายงานฉบับก่อนหน้า) จึงใช้ผลค้นหา (WebSearch) แทนตลอดการจัดทำรายงานฉบับนี้ และอ้างอิง URL ที่พบจากผลค้นหาโดยตรง<br><br>ผลการแข่งขัน Hull City พบ Brighton &amp; Hove Albion และ Liverpool พบ Manchester United (ทั้งคู่กำหนดแข่งวันที่ 22 พ.ย. 2026) ยังไม่สามารถยืนยันได้ว่าสิ้นสุดแล้วหรือไม่ภายในกรอบเวลาจัดทำรายงานฉบับนี้ จึงไม่นำผลมาแสดงในตารางผลการแข่งขันหรือตารางคะแนน สถิติของ Tottenham Hotspur (จำนวนนัดที่ลงเล่นและสถิติแพ้-ชนะ-เสมอ) ไม่สามารถยืนยันได้ครบถ้วนจากแหล่งข้อมูลที่เข้าถึงได้ในรอบนี้ จึงแสดงเพียงคะแนนรวมพร้อมระบุข้อจำกัดไว้ ความรุนแรงของอาการบาดเจ็บ David Raya (Arsenal) ยังไม่สามารถยืนยันได้ จึงไม่นำมาแสดงในตาราง Injury &amp; Suspension อย่างเป็นทางการ</div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Premier League Report · จัดทำโดย Claude Code Routine · ข้อมูลทั้งหมดอ้างอิงจากแหล่งข่าวที่ระบุไว้ข้างต้น หากมีข้อมูลใดไม่สามารถยืนยันได้ จะระบุข้อจำกัดไว้อย่างชัดเจนแทนการคาดเดา</p>
+  </footer>
+</div>
+</body>
+</html>
