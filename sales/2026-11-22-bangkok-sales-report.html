@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Bangkok Sales & Events Report — 22 Nov 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{ --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3; --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F; --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28); --accent:#0F7A73; --accent-soft:rgba(15,122,115,0.12); --warn:#B4590E; }
+@media (prefers-color-scheme: dark){ :root{ --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B; --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D; --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26); --accent:#3FBDAF; --accent-soft:rgba(63,189,175,0.14); --warn:#E0A458; } }
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:1080px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); }
+
+.topstrip{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap; gap:8px; }
+.masthead{ padding:44px 0 30px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(26px,5vw,38px); line-height:1.2; font-weight:800; margin:0 0 16px; }
+h2{ font-size:22px; font-weight:700; margin:36px 0 14px; padding-top:8px; }
+h3{ font-size:17px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+.meta-row b{ color:var(--ink); font-weight:600; }
+
+section{ padding:20px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+
+p{ margin:0 0 14px; max-width:78ch; }
+ul{ margin:0 0 14px; padding-left:1.15em; }
+ul li{ margin-bottom:8px; max-width:74ch; }
+
+.table-wrap{ overflow-x:auto; margin:0 0 18px; border:1px solid var(--line); border-radius:8px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; background:var(--surface); font-size:14.5px; }
+caption{ caption-side:top; text-align:left; padding:8px 12px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+th{ background:var(--surface-2); font-weight:600; font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.02em; white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+td a{ word-break:break-word; }
+
+.badge{ display:inline-block; font-size:12px; padding:1px 7px; border-radius:20px; background:var(--accent-soft); color:var(--accent); font-weight:600; margin-right:4px; }
+.note{ background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:6px; padding:12px 16px; font-size:14.5px; color:var(--ink-soft); margin:0 0 16px; }
+.limit{ border-left-color:var(--warn); }
+.empty{ font-style:italic; color:var(--ink-faint); }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin:0 0 18px; }
+.stat{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+
+.deal{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin-bottom:12px; }
+.deal h4{ margin:0 0 6px; font-size:15.5px; }
+.deal .meta{ font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-faint); margin-top:6px; }
+
+.legend{ display:flex; flex-wrap:wrap; gap:10px 18px; font-size:13.5px; color:var(--ink-soft); }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
+footer p{ max-width:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest — Week 47, 2026</p>
+    <h1>🛍 Weekly Bangkok Sales & Events Report</h1>
+    <div class="meta-row">
+      <span><b>Date:</b> 22 Nov 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 15–22 พ.ย. (ย้อนหลัง) / ถึง 6 ธ.ค. 2569 (ล่วงหน้า)</span>
+      <span><b>Region:</b> กรุงเทพฯ และปริมณฑล</span>
+      <span><b>Source:</b> Claude Code Routine</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <p>สัปดาห์นี้กรุงเทพฯ เข้าสู่ช่วงพีคของเทศกาลลอยกระทง โดยวันเพ็ญหลักตรงกับวันอังคารที่ 24 พ.ย. 2569 ซึ่งกรุงเทพมหานครเปิดจุดจัดงานรวม 121 จุดทั่ว 50 เขต (สวนสาธารณะ 35 แห่ง + พื้นที่จัดงาน 86 แห่ง) พร้อมไฮไลท์ที่ป้อมมหากาฬ สะพานพระราม 8 ป้อมพระสุเมรุ และคลองเปรมประชากร ขณะที่ย่านทรงวาดจัดต่อเนื่องด้วย Song Wat Week (19–22 พ.ย., จบวันนี้) และทรงวาดนฤมิต (23–24 พ.ย.) ด้านห้างค้าปลีกเริ่มเปิดแคมเปญไฮซีซั่นปลายปีพร้อมกันครบทุกเครือในรอบนี้ ได้แก่ EM District "WINTER WONDERLAND 2026" (งบ 200 ล้านบาท, ถึง 3 ม.ค. 2570), ONESIAM "The Magical Celebration 2027" ที่สยามพารากอน/สยามเซ็นเตอร์/สยามดิสคัฟเวอรี่, centralwOrld กับ Disney Pixar "A Celebration of Wonders 2027" (ต้นคริสต์มาสแบบใหม่ครั้งแรกใน 20 ปี) และโรบินสันเปิดตัว "ROBIN SNOW TOWN" ในแคมเปญ "SEASON OF GIVING 2027" พร้อมแคมเปญ ROBINSON BLACK FRIDAY ลดสูงสุด 70% (25 พ.ย.–7 ธ.ค.) นอกจากนี้ ICONSIAM เพิ่งประกาศเป็นเจ้าภาพ "Amazing Thailand Countdown 2027" 5 วัน 5 คืน (27–31 ธ.ค.) ในสัปดาห์นี้ ด้านงานแสดงสินค้า B2B/B2C มีต่อเนื่อง 3 งานปลายเดือน ได้แก่ DigiTech ASEAN Thailand & AI Connect (25–27 พ.ย., IMPACT), FIND Design Fair Asia (26–28 พ.ย., QSNCC) และ COMMART AIFORCE (26–29 พ.ย., BITEC บางนา) ส่วนแคมเปญ 12.12 ของอีคอมเมิร์ซรายใหญ่ยังไม่พบประกาศทางการสำหรับปี 2569</p>
+  </section>
+
+  <section>
+    <h2>🎪 งานที่กำลังจัด</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>เวลา</th><th>ไฮไลท์</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">🔄</span>Bangkok Art Biennale 2026 (BAB 2026, ครั้งที่ 5)</td>
+          <td>ทั่วเมือง — วัดอรุณฯ, วัดโพธิ์, BACC, One Bangkok และอีกหลายจุด</td>
+          <td>29 ต.ค. 2569 – 28 ก.พ. 2570</td>
+          <td>ตามจุดจัดแสดงแต่ละแห่ง</td>
+          <td>Exhibition — นิทรรศการศิลปะร่วมสมัยทั่วเมือง ธีม "Angels and Mara"</td>
+          <td><a href="https://www.thailand.go.th/event-detail/bangkok-art-biennale-2026-bab-2026" target="_blank" rel="noopener">thailand.go.th (TAT)</a>, <a href="https://www.tatnews.org/?p=88749" target="_blank" rel="noopener">TAT News</a> ✅ (สืบทอดการยืนยัน)</td>
+        </tr>
+        <tr>
+          <td>Vijit Chao Phraya 2026 <span class="badge">🔄</span></td>
+          <td>ริมแม่น้ำเจ้าพระยา (13 จุดจัดแสดง, สะพานพระราม 3 – สะพานพระราม 8)</td>
+          <td>13 พ.ย.–13 ธ.ค. 2569</td>
+          <td>18:00–22:00 น.</td>
+          <td>Lifestyle/Cultural Event — เทศกาลแสง พลุ และโดรนโชว์ริมแม่น้ำโดย TAT เข้าชมฟรี</td>
+          <td><a href="https://www.nationthailand.com/news/tourism/40073143" target="_blank" rel="noopener">Nation Thailand</a>, <a href="https://www.timeout.com/bangkok/news/vijit-chao-phraya2026-092426" target="_blank" rel="noopener">Time Out Bangkok</a> ✅ (สืบทอดการยืนยัน)</td>
+        </tr>
+        <tr>
+          <td>เทศกาลลอยกระทงกรุงเทพมหานคร 2569</td>
+          <td>121 จุดทั่ว 50 เขต (สวนสาธารณะ 35 แห่ง + พื้นที่จัดงาน 86 แห่ง) ไฮไลท์: ป้อมมหากาฬ, สะพานพระราม 8, ป้อมพระสุเมรุ, คลองเปรมประชากร (จตุจักร–ดอนเมือง)</td>
+          <td>16/17–29 พ.ย. 2569 (วันเพ็ญหลัก 24 พ.ย.)</td>
+          <td>สวนสาธารณะเปิดถึง 24:00 น. ในวันที่ 24 พ.ย.</td>
+          <td>Cultural Event — งานลอยกระทงหลักของ กทม. เข้าชมฟรี รณรงค์ใช้กระทงวัสดุธรรมชาติ งดกระทงขนมปัง/โฟม มีช่องทางลอยกระทงออนไลน์</td>
+          <td><a href="https://www.dailynews.co.th/news/6364099/" target="_blank" rel="noopener">Daily News</a>, <a href="https://www.thaipbs.or.th/now/content/572993" target="_blank" rel="noopener">Thai PBS</a>, <a href="https://www.thansettakij.com/lifestyle/673868" target="_blank" rel="noopener">Thansettakij</a> ✅</td>
+        </tr>
+        <tr>
+          <td>Song Wat Week 2026</td>
+          <td>ย่านทรงวาด–เจริญกรุง (ไชน่าทาวน์ริมแม่น้ำ)</td>
+          <td>19–22 พ.ย. 2569 (จบวันนี้)</td>
+          <td>ตามจุดจัดกิจกรรม</td>
+          <td>Lifestyle Event — ป็อปอัพงานออกแบบ ของกิน และศิลปะในย่านทรงวาด เข้าชมฟรี</td>
+          <td><a href="https://www.timeout.com/bangkok/th/news/song-wat-week-2026-returns-to-bangkok-this-november-100526" target="_blank" rel="noopener">Time Out Bangkok</a>, <a href="https://www.thairath.co.th/lifestyle/life/2971901" target="_blank" rel="noopener">Thairath</a> ✅</td>
+        </tr>
+        <tr>
+          <td>EM District "SHOPAHOLIC" & "CRAZY DELICIOUS" <span class="badge">🔄</span></td>
+          <td>EmSphere / EmQuartier / EMPORIUM</td>
+          <td>1 ต.ค.–26 พ.ย. 2569 (ใกล้จบ)</td>
+          <td>-</td>
+          <td>Mall Promotion — คูปองช้อปปิ้ง-ดินนิ่งร่วมกับบัตร ttb และ Krungsri มูลค่าคูปองรวมสูงสุด 36,000 บาท เหลือเวลาไม่ถึง 1 สัปดาห์</td>
+          <td><a href="https://www.naewna.com/n/?p=109125" target="_blank" rel="noopener">แนวหน้า</a> ✅ (สืบทอดการยืนยัน)</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">งานที่จบไปแล้วก่อนวันนี้และตัดออกจากรายงาน: Thailand Smart City Expo 2026 × Secutech Thailand (จบ 20 พ.ย.)</div>
+  </section>
+
+  <section>
+    <h2>📅 งานที่กำลังจะมาถึง (7–14 วัน)</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>งาน</th><th>สถานที่</th><th>วันที่</th><th>ประเภท</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>ทรงวาดนฤมิต (LOY KRATHONG SONG WAT 2026) <span class="badge">❓</span></td>
+          <td>ย่านเมืองเก่าทรงวาด ริมแม่น้ำเจ้าพระยา</td>
+          <td>23–24 พ.ย. 2569</td>
+          <td>Cultural Event — แนวคิด "Where Tradition Meets Tomorrow" ขบวนพาเหรด รถตุ๊กตุ๊กประดับไฟ โดรนแปรอักษร 150 ลำ พลุกลางน้ำ และกิจกรรมลอยกระทงดิจิทัล</td>
+          <td><a href="https://www.thairath.co.th/lifestyle/life/2971901" target="_blank" rel="noopener">Thairath</a> ❓ (ยืนยันรายละเอียดโปรแกรมได้แหล่งเดียว แต่ช่วงวันที่สอดคล้องกับข่าวลอยกระทงหลัก)</td>
+        </tr>
+        <tr>
+          <td>DigiTech ASEAN Thailand & AI Connect 2026</td>
+          <td>Hall 7–8, IMPACT Exhibition & Convention Center เมืองทองธานี, นนทบุรี</td>
+          <td>25–27 พ.ย. 2569</td>
+          <td>Trade Fair (B2B) — กว่า 400 แบรนด์เทคโนโลยีจาก 15 ประเทศ เวลา 10:00–18:00 น. เข้าชมฟรี</td>
+          <td><a href="https://www.impact.co.th/en/visitors/event-calendar/exhibition-trade/digitech-asean-thailand-ai-connect-2026" target="_blank" rel="noopener">IMPACT (official)</a>, <a href="https://en.thairath.co.th/news/local/2944545" target="_blank" rel="noopener">Thairath</a> ✅ (สืบทอดการยืนยัน)</td>
+        </tr>
+        <tr>
+          <td>FIND – Design Fair Asia 2026</td>
+          <td>Exhibition Hall 2, ศูนย์การประชุมแห่งชาติสิริกิติ์ (QSNCC)</td>
+          <td>26–28 พ.ย. 2569</td>
+          <td>Trade Fair (B2B) — งานแสดงสินค้าออกแบบและเฟอร์นิเจอร์ครั้งแรกในไทย โดย Fiera Milano Asia Pacific ร่วมกับ TIDA เวลา 10:00–18:00 น. (28 พ.ย. ปิด 17:00 น.)</td>
+          <td><a href="https://www.qsncc.com/en/whats-on/event-calendar/find-design-fair-asia-2026" target="_blank" rel="noopener">QSNCC (official)</a> ✅ (สืบทอดการยืนยัน)</td>
+        </tr>
+        <tr>
+          <td>COMMART AIFORCE 2026</td>
+          <td>Exhibition Hall EH98–99, ศูนย์การประชุมแห่งชาติไบเทค บางนา</td>
+          <td>26–29 พ.ย. 2569</td>
+          <td>IT Fair — มหกรรมสินค้าไอทีส่งท้ายปี ธีม "โปรแรง สเปกล้ำ ช้อปมันส์ทุก Gen" โซน AIFORCE โดย NVIDIA เป็นผู้สนับสนุนหลัก เวลา 10:00–21:00 น. เข้าชมฟรี</td>
+          <td><a href="https://www.naewna.com/n/?p=127567" target="_blank" rel="noopener">แนวหน้า</a>, <a href="https://www.dailynews.co.th/news/6302900/" target="_blank" rel="noopener">Daily News</a> ✅</td>
+        </tr>
+        <tr>
+          <td>The Mall Lifestore Bangkapi "HAPPINESS HEADQUARTERS" <span class="badge">❓</span></td>
+          <td>The Mall Lifestore บางกะปิ</td>
+          <td>4 ธ.ค. 2569–5 ม.ค. 2570</td>
+          <td>Mall Promotion/Seasonal — แคมเปญปลายปีของ The Mall Group เน้นสร้างความสุขให้ครอบครัว</td>
+          <td><a href="https://www.nationthailand.com/pr-news/40073180" target="_blank" rel="noopener">Nation Thailand (PR)</a> ❓ (ยืนยันแหล่งเดียว ยังไม่พบประกาศทางการของ The Mall Group เพิ่มเติม)</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note">หมายเหตุ: ICONSIAM ประกาศเป็นเจ้าภาพ "Amazing Thailand Countdown 2027" (27–31 ธ.ค. 2569) ในสัปดาห์นี้ แต่วันจัดงานอยู่นอกกรอบ 7–14 วันของตารางนี้ จึงนำไปแสดงในหมวด 📰 Brand News และ 👀 Watch List แทน</div>
+  </section>
+
+  <section>
+    <h2>💸 โปรโมชันตามหมวด</h2>
+
+    <h3>💻 Electronics & IT</h3>
+    <p style="max-width:78ch;">ดูรายละเอียด COMMART AIFORCE 2026 (26–29 พ.ย., BITEC บางนา) ในหมวดงานที่กำลังจะมาถึง</p>
+
+    <h3>👕 Fashion</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>🛋 Home & Furniture</h3>
+    <p style="max-width:78ch;">ดูรายละเอียด FIND Design Fair Asia 2026 (26–28 พ.ย., QSNCC) ในหมวดงานที่กำลังจะมาถึง — เป็นงานแสดงสินค้า B2B ไม่ใช่โปรโมชันผู้บริโภคโดยตรง</p>
+
+    <h3>🍜 Food & Beverage</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญใหม่ในช่วงสัปดาห์นี้</p>
+
+    <h3>💄 Health & Beauty</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</p>
+
+    <h3>🎁 Other</h3>
+    <p style="max-width:78ch;">ดูรายละเอียดแคมเปญไฮซีซั่นปลายปีของห้างสรรพสินค้า (ICONSIAM, EM District, ONESIAM, centralwOrld, Robinson) ในหมวดโปรโมชันศูนย์การค้าด้านล่าง</p>
+  </section>
+
+  <section>
+    <h2>🏬 โปรโมชันศูนย์การค้า</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>ศูนย์การค้า</th><th>สาขา</th><th>โปรโมชัน</th><th>ระยะเวลา</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>ICONSIAM <span class="badge">🔄</span></td><td>River Park / ICONSIAM Park</td><td>BANGKOK ILLUMINATION 2026 — ต้นคริสต์มาส 21 เมตรริมแม่น้ำเจ้าพระยา เข้าชมฟรี</td><td>1 พ.ย.–25 ธ.ค. 2569</td><td>แนวหน้า, Thai Post, Brand Buffet ✅ (สืบทอดการยืนยัน)</td></tr>
+        <tr><td>EM District</td><td>Emporium / EmQuartier / EmSphere</td><td>"WINTER WONDERLAND 2026" งบลงทุน 200 ล้านบาท พร้อม "EM DISTRICT KIDS' WORLD COUNTDOWN 2027" แคมเปญเคานต์ดาวน์ครอบครัวแรกของไทย</td><td>1 พ.ย. 2569–3 ม.ค. 2570</td><td><a href="https://www.brandbuffet.in.th/?p=310331" target="_blank" rel="noopener">Brand Buffet</a>, <a href="https://www.thansettakij.com/business/marketing/673798" target="_blank" rel="noopener">Thansettakij</a>, <a href="https://www.naewna.com/n/?p=156873" target="_blank" rel="noopener">แนวหน้า</a>, Bangkok Biznews ✅</td></tr>
+        <tr><td>EM District <span class="badge">🔄</span></td><td>Emporium / EmQuartier / EmSphere</td><td>"SHOPAHOLIC" & "CRAZY DELICIOUS" — คูปองช้อปปิ้ง-ดินนิ่งรวมสูงสุด 36,000 บาท (ใกล้จบ)</td><td>1 ต.ค.–26 พ.ย. 2569</td><td>แนวหน้า ✅ (สืบทอดการยืนยัน)</td></tr>
+        <tr><td>Siam Paragon / Siam Center / Siam Discovery (ONESIAM)</td><td>สยามพารากอน, สยามเซ็นเตอร์, สยามดิสคัฟเวอรี่</td><td>"The Magical Celebration 2027" — สยามพารากอนจัดต้นคริสต์มาสสไตล์ Dior Gingerbread และ Magical Town, สยามดิสคัฟเวอรี่ธีม "Gift from Outer Space", สยามเซ็นเตอร์ร่วมกับ PP KRIT; พารากอนมีงาน "Magical Countdown Celebration 2027" 28–31 ธ.ค. ร่วมกับศิลปิน POND PHUWIN, ATLAS, MILLI, THREE MAN DOWN, 4EVE</td><td>สยามพารากอน/สยามดิสคัฟเวอรี่: 1/6 พ.ย. 2569–10 ม.ค. 2570 (สยามเซ็นเตอร์ยังไม่ยืนยันวันที่แน่ชัด)</td><td><a href="https://www.timeout.com/bangkok/things-to-do/kick-off-the-festive-season-beneath-diors-spectacular-gingerbread-christmas-tree" target="_blank" rel="noopener">Time Out Bangkok</a>, Marketeer, <a href="https://www.marketingoops.com/?p=375631" target="_blank" rel="noopener">Marketing Oops</a> ✅</td></tr>
+        <tr><td>centralwOrld</td><td>centralwOrld</td><td>Disney Pixar "A Celebration of Wonders centralwOrld 2027" — ต้นคริสต์มาสออกแบบใหม่ครั้งแรกใน 20 ปี มีคืนภาพยนตร์ (Beauty and the Beast 5 ธ.ค., Cinderella 12 ธ.ค., Monsters Inc. 19 ธ.ค., Frozen 25 ธ.ค., Frozen II 26 ธ.ค.) ถ่ายรูปกับซานตา 24–25 ธ.ค. ต่อด้วย centralwOrld Bangkok Countdown Music Festival 21–30 ธ.ค.</td><td>12 พ.ย. 2569–3 ม.ค. 2570</td><td>Thairath, <a href="https://thestandard.co/centralworld-disney-the-magical-stars-2026/" target="_blank" rel="noopener">The Standard</a>, Time Out Thailand ✅</td></tr>
+        <tr><td>Robinson</td><td>สาขาทั่วประเทศ</td><td>"SEASON OF GIVING 2027" พร้อม "ROBIN SNOW TOWN" เมืองหิมะแห่งแรกของห้าง, โปรโมชัน 3 ระลอก, สติกเกอร์ลดเพิ่มสูงสุด 20% (บางแหล่งระบุลดสูงสุด 80% พร้อมของรางวัลรวมกว่า 8.9 ล้านบาท ตัวเลขไม่ตรงกัน ควรตรวจสอบซ้ำ) <span class="badge">❓</span></td><td>6 พ.ย. 2569–10 ม.ค. 2570</td><td><a href="https://www.thaipost.net/economy-news/1101358/" target="_blank" rel="noopener">Thai Post</a>, <a href="https://www.naewna.com/n/?p=162311" target="_blank" rel="noopener">แนวหน้า</a>, Marketeer, Wealthythai ✅ (ตัวเลขส่วนลดขัดแย้งกัน — ดูหมายเหตุ Cross Validation)</td></tr>
+        <tr><td>Robinson</td><td>สาขาทั่วประเทศ</td><td>"ROBINSON BLACK FRIDAY" ลดสูงสุด 70% จากกว่า 50 แบรนด์ พร้อมคูปอง/เครดิตเงินคืนรวมสูงสุด 7,500 บาท และโปรโมชันเสริม "5 ต่อสุดคุ้ม" (27–29 พ.ย.) <span class="badge">❓</span></td><td>25 พ.ย.–7 ธ.ค. 2569</td><td><a href="https://www.thaipost.net/economy-news/1101358/" target="_blank" rel="noopener">Thai Post</a> ❓ (ยืนยันแหล่งเดียว ยังหาแหล่งที่สองไม่พบในรอบนี้)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="empty">Siam Paragon/Center/Discovery (วันที่เซ็นเตอร์ยังไม่ยืนยัน), MBK Center, Terminal 21, The Mall (นอกเหนือจาก Lifestore บางกะปิ), Big C, Lotus's, Makro: ไม่พบโปรโมชันไฮซีซั่นปลายปี 2569–2570 ที่ระบุวันที่ชัดเจนและยืนยันแหล่งที่มาได้ในสัปดาห์นี้ — ดู Watch List</p>
+  </section>
+
+  <section>
+    <h2>🛒 E-Commerce Campaigns</h2>
+    <p class="empty">ไม่มีข้อมูลสำคัญที่ยืนยันได้ในสัปดาห์นี้ — ยังไม่พบประกาศทางการของแคมเปญ 12.12 ปี 2569 จาก Shopee, Lazada หรือ TikTok Shop ประเทศไทย พบเพียงข้อมูลผลประกอบการแคมเปญ 12.12 ปี 2024–2025 ซึ่งอยู่นอกกรอบเวลารายงานนี้ ควรตรวจสอบใกล้วันที่ 12 ธ.ค. 2569</p>
+  </section>
+
+  <section>
+    <h2>📰 Brand News</h2>
+
+    <h3>New Store</h3>
+    <p style="max-width:78ch;">One Bangkok Retail ประกาศเปิดพื้นที่ไนท์ไลฟ์ใหม่ 3 แห่งจาก Tic Tac Toe Group ได้แก่ Yoru, Checkmate และ Hotline ภายในเดือนพฤศจิกายน 2569 แต่ยังไม่พบวันเปิดที่แน่นอน <span class="badge">❓</span> — <a href="https://www.thaipr.net/?p=3766385" target="_blank" rel="noopener">ThaiPR.net / One Bangkok Retail</a></p>
+
+    <h3>Campaign</h3>
+    <p style="max-width:78ch;">ICONSIAM ประกาศเป็นเจ้าภาพ "Amazing Thailand Countdown 2027" งานฉลองปีใหม่ 5 วัน 5 คืน ที่ River Park ICONSIAM พร้อมพลุระยะทางยาวถึง 1,400 เมตร ชูให้ไทยเป็นหนึ่งในจุดหมายเคานต์ดาวน์ระดับโลก ประกาศในสัปดาห์นี้ (16–19 พ.ย.)</p>
+    <table style="margin:0;"><tbody><tr><td style="border:none;padding:0;"><b>วันที่จัดงาน:</b> 27–31 ธ.ค. 2569 · <b>Source:</b> <a href="https://www.tatnews.org/?p=89975" target="_blank" rel="noopener">TAT News</a>, <a href="https://www.nationthailand.com/thailand/bangkok/40073564" target="_blank" rel="noopener">Nation Thailand</a>, <a href="https://www.pattayamail.com/thailandnews/bangkok-prepares-for-spectacular-five-day-amazing-thailand-countdown-2027-571818" target="_blank" rel="noopener">Pattaya Mail</a> ✅</td></tr></tbody></table>
+
+    <h3>Seasonal Promotion</h3>
+    <p>ดูรายละเอียด EM District Winter Wonderland, ONESIAM Magical Celebration, centralwOrld Disney Pixar event และ Robinson Season of Giving ในหมวดโปรโมชันศูนย์การค้าข้างต้น</p>
+
+    <h3>Limited-Time Sale</h3>
+    <p>ดูรายละเอียด ROBINSON BLACK FRIDAY (25 พ.ย.–7 ธ.ค.) และ EM District SHOPAHOLIC/CRAZY DELICIOUS (ใกล้จบ 26 พ.ย.) ในหมวดโปรโมชันศูนย์การค้า</p>
+
+    <h3>Product Launch</h3>
+    <p class="empty">ไม่มีข้อมูลสำคัญในช่วงกรอบเวลารายงานนี้</p>
+  </section>
+
+  <section>
+    <h2>📍 แนะนำตามพื้นที่</h2>
+    <ul>
+      <li><b>กรุงเทพฯ ชั้นใน:</b> Bangkok Art Biennale 2026 (ทั่วเมือง, ต่อเนื่องถึง ก.พ. 2570), Vijit Chao Phraya 2026 (ริมแม่น้ำเจ้าพระยา, ถึง 13 ธ.ค.), เทศกาลลอยกระทงกรุงเทพมหานคร (121 จุด, วันเพ็ญหลัก 24 พ.ย.), Song Wat Week (ทรงวาด, จบ 22 พ.ย.), ทรงวาดนฤมิต (23–24 พ.ย.), ICONSIAM BANGKOK ILLUMINATION (ถึง 25 ธ.ค.), EM District Winter Wonderland (ถึง 3 ม.ค.), ONESIAM Magical Celebration 2027, centralwOrld Disney Pixar event, FIND Design Fair Asia (QSNCC, 26–28 พ.ย.)</li>
+      <li><b>กรุงเทพฯ เหนือ:</b> เทศกาลลอยกระทงกรุงเทพฯ จุดคลองเปรมประชากร (เขตจตุจักร–ดอนเมือง, 24 พ.ย.)</li>
+      <li><b>กรุงเทพฯ ตะวันออก:</b> COMMART AIFORCE 2026 (BITEC บางนา, 26–29 พ.ย.), The Mall Lifestore บางกะปิ "HAPPINESS HEADQUARTERS" (4 ธ.ค.–5 ม.ค.)</li>
+      <li><b>กรุงเทพฯ ตะวันตก:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นนทบุรี:</b> DigiTech ASEAN Thailand & AI Connect 2026 ที่ IMPACT เมืองทองธานี (25–27 พ.ย. 2569)</li>
+      <li><b>ปทุมธานี:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรปราการ:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>สมุทรสาคร:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+      <li><b>นครปฐม:</b> <span class="empty">ไม่มีข้อมูลสำคัญในช่วงสัปดาห์นี้</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💡 Best Deals</h2>
+    <div class="deal">
+      <h4>🖤 ROBINSON BLACK FRIDAY</h4>
+      <p style="margin:0;">ลดสูงสุด 70% จากกว่า 50 แบรนด์ พร้อมคูปอง/เครดิตเงินคืนรวมสูงสุด 7,500 บาท และโปรโมชันเสริม "5 ต่อสุดคุ้ม" ช่วง 27–29 พ.ย. เหมาะสำหรับคนรอช้อปสินค้าหลากหมวดในจังหวะเดียว</p>
+      <div class="meta">ระยะเวลา: 25 พ.ย.–7 ธ.ค. 2569 · Source: Thai Post</div>
+    </div>
+    <div class="deal">
+      <h4>🛍 EM District "SHOPAHOLIC" & "CRAZY DELICIOUS" (ใกล้จบ)</h4>
+      <p style="margin:0;">แคมเปญรวมช้อปปิ้ง-ดินนิ่งที่ Emporium, EmQuartier และ EmSphere มูลค่าคูปองรวมสูงสุด 36,000 บาท ร่วมกับบัตร ttb และ Krungsri เหลือเวลาไม่ถึง 1 สัปดาห์ ควรเร่งใช้สิทธิ์ก่อน 26 พ.ย.</p>
+      <div class="meta">ระยะเวลา: 1 ต.ค.–26 พ.ย. 2569 · Source: แนวหน้า</div>
+    </div>
+    <div class="deal">
+      <h4>🏮 เทศกาลลอยกระทงกรุงเทพมหานคร 2569</h4>
+      <p style="margin:0;">งานลอยกระทงหลักของ กทม. 121 จุดทั่วเมือง เข้าชมฟรี สวนสาธารณะ 35 แห่งเปิดถึงเที่ยงคืนในวันเพ็ญหลัก 24 พ.ย. เหมาะสำหรับครอบครัวและนักท่องเที่ยว</p>
+      <div class="meta">ระยะเวลา: 16/17–29 พ.ย. 2569 · Source: Daily News, Thai PBS</div>
+    </div>
+    <div class="deal">
+      <h4>🎄 ICONSIAM BANGKOK ILLUMINATION 2026</h4>
+      <p style="margin:0;">ต้นคริสต์มาสสูงกว่า 21 เมตรริมแม่น้ำเจ้าพระยา พร้อมแสง สี เสียง เข้าชมฟรี เหมาะสำหรับครอบครัวและคนที่อยากถ่ายรูปรับเทศกาลปลายปี</p>
+      <div class="meta">ระยะเวลา: 1 พ.ย.–25 ธ.ค. 2569 · Source: แนวหน้า, Thai Post, Brand Buffet</div>
+    </div>
+    <div class="deal">
+      <h4>❄️ Robinson "ROBIN SNOW TOWN" (Season of Giving 2027)</h4>
+      <p style="margin:0;">เมืองหิมะแห่งแรกของห้างโรบินสัน พร้อมกิจกรรมความบันเทิงและจุดเช็กอินรับเทศกาลปลายปี เข้าชมได้ยาวจนถึงต้นปี 2570 เหมาะสำหรับครอบครัวที่มีเด็ก</p>
+      <div class="meta">ระยะเวลา: 6 พ.ย. 2569–10 ม.ค. 2570 · Source: Thai Post, แนวหน้า</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📅 Event Calendar</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>วันที่</th><th>งาน</th><th>สถานที่</th><th>ประเภท</th></tr></thead>
+      <tbody>
+        <tr><td>29 ต.ค. (ถึง 28 ก.พ. 2570)</td><td>Bangkok Art Biennale 2026 🔄</td><td>ทั่วเมือง</td><td>Exhibition</td></tr>
+        <tr><td>1 พ.ย.–25 ธ.ค.</td><td>ICONSIAM BANGKOK ILLUMINATION 2026 🔄</td><td>ICONSIAM</td><td>Mall Promotion</td></tr>
+        <tr><td>1 พ.ย.–3 ม.ค.</td><td>EM District WINTER WONDERLAND 2026</td><td>Emporium/EmQuartier/EmSphere</td><td>Mall Promotion</td></tr>
+        <tr><td>1/6 พ.ย.–10 ม.ค.</td><td>ONESIAM The Magical Celebration 2027</td><td>Siam Paragon/Center/Discovery</td><td>Mall Promotion</td></tr>
+        <tr><td>6 พ.ย.–10 ม.ค.</td><td>Robinson Season of Giving 2027 / ROBIN SNOW TOWN</td><td>สาขาทั่วประเทศ</td><td>Mall Promotion</td></tr>
+        <tr><td>12 พ.ย.–3 ม.ค.</td><td>centralwOrld × Disney Pixar "A Celebration of Wonders 2027"</td><td>centralwOrld</td><td>Mall Promotion</td></tr>
+        <tr><td>13 พ.ย.–13 ธ.ค.</td><td>Vijit Chao Phraya 2026 🔄</td><td>ริมแม่น้ำเจ้าพระยา</td><td>Lifestyle Event</td></tr>
+        <tr><td>16/17–29 พ.ย.</td><td>เทศกาลลอยกระทงกรุงเทพมหานคร 2569 (วันเพ็ญหลัก 24 พ.ย.)</td><td>121 จุดทั่วกรุงเทพฯ</td><td>Cultural Event</td></tr>
+        <tr><td>19–22 พ.ย.</td><td>Song Wat Week 2026 (จบวันนี้)</td><td>ย่านทรงวาด</td><td>Lifestyle Event</td></tr>
+        <tr><td>23–24 พ.ย. ❓</td><td>ทรงวาดนฤมิต (Loy Krathong Song Wat)</td><td>ทรงวาด ริมแม่น้ำเจ้าพระยา</td><td>Cultural Event</td></tr>
+        <tr><td>25–27 พ.ย.</td><td>DigiTech ASEAN Thailand & AI Connect 2026</td><td>IMPACT เมืองทองธานี</td><td>Trade Fair (B2B)</td></tr>
+        <tr><td>25 พ.ย.–7 ธ.ค. ❓</td><td>ROBINSON BLACK FRIDAY</td><td>สาขาทั่วประเทศ</td><td>Mall Promotion</td></tr>
+        <tr><td>26 พ.ย.</td><td>EM District SHOPAHOLIC/CRAZY DELICIOUS สิ้นสุด 🔄</td><td>Emporium, EmQuartier, EmSphere</td><td>Mall Promotion</td></tr>
+        <tr><td>26–28 พ.ย.</td><td>FIND – Design Fair Asia 2026</td><td>QSNCC</td><td>Trade Fair (B2B)</td></tr>
+        <tr><td>26–29 พ.ย.</td><td>COMMART AIFORCE 2026</td><td>ไบเทค บางนา</td><td>IT Fair</td></tr>
+        <tr><td>4 ธ.ค.–5 ม.ค. ❓</td><td>The Mall Lifestore "HAPPINESS HEADQUARTERS"</td><td>The Mall Lifestore บางกะปิ</td><td>Mall Promotion</td></tr>
+        <tr><td>27–31 ธ.ค.</td><td>Amazing Thailand Countdown 2027 (ประกาศสัปดาห์นี้)</td><td>River Park, ICONSIAM</td><td>Brand Campaign</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">4</div><div class="lbl">Events</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Exhibitions</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Trade Fairs</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Promotions</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">Mall Campaigns</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Brand Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">E-Commerce Campaigns</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">New Store Openings</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <ul>
+      <li><b>แคมเปญ 12.12 ของ Shopee / Lazada / TikTok Shop</b> — ยังไม่พบประกาศทางการสำหรับปี 2569 ควรติดตามใกล้วันที่ 12 ธ.ค.</li>
+      <li><b>Robinson Season of Giving 2027 — ตัวเลขส่วนลด</b> — แหล่งข่าวระบุไม่ตรงกันระหว่างสติกเกอร์ลด 20% กับส่วนลดสูงสุด 80% ควรตรวจสอบกับเว็บไซต์/แอปโรบินสันโดยตรงก่อนใช้สิทธิ์</li>
+      <li><b>ROBINSON BLACK FRIDAY</b> — ยืนยันได้แหล่งเดียว (Thai Post) ยังไม่พบแหล่งที่สอง ควรยืนยันซ้ำ</li>
+      <li><b>The Mall Lifestore บางกะปิ "HAPPINESS HEADQUARTERS"</b> — ยืนยันแหล่งเดียวผ่านข่าวประชาสัมพันธ์ ยังไม่พบประกาศทางการของ The Mall Group เพิ่มเติม</li>
+      <li><b>Yoru, Checkmate, Hotline ที่ One Bangkok</b> — ประกาศเปิดภายในเดือนพฤศจิกายน 2569 แต่ยังไม่มีวันที่แน่นอน</li>
+      <li><b>Siam Center — วันที่แน่ชัดของ "The Magical Celebration 2027"</b> — ยังไม่พบวันเริ่ม/จบที่ยืนยันได้ ขณะที่สยามพารากอนและสยามดิสคัฟเวอรี่ยืนยันแล้ว</li>
+      <li><b>ทรงวาดนฤมิต</b> — รายละเอียดโปรแกรมยืนยันได้แหล่งเดียว (Thairath) ควรยืนยันซ้ำกับประกาศทางการก่อนไปเที่ยว</li>
+      <li><b>MBK Center, Terminal 21, Big C, Lotus's, Makro</b> — ยังไม่พบแคมเปญไฮซีซั่นปลายปี 2569–2570 ที่ยืนยันแหล่งที่มาได้ ควรตรวจสอบสัปดาห์หน้า</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <p>thailand.go.th (TAT), tatnews.org, qsncc.com, impact.co.th, secutechthailand.tw.messefrankfurt.com (ผ่านผลค้นหา — ไม่สามารถเปิดหน้าเว็บโดยตรงได้ในสิ่งแวดล้อมนี้)</p>
+    <h3>Event Platforms</h3>
+    <p>ไม่พบรายการเพิ่มเติมจาก Eventpop/Ticketmelon ที่เข้าถึงได้ตรงในกรอบเวลานี้ — ใช้ WebSearch แทนตามขั้นตอนสำรอง</p>
+    <h3>Trusted Sources</h3>
+    <p>Nation Thailand, Bangkok Post, Time Out Bangkok, Thairath, แนวหน้า (naewna.com), Thai Post (thaipost.net), Thansettakij, Marketeer, Brand Buffet, Marketing Oops, Bangkok Biznews, Daily News, Thai PBS, Pattaya Mail, The Star (Malaysia), Wealthythai, Prachachat, The Standard</p>
+    <h3>Community (Verification Only)</h3>
+    <p>— ไม่มีการใช้ในรอบนี้</p>
+    <div class="note limit">
+      <b>ข้อจำกัดของข้อมูล:</b> เว็บไซต์ทางการของห้าง/ผู้จัดงานหลายแห่ง (ICONSIAM, EM District/EmSphere, ONESIAM, centralwOrld, Robinson/Central Retail) เข้าถึงโดยตรงไม่ได้ในสิ่งแวดล้อมของรอบเก็บข้อมูลนี้ จึงใช้ WebSearch แทนตามขั้นตอนสำรองสำหรับรายการเหล่านี้ ทรงวาดนฤมิตและ ROBINSON BLACK FRIDAY ยืนยันได้จากแหล่งเดียวเท่านั้น จึงมีเครื่องหมาย ❓ ประกอบ ตัวเลขส่วนลดของ Robinson Season of Giving 2027 ขัดแย้งกันระหว่างสองข่าวประชาสัมพันธ์ (20% กับ 80%) จึงแสดงทั้งสองตัวเลขไว้พร้อมหมายเหตุ ไม่พบโปรโมชันไฮซีซั่นปลายปีที่ยืนยันได้ที่ MBK Center, Terminal 21, Big C, Lotus's และ Makro ในสัปดาห์นี้ ดูรายละเอียดใน Watch List<br><br>
+      <b>UNCERTAIN:</b> iconsiam.com, emsphere.co.th, onesiam.com, centralworld.co.th, robinson.co.th, central.co.th (บางหน้า) — เข้าถึงหน้าเว็บโดยตรงไม่ได้สม่ำเสมอในรอบเก็บข้อมูลนี้ (โดเมนนอกขอบเขตเครือข่ายของสิ่งแวดล้อมนี้) ใช้ผลค้นหาแทน ควรมีการตรวจสอบซ้ำผ่านการเปิดหน้าเว็บโดยตรงในรอบถัดไปหากเป็นไปได้
+    </div>
+  </section>
+
+  <section>
+    <h2>🔎 แนวโน้มสัปดาห์นี้</h2>
+    <p>สัปดาห์นี้กรุงเทพฯ เข้าสู่จุดสูงสุดของปฏิทินเทศกาลประจำปีสองช่วงพร้อมกัน คือเทศกาลลอยกระทงที่มีวันเพ็ญหลักตรงกับ 24 พ.ย. ซึ่ง กทม. ขยายพื้นที่จัดงานถึง 121 จุดทั่วเมืองและเชื่อมโยงกับงานย่านทรงวาดต่อเนื่องสองสัปดาห์ (Song Wat Week + ทรงวาดนฤมิต) สะท้อนการใช้พื้นที่ริมแม่น้ำและชุมชนเก่าเป็นจุดขายด้านการท่องเที่ยวและไลฟ์สไตล์มากขึ้นทุกปี และช่วงเริ่มต้นของไฮซีซั่นปลายปีที่ห้างสรรพสินค้าเครือใหญ่ทุกแห่งเปิดแคมเปญพร้อมกันในรอบสัปดาห์นี้ ทั้ง ICONSIAM, EM District, ONESIAM, centralwOrld และ Robinson ซึ่งลงทุนสูงถึงระดับร้อยล้านบาทต่อแคมเปญ (EM District ประกาศงบ 200 ล้านบาท) และเริ่มขยายจากการจัดพื้นที่ถ่ายรูป/ต้นคริสต์มาสไปสู่ประสบการณ์เชิงลึกมากขึ้น เช่น เมืองหิมะของโรบินสันและคอลแลบกับ Disney Pixar ของ centralwOrld นอกจากนี้ ICONSIAM ยังประกาศเป็นเจ้าภาพงานเคานต์ดาวน์ระดับประเทศในสัปดาห์นี้ ตอกย้ำสถานะกรุงเทพฯ เป็นจุดหมายเคานต์ดาวน์สำคัญของภูมิภาค ด้านฝั่งการค้าแบบลดราคาตรง Robinson เป็นเครือแรกที่ประกาศแคมเปญสไตล์ Black Friday อย่างชัดเจนในปีนี้ ขณะที่ห้างใหญ่อื่น (Central, Big C, Lotus's) ยังไม่มีแคมเปญลดราคาแบบเทศกาลตะวันตกที่ยืนยันได้ จุดที่ยังต้องติดตามต่อเนื่องคือแคมเปญอีคอมเมิร์ซ 12.12 ที่ยังไม่มีประกาศทางการ ซึ่งต่างจากปีก่อนที่แพลตฟอร์มใหญ่มักเริ่มประกาศล่วงหน้าตั้งแต่ปลายเดือน พ.ย. และยังต้องตรวจสอบตัวเลขส่วนลดที่ขัดแย้งกันในแคมเปญของ Robinson ก่อนนำไปใช้จริง</p>
+  </section>
+
+  <section>
+    <h2>Labels</h2>
+    <div class="legend">
+      <span>✅ Official</span>
+      <span>🎪 Event</span>
+      <span>🛍 Promotion</span>
+      <span>🏬 Shopping Mall</span>
+      <span>🛒 E-Commerce</span>
+      <span>🔄 Continuing Event</span>
+      <span>🔥 Popular Event</span>
+      <span>❓ Information Incomplete</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Weekly Bangkok Sales & Events Report · 22 Nov 2026 (Week 47)</p>
+    <p><a href="/">Back to Home</a> · <a href="./">Back to Category</a></p>
+  </footer>
+</div>
+</body>
+</html>
