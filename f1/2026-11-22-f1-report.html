@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รายงาน F1 ประจำสัปดาห์ — 22 พฤศจิกายน 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27,32,39,0.14);
+  --line-strong: rgba(27,32,39,0.28);
+  --accent: #0F7A73;
+  --red: #C83C3C;
+  --gold: #B8860B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231,230,224,0.14);
+    --line-strong: rgba(231,230,224,0.26);
+    --accent: #3FBDAF;
+    --red: #EF6B6B;
+    --gold: #FFD700;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.topstrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.header {
+  padding: 40px 0 30px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.kicker {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.kicker::before { content: "◆ "; font-size: 10px; }
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:hover {
+  background: var(--surface-2);
+}
+
+.highlight {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.summary-box {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.warn-box {
+  background: var(--surface);
+  border-left: 4px solid var(--gold);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 2px;
+}
+
+.team-section {
+  margin: 20px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 2px;
+}
+
+.label {
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-radius: 2px;
+}
+
+.label.rumor { background: var(--gold); }
+.label.incomplete { background: var(--ink-faint); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.source {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  background: var(--surface);
+  padding: 12px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.note {
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .meta { flex-direction: column; gap: 8px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="header">
+    <p class="kicker">บทสรุปประจำสัปดาห์</p>
+    <h1>🏁 รายงาน Formula 1 ประจำสัปดาห์</h1>
+    <div class="meta">
+      <span>📅 16 – 22 พฤศจิกายน 2026</span>
+      <span>⏰ เวลา ICT (GMT+7)</span>
+      <span>📍 สัปดาห์ที่ 47</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 บทสรุปสั้น ๆ</h2>
+    <div class="summary-box">
+      <p>🏁 สัปดาห์นี้มีการแข่งขัน Las Vegas Grand Prix (20-21 พฤศจิกายน) ซึ่ง Max Verstappen (Red Bull) คว้าชัยชนะในการแข่งขันที่ดุเดือดมีการสลับตำแหน่งผู้นำหลายครั้ง นำหน้า Lando Norris และ Oscar Piastri ของ McLaren ที่ทำดับเบิลโพเดียม ขณะที่ Ferrari ต้องเผชิญดราม่าอีกครั้งเมื่อ Charles Leclerc ปะทะกับ Lewis Hamilton เพื่อนร่วมทีม จนถูกปรับโทษ 10 วินาทีและตกจากอันดับ 6 ไปอยู่ที่ 10 ด้านศึกชิงแชมป์ผู้สร้างรถอันดับ 3 ระหว่าง Red Bull Racing (440 คะแนน) และ McLaren (431 คะแนน) ยังสูสีเหลือเพียง 9 คะแนน ส่วนแชมป์โลกนักขับและผู้สร้างรถฤดูกาล 2026 นั้น Kimi Antonelli และ Mercedes คว้าไปแล้วก่อนหน้านี้ สัปดาห์หน้าการแข่งขันจะย้ายไปที่ Qatar Grand Prix (27-29 พฤศจิกายน) ซึ่งเป็นสนามรองสุดท้ายของฤดูกาล</p>
+    </div>
+    <div class="note">🔄 ข่าวต่อเนื่อง: Kimi Antonelli (Mercedes) คว้าแชมป์โลกนักขับไปแล้วตั้งแต่ Mexico City Grand Prix (1 พฤศจิกายน) และ Mercedes คว้าแชมป์โลกผู้สร้างรถสมัยที่ 9 ไปแล้วตั้งแต่ São Paulo Grand Prix (8 พฤศจิกายน) ทั้งสองรายการยังมีผลต่อบริบทของตารางคะแนนในสัปดาห์นี้ <span class="source">Source: Formula1.com, RaceFans</span></div>
+  </section>
+
+  <section>
+    <h2>🏆 Drivers Championship</h2>
+    <table>
+      <thead><tr><th>Rank</th><th>Driver</th><th>Team</th><th>Points</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td>1</td><td>Kimi Antonelli 🏆</td><td>Mercedes</td><td>402</td><td>—</td></tr>
+        <tr><td>2</td><td>Max Verstappen</td><td>Red Bull Racing</td><td>304</td><td>-98</td></tr>
+        <tr><td>3</td><td>Lewis Hamilton</td><td>Ferrari</td><td>267</td><td>-135</td></tr>
+        <tr><td>4</td><td>George Russell</td><td>Mercedes</td><td>264</td><td>-138</td></tr>
+        <tr><td>5</td><td>Lando Norris</td><td>McLaren</td><td>264</td><td>-138</td></tr>
+        <tr><td>6</td><td>Charles Leclerc</td><td>Ferrari</td><td>250</td><td>-152</td></tr>
+        <tr><td>7</td><td>Oscar Piastri</td><td>McLaren</td><td>167</td><td>-235</td></tr>
+        <tr><td>8</td><td>Isack Hadjar</td><td>Red Bull Racing</td><td>122</td><td>-280</td></tr>
+        <tr><td>9</td><td>Liam Lawson</td><td>Racing Bulls</td><td>89</td><td>-313</td></tr>
+        <tr><td>10</td><td>Pierre Gasly</td><td>Alpine</td><td>52</td><td>-350</td></tr>
+      </tbody>
+    </table>
+    <p class="source">✅ Source: Formula1.com, RaceFans — ยืนยันแล้วว่า Antonelli คว้าแชมป์โลกนักขับคนที่อายุน้อยที่สุดในประวัติศาสตร์ F1 ไปแล้วตั้งแต่สัปดาห์ก่อนหน้า ตารางนี้สะท้อนคะแนนหลังจบ Las Vegas Grand Prix (รอบที่ 21 จาก 23)</p>
+  </section>
+
+  <section>
+    <h2>🏎 Constructors Championship</h2>
+    <table>
+      <thead><tr><th>Rank</th><th>Team</th><th>Points</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td>1</td><td>Mercedes 🏆</td><td>666</td><td>—</td></tr>
+        <tr><td>2</td><td>Ferrari</td><td>517</td><td>-149</td></tr>
+        <tr><td>3</td><td>Red Bull Racing</td><td>440</td><td>-226</td></tr>
+        <tr><td>4</td><td>McLaren</td><td>431</td><td>-235</td></tr>
+        <tr><td>5</td><td>Racing Bulls</td><td>114</td><td>-552</td></tr>
+      </tbody>
+    </table>
+    <p class="source">✅ Source: Formula1.com, PlanetF1 — Mercedes คว้าแชมป์ผู้สร้างรถไปแล้ว ส่วน Ferrari มีแต้มเพียงพอที่จะปิดอันดับ 2 ได้เกือบแน่นอนหากทำแต้มเพิ่มอีก 10 คะแนนในสองสนามที่เหลือ ขณะที่ศึกอันดับ 3 ระหว่าง Red Bull Racing และ McLaren ยังสูสีห่างกันเพียง 9 คะแนน จากคะแนนสูงสุดที่เหลือ 86 คะแนนใน 2 สนาม</p>
+  </section>
+
+  <section>
+    <h2>🏁 Race Results — Las Vegas Grand Prix</h2>
+    <table>
+      <thead><tr><th>Pos</th><th>Driver</th><th>Team</th><th>Time / Status</th><th>Points</th><th>Fastest Lap</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td>1</td><td>Max Verstappen</td><td>Red Bull Racing</td><td>ชนะ</td><td>25</td><td></td><td>Formula1.com</td></tr>
+        <tr><td>2</td><td>Lando Norris</td><td>McLaren</td><td>+0.639s</td><td>18</td><td></td><td>Formula1.com</td></tr>
+        <tr><td>3</td><td>Oscar Piastri</td><td>McLaren</td><td>+1.529s</td><td>15</td><td></td><td>Formula1.com</td></tr>
+        <tr><td>4</td><td>Kimi Antonelli</td><td>Mercedes</td><td>Finished</td><td>12</td><td></td><td>Formula1.com</td></tr>
+        <tr><td>5</td><td>Pierre Gasly</td><td>Alpine</td><td>Finished</td><td>10</td><td></td><td>Formula1.com</td></tr>
+        <tr><td>6</td><td>Franco Colapinto</td><td>Alpine</td><td>Finished</td><td>8</td><td></td><td>Formula1.com</td></tr>
+        <tr><td>7</td><td>Lewis Hamilton</td><td>Ferrari</td><td>Finished (รวมโทษ 10s)</td><td>6</td><td></td><td>Formula1.com</td></tr>
+        <tr><td>8</td><td>Carlos Sainz</td><td>Williams</td><td>Finished</td><td>4</td><td></td><td>Formula1.com</td></tr>
+        <tr><td>9</td><td>George Russell</td><td>Mercedes</td><td>Finished</td><td>2</td><td></td><td>Formula1.com</td></tr>
+        <tr><td>10</td><td>Charles Leclerc</td><td>Ferrari</td><td>เข้าเส้นชัย P6 → ปรับเป็น P10 (โทษ 10s)</td><td>1</td><td></td><td>Formula1.com</td></tr>
+      </tbody>
+    </table>
+    <p class="source">✅ Source: Formula1.com, RaceFans, F1-Fansite — อันดับ 11 ลงไปมีความแตกต่างกันเล็กน้อยระหว่างแหล่งข้อมูล (เช่น ตำแหน่งของ Isack Hadjar ที่บางแหล่งระบุ P14 บางแหล่งระบุ P15) จึงไม่นำมาแสดงในตารางนี้ ❓ ข้อมูล Fastest Lap ของสนามนี้มีความขัดแย้งกันระหว่างแหล่งข่าว (บางแหล่งระบุ Hadjar บางแหล่งระบุ Lawson ด้วยเวลา 1:35.591) จึงไม่สามารถยืนยันได้ชัดเจนและละไว้ในตาราง</p>
+
+    <h3>สรุปการแข่งขัน</h3>
+    <div class="stats-grid">
+      <div class="stat-card"><b>Strategy</b><br>ทีมส่วนใหญ่ใช้สต็อปเดียว แต่สภาพแทร็กที่มีช่วงกลางคืนและอุณหภูมิยางเปลี่ยนแปลงทำให้เกิดการสลับตำแหน่งผู้นำหลายครั้งตลอดการแข่งขัน (รายงานหนึ่งระบุว่ามีการสลับตำแหน่งผู้นำถึง 35 ครั้ง แต่ตัวเลขนี้ยังไม่สามารถยืนยันข้ามแหล่งได้ชัดเจน ❓)</div>
+      <div class="stat-card"><b>Safety Car</b><br>มี Safety Car ออกมาประมาณรอบที่ 19-25 จากอุบัติเหตุของ Sergio Pérez และ Rafael Câmara บริเวณโค้ง 14-15 และมีการหมุนของ Arvid Lindblad ที่ทำให้ช่วงเซฟตี้คาร์ยืดออกไป</div>
+      <div class="stat-card"><b>Incidents</b><br>Charles Leclerc ปะทะกับ Lewis Hamilton เพื่อนร่วมทีมที่โค้ง 7 ในรอบที่ 38 สจ๊วตตัดสินว่า Leclerc ผิดทั้งหมด ได้รับโทษปรับเวลา 10 วินาที ส่วน Hamilton ได้รับโทษ 10 วินาทีแยกจากกรณีออกนอกแทร็กขณะต่อสู้กับ Norris</div>
+      <div class="stat-card"><b>Driver of the Day</b><br>❓ ไม่สามารถยืนยันผลโหวต Driver of the Day ของสนามนี้ได้จากแหล่งข้อมูลที่ตรวจสอบ</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>⏱ Qualifying — Las Vegas Grand Prix</h2>
+    <table>
+      <thead><tr><th>Pos (กริดจริง)</th><th>Driver</th><th>Team</th><th>หมายเหตุ</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td>1</td><td>Max Verstappen</td><td>Red Bull Racing</td><td>ได้โพลหลัง Antonelli ถูกปรับกริด 5 อันดับจากการเปลี่ยนเครื่องยนต์</td><td>Formula1.com</td></tr>
+        <tr><td>2</td><td>George Russell</td><td>Mercedes</td><td>ควอลิฟายได้ P2</td><td>Formula1.com, Sky Sports</td></tr>
+        <tr><td>—</td><td>Kimi Antonelli</td><td>Mercedes</td><td>ทำเวลาเร็วที่สุดในควอลิฟาย (เร็วกว่า Verstappen 0.258s) แต่ถูกปรับกริด 5 อันดับจากการเปลี่ยนเครื่องยนต์ ทำให้ออกสตาร์ทต่ำกว่าตำแหน่งจริง</td><td>Formula1.com, Sky Sports</td></tr>
+        <tr><td>—</td><td>Oscar Piastri</td><td>McLaren</td><td>ควอลิฟายได้ P7 แต่ถูกปรับกริด 10 อันดับ</td><td>Formula1.com</td></tr>
+      </tbody>
+    </table>
+    <p class="source">❓ ข้อมูลไม่ครบ: ตำแหน่งกริดที่แน่นอนของแถว 2-3 (Norris, Hadjar, Antonelli หลังปรับโทษ) มีรายงานที่ขัดแย้งกันระหว่าง Formula1.com และ Sky Sports (เช่น ตำแหน่งออกสตาร์ทของ Antonelli ที่บางแหล่งระบุ P5 บางแหล่งระบุ P6) จึงแสดงเฉพาะตำแหน่งที่ยืนยันได้ชัดเจน ทั้งสอง Ferrari ตกรอบ Q2 ตามรายงานของ Crash.net แต่ไม่มีตัวเลขตำแหน่งที่ยืนยันได้</p>
+  </section>
+
+  <section>
+    <h2>📰 Major News</h2>
+
+    <h3>Driver Market</h3>
+    <table>
+      <thead><tr><th>Driver</th><th>Team</th><th>Status</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Isack Hadjar</td><td>Red Bull Racing</td><td>✅ ยืนยันแล้วสำหรับฤดูกาล 2027</td><td>Formula1.com</td></tr>
+        <tr><td>Liam Lawson / Arvid Lindblad</td><td>Racing Bulls</td><td>✅ ทั้งสองคนยังอยู่กับทีมต่อในปี 2027</td><td>Formula1.com</td></tr>
+        <tr><td>Rafael Câmara</td><td>Haas</td><td>✅ ยืนยันที่นั่งสำหรับปี 2027 แล้ว</td><td>Racer.com</td></tr>
+        <tr><td>Oliver Bearman</td><td>Haas</td><td>❓ ยังไม่ยืนยันที่นั่งปี 2027 อย่างเป็นทางการ แม้มีรายงานว่าน่าจะได้ต่อสัญญา</td><td>Racer.com</td></tr>
+        <tr><td>Fernando Alonso</td><td>Aston Martin</td><td>⚠️ Rumor — ยังไม่ตัดสินใจอนาคต อาจส่งผลให้เกิดการเปลี่ยนแปลงที่นั่งต่อเนื่องในตลาด</td><td>Crash.net</td></tr>
+        <tr><td>Colton Herta</td><td>Cadillac (Bottas' seat)</td><td>⚠️ Rumor — ถูกเชื่อมโยงกับที่นั่งที่ Valtteri Bottas เคยครอง</td><td>Racer.com</td></tr>
+      </tbody>
+    </table>
+    <div class="note">🔄 ข่าวต่อเนื่อง: Max Verstappen เซ็นสัญญาต่อกับ Red Bull Racing จนถึงปี 2030 ซึ่งเป็นข่าวที่รายงานไปก่อนหน้านี้ในฤดูกาลแล้ว และยังมีผลต่อสถานะตลาดนักแข่งในปัจจุบัน</div>
+
+    <h3>Team News</h3>
+    <p>Ferrari ต้องเผชิญความเสียหายต่อชื่อเสียงอีกครั้งจากการปะทะกันระหว่างนักแข่งทีมเดียวกัน (Leclerc-Hamilton) ที่ Las Vegas โดย Frederic Vasseur หัวหน้าทีมเรียกเหตุการณ์นี้ว่า "completely unacceptable" (ยอมรับไม่ได้โดยสิ้นเชิง) <span class="source">Source: Sky Sports, The Race</span></p>
+
+    <h3>Technical Updates</h3>
+    <table>
+      <thead><tr><th>Team</th><th>Update</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Mercedes</td><td>นำชุดอัปเกรดขนาดใหญ่ที่สุดของสุดสัปดาห์มาใช้ที่ Las Vegas พร้อมการปรับจูนเครื่องยนต์เพิ่มเติม</td><td>GPblog</td></tr>
+        <tr><td>Red Bull Racing</td><td>พัฒนาปีกหน้าใหม่และฟแลปใหม่ทั้งหมดสำหรับรถของ Verstappen เพื่อแก้ปัญหาบาลานซ์จากปีกหลังที่ลดแรงกด</td><td>GPFans (NL)</td></tr>
+        <tr><td>McLaren</td><td>นำปีกหน้า/ปีกหลังที่ปรับแต่งเฉพาะสนาม Las Vegas มาใช้ ซึ่งบางส่วนถูกมองว่าเป็นพื้นฐานสำหรับรถปี 2027</td><td>Autosport, RacingNews365</td></tr>
+      </tbody>
+    </table>
+
+    <h3>FIA & Regulations</h3>
+    <table>
+      <thead><tr><th>เรื่อง</th><th>ผลการตัดสิน</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>การปะทะ Leclerc-Hamilton (รอบที่ 38 โค้ง 7)</td><td>Leclerc ได้รับโทษปรับเวลา 10 วินาที ถูกตัดสินว่าผิดทั้งหมด เนื่องจากเริ่มการแซงจากตำแหน่งที่ไกลเกินไปและไม่สามารถนำหน้าแนวกระจกมองข้างของ Hamilton ได้ทันเวลา</td><td>Formula1.com, GPFans, PlanetF1</td></tr>
+        <tr><td>Hamilton ออกนอกแทร็กขณะต่อสู้กับ Norris</td><td>ได้รับโทษปรับเวลา 10 วินาที แยกจากกรณี Leclerc</td><td>Yahoo Sports, PlanetF1</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Penalties</h3>
+    <p>สรุปโทษจากสนาม Las Vegas: Charles Leclerc (10s, ตกจาก P6 เป็น P10), Lewis Hamilton (10s, ยังคงจบ P7), Oscar Piastri (โทษปรับกริด 10 อันดับในควอลิฟาย จากควอลิฟายได้ P7 ไปสตาร์ทต่ำกว่านั้น), Kimi Antonelli (โทษปรับกริด 5 อันดับจากการเปลี่ยนเครื่องยนต์) <span class="source">Source: Formula1.com</span></p>
+  </section>
+
+  <section>
+    <h2>📈 Team Performance</h2>
+    <div class="team-section"><b>Red Bull Racing</b> — Verstappen คว้าชัยชนะเต็มคะแนน ช่วยให้ทีมแซงขึ้นนำ McLaren ในศึกอันดับ 3 ผู้สร้างรถ (440 ต่อ 431 คะแนน) ด้วยชุดอัปเกรดปีกหน้า/ฟแลปใหม่ที่ Las Vegas <span class="source">Source: Formula1.com, GPFans</span></div>
+    <div class="team-section"><b>Ferrari</b> — ดราม่าภายในทีมจากการปะทะ Leclerc-Hamilton ทำให้เสียแต้มสำคัญในศึกชิงอันดับ 2 ผู้สร้างรถ แม้ยังมีคะแนนนำ Red Bull Racing มากพอที่จะปิดอันดับ 2 ได้หากทำแต้มอีก 10 คะแนนในสองสนามที่เหลือ <span class="source">Source: GPblog, Sky Sports</span></div>
+    <div class="team-section"><b>Mercedes</b> — แชมป์โลกทั้งสองรายการเรียบร้อยแล้ว แต่ผลงานที่ Las Vegas เป็นลบ โดย Russell จบเพียง P9 และ Antonelli P4 แม้นำชุดอัปเกรดใหญ่ที่สุดของสนามมาใช้ <span class="source">Source: GPblog, Formula1.com</span></div>
+    <div class="team-section"><b>McLaren</b> — ทำดับเบิลโพเดียมด้วย Norris (P2) และ Piastri (P3) แต่ยังไม่พอที่จะรักษาตำแหน่งอันดับ 3 ผู้สร้างรถจาก Red Bull Racing ซึ่งขณะนี้ตีตื้นขึ้นนำ 9 คะแนน <span class="source">Source: Formula1.com</span></div>
+    <div class="team-section"><b>Aston Martin</b> — ไม่มีผลงานโดดเด่นในสนามนี้ ประเด็นหลักของทีมยังอยู่ที่ความไม่แน่นอนเรื่องอนาคตของ Fernando Alonso <span class="source">Source: Crash.net</span></div>
+    <div class="team-section"><b>Williams</b> — Carlos Sainz ทำแต้มได้จากอันดับ 8 ที่ Las Vegas <span class="source">Source: Formula1.com</span></div>
+    <div class="team-section"><b>Alpine</b> — Pierre Gasly (P5) และ Franco Colapinto (P6) ทำแต้มได้ดีทั้งคู่ ช่วยหนุนตำแหน่งอันดับ 6 ของทีมในศึกผู้สร้างรถ <span class="source">Source: Formula1.com</span></div>
+    <div class="team-section"><b>Haas</b> — ข่าวหลักของทีมอยู่ที่ตลาดนักแข่งปี 2027 โดย Rafael Câmara ได้รับการยืนยันที่นั่งแล้ว ขณะที่ Oliver Bearman ยังรอการยืนยัน <span class="source">Source: Racer.com</span></div>
+    <div class="team-section"><b>Racing Bulls</b> — ยืนยันคงไลน์อัพ Liam Lawson และ Arvid Lindblad ต่อในปี 2027 <span class="source">Source: Formula1.com</span></div>
+    <div class="team-section"><b>Sauber</b> — ❓ ไม่มีข่าวสำคัญที่ยืนยันได้ในช่วง 7 วันที่ผ่านมาสำหรับทีมนี้</div>
+  </section>
+
+  <section>
+    <h2>📊 Statistics</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><b>ชัยชนะที่ Las Vegas</b><br>Max Verstappen (Red Bull Racing) — ชัยชนะที่ Las Vegas ครั้งที่ 3 ในรอบ 4 ปี</div>
+      <div class="stat-card"><b>โพเดียม</b><br>Verstappen, Norris, Piastri — McLaren ทำดับเบิลโพเดียม</div>
+      <div class="stat-card"><b>DNF / อุบัติเหตุ</b><br>Sergio Pérez และ Rafael Câmara ปะทะกันที่โค้ง 14-15 ทำให้ต้องออก Safety Car; Arvid Lindblad หมุนออกนอกแทร็ก</div>
+      <div class="stat-card"><b>รอบที่เหลือของฤดูกาล</b><br>2 สนาม (Qatar, Abu Dhabi) จากทั้งหมด 23 สนาม</div>
+    </div>
+    <p class="source">❓ ข้อมูล Fastest Lap อย่างเป็นทางการของสนามนี้ไม่สามารถยืนยันได้ชัดเจนจากแหล่งข้อมูลที่ตรวจสอบ เนื่องจากมีความขัดแย้งระหว่างแหล่งข่าว (ดูหมายเหตุใน Race Results)</p>
+  </section>
+
+  <section>
+    <h2>📅 Next Grand Prix</h2>
+    <table>
+      <thead><tr><th>วันที่</th><th>Session</th><th>เวลา (ICT)</th><th>ถ่ายทอดสด</th></tr></thead>
+      <tbody>
+        <tr><td>27 พ.ย. 2026 (ศุกร์)</td><td>Free Practice 1 &amp; 2</td><td>❓ ไม่ยืนยันเวลาที่แน่นอน</td><td>❓ ไม่ยืนยัน</td></tr>
+        <tr><td>28 พ.ย. 2026 (เสาร์)</td><td>Free Practice 3 &amp; Qualifying</td><td>❓ ไม่ยืนยันเวลาที่แน่นอน</td><td>❓ ไม่ยืนยัน</td></tr>
+        <tr class="highlight"><td>29 พ.ย. 2026 (อาทิตย์)</td><td>Race</td><td>ประมาณ 23:00 น. ICT (16:00 GMT)</td><td>❓ ไม่ยืนยัน</td></tr>
+      </tbody>
+    </table>
+    <p class="source">✅ Source: Formula1.com, The Peninsula Qatar, GPFans — ไม่มี Sprint ในสุดสัปดาห์นี้ ❓ ข้อมูลช่องทางถ่ายทอดสดและเวลาซ้อม/ควอลิฟายที่แน่นอนยังไม่สามารถยืนยันได้จากแหล่งข่าวที่ตรวจสอบ</p>
+    <div class="stats-grid">
+      <div class="stat-card"><b>Circuit</b><br>Lusail International Circuit</div>
+      <div class="stat-card"><b>Country</b><br>Qatar</div>
+      <div class="stat-card"><b>Circuit Length</b><br>❓ ไม่ยืนยันในแหล่งข้อมูลที่ตรวจสอบรอบนี้</div>
+      <div class="stat-card"><b>Number of Laps</b><br>❓ ไม่ยืนยันในแหล่งข้อมูลที่ตรวจสอบรอบนี้</div>
+      <div class="stat-card"><b>Lap Record</b><br>❓ ไม่ยืนยันในแหล่งข้อมูลที่ตรวจสอบรอบนี้</div>
+    </div>
+    <p>Qatar Grand Prix เป็นสนามรองสุดท้ายของฤดูกาล 2026 (รอบที่ 23) จัดขึ้นเพียงหนึ่งสัปดาห์หลัง Las Vegas แม้แชมป์โลกทั้งสองรายการตัดสินไปแล้ว แต่ศึกชิงอันดับ 3 ผู้สร้างรถระหว่าง Red Bull Racing และ McLaren (ห่างกัน 9 คะแนน) ยังเป็นประเด็นหลักที่ต้องจับตา</p>
+  </section>
+
+  <section>
+    <h2>💬 Quote of the Week</h2>
+    <div class="quote">
+      "Today, I was considered to be at fault, and I took a 10-second penalty."<br>
+      — Charles Leclerc (Ferrari) เกี่ยวกับการปะทะกับ Lewis Hamilton เพื่อนร่วมทีมที่ Las Vegas
+      <div class="source">Source: Formula1.com</div>
+    </div>
+    <div class="quote">
+      Frederic Vasseur หัวหน้าทีม Ferrari เรียกการปะทะระหว่าง Leclerc และ Hamilton ว่า "completely unacceptable"
+      <div class="source">Source: Sky Sports, The Race</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔍 Championship Analysis</h2>
+    <p><b>Drivers Championship:</b> แชมป์โลกตัดสินไปแล้วตั้งแต่ Mexico City (Antonelli, 402 คะแนน) ลำดับที่เหลือในสัปดาห์นี้มีความน่าสนใจที่อันดับ 3-5 ซึ่ง Hamilton, Russell และ Norris สูสีกันมาก โดย Russell และ Norris มีคะแนนเท่ากันที่ 264 คะแนน</p>
+    <p><b>Constructors Championship:</b> Mercedes คว้าแชมป์ไปแล้ว ส่วน Ferrari มีลุ้นปิดอันดับ 2 ได้เกือบแน่นอน ประเด็นที่ยังไม่ตัดสินคือ อันดับ 3 ระหว่าง Red Bull Racing (440) และ McLaren (431) ซึ่งห่างกันเพียง 9 คะแนน จากคะแนนสูงสุดที่เหลือ 86 คะแนนในสองสนามสุดท้าย ทำให้ศึกนี้จะเป็นประเด็นหลักที่ Qatar และ Abu Dhabi</p>
+    <p><b>Midfield Battle:</b> Alpine ทำแต้มได้ดีที่ Las Vegas จาก Gasly และ Colapinto ขณะที่ Racing Bulls ยังรักษาตำแหน่งกลางตารางด้วยไลน์อัพที่ยืนยันแล้วสำหรับปี 2027</p>
+    <p><b>Momentum:</b> Red Bull Racing เข้าสู่ช่วงปลายฤดูกาลด้วยโมเมนตัมที่ดีจากชัยชนะของ Verstappen ขณะที่ Ferrari ต้องแก้ไขปัญหาความสัมพันธ์ภายในทีมก่อนสองสนามสุดท้าย</p>
+    <p><b>Teams to Watch:</b> Red Bull Racing และ McLaren ในศึกอันดับ 3 ผู้สร้างรถ, และ Ferrari ที่ต้องจัดการความขัดแย้งภายในทีมระหว่าง Leclerc-Hamilton</p>
+  </section>
+
+  <section>
+    <h2>📊 Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><b>Grand Prix</b><br>Las Vegas GP — Verstappen ชนะ</div>
+      <div class="stat-card"><b>Sprint</b><br>ไม่มีในสัปดาห์นี้</div>
+      <div class="stat-card"><b>Pole Position</b><br>Max Verstappen (ได้รับหลังปรับกริด Antonelli)</div>
+      <div class="stat-card"><b>Fastest Lap</b><br>❓ ไม่สามารถยืนยันได้ชัดเจน</div>
+      <div class="stat-card"><b>FIA Decisions</b><br>โทษปรับเวลา 10s ให้ Leclerc และ Hamilton</div>
+      <div class="stat-card"><b>Penalties</b><br>Leclerc (10s), Hamilton (10s), Piastri (กริด 10 อันดับ), Antonelli (กริด 5 อันดับ)</div>
+      <div class="stat-card"><b>Driver Transfers</b><br>Hadjar, Lawson, Lindblad, Câmara ยืนยันที่นั่งปี 2027</div>
+      <div class="stat-card"><b>Technical Updates</b><br>Mercedes, Red Bull Racing, McLaren นำอัปเกรดใหม่มาใช้ที่ Las Vegas</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>👀 Watch List</h2>
+    <table>
+      <thead><tr><th>ประเด็น</th><th>เหตุผล</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>ศึกอันดับ 3 ผู้สร้างรถ: Red Bull Racing vs McLaren</td><td>ห่างกันเพียง 9 คะแนน (440 ต่อ 431) ก่อนสองสนามสุดท้ายของฤดูกาล</td><td>Formula1.com, PlanetF1</td></tr>
+        <tr><td>ความสัมพันธ์ภายใน Ferrari หลัง Leclerc-Hamilton</td><td>การปะทะกันเองเป็นครั้งที่ก่อปัญหาต่อผลงานทีมในศึกอันดับ 2 ผู้สร้างรถ</td><td>Sky Sports, The Race</td></tr>
+        <tr><td>อนาคตของ Fernando Alonso ที่ Aston Martin</td><td>⚠️ Rumor — การตัดสินใจอาจกระทบตลาดนักแข่งปี 2027 ต่อเนื่อง</td><td>Crash.net</td></tr>
+        <tr><td>Oliver Bearman ที่ Haas</td><td>ยังไม่ยืนยันที่นั่งปี 2027 อย่างเป็นทางการ</td><td>Racer.com</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <h3>Official</h3>
+    <p>Formula1.com, FIA</p>
+    <h3>Motorsport Media</h3>
+    <p>RaceFans, PlanetF1, Sky Sports F1, The Race, Crash.net, GPFans, GPblog, Autosport, RacingNews365, Racer.com, Scuderiafans, F1-Fansite, Al Jazeera Sports</p>
+    <h3>Team Communications</h3>
+    <p>❓ ไม่มีแถลงการณ์ทีมที่สามารถตรวจสอบได้โดยตรงในช่วง 7 วันที่ผ่านมา</p>
+  </section>
+
+  <section>
+    <h2>🧭 แนวโน้มและสิ่งที่ควรจับตาในสัปดาห์ถัดไป</h2>
+    <p>ด้วยแชมป์โลกทั้งสองรายการตัดสินไปแล้ว ความน่าสนใจหลักของ Qatar Grand Prix (27-29 พฤศจิกายน) จะอยู่ที่ศึกอันดับ 3 ผู้สร้างรถระหว่าง Red Bull Racing และ McLaren ที่ยังห่างกันเพียง 9 คะแนน รวมถึงการจับตาว่า Ferrari จะสามารถควบคุมสถานการณ์ภายในทีมหลังเหตุการณ์ Leclerc-Hamilton ได้หรือไม่ ก่อนที่ฤดูกาล 2026 จะปิดท้ายที่ Abu Dhabi ในอีกสองสัปดาห์ นอกจากนี้ตลาดนักแข่งปี 2027 ยังมีประเด็นค้างคาเรื่องอนาคตของ Fernando Alonso และที่นั่งของ Oliver Bearman ที่ Haas ซึ่งควรรอการยืนยันอย่างเป็นทางการต่อไป</p>
+  </section>
+
+  <footer>
+    <p>UNCERTAIN: ข้อมูลบางส่วนของสนาม Las Vegas Grand Prix (เช่น Fastest Lap, Driver of the Day, ตำแหน่งกริดที่แน่นอนบางตำแหน่ง, จำนวนรอบสลับผู้นำ) มีความขัดแย้งกันระหว่างแหล่งข่าวรองหลายแหล่ง และไม่สามารถเข้าถึง formula1.com โดยตรงผ่าน WebFetch ในเซสชันนี้เพื่อยืนยันตัวเลขที่เป็นทางการที่สุดได้ (ได้ลองใช้ WebSearch แทนตามขั้นตอนสำรองแล้ว) ผู้ใช้ควรตรวจสอบตัวเลขที่แน่นอนจาก Formula1.com โดยตรงหากต้องการความถูกต้องสูงสุด</p>
+    <p>รายงานนี้สร้างโดยระบบอัตโนมัติ — natthasath-news</p>
+  </footer>
+</div>
+</body>
+</html>
