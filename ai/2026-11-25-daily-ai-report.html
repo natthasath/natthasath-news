@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI &amp; Technology Report - 2026-11-25</title>
+<meta name="description" content="สรุปข่าว AI และเทคโนโลยีรายวัน 25 พฤศจิกายน 2569">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+    --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+    --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+    --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+    --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1B1F24; --surface-2:#20252B;
+  --ink:#E7E6E0; --ink-soft:#ABB0AC; --ink-faint:#7B807D;
+  --line:rgba(231,230,224,0.14); --line-strong:rgba(231,230,224,0.26);
+  --accent:#3FBDAF; --accent-wash:rgba(63,189,175,0.14);
+  --warn:#E0A85C; --warn-wash:rgba(224,168,92,0.12);
+}
+:root[data-theme="light"]{
+  --bg:#ECEEEC; --surface:#F6F7F5; --surface-2:#E4E7E3;
+  --ink:#1B2027; --ink-soft:#565D63; --ink-faint:#868C8F;
+  --line:rgba(27,32,39,0.14); --line-strong:rgba(27,32,39,0.28);
+  --accent:#0F7A73; --accent-wash:rgba(15,122,115,0.10);
+  --warn:#9A5B12; --warn-wash:rgba(154,91,18,0.10);
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif; font-size:16px; line-height:1.75; }
+.page{ max-width:960px; margin:0 auto; padding:0 20px 96px; }
+a{ color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px; word-break:break-word; }
+a:hover{ text-decoration-thickness:2px; }
+
+.topstrip{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-faint); }
+.masthead{ padding:36px 0 26px; border-bottom:1px solid var(--line-strong); }
+.kicker{ font-family:"Fraunces",serif; font-style:italic; font-weight:500; font-size:15px; color:var(--accent); margin:0 0 14px; }
+.kicker::before{ content:"◆ "; font-size:11px; }
+h1{ font-size:clamp(24px,5vw,34px); line-height:1.25; font-weight:800; margin:0 0 14px; }
+.meta-row{ display:flex; gap:20px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+
+.callout{ margin:26px 0; padding:16px 18px; border:1px solid var(--line-strong); border-left:4px solid var(--warn); background:var(--warn-wash); border-radius:4px; font-size:14.5px; color:var(--ink-soft); }
+.callout b{ color:var(--ink); }
+
+section{ margin:44px 0; }
+h2{ font-size:22px; font-weight:800; margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--line-strong); }
+h2 .emoji{ margin-right:6px; }
+h3{ font-size:16.5px; font-weight:700; margin:22px 0 10px; color:var(--accent); }
+h4{ font-size:14px; font-weight:700; margin:16px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+p{ margin:10px 0; }
+ul,ol{ padding-left:22px; }
+li{ margin:6px 0; }
+
+.table-wrap{ overflow-x:auto; margin:14px 0 20px; border:1px solid var(--line); border-radius:6px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; background:var(--surface); }
+th,td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th{ background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); white-space:nowrap; }
+tr:last-child td{ border-bottom:none; }
+
+.note{ font-size:13.5px; color:var(--ink-faint); margin:10px 0; padding:10px 14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:4px; }
+.badge{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--accent-wash); color:var(--accent); font-weight:600; }
+.badge-warn{ display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; padding:2px 6px; border-radius:3px; background:var(--warn-wash); color:var(--warn); font-weight:600; }
+
+.usecase{ border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin:14px 0; background:var(--surface); }
+.usecase h4{ margin:0 0 8px; color:var(--ink); text-transform:none; letter-spacing:0; font-size:15.5px; }
+.usecase dl{ margin:0; }
+.usecase dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:8px; }
+.usecase dd{ margin:2px 0 0; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+.stat{ border:1px solid var(--line); border-radius:6px; padding:14px; background:var(--surface); text-align:center; }
+.stat .num{ font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:700; color:var(--accent); }
+.stat .lbl{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+.src-cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.src-cols h4{ margin-top:0; }
+.src-cols ul{ padding-left:18px; font-size:13.5px; }
+
+.watch{ border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin:12px 0; background:var(--surface); }
+.watch dt{ font-family:"JetBrains Mono",monospace; font-size:11px; text-transform:uppercase; color:var(--ink-faint); margin-top:6px; }
+.watch dd{ margin:2px 0 0; }
+
+footer{ margin-top:50px; padding-top:22px; border-top:1px solid var(--line-strong); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); line-height:1.6; }
+footer a{ color:var(--ink-faint); }
+hr{ border:none; border-top:1px solid var(--line); margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Daily Digest</p>
+    <h1>🤖 Daily AI &amp; Technology Report — 2026-11-25</h1>
+    <div class="meta-row">
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+      <span><b>Window:</b> 24 ชั่วโมงล่าสุด</span>
+      <span><b>Domain:</b> AI &amp; Technology</span>
+      <span><b>Generated:</b> 25 พ.ย. 2569 (ICT)</span>
+    </div>
+  </header>
+
+  <div class="callout">
+    <b>⚠️ หมายเหตุข้อจำกัดของข้อมูลที่สำคัญ:</b> ตามขั้นตอน Network Access Resilience ได้ลองเข้าถึงโดยตรงซ้ำในรอบนี้: <code>anthropic.com</code>, <code>claude.com</code> และ <code>github.com</code> (รวม GitHub Trending, GitHub Releases และ modelcontextprotocol) เข้าถึงได้ตามปกติ แต่ <code>openai.com</code>, <code>blog.google</code>, <code>deepmind.google</code>, <code>huggingface.co</code>, <code>arxiv.org</code>, <code>ai.meta.com</code>, <code>techcrunch.com</code>, <code>news.ycombinator.com</code> และ <code>creati.ai</code>/<code>theneuron.ai</code> ยังล้มเหลวด้วย DNS resolution error (ENOTFOUND) แม้ลองใหม่แล้ว จึงใช้ WebSearch แบบ site-specific เป็นทางเลือกตามขั้นตอนที่ 2 ซึ่งพบเฉพาะรายงานจากสื่อรอง/อักกรีเกเตอร์ที่ไม่สามารถยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ได้ครบตามเกณฑ์ Cross Validation (ต้องมีอย่างน้อย 2 แหล่ง โดยอย่างน้อย 1 แหล่งเป็นทางการ) จึงงดแสดงหมวด Research และ Benchmark ในรอบนี้ และงดแสดงข่าว Company News ของ OpenAI, Google DeepMind, Meta, Microsoft, Amazon และ NVIDIA เนื่องจากเข้าถึงโดเมนทางการของบริษัทเหล่านั้นไม่ได้ <b>UNCERTAIN:</b> โดเมน openai.com, blog.google, deepmind.google, huggingface.co, arxiv.org, ai.meta.com, techcrunch.com และ news.ycombinator.com เข้าถึงไม่ได้โดยตรงต่อเนื่องมาตั้งแต่อย่างน้อยรอบ 1 ต.ค. – 25 พ.ย. 2569 (เกือบ 2 เดือนติดต่อกันแล้ว) ควรตรวจสอบการตั้งค่า network egress/DNS ของสภาพแวดล้อมนี้โดยเร็ว
+  </div>
+
+  <section>
+    <h2><span class="emoji">📌</span>Executive Summary</h2>
+    <p>ข่าวที่ยืนยันได้ชัดเจนที่สุดในรอบ 24 ชม. นี้คือ Claude Code เวอร์ชัน v2.1.332 (ออก 25 พ.ย. 2569) ซึ่งเพิ่มฟีเจอร์ skills จาก MCP servers แบบ beta (เรียกผ่านรูปแบบ <code>server:skill</code> ในเมนู <code>/</code>) และ hook ใหม่ <code>PreSkillShellCommand</code> สำหรับปฏิเสธคำสั่ง shell ที่ฝังมากับ skill หรือ command ก่อนโหลด พร้อมแก้บั๊กการรายงานผลสำเร็จเท็จของ <code>claude auth login</code> และอาการค้างหลายรายการ ไม่มีความคืบหน้าใหม่ของข่าวต่อเนื่อง (Anthropic IPO, Claude Fable/Mythos 5.2) ในรอบนี้ GitHub Trending วันนี้ยังคงสะท้อนแนวโน้มไปทาง Claude Code skill bundle เช่น Claude-BugHunter และเครื่องมือที่เชื่อม AI agent กับซอฟต์แวร์เดิม เนื่องจากข้อจำกัดการเข้าถึงโดเมนของบริษัทอื่น (OpenAI, Google, Meta, Microsoft, Amazon, NVIDIA) และแหล่งงานวิจัย/Benchmark จึงไม่พบข้อมูลใหม่ที่ยืนยันได้ครบตามเกณฑ์ในหมวดเหล่านั้นสำหรับวันนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🚀</span>AI Models</h2>
+    <p class="note">ไม่พบโมเดลใหม่ที่ยืนยันวันที่เผยแพร่อยู่ในกรอบ 24 ชม. นี้ได้ Claude Fable 5.2 และ Claude Mythos 5.2 (ประกาศ 9 พ.ย. 2569) ยังเป็นข่าวต่อเนื่องจากสัปดาห์ก่อน ✅ <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com</a> — ไม่พบโมเดลใหม่จาก OpenAI, Google DeepMind, Meta หรือผู้พัฒนารายอื่นที่ยืนยันได้ เนื่องจากไม่สามารถเข้าถึงโดเมนทางการของบริษัทเหล่านั้นได้ (ดูหมายเหตุข้อจำกัดด้านบน)</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📚</span>Research</h2>
+    <p class="note">หมวดนี้งดแสดงผลในรอบนี้ เนื่องจากโดเมน arxiv.org และ huggingface.co เข้าถึงไม่ได้ (ENOTFOUND) แม้ลองใหม่และใช้ WebSearch แบบ site-specific แล้ว ผลการค้นหาที่ได้เป็นการรวบรวมของสื่อรองที่ย้อนไปถึงเดือนพฤศจิกายน 2568 (ปีก่อน) เป็นหลัก ไม่พบงานวิจัยที่ยืนยันชื่อผู้แต่งและ arXiv ID/DOI จากแหล่งทางการที่อยู่ในกรอบ 24 ชม. นี้ได้ครบตามเกณฑ์ Validation Rules จึงไม่นำข้อมูลที่ไม่ครบมาแสดงตามกฎ "หากข้อมูลไม่ครบ ให้ไม่นำมาแสดง"</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⭐</span>Open Source</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Project</th><th>Stars</th><th>Language</th><th>Description</th><th>Source</th></tr>
+        <tr>
+          <td><a href="https://github.com/elementalsouls/Claude-BugHunter">elementalsouls/Claude-BugHunter</a></td>
+          <td>22,766 (+1,644 วันนี้)</td>
+          <td>Python</td>
+          <td>ชุด Claude Code skill สำหรับงาน bug hunting และ red-team</td>
+          <td>🔥 <a href="https://github.com/trending?since=daily">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/obra/superpowers">obra/superpowers</a></td>
+          <td>326,499 (+902 วันนี้)</td>
+          <td>Shell</td>
+          <td>เฟรมเวิร์ก agentic skills และแนวทางพัฒนาซอฟต์แวร์แบบ agent-first</td>
+          <td>🔥 <a href="https://github.com/trending?since=daily">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/HKUDS/CLI-Anything">HKUDS/CLI-Anything</a></td>
+          <td>65,571 (+1,094 วันนี้)</td>
+          <td>Python</td>
+          <td>ทำให้ซอฟต์แวร์ทุกชนิดใช้งานผ่าน CLI ได้ง่ายขึ้นสำหรับ AI agent</td>
+          <td>🔥 <a href="https://github.com/trending?since=daily">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jingyaogong/minimind">jingyaogong/minimind</a></td>
+          <td>70,880 (+828 วันนี้)</td>
+          <td>Python</td>
+          <td>เทรน LLM ขนาด 64M พารามิเตอร์จากศูนย์ภายในเวลาประมาณ 2 ชั่วโมง เพื่อการศึกษา</td>
+          <td>🔥 <a href="https://github.com/trending?since=daily">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/firecrawl/firecrawl">firecrawl/firecrawl</a></td>
+          <td>209,880 (+1,131 วันนี้)</td>
+          <td>TypeScript</td>
+          <td>ค้นหาและ scrape ข้อมูลผ่าน API เดียวเชื่อมผู้ให้บริการข้อมูลกว่า 550 แห่งสำหรับ AI agent</td>
+          <td>🔥 <a href="https://github.com/trending?since=daily">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/mvanhorn/last30days-skill">mvanhorn/last30days-skill</a></td>
+          <td>75,001 (+950 วันนี้)</td>
+          <td>Python</td>
+          <td>AI agent skill ที่ค้นหาและสรุปเทรนด์ข้ามหลายแพลตฟอร์มให้โดยอัตโนมัติ</td>
+          <td>🔥 <a href="https://github.com/trending?since=daily">GitHub Trending</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/google-labs-code/stitch-skills">google-labs-code/stitch-skills</a></td>
+          <td>12,931 (+352 วันนี้)</td>
+          <td>TypeScript</td>
+          <td>คลัง agent skills สำหรับ Stitch MCP server เผยแพร่ในองค์กร Google Labs Code</td>
+          <td>✅ <a href="https://github.com/trending/typescript?since=daily">GitHub (google-labs-code org)</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🛠</span>Tools &amp; Apps</h2>
+    <h3>New Releases</h3>
+    <p class="note">ไม่พบเครื่องมือใหม่ที่เพิ่งเปิดตัวในรอบ 24 ชม. นี้ที่ยืนยันแหล่งที่มาได้ครบตามเกณฑ์</p>
+    <h3>Updates</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Update</th><th>Source</th></tr>
+        <tr>
+          <td>Claude Code</td>
+          <td>v2.1.332 (25 พ.ย. 2569): เพิ่ม skills จาก MCP servers แบบ beta (เรียกผ่าน <code>server:skill</code> ในเมนู <code>/</code>); เพิ่ม hook event <code>PreSkillShellCommand</code> สำหรับปฏิเสธคำสั่ง shell แบบ inline ของ skill/command ก่อนโหลด; เพิ่มข้อความแจ้งเตือนในส่วน footer เมื่อ session ถูกตรึงให้ใช้โมเดลอื่นจนกว่าจะเลือกใหม่ด้วย <code>/model</code>; แก้บั๊ก <code>claude auth login</code> รายงานผลสำเร็จเท็จเมื่อบันทึก login ไม่ได้ (ตอนนี้ exit code 1); แก้บั๊กอาการค้างหลายรายการ เช่น hook ที่พิมพ์ output ไม่จำกัด, การ mention ไฟล์ด้วย <code>@</code> ที่ยาวเกินไป และ local MCP server ที่ flood stdout; แก้บั๊ก CLAUDE.md และไฟล์ rules ถูกส่งซ้ำหลัง session ย้ายเข้า worktree ใน <code>.claude/worktrees</code></td>
+          <td>✅ <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.332">GitHub Releases</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🏢</span>Company News</h2>
+    <h3>OpenAI</h3>
+    <p>ไม่พบประกาศทางการใหม่ในรอบ 24 ชม. นี้ เนื่องจาก openai.com เข้าถึงไม่ได้ในสภาพแวดล้อมนี้ และ WebSearch ไม่พบรายงานสื่อที่ยืนยันวันที่อยู่ในกรอบเวลานี้</p>
+    <h3>Anthropic</h3>
+    <ul>
+      <li>Claude Code v2.1.332 ออกอัปเดต (25 พ.ย. 2569) — ดูรายละเอียดในหมวด Tools &amp; Apps และ Technical Updates</li>
+      <li>ไม่มีประกาศใหม่บน anthropic.com/news ในรอบ 24 ชม. นี้ ประกาศล่าสุดที่พบในหน้าดังกล่าวคือการปิดการขาย IPO เมื่อ 20 พ.ย. 2569 ซึ่งอยู่นอกกรอบเวลาและเป็นข่าวต่อเนื่องจากฉบับก่อนหน้า <span class="badge">ต่อเนื่อง</span></li>
+    </ul>
+    <h3>Google DeepMind</h3>
+    <p>เข้าถึง deepmind.google และ blog.google ไม่ได้ในรอบนี้ ไม่พบประกาศใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ได้</p>
+    <h3>Meta</h3>
+    <p>เข้าถึง ai.meta.com ไม่ได้ในรอบนี้ ไม่พบประกาศใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ได้</p>
+    <h3>Microsoft</h3>
+    <p>ไม่พบประกาศทางการใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ได้ (ผลค้นหาที่พบเป็นเนื้อหาจากสัปดาห์ก่อนเกี่ยวกับ Microsoft Ignite 2026 ซึ่งอยู่นอกกรอบเวลา)</p>
+    <h3>Amazon</h3>
+    <p>ไม่พบประกาศทางการใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ได้</p>
+    <h3>NVIDIA</h3>
+    <p>เข้าถึง nvidianews.nvidia.com และ blogs.nvidia.com ไม่ได้ในรอบนี้ ไม่พบประกาศใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ได้</p>
+    <h3>Startup</h3>
+    <p class="note">ไม่พบข่าว startup ใหม่ที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้และผ่านเกณฑ์ Cross Validation ได้ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">⚙</span>Technical Updates</h2>
+    <ul>
+      <li><b>MCP / Agent:</b> Claude Code v2.1.332 เพิ่มการโหลด skills จาก MCP servers แบบ beta ให้เรียกใช้ผ่านรูปแบบ <code>server:skill</code> ในเมนู <code>/</code> — ✅ <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.332">GitHub Releases</a></li>
+      <li><b>Framework / Security:</b> เพิ่ม hook event <code>PreSkillShellCommand</code> ที่สามารถปฏิเสธคำสั่ง shell แบบ inline ที่ฝังมากับ skill หรือ command ได้ตั้งแต่ตอนโหลด — ✅ GitHub Releases</li>
+      <li><b>API / CLI:</b> แก้บั๊ก <code>claude auth login</code> ที่รายงานผลสำเร็จแม้บันทึก login ไม่สำเร็จ ตอนนี้คืน exit code 1 — ✅ GitHub Releases</li>
+      <li><b>Infrastructure:</b> ไม่พบข้อมูลใหม่ที่ยืนยันได้ (เช่น ประกาศ infrastructure จาก NVIDIA/ผู้ให้บริการคลาวด์) ในรอบ 24 ชม. นี้</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📈</span>Industry</h2>
+    <p class="note">หมวด Investment / Acquisition / Regulation งดแสดงเป็นตารางหลักในรอบนี้ เนื่องจากไม่พบข่าวที่ยืนยันได้ตามเกณฑ์ Cross Validation (ต้องมีอย่างน้อย 2 แหล่ง โดยอย่างน้อย 1 แหล่งเป็นทางการ) และยืนยันวันที่อยู่ในกรอบ 24 ชม. ล่าสุดได้ รายการที่พบจาก WebSearch (เช่น ข่าวเจรจาซื้อ Decart ของ Amazon และข้อตกลง Nscale–Anthropic มูลค่า 4.5 หมื่นล้านดอลลาร์) เป็นข่าวจากช่วงเดือนสิงหาคม–ตุลาคม 2569 ซึ่งอยู่นอกกรอบเวลาของรายงานฉบับนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🧪</span>Benchmark</h2>
+    <p class="note">หมวดนี้งดแสดงผลในรอบนี้ ผลการค้นหาเกี่ยวกับ LMArena พบข้อมูลขัดแย้งกันระหว่างสื่อรอง/อักกรีเกเตอร์เกี่ยวกับคะแนนของ Gemini 4 Carbon บน Text leaderboard (รายงานหนึ่งระบุ 1528 เมื่อ 2 พ.ย. 2569 อีกรายงานระบุ 1526 จาก snapshot วันที่ 18 พ.ย. 2569) โดยไม่สามารถดึงข้อมูลจากหน้า arena.ai/leaderboard โดยตรงเพื่อยืนยันตัวเลขที่แน่นอน ณ วันนี้ได้ (โดเมนไม่อยู่ในรายการที่เข้าถึงได้ในรอบนี้) และข้อมูลทั้งสองรายงานอยู่นอกกรอบ 24 ชม. จึงไม่ผ่านเกณฑ์ Validation Rules และไม่นำมาแสดง</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🌍</span>Community</h2>
+    <h3>Trending</h3>
+    <p>GitHub Trending วันนี้ (ดูตารางในหมวด Open Source) ยังคงสะท้อนแนวโน้มชุมชนไปทาง "Claude Code skill bundle" และเครื่องมือที่ทำให้ซอฟต์แวร์เดิมใช้งานผ่าน AI agent ได้ง่ายขึ้น เช่น Claude-BugHunter และ CLI-Anything ซึ่งเป็นแนวโน้มต่อเนื่องจากวันก่อนหน้า <span class="badge">ต่อเนื่อง</span> 🔥 <a href="https://github.com/trending?since=daily">github.com/trending</a></p>
+    <h3>Tutorials</h3>
+    <p class="note">ไม่พบ tutorial ใหม่ที่ยืนยันแหล่งที่มาได้ในรอบนี้</p>
+    <h3>Events</h3>
+    <p class="note">ไม่พบกิจกรรม/อีเวนต์ใหม่ที่ยืนยันแหล่งที่มาได้ในรอบนี้</p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💡</span>Use Cases</h2>
+    <div class="usecase">
+      <h4>1. Skills จาก MCP servers (beta) — รวม tool และ skill จากหลายแหล่งในที่เดียว</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมที่เชื่อมต่อ MCP server หลายตัวต้องสลับไปมาระหว่าง tool และ skill ที่กระจัดกระจาย ทำให้ workflow ไม่ต่อเนื่อง</dd>
+        <dt>วิธีใช้</dt><dd>เรียกใช้ skill ที่มาจาก MCP server โดยตรงผ่านรูปแบบ <code>server:skill</code> ในเมนู <code>/</code> ของ Claude Code v2.1.332</dd>
+        <dt>ประโยชน์</dt><dd>รวม skill จากหลาย MCP server ให้เรียกใช้งานได้จากจุดเดียว ลดการสลับบริบทระหว่างทำงาน</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>2. PreSkillShellCommand hook — ควบคุมความปลอดภัยของ skill ก่อนโหลด</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>skill หรือ command จากภายนอกอาจฝังคำสั่ง shell ที่เป็นอันตรายไว้ และรันโดยที่ผู้ใช้ไม่ทันตรวจสอบก่อนโหลด</dd>
+        <dt>วิธีใช้</dt><dd>ตั้งค่า hook event <code>PreSkillShellCommand</code> เพื่อตรวจสอบและปฏิเสธคำสั่ง shell แบบ inline ของ skill/command ก่อนที่จะถูกโหลดเข้าสู่ session</dd>
+        <dt>ประโยชน์</dt><dd>เพิ่มชั้นการป้องกันสำหรับองค์กรที่ติดตั้ง skill จากแหล่งภายนอกหรือ marketplace ที่ไม่ได้ตรวจสอบโค้ดทุกบรรทัดด้วยตนเอง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>3. Claude-BugHunter — ชุด Claude Code skill สำหรับ bug hunting/red-team</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>ทีมรักษาความปลอดภัยต้องใช้เวลานานในการตั้งค่า workflow สำหรับสแกนและตรวจสอบช่องโหว่ซอฟต์แวร์ด้วยมือซ้ำ ๆ</dd>
+        <dt>วิธีใช้</dt><dd>ติดตั้งเป็นชุด skill ของ Claude Code ที่ผูก workflow bug hunting และ red-team ไว้ล่วงหน้า แล้วเรียกใช้งานผ่าน agent โดยตรง</dd>
+        <dt>ประโยชน์</dt><dd>ลดเวลาตั้งต้นของงาน bug hunting และทำให้กระบวนการตรวจสอบช่องโหว่ทำซ้ำได้อย่างมีโครงสร้าง</dd>
+      </dl>
+    </div>
+    <div class="usecase">
+      <h4>4. last30days-skill — สรุปเทรนด์ข้ามแพลตฟอร์มด้วย AI agent</h4>
+      <dl>
+        <dt>ปัญหา</dt><dd>การติดตามเทรนด์ล่าสุดต้องเปิดดูหลายแพลตฟอร์มแยกกันและสรุปด้วยมือ</dd>
+        <dt>วิธีใช้</dt><dd>ใช้เป็น AI agent skill ที่ค้นหาและสรุปหัวข้อที่กำหนดข้ามหลายแพลตฟอร์มให้โดยอัตโนมัติ</dd>
+        <dt>ประโยชน์</dt><dd>ประหยัดเวลาในการทำ research เทรนด์ล่าสุด และได้สรุปที่ครอบคลุมหลายแหล่งในที่เดียว</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📊</span>Quick Stats</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0 / 1</div><div class="lbl">Models Released (ใหม่ / ต่อเนื่อง)</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Research Papers (ข้อมูลไม่ครบตามเกณฑ์)</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">GitHub Projects (Trending)</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Company Updates (Anthropic)</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">API/SDK Updates (Claude Code)</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🔍</span>Watch List</h2>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>Skills จาก MCP servers (beta) ใน Claude Code v2.1.332 — เสถียรภาพและความปลอดภัยของ skill ที่โหลดจาก MCP server ภายนอก</dt>
+        <dt>เหตุผล</dt><dd>เป็นฟีเจอร์ beta ใหม่ที่เปิดช่องให้ skill จากแหล่งภายนอกรันร่วมกับ session ได้ง่ายขึ้น ควรติดตามว่า hook <code>PreSkillShellCommand</code> ที่เพิ่มมาพร้อมกันครอบคลุมความเสี่ยงด้านความปลอดภัยได้เพียงพอหรือไม่</dd>
+        <dt>Source</dt><dd>✅ <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.332">github.com/anthropics/claude-code/releases/tag/v2.1.332</a></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>การเปลี่ยนค่าเริ่มต้นเป็น auto-update สำหรับ plugin marketplace ใน <code>extraKnownMarketplaces</code> ของ Claude Code มีผล 30 พ.ย. 2569 (อีกประมาณ 5 วัน)</dd>
+        <dt>เหตุผล</dt><dd>อาจกระทบ workflow ของผู้ดูแลระบบองค์กรที่ต้องการควบคุมเวอร์ชัน plugin อย่างเคร่งครัด ควรตรวจสอบและตั้งค่า <code>"autoUpdate": false</code> หากต้องการคงพฤติกรรมเดิมก่อนถึงกำหนด</dd>
+        <dt>Source</dt><dd>✅ <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.331">github.com/anthropics/claude-code/releases/tag/v2.1.331</a> <span class="badge">ต่อเนื่อง</span></dd>
+      </dl>
+    </div>
+    <div class="watch">
+      <dl>
+        <dt>ประเด็น</dt><dd>ข้อจำกัดการเข้าถึงโดเมนเครือข่าย (network egress/DNS) ของสภาพแวดล้อมที่ใช้จัดทำรายงานนี้</dd>
+        <dt>เหตุผล</dt><dd>ขัดขวางการยืนยันข่าว Tier 1/2 จำนวนมาก (OpenAI, Google, Meta, Microsoft, Amazon, NVIDIA, arXiv, Hugging Face, TechCrunch, Hacker News) ต่อเนื่องมานานกว่า 1.5 เดือนตามบันทึกของรายงานฉบับก่อนหน้า ควรได้รับการตรวจสอบโดยเร็ว</dd>
+        <dt>Source</dt><dd>บันทึกในหมายเหตุข้อจำกัดของรายงานฉบับนี้และฉบับก่อนหน้า (1 ต.ค. – 25 พ.ย. 2569)</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="emoji">📖</span>Sources</h2>
+    <div class="src-cols">
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://www.anthropic.com/news">anthropic.com/news</a></li>
+          <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com — Introducing Claude Fable 5.2 and Claude Mythos 5.2</a></li>
+          <li><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.332">github.com/anthropics/claude-code — Release v2.1.332</a></li>
+          <li><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.331">github.com/anthropics/claude-code — Release v2.1.331</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/modelcontextprotocol/releases">github.com/modelcontextprotocol — Releases</a></li>
+          <li><a href="https://github.com/google-labs-code/stitch-skills">github.com/google-labs-code/stitch-skills</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research</h4>
+        <ul>
+          <li class="note" style="margin:0;">ไม่มีรายการในรอบนี้ (arxiv.org, huggingface.co เข้าถึงไม่ได้)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Media</h4>
+        <ul>
+          <li class="note" style="margin:0;">ไม่มีรายการที่ยืนยันวันที่อยู่ในกรอบ 24 ชม. นี้ได้ในรอบนี้ (techcrunch.com และแหล่งสื่อหลักอื่นเข้าถึงไม่ได้)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community (Trend Only)</h4>
+        <ul>
+          <li><a href="https://github.com/trending?since=daily">GitHub Trending</a></li>
+          <li><a href="https://github.com/trending/typescript?since=daily">GitHub Trending — TypeScript</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2><span class="emoji">🏷️</span>Labels</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Label</th><th>Meaning</th></tr>
+        <tr><td>✅</td><td>Official</td></tr>
+        <tr><td>📰</td><td>Trusted Media</td></tr>
+        <tr><td>🔥</td><td>Community Trend</td></tr>
+        <tr><td>⚠️</td><td>Rumor</td></tr>
+        <tr><td>❓</td><td>Unverified</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>NATTHASATH-NEWS · Daily AI &amp; Technology Report · สร้างโดยอัตโนมัติจากแหล่งข้อมูลที่ตรวจสอบได้ ณ วันที่ 25 พ.ย. 2569 (ICT)</p>
+    <p><a href="https://natthasath.github.io/natthasath-news/ai/index.html">← กลับไปหน้ารวม Daily AI News</a></p>
+  </footer>
+</div>
+</body>
+</html>
