@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 Weekly Software Releases Report - Week 48</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..700;1,500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ECEEEC;
+  --surface: #F6F7F5;
+  --surface-2: #E4E7E3;
+  --ink: #1B2027;
+  --ink-soft: #565D63;
+  --ink-faint: #868C8F;
+  --line: rgba(27, 32, 39, 0.14);
+  --line-strong: rgba(27, 32, 39, 0.28);
+  --accent: #0F7A73;
+  --critical: #D92B2B;
+  --high: #FF6B35;
+  --medium: #FFA500;
+  --low: #4CAF50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171B;
+    --surface: #1B1F24;
+    --surface-2: #20252B;
+    --ink: #E7E6E0;
+    --ink-soft: #ABB0AC;
+    --ink-faint: #7B807D;
+    --line: rgba(231, 230, 224, 0.14);
+    --line-strong: rgba(231, 230, 224, 0.26);
+    --accent: #3FBDAF;
+    --critical: #FF6B6B;
+    --high: #FF8C42;
+    --medium: #FFB84D;
+    --low: #81C784;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.page { max-width: 1200px; margin: 0 auto; padding: 0 20px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topstrip {
+  display: flex; justify-content: space-between; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-faint);
+}
+
+.masthead { padding: 44px 0 30px; border-bottom: 1px solid var(--line-strong); }
+.kicker {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+  font-size: 15px; color: var(--accent); margin: 0 0 14px;
+}
+.kicker::before { content: "◆ "; font-size: 11px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 800; margin: 0 0 16px; }
+h2 {
+  font-size: 24px; font-weight: 700; margin: 36px 0 20px; color: var(--ink);
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 10px;
+}
+h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; color: var(--ink-soft); }
+
+.meta-row { display: flex; gap: 20px; flex-wrap: wrap; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+
+.executive-summary {
+  background: var(--surface); border-left: 4px solid var(--accent);
+  padding: 20px; margin: 20px 0; border-radius: 4px; line-height: 1.8;
+}
+
+.dashboard {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.dashboard-item {
+  background: var(--surface); padding: 16px; border-radius: 4px;
+  border-top: 3px solid var(--accent); text-align: center;
+}
+.dashboard-item-value { font-size: 32px; font-weight: 700; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.dashboard-item-label {
+  font-size: 12px; color: var(--ink-faint); margin-top: 8px;
+  text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--surface); }
+th {
+  background: var(--surface-2); color: var(--ink); padding: 12px; text-align: left;
+  font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--line-strong);
+}
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.label {
+  display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 11px;
+  font-weight: 600; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.label-major { background: rgba(15, 122, 115, 0.2); color: var(--accent); }
+.label-minor { background: rgba(15, 122, 115, 0.1); color: var(--ink-soft); }
+.label-patch { background: rgba(217, 43, 43, 0.1); color: var(--ink-soft); }
+.label-security { background: rgba(217, 43, 43, 0.2); color: var(--critical); }
+.label-lts { background: rgba(255, 165, 0, 0.15); color: var(--medium); }
+.label-rc { background: rgba(156, 39, 176, 0.15); color: var(--ink-soft); }
+.label-beta { background: rgba(63, 81, 181, 0.15); color: var(--ink-soft); }
+.label-eol { background: rgba(217, 43, 43, 0.15); color: var(--critical); }
+
+.severity-critical { color: var(--critical); font-weight: 600; }
+.severity-high { color: var(--high); font-weight: 600; }
+.severity-medium { color: var(--medium); font-weight: 600; }
+.severity-low { color: var(--low); font-weight: 600; }
+
+.source-badge {
+  display: inline-block; padding: 3px 6px; background: var(--surface-2);
+  border-radius: 2px; font-size: 10px; font-family: "JetBrains Mono", monospace; color: var(--ink-faint);
+}
+
+.note {
+  background: var(--surface); border-left: 4px solid var(--medium); padding: 12px;
+  margin: 12px 0; border-radius: 2px; font-size: 13px; color: var(--ink-soft);
+}
+.empty-note {
+  background: var(--surface); border: 1px dashed var(--line-strong); padding: 12px 16px;
+  margin: 12px 0; border-radius: 4px; font-size: 13.5px; color: var(--ink-soft); font-style: italic;
+}
+.highlight-box { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; margin: 12px 0; border-radius: 4px; }
+
+footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line-strong); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-faint); }
+
+.two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .two-column { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstrip">
+    <span>● NATTHASATH NEWS</span>
+    <span><a href="./">← Back to Category</a></span>
+  </div>
+
+  <header class="masthead">
+    <p class="kicker">Weekly Digest</p>
+    <h1>💻 Weekly Software Releases Report</h1>
+    <div class="meta-row">
+      <span><b>Week:</b> 48</span>
+      <span><b>Period:</b> November 22 – 28, 2026</span>
+      <span><b>Timezone:</b> ICT (GMT+7)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>📌 Executive Summary</h2>
+    <div class="executive-summary">
+      <p>สัปดาห์นี้ (22–28 พ.ย. 2569) เป็นสัปดาห์ที่ค่อนข้างเงียบเมื่อเทียบกับสัปดาห์ก่อน ไม่พบ Major Release หรือ Security Release ที่มี CVE ID ยืนยันได้โดยตรงรายใหม่ โดยกิจกรรมส่วนใหญ่กระจุกตัวอยู่ในกลุ่ม DevOps/CI-CD ได้แก่ <strong>Docker Engine 29.10.1</strong>, <strong>Kubernetes v1.37.3/v1.36.7/v1.35.11</strong>, <strong>Jenkins 2.592 (Weekly)</strong> และ <strong>2.580.3 (LTS)</strong> รวมถึง <strong>Ansible</strong> ที่ออก Release Candidate 3 สายพร้อมกัน (22.1rc1/21.7rc1/20.12rc1)</p>
+      <p>รายการที่น่าสนใจที่สุดคือ <strong>ArgoCD v3.6.3/v3.5.9/v3.4.15</strong> (24 พ.ย.) ซึ่งแก้ไข GitHub Security Advisory 4 รายการ (High/High/High/Moderate) แต่ ณ ขณะตรวจสอบยังไม่มีการกำหนดหมายเลข CVE อย่างเป็นทางการ จึงไม่ถูกนับเป็น "New CVE" ตามนโยบายของรายงานนี้ และ <strong>Pulumi v3.278.0</strong> (24–25 พ.ย.) ที่มี Breaking Change ใน Go SDK (เปลี่ยน Return Type ของ <code>property.Map.All/AllStable</code> และ <code>property.Array.All</code> เป็น <code>iter.Seq2</code>, เปลี่ยนชื่อ <code>property.Value.Secret</code> เป็น <code>IsSecret</code>)</p>
+      <p>ด้าน Framework มี <strong>Angular 22.3.1</strong> (Patch, 32 Bug Fix) และ <strong>Laravel 13.44.1</strong> (Patch, ยืนยันได้เฉพาะ Version/วันที่จาก GitHub Tag เนื่องจาก laravel.com เข้าถึงไม่ได้ในรอบตรวจสอบนี้) ส่วน <strong>Vue 3.6</strong> ยังไม่ GA โดยออก RC.17 (27 พ.ย.) ด้าน Programming Language มีเพียง <strong>Rust 1.100.1</strong> (Patch แก้ Regression ของ Iterator Trait) ด้าน Operating System มีเพียงชุด Ubuntu Security Notice 10 รายการ (26 พ.ย.) ซึ่งเป็น Patch ระดับ Package (เช่น PyJWT, Guava, GNU binutils) ไม่ใช่ CVE ใหม่ของสัปดาห์นี้แต่เป็นการแพตช์ CVE ที่มีอยู่ก่อนแล้ว</p>
+      <p><strong>ข้อจำกัดสำคัญของรอบตรวจสอบนี้:</strong> เว็บไซต์ Official หลายแห่งเข้าถึงไม่ได้โดยตรงจาก Network ของ Session นี้ด้วยสาเหตุ DNS/Network Policy (ไม่ใช่การบล็อกจากเว็บไซต์เอง) รวมถึง python.org, go.dev, github.blog, docs.docker.com, kubernetes.io, jenkins.io, docs.gitlab.com, laravel.com, redis.io, qemu.org, nginx.org, wireshark.org, debian.org, aws.amazon.com และ endoflife.date ทำให้หลายรายการต้องยืนยันผ่าน GitHub Releases (Official) โดยตรงเท่านั้นโดยไม่มีเนื้อหา Release Note ละเอียดประกอบ ดูรายการทั้งหมดใน UNCERTAIN ท้ายรายงาน</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">12</div>
+        <div class="dashboard-item-label">ประกาศรีลีส/แอดไวเซอรี</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">2</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">5</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🚀 Programming Languages</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Highlights</th><th>Release Date</th><th>Type</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Rust</strong></td>
+          <td>1.100.1</td>
+          <td><span class="label label-patch">🩹 Patch</span> แก้ไข Regression ที่เกิดจาก 1.100.0 (ออกเมื่อ 12 พ.ย. 2569 ซึ่ง Stabilize Never Type และ Custom Allocator) โดยบางประเภท (Type) ไม่ถูกจดจำว่า Implement Trait <code>Iterator</code> อีกต่อไป ไม่มี Breaking Change ใหม่เพิ่มเติม</td>
+          <td>Nov 27, 2026</td>
+          <td><span class="label label-patch">Patch</span></td>
+          <td><a href="https://github.com/rust-lang/rust/releases/tag/1.100.1" class="source-badge">github.com/rust-lang/rust (official)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 22–28 พ.ย. 2569 สำหรับ Python (ล่าสุด 3.15.2/3.14.10/3.13.18/3.12.16/3.11.18 ประมาณ ต.ค. 2569 — python.org เข้าถึงไม่ได้โดยตรง วันที่แน่ชัด UNCERTAIN), Node.js (Stable ล่าสุดยังเป็นชุด LTS เดิมจากต้น พ.ย. มีเพียง <strong>27.0.0-alpha</strong> ที่ออกต่อเนื่องถึง 26 พ.ย. ซึ่งเป็น Unstable Build — ดู "สิ่งที่ต้องติดตาม"), Java/OpenJDK (Quarterly CPU ล่าสุด 17 พ.ย. ก่อนช่วงเวลานี้), .NET (11 GA ออกเมื่อ 10 พ.ย. ก่อนช่วงเวลานี้), Go (1.27 ล่าสุดเมื่อ 19 ส.ค. — go.dev เข้าถึงไม่ได้โดยตรง ยืนยันผ่าน WebSearch เท่านั้น) และ PHP (8.6.0 ออกเมื่อ 21 พ.ย. ก่อนช่วงเวลานี้เพียง 1 วัน)</div>
+  </section>
+
+  <section>
+    <h2>⚙ Frameworks</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Framework</th><th>Version</th><th>Highlights</th><th>Migration</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vue.js</strong></td>
+          <td>3.6.0-rc.17</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> RC ลำดับต่อเนื่องของสาย 3.6 ซึ่งยังไม่ GA (3.5.46 ยังเป็น Latest Stable ณ 20 พ.ย.) <strong>UNCERTAIN:</strong> เนื้อหา Commit เฉพาะของ rc.17 ไม่สามารถยืนยันรายละเอียดได้ เนื่องจาก Changelog อยู่บน Branch <code>minor</code> ที่ไม่สามารถดึงเนื้อหาแยกตามรุ่นได้ในรอบตรวจสอบนี้ ไม่พบรายงาน Breaking Change ใหม่เทียบกับ 3.5 จากแหล่งที่เข้าถึงได้</td>
+          <td>ยังไม่มี Migration Guide ที่เป็นทางการ เนื่องจากยังอยู่ในสถานะ Pre-release</td>
+          <td><a href="https://github.com/vuejs/core/releases/tag/v3.6.0-rc.17" class="source-badge">github.com/vuejs/core (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Angular</strong></td>
+          <td>22.3.1</td>
+          <td><span class="label label-patch">🩹 Patch</span> แก้ไข Bug 32 รายการครอบคลุม animations, common, compiler, compiler-cli, core, forms, http, migrations, platform-browser, platform-server และ router เช่น แก้ไข Hydration/<code>@defer</code>, ทำให้ FetchBackend Abort เมื่อ Injector ถูก Destroy และแก้ไข Error Handling ของ NG0502/NG0506 ไม่มี Breaking Change หรือ Deprecation ใหม่</td>
+          <td>ไม่มี Breaking Change — อัปเกรดได้ตามปกติ</td>
+          <td><a href="https://github.com/angular/angular/releases/tag/v22.3.1" class="source-badge">github.com/angular/angular (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Laravel</strong></td>
+          <td>13.44.1 (+ 12.74.0)</td>
+          <td><span class="label label-patch">🩹 Patch</span> Micro Version Release ตามรูปแบบการออกเวอร์ชันถี่ของ Laravel <strong>UNCERTAIN:</strong> laravel.com เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ (DNS/Network Policy) และ Laravel News ยังไม่ครอบคลุมรุ่นนี้ ยืนยันได้เฉพาะ Version และวันที่จาก GitHub Release Tag เท่านั้น ไม่สามารถยืนยันเนื้อหาการเปลี่ยนแปลงโดยละเอียดได้จากแหล่งที่เข้าถึงได้ในรอบนี้</td>
+          <td>ไม่สามารถยืนยันได้ (เนื้อหา Release ไม่สามารถตรวจสอบได้จากแหล่งที่เข้าถึงได้ในรอบนี้)</td>
+          <td><a href="https://github.com/laravel/framework/releases/tag/v13.44.1" class="source-badge">github.com/laravel/framework (official — laravel.com เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 22–28 พ.ย. 2569 สำหรับ React (ล่าสุด 19.3.1/19.2.9/19.1.10/19.0.9 เมื่อ 14 ต.ค. ก่อนช่วงเวลานี้), Django (Security Release ล่าสุด 3 พ.ย. ก่อนช่วงเวลานี้), FastAPI (0.165.0/0.164.0 เมื่อ 18 พ.ย. ก่อนช่วงเวลานี้) และ Spring Boot (GA 4.2.0 เมื่อ 19 พ.ย. ก่อนช่วงเวลานี้ รายงานไปแล้วในสัปดาห์ก่อน)</div>
+  </section>
+
+  <section>
+    <h2>🔧 DevOps &amp; CI/CD</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Version</th><th>Changes</th><th>Category</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Docker Engine</strong></td>
+          <td>29.10.1</td>
+          <td><span class="label label-patch">🩹 Patch</span> Patch Release ต่อเนื่องจาก 29.10.0 (16 พ.ย.) <strong>UNCERTAIN:</strong> docs.docker.com เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ และไม่พบรายงานจากสื่อที่ยืนยันเนื้อหาการเปลี่ยนแปลงโดยละเอียด ยืนยันได้เฉพาะ Version และวันที่จาก GitHub Release Tag</td>
+          <td>Patch / Container Runtime</td>
+          <td><a href="https://github.com/moby/moby/releases/tag/v29.10.1" class="source-badge">github.com/moby/moby (official — docs.docker.com เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Kubernetes</strong></td>
+          <td>v1.37.3 / v1.36.7 / v1.35.11</td>
+          <td><span class="label label-patch">🩹 Patch</span> Patch Release พร้อมกัน 3 สาย Minor ที่ยังอยู่ในระยะสนับสนุน <strong>UNCERTAIN:</strong> kubernetes.io เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ไม่พบรายงานจากสื่อที่ยืนยันเนื้อหา Changelog โดยละเอียด ยืนยันได้เฉพาะ Version และวันที่จาก GitHub Release Tag</td>
+          <td>Patch / Container Orchestration</td>
+          <td><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.37.3" class="source-badge">github.com/kubernetes/kubernetes (official — kubernetes.io เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Jenkins</strong> (Weekly)</td>
+          <td>2.592</td>
+          <td><span class="label label-minor">🔹 Minor Release</span> Weekly Release Line <strong>UNCERTAIN:</strong> jenkins.io เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ไม่สามารถยืนยันรายละเอียดการเปลี่ยนแปลงได้ ยืนยันได้เฉพาะ Version และวันที่จาก GitHub Release Tag</td>
+          <td>Minor / CI-CD Platform</td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases/tag/jenkins-2.592" class="source-badge">github.com/jenkinsci/jenkins (official — jenkins.io เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Jenkins</strong> (LTS)</td>
+          <td>2.580.3</td>
+          <td><span class="label label-lts">⭐ LTS</span> LTS Maintenance Release <strong>UNCERTAIN:</strong> jenkins.io เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ ไม่สามารถยืนยันรายละเอียดการเปลี่ยนแปลงได้ ยืนยันได้เฉพาะ Version และวันที่จาก GitHub Release Tag</td>
+          <td>LTS / CI-CD Platform</td>
+          <td><a href="https://github.com/jenkinsci/jenkins/releases/tag/jenkins-2.580.3" class="source-badge">github.com/jenkinsci/jenkins (official — jenkins.io เข้าถึงไม่ได้โดยตรง)</a></td>
+        </tr>
+        <tr>
+          <td><strong>ArgoCD</strong></td>
+          <td>v3.6.3 / v3.5.9 / v3.4.15</td>
+          <td><span class="label label-security">🔒 Security Release</span> แก้ไข GitHub Security Advisory 4 รายการที่เปิดเผยพร้อมกันวันเดียวกัน ได้แก่ GHSA-w7rw-fg89-2cjf (High, CVSS 7.5 — Unauthenticated Request ทำให้ API Server Crash), GHSA-rxm8-qc6h-3c8h (High — Stored XSS ผ่าน Helm Chart Home Link), GHSA-mfgm-4p7x-3ccr (High — Repo Overwrite โดยไม่มีสิทธิ์) และ GHSA-v2hj-322q-6cg4 (Moderate — Template Injection ผ่านชื่อ Helm Release ที่เปิดเผย Environment Variable ของ Repo-server) <strong>UNCERTAIN:</strong> ทั้ง 4 รายการยังไม่มีการกำหนดหมายเลข CVE อย่างเป็นทางการ ณ ขณะตรวจสอบ มีเพียง GHSA ID เท่านั้น</td>
+          <td>Security / GitOps CD</td>
+          <td><a href="https://github.com/argoproj/argo-cd/releases/tag/v3.6.3" class="source-badge">github.com/argoproj/argo-cd (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Ansible</strong></td>
+          <td>v2.22.1rc1 / v2.21.7rc1 / v2.20.12rc1</td>
+          <td><span class="label label-rc">🧪 Release Candidate</span> Release Candidate ของ 3 สายหลักออกพร้อมกัน เตรียมเข้าสู่ Final Release ของรอบ Maintenance</td>
+          <td>RC / Automation</td>
+          <td><a href="https://github.com/ansible/ansible/releases/tag/v2.22.1rc1" class="source-badge">github.com/ansible/ansible (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>Pulumi</strong></td>
+          <td>v3.278.0</td>
+          <td><span class="label label-minor">🔹 Minor Release</span> Provider สามารถแนบ "Product Hint" กับ Failure ได้ (เริ่มจาก Dynamic Credentials), CLI แสดง Notification หลังรันคำสั่ง (ปิดได้ผ่าน <code>pulumi notifications dismiss</code> หรือ <code>PULUMI_HIDE_NOTIFICATIONS</code>), <code>pulumi preview</code> ไม่ต้องใช้สิทธิ์ <code>stack:encrypt</code> อีกต่อไป และแก้ไขช่องโหว่ที่ Node.js RPC Response ถูก Log เป็น Plaintext <strong>Breaking Change (Go SDK):</strong> <code>property.Map.All</code>, <code>property.Map.AllStable</code> และ <code>property.Array.All</code> เปลี่ยนมา Return <code>iter.Seq2</code> และเปลี่ยนชื่อ <code>property.Value.Secret</code> เป็น <code>IsSecret</code></td>
+          <td>Minor / IaC</td>
+          <td><a href="https://github.com/pulumi/pulumi/releases/tag/v3.278.0" class="source-badge">github.com/pulumi/pulumi (official)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 22–28 พ.ย. 2569 สำหรับ Terraform (1.17.2 เมื่อ 11 พ.ย. ก่อนช่วงเวลานี้), GitLab CI/CD Platform (19.6 เมื่อ 19–20 พ.ย. ก่อนช่วงเวลานี้ รายงานไปแล้วในสัปดาห์ก่อน — docs.gitlab.com เข้าถึงไม่ได้โดยตรง ไม่สามารถยืนยันกำหนดการ 19.7 ได้) และ GitHub Actions (ไม่พบ Changelog Entry ในช่วงนี้ — github.blog เข้าถึงไม่ได้โดยตรง)</div>
+  </section>
+
+  <section>
+    <h2>🗄 Database</h2>
+    <div class="empty-note">ไม่พบ Database Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 22–28 พ.ย. 2569 จากแหล่งข้อมูลที่เข้าถึงได้ในรอบตรวจสอบนี้ รายการล่าสุดที่ยืนยันได้ล้วนอยู่ก่อนช่วงเวลานี้ ได้แก่ PostgreSQL (18.7/17.12/16.16/15.20/14.25 และ 19.0 GA เมื่อ 12/19 พ.ย.), MySQL (26.10 Innovation/9.7.4/8.4.13 LTS เมื่อ ต.ค. 2569), MariaDB (12.3.4/11.8.10/11.4.14/10.11.20 เมื่อ 16 พ.ย.), SQL Server (CU/Security KB เมื่อ 10–12 พ.ย.), MongoDB (9.0.4/8.3.13 เมื่อ 13 ต.ค.), Redis (8.12 ยังเป็น RC1 — redis.io เข้าถึงไม่ได้โดยตรงในรอบนี้ ไม่สามารถยืนยันเพิ่มเติม), Cassandra (5.0.9 เมื่อ 7 ส.ค.; 6.0 ยังเป็น Alpha1), Elasticsearch (9.5.6/8.19.24/9.4.9 — UNCERTAIN วันที่ระหว่างแหล่งข้อมูลไม่สอดคล้องกัน คาดว่าอยู่ก่อนช่วงเวลานี้), AWS RDS/Aurora (What's New ล่าสุด 4–19 พ.ย.), Azure SQL (Message Center ล่าสุด 17 พ.ย.) และ Google Cloud SQL (รายการล่าสุด 3–13 พ.ย.) ทั้งหมดก่อนช่วงเวลานี้</div>
+  </section>
+
+  <section>
+    <h2>🖥 Operating Systems</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>OS</th><th>Version</th><th>Release Type</th><th>Highlights</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ubuntu</strong></td>
+          <td>USN-9016-2, 9214-1, 9213-1, 9212-1, 9211-1, 9190-2, 9208-1, 9209-1, 9207-1, 9206-1</td>
+          <td><span class="label label-security">🔒 Security</span></td>
+          <td>ชุด Ubuntu Security Notice 10 รายการ ประกาศวันที่เดียวกันคือ 26 พ.ย. 2569 (Official, ดึงข้อมูลจาก ubuntu.com/security/notices ได้โดยตรง) ครอบคลุม Package ที่ใช้งานกว้างในสาย Enterprise ได้แก่ GNU binutils (USN-9214-1), libXi (USN-9213-1), PyJWT (USN-9212-1 — มักใช้ใน Authentication ของ Python/Node Backend), Plexus Utils (USN-9211-1), Linux Kernel HWE (USN-9190-2), alsa-lib (USN-9208-1), SDL (USN-9209-1), Apache Commons BCEL (USN-9207-1 — Java Ecosystem) และ Guava (USN-9206-1 — Java Ecosystem) ส่วน USN-9016-2 เป็น Regression Fix ของ Patch ก่อนหน้าสำหรับ Package <code>apache2</code> ของ Ubuntu (ไม่ใช่ CVE ใหม่ของสัปดาห์นี้ เป็นการแก้ Cookie-on-redirect Bug ที่เกิดจาก USN-9016-1) ครอบคลุมทุกเวอร์ชันตั้งแต่ 14.04–26.04 LTS <strong>UNCERTAIN:</strong> ไม่สามารถยืนยัน Severity/CVSS รายตัวของแต่ละ CVE ที่ถูกอ้างอิงในชุด USN นี้ได้จากแหล่งที่เข้าถึงได้ในรอบนี้ จึงไม่นำไปจัดอยู่ในตาราง "Security &amp; CVE" ที่ต้องระบุ Severity ที่ยืนยันได้ชัดเจน และไม่นับเป็น "New CVE" เนื่องจาก CVE ส่วนใหญ่เป็นรายการที่มีอยู่ก่อนแล้ว</td>
+          <td><a href="https://ubuntu.com/security/notices/USN-9212-1" class="source-badge">ubuntu.com/security/notices (official)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Release/Advisory ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 22–28 พ.ย. 2569 สำหรับ Debian (DSA ล่าสุด 2–8 พ.ย. — debian.org เข้าถึงไม่ได้โดยตรงในรอบนี้), RHEL (RHSA ล่าสุด 4–12 พ.ย. — access.redhat.com เข้าถึงไม่ได้โดยตรง), Rocky Linux/AlmaLinux (10.3/9.9 เมื่อ 16 พ.ย. รายงานไปแล้วในสัปดาห์ก่อน) และ Windows Server (Patch Tuesday ล่าสุด 10 พ.ย. ไม่พบ Out-of-band Update ในช่วงนี้)</div>
+  </section>
+
+  <section>
+    <h2>🖥 Virtualization</h2>
+    <div class="empty-note">ไม่พบ Release/Advisory ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 22–28 พ.ย. 2569 สำหรับ VMware/Broadcom (VMSA-2026-0009 เมื่อ 19 พ.ย. ก่อนช่วงเวลานี้ รายงานไปแล้วในสัปดาห์ก่อน), Proxmox VE (ล่าสุด 9.2 เมื่อ 21 พ.ค.), Hyper-V (ไม่พบรายการใหม่) และ KVM/QEMU (qemu.org เข้าถึงไม่ได้โดยตรงในรอบนี้ QEMU Stable 11.1.4/10.0.16 มีกำหนด Freeze วันที่ 26 พ.ย. 2569 ตาม Mailing List แต่ยังไม่มีการ Release จริงในช่วงเวลานี้ — ดู "สิ่งที่ต้องติดตาม")</div>
+  </section>
+
+  <section>
+    <h2>🌐 Network &amp; Security</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 22–28 พ.ย. 2569 สำหรับ nginx (1.30.7/1.31.9 เมื่อ 18 พ.ย. ก่อนช่วงเวลานี้ รายงานไปแล้วในสัปดาห์ก่อน — nginx.org เข้าถึงไม่ได้โดยตรงในรอบนี้), Apache HTTP Server (ไม่พบ Release ใหม่), HAProxy (มีเพียง Dev Tag v3.5-dev14 เมื่อ 25 พ.ย. ซึ่งไม่ใช่ Stable Release), Traefik (Security Fix ล่าสุด 2 พ.ย.), Caddy (v2.11.9 เมื่อ 5 พ.ย.), WireGuard (ไม่พบ Core Release), pfSense (docs.netgate.com ไม่ได้ตรวจสอบโดยตรงในรอบนี้ ไม่พบประกาศ Release อย่างเป็นทางการของ 26.10/26.11 — ดู "สิ่งที่ต้องติดตาม"), OPNsense (Hotfix ล่าสุด 26.7.9_3 เมื่อ 16 พ.ย. ก่อนช่วงเวลานี้), Nmap (ล่าสุด 7.99 เมื่อ 26 มี.ค.), Wireshark (4.6.10/4.4.20 เมื่อ 18 พ.ย. ก่อนช่วงเวลานี้ — wireshark.org เข้าถึงไม่ได้โดยตรง), Nessus (10.12.6 เมื่อ 22 ต.ค.), OpenVAS/Greenbone (ไม่พบข้อมูลที่ยืนยันได้) และ Metasploit Framework (Weekly Wrapup ล่าสุด 6 พ.ย.; Metasploit Pro 5.1.0-2026111301 เมื่อ 13 พ.ย.) สำหรับ CVE/Advisory เพิ่มเติม CISA KEV Catalog, access.redhat.com และ security-tracker.debian.org เข้าถึงไม่ได้โดยตรงในรอบนี้ ไม่สามารถยืนยันรายการเพิ่มใหม่ในช่วงเวลานี้ได้</div>
+  </section>
+
+  <section>
+    <h2>☁ Cloud &amp; Infrastructure</h2>
+    <div class="empty-note">ไม่พบประกาศ What's New ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 22–28 พ.ย. 2569 สำหรับ AWS (AWS Weekly Roundup ฉบับล่าสุดที่พบครอบคลุมสัปดาห์ 16 พ.ย. ก่อนช่วงเวลานี้ ไม่พบฉบับใหม่ — aws.amazon.com เข้าถึงไม่ได้โดยตรงในรอบนี้; งาน re:Invent 2026 จัดวันที่ 30 พ.ย.–4 ธ.ค. ซึ่งอยู่นอกช่วงเวลารายงานนี้), Microsoft Azure (รายการทั้งหมดที่พบผูกกับงาน Ignite 17 พ.ย. ก่อนช่วงเวลานี้), Google Cloud (รายการล่าสุดที่พบ 10–16 พ.ย. ก่อนช่วงเวลานี้) และ AWS CloudFormation (ไม่พบ Resource Type/Feature Update ใหม่) สำหรับ Pulumi ดูรายละเอียดในหัวข้อ "🔧 DevOps &amp; CI/CD" (นับรวมในหมวดนั้นแล้ว ไม่นับซ้ำในหมวดนี้)</div>
+  </section>
+
+  <section>
+    <h2>🧰 Developer Tools &amp; IDE</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่ที่ยืนยันวันที่แน่ชัดอยู่ในช่วง 22–28 พ.ย. 2569 สำหรับ VS Code Stable (พบเฉพาะ Insiders Build ซึ่งไม่ใช่ Stable Release), Git (ล่าสุด 2.53.0 เมื่อ 2 ก.พ.), GitHub Platform/Copilot Changelog (github.blog เข้าถึงไม่ได้โดยตรงในรอบนี้ ไม่พบ Changelog Entry ในช่วงนี้จาก WebSearch), JetBrains IDEs (2026.3 เมื่อ 5 พ.ย. — ยืนยันผ่านแหล่งรองเท่านั้น), Eclipse IDE (รอบล่าสุด ก.ย. 2569), npm (ล่าสุด 12.0.2), pip (26.3 เมื่อ 2 พ.ย.), Composer (ไม่พบข้อมูลยืนยันปี 2569), Maven (ล่าสุด 3.9.16; 4.0.0 ยังเป็น RC-6) และ Gradle (9.9.2 เมื่อ 19 พ.ย. ก่อนช่วงเวลานี้ รายงานไปแล้วในสัปดาห์ก่อน)</div>
+  </section>
+
+  <section>
+    <h2>🌍 Web Server</h2>
+    <div class="empty-note">ไม่พบ Release ใหม่สำหรับ nginx, Apache HTTP Server, Caddy และ IIS ในช่วง 22–28 พ.ย. 2569 — ดูสถานะล่าสุดของแต่ละซอฟต์แวร์ในหัวข้อ "🌐 Network &amp; Security"</div>
+  </section>
+
+  <section>
+    <h2>🔒 Security &amp; CVE</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>CVE</th><th>Severity</th><th>Fixed Version</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ArgoCD</strong></td>
+          <td>GHSA-w7rw-fg89-2cjf (ยังไม่มีการกำหนด CVE ID — Unauthenticated Request ทำให้ API Server Crash)</td>
+          <td><span class="severity-high">High</span> (CVSS 7.5)</td>
+          <td>v3.6.3 / v3.5.9 / v3.4.15</td>
+          <td><a href="https://github.com/argoproj/argo-cd/security/advisories" class="source-badge">github.com/argoproj/argo-cd/security/advisories (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>ArgoCD</strong></td>
+          <td>GHSA-rxm8-qc6h-3c8h (ยังไม่มีการกำหนด CVE ID — Stored XSS ผ่าน Helm Chart Home Link)</td>
+          <td><span class="severity-high">High</span></td>
+          <td>v3.6.3 / v3.5.9 / v3.4.15</td>
+          <td><a href="https://github.com/argoproj/argo-cd/security/advisories" class="source-badge">github.com/argoproj/argo-cd/security/advisories (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>ArgoCD</strong></td>
+          <td>GHSA-mfgm-4p7x-3ccr (ยังไม่มีการกำหนด CVE ID — Repo Overwrite โดยไม่มีสิทธิ์)</td>
+          <td><span class="severity-high">High</span></td>
+          <td>v3.6.3 / v3.5.9 / v3.4.15</td>
+          <td><a href="https://github.com/argoproj/argo-cd/security/advisories" class="source-badge">github.com/argoproj/argo-cd/security/advisories (official)</a></td>
+        </tr>
+        <tr>
+          <td><strong>ArgoCD</strong></td>
+          <td>GHSA-v2hj-322q-6cg4 (ยังไม่มีการกำหนด CVE ID — Template Injection ผ่านชื่อ Helm Release)</td>
+          <td><span class="severity-medium">Medium</span></td>
+          <td>v3.6.3 / v3.5.9 / v3.4.15</td>
+          <td><a href="https://github.com/argoproj/argo-cd/security/advisories" class="source-badge">github.com/argoproj/argo-cd/security/advisories (official)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">รายการข้างต้นทั้งหมดเป็น GitHub Security Advisory (GHSA) ที่ยังไม่มีการกำหนดหมายเลข CVE อย่างเป็นทางการ ณ ขณะตรวจสอบ จึงไม่ถูกนับเป็น "New CVE" ใน Quick Stats ด้านล่างตามนโยบายของรายงานนี้ที่กำหนดให้ Security Release ต้องมี CVE ID ยืนยันได้ นอกจากนี้ ชุด Ubuntu Security Notice 10 รายการ (26 พ.ย. — ดูหัวข้อ "🖥 Operating Systems") มีการอ้างอิง CVE ที่มีอยู่ก่อนแล้วหลายสิบรายการ แต่ไม่สามารถยืนยัน Severity ที่ชัดเจนรายตัวได้จากแหล่งที่เข้าถึงได้ในรอบนี้ จึงไม่นำมาแสดงในตารางนี้เพื่อหลีกเลี่ยงการระบุ Severity ที่ไม่ได้ยืนยัน ไม่พบ Critical Security Advisory ใหม่สำหรับ VMware, nginx, GitLab หรือ Database ใดๆ ที่ยืนยันทั้ง CVE ID, Severity และ Patch Version ได้ชัดเจนในช่วง 22–28 พ.ย. 2569</div>
+  </section>
+
+  <section>
+    <h2>⚠ Breaking Changes</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Software</th><th>Version</th><th>Breaking Change</th><th>Migration Guide</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pulumi</strong></td>
+          <td>v3.278.0</td>
+          <td><code>property.Map.All</code>, <code>property.Map.AllStable</code> และ <code>property.Array.All</code> ใน Go SDK เปลี่ยนมา Return <code>iter.Seq2</code> (จากเดิม) และ <code>property.Value.Secret</code> ถูกเปลี่ยนชื่อเป็น <code>property.Value.IsSecret</code></td>
+          <td>ตรวจสอบโค้ด Go ที่เรียกใช้ Method เหล่านี้โดยตรงใน Component Provider หรือ Automation API แล้วปรับให้ใช้ Signature ใหม่ก่อนอัปเกรดเป็น v3.278.0</td>
+          <td><a href="https://github.com/pulumi/pulumi/releases/tag/v3.278.0" class="source-badge">github.com/pulumi/pulumi (official)</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="empty-note">ไม่พบ Breaking Change ที่ยืนยันได้จาก Official Documentation สำหรับ Docker Engine 29.10.1, Kubernetes v1.37.3/v1.36.7/v1.35.11 หรือ Jenkins 2.592/2.580.3 ในช่วงเวลานี้ เนื่องจาก docs.docker.com, kubernetes.io และ jenkins.io เข้าถึงไม่ได้โดยตรงในรอบตรวจสอบนี้ หากมี Breaking Change ควรตรวจสอบ Official Release Note ของแต่ละโปรเจกต์อีกครั้งก่อนอัปเกรด</div>
+  </section>
+
+  <section>
+    <h2>📦 End of Life (EOL)</h2>
+    <div class="empty-note">ไม่พบประกาศ End of Life ใหม่หรือวันที่ EOL ที่ตรงกับช่วง 22–28 พ.ย. 2569 จากแหล่งข้อมูลที่เข้าถึงได้ในรอบตรวจสอบนี้ (endoflife.date เข้าถึงไม่ได้โดยตรง ต้องใช้ WebSearch และแหล่งรองแทน) รายการ EOL ที่พบล้วนอยู่ก่อนช่วงเวลานี้ เช่น Alpine Linux 3.21 (EOL 1 พ.ย. 2569, ยืนยันจาก Alpine Release-branches Page), Ruby on Rails 8.0 Security Support (EOL 7 พ.ย. 2569, ยืนยันจาก rubyonrails.org) และชุด Microsoft EOL (Windows 11 23H2, .NET 8/9, PowerShell 7.4 LTS ฯลฯ เมื่อ 10 พ.ย. 2569) ซึ่งรายงานไปแล้วในสัปดาห์ก่อนหน้า ไม่พบผู้ให้บริการรายใดประกาศวันที่ EOL ใหม่ภายในสัปดาห์นี้เองจากแหล่งที่เข้าถึงได้</div>
+  </section>
+
+  <section>
+    <h2>👀 สิ่งที่ต้องติดตาม</h2>
+    <div class="highlight-box">
+      <ul>
+        <li><strong>Vue 3.6 GA</strong> — ยังอยู่ที่ RC.17 (27 พ.ย. 2569) ใกล้ชุด Final มากขึ้นแต่ยังไม่มีกำหนดการ GA ที่ยืนยันได้</li>
+        <li><strong>Node.js 27.0.0-alpha</strong> — ยังมี Alpha Build ต่อเนื่องถึง 26 พ.ย. 2569 ยังห่างไกลจากความพร้อมใช้งานจริง</li>
+        <li><strong>GitLab 19.7</strong> — ยังไม่พบ Tag/ประกาศ GA ที่ยืนยันได้ในรอบนี้ docs.gitlab.com เข้าถึงไม่ได้โดยตรง คาดว่าจะออกช่วงต้นเดือนธันวาคมตามรอบ Monthly Release</li>
+        <li><strong>QEMU 11.1.4 / 10.0.16</strong> — มีกำหนด Freeze Stable Branch วันที่ 26 พ.ย. 2569 ตาม Mailing List แต่ยังไม่พบ Release จริงในช่วงเวลานี้ (qemu.org เข้าถึงไม่ได้โดยตรง)</li>
+        <li><strong>pfSense 26.10/26.11</strong> — มีข่าวลือเรื่องการรวม Edition CE+Plus แต่ยังไม่มีประกาศ Release อย่างเป็นทางการจาก Netgate ในรอบตรวจสอบนี้</li>
+        <li><strong>HAProxy 3.5</strong> — พบเพียง Dev Tag v3.5-dev14 (25 พ.ย. 2569) ยังไม่ใช่ Stable Release</li>
+        <li><strong>Redis 8.12</strong> — ยังอยู่ที่สถานะ RC1 redis.io เข้าถึงไม่ได้โดยตรงในรอบนี้ ควรตรวจสอบสถานะ GA อีกครั้ง</li>
+        <li><strong>ArgoCD GHSA 4 รายการ</strong> (w7rw-fg89-2cjf, rxm8-qc6h-3c8h, mfgm-4p7x-3ccr, v2hj-322q-6cg4) — ควรติดตามว่าจะมีการกำหนดหมายเลข CVE อย่างเป็นทางการในสัปดาห์ถัดไปหรือไม่</li>
+        <li><strong>AWS re:Invent 2026</strong> (30 พ.ย.–4 ธ.ค. 2569) — คาดว่าจะมีประกาศ Feature/Service ใหม่จำนวนมาก ซึ่งจะอยู่นอกช่วงเวลาของรายงานนี้และจะถูกครอบคลุมในรายงานสัปดาห์ถัดไป</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>📈 Quick Stats</h2>
+    <div class="dashboard">
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">12</div>
+        <div class="dashboard-item-label">Total Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">Major Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">2</div>
+        <div class="dashboard-item-label">Security Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">5</div>
+        <div class="dashboard-item-label">Patch Releases</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">New CVEs</div>
+      </div>
+      <div class="dashboard-item">
+        <div class="dashboard-item-value">0</div>
+        <div class="dashboard-item-label">EOL Announcements</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📖 Sources</h2>
+    <div class="two-column">
+      <div>
+        <h3>Official</h3>
+        <ul>
+          <li><a href="https://github.com/rust-lang/rust/releases/tag/1.100.1">github.com/rust-lang/rust — Rust 1.100.1</a></li>
+          <li><a href="https://github.com/vuejs/core/releases/tag/v3.6.0-rc.17">github.com/vuejs/core — Vue 3.6.0-rc.17</a></li>
+          <li><a href="https://github.com/angular/angular/releases/tag/v22.3.1">github.com/angular/angular — Angular 22.3.1</a></li>
+          <li><a href="https://github.com/laravel/framework/releases/tag/v13.44.1">github.com/laravel/framework — Laravel 13.44.1</a></li>
+          <li><a href="https://github.com/moby/moby/releases/tag/v29.10.1">github.com/moby/moby — Docker Engine 29.10.1</a></li>
+          <li><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.37.3">github.com/kubernetes/kubernetes — Kubernetes v1.37.3</a></li>
+          <li><a href="https://github.com/jenkinsci/jenkins/releases/tag/jenkins-2.592">github.com/jenkinsci/jenkins — Jenkins 2.592 (Weekly)</a></li>
+          <li><a href="https://github.com/jenkinsci/jenkins/releases/tag/jenkins-2.580.3">github.com/jenkinsci/jenkins — Jenkins 2.580.3 (LTS)</a></li>
+          <li><a href="https://github.com/ansible/ansible/releases/tag/v2.22.1rc1">github.com/ansible/ansible — Ansible v2.22.1rc1</a></li>
+          <li><a href="https://github.com/pulumi/pulumi/releases/tag/v3.278.0">github.com/pulumi/pulumi — Pulumi v3.278.0</a></li>
+          <li><a href="https://ubuntu.com/security/notices/USN-9212-1">ubuntu.com/security/notices — USN-9212-1 (PyJWT)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Release Notes</h3>
+        <ul>
+          <li><a href="https://ubuntu.com/security/notices/USN-9206-1">ubuntu.com/security/notices — USN-9206-1 (Guava)</a></li>
+          <li><a href="https://ubuntu.com/security/notices/USN-9214-1">ubuntu.com/security/notices — USN-9214-1 (GNU binutils)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Security Advisory</h3>
+        <ul>
+          <li><a href="https://github.com/argoproj/argo-cd/releases/tag/v3.6.3">github.com/argoproj/argo-cd — ArgoCD v3.6.3 Release</a></li>
+          <li><a href="https://github.com/argoproj/argo-cd/security/advisories">github.com/argoproj/argo-cd/security/advisories — GHSA 4 รายการ</a></li>
+          <li><a href="https://ubuntu.com/security/notices/USN-9016-2">ubuntu.com/security/notices — USN-9016-2 (Apache2 Regression Fix)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Trusted Media</h3>
+        <ul>
+          <li>ไม่พบรายงานจากสื่อ Tier 2 (InfoQ, DevOps.com, The Register ฯลฯ) ที่ยืนยันรายละเอียดเพิ่มเติมของ Release ในสัปดาห์นี้ได้ — ส่วนใหญ่ของสัปดาห์นี้ต้องยืนยันผ่าน GitHub Releases (Official) โดยตรงเนื่องจาก Official Documentation Site หลายแห่งเข้าถึงไม่ได้</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">UNCERTAIN: โดเมนต่อไปนี้เข้าถึงไม่ได้โดยตรงผ่าน Network Proxy/DNS ของ Session นี้ในรอบตรวจสอบนี้ (ความล้มเหลวระดับ Network/DNS ไม่ใช่การบล็อกจากเว็บไซต์เอง) ได้แก่ <code>www.python.org</code>, <code>go.dev</code>, <code>github.blog</code>, <code>docs.docker.com</code>, <code>kubernetes.io</code>, <code>www.jenkins.io</code>, <code>docs.gitlab.com</code>, <code>laravel.com</code>, <code>redis.io</code>, <code>www.qemu.org</code>, <code>www.debian.org</code>, <code>errata.rockylinux.org</code>, <code>endoflife.date</code>, <code>aws.amazon.com</code>, <code>cisa.gov</code>, <code>access.redhat.com</code>, <code>security-tracker.debian.org</code>, <code>wireshark.org</code>, <code>nginx.org</code> และ <code>docs.netgate.com</code> รายการที่ไม่สามารถยืนยันเนื้อหาละเอียดได้จากหลายแหล่งพร้อมกันในรอบนี้ เช่น เนื้อหา Release Note ของ Docker Engine 29.10.1, Kubernetes v1.37.3/v1.36.7/v1.35.11, Jenkins 2.592/2.580.3, เนื้อหา Commit ของ Vue 3.6.0-rc.17, เนื้อหา Release ของ Laravel 13.44.1, วันที่ Release ที่แน่ชัดของ Elasticsearch 9.5.6/8.19.24/9.4.9 และ Severity รายตัวของ CVE ในชุด Ubuntu USN จึงถูกระบุ UNCERTAIN ไว้ในตารางที่เกี่ยวข้องหรือถูกงดแสดงเป็นรายการยืนยัน ไม่ได้งดแสดงทั้งหมวดใดหมวดหนึ่งทั้งหมดเนื่องจากโดเมนเดียวเข้าถึงไม่ได้</div>
+  </section>
+
+  <footer>
+    Generated for natthasath-news · Weekly Software Releases Report · Week 48, 2026 · Data window: Nov 22 – 28, 2026 (ICT)
+  </footer>
+</div>
+</body>
+</html>
